@@ -14,24 +14,18 @@
 ActiveRecord::Schema.define(:version => 20121010041526) do
 
   create_table "businesses", :force => true do |t|
-    t.string   "slug",             :null => false
-    t.string   "name",             :null => false
+    t.string   "slug",         :null => false
+    t.string   "name",         :null => false
     t.string   "tel"
     t.string   "fax"
     t.string   "email"
     t.string   "url"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.string   "locality"
-    t.string   "region"
-    t.string   "postal_code"
-    t.string   "country"
     t.string   "logo"
     t.string   "facebook_url"
     t.string   "twitter_url"
     t.string   "linkedin_url"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "locations", :force => true do |t|
