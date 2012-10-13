@@ -8,6 +8,7 @@ class CreateBusinesses < ActiveRecord::Migration
       t.string :email
       t.string :url
       t.string :logo
+      t.text   :description
       t.string :facebook_url
       t.string :twitter_url
       t.string :linkedin_url
