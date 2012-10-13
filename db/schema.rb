@@ -29,15 +29,16 @@ ActiveRecord::Schema.define(:version => 20121010041526) do
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "street_address_1"
+    t.string   "street_address_1", :null => false
     t.string   "street_address_2"
-    t.string   "locality"
-    t.string   "region"
-    t.string   "postal_code"
-    t.string   "country"
+    t.string   "locality",         :null => false
+    t.string   "region",           :null => false
+    t.string   "postal_code",      :null => false
+    t.string   "country",          :null => false
     t.string   "tel"
     t.string   "fax"
     t.string   "email"
+    t.integer  "business_id"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
   end
