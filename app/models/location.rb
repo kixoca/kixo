@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
 
+  # every location is linked to a business
   belongs_to :business
 
   validates :street_address_1, :presence => true
