@@ -1,10 +1,22 @@
 class BusinessesController < ApplicationController
-
   def index
-    @businesses = [
-      'optimumweb',
-      'pierre-roy-et-associes'
-    ]
   end
 
+  def show
+  end
+
+  def new
+  end
+
+  def create
+  end
+
+  def update
+  end
+
+  def edit
+  end
+
+  def destroy
+  end
 end

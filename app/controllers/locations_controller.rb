@@ -1,8 +1,11 @@
 class LocationsController < ApplicationController
-  def new
+  def index
   end
 
-  def create
+  def show
+  end
+
+  def new
   end
 
   def update
@@ -12,11 +15,5 @@ class LocationsController < ApplicationController
   end
 
   def destroy
-  end
-
-  def index
-  end
-
-  def show
   end
 end
