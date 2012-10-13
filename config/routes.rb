@@ -1,6 +1,36 @@
 Kixo::Application.routes.draw do
 
-  resources :businesses
+  get "locations/new"
+
+  get "locations/create"
+
+  get "locations/update"
+
+  get "locations/edit"
+
+  get "locations/destroy"
+
+  get "locations/index"
+
+  get "locations/show"
+
+  get "location/new"
+
+  get "location/create"
+
+  get "location/update"
+
+  get "location/edit"
+
+  get "location/destroy"
+
+  get "location/index"
+
+  get "location/show"
+
+  resources :businesses do
+    resources :locations
+  end
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
