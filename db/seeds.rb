@@ -54,6 +54,19 @@ locations = Location.create(
       :tel          => "5144539857",
       :fax          => "5144532134",
       :email        => "info@pierreroy.com"
+    },
+    {
+      :business_id  => businesses[1].id,
+      :door_number  => "Bureau 802",
+      :house_number => "1290",
+      :street_name  => "rue St-Denis",
+      :locality     => "Montréal",
+      :region       => "Quebec",
+      :postal_code  => "H2X 3J7",
+      :country      => "Canada",
+      :tel          => "5142828667",
+      :fax          => "5142829667",
+      :email        => "info@pierreroy.com"
     }
   ]
 );
