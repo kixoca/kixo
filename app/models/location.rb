@@ -1,5 +1,9 @@
 class Location < ActiveRecord::Base
 
+  attr_accessible :business_id, :door_number, :house_number, :street_name,
+                  :locality_id, :region_id, :postal_code_id, :country_id,
+                  :tel, :fax, :email
+
   # every location is linked to a business
   belongs_to :business
 

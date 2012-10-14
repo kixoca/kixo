@@ -30,9 +30,10 @@ ActiveRecord::Schema.define(:version => 20121014194621) do
   end
 
   create_table "locations", :force => true do |t|
+    t.integer  "business_id"
     t.string   "door_number"
-    t.string   "house_number"
-    t.string   "street_id",      :null => false
+    t.string   "house_number",   :null => false
+    t.string   "street_name",    :null => false
     t.string   "locality_id",    :null => false
     t.string   "region_id",      :null => false
     t.string   "postal_code_id", :null => false
@@ -40,7 +41,6 @@ ActiveRecord::Schema.define(:version => 20121014194621) do
     t.string   "tel"
     t.string   "fax"
     t.string   "email"
-    t.integer  "business_id"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
