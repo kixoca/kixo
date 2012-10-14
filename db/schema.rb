@@ -34,10 +34,10 @@ ActiveRecord::Schema.define(:version => 20121014194621) do
     t.string   "door_number"
     t.string   "house_number",   :null => false
     t.string   "street_name",    :null => false
-    t.string   "locality_id",    :null => false
-    t.string   "region_id",      :null => false
-    t.string   "postal_code_id", :null => false
-    t.string   "country_id",     :null => false
+    t.integer  "locality_id",    :null => false
+    t.integer  "region_id",      :null => false
+    t.integer  "postal_code_id", :null => false
+    t.integer  "country_id",     :null => false
     t.string   "tel"
     t.string   "fax"
     t.string   "email"
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(:version => 20121014194621) do
   end
 
   create_table "wheres", :force => true do |t|
-    t.string   "value"
-    t.string   "level"
+    t.string   "value",      :null => false
+    t.string   "level",      :null => false
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
