@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121010041526) do
+ActiveRecord::Schema.define(:version => 20121014194621) do
 
   create_table "businesses", :force => true do |t|
     t.string   "slug",         :null => false
@@ -30,18 +30,26 @@ ActiveRecord::Schema.define(:version => 20121010041526) do
   end
 
   create_table "locations", :force => true do |t|
-    t.string   "street_address_1", :null => false
-    t.string   "street_address_2"
-    t.string   "locality",         :null => false
-    t.string   "region",           :null => false
-    t.string   "postal_code",      :null => false
-    t.string   "country",          :null => false
+    t.string   "door_number"
+    t.string   "house_number"
+    t.string   "street_id",      :null => false
+    t.string   "locality_id",    :null => false
+    t.string   "region_id",      :null => false
+    t.string   "postal_code_id", :null => false
+    t.string   "country_id",     :null => false
     t.string   "tel"
     t.string   "fax"
     t.string   "email"
     t.integer  "business_id"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+  end
+
+  create_table "wheres", :force => true do |t|
+    t.string   "value"
+    t.string   "type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
 end
