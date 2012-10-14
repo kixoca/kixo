@@ -49,4 +49,39 @@
   </tbody>
 </table>
 
+<h2>Business Locations</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Door Number</th>
+      <th>House Number</th>
+      <th>Street Name</th>
+      <th>Locality</th>
+      <th>Region</th>
+      <th>Postal Code</th>
+      <th>Country</th>
+      <th>Tel</th>
+      <th>Fax</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @business.locations.each do |location| %>
+      <tr>
+        <td><%= location.door_number %></td>
+        <td><%= location.house_number %></td>
+        <td><%= location.street_name %></td>
+        <td><%= location.locality %></td>
+        <td><%= location.region %></td>
+        <td><%= location.postal_code %></td>
+        <td><%= location.country %></td>
+        <td><%= location.tel %></td>
+        <td><%= location.fax %></td>
+        <td><%= location.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <p><%= link_to "List of businesses", businesses_path %></p>
