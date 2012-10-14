@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(:version => 20121014194621) do
 
   create_table "wheres", :force => true do |t|
     t.string   "value"
-    t.string   "type"
+    t.string   "level"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -1,3 +1,5 @@
+# -*- encoding : utf-8 -*-
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 #
@@ -17,7 +19,7 @@ businesses = Business.create(
     },
     { # 1
       :slug  => "pierre-roy-et-associes",
-      :name  => "Pierre Roy & Associes",
+      :name  => "Pierre Roy & Associés",
       :tel   => "514 453-9857",
       :email => "info@pierreroy.com",
       :url   => "http://pierreroy.com"
@@ -29,27 +31,27 @@ wheres = Where.create(
   [
     { # 0
       :value => "Vaudreuil-Dorion",
-      :type  => "locality"
+      :level => "locality"
     },
     { # 1
       :value => "Quebec",
-      :type  => "region"
+      :level => "region"
     },
     { # 2
       :value => "J7V 8P3",
-      :type  => "postal_code"
+      :level => "postal_code"
     },
     { # 3
       :value => "Canada",
-      :type  => "country"
+      :level => "country"
     },
     { # 4
-      :value => "L'Ile-Perrot",
-      :type  => "locality"
+      :value => "L'Île-Perrot",
+      :level => "locality"
     },
     { # 5
       :value => "J7V 7P8",
-      :type  => "postal_code"
+      :level => "postal_code"
     }
   ]
 )
