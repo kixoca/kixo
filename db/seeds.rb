@@ -11,8 +11,8 @@
 businesses = Business.create(
   [
     { # 0
-      :slug  =>  "optimumweb",
-      :name  =>  "OptimumWeb",
+      :slug  => "optimumweb",
+      :name  => "OptimumWeb",
       :tel   => "514 518-5511",
       :email => "info@optimumweb.ca",
       :url   => "http://optimumweb.ca"
@@ -27,62 +27,33 @@ businesses = Business.create(
   ]
 )
 
-wheres = Where.create(
-  [
-    { # 0
-      :value => "Vaudreuil-Dorion",
-      :level => "locality"
-    },
-    { # 1
-      :value => "Quebec",
-      :level => "region"
-    },
-    { # 2
-      :value => "J7V 8P3",
-      :level => "postal_code"
-    },
-    { # 3
-      :value => "Canada",
-      :level => "country"
-    },
-    { # 4
-      :value => "L'Île-Perrot",
-      :level => "locality"
-    },
-    { # 5
-      :value => "J7V 7P8",
-      :level => "postal_code"
-    }
-  ]
-)
-
 locations = Location.create(
   [
     { # 0
-      :business_id    => businesses[0].id,
-      :door_number    => nil,
-      :house_number   => "178",
-      :street_name    => "chemin de l'Anse",
-      :locality_id    => wheres[0].id,
-      :region_id      => wheres[1].id,
-      :postal_code_id => wheres[2].id,
-      :country_id     => wheres[3].id,
-      :tel            => "5145185511",
-      :fax            => nil,
-      :email          => "info@optimumweb.ca"
+      :business_id  => businesses[0].id,
+      :door_number  => nil,
+      :house_number => "178",
+      :street_name  => "chemin de l'Anse",
+      :locality     => "Vaudreuil-Dorion",
+      :region       => "Quebec",
+      :postal_code  => "J7V 8P3",
+      :country      => "Canada",
+      :tel          => "5145185511",
+      :fax          => nil,
+      :email        => "info@optimumweb.ca"
     },
     { # 1
-      :business_id    => businesses[1].id,
-      :door_number    => "Bureau 202",
-      :house_number   => "10",
-      :street_name    => "boulevard Grand",
-      :locality_id    => wheres[4].id,
-      :region_id      => wheres[1].id,
-      :postal_code_id => wheres[5].id,
-      :country_id     => wheres[3].id,
-      :tel            => "5144539857",
-      :fax            => "5144532134",
-      :email          => "info@pierreroy.com"
+      :business_id  => businesses[1].id,
+      :door_number  => "Bureau 202",
+      :house_number => "10",
+      :street_name  => "boulevard Grand",
+      :locality     => "L'Île-Perrot",
+      :region       => "Quebec",
+      :postal_code  => "J7V 7P8",
+      :country      => "Canada",
+      :tel          => "5144539857",
+      :fax          => "5144532134",
+      :email        => "info@pierreroy.com"
     }
   ]
 );
