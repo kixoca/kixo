@@ -68,18 +68,18 @@
   </thead>
   <tbody>
     <% @business.locations.each do |location| %>
-      <tr>
-        <td><%= location.door_number %></td>
-        <td><%= location.house_number %></td>
-        <td><%= location.street_name %></td>
-        <td><%= location.locality %></td>
-        <td><%= location.region %></td>
-        <td><%= location.postal_code %></td>
-        <td><%= location.country %></td>
-        <td><%= location.tel %></td>
-        <td><%= location.fax %></td>
-        <td><%= location.email %></td>
-      </tr>
+    <tr>
+      <td><%= location.door_number %></td>
+      <td><%= location.house_number %></td>
+      <td><%= location.street_name %></td>
+      <td><%= location.locality %></td>
+      <td><%= location.region %></td>
+      <td><%= location.postal_code %></td>
+      <td><%= location.country %></td>
+      <td><%= location.tel %></td>
+      <td><%= location.fax %></td>
+      <td><%= location.email %></td>
+    </tr>
     <% end %>
   </tbody>
 </table>
