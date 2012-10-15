@@ -3,10 +3,25 @@ ActiveAdmin.register_page "Dashboard" do
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span "Welcome to Active Admin. This is the default dashboard page."
-        small "To add dashboard sections, checkout 'app/admin/dashboards.rb'"
+    columns do
+      column do
+        panel "Recent Businesses" do
+          ul do
+            Business.last(5).map do |business|
+              li link_to(business.name, admin_business_path(business))
+            end
+          end
+        end
+      end
+
+      column do
+        panel "Recent Locations" do
+          ul do
+            Location.last(10).map do |location|
+              li link_to(location.business.name + " - " + location.locality, admin_location_path(location))
+            end
+          end
+        end
       end
     end
 
