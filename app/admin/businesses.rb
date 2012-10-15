@@ -17,4 +17,13 @@ ActiveAdmin.register Business do
     f.buttons
   end
 
+  index do
+    column :name
+    column :tel
+    column :email
+    column "Categories" do |business|
+      business.categories.map({ |c| c.name }).join(' ')
+    end
+  end
+
 end
