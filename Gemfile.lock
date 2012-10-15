@@ -47,6 +47,7 @@ GEM
     bourbon (2.1.1)
       sass (>= 3.1)
     builder (3.0.3)
+    cocaine (0.4.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -92,6 +93,12 @@ GEM
     mime-types (1.19)
     multi_json (1.3.6)
     orm_adapter (0.4.0)
+    paperclip (3.3.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      activesupport (>= 3.0.0)
+      cocaine (~> 0.4.0)
+      mime-types
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -153,6 +160,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   country-select
   jquery-rails
+  paperclip (~> 3.0)
   rails (= 3.2.2)
   sass-rails (~> 3.2.3)
   sqlite3
