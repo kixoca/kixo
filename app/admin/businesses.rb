@@ -14,6 +14,7 @@ ActiveAdmin.register Business do
       f.input :twitter_url
       f.input :linkedin_url
       f.input :categories
+      f.input :representant
     end
     f.buttons
   end
