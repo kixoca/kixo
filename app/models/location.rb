@@ -16,4 +16,8 @@ class Location < ActiveRecord::Base
   validates :postal_code,  :presence => true
   validates :country,      :presence => true
 
+  def inline_address
+    "#{house_number}, #{street_name}, #{locality}, #{region} #{postal_code}, #{country}"
+  end
+
 end
