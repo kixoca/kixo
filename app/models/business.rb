@@ -1,6 +1,6 @@
 class Business < ActiveRecord::Base
 
-  attr_accessible :slug, :name, :tel, :fax, :email, :url, :description,
+  attr_accessible :slug, :name, :tel, :fax, :email, :url, :logo, :description,
                   :facebook_url, :twitter_url, :linkedin_url, :representant_id
 
   # a business can have many locations (physical addresses)
@@ -9,9 +9,11 @@ class Business < ActiveRecord::Base
   validates :slug, :presence => true, :uniqueness => true
   validates :name, :presence => true
 
+  has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
   # after the business has been written to the database, deal with
   # writing any logo image data to the filesystem
-  after_save :store_logo
+  # after_save :store_logo
 
   private
 
