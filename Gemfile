@@ -24,6 +24,8 @@ gem 'jquery-rails'
 
 gem 'validates_existence', '>= 0.4'
 
+gem 'activeadmin'
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
