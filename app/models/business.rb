@@ -2,7 +2,7 @@ class Business < ActiveRecord::Base
 
   attr_accessible :slug, :name, :tel, :fax, :email, :url, :logo, :description,
                   :facebook_url, :twitter_url, :linkedin_url,
-                  :representant_id
+                  :representant_id, :category_ids
 
   # a business can have many locations (physical addresses)
   has_many :locations, :dependent => :destroy
@@ -11,7 +11,7 @@ class Business < ActiveRecord::Base
   has_and_belongs_to_many :categories
 
   # a business is linked to a representant
-  has_one :representant
+  belongs_to :representant
 
   accepts_nested_attributes_for :representant, :categories
 

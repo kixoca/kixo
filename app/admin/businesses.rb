@@ -35,6 +35,7 @@ ActiveAdmin.register Business do
         link_to(location.locality, admin_location_path(location))
       }).join(', ').html_safe
     end
+    column :representant
     default_actions
   end
 
@@ -62,6 +63,9 @@ ActiveAdmin.register Business do
           link_to(I18n.t('active_admin.view'), admin_location_path(location), :class => "member_link view_link")
         }).join('<br />').html_safe
       end
+      row :representant
+      row :created_at
+      row :updated_at
     end
   end
 
