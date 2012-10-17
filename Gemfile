@@ -7,7 +7,7 @@ gem 'capistrano'
 gem 'passenger'
 
 gem 'sqlite3'
-gem 'mysql'
+gem 'mysql2'
 gem 'activerecord-mysql2-adapter'
 
 # Gems used only for assets and not required
