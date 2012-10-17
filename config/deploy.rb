@@ -5,6 +5,7 @@ set :deploy_to, "/home/kixo/app"
 # subversion
 set :scm, :git
 set :repository,  "git@github.com:optimumweb/kixo.git"
+set :branch, "master"
 
 # settings
 default_run_options[:pty] = true
