@@ -19,7 +19,12 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: mysql
+  encoding: utf8
+  database: kixo_production
+  hostname: 127.0.0.1
+  username: kixo_production
+  password: YB65tW5r
+  socket: /tmp/mysql.sock
   pool: 5
   timeout: 5000
