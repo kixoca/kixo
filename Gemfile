@@ -7,7 +7,6 @@ gem 'capistrano'
 gem 'passenger'
 
 gem 'sqlite3'
-gem 'mysql2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -26,6 +25,7 @@ gem 'jquery-rails'
 gem 'validates_existence', '>= 0.4'
 
 gem 'activeadmin'
+gem 'meta_search', '>= 1.1.0.pre'
 
 gem 'country-select'
 
