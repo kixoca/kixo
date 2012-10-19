@@ -12,7 +12,6 @@ class CreateLocations < ActiveRecord::Migration
       t.string  :tel
       t.string  :fax
       t.string  :email
-
       t.timestamps
     end
   end
