@@ -13,6 +13,9 @@ class Business < ActiveRecord::Base
   # a business is linked to a representant
   belongs_to :representant
 
+  # a business is linked with a user (owner)
+  belongs_to :user
+
   # accept nested setting of representant and categories
   accepts_nested_attributes_for :representant, :categories
 
