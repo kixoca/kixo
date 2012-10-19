@@ -1,6 +1,6 @@
 class AddUserFields < ActiveRecord::Migration
   def up
-    add_column :users, :name, :string
+    add_column :users, :name, :string, :null => false
     add_column :users, :tel, :string
     add_column :users, :door_number, :string
     add_column :users, :house_number, :string

@@ -1,24 +1,5 @@
 ActiveAdmin.register Business do
 
-  form do |f|
-    f.inputs do
-      f.input :name
-      f.input :slug
-      f.input :tel
-      f.input :fax
-      f.input :email
-      f.input :url
-      f.input :logo, :as => :file
-      f.input :description
-      f.input :facebook_url
-      f.input :twitter_url
-      f.input :linkedin_url
-      f.input :categories
-      f.input :representant
-    end
-    f.buttons
-  end
-
   index do
     column :name do |business|
       link_to business.name, admin_business_path(business)
@@ -67,6 +48,26 @@ ActiveAdmin.register Business do
       row :created_at
       row :updated_at
     end
+  end
+
+  form do |f|
+    f.inputs do
+      f.input :name
+      f.input :slug
+      f.input :tel
+      f.input :fax
+      f.input :email
+      f.input :url
+      f.input :logo, :as => :file
+      f.input :description
+      f.input :facebook_url
+      f.input :twitter_url
+      f.input :linkedin_url
+      f.input :categories
+      f.input :user, :label => "Owner"
+      f.input :representant
+    end
+    f.buttons
   end
 
 end

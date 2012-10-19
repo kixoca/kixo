@@ -1,6 +1,14 @@
 class Representant < ActiveRecord::Base
 
-  attr_accessible :name, :tel, :email
+  devise :database_authenticatable,
+         :recoverable, :rememberable, :trackable, :validatable,
+         :omniauthable
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me
+                  :name, :tel,
+                  :door_number, :house_number, :street_name,
+                  :locality, :region, :postal_code, :country,
+                  :business_ids
 
   # a Representant owns many businesses
   has_many :businesses
