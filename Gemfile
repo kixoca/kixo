@@ -10,6 +10,10 @@ gem 'sqlite3'
 
 gem 'devise'
 
+gem 'omniauth'
+gem 'oauth2'
+gem 'omniauth-facebook'
+
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 
