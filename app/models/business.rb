@@ -13,11 +13,29 @@ class Business < ActiveRecord::Base
   # a business is linked to a representant
   belongs_to :representant
 
+  # accept nested setting of representant and categories
   accepts_nested_attributes_for :representant, :categories
 
-  validates :slug, :presence => true, :uniqueness => true
+  # business name is a required field
   validates :name, :presence => true
 
+  # use paperclip to attach a logo
   has_attached_file :logo, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  # rewrite urls with slug inserted
+  def to_param
+    "#{id}-#{slug}"
+  end
+
+  # auto-generate slug
+  before_save :generate_slug
+
+  private
+
+  # generates a slug from the name using 'to_slug' extension
+  # unless a slug is specified
+  def generate_slug
+    self.slug = self.name.to_slug if slug.empty?
+  end
 
 end

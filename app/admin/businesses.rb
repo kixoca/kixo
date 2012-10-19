@@ -2,8 +2,8 @@ ActiveAdmin.register Business do
 
   form do |f|
     f.inputs do
-      f.input :slug
       f.input :name
+      f.input :slug
       f.input :tel
       f.input :fax
       f.input :email
