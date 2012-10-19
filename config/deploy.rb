@@ -17,15 +17,6 @@ server "kixo.ca", :app, :web, :db, :primary => true
 set :user, "kixo"
 
 # deployment with phusion passenger (mod_rails)
-
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
-
 namespace :passenger do
   desc "Restart Application"
   task :restart do
@@ -33,4 +24,8 @@ namespace :passenger do
   end
 end
 
+# run migrations after deployment
+after "deploy:update_code", "deploy:migrate"
+
+# restart passenger after deployment
 after :deploy, "passenger:restart"
