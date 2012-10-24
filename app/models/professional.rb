@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class Professional < ActiveRecord::Base
 
   devise :database_authenticatable,
          :registerable, :recoverable, :rememberable, :trackable, :validatable,
@@ -8,10 +8,7 @@ class User < ActiveRecord::Base
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
                   :headshot
 
-  # a user can have many questions
-  has_many :questions
-
-  # a user can be the author of many reviews
-  has_many :reviews
+  # a professional is associated with one or many categories
+  has_and_belongs_to_many :categories
 
 end

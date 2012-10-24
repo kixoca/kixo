@@ -1,19 +1,16 @@
 class Representant < ActiveRecord::Base
 
   devise :database_authenticatable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :tel,
-                  :door_number, :house_number, :street_name,
-                  :locality, :region, :postal_code, :country,
-                  :business_ids
+                  :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
+                  :headshot
 
-  # a Representant owns many businesses
-  has_many :businesses
+  # a representant is associated with many professionals
+  has_and_belongs_to_many :professionals
 
-  validates :name,  :presence => true
-  validates :tel,   :presence => true
-  validates :email, :presence => true
+  # a representant is associated with one or many categories
+  has_and_belongs_to_many :categories
 
 end

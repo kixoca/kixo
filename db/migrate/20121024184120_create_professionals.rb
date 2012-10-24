@@ -1,6 +1,6 @@
-class CreateRepresentants < ActiveRecord::Migration
+class CreateProfessionals < ActiveRecord::Migration
   def change
-    create_table :representants do |t|
+    create_table :professionals do |t|
       # authenticable
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
@@ -20,16 +20,16 @@ class CreateRepresentants < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       # facebook auth
-      # t.string :provider
-      # t.string :uid
+      t.string :provider
+      t.string :uid
 
       # personal information
       t.string :name,            :null => false, :default => ""
       t.string :tel
       t.string :street_address_1
       t.string :street_address_2
-      t.string :locality
-      t.string :region
+      t.string :locality,        :null => false, :default => ""
+      t.string :region,          :null => false, :default => ""
       t.string :postal_code
       t.string :country
 
@@ -39,7 +39,7 @@ class CreateRepresentants < ActiveRecord::Migration
       t.timestamps
     end
 
-    add_index :representants, :email,                :unique => true
-    add_index :representants, :reset_password_token, :unique => true
+    add_index :professionals, :email,                :unique => true
+    add_index :professionals, :reset_password_token, :unique => true
   end
 end
