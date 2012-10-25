@@ -1,11 +1,13 @@
 development:
-  adapter: postgresql
-  username: kixo
-  password: eb4q801T
-  database: kixo_development
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 5000
 
 test:
-  adapter: postgresql
-  username: kixo
-  password: eb4q801T
-  database: kixo_test
+  adapter: sqlite3
+  database: db/test.sqlite3
+  pool: 5
+  timeout: 5000
+
+# heroku takes care of production config
