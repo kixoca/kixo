@@ -1,5 +1,7 @@
 class Review < ActiveRecord::Base
 
+  attr_accessible :title, :details, :status, :professional_id, :user_id
+
   # a review belongs to a professional
   belongs_to :professional
 

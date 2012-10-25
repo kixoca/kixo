@@ -1,6 +1,6 @@
 class Topic < ActiveRecord::Base
 
-  attr_accessible :slug, :name, :description
+  attr_accessible :name, :slug, :description, :category_id
 
   # a topic belongs in a category
   belongs_to :category
