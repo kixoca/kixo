@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20121024194827) do
 
   create_table "guides", :force => true do |t|
     t.string   "title",           :default => "", :null => false
+    t.string   "slug",            :default => "", :null => false
     t.string   "excerpt",         :default => "", :null => false
     t.string   "status",          :default => "", :null => false
     t.text     "content",         :default => "", :null => false
@@ -83,6 +84,8 @@ ActiveRecord::Schema.define(:version => 20121024194827) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
+
+  add_index "guides", ["slug"], :name => "index_guides_on_slug", :unique => true
 
   create_table "guides_topics", :id => false, :force => true do |t|
     t.integer "guide_id"
@@ -109,7 +112,7 @@ ActiveRecord::Schema.define(:version => 20121024194827) do
     t.string   "locality",               :default => "", :null => false
     t.string   "region",                 :default => "", :null => false
     t.string   "postal_code"
-    t.string   "country"
+    t.string   "country",                :default => "", :null => false
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
@@ -196,22 +199,22 @@ ActiveRecord::Schema.define(:version => 20121024194827) do
   end
 
   create_table "reviews", :force => true do |t|
-    t.string   "title",           :default => "",  :null => false
-    t.text     "details"
-    t.string   "status",          :default => "0", :null => false
-    t.integer  "professional_id", :default => 0,   :null => false
-    t.integer  "user_id",         :default => 0,   :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.text     "comment",         :default => "", :null => false
+    t.integer  "rating",          :default => 0,  :null => false
+    t.string   "status",          :default => "", :null => false
+    t.integer  "professional_id", :default => 0,  :null => false
+    t.integer  "user_id",         :default => 0,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "topics", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "slug",        :null => false
+    t.string   "name",        :default => "", :null => false
+    t.string   "slug",        :default => "", :null => false
     t.text     "description"
-    t.integer  "category_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "category_id", :default => 0,  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "topics", ["slug"], :name => "index_topics_on_slug", :unique => true
