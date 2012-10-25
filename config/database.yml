@@ -1,16 +1,11 @@
-common: &common
+development:
   adapter: postgresql
   username: kixo
   password: eb4q801T
-
-development:
-  <<: *common
   database: kixo_development
 
 test:
-  <<: *common
+  adapter: postgresql
+  username: kixo
+  password: eb4q801T
   database: kixo_test
-
-production:
-  <<: *common
-  database: kixo_production
