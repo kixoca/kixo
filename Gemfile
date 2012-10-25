@@ -6,7 +6,7 @@ gem 'capistrano'
 
 gem 'passenger'
 
-gem 'sqlite3'
+gem 'pg'
 
 gem 'devise'
 
