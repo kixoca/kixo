@@ -31,7 +31,7 @@ class CreateProfessionals < ActiveRecord::Migration
       t.string :locality,        :null => false, :default => ""
       t.string :region,          :null => false, :default => ""
       t.string :postal_code
-      t.string :country
+      t.string :country,         :null => false, :default => ""
 
       # profile picture (headshot)
       t.has_attached_file :headshot

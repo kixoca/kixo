@@ -16,4 +16,10 @@ class Representant < ActiveRecord::Base
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # validation
+  validates :email, :presence => true
+  validates :name,  :presence => true
+  validates_existence_of :professionals
+  validates_existence_of :categories
+
 end

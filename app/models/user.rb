@@ -17,4 +17,9 @@ class User < ActiveRecord::Base
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # validation
+  validates :email,    :presence => true
+  validates :locality, :presence => true
+  validates :region,   :presence => true
+
 end

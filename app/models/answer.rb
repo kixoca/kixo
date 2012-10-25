@@ -8,4 +8,9 @@ class Answer < ActiveRecord::Base
   # an answer is associated with a professional
   belongs_to :professional
 
+  # validation
+  validates :details, :presence => true
+  validates_existence_of :question
+  validates_existence_of :professional
+
 end

@@ -26,4 +26,14 @@ class Professional < ActiveRecord::Base
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # validation
+  validates :email,    :presence => true
+  validates :name,     :presence => true
+  validates :locality, :presence => true
+  validates :region,   :presence => true
+  validates :country,  :presence => true
+  validates_existence_of :categories
+  validates_existence_of :topics
+  validates_existence_of :professions
+
 end

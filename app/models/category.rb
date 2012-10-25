@@ -14,6 +14,10 @@ class Category < ActiveRecord::Base
   has_many :topics
 
   # auto-generate slug from name
-  before_save :generate_slug_from_name
+  before_validation :generate_slug_from_name
+
+  # validation
+  validates :name, :presence => true
+  validates :slug, :presence => true
 
 end

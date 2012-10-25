@@ -8,4 +8,16 @@ class Guide < ActiveRecord::Base
   # a guide is associated with a topic
   belongs_to :topic
 
+  # auto-generate slug from title
+  before_validation :generate_slug_from_title
+
+  # validation
+  validates :title,   :presence => true
+  validates :slug,    :presence => true
+  validates :excerpt, :presence => true
+  validates :status,  :presence => true
+  validates :content, :presence => true
+  validates_existence_of :topic
+  validates_existence_of :professional
+
 end
