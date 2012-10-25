@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
 
+  include ApplicationHelper
+
   attr_accessible :name, :slug, :description
 
   # a category is linked to one or many professionals
@@ -10,5 +12,8 @@ class Category < ActiveRecord::Base
 
   # a category has many topics
   has_many :topics
+
+  # auto-generate slug from name
+  before_save :generate_slug_from_name
 
 end
