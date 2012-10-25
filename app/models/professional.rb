@@ -23,4 +23,7 @@ class Professional < ActiveRecord::Base
   # a professional can have one or many answers
   has_many :answers
 
+  # use paperclip to attach an headshot
+  has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
 end
