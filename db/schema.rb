@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121019184650) do
+ActiveRecord::Schema.define(:version => 20121024194827) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -39,32 +39,23 @@ ActiveRecord::Schema.define(:version => 20121019184650) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "failed_attempts",        :default => 0
+    t.string   "unlock_token"
+    t.datetime "locked_at"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
 
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
+  add_index "admin_users", ["unlock_token"], :name => "index_admin_users_on_unlock_token", :unique => true
 
-  create_table "businesses", :force => true do |t|
-    t.string   "slug",              :null => false
-    t.string   "name",              :null => false
-    t.string   "tel"
-    t.string   "fax"
-    t.string   "email"
-    t.string   "url"
-    t.text     "description"
-    t.string   "facebook_url"
-    t.string   "twitter_url"
-    t.string   "linkedin_url"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
-    t.string   "logo_file_name"
-    t.string   "logo_content_type"
-    t.integer  "logo_file_size"
-    t.datetime "logo_updated_at"
-    t.integer  "representant_id"
-    t.integer  "user_id"
+  create_table "answers", :force => true do |t|
+    t.text     "details",         :default => "", :null => false
+    t.integer  "question_id",     :default => 0,  :null => false
+    t.integer  "professional_id", :default => 0,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "businesses_categories", :id => false, :force => true do |t|
@@ -73,36 +64,33 @@ ActiveRecord::Schema.define(:version => 20121019184650) do
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "slug",        :null => false
     t.string   "name",        :null => false
+    t.string   "slug",        :null => false
     t.text     "description"
-    t.integer  "parent_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
 
-  create_table "locations", :force => true do |t|
-    t.integer  "business_id"
-    t.string   "door_number"
-    t.string   "house_number", :null => false
-    t.string   "street_name",  :null => false
-    t.string   "locality",     :null => false
-    t.string   "region",       :null => false
-    t.string   "postal_code",  :null => false
-    t.string   "country",      :null => false
-    t.string   "tel"
-    t.string   "fax"
-    t.string   "email"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
+
+  create_table "guides", :force => true do |t|
+    t.string   "title",           :default => "", :null => false
+    t.string   "excerpt",         :default => "", :null => false
+    t.string   "status",          :default => "", :null => false
+    t.text     "content",         :default => "", :null => false
+    t.integer  "topic_id",        :default => 0,  :null => false
+    t.integer  "professional_id", :default => 0,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
-  create_table "representants", :force => true do |t|
-    t.string   "name",                                   :null => false
-    t.string   "tel",                                    :null => false
-    t.string   "email",                                  :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+  create_table "guides_topics", :id => false, :force => true do |t|
+    t.integer "guide_id"
+    t.integer "topic_id"
+  end
+
+  create_table "professionals", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -112,7 +100,121 @@ ActiveRecord::Schema.define(:version => 20121019184650) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "name",                   :default => "", :null => false
+    t.string   "tel"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "locality",               :default => "", :null => false
+    t.string   "region",                 :default => "", :null => false
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "headshot_file_name"
+    t.string   "headshot_content_type"
+    t.integer  "headshot_file_size"
+    t.datetime "headshot_updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
+
+  add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true
+  add_index "professionals", ["reset_password_token"], :name => "index_professionals_on_reset_password_token", :unique => true
+
+  create_table "professionals_categories", :id => false, :force => true do |t|
+    t.integer "professional_id"
+    t.integer "category_id"
+  end
+
+  create_table "professionals_professions", :id => false, :force => true do |t|
+    t.integer "professional_id"
+    t.integer "profession_id"
+  end
+
+  create_table "professionals_topics", :id => false, :force => true do |t|
+    t.integer "professional_id"
+    t.integer "topic_id"
+  end
+
+  create_table "professions", :force => true do |t|
+    t.string   "name",        :default => "", :null => false
+    t.string   "slug",        :default => "", :null => false
+    t.text     "description"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  add_index "professions", ["slug"], :name => "index_professions_on_slug", :unique => true
+
+  create_table "questions", :force => true do |t|
+    t.string   "title",      :default => "",  :null => false
+    t.text     "details"
+    t.string   "status",     :default => "0", :null => false
+    t.integer  "user_id",    :default => 0,   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
+  end
+
+  create_table "questions_topics", :id => false, :force => true do |t|
+    t.integer "question_id"
+    t.integer "topic_id"
+  end
+
+  create_table "representants", :force => true do |t|
+    t.string   "email",                  :default => "", :null => false
+    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "name",                   :default => "", :null => false
+    t.string   "tel"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "locality"
+    t.string   "region"
+    t.string   "postal_code"
+    t.string   "country"
+    t.string   "headshot_file_name"
+    t.string   "headshot_content_type"
+    t.integer  "headshot_file_size"
+    t.datetime "headshot_updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
+  end
+
+  add_index "representants", ["email"], :name => "index_representants_on_email", :unique => true
+  add_index "representants", ["reset_password_token"], :name => "index_representants_on_reset_password_token", :unique => true
+
+  create_table "representants_categories", :id => false, :force => true do |t|
+    t.integer "representant_id"
+    t.integer "category_id"
+  end
+
+  create_table "reviews", :force => true do |t|
+    t.string   "title",           :default => "",  :null => false
+    t.text     "details"
+    t.string   "status",          :default => "0", :null => false
+    t.integer  "professional_id", :default => 0,   :null => false
+    t.integer  "user_id",         :default => 0,   :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
+  end
+
+  create_table "topics", :force => true do |t|
+    t.string   "name",        :null => false
+    t.string   "slug",        :null => false
+    t.text     "description"
+    t.integer  "category_id"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "topics", ["slug"], :name => "index_topics_on_slug", :unique => true
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -125,19 +227,25 @@ ActiveRecord::Schema.define(:version => 20121019184650) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
     t.string   "provider"
     t.string   "uid"
     t.string   "name"
     t.string   "tel"
-    t.string   "door_number"
-    t.string   "house_number"
-    t.string   "street_name"
-    t.string   "locality"
-    t.string   "region"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.string   "locality",               :default => "", :null => false
+    t.string   "region",                 :default => "", :null => false
     t.string   "postal_code"
     t.string   "country"
+    t.string   "headshot_file_name"
+    t.string   "headshot_content_type"
+    t.integer  "headshot_file_size"
+    t.datetime "headshot_updated_at"
+    t.datetime "created_at",                             :null => false
+    t.datetime "updated_at",                             :null => false
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
