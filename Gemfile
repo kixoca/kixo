@@ -21,8 +21,11 @@ gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 
 group :assets do
+  gem 'less-rails',   '~> 2.2.4'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
+
+  gem 'less-rails-bootstrap'
 
   gem 'therubyracer'
 

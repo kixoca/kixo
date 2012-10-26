@@ -7,4 +7,6 @@ Kixo::Application.routes.draw do
   devise_for :representants
   devise_for :admin_users, ActiveAdmin::Devise.config
 
+  root :to => "page#index"
+
 end
