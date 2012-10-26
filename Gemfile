@@ -41,3 +41,5 @@ gem 'country-select'
 gem 'paperclip', '~> 3.0'
 
 gem 'rmagick'
+
+gem 'haml-rails'
