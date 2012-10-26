@@ -3,24 +3,34 @@
 
   %head
     %title Kixo
+    = google_webfonts_link_tag :open_sans => [400, 700]
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
 
   %body
 
-    %nav.navbar
-      .navbar-inner
-        .container
-          %a{:href => "/"}
-            %img{:src => "/images/logo.png", :width => "80", :height => "30", :alt => "Kixo"}
-
-    - if user_signed_in? %>
-      Signed in as <%= current_user.email %>.
-      = link_to "Sign out", destroy_user_session_path, :method => :delete
-    - else
-      = link_to "Sign in", new_user_session_path
-      or
-      = link_to "Sign up", new_user_registration_path
+    #header
+      %nav.navbar
+        .navbar-inner
+          .container
+            %a.brand{:href => "/"}
+              %img{:src => "/assets/logo.png", :width => "90", :height => "35", :alt => "Kixo"}
+            %ul.nav.actions
+              - if user_signed_in?
+                %li
+                  .btn-group
+                    %button.btn
+                      = current_user.email
+                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
+                      %span.caret
+                    %ul.dropdown-menu
+                      %li
+                        = link_to "Sign out", destroy_user_session_path, :method => :delete
+              - else
+                %li
+                  %a.btn{:href => new_user_session_path} Sign in
+                %li
+                  %a.btn{:href => new_user_registration_path} Sign up
 
     = yield
