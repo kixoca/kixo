@@ -4,7 +4,8 @@ gem 'rails', '3.2.2'
 
 gem 'thin'
 
-gem 'pg'
+gem 'sqlite3' # for development and test
+gem 'pg' # for production
 
 gem 'devise'
 
