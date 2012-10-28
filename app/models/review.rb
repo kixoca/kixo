@@ -8,11 +8,15 @@ class Review < ActiveRecord::Base
   # a review belongs to a user
   belongs_to :user
 
+  # I18n
+  belongs_to :locale
+
   # validation
   validates :comment, :presence => true
   validates :rating,  :presence => true
   validates :status,  :presence => true
   validates_existence_of :professional
   validates_existence_of :user
+  validates_existence_of :locale
 
 end

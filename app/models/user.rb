@@ -14,6 +14,9 @@ class User < ActiveRecord::Base
   # a user can be the author of many reviews
   has_many :reviews
 
+  # I18n
+  belongs_to :locale
+
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -21,5 +24,6 @@ class User < ActiveRecord::Base
   validates :email,    :presence => true
   validates :locality, :presence => true
   validates :region,   :presence => true
+  validates_existence_of :locale
 
 end

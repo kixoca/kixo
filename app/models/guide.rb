@@ -8,6 +8,9 @@ class Guide < ActiveRecord::Base
   # a guide is associated with a topic
   belongs_to :topic
 
+  # I18n
+  belongs_to :locale
+
   # auto-generate slug from title
   before_validation :generate_slug_from_title
 
@@ -19,5 +22,6 @@ class Guide < ActiveRecord::Base
   validates :content, :presence => true
   validates_existence_of :topic
   validates_existence_of :professional
+  validates_existence_of :locale
 
 end

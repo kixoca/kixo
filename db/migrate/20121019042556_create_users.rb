@@ -36,6 +36,9 @@ class CreateUsers < ActiveRecord::Migration
       # profile picture (headshot)
       t.has_attached_file :headshot
 
+      #I18n
+      t.integer :locale_id, :null => false, :default => 1
+
       t.timestamps
     end
 

@@ -22,6 +22,9 @@ class Professional < ActiveRecord::Base
   # a professional can have one or many answers
   has_many :answers
 
+  # I18n
+  belongs_to :locale
+
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -34,5 +37,6 @@ class Professional < ActiveRecord::Base
   validates_existence_of :categories
   validates_existence_of :topics
   validates_existence_of :professions
+  validates_existence_of :locale
 
 end

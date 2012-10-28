@@ -2,9 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/common_scopes/common_scopes.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/common_scopes/locale.rb" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/db/migrate/20121015032102_create_businesses_categories_join_table.rb" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/guide.rb" afterPath="$PROJECT_DIR$/app/models/guide.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/professional.rb" afterPath="$PROJECT_DIR$/app/models/professional.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/question.rb" afterPath="$PROJECT_DIR$/app/models/question.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/representant.rb" afterPath="$PROJECT_DIR$/app/models/representant.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/review.rb" afterPath="$PROJECT_DIR$/app/models/review.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/user.rb" afterPath="$PROJECT_DIR$/app/models/user.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121019042556_create_users.rb" afterPath="$PROJECT_DIR$/db/migrate/20121019042556_create_users.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121019042558_create_representants.rb" afterPath="$PROJECT_DIR$/db/migrate/20121019042558_create_representants.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184120_create_professionals.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184120_create_professionals.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184244_create_reviews.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184244_create_reviews.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,48 +37,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="guide.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/guide.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="12" column="0" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="29" column="14" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0">
-              <folding>
-                <marker date="1351296548000" expanded="true" signature="481:1131" placeholder="if ... end" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="to_slug.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/to_slug/lib/to_slug.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="46" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="common_scopes.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/common_scopes/common_scopes.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="1" column="42" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="locale.rb" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/common_scopes/locale.rb">
+        <entry file="file://$PROJECT_DIR$/app/models/locale.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="103" selection-start="181" selection-end="181" vertical-scroll-proportion="0.06828528">
+            <state line="8" column="19" selection-start="174" selection-end="174" vertical-scroll-proportion="0.18209408">
               <folding />
             </state>
           </provider>
@@ -86,9 +59,22 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/lib/common_scopes/common_scopes.rb" />
-        <option value="$PROJECT_DIR$/lib/common_scopes/common_scope.rb" />
         <option value="$PROJECT_DIR$/lib/common_scopes/locale.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121019042542_create_locales.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121019042556_create_users.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121019042558_create_representants.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184120_create_professionals.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184244_create_reviews.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb" />
+        <option value="$PROJECT_DIR$/app/models/guide.rb" />
+        <option value="$PROJECT_DIR$/app/models/question.rb" />
+        <option value="$PROJECT_DIR$/app/models/representant.rb" />
+        <option value="$PROJECT_DIR$/app/models/review.rb" />
+        <option value="$PROJECT_DIR$/app/models/user.rb" />
+        <option value="$PROJECT_DIR$/app/models/professional.rb" />
+        <option value="$PROJECT_DIR$/app/models/locale.rb" />
       </list>
     </option>
   </component>
@@ -162,11 +148,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="to_slug" />
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -180,25 +162,11 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
+              <option name="myItemId" value="db" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="common_scopes" />
+              <option name="myItemId" value="migrate" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -574,8 +542,9 @@
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32944608" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.251497" sideWeight="0.99708456" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25074852" sideWeight="0.6705539" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -584,7 +553,6 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -643,50 +611,114 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/lib/to_slug/Rakefile">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/to_slug/init.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/guide.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="0" selection-start="336" selection-end="336" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="14" selection-start="831" selection-end="831" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/to_slug/lib/to_slug.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="46" selection-start="16" selection-end="16" vertical-scroll-proportion="0.0">
+        <state line="7" column="57" selection-start="353" selection-end="353" vertical-scroll-proportion="0.15933232">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common_scopes/common_scopes.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="42" selection-start="23" selection-end="23" vertical-scroll-proportion="0.0">
+        <state line="10" column="63" selection-start="608" selection-end="608" vertical-scroll-proportion="0.2276176">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184244_create_reviews.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="63" selection-start="477" selection-end="477" vertical-scroll-proportion="0.18209408">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121019042542_create_locales.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="4" column="52" selection-start="197" selection-end="197" vertical-scroll-proportion="0.09104704">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121019042556_create_users.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="17" selection-start="1104" selection-end="1104" vertical-scroll-proportion="0.65857357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121019042558_create_representants.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="17" selection-start="1087" selection-end="1087" vertical-scroll-proportion="0.65857357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184120_create_professionals.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="17" selection-start="1203" selection-end="1203" vertical-scroll-proportion="0.65857357">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="28" selection-start="214" selection-end="214" vertical-scroll-proportion="0.1138088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/professional.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="39" column="32" selection-start="1354" selection-end="1354" vertical-scroll-proportion="0.88770866">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/user.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="32" selection-start="862" selection-end="862" vertical-scroll-proportion="0.59180576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/review.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="32" selection-start="494" selection-end="494" vertical-scroll-proportion="0.43247345">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/representant.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="32" selection-start="934" selection-end="934" vertical-scroll-proportion="0.59180576">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/question.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="32" selection-start="332" selection-end="332" vertical-scroll-proportion="0.31866464">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/answer.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/common_scopes/locale.rb">
+    <entry file="file://$PROJECT_DIR$/app/models/guide.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="103" selection-start="181" selection-end="181" vertical-scroll-proportion="0.06828528">
+        <state line="24" column="2" selection-start="656" selection-end="686" vertical-scroll-proportion="0.54628223">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/locale.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="19" selection-start="174" selection-end="174" vertical-scroll-proportion="0.18209408">
           <folding />
         </state>
       </provider>

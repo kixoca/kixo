@@ -13,6 +13,9 @@ class Representant < ActiveRecord::Base
   # a representant is associated with one or many categories
   has_and_belongs_to_many :categories
 
+  # I18n
+  belongs_to :locale
+
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
@@ -21,5 +24,6 @@ class Representant < ActiveRecord::Base
   validates :name,  :presence => true
   validates_existence_of :professionals
   validates_existence_of :categories
+  validates_existence_of :locale
 
 end
