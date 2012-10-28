@@ -73,6 +73,10 @@ GEM
     fastercsv (1.5.5)
     formtastic (2.2.1)
       actionpack (>= 3.0)
+    globalize3 (0.2.0)
+      activemodel (>= 3.0.0)
+      activerecord (>= 3.0.0)
+      paper_trail (~> 2)
     google-webfonts (0.1.2)
       actionpack (>= 3.0.0)
     haml (3.1.7)
@@ -132,6 +136,9 @@ GEM
       oauth2 (~> 0.8.0)
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
+    paper_trail (2.6.3)
+      activerecord (~> 3.0)
+      railties (~> 3.0)
     paperclip (3.3.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -208,6 +215,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   country-select
   devise
+  globalize3
   google-webfonts
   haml-rails
   jquery-rails

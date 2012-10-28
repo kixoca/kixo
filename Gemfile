@@ -11,6 +11,8 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'globalize3'
+
 gem 'devise'
 
 gem 'omniauth'
