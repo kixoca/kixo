@@ -7,9 +7,10 @@ $sansFontFamily:        "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-se
 #header {
   .navbar {
     .navbar-inner {
-      padding: 20px 0;
+      padding: 10px 0;
       background: #fff;
       filter: none;
+      @include border-radius(0);
 
       .container {
         width: 940px;
@@ -20,6 +21,7 @@ $sansFontFamily:        "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-se
 
         &.nav {
           float: right;
+          margin: 6px 0;
 
           &.actions {
             margin-left: 20px;

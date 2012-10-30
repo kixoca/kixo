@@ -12,6 +12,7 @@ class CreateGuides < ActiveRecord::Migration
       t.timestamps
     end
 
+    # make slug unique
     add_index :guides, :slug, :unique => true
   end
 end
