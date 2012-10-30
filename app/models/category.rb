@@ -13,6 +13,9 @@ class Category < ActiveRecord::Base
   # a category has many topics
   has_many :topics
 
+  # I18n
+  translates :name, :slug, :description
+
   # auto-generate slug from name
   before_validation :generate_slug_from_name
 

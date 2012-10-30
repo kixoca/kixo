@@ -7,6 +7,9 @@ class Profession < ActiveRecord::Base
   # a profession is linked to one or many professionals
   has_and_belongs_to_many :professionals
 
+  # I18n
+  translates :name, :slug, :description
+
   # validation
   validates :title,   :presence => true
   validates :excerpt, :presence => true

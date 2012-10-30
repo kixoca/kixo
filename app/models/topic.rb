@@ -10,6 +10,9 @@ class Topic < ActiveRecord::Base
   # a topic is associated with one or many questions
   has_and_belongs_to_many :questions
 
+  # I18n
+  translates :name, :slug, :description
+
   # auto-generate slug from name
   before_validation :generate_slug_from_name
 
