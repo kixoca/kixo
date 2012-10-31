@@ -11,6 +11,8 @@ group :development, :test do
   gem 'sqlite3'
 end
 
+gem 'paper_trail'
+
 gem 'globalize3'
 
 gem 'devise'
@@ -27,7 +29,8 @@ group :assets do
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
-  gem 'bootstrap-sass', '~> 2.1.0.1'
+  gem 'compass-rails'
+  gem 'zurb-foundation'
 
   gem 'therubyracer'
 

@@ -2,7 +2,7 @@ class Category < ActiveRecord::Base
 
   include ApplicationHelper
 
-  attr_accessible :name, :slug, :description
+  attr_accessible :name, :slug, :description, :locale_id
 
   # a category is linked to one or many professionals
   has_and_belongs_to_many :professionals
@@ -14,7 +14,7 @@ class Category < ActiveRecord::Base
   has_many :topics
 
   # I18n
-  translates :name, :slug, :description
+  belongs_to :locale
 
   # auto-generate slug from name
   before_validation :generate_slug_from_name

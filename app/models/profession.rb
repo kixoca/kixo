@@ -2,13 +2,13 @@ class Profession < ActiveRecord::Base
 
   include ApplicationHelper
 
-  attr_accessible :name, :slug, :description
+  attr_accessible :name, :slug, :description, :locale_id
 
   # a profession is linked to one or many professionals
   has_and_belongs_to_many :professionals
 
   # I18n
-  translates :name, :slug, :description
+  belongs_to :locale
 
   # validation
   validates :title,   :presence => true

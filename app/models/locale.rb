@@ -10,6 +10,4 @@ class Locale < ActiveRecord::Base
   has_many :guides
   has_many :reviews
 
-  translates :name
-
 end

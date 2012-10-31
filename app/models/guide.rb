@@ -1,6 +1,6 @@
 class Guide < ActiveRecord::Base
 
-  attr_accessible :title, :excerpt, :status, :content, :topic_id, :professional_id
+  attr_accessible :title, :excerpt, :status, :content, :topic_id, :professional_id, :locale_id
 
   # a guide belongs to its author, a professional
   belongs_to :professional
@@ -10,6 +10,9 @@ class Guide < ActiveRecord::Base
 
   # I18n
   belongs_to :locale
+
+  # track versions with paper trail
+  has_paper_trail
 
   # auto-generate slug from title
   before_validation :generate_slug_from_title

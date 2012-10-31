@@ -1,43 +1,28 @@
-// Custom Variables
-$bodyBackground:        #eee;
-$sansFontFamily:        "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif !default;
 
-@import "bootstrap";
+@import "foundation";
+
+body {
+  background: #eee;
+}
 
 #header {
-  .navbar {
-    .navbar-inner {
-      padding: 10px 0;
-      background: #fff;
-      filter: none;
-      @include border-radius(0);
+  padding: 10px 0;
+  background: #fff;
 
-      .container {
-        width: 940px;
-      }
+  ul {
+    float: right;
+    margin: 12px 0;
+    list-style: none;
 
-      ul {
-        margin: 0;
+    &.actions {
+      margin-left: 20px;
+      padding-left: 20px;
+      border-left: 1px solid #ddd;
+    }
 
-        &.nav {
-          float: right;
-          margin: 6px 0;
-
-          &.actions {
-            margin-left: 20px;
-            padding-left: 20px;
-            border-left: 1px solid #ddd;
-
-            li {
-              margin: 0 0 0 10px;
-            }
-          }
-
-          li {
-            float: left;
-          }
-        }
-      }
+    li {
+      float: left;
+      margin: 0 0 0 10px;
     }
   }
 }

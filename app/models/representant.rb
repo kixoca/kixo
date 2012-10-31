@@ -5,7 +5,7 @@ class Representant < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot
+                  :headshot, :locale_id
 
   # a representant is associated with many professionals
   has_and_belongs_to_many :professionals

@@ -1,5 +1,5 @@
 %h1 Welcome to Kixo!
 
-%section.lastest-questions
+%section.latest-questions
   = @latest_questions.each do |question|
-    link_to question.title, question
+    = link_to question.title, question

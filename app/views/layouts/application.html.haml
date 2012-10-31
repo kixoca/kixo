@@ -2,7 +2,11 @@
 %html
 
   %head
+
     %title Kixo
+
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+
     = google_webfonts_link_tag :open_sans => [400, 700]
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
@@ -11,36 +15,34 @@
   %body
 
     %header#header
-
-      %nav.navbar
-        .navbar-inner
-          .container
+      .container
+        .row
+          .four.columns
             %a.brand{:href => "/"}
               %img{:src => "/assets/logo.png", :width => "158", :height => "50", :alt => "Kixo"}
-            %ul.nav.actions
+          .eight.columns
+            %ul.actions
               - if user_signed_in?
                 %li
-                  .btn-group
-                    %button.btn
-                      %i.icon-user " "
+                  .small.button.split.dropdown
+                    %a{:href => "#"}
                       = current_user.email
-                    %button.btn.dropdown-toggle{:data => {:toggle => "dropdown"}}
-                      %span.caret
+                    %span
                     %ul.dropdown-menu
                       %li
                         = link_to "Sign out", destroy_user_session_path, :method => :delete
               - else
                 %li
-                  %a.btn{:href => new_user_session_path} Sign in
+                  %a.small.button{:href => new_user_session_path} Sign in
                 %li
-                  %a.btn{:href => new_user_registration_path} Sign up
-            %ul.nav
+                  %a.small.button{:href => new_user_registration_path} Sign up
+            %ul
               %li
-                %a.btn.btn-link{:href => "/"} Home
+                %a{:href => "/"} Home
               %li
-                %a.btn.btn-link{:href => "/how-it-works"} How It Works
+                %a{:href => "/how-it-works"} How It Works
               %li
-                %a.btn.btn-link{:href => "/about"} About
+                %a{:href => "/about"} About
 
     %section#content
       .container

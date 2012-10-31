@@ -5,7 +5,7 @@ class Professional < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot
+                  :headshot, :locale_id
 
   # a professional is associated with one or many categories
   has_and_belongs_to_many :categories
@@ -27,6 +27,9 @@ class Professional < ActiveRecord::Base
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+
+  # track versions with paper trail
+  has_paper_trail
 
   # validation
   validates :email,    :presence => true

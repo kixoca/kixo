@@ -2,7 +2,7 @@ class Topic < ActiveRecord::Base
 
   include ApplicationHelper
 
-  attr_accessible :name, :slug, :description, :category_id
+  attr_accessible :name, :slug, :description, :category_id, :locale_id
 
   # a topic belongs in a category
   belongs_to :category
@@ -11,7 +11,7 @@ class Topic < ActiveRecord::Base
   has_and_belongs_to_many :questions
 
   # I18n
-  translates :name, :slug, :description
+  belongs_to :locale
 
   # auto-generate slug from name
   before_validation :generate_slug_from_name

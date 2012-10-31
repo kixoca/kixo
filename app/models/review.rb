@@ -1,6 +1,6 @@
 class Review < ActiveRecord::Base
 
-  attr_accessible :title, :details, :status, :professional_id, :user_id
+  attr_accessible :title, :details, :status, :professional_id, :user_id, :locale_id
 
   # a review belongs to a professional
   belongs_to :professional
@@ -10,6 +10,9 @@ class Review < ActiveRecord::Base
 
   # I18n
   belongs_to :locale
+
+  # track versions with paper trail
+  has_paper_trail
 
   # validation
   validates :comment, :presence => true

@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot
+                  :headshot, :locale_id
 
   # a user can have many questions
   has_many :questions
@@ -21,9 +21,7 @@ class User < ActiveRecord::Base
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
   # validation
-  validates :email,    :presence => true
-  validates :locality, :presence => true
-  validates :region,   :presence => true
+  validates :email, :presence => true
   validates_existence_of :locale
 
 end
