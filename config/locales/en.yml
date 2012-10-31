@@ -2,6 +2,7 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
+  site_title: "Kixo"
   logo_alt: "Kixo"
   sign_in: "Sign in"
   sign_up: "Sign up"

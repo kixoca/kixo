@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/logo.png" afterPath="$PROJECT_DIR$/app/assets/images/logo.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
     </list>
@@ -41,7 +37,7 @@
       <file leaf-file-name="en.yml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="41" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+            <state line="4" column="19" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -61,11 +57,12 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="21" column="16" selection-start="402" selection-end="402" vertical-scroll-proportion="0.18209408">
+            <state line="4" column="20" selection-start="19" selection-end="19" vertical-scroll-proportion="0.09104704">
               <folding>
-                <element signature="e#544#556#0" expanded="true" />
-                <element signature="e#1455#1465#0" expanded="true" />
-                <element signature="e#1601#1611#0" expanded="true" />
+                <element signature="n#t :site_title#0;n#!!top" expanded="true" />
+                <element signature="e#560#572#0" expanded="true" />
+                <element signature="e#1471#1481#0" expanded="true" />
+                <element signature="e#1617#1627#0" expanded="true" />
                 <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
                 <element signature="n#t :action_find#0;n#!!top" expanded="true" />
                 <element signature="n#t :action_review#0;n#!!top" expanded="true" />
@@ -894,18 +891,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="41" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+        <state line="4" column="19" selection-start="210" selection-end="210" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="21" column="16" selection-start="402" selection-end="402" vertical-scroll-proportion="0.18209408">
+        <state line="4" column="20" selection-start="19" selection-end="19" vertical-scroll-proportion="0.09104704">
           <folding>
-            <element signature="e#544#556#0" expanded="true" />
-            <element signature="e#1455#1465#0" expanded="true" />
-            <element signature="e#1601#1611#0" expanded="true" />
+            <element signature="n#t :site_title#0;n#!!top" expanded="true" />
+            <element signature="e#560#572#0" expanded="true" />
+            <element signature="e#1471#1481#0" expanded="true" />
+            <element signature="e#1617#1627#0" expanded="true" />
             <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
             <element signature="n#t :action_find#0;n#!!top" expanded="true" />
             <element signature="n#t :action_review#0;n#!!top" expanded="true" />
