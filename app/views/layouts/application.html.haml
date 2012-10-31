@@ -15,43 +15,134 @@
   %body
 
     %header#header
+      %section#head
+        .container
+          .row
+            .three.columns
+              %a.brand{:href => "/"}
+                %img{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => "Kixo"}
+              %a.toggle{:href => "#"}
+                %i.icon.icon-plus-sign
+            .nine.columns
+              %ul.nav.actions
+                - if user_signed_in?
+                  %li
+                    .small.button.split.dropdown
+                      %a{:href => "#"}
+                        = current_user.email
+                      %span
+                      %ul.dropdown-menu
+                        %li
+                          = link_to "Sign out", destroy_user_session_path, :method => :delete
+                - else
+                  %li
+                    %a.small.button{:href => new_user_session_path} Sign in
+                  %li
+                    %a.small.button{:href => new_user_registration_path} Sign up
+              %ul.nav.menu
+                %li
+                  %a{:href => "/"} Home
+                %li
+                  %a{:href => "/how-it-works"} How It Works
+                %li
+                  %a{:href => "/about"} About
+      %section#megadrop
+        .container
+          .row
+            .twelve.columns
+              %dl.tabs.pill
+                %dd.active
+                  %a.active{:href => "#browsebytopic"} Browse by Topic
+                %dd
+                  %a{:href => "#browsebyprofession"} Browse by Profession
+              %ul.tabs-content
+                %li#browsebytopicTab.active
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                %li#browsebyprofessionTab
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+
+    %section#banner
       .container
         .row
-          .four.columns
-            %a.brand{:href => "/"}
-              %img{:src => "/assets/logo.png", :width => "158", :height => "50", :alt => "Kixo"}
-          .eight.columns
-            %ul.actions
-              - if user_signed_in?
-                %li
-                  .small.button.split.dropdown
-                    %a{:href => "#"}
-                      = current_user.email
-                    %span
-                    %ul.dropdown-menu
-                      %li
-                        = link_to "Sign out", destroy_user_session_path, :method => :delete
-              - else
-                %li
-                  %a.small.button{:href => new_user_session_path} Sign in
-                %li
-                  %a.small.button{:href => new_user_registration_path} Sign up
-            %ul
-              %li
-                %a{:href => "/"} Home
-              %li
-                %a{:href => "/how-it-works"} How It Works
-              %li
-                %a{:href => "/about"} About
+          .twelve.columns.centered
+            #hero
+              %h1 Connect with professionals
+              %h3 Get free advice from top-rated professionals near you!
+            #tools
+              .ten.columns.centered
+                %dl.tabs.contained.three-up
+                  %dd.active
+                    %a{:href => "#ask"}
+                      %i.icon.icon-comment
+                      Ask
+                  %dd
+                    %a.icon-search{:href => "#find"}
+                      %i.icon.icon-search
+                      Find
+                  %dd
+                    %a.icon-search{:href => "#review"}
+                      %i.icon.icon-star
+                      Review
+                %ul.tabs-content.contained
+                  %li#askTab.active
+                    %form.custom
+                      %label{:for => "question"} Get free advice from professionals!
+                      .row
+                        .twelve.columns
+                          %textarea#question{:placeholder => "Type your question here..."}
+                      .row
+                        .four.columns.offset-by-six
+                          %select#category.hide
+                            %option{:selected => "selected"} This is a dropdown
+                            %option This is another option
+                            %option Look, a third option
+                          .custom.dropdown
+                            %a.current Select a category
+                            %a.selector
+                            %ul
+                              %li Category 1
+                              %li Category 2
+                              %li Category 3
+                        .two.columns
+                          %a.radius.button.expand.postfix Ask
+                  %li#findTab
+                    %form
+                      %label{:for => "what"} Find professionals near you!
+                      .row
+                        .six.columns
+                          %input#what{:type => "text", :placeholder => "What?"}
+                        .four.columns
+                          %input#where{:type => "text", :placeholder => "Where?"}
+                        .two.columns
+                          %a.radius.button.expand.postfix Find
+                  %li#reviewTab
+                    %form
+                      %label{:for => "who"} Review a professional!
+                      .row
+                        .ten.columns
+                          %input#who{:type => "text", :placeholder => "Who do you want to review?"}
+                        .two.columns
+                          %a.radius.button.expand.postfix Review
+
 
     %section#content
       .container
-
         .row
-          .span8
+          .eight.columns
             %section#main
               = yield
-          .span4
+          .four.columns
             %aside#sidebar
 
     %footer#footer

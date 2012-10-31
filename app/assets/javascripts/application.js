@@ -13,4 +13,18 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
+//= require jquery.transit
 //= require_tree .
+
+$(document).ready(function() {
+
+    var $head = $('#head');
+    var $megadrop = $('#megadrop').hide();
+
+    $head.find('.toggle').click(function(e) {
+        e.preventDefault();
+        $megadrop.slideToggle();
+        $(this).find('.icon').toggleClass('icon-plus-sign').toggleClass('icon-minus-sign')
+    });
+
+});
