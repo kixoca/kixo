@@ -2,4 +2,17 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  logo_alt: "Kixo"
+  sign_in: "Sign in"
+  sign_up: "Sign up"
+  sign_out: "Sign out"
+  action_ask: "Ask"
+  action_find: "Find"
+  action_review: "Review"
+  about_kixo_title: "What is Kixo?"
+  about_kixo_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
+  browse_by_topic: "Browse by Topic"
+  browse_by_profession: "Browse by Profession"
+  browse_by_location: "Browse by Location"
+  hero_title: "Connect with professionals"
+  hero_subtitle: "Ask, find and review professionals near you!"

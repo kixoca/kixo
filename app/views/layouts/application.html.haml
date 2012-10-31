@@ -15,19 +15,25 @@
   %body
 
     %header#header
+
       %section#head
         .container
           .row
-            .three.columns
+            .six.columns
               %a.brand{:href => "/"}
-                %img{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => "Kixo"}
+                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
               %a.toggle{:href => "#"}
                 %i.icon.icon-plus-sign
-            .nine.columns
-              %ul.nav.actions
+              %ul.nav.menu
+                %li
+                  %a{:href => "/how-it-works"} How It Works
+                %li
+                  %a{:href => "/for-professionals"} For Professionals
+            .six.columns
+              %ul.account.button-group.radius
                 - if user_signed_in?
                   %li
-                    .small.button.split.dropdown
+                    .small.button.secondary.radius.split.dropdown
                       %a{:href => "#"}
                         = current_user.email
                       %span
@@ -36,28 +42,44 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - else
                   %li
-                    %a.small.button{:href => new_user_session_path} Sign in
+                    %a.small.button.secondary.radius{:href => new_user_session_path}
+                      =t :sign_in
                   %li
-                    %a.small.button{:href => new_user_registration_path} Sign up
-              %ul.nav.menu
+                    %a.small.button.secondary.radius{:href => new_user_registration_path}
+                      =t :sign_up
+              %ul.actions.button-group.radius
                 %li
-                  %a{:href => "/"} Home
+                  %a.small.button.radius{:href => "#", :data => {:"reveal-id" => "askModal"}}
+                    =t :action_ask
                 %li
-                  %a{:href => "/how-it-works"} How It Works
+                  %a.small.button.radius{:href => "#"}
+                    =t :action_find
                 %li
-                  %a{:href => "/about"} About
+                  %a.small.button.radius{:href => "#"}
+                    =t :action_review
+
       %section#megadrop
         .container
           .row
-            .twelve.columns
+            .three.columns
+              #about-kixo
+                %h5
+                  =t :about_kixo_title
+                %p
+                  =t :about_kixo_description
+            .nine.columns
               %dl.tabs.pill
                 %dd.active
-                  %a.active{:href => "#browsebytopic"} Browse by Topic
+                  %a.active{:href => "#browsebytopic"}
+                    =t :browse_by_topic
                 %dd
-                  %a{:href => "#browsebyprofession"} Browse by Profession
+                  %a{:href => "#browsebyprofession"}
+                    =t :browse_by_profession
+                %dd
+                  %a{:href => "#browsebylocation"}
+                    =t :browse_by_location
               %ul.tabs-content
                 %li#browsebytopicTab.active
-                  %br/
                   %br/
                   %br/
                   %br/
@@ -71,29 +93,38 @@
                   %br/
                   %br/
                   %br/
+                %li#browsebylocationTab
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
+                  %br/
 
     %section#banner
       .container
         .row
           .twelve.columns.centered
             #hero
-              %h1 Connect with professionals
-              %h3 Get free advice from top-rated professionals near you!
+              %h1
+                =t :hero_title
+              %h3
+                =t :hero_subtitle
             #tools
               .ten.columns.centered
                 %dl.tabs.contained.three-up
                   %dd.active
                     %a{:href => "#ask"}
                       %i.icon.icon-comment
-                      Ask
+                      =t :action_ask
                   %dd
                     %a.icon-search{:href => "#find"}
                       %i.icon.icon-search
-                      Find
+                      =t :action_find
                   %dd
                     %a.icon-search{:href => "#review"}
                       %i.icon.icon-star
-                      Review
+                      =t :action_review
                 %ul.tabs-content.contained
                   %li#askTab.active
                     %form.custom
@@ -146,3 +177,11 @@
             %aside#sidebar
 
     %footer#footer
+
+
+    %section#modal
+      #askModal.reveal-modal.large
+        %h2 Ask
+        %p.lead Your couch. It is mine.
+        %p Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
+        %a.close-reveal-modal &#215;

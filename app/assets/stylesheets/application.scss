@@ -17,42 +17,74 @@ body {
   padding: 4px 0 0 0;
   background: #fff url(../assets/header_multicolor_bar.png) top left repeat-x;
 
-  #head {
+  #head > .container {
     padding: 12px 0;
   }
 
+  .brand {
+    float: left;
+  }
+
   .toggle {
+    float: left;
+    display: block;
     position: relative;
-    top: -13px;
-    left: 5px;
+    top: 13px;
+    left: 10px;
     opacity: 0.5;
   }
 
-  ul.nav {
-    float: right;
+  ul {
     margin: 7px 0;
-    list-style: none;
+    float: right;
 
     &.actions {
-      margin-left: 20px;
-      padding-left: 20px;
-      border-left: 1px solid #ddd;
+      margin-right: 20px;
+      padding-right: 20px;
+      border-right: 1px solid #ddd;
     }
 
-    &.menu a {
-      display: inline-block;
-      padding: 3px 6px;
+    &.account ul {
+      margin: 0;
     }
 
-    > li {
+    &.nav {
       float: left;
-      margin: 0 0 0 10px;
+      margin-left: 15px;
+      list-style: none;
+
+      &.menu a {
+        display: inline-block;
+        padding: 3px 6px;
+        color: lighten($txtColor, 50%);
+
+        &:hover { color: $txtColor; }
+      }
+
+      > li {
+        float: left;
+        margin: 0 0 0 10px;
+      }
     }
   }
 
   #megadrop {
-    padding: 20px 0;
-    background: #444;
+    background: #343b41;
+    color: $secondaryColor;
+
+    > .container {
+      padding: 20px 0;
+    }
+  
+    #about-kixo {
+      h5 {
+        color: $white;
+      }
+
+      p {
+        font-size: 11px;
+      }
+    }
 
     .tabs {
       border-bottom: 1px solid rgba(255,255,255,0.10);
@@ -61,6 +93,10 @@ body {
         font-size: 12px;
         background: none;
         color: $white;
+
+        &:hover {
+          background: rgba(255,255,255,0.10);
+        }
       }
       
       .active a {

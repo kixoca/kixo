@@ -2,18 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/jquery.transit.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_fixes.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_icons.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/stylesheets/layout.css.scss" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/images/logo.png" afterPath="$PROJECT_DIR$/app/assets/images/logo.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/environments/production.rb" afterPath="$PROJECT_DIR$/config/environments/production.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,10 +29,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="64" column="23" selection-start="953" selection-end="953" vertical-scroll-proportion="0.6145675">
+            <state line="46" column="13" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="en.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="15" column="41" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -55,11 +58,28 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="application.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="24" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="21" column="16" selection-start="402" selection-end="402" vertical-scroll-proportion="0.18209408">
+              <folding>
+                <element signature="e#544#556#0" expanded="true" />
+                <element signature="e#1455#1465#0" expanded="true" />
+                <element signature="e#1601#1611#0" expanded="true" />
+                <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
+                <element signature="n#t :action_find#0;n#!!top" expanded="true" />
+                <element signature="n#t :action_review#0;n#!!top" expanded="true" />
+                <element signature="n#t :about_kixo_title#0;n#!!top" expanded="true" />
+                <element signature="n#t :about_kixo_description#0;n#!!top" expanded="true" />
+                <element signature="n#t :browse_by_topic#0;n#!!top" expanded="true" />
+                <element signature="n#t :browse_by_profession#0;n#!!top" expanded="true" />
+                <element signature="n#t :browse_by_location#0;n#!!top" expanded="true" />
+                <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
+                <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
+                <element signature="n#t :action_ask#1;n#!!top" expanded="true" />
+                <element signature="n#t :action_find#1;n#!!top" expanded="true" />
+                <element signature="n#t :action_review#1;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -67,7 +87,7 @@
       <file leaf-file-name="_settings.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="18" selection-start="985" selection-end="985" vertical-scroll-proportion="0.0">
+            <state line="12" column="18" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -86,7 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/models/professional.rb" />
         <option value="$PROJECT_DIR$/app/models/question.rb" />
         <option value="$PROJECT_DIR$/app/models/guide.rb" />
@@ -97,11 +116,12 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/fixes.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/settings.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/icons.scss" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/jquery.transit.min.js" />
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/application.js" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
+        <option value="$PROJECT_DIR$/config/locales/en.yml" />
+        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
       </list>
     </option>
   </component>
@@ -222,6 +242,24 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="locales" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -752,20 +790,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/locale.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="30" selection-start="65" selection-end="65" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/user.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="23" column="20" selection-start="739" selection-end="739" vertical-scroll-proportion="0.0">
@@ -829,13 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="18" selection-start="985" selection-end="985" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/javascripts/jquery.transit.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="657" column="11" selection-start="21399" selection-end="21399" vertical-scroll-proportion="14.954476">
@@ -845,9 +862,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="24" column="24" selection-start="610" selection-end="610" vertical-scroll-proportion="0.0">
+        <state line="12" column="18" selection-start="343" selection-end="343" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/locales/devise.en.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -863,8 +887,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="64" column="23" selection-start="953" selection-end="953" vertical-scroll-proportion="0.6145675">
+        <state line="46" column="13" selection-start="660" selection-end="660" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="15" column="41" selection-start="820" selection-end="820" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="21" column="16" selection-start="402" selection-end="402" vertical-scroll-proportion="0.18209408">
+          <folding>
+            <element signature="e#544#556#0" expanded="true" />
+            <element signature="e#1455#1465#0" expanded="true" />
+            <element signature="e#1601#1611#0" expanded="true" />
+            <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
+            <element signature="n#t :action_find#0;n#!!top" expanded="true" />
+            <element signature="n#t :action_review#0;n#!!top" expanded="true" />
+            <element signature="n#t :about_kixo_title#0;n#!!top" expanded="true" />
+            <element signature="n#t :about_kixo_description#0;n#!!top" expanded="true" />
+            <element signature="n#t :browse_by_topic#0;n#!!top" expanded="true" />
+            <element signature="n#t :browse_by_profession#0;n#!!top" expanded="true" />
+            <element signature="n#t :browse_by_location#0;n#!!top" expanded="true" />
+            <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
+            <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
+            <element signature="n#t :action_ask#1;n#!!top" expanded="true" />
+            <element signature="n#t :action_find#1;n#!!top" expanded="true" />
+            <element signature="n#t :action_review#1;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
