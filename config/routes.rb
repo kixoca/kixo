@@ -11,7 +11,6 @@ Kixo::Application.routes.draw do
     devise_for :professionals
     devise_for :representants
 
-
     resources :professionals
     resources :questions
     resources :answers

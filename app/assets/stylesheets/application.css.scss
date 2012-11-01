@@ -6,11 +6,16 @@
 
 @import "settings";
 @import "foundation";
+@import "mixins";
 @import "icons";
 @import "fixes";
 
 body {
   background: $bodyBgColor;
+}
+
+h1 {
+  color: $mainColor;
 }
 
 .page {

@@ -12,4 +12,10 @@ class ApplicationController < ActionController::Base
     I18n.locale = params[:locale] || I18n.default_locale
   end
 
+  # Devise extras
+  def authenticate_user(email, password)
+    user = User.find_by_email(email)
+    user.valid_password?(password) unless user.nil?
+  end
+
 end

@@ -15,14 +15,6 @@
 
   %body
 
-    %section#flash
-      - if flash[:success]
-        %p.success= flash[:success]
-      - if flash[:notice]
-        %p.notice= flash[:notice]
-      - if flash[:error]
-        %p.error= flash[:error]
-
     %header#header
 
       %section#head
@@ -51,14 +43,14 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - else
                   %li
-                    %a.small.button.secondary.radius{:href => new_user_session_path}
+                    %a.small.button.secondary.radius{:href => "#", :data => {:"reveal-id" => "signin"}}
                       =t :sign_in
                   %li
-                    %a.small.button.secondary.radius{:href => new_user_registration_path}
+                    %a.small.button.secondary.radius{:href => "#", :data => {:"reveal-id" => "signup"}}
                       =t :sign_up
               %ul.actions.button-group.radius
                 %li
-                  %a.small.button.radius{:href => url_for(:controller => "questions", :action => "new")}
+                  %a.small.button.radius{:href => new_question_path}
                     =t :action_ask
                 %li
                   %a.small.button.radius{:href => "#"}
@@ -98,3 +90,29 @@
 
 
     %section#modal
+      #signup.reveal-modal.small
+        %h2 Sign up
+        = form_tag url_for(:controller => "devise/registrations", :action => "create"), :method => "post", :class => "devise ajax sign_up" do
+          .alert-box.alert Error! Invalid email or password.
+          .alert-box.success Success!
+          = text_field_tag 'user[email]', nil, :placeholder => "Email address"
+          = password_field_tag 'user[password]', nil, :placeholder => "Password"
+          = submit_tag "Sign up", :class => "small button"
+        %a.close-reveal-modal &#215;
+      #signin.reveal-modal.small
+        %h2 Sign in
+        = form_tag url_for(:controller => "devise/sessions", :action => "create", :format => :json), :method => "post", :class => "devise ajax sign_in" do
+          .alert-box.alert Error! Invalid email or password.
+          .alert-box.success Success!
+          = text_field_tag 'user[email]', nil, :placeholder => "Email address"
+          = password_field_tag 'user[password]', nil, :placeholder => "Password"
+          .row.collapse
+            .four.columns
+              = submit_tag "Sign in", :class => "small button"
+            .eight.columns
+              .right
+                %a{:href => "#"} Forgot your password?
+        %a.close-reveal-modal &#215;
+
+
+

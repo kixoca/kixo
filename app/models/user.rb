@@ -20,8 +20,15 @@ class User < ActiveRecord::Base
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # set default values on init
+  after_initialize :default_values
+
   # validation
   validates :email, :presence => true
   validates_existence_of :locale
+
+  def default_values
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+  end
 
 end

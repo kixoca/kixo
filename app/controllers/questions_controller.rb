@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:new, :edit, :create, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -46,7 +47,8 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
-    @question.user = current_user if user_signed_in?
+
+    @question.user = current_user unless current_user.nil?
 
     @categories = Category.all
 

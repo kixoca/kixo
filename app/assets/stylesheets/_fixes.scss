@@ -6,12 +6,24 @@ div.custom.dropdown {
   }
 }
 
-.accordion.compact {
+.accordion {
   .title {
-    padding: 10px 15px;
-
-    &:after {
-      top: 13px;
+    h1, h2, h3, h4, h5, h6 {
+      margin: 0;
     }
   }
+
+  &.compact {
+    .title {
+      padding: 10px 15px;
+
+      &:after {
+        top: 13px;
+      }
+    }
+  }
+}
+
+.reveal-modal {
+  @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }
