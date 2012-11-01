@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -47,7 +45,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="55" selection-start="254" selection-end="254" vertical-scroll-proportion="0.2354788">
+            <state line="2" column="26" selection-start="60" selection-end="60" vertical-scroll-proportion="0.04552352">
               <folding />
             </state>
           </provider>
@@ -58,64 +56,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state line="2" column="54" selection-start="178" selection-end="178" vertical-scroll-proportion="0.0">
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_fixes.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_fixes.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="13" column="16" selection-start="177" selection-end="177" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="16" selection-start="215" selection-end="215" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="question.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/question.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="77" selection-start="114" selection-end="114" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="9" column="94" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="18" selection-start="3111" selection-end="3111" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#t :site_title#0;n#!!top" expanded="true" />
-                <element signature="e#760#772#0" expanded="true" />
-                <element signature="e#1671#1681#0" expanded="true" />
-                <element signature="e#1817#1827#0" expanded="true" />
-                <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
-                <element signature="n#t :action_find#0;n#!!top" expanded="true" />
-                <element signature="n#t :action_review#0;n#!!top" expanded="true" />
-                <element signature="n#t :about_kixo_title#0;n#!!top" expanded="true" />
-                <element signature="n#t :about_kixo_description#0;n#!!top" expanded="true" />
-                <element signature="n#t :browse_by_topic#0;n#!!top" expanded="true" />
-                <element signature="n#t :browse_by_profession#0;n#!!top" expanded="true" />
-                <element signature="n#t :browse_by_location#0;n#!!top" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -1017,7 +957,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="55" selection-start="254" selection-end="254" vertical-scroll-proportion="0.2354788">
+        <state line="2" column="26" selection-start="60" selection-end="60" vertical-scroll-proportion="0.04552352">
           <folding />
         </state>
       </provider>
