@@ -20,8 +20,11 @@ class Question < ActiveRecord::Base
   # validation
   validates :title,  :presence => true
   validates :status, :presence => true
+  validates_presence_of :topics
   validates_existence_of :user
   validates_existence_of :locale
+
+  private
 
   def default_values
     self.status = 1 if (self.status.nil? or self.status == 0)

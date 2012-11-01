@@ -8,8 +8,5 @@ class CreateTopics < ActiveRecord::Migration
       t.integer :locale_id,   :null => false, :default => 0
       t.timestamps
     end
-
-    # slug must be unique
-    add_index :topics, :slug, :unique => true
   end
 end

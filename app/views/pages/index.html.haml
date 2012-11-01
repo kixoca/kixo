@@ -24,25 +24,29 @@
                   =t :action_review
             %ul.tabs-content.contained
               %li#askTab.active
-                = form_for @question do |f|
+                = form_tag new_question_path, :method => "get" do
+                  %h3
+                    %small Get free, personalized advice from experienced professionals!
                   .row
                     .ten.columns
-                      = f.text_field :title, :placeholder => t(:question_placeholder)
+                      = text_field_tag "question[title]", nil, :placeholder => t(:question_placeholder), :class => "oversize"
                     .two.columns
-                      = f.submit t(:action_ask), :class => "radius button expand postfix"
+                      = submit_tag t(:action_ask), :class => "radius button expand postfix"
               %li#findTab
                 %form
-                  %label{:for => "what"} Find professionals near you!
+                  %h3
+                    %small Find top-rated professionals near you!
                   .row
                     .six.columns
-                      %input#what{:type => "text", :placeholder => "What?"}
+                      %input#what{:type => "text", :class => "oversize", :placeholder => "What?"}
                     .four.columns
-                      %input#where{:type => "text", :placeholder => "Where?"}
+                      %input#where{:type => "text", :class => "oversize", :placeholder => "Where?"}
                     .two.columns
                       %a.radius.button.expand.postfix Find
               %li#reviewTab
                 %form
-                  %label{:for => "who"} Review a professional!
+                  %h3
+                    %small Review your professionals!
                   .row
                     .ten.columns
                       %input#who{:type => "text", :placeholder => "Who do you want to review?"}

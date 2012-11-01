@@ -1,7 +1,5 @@
 class Category < ActiveRecord::Base
 
-  include ApplicationHelper
-
   attr_accessible :name, :slug, :description, :locale_id
 
   # a category is linked to one or many professionals
@@ -16,11 +14,19 @@ class Category < ActiveRecord::Base
   # I18n
   belongs_to :locale
 
-  # auto-generate slug from name
-  before_validation :generate_slug_from_name
+  # set default values on init
+  after_initialize :default_values
 
   # validation
   validates :name, :presence => true
   validates :slug, :presence => true
+  validates_existence_of :locale
+
+  private
+
+  def default_values
+    self.slug = self.name.parameterize if self.slug.blank?
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+  end
 
 end

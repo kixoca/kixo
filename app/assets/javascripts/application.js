@@ -29,43 +29,4 @@ $(document).ready(function() {
         $(this).find('.icon').toggleClass('icon-plus-sign').toggleClass('icon-minus-sign')
     });
 
-    $ajaxForm.find('.alert-box').hide();
-
-    $ajaxForm.bind('success', function() {
-        $(this).find('.alert-box').hide().filter('.success').fadeIn();
-    });
-
-    $ajaxForm.bind('error', function() {
-        $(this).find('.alert-box').hide().filter('.alert').fadeIn();
-    });
-
-    $ajaxForm.filter('.devise').submit(function(e) {
-        e.preventDefault();
-
-        var $this = $(this);
-        var email = $this.find('#user_email').val();
-        var password = $this.find('#user_password').val();
-        var password_confirmation = $this.find('#user_password_confirmation').val();
-        var url = $this.attr('action');
-
-        $.ajax({
-            url: url,
-            type: 'POST',
-            dataType: 'json',
-            data: {user: {email: email, password: password}},
-            success: function() {
-                $this.trigger('success');
-                $head.load("# #head > .container");
-                $('.show-on-sign-in').hide().removeClass('hide').fadeIn();
-                $('.hide-on-sign-in').fadeOut().addClass('hide').hide();
-                setTimeout(function() {
-                    $this.parents('.reveal-modal').trigger('reveal:close');
-                }, 500);
-            },
-            error: function() {
-                $this.trigger('error');
-            }
-        });
-    });
-
 });

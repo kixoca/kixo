@@ -1,5 +1,5 @@
 class QuestionsController < ApplicationController
-  before_filter :authenticate_user!, :only => [:new, :edit, :create, :destroy]
+  before_filter :custom_authenticate, :only => [:new, :edit, :create, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new
   # GET /questions/new.json
   def new
-    @question = Question.new
+    @question = Question.new(session[:question])
     @categories = Category.all
 
     respond_to do |format|
@@ -103,6 +103,16 @@ class QuestionsController < ApplicationController
       format.json { head :no_content }
       format.xml  { head :no_content }
     end
+  end
+
+  private
+
+  def custom_authenticate
+    unless params[:question].nil?
+      session[:question] = params[:question]
+      session[:user_return_to] = request.path
+    end
+    authenticate_user!
   end
 
 end
