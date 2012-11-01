@@ -8,7 +8,7 @@ class CreateGuides < ActiveRecord::Migration
       t.text    :content,         :null => false, :default => ""
       t.integer :topic_id,        :null => false, :default => ""
       t.integer :professional_id, :null => false, :default => ""
-      t.integer :locale_id,       :null => false, :default => 1
+      t.integer :locale_id,       :null => false, :default => 0
       t.timestamps
     end
 

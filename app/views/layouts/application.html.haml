@@ -15,6 +15,14 @@
 
   %body
 
+    %section#flash
+      - if flash[:success]
+        %p.success= flash[:success]
+      - if flash[:notice]
+        %p.notice= flash[:notice]
+      - if flash[:error]
+        %p.error= flash[:error]
+
     %header#header
 
       %section#head
@@ -50,7 +58,7 @@
                       =t :sign_up
               %ul.actions.button-group.radius
                 %li
-                  %a.small.button.radius{:href => "#", :data => {:"reveal-id" => "askModal"}}
+                  %a.small.button.radius{:href => url_for(:controller => "questions", :action => "new")}
                     =t :action_ask
                 %li
                   %a.small.button.radius{:href => "#"}
@@ -81,108 +89,12 @@
                     =t :browse_by_location
               %ul.tabs-content
                 %li#browsebytopicTab.active
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
                 %li#browsebyprofessionTab
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
                 %li#browsebylocationTab
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
-                  %br/
 
-    %section#banner
-      .container
-        .row
-          .twelve.columns.centered
-            #hero
-              %h1
-                =t :hero_title
-              %h3
-                =t :hero_subtitle
-            #tools
-              .ten.columns.centered
-                %dl.tabs.contained.three-up
-                  %dd.active
-                    %a{:href => "#ask"}
-                      %i.icon.icon-comment
-                      =t :action_ask
-                  %dd
-                    %a.icon-search{:href => "#find"}
-                      %i.icon.icon-search
-                      =t :action_find
-                  %dd
-                    %a.icon-search{:href => "#review"}
-                      %i.icon.icon-star
-                      =t :action_review
-                %ul.tabs-content.contained
-                  %li#askTab.active
-                    %form.custom
-                      %label{:for => "question"} Get free advice from professionals!
-                      .row
-                        .twelve.columns
-                          %textarea#question{:placeholder => "Type your question here..."}
-                      .row
-                        .four.columns.offset-by-six
-                          %select#category.hide
-                            %option{:selected => "selected"} This is a dropdown
-                            %option This is another option
-                            %option Look, a third option
-                          .custom.dropdown
-                            %a.current Select a category
-                            %a.selector
-                            %ul
-                              %li Category 1
-                              %li Category 2
-                              %li Category 3
-                        .two.columns
-                          %a.radius.button.expand.postfix Ask
-                  %li#findTab
-                    %form
-                      %label{:for => "what"} Find professionals near you!
-                      .row
-                        .six.columns
-                          %input#what{:type => "text", :placeholder => "What?"}
-                        .four.columns
-                          %input#where{:type => "text", :placeholder => "Where?"}
-                        .two.columns
-                          %a.radius.button.expand.postfix Find
-                  %li#reviewTab
-                    %form
-                      %label{:for => "who"} Review a professional!
-                      .row
-                        .ten.columns
-                          %input#who{:type => "text", :placeholder => "Who do you want to review?"}
-                        .two.columns
-                          %a.radius.button.expand.postfix Review
-
-
-    %section#content
-      .container
-        .row
-          .eight.columns
-            %section#main
-              = yield
-          .four.columns
-            %aside#sidebar
+    = yield
 
     %footer#footer
 
 
     %section#modal
-      #askModal.reveal-modal.large
-        %h2 Ask
-        %p.lead Your couch. It is mine.
-        %p Im a cool paragraph that lives inside of an even cooler modal. Wins</p>
-        %a.close-reveal-modal &#215;

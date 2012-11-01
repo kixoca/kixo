@@ -11,6 +11,7 @@ $blockGridElements: 12 !default; // Highest number of block grid elements, Maxim
 // Colors Settings
 
 $kixoBlue: #017ec3 !default;
+$kixoDarkBlue: #343b41 !default;
 $kixoRed: #f74749 !default;
 $kixoGreen: #65b89c !default;
 
@@ -32,7 +33,7 @@ $darkEdge: rgba(#000, .2) !default;
 $headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontStyle: normal !default;
-$headerFontColor: #222 !default;
+$headerFontColor: $kixoDarkBlue !default;
 $bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $bodyFontWeight: normal !default;
 $bodyFontStyle: normal !default;

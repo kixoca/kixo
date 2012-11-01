@@ -59,27 +59,15 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "name",        :null => false
-    t.string   "slug",        :null => false
+    t.string   "name",                       :null => false
+    t.string   "slug",                       :null => false
     t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "locale_id",   :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
-
-  create_table "category_translations", :force => true do |t|
-    t.integer  "category_id"
-    t.string   "locale"
-    t.string   "name"
-    t.string   "slug"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "category_translations", ["category_id"], :name => "index_category_translations_on_category_id"
-  add_index "category_translations", ["locale"], :name => "index_category_translations_on_locale"
 
   create_table "guides", :force => true do |t|
     t.string   "title",           :default => "", :null => false
@@ -89,7 +77,7 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
     t.text     "content",         :default => "", :null => false
     t.integer  "topic_id",        :default => 0,  :null => false
     t.integer  "professional_id", :default => 0,  :null => false
-    t.integer  "locale_id",       :default => 1,  :null => false
+    t.integer  "locale_id",       :default => 0,  :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -101,17 +89,6 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
     t.integer "topic_id"
   end
 
-  create_table "locale_translations", :force => true do |t|
-    t.integer  "locale_id"
-    t.string   "locale"
-    t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  add_index "locale_translations", ["locale"], :name => "index_locale_translations_on_locale"
-  add_index "locale_translations", ["locale_id"], :name => "index_locale_translations_on_locale_id"
-
   create_table "locales", :force => true do |t|
     t.string   "name",       :default => "", :null => false
     t.string   "code",       :default => "", :null => false
@@ -120,19 +97,6 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
   end
 
   add_index "locales", ["code"], :name => "index_locales_on_code", :unique => true
-
-  create_table "profession_translations", :force => true do |t|
-    t.integer  "profession_id"
-    t.string   "locale"
-    t.string   "name"
-    t.string   "slug"
-    t.text     "description"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-  end
-
-  add_index "profession_translations", ["locale"], :name => "index_profession_translations_on_locale"
-  add_index "profession_translations", ["profession_id"], :name => "index_profession_translations_on_profession_id"
 
   create_table "professionals", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -186,6 +150,7 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
     t.string   "name",        :default => "", :null => false
     t.string   "slug",        :default => "", :null => false
     t.text     "description"
+    t.integer  "locale_id",   :default => 0,  :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
@@ -197,7 +162,7 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
     t.text     "details"
     t.string   "status",     :default => "0", :null => false
     t.integer  "user_id",    :default => 0,   :null => false
-    t.integer  "locale_id",  :default => 1,   :null => false
+    t.integer  "locale_id",  :default => 0,   :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
@@ -254,24 +219,12 @@ ActiveRecord::Schema.define(:version => 20121031010113) do
     t.datetime "updated_at",                      :null => false
   end
 
-  create_table "topic_translations", :force => true do |t|
-    t.integer  "topic_id"
-    t.string   "locale"
-    t.string   "name"
-    t.string   "slug"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "topic_translations", ["locale"], :name => "index_topic_translations_on_locale"
-  add_index "topic_translations", ["topic_id"], :name => "index_topic_translations_on_topic_id"
-
   create_table "topics", :force => true do |t|
     t.string   "name",        :default => "", :null => false
     t.string   "slug",        :default => "", :null => false
     t.text     "description"
     t.integer  "category_id", :default => 0,  :null => false
+    t.integer  "locale_id",   :default => 0,  :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end

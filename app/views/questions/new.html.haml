@@ -1,0 +1,65 @@
+%section#content
+  .container
+    .row.page
+      .eight.columns
+        = form_for @question do |f|
+
+          %h4 Your question
+          %h5.subheader You are almost done! Simply enter the following information...
+          %p
+            = f.label :title
+            = f.text_field :title
+          %p
+            = f.label :details
+            = f.text_area :details, :size => "x5", :placeholder => "Give more details about your question..."
+
+          %h4 Choose a category
+          %h5.subheader Select a category to make sure the right professionals answer you
+          %ul.accordion.compact
+            - @categories.each do |category|
+              %li
+                .title
+                  %h5
+                    = category.name
+                .content
+                  %ul.block-grid.four-up
+                    - category.topics.each do |topic|
+                      %li
+                        %label
+                          = check_box_tag("question[topic_ids][]", topic.id)
+                          = topic.name
+
+          - if current_user.nil?
+            %h4 Sign in
+            %h5.subheader Sign in to your existing account or join for free!
+            %dl.tabs.pill
+              %dd.active
+                %a{:href => "#signup"} Create an account
+              %dd
+                %a{:href => "#signin"} I have an account
+            %ul.tabs-content
+              %li#signupTab.active
+                Sign up
+              %li#signinTab
+                = form_tag user_session_path do
+                  .row
+                    .two.columns
+                      %label.right.inline Email
+                    .ten.columns
+                      = text_field_tag 'user[email]'
+                  .row
+                    .two.columns
+                      %label.right.inline Password
+                    .ten.columns
+                      = password_field_tag 'user[password]'
+                  .row
+                    .six.columns.offset-by-two
+                      %button.button.small Sign in
+                    .four.columns
+                      .right
+                        = link_to "Forgot your password?", new_password_path('user')
+
+      .four.columns
+        .panel
+          %h5 Tips!
+          %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.

@@ -13,6 +13,11 @@ body {
   background: $bodyBgColor;
 }
 
+.page {
+  background: $white;
+  padding: 30px;
+}
+
 #header {
   padding: 4px 0 0 0;
   background: #fff url(../assets/header_multicolor_bar.png) top left repeat-x;
@@ -69,7 +74,7 @@ body {
   }
 
   #megadrop {
-    background: #343b41;
+    background: $kixoDarkBlue;
     color: $secondaryColor;
 
     > .container {
@@ -163,5 +168,11 @@ body {
     form {
       margin: 0;
     }
+  }
+}
+
+#content {
+  .container {
+    padding: 40px 0;
   }
 }

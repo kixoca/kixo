@@ -1,0 +1,62 @@
+%section#banner
+  .container
+    .row
+      .twelve.columns.centered
+        #hero
+          %h1
+            =t :hero_title
+          %h3
+            =t :hero_subtitle
+        #tools
+          .ten.columns.centered
+            %dl.tabs.contained.three-up
+              %dd.active
+                %a{:href => "#ask"}
+                  %i.icon.icon-comment
+                  =t :action_ask
+              %dd
+                %a.icon-search{:href => "#find"}
+                  %i.icon.icon-search
+                  =t :action_find
+              %dd
+                %a.icon-search{:href => "#review"}
+                  %i.icon.icon-star
+                  =t :action_review
+            %ul.tabs-content.contained
+              %li#askTab.active
+                = form_for @question do |f|
+                  .row
+                    .ten.columns
+                      = f.text_field :title, :placeholder => t(:question_placeholder)
+                    .two.columns
+                      = f.submit t(:action_ask), :class => "radius button expand postfix"
+              %li#findTab
+                %form
+                  %label{:for => "what"} Find professionals near you!
+                  .row
+                    .six.columns
+                      %input#what{:type => "text", :placeholder => "What?"}
+                    .four.columns
+                      %input#where{:type => "text", :placeholder => "Where?"}
+                    .two.columns
+                      %a.radius.button.expand.postfix Find
+              %li#reviewTab
+                %form
+                  %label{:for => "who"} Review a professional!
+                  .row
+                    .ten.columns
+                      %input#who{:type => "text", :placeholder => "Who do you want to review?"}
+                    .two.columns
+                      %a.radius.button.expand.postfix Review
+
+
+%section#content
+  .container
+    .row
+      .eight.columns
+        %section#main
+          %section.latest-questions
+            - @latest_questions.each do |question|
+              = link_to question.title, question
+      .four.columns
+        %aside#sidebar

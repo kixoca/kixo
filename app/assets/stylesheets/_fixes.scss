@@ -1,7 +1,17 @@
-div.custom.dropdown{
-  width:101% !important;
+div.custom.dropdown {
+  width: 101% !important;
 
   ul{
-    width:100% !important;
+    width: 100% !important;
+  }
+}
+
+.accordion.compact {
+  .title {
+    padding: 10px 15px;
+
+    &:after {
+      top: 13px;
+    }
   }
 }

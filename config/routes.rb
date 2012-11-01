@@ -9,6 +9,7 @@ Kixo::Application.routes.draw do
 
   # I18n
   scope "(:locale)", :locale => /en|fr/ do
+
     resources :professionals
     resources :questions
     resources :answers
@@ -17,8 +18,11 @@ Kixo::Application.routes.draw do
     resources :topics
     resources :professions
     resources :reviews
+
   end
 
-  root :to => "page#index"
+  match '/:locale' => 'pages#index'
+
+  root :to => "pages#index"
 
 end

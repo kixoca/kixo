@@ -4,6 +4,7 @@ class CreateCategories < ActiveRecord::Migration
       t.string  :name,       :null => false
       t.string  :slug,       :null => false
       t.text    :description
+      t.integer :locale_id,  :null => false, :default => 0
       t.timestamps
     end
 

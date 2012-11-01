@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.text    :details
       t.string  :status,    :null => false, :default => 0
       t.integer :user_id,   :null => false, :default => 0
-      t.integer :locale_id, :null => false, :default => 1
+      t.integer :locale_id, :null => false, :default => 0
       t.timestamps
     end
   end
