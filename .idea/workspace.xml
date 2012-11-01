@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -27,7 +29,7 @@
       <file leaf-file-name="questions_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/questions_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="49" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
+            <state line="5" column="40" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -45,7 +47,7 @@
       <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="29" selection-start="251" selection-end="251" vertical-scroll-proportion="0.25902668">
+            <state line="10" column="55" selection-start="254" selection-end="254" vertical-scroll-proportion="0.2354788">
               <folding />
             </state>
           </provider>
@@ -87,6 +89,15 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="seeds.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="9" column="94" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
@@ -104,23 +115,6 @@
                 <element signature="n#t :browse_by_topic#0;n#!!top" expanded="true" />
                 <element signature="n#t :browse_by_profession#0;n#!!top" expanded="true" />
                 <element signature="n#t :browse_by_location#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="36" selection-start="775" selection-end="775" vertical-scroll-proportion="0.0">
-              <folding>
-                <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
-                <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
-                <element signature="n#t :action_ask#0;n#!!top" expanded="true" />
-                <element signature="n#t :action_find#0;n#!!top" expanded="true" />
-                <element signature="n#t :action_review#0;n#!!top" expanded="true" />
-                <element signature="e#900#924#0" expanded="true" />
-                <element signature="e#991#1005#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -148,7 +142,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/page/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/questions/show.html.haml" />
         <option value="$PROJECT_DIR$/app/views/questions/index.html.haml" />
@@ -163,6 +156,7 @@
         <option value="$PROJECT_DIR$/app/models/question.rb" />
         <option value="$PROJECT_DIR$/app/controllers/questions_controller.rb" />
         <option value="$PROJECT_DIR$/app/views/questions/new.html.haml" />
+        <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/config/routes.rb" />
       </list>
     </option>
@@ -895,13 +889,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/models/topic.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="70" selection-start="133" selection-end="133" vertical-scroll-proportion="0.09419152">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/application.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.577708">
@@ -1000,13 +987,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/questions_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="49" selection-start="49" selection-end="49" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/questions/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="43" column="23" selection-start="1496" selection-end="1496" vertical-scroll-proportion="0.0">
@@ -1021,9 +1001,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="94" selection-start="456" selection-end="456" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/questions_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="40" selection-start="135" selection-end="135" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="29" selection-start="251" selection-end="251" vertical-scroll-proportion="0.25902668">
+        <state line="10" column="55" selection-start="254" selection-end="254" vertical-scroll-proportion="0.2354788">
           <folding />
         </state>
       </provider>

@@ -6,3 +6,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+locales = Locale.create([{:name => "English", :code => "en"}, {:name => "French", :code => "fr"}])
