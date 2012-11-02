@@ -30,7 +30,7 @@ $bodyBgColor: darken($white, 4%);
 
 // Font Settings
 
-$headerFontFamily: "Titillium Web", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
+$headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif !default;
 $headerFontWeight: bold !default;
 $headerFontStyle: normal !default;
 $headerFontColor: $kixoDarkBlue !default;
@@ -260,6 +260,7 @@ $complementaryWidth: 20% !default;
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
 $baseFontSize: 14px !default;
+//$importantModNum: 44px !default;
 $importantModNum: 44px !default;
 $base-size: $baseFontSize $importantModNum;
 // Produced the following list of values: 14, 17, 23, 27, 37, 44, 59, 71, 95, 115;
