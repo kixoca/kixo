@@ -20,7 +20,11 @@ h1 {
 
 .page {
   background: $white;
-  padding: 30px;
+  padding: 30px 20px;
+}
+
+form .actions {
+  margin-top: 20px;
 }
 
 #header {
@@ -122,7 +126,7 @@ h1 {
 }
 
 #banner {
-  background: $kixoGreen url(../assets/banner_bg.jpg) center -100px no-repeat;
+  background: darken($kixoGreen, 35%) url(../assets/banner_bg.jpg) center top no-repeat;
 
   .container {
     padding: 40px 0;
@@ -132,14 +136,9 @@ h1 {
     margin: 0 0 40px 0;
     text-align: center;
 
-    h1 {
+    h1, h3 {
       color: $white;
-      text-shadow: 1px 1px 0 rgba(0,0,0,0.25);
-    }
-
-    h3 {
-      color: darken($kixoGreen, 35%);
-      text-shadow: 1px 1px 0 rgba(255,255,255,0.25);
+      text-shadow: 1px 1px 1px rgba(#000, 0.75);
     }
   }
 

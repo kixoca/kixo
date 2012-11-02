@@ -1,8 +1,9 @@
 %section#content
   .container
     .row.page
-      .twelve.columns
+      .eight.columns
         %h2 Sign in
+        %h4.subheader Sign in to your existing kixo account
 
         = render :partial => "shared/show_flash"
 
@@ -19,6 +20,13 @@
               = f.check_box :remember_me
               = t(:remember_me)
 
-          = f.submit "Sign in", :class => "button"
+          .actions
+            = f.submit "Sign in", :class => "button"
 
-        = render "devise/shared/links"
+        =# render "devise/shared/links"
+
+      .four.columns
+        .panel
+          %h5 Don't have an account?
+          %p You can join kixo for free today and benefit from all the features
+          %a.button.success{:href => new_user_registration_path} Sign up

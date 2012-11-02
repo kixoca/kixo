@@ -1,5 +1,8 @@
 class QuestionsController < ApplicationController
-  before_filter :custom_authenticate, :only => [:new, :edit, :create, :destroy]
+
+  # filters
+  before_filter :remember_question, :only => [:new]
+  before_filter :authenticate!,     :only => [:update, :edit, :create, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -107,12 +110,13 @@ class QuestionsController < ApplicationController
 
   private
 
-  def custom_authenticate
-    unless params[:question].nil?
-      session[:question] = params[:question]
-      session[:user_return_to] = request.path
-    end
+  def authenticate!
+    session[:user_return_to] = request.path
     authenticate_user!
+  end
+
+  def remember_question
+    session[:question] = params[:question] unless params[:question].nil?
   end
 
 end
