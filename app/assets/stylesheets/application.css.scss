@@ -126,7 +126,7 @@ form .actions {
 }
 
 #banner {
-  background: darken($kixoGreen, 35%) url(../assets/banner_bg.jpg) center top no-repeat;
+  background: $white url(../assets/banner_bg.jpg) center top no-repeat;
 
   .container {
     padding: 40px 0;
