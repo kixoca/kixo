@@ -59,30 +59,7 @@
                   %a.small.button.radius{:href => "#"}
                     =t :action_review
 
-      %section#megadrop
-        .container
-          .row
-            .three.columns
-              #about-kixo
-                %h5
-                  =t :about_kixo_title
-                %p
-                  =t :about_kixo_description
-            .nine.columns
-              %dl.tabs.pill
-                %dd.active
-                  %a.active{:href => "#browsebytopic"}
-                    =t :browse_by_topic
-                %dd
-                  %a{:href => "#browsebyprofession"}
-                    =t :browse_by_profession
-                %dd
-                  %a{:href => "#browsebylocation"}
-                    =t :browse_by_location
-              %ul.tabs-content
-                %li#browsebytopicTab.active
-                %li#browsebyprofessionTab
-                %li#browsebylocationTab
+      = render :partial => "shared/megadrop", :locales => {:categories => @categories, :professions => @professions}
 
     = yield
 

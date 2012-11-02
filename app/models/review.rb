@@ -1,4 +1,5 @@
 class Review < ActiveRecord::Base
+  include CommonScopes
 
   attr_accessible :title, :details, :status, :professional_id, :user_id, :locale_id
 

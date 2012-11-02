@@ -31,53 +31,55 @@ form .actions {
   padding: 4px 0 0 0;
   background: #fff url(../assets/header_multicolor_bar.png) top left repeat-x;
 
-  #head > .container {
-    padding: 12px 0;
-  }
-
-  .brand {
-    float: left;
-  }
-
-  .toggle {
-    float: left;
-    display: block;
-    position: relative;
-    top: 13px;
-    left: 10px;
-    opacity: 0.5;
-  }
-
-  ul {
-    margin: 7px 0;
-    float: right;
-
-    &.actions {
-      margin-right: 20px;
-      padding-right: 20px;
-      border-right: 1px solid #ddd;
+  #head {
+    > .container {
+      padding: 12px 0;
     }
 
-    &.account ul {
-      margin: 0;
-    }
-
-    &.nav {
+    .brand {
       float: left;
-      margin-left: 15px;
-      list-style: none;
+    }
 
-      &.menu a {
-        display: inline-block;
-        padding: 3px 6px;
-        color: lighten($txtColor, 50%);
+    .toggle {
+      float: left;
+      display: block;
+      position: relative;
+      top: 13px;
+      left: 10px;
+      opacity: 0.5;
+    }
 
-        &:hover { color: $txtColor; }
+    ul {
+      margin: 7px 0;
+      float: right;
+
+      &.actions {
+        margin-right: 20px;
+        padding-right: 20px;
+        border-right: 1px solid #ddd;
       }
 
-      > li {
+      &.account ul {
+        margin: 0;
+      }
+
+      &.nav {
         float: left;
-        margin: 0 0 0 10px;
+        margin-left: 15px;
+        list-style: none;
+
+        &.menu a {
+          display: inline-block;
+          padding: 3px 6px;
+          color: lighten($txtColor, 50%);
+
+          &:hover { color: $txtColor; }
+        }
+
+        > li {
+          float: left;
+          margin: 0 0 0 10px;
+        }
       }
     }
   }
@@ -120,7 +122,25 @@ form .actions {
     }
 
     .tabs-content {
-      font-size: 11px;
+      ul {
+        list-style: none;
+
+        li, a {
+          font-size: 12px;
+          font-weight: bold;
+          color: $white;
+        }
+
+        ul {
+          margin: 0;
+          
+          li, a {
+            font-size: 11px;
+            font-weight: normal;
+            color: $secondaryColor;
+          }
+        }
+      }
     }
   }
 }
@@ -136,8 +156,12 @@ form .actions {
     margin: 0 0 40px 0;
     text-align: center;
 
-    h2, h4 {
+    #hero_title {
       color: $white;
+    }
+
+    #hero_subtitle {
+      color: rgba($white, 0.5);
     }
   }
 

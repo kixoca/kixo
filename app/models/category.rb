@@ -1,4 +1,5 @@
 class Category < ActiveRecord::Base
+  include CommonScopes
 
   attr_accessible :name, :slug, :description, :locale_id
 

@@ -1,4 +1,5 @@
 class Question < ActiveRecord::Base
+  include CommonScopes
 
   attr_accessible :title, :details, :status, :topic_ids, :user_id, :locale_id
 

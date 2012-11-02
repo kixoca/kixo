@@ -1,0 +1,39 @@
+%section#megadrop
+  .container
+    .row
+      .three.columns
+        #about-kixo
+          %h5
+            =t :about_kixo_title
+          %p
+            =t :about_kixo_description
+      .nine.columns
+        %dl.tabs.pill
+          %dd.active
+            %a.active{:href => "#browsebytopic"}
+              =t :browse_by_topic
+          %dd
+            %a{:href => "#browsebyprofession"}
+              =t :browse_by_profession
+          %dd
+            %a{:href => "#browsebylocation"}
+              =t :browse_by_location
+        %ul.tabs-content
+          %li#browsebytopicTab.active
+            %ul.categories.block-grid.five-up
+              - Category.by_locale.each do |category|
+                %li
+                  %a.category{:href => url_for(category)}
+                    = category.name
+                  %ul.topics
+                    - category.topics.each do |topic|
+                      %li
+                        %a.topic{:href => url_for(topic)}
+                          = topic.name
+          %li#browsebyprofessionTab
+            %ul.categories.block-grid.five-up
+              - Profession.by_locale.each do |profession|
+                %li
+                  %a.category{:href => url_for(profession)}
+                    = profession.name
+          %li#browsebylocationTab

@@ -1,6 +1,5 @@
 class Profession < ActiveRecord::Base
-
-  include ApplicationHelper
+  include CommonScopes
 
   attr_accessible :name, :slug, :description, :locale_id
 
@@ -10,19 +9,18 @@ class Profession < ActiveRecord::Base
   # I18n
   belongs_to :locale
 
-  # validation
-  validates :title,   :presence => true
-  validates :excerpt, :presence => true
-  validates :status,  :presence => true
-  validates :content, :presence => true
-  validates_existence_of :topic
-  validates_existence_of :professional
-
-  # auto-generate slug from name
-  before_validation :generate_slug_from_name
+  # set default values on init
+  after_initialize :default_values
 
   # validation
   validates :name, :presence => true
   validates :slug, :presence => true
+  validates_existence_of :locale
+
+  private
+
+  def default_values
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+  end
 
 end

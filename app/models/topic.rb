@@ -1,4 +1,5 @@
 class Topic < ActiveRecord::Base
+  include CommonScopes
 
   attr_accessible :name, :slug, :description, :category_id, :locale_id
 

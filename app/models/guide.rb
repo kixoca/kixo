@@ -1,4 +1,5 @@
 class Guide < ActiveRecord::Base
+  include CommonScopes
 
   attr_accessible :title, :excerpt, :status, :content, :topic_id, :professional_id, :locale_id
 
