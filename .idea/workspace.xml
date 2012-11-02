@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/pages/index.html.haml" afterPath="$PROJECT_DIR$/app/views/pages/index.html.haml" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -42,10 +43,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_settings.scss" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="_settings.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="263" column="20" selection-start="8064" selection-end="8064" vertical-scroll-proportion="0.3877551">
+            <state line="263" column="20" selection-start="8064" selection-end="8064" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -54,7 +55,7 @@
       <file leaf-file-name="application.css.scss" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="85" column="20" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+            <state line="138" column="10" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -69,10 +70,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.html.haml" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="5" column="31" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
+            <state line="7" column="13" selection-start="137" selection-end="137" vertical-scroll-proportion="0.16483517">
               <folding>
                 <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
                 <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
@@ -104,7 +105,6 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/app/views/shared/_show_flash.html.haml" />
-        <option value="$PROJECT_DIR$/app/views/pages/index.html.haml" />
         <option value="$PROJECT_DIR$/app/models/question.rb" />
         <option value="$PROJECT_DIR$/app/models/topic.rb" />
         <option value="$PROJECT_DIR$/app/models/category.rb" />
@@ -117,8 +117,9 @@
         <option value="$PROJECT_DIR$/app/views/users/sessions/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/config/locales/en.yml" />
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
+        <option value="$PROJECT_DIR$/app/assets/stylesheets/application.css.scss" />
+        <option value="$PROJECT_DIR$/app/views/pages/index.html.haml" />
       </list>
     </option>
   </component>
@@ -856,16 +857,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="31" selection-start="96" selection-end="96" vertical-scroll-proportion="0.0">
-          <folding>
-            <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
-            <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/locales/en.yml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="89" selection-start="991" selection-end="991" vertical-scroll-proportion="0.0">
@@ -873,17 +864,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="20" selection-start="1189" selection-end="1189" vertical-scroll-proportion="0.0">
+        <state line="263" column="20" selection-start="8064" selection-end="8064" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/application.css.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="263" column="20" selection-start="8064" selection-end="8064" vertical-scroll-proportion="0.3877551">
+        <state line="138" column="10" selection-start="1976" selection-end="1976" vertical-scroll-proportion="0.0">
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="13" selection-start="137" selection-end="137" vertical-scroll-proportion="0.16483517">
+          <folding>
+            <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
+            <element signature="n#t :hero_subtitle#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
