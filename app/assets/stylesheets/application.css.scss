@@ -83,7 +83,7 @@ form .actions {
   }
 
   #megadrop {
-    background: $kixoDarkBlue;
+    background: #222;
     color: $secondaryColor;
 
     > .container {
@@ -126,7 +126,7 @@ form .actions {
 }
 
 #banner {
-  background: $white url(../assets/banner_bg.jpg) center top no-repeat;
+  background: $kixoDarkBlue url(../assets/banner_bg.jpg) center top no-repeat;
 
   .container {
     padding: 40px 0;

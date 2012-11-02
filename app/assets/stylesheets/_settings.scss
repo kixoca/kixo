@@ -15,8 +15,6 @@ $kixoDarkBlue: #343b41 !default;
 $kixoRed: #f74749 !default;
 $kixoGreen: #65b89c !default;
 
-$bodyBgColor: lighten($kixoGreen, 35%) !default;
-
 $mainColor: $kixoBlue !default;
 $secondaryColor: #e9e9e9 !default;
 $alertColor: $kixoRed !default;
@@ -27,6 +25,8 @@ $black: #000 !default;
 $white: #fff !default;
 $shinyEdge: rgba(#fff, .5) !default;
 $darkEdge: rgba(#000, .2) !default;
+
+$bodyBgColor: darken($white, 4%);
 
 // Font Settings
 
