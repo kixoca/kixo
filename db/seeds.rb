@@ -55,3 +55,4 @@ locale_id = Locale.create(:name => "English", :code => "en").id
     topic_id = Topic.create(:name => "Stocks", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Taxes", :category_id => category_id, :locale_id => locale_id)
 
+locale_id = Locale.create(:name => "French", :code => "fr").id

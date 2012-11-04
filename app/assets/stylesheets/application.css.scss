@@ -53,25 +53,19 @@ form .actions {
       margin: 7px 0;
       float: right;
 
-      &.actions {
-        margin-right: 20px;
-        padding-right: 20px;
-        border-right: 1px solid #ddd;
-      }
-
-      &.account ul {
+      ul {
         margin: 0;
       }
 
-      &.nav {
+      &.actions {
         float: left;
         margin-left: 15px;
         list-style: none;
 
-        &.menu a {
+        a {
           display: inline-block;
           padding: 3px 6px;
-          color: lighten($txtColor, 50%);
+          color: $lightTxtColor;
 
           &:hover { color: $txtColor; }
         }
@@ -80,6 +74,15 @@ form .actions {
           float: left;
           margin: 0 0 0 10px;
         }
+      }
+
+      &.account, &.locales {
+        margin-left: 20px;
+        padding-left: 20px;
+      }
+
+      &.locales {
+        border-left: 1px solid #ddd;
       }
     }
   }

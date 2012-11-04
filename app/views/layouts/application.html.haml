@@ -25,12 +25,25 @@
                 %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
               %a.toggle{:href => "#"}
                 %i.icon.icon-plus-sign
-              %ul.nav.menu
+              %ul.actions
                 %li
-                  %a{:href => "/how-it-works"} How It Works
+                  %a{:href => new_question_path}
+                    =t :action_ask
                 %li
-                  %a{:href => "/for-professionals"} For Professionals
+                  %a{:href => "#"}
+                    =t :action_find
+                %li
+                  %a{:href => "#"}
+                    =t :action_review
             .six.columns
+              %ul.locales
+                .small.button.secondary.radius.dropdown
+                  = Locale.find_by_code(locale).name
+                  %ul
+                    - Locale.all.each do |loc|
+                      %li
+                        %a{:href => url_for(:locale => loc.code)}
+                          = loc.name
               %ul.account.button-group.radius
                 - if user_signed_in?
                   %li
@@ -43,21 +56,11 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - else
                   %li
-                    %a.small.button.secondary.radius{:href => new_user_session_path}
+                    %a.small.button.radius{:href => new_user_session_path}
                       =t :sign_in
                   %li
-                    %a.small.button.secondary.radius{:href => new_user_registration_path}
+                    %a.small.button.radius{:href => new_user_registration_path}
                       =t :sign_up
-              %ul.actions.button-group.radius
-                %li
-                  %a.small.button.radius{:href => new_question_path}
-                    =t :action_ask
-                %li
-                  %a.small.button.radius{:href => "#"}
-                    =t :action_find
-                %li
-                  %a.small.button.radius{:href => "#"}
-                    =t :action_review
 
       = render :partial => "shared/megadrop", :locales => {:categories => @categories, :professions => @professions}
 
