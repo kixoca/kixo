@@ -23,9 +23,19 @@ class User < ActiveRecord::Base
   # set default values on init
   after_initialize :default_values
 
+  # geocoding
+  geocoded_by :full_address
+  after_validation :geocode
+
   # validation
   validates :email, :presence => true
   validates_existence_of :locale
+
+  def full_address
+    "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+  end
+
+  private
 
   def default_values
     self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)

@@ -31,6 +31,10 @@ class Professional < ActiveRecord::Base
   # track versions with paper trail
   has_paper_trail
 
+  # geocoding
+  geocoded_by :full_address
+  after_validation :geocode
+
   # validation
   validates :email,    :presence => true
   validates :name,     :presence => true
@@ -41,5 +45,9 @@ class Professional < ActiveRecord::Base
   validates_existence_of :topics
   validates_existence_of :professions
   validates_existence_of :locale
+
+  def full_address
+    "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+  end
 
 end

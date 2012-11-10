@@ -19,11 +19,19 @@ class Representant < ActiveRecord::Base
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :medium => "300x300>", :thumb => "100x100>" }
 
+  # geocoding
+  geocoded_by :full_address
+  after_validation :geocode
+
   # validation
   validates :email, :presence => true
   validates :name,  :presence => true
   validates_existence_of :professionals
   validates_existence_of :categories
   validates_existence_of :locale
+
+  def full_address
+    "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+  end
 
 end
