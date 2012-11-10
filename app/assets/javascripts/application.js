@@ -20,13 +20,11 @@ $(document).ready(function() {
 
     var $body = $('body');
     var $head = $('#head');
-    var $megadrop = $('#megadrop').hide();
-    var $ajaxForm = $('form.ajax');
+    var $languageSelect = $('#language-select').hide();
 
-    $head.find('.toggle').live('click', function(e) {
+    $head.find('.toggle').click(function(e) {
         e.preventDefault();
-        $megadrop.slideToggle();
-        $(this).find('.icon').toggleClass('icon-plus-sign').toggleClass('icon-minus-sign')
+        $languageSelect.slideToggle();
     });
 
 });

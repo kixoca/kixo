@@ -28,8 +28,16 @@ form .actions {
 }
 
 #header {
-  padding: 4px 0 0 0;
-  background: #fff url(../assets/header_multicolor_bar.png) top left repeat-x;
+  border-top: 2px solid $kixoBlue;
+  background: $white;
+
+  #language-select {
+    .container {
+      padding: 40px 0;
+      background: $bodyBgColor;
+      border-bottom: 1px solid #ddd;
+    }
+  }
 
   #head {
     > .container {
@@ -40,13 +48,23 @@ form .actions {
       float: left;
     }
 
-    .toggle {
+    #language {
       float: left;
-      display: block;
       position: relative;
       top: 13px;
-      left: 10px;
-      opacity: 0.5;
+      left: 18px;
+
+      a {
+        color: $lightTxtColor;
+
+        i { opacity: 0.4; }
+
+        &:hover {
+          color: $txtColor;
+
+          i { opacity: 0.8; }
+        }
+      }
     }
 
     ul {
@@ -58,8 +76,7 @@ form .actions {
       }
 
       &.actions {
-        float: left;
-        margin-left: 15px;
+        float: right;
         list-style: none;
 
         a {
@@ -76,73 +93,10 @@ form .actions {
         }
       }
 
-      &.account, &.locales {
+      &.account {
         margin-left: 20px;
         padding-left: 20px;
-      }
-
-      &.locales {
         border-left: 1px solid #ddd;
-      }
-    }
-  }
-
-  #megadrop {
-    background: #222;
-    color: $secondaryColor;
-
-    > .container {
-      padding: 20px 0;
-    }
-  
-    #about-kixo {
-      h5 {
-        color: $white;
-      }
-
-      p {
-        font-size: 11px;
-      }
-    }
-
-    .tabs {
-      border-bottom: 1px solid rgba(255,255,255,0.10);
-
-      a {
-        font-size: 12px;
-        background: none;
-        color: $white;
-
-        &:hover {
-          background: rgba(255,255,255,0.10);
-        }
-      }
-      
-      .active a {
-        background: $secondaryColor;
-        color: $txtColor;
-      }
-    }
-
-    .tabs-content {
-      ul {
-        list-style: none;
-
-        li, a {
-          font-size: 12px;
-          font-weight: bold;
-          color: $white;
-        }
-
-        ul {
-          margin: 0;
-          
-          li, a {
-            font-size: 11px;
-            font-weight: normal;
-            color: $secondaryColor;
-          }
-        }
       }
     }
   }
@@ -204,5 +158,65 @@ form .actions {
 #content {
   .container {
     padding: 40px 0;
+  }
+}
+
+#footer {
+  background: $kixoDarkBlue;
+  color: $secondaryColor;
+
+  > .container {
+    padding: 20px 0;
+  }
+
+  #about-kixo {
+    h5 {
+      color: $white;
+    }
+
+    p {
+      font-size: 11px;
+    }
+  }
+
+  .tabs {
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+
+    a {
+      font-size: 12px;
+      background: none;
+      color: $white;
+
+      &:hover {
+        background: rgba(255,255,255,0.10);
+      }
+    }
+
+    .active a {
+      background: $secondaryColor;
+      color: $txtColor;
+    }
+  }
+
+  .tabs-content {
+    ul {
+      list-style: none;
+
+      li, a {
+        font-size: 12px;
+        font-weight: bold;
+        color: $white;
+      }
+
+      ul {
+        margin: 0;
+
+        li, a {
+          font-size: 11px;
+          font-weight: normal;
+          color: $secondaryColor;
+        }
+      }
+    }
   }
 }

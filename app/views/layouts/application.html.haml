@@ -17,33 +17,27 @@
 
     %header#header
 
+      %section#language-select
+        .container
+          .row
+            .eight.columns.centered.mobile-twelve
+              %ul.block-grid.four-up
+                - Locale.all.each do |loc|
+                  %li
+                    %a{:href => url_for(:locale => loc.code)}
+                      = loc.name
+
       %section#head
         .container
           .row
             .six.columns
               %a.brand{:href => "/"}
                 %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
-              %a.toggle{:href => "#"}
-                %i.icon.icon-plus-sign
-              %ul.actions
-                %li
-                  %a{:href => new_question_path}
-                    =t :action_ask
-                %li
-                  %a{:href => "#"}
-                    =t :action_find
-                %li
-                  %a{:href => "#"}
-                    =t :action_review
-            .six.columns
-              %ul.locales
-                .small.button.secondary.radius.dropdown
+              #language
+                %a.toggle{:href => "#"}
                   = Locale.find_by_code(locale).name
-                  %ul
-                    - Locale.all.each do |loc|
-                      %li
-                        %a{:href => url_for(:locale => loc.code)}
-                          = loc.name
+                  %i.icon.icon-circle-arrow-down
+            .six.columns
               %ul.account.button-group.radius
                 - if user_signed_in?
                   %li
@@ -61,11 +55,19 @@
                   %li
                     %a.small.button.radius{:href => new_user_registration_path}
                       =t :sign_up
-
-      = render :partial => "shared/megadrop", :locales => {:categories => @categories, :professions => @professions}
+              %ul.actions
+                %li
+                  %a{:href => new_question_path}
+                    =t :action_ask
+                %li
+                  %a{:href => "#"}
+                    =t :action_find
+                %li
+                  %a{:href => "#"}
+                    =t :action_review
 
     = yield
 
-    %footer#footer
+    = render :partial => "shared/footer", :locales => {:categories => @categories, :professions => @professions}
 
     %section#modal

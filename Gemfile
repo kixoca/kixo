@@ -51,3 +51,5 @@ gem 'rmagick'
 gem 'haml-rails'
 
 gem 'google-webfonts'
+
+gem 'geocoder'

@@ -80,6 +80,7 @@ GEM
     formtastic (2.2.1)
       actionpack (>= 3.0)
     fssm (0.2.9)
+    geocoder (1.1.5)
     globalize3 (0.2.0)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
@@ -232,6 +233,7 @@ DEPENDENCIES
   compass-rails
   country-select
   devise
+  geocoder
   globalize3
   google-webfonts
   haml-rails
