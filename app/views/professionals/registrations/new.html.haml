@@ -1,0 +1,35 @@
+%section#content
+  .container
+    .row.page
+      .twelve.columns
+        %h2 Sign up
+
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          = devise_error_messages!
+
+          = f.label :email
+          = f.email_field :email
+
+          = f.label :password
+          = f.password_field :password
+
+          = f.label :password_confirmation
+          = f.password_field :password_confirmation
+
+          %ul.accordion.compact
+            - Category.by_locale.each do |category|
+              %li
+                .title
+                  %h6
+                    = category.name
+                .content
+                  %ul.block-grid.three-up
+                    - category.topics.each do |topic|
+                      %li
+                        %label
+                          = check_box_tag("professional[topic_ids][]", topic.id)
+                          = topic.name
+
+          = f.submit "Sign up"
+
+        = render "devise/shared/links"

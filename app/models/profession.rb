@@ -1,7 +1,10 @@
 class Profession < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :slug, :description, :locale_id
+  attr_accessible :name, :slug, :description, :category_id, :locale_id
+
+  # a profession belongs in a category
+  belongs_to :category
 
   # a profession is linked to one or many professionals
   has_and_belongs_to_many :professionals
@@ -15,6 +18,7 @@ class Profession < ActiveRecord::Base
   # validation
   validates :name, :presence => true
   validates :slug, :presence => true
+  validates_existence_of :category
   validates_existence_of :locale
 
   private

@@ -7,9 +7,6 @@ class Professional < ActiveRecord::Base
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
                   :headshot, :locale_id
 
-  # a professional is associated with one or many categories
-  has_and_belongs_to_many :categories
-
   # a professional is associated with one or many topics
   has_and_belongs_to_many :topics
 

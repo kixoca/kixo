@@ -12,6 +12,9 @@ class Category < ActiveRecord::Base
   # a category has many topics
   has_many :topics
 
+  # a category has many professions
+  has_many :professions
+
   # I18n
   belongs_to :locale
 
