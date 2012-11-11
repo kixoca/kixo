@@ -12,16 +12,25 @@
             %dl.tabs.contained.three-up
               %dd.active
                 %a{:href => "#ask"}
-                  %i.icon.icon-comment
-                  =t :action_ask
+                  .hide-for-small
+                    %i.icon.icon-comment
+                    =t :action_ask
+                  .show-for-small
+                    %i.icon.icon-comment
               %dd
                 %a.icon-search{:href => "#find"}
-                  %i.icon.icon-search
-                  =t :action_find
+                  .hide-for-small
+                    %i.icon.icon-search
+                    =t :action_find
+                  .show-for-small
+                    %i.icon.icon-search
               %dd
                 %a.icon-search{:href => "#review"}
-                  %i.icon.icon-star
-                  =t :action_review
+                  .hide-for-small
+                    %i.icon.icon-star
+                    =t :action_review
+                  .show-for-small
+                    %i.icon.icon-star
             %ul.tabs-content.contained
               %li#askTab.active
                 .row
@@ -47,7 +56,7 @@
                       .header-group
                         %h3 Find professionals
                         %h4.subheader Find top-rated professionals near you!
-                      %form
+                      %form{:action => ""}
                         .row
                           .six.columns
                             %input#what{:type => "text", :class => "oversize", :placeholder => "What?"}
