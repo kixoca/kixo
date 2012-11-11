@@ -48,6 +48,15 @@
                       %ul.dropdown-menu
                         %li
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
+                - elsif professional_signed_in?
+                  %li
+                    .small.button.secondary.split.dropdown
+                      %a{:href => "#"}
+                        = current_professional.email
+                      %span
+                      %ul.dropdown-menu
+                        %li
+                          = link_to "Sign out", destroy_professional_session_path, :method => :delete
                 - else
                   %li
                     %a.small.button.secondary{:href => new_user_session_path}
