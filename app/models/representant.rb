@@ -10,9 +10,6 @@ class Representant < ActiveRecord::Base
   # a representant is associated with many professionals
   has_and_belongs_to_many :professionals
 
-  # a representant is associated with one or many categories
-  has_and_belongs_to_many :categories
-
   # I18n
   belongs_to :locale
 

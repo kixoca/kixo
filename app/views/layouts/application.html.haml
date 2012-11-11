@@ -38,10 +38,10 @@
                   = Locale.find_by_code(locale).name
                   %i.icon.icon-circle-arrow-down
             .six.columns
-              %ul.account.button-group.radius
+              %ul.account.button-group
                 - if user_signed_in?
                   %li
-                    .small.button.secondary.radius.split.dropdown
+                    .small.button.secondary.split.dropdown
                       %a{:href => "#"}
                         = current_user.email
                       %span
@@ -50,10 +50,10 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - else
                   %li
-                    %a.small.button.radius{:href => new_user_session_path}
+                    %a.small.button.secondary{:href => new_user_session_path}
                       =t :sign_in
                   %li
-                    %a.small.button.radius{:href => new_user_registration_path}
+                    %a.small.button.secondary{:href => new_user_registration_path}
                       =t :sign_up
               %ul.actions
                 %li

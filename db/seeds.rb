@@ -3,9 +3,12 @@
 Locale.destroy_all
 Category.destroy_all
 Topic.destroy_all
+Profession.destroy_all
 
 locale_id = Locale.create(:name => "English", :code => "en").id
+
   category_id = Category.create(:name => "Legal", :locale_id => locale_id).id
+
     topic_id = Topic.create(:name => "Bankruptcy", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Business", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Car Accidents", :category_id => category_id, :locale_id => locale_id)
@@ -21,7 +24,12 @@ locale_id = Locale.create(:name => "English", :code => "en").id
     topic_id = Topic.create(:name => "Mariage", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Personal Injury", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Real Estate", :category_id => category_id, :locale_id => locale_id)
+
+    profession_id = Profession.create(:name => "Attorney", :category_id => category_id, :locale_id => locale_id)
+    profession_id = Profession.create(:name => "Lawyer", :category_id => category_id, :locale_id => locale_id)
+
   category_id = Category.create(:name => "Health", :locale_id => locale_id).id
+
     topic_id = Topic.create(:name => "Acne", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Angina", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Asthma", :category_id => category_id, :locale_id => locale_id)
@@ -40,7 +48,9 @@ locale_id = Locale.create(:name => "English", :code => "en").id
     topic_id = Topic.create(:name => "Root Canal", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Teeth Whitening", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Tummy Tuck", :category_id => category_id, :locale_id => locale_id)
+
   category_id = Category.create(:name => "Finance", :locale_id => locale_id).id
+
     topic_id = Topic.create(:name => "Accounting", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Bankruptcy", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Bookkeeping", :category_id => category_id, :locale_id => locale_id)
@@ -54,5 +64,10 @@ locale_id = Locale.create(:name => "English", :code => "en").id
     topic_id = Topic.create(:name => "Personal Finance", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Stocks", :category_id => category_id, :locale_id => locale_id)
     topic_id = Topic.create(:name => "Taxes", :category_id => category_id, :locale_id => locale_id)
+
+    profession_id = Profession.create(:name => "Accountant", :category_id => category_id, :locale_id => locale_id)
+    profession_id = Profession.create(:name => "Bankruptcy Trustee", :category_id => category_id, :locale_id => locale_id)
+    profession_id = Profession.create(:name => "Investment Broker", :category_id => category_id, :locale_id => locale_id)
+    profession_id = Profession.create(:name => "Real Estate Broker", :category_id => category_id, :locale_id => locale_id)
 
 locale_id = Locale.create(:name => "French", :code => "fr").id

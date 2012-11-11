@@ -133,11 +133,6 @@ ActiveRecord::Schema.define(:version => 20121110223834) do
   add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true
   add_index "professionals", ["reset_password_token"], :name => "index_professionals_on_reset_password_token", :unique => true
 
-  create_table "professionals_categories", :id => false, :force => true do |t|
-    t.integer "professional_id"
-    t.integer "category_id"
-  end
-
   create_table "professionals_professions", :id => false, :force => true do |t|
     t.integer "professional_id"
     t.integer "profession_id"
@@ -152,6 +147,7 @@ ActiveRecord::Schema.define(:version => 20121110223834) do
     t.string   "name",        :default => "", :null => false
     t.string   "slug",        :default => "", :null => false
     t.text     "description"
+    t.integer  "category_id", :default => 0,  :null => false
     t.integer  "locale_id",   :default => 0,  :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
@@ -206,11 +202,6 @@ ActiveRecord::Schema.define(:version => 20121110223834) do
 
   add_index "representants", ["email"], :name => "index_representants_on_email", :unique => true
   add_index "representants", ["reset_password_token"], :name => "index_representants_on_reset_password_token", :unique => true
-
-  create_table "representants_categories", :id => false, :force => true do |t|
-    t.integer "representant_id"
-    t.integer "category_id"
-  end
 
   create_table "reviews", :force => true do |t|
     t.text     "comment",         :default => "", :null => false

@@ -1,3 +1,18 @@
+.panel.callout {
+  &.green {
+    background: $kixoGreen;
+    border-color: darken($kixoGreen, 15%);
+
+    a.button {
+      color: darken($kixoGreen, 15%);
+    }
+  }
+
+  h5 {
+    color: $white;
+  }
+}
+
 div.custom.dropdown {
   width: 101% !important;
 

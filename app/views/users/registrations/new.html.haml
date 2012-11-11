@@ -1,8 +1,11 @@
 %section#content
   .container
     .row.page
-      .twelve.columns
-        %h2 Sign up
+      .eight.columns
+        .header-group
+          %h1 Client Sign Up
+          %h4.subheader Create a free account and connect with professionals
+        %hr
 
         = render :partial => "shared/show_flash"
 
@@ -17,6 +20,8 @@
           = f.label :password_confirmation
           = f.password_field :password_confirmation
 
-          = f.submit "Sign up", :class => "button"
+          .actions
+            = f.submit "Sign up", :class => "button"
 
-        = render "devise/shared/links"
+      .four.columns
+        = render "users/shared/links"

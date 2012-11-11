@@ -18,6 +18,14 @@ h1 {
   color: $mainColor;
 }
 
+.header-group {
+  margin: 1em 0;
+
+  h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+  .subheader { margin-top: 0.25em; }
+}
+
 .page {
   background: $white;
   padding: 30px 20px;
@@ -103,8 +111,6 @@ form .actions {
 }
 
 #banner {
-  background: $kixoDarkBlue url(../assets/banner_bg.jpg) center top no-repeat;
-
   .container {
     padding: 40px 0;
   }
@@ -112,14 +118,6 @@ form .actions {
   #hero {
     margin: 0 0 40px 0;
     text-align: center;
-
-    #hero_title {
-      color: $white;
-    }
-
-    #hero_subtitle {
-      color: rgba($white, 0.5);
-    }
   }
 
   #tools {
@@ -127,17 +125,12 @@ form .actions {
       border: none;
       
       a {
-        color: $white;
+        color: $txtColor;
         font-weight: bold;
-
-        i { background-image: url($whiteIconsPath); }
       }
       
       .active a {
-        color: $txtColor;
         border: none;
-
-        i { background-image: url($iconsPath); }
       }
     }
 

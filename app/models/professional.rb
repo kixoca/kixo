@@ -5,7 +5,7 @@ class Professional < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot, :locale_id
+                  :headshot, :topic_ids, :profession_ids, :locale_id
 
   # a professional is associated with one or many topics
   has_and_belongs_to_many :topics
@@ -32,19 +32,25 @@ class Professional < ActiveRecord::Base
   geocoded_by :full_address
   after_validation :geocode
 
+  # set default values on init
+  after_initialize :default_values
+
   # validation
   validates :email,    :presence => true
   validates :name,     :presence => true
   validates :locality, :presence => true
   validates :region,   :presence => true
   validates :country,  :presence => true
-  validates_existence_of :categories
-  validates_existence_of :topics
-  validates_existence_of :professions
   validates_existence_of :locale
 
   def full_address
     "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+  end
+
+  private
+
+  def default_values
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
   end
 
 end

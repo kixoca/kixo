@@ -4,11 +4,13 @@
       .eight.columns
         = form_for @question do |f|
 
-          %h1 Ask
-          %h4.subheader.no-marg-top Get free, personalized advice from experienced professionals!
+          .header-group
+            %h1 Ask
+            %h4.subheader Get free, personalized advice from experienced professionals!
 
-          %h4 Your question
-          %h5.subheader.no-marg-top Give as much background information as possible to make your question clear
+          .header-group
+            %h4 Your question
+            %h5.subheader Give as much background information as possible to make your question clear
           %p
             = f.label :title
             = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
@@ -16,13 +18,14 @@
             = f.label :details
             = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
 
-          %h4 Choose a category
-          %h5.subheader.no-marg-top Select a category to make sure the right professionals answer you
+          .header-group
+            %h4 Choose a category
+            %h5.subheader Select a category to make sure the right professionals answer you
           %ul.accordion.compact
             - @categories.each do |category|
               %li
                 .title
-                  %h6
+                  %h5
                     = category.name
                 .content
                   %ul.block-grid.three-up
