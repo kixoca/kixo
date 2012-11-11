@@ -62,7 +62,7 @@
       <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="267" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+            <state line="0" column="174" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
               </folding>
@@ -802,7 +802,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/pages/index.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="267" selection-start="267" selection-end="267" vertical-scroll-proportion="0.0">
+        <state line="0" column="174" selection-start="174" selection-end="174" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#t :hero_title#0;n#!!top" expanded="true" />
           </folding>
