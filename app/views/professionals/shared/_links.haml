@@ -1,35 +1,11 @@
-- if controller_name != 'sessions'
-  .panel.callout.green
-    %h5 Already have an account?
-    %p No need to create a new account! Sign in to your existing one.
-    %a.button{:href => new_session_path(resource_name)} Sign in
-
-- if devise_mapping.registerable? && controller_name != 'registrations'
-  .panel.callout.green
-    %h5 Don't have an account?
-    %p You can join for free today and benefit from all the features.
-    %a.button{:href => new_registration_path(resource_name)} Sign up
-
-.panel
-  %h5 Not a professional?
-  %p You might want to go over the regular user section.
-  %ul.button-group
-    %li
-      %a.small.button{:href => new_user_session_path} Sign in
-    %li
-      %a.small.button{:href => new_user_registration_path} Sign up
-
 - if devise_mapping.recoverable? && controller_name != 'passwords'
-  .panel
-    %h5 Forgot your password?
-    %a.small.button{:href => new_password_path(resource_name)} Reset my password
+  %h5 Forgot your password?
+  %a.small.button.secondary{:href => new_password_path(resource_name)} Reset my password
 
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
-  .panel
-    %h5 Didn't receive confirmation instructions?
-    %a.small.button{:href => new_confirmation_path(resource_name)}
+  %h5 Didn't receive confirmation instructions?
+  %a.small.button.secondary{:href => new_confirmation_path(resource_name)}
 
 - if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks'
-  .panel
-    %h5 Didn't receive unlock instructions?
-    %a.small.button{:href => new_unlock_path(resource_name)}
+  %h5 Didn't receive unlock instructions?
+  %a.small.button.secondary{:href => new_unlock_path(resource_name)}

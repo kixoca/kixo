@@ -1,0 +1,20 @@
+- if controller_name != 'sessions'
+  .panel.callout.green
+    %h5 Already have an account?
+    %p No need to create a new account! Sign in to your existing one.
+    %a.button{:href => new_session_path(resource_name)} Sign in
+
+- if devise_mapping.registerable? && controller_name != 'registrations'
+  .panel.callout.green
+    %h5 Don't have an account?
+    %p You can join for free today and benefit from all the features.
+    %a.button{:href => new_registration_path(resource_name)} Sign up
+
+.panel
+  %h5 Are you a professional?
+  %p You might want to go over the professional section.
+  %ul.button-group
+    %li
+      %a.small.button{:href => new_professional_session_path} Sign in
+    %li
+      %a.small.button{:href => new_professional_registration_path} Sign up

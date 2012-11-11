@@ -1,4 +1,10 @@
-.panel.callout {
+.panel {
+  background: $white;
+
+  &.callout h5 {
+    color: $white;
+  }
+
   &.green {
     background: $kixoGreen;
     border-color: darken($kixoGreen, 15%);
@@ -8,8 +14,8 @@
     }
   }
 
-  h5 {
-    color: $white;
+  &.grey {
+    background: darken($white, 4%);
   }
 }
 

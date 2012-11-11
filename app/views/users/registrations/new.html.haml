@@ -1,27 +1,44 @@
 %section#content
   .container
-    .row.page
+    .row
       .eight.columns
-        .header-group
-          %h1 Client Sign Up
-          %h4.subheader Create a free account and connect with professionals
-        %hr
+        .page
+          .page-head
 
-        = render :partial => "shared/show_flash"
+            .header-group
+              %h1 Sign Up
+              %h4.subheader Create a free account and connect with professionals
 
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          .page-body
 
-          = f.label :email
-          = f.email_field :email
+            = render :partial => "shared/show_flash"
 
-          = f.label :password
-          = f.password_field :password
+            = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
 
-          = f.label :password_confirmation
-          = f.password_field :password_confirmation
+              = f.label :email
+              = f.email_field :email
 
-          .actions
-            = f.submit "Sign up", :class => "button"
+              .row
+                .six.columns
+                  = f.label :password
+                  = f.password_field :password
+                .six.columns
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation
+
+              = f.label :name
+              = f.email_field :name
+
+              .row
+                .eight.columns
+                  = f.label :locality, "City"
+                  = f.text_field :locality
+                .four.columns
+                  = f.label :postal_code
+                  = f.text_field :postal_code
+
+              .actions
+                = f.submit "Sign up", :class => "button"
 
       .four.columns
-        = render "users/shared/links"
+        = render "users/shared/panels"

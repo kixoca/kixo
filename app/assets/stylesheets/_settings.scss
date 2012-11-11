@@ -26,8 +26,9 @@ $black: #000 !default;
 $white: #fff !default;
 $shinyEdge: rgba(#fff, .5) !default;
 $darkEdge: rgba(#000, .2) !default;
+$borderColor: #e6e6e6;
 
-$bodyBgColor: darken($white, 4%);
+$bodyBgColor: #e6e6e6;
 
 // Font Settings
 
@@ -256,6 +257,37 @@ $tipScreenFill: rgba(0,0,0,0.5) !default;
 
 $mainWidth: 80% !default;
 $complementaryWidth: 20% !default;
+
+// Foundicons
+
+$foundiconsFontFileName: "/fonts/general_foundicons";
+$foundiconsFontName: "GeneralFoundicons";
+$foundiconsClassPrefix: "foundicon-";
+
+@mixin i-class($name,$pua) {
+  .#{$foundiconsClassPrefix}#{$name}:before {
+    content: "\f#{$pua}";
+  }
+}
+
+@mixin ie-class($name,$pua) {
+  .#{$foundiconsClassPrefix}#{$name} {
+    *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = "&#xf#{$pua};");
+  }
+}
+
+@mixin face {
+  @font-face {
+    font-family: $foundiconsFontName;
+    src: url('#{$foundiconsFontFileName}.eot');
+    src: url('#{$foundiconsFontFileName}.eot?#iefix') format('embedded-opentype'),
+    url('#{$foundiconsFontFileName}.woff') format('woff'),
+    url('#{$foundiconsFontFileName}.ttf') format('truetype'),
+    url('#{$foundiconsFontFileName}.svg##{$foundiconsFontName}') format('svg');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
 
 // Modular Scale Settings
 

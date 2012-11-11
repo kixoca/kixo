@@ -1,0 +1,10 @@
+%section#content
+  .container
+    .row.page
+      .eight.columns
+        %h1 Professionals
+        %ul
+        - @professionals.each do |professional|
+          %li
+            = professional.name
+      .four.columns

@@ -3,7 +3,11 @@ class ProfessionalsController < ApplicationController
   # GET /professionals
   # GET /professionals.json
   def index
-    @professionals = Professional.all
+    unless params[:what].nil? && params[:where].nil?
+      @professionals = Professional.find(params[:what], params[:where])
+    else
+      @professionals = Professional.all
+    end
 
     respond_to do |format|
       format.html # index.html.haml
@@ -22,14 +26,6 @@ class ProfessionalsController < ApplicationController
       format.json { render :json => @professional }
       format.xml  { render :xml => @professional }
     end
-  end
-
-  # GET /professionals/find
-  # GET /professionals/find
-  def find
-    @topic
-
-    @professionals = Professional.
   end
 
 end

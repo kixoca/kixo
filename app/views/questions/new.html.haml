@@ -1,48 +1,50 @@
 %section#content
   .container
-    .row.page
-      .eight.columns
-        = form_for @question do |f|
+    .row
+      .twelve.columns
+        .page
+          .page-head
+            .header-group
+              %i.foundicon-page
+              %h1 Ask
+              %h4.subheader Get free, personalized advice from experienced professionals!
+          .page-body
+            .row
+              .eight.columns
+                = form_for @question do |f|
+                  .header-group
+                    %h4 Your question
+                    %h5.subheader Give as much background information as possible to make your question clear
+                  %p
+                    = f.label :title
+                    = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
+                  %p
+                    = f.label :details
+                    = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
 
-          .header-group
-            %h1 Ask
-            %h4.subheader Get free, personalized advice from experienced professionals!
+                  %hr
 
-          %hr
-
-          .header-group
-            %h4 Your question
-            %h5.subheader Give as much background information as possible to make your question clear
-          %p
-            = f.label :title
-            = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
-          %p
-            = f.label :details
-            = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
-
-          %hr
-
-          .header-group
-            %h4 Choose a category
-            %h5.subheader Select a category to make sure the right professionals answer you
-          %ul.accordion.compact
-            - @categories.each do |category|
-              %li
-                .title
-                  %h5
-                    = category.name
-                .content
-                  %ul.block-grid.three-up
-                    - category.topics.each do |topic|
+                  .header-group
+                    %h4 Choose a category
+                    %h5.subheader Select a category to make sure the right professionals answer you
+                  %ul.accordion.compact
+                    - @categories.each do |category|
                       %li
-                        %label
-                          = check_box_tag("question[topic_ids][]", topic.id)
-                          = topic.name
+                        .title
+                          %h5
+                            = category.name
+                        .content
+                          %ul.block-grid.three-up
+                            - category.topics.each do |topic|
+                              %li
+                                %label
+                                  = check_box_tag("question[topic_ids][]", topic.id)
+                                  = topic.name
 
-          .actions
-            = f.submit :class => "button"
+                  .actions
+                    = f.submit :class => "button"
 
-      .four.columns
-        .panel
-          %h5 Tips!
-          %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.
+              .four.columns
+                .panel.grey
+                  %h5 Tips!
+                  %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.
