@@ -29,6 +29,10 @@ h1 {
   .subheader { margin-top: 0.25em; }
 }
 
+.center {
+  text-align: center;
+}
+
 .page {
   background: $white;
   padding: 30px 20px;
@@ -39,18 +43,24 @@ form .actions {
 }
 
 #header {
-  border-top: 2px solid $kixoBlue;
   background: $white;
 
   #language-select {
     .container {
       padding: 40px 0;
-      background: $bodyBgColor;
-      border-bottom: 1px solid #ddd;
+      background: $kixoDarkBlue;
+
+      a {
+        color: $secondaryColor;
+
+        &:hover { color: $white; }
+      }
     }
   }
 
   #head {
+    border-top: 2px solid $kixoBlue;
+
     > .container {
       padding: 12px 0;
     }
@@ -123,7 +133,7 @@ form .actions {
     text-align: center;
   }
 
-  #tools {
+  #banner-actions {
     .tabs {
       border: none;
       
@@ -142,6 +152,11 @@ form .actions {
       
       li {
         border: none;
+
+        .container {
+          padding-top: 15px;
+          padding-bottom: 15px;
+        }
       }
     }
 
