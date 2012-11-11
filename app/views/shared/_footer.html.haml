@@ -32,8 +32,13 @@
                           = topic.name
           %li#browsebyprofessionTab
             %ul.categories.block-grid.five-up
-              - Profession.by_locale.each do |profession|
+              - Category.by_locale.each do |category|
                 %li
-                  %a.category{:href => url_for(profession)}
-                    = profession.name
+                  %a.category{:href => url_for(category)}
+                    = category.name
+                  %ul.topics
+                    - category.professions.each do |profession|
+                      %li
+                        %a.profession{:href => url_for(profession)}
+                          = profession.name
           %li#browsebylocationTab
