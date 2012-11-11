@@ -1,4 +1,9 @@
-%h1
-  = @question.title
-%p
-  = @question.details
+%section#content
+  .container
+    .row.page
+      .eight.columns
+        %h1
+          = @question.title
+        %p
+          = @question.details
+      .four.columns
