@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/config/initializers/geocoder.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/layouts/application.html.haml" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/pages/index.html.haml" afterPath="$PROJECT_DIR$/app/views/pages/index.html.haml" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,10 +25,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="application.html.haml" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="77" column="11" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.8173516">
+            <state line="77" column="11" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0">
               <folding>
                 <element signature="n#t :site_title#0;n#!!top" expanded="true" />
                 <element signature="e#876#888#0" expanded="true" />
@@ -39,6 +38,15 @@
                 <element signature="n#t :action_find#0;n#!!top" expanded="true" />
                 <element signature="n#t :action_review#0;n#!!top" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geocoder.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/initializers/geocoder.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="3" column="25" selection-start="79" selection-end="79" vertical-scroll-proportion="0.070866145">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -94,7 +102,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/category.rb" />
         <option value="$PROJECT_DIR$/app/models/profession.rb" />
         <option value="$PROJECT_DIR$/app/views/questions/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/users/shared/_links.html.haml" />
@@ -110,6 +117,7 @@
         <option value="$PROJECT_DIR$/app/views/professionals/registrations/new.html.haml" />
         <option value="$PROJECT_DIR$/app/views/pages/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
+        <option value="$PROJECT_DIR$/config/initializers/geocoder.rb" />
       </list>
     </option>
   </component>
@@ -160,6 +168,38 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="kixo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="initializers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -648,13 +688,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121019042558_create_representants.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.23287672">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/questions/new.html.haml">
       <provider selected="true" editor-type-id="text-editor">
         <state line="27" column="21" selection-start="1011" selection-end="1011" vertical-scroll-proportion="0.60559005">
@@ -757,7 +790,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="77" column="11" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.8173516">
+        <state line="77" column="11" selection-start="2553" selection-end="2553" vertical-scroll-proportion="0.0">
           <folding>
             <element signature="n#t :site_title#0;n#!!top" expanded="true" />
             <element signature="e#876#888#0" expanded="true" />
@@ -767,6 +800,13 @@
             <element signature="n#t :action_find#0;n#!!top" expanded="true" />
             <element signature="n#t :action_review#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/geocoder.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="3" column="25" selection-start="79" selection-end="79" vertical-scroll-proportion="0.070866145">
+          <folding />
         </state>
       </provider>
     </entry>
