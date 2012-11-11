@@ -11,7 +11,10 @@
 @import "fixes";
 
 body {
-  background: $bodyBgColor;
+  background-color: $bodyBgColor;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 h1 {
@@ -113,7 +116,6 @@ form .actions {
 #banner {
   .container {
     padding: 40px 0;
-    background: url(/assets/banner_gradient.png) center bottom repeat-x;
   }
 
   #hero {

@@ -13,7 +13,7 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 
-  %body
+  %body{:style => "background-image: url(http://maps.googleapis.com/maps/api/staticmap?sensor=true&center=#{request.location.latitude},#{request.location.longitude}&zoom=13&size=640x640&scale=2&style=lightness:75|saturation:-100|visibility:simplified);"}
 
     %header#header
 
