@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.by_locale.all
 
     respond_to do |format|
       format.html # index.html.haml
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
     respond_to do |format|
       format.html # show.html.haml
       format.json { render :json => @question }
-      format.xml  { render :xml => @questions }
+      format.xml  { render :xml => @question }
     end
   end
 

@@ -21,6 +21,11 @@ class Profession < ActiveRecord::Base
   validates_existence_of :category
   validates_existence_of :locale
 
+  # search method
+  def self.search(term)
+    Profession.all(:conditions => ["name like ?", "%#{term}%"])
+  end
+
   private
 
   def default_values

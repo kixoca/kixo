@@ -47,6 +47,17 @@ class Professional < ActiveRecord::Base
     "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
   end
 
+  # search method
+  def self.search(term)
+    Professional.all(:conditions => ["name like ?", "%#{term}%"])
+  end
+
+  def self.find(what, where)
+    what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
+    where_query = Professional.near(where, 50).order("distance")
+    what_query && where_query
+  end
+
   private
 
   def default_values

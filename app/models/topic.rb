@@ -9,6 +9,9 @@ class Topic < ActiveRecord::Base
   # a topic is associated with one or many questions
   has_and_belongs_to_many :questions
 
+  # a topic is associated with one or many professionals
+  has_and_belongs_to_many :professionals
+
   # I18n
   belongs_to :locale
 
@@ -20,6 +23,11 @@ class Topic < ActiveRecord::Base
   validates :slug, :presence => true
   validates_existence_of :category
   validates_existence_of :locale
+
+  # search method
+  def self.search(term)
+    Topic.all(:conditions => ["name like ?", "%#{term}%"])
+  end
 
   private
 
