@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/professionals_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/professionals_controller.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/professionals/index.html.haml" afterPath="$PROJECT_DIR$/app/views/professionals/index.html.haml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/initializers/geocoder.rb" afterPath="$PROJECT_DIR$/config/initializers/geocoder.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -35,10 +34,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="professionals_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="professionals_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/professionals_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="43" selection-start="299" selection-end="299" vertical-scroll-proportion="0.23622048">
+            <state line="9" column="7" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="geocoder.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/config/initializers/geocoder.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="2" column="28" selection-start="53" selection-end="53" vertical-scroll-proportion="0.047244094">
               <folding />
             </state>
           </provider>
@@ -99,9 +107,9 @@
         <option value="$PROJECT_DIR$/app/views/pages/index.html.haml" />
         <option value="$PROJECT_DIR$/app/views/questions/show.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_settings.scss" />
-        <option value="$PROJECT_DIR$/config/initializers/geocoder.rb" />
         <option value="$PROJECT_DIR$/app/views/professionals/index.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/professionals_controller.rb" />
+        <option value="$PROJECT_DIR$/config/initializers/geocoder.rb" />
       </list>
     </option>
   </component>
@@ -749,13 +757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/initializers/geocoder.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="2" selection-start="31" selection-end="31" vertical-scroll-proportion="0.023622047">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="301" column="30" selection-start="9232" selection-end="9232" vertical-scroll-proportion="0.37299034">
@@ -797,7 +798,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/professionals_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="43" selection-start="299" selection-end="299" vertical-scroll-proportion="0.23622048">
+        <state line="9" column="7" selection-start="268" selection-end="268" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/initializers/geocoder.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="2" column="28" selection-start="53" selection-end="53" vertical-scroll-proportion="0.047244094">
           <folding />
         </state>
       </provider>
