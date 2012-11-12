@@ -29,22 +29,29 @@
                       = render "professionals/shared/profile", :professional => professional
 
               .three.columns
-                %ul.accordion.compact
-                  %li.active
-                    .title
-                      %h6 Related topics
-                    .content
-                      %ul.side-nav
-                        - @topics.each do |topic|
-                          %li
-                            %a{:href => url_for(topic)}
-                              = topic.name
-                  %li
-                    .title
-                      %h6 Related professions
-                    .content
-                      %ul.side-nav
-                        - @professions.each do |profession|
-                          %li
-                            %a{:href => url_for(profession)}
-                              = profession.name
+                - if @topics || @professions
+                  %ul.accordion.compact
+                    %li.active
+                      .title
+                        %h6 Related topics
+                      .content
+                        %ul.side-nav
+                          - if @topics
+                            - @topics.each do |topic|
+                              %li
+                                %a{:href => url_for(topic)}
+                                  = topic.name
+                          - else
+                            No related topics
+                    %li
+                      .title
+                        %h6 Related professions
+                      .content
+                        %ul.side-nav
+                          - if @professions
+                            - @professions.each do |profession|
+                              %li
+                                %a{:href => url_for(profession)}
+                                  = profession.name
+                          - else
+                            No related professions

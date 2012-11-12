@@ -5,7 +5,11 @@ class ProfessionalsController < ApplicationController
   def index
     unless params[:what].blank?
       @what = params[:what]
-      @where = params[:where]
+      unless params[:where].blank?
+        @where = params[:where]
+      else
+        @where = [request.location.latitude, request.location.longitude]
+      end
       @topics = Topic.search(@what)
       @professions = Profession.search(@what)
       @professionals = Professional.find(@what, @where)
