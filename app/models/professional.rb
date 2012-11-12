@@ -47,6 +47,10 @@ class Professional < ActiveRecord::Base
     "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
   end
 
+  def short_address
+    "#{self.locality}, #{self.region}"
+  end
+
   # search method
   def self.search(term)
     Professional.all(:conditions => ["name like ?", "%#{term}%"])

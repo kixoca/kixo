@@ -3,8 +3,12 @@ class ProfessionalsController < ApplicationController
   # GET /professionals
   # GET /professionals.json
   def index
-    unless params[:what].nil? && params[:where].nil?
-      @professionals = Professional.find(params[:what], params[:where])
+    unless params[:what].blank?
+      @what = params[:what]
+      @where = params[:where]
+      @topics = Topic.search(@what)
+      @professions = Profession.search(@what)
+      @professionals = Professional.find(@what, @where)
     else
       @professionals = Professional.all
     end

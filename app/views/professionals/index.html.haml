@@ -1,10 +1,50 @@
 %section#content
   .container
-    .row.page
-      .eight.columns
-        %h1 Professionals
-        %ul
-        - @professionals.each do |professional|
-          %li
-            = professional.name
-      .four.columns
+    .row
+      .twelve.columns
+        .page
+          .page-head
+            .header-group
+              %i.foundicon-search
+              %h1 Find professionals
+              %h4.subheader Find top-rated professionals near you!
+          .page-subhead.blue
+            = form_tag professionals_path, :method => "get" do
+              .row
+                .six.columns
+                  = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize"
+                .four.columns
+                  = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
+                .two.columns
+                  = submit_tag t(:action_find), :class => "radius button secondary expand postfix"
+          .page-body
+            .row
+
+              .nine.columns
+                %h4.no-marg-top
+                  = "#{@professionals.count} professionals found"
+                %ul.block-grid.three-up
+                  - @professionals.each do |professional|
+                    %li
+                      = render "professionals/shared/profile", :professional => professional
+
+              .three.columns
+                %ul.accordion.compact
+                  %li.active
+                    .title
+                      %h6 Related topics
+                    .content
+                      %ul.side-nav
+                        - @topics.each do |topic|
+                          %li
+                            %a{:href => url_for(topic)}
+                              = topic.name
+                  %li
+                    .title
+                      %h6 Related professions
+                    .content
+                      %ul.side-nav
+                        - @professions.each do |profession|
+                          %li
+                            %a{:href => url_for(profession)}
+                              = profession.name

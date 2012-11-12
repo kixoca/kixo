@@ -28,12 +28,15 @@ h1 {
   i {
     color: darken($white, 10%);
     float: left;
-    margin: 0 0.1em 0 0;
+    margin: 0 20px 0 0;
   }
 }
 
-.center {
-  text-align: center;
+.no-marg { margin: 0; }
+.no-marg-top { margin-top: 0; }
+
+form {
+  margin: 10px 0 0 0;
 }
 
 .page {
@@ -47,10 +50,20 @@ h1 {
 
     .header-group {
       margin: 0;
+      i { font-size: 6em; }
+    }
+  }
 
-      i {
-        font-size: 6em;
-      }
+  .page-subhead {
+    padding: 15px 30px;
+    border-bottom: 1px solid $borderColor;
+
+    &.blue {
+      background: $kixoBlue;
+    }
+
+    &.green {
+      background: $kixoGreen;
     }
   }
 
@@ -94,8 +107,8 @@ form .actions {
     #language {
       float: left;
       position: relative;
-      top: 13px;
-      left: 18px;
+      top: 15px;
+      left: 20px;
 
       a {
         color: $lightTxtColor;
@@ -260,6 +273,77 @@ form .actions {
           color: $secondaryColor;
         }
       }
+    }
+  }
+}
+
+.professional-profile {
+  padding: 20px;
+  border: 1px solid $borderColor;
+  text-align: center;
+  background: $kixoLightGrey;
+
+  ul {
+    list-style: none;
+    margin: 0;
+  }
+
+  .name {
+    font-size: 1.25em;
+    font-weight: bold;
+  }
+
+  .professions {
+    color: $lightTxtColor;
+    font-style: italic;
+
+    li {
+      display: inline-block;
+      margin: 0 0.25em;
+
+      &:after {
+        content: "/";
+      }
+
+      &:last-child:after {
+        content: "";
+      }
+    }
+  }
+
+  .address {
+    color: $lightTxtColor;
+  }
+
+  .cta {
+    margin: 15px 0;
+  }
+
+  .metrics {
+    margin: 0 -20px -20px -20px;
+    border-top: 1px solid $borderColor;
+
+    li {
+      border: 1px solid $borderColor;
+      border-width: 0 1px 0 0;
+
+      &:last-child {
+        border-right: 0;
+      }
+    }
+
+    .label {
+      background: none;
+      color: $lightTxtColor;
+      text-transform: uppercase;
+      font-size: 0.7em;
+      font-weight: normal;
+    }
+
+    .value {
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 1;
     }
   }
 }

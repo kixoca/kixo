@@ -1,9 +1,12 @@
 %section#content
   .container
-    .row.page
-      .eight.columns
-        %h1
-          = @question.title
-        %p
-          = @question.details
-      .four.columns
+    .row
+      .page
+        .page-body
+          .row
+            .eight.columns
+              %h1
+                = @question.title
+              %p
+                = @question.details
+            .four.columns

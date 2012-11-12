@@ -1,0 +1,24 @@
+.professional-profile
+  .headshot
+    = image_tag professional.headshot.url(:thumb)
+  .name
+    = professional.name
+  %ul.professions
+    - professional.professions.each do |profession|
+      %li
+        = profession.name
+  .address
+    %i.foundicon-location
+    = professional.short_address
+  .cta
+    %a.button.small{:href => "#"} View profile
+  %ul.metrics.block-grid.three-up
+    %li
+      .label score
+      .value 77
+    %li
+      .label answers
+      .value 12
+    %li
+      .label reviews
+      .value 6

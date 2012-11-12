@@ -15,7 +15,7 @@
   }
 
   &.grey {
-    background: darken($white, 4%);
+    background: $kixoLightGrey;
   }
 }
 
@@ -43,6 +43,10 @@ div.custom.dropdown {
       }
     }
   }
+}
+
+ul.side-nav {
+  padding: 0;
 }
 
 .reveal-modal {
