@@ -3,10 +3,12 @@
     = image_tag professional.headshot.url(:thumb)
   .name
     = professional.name
-  %ul.professions
-    - professional.professions.each do |profession|
-      %li
-        = profession.name
+  .professions
+    = professional.professions.first.name
+    - if professional.professions.count > 1
+      and
+      %span.has-tip.tip-top.noradius{:title => "#{professional.profession_list}"}
+        = "#{professional.professions.count-1} more"
   .address
     %i.foundicon-location
     = professional.short_address

@@ -93,8 +93,7 @@ form .actions {
   }
 
   #head {
-    border-top: 2px solid $kixoBlue;
-    border-bottom: 1px solid $borderColor;
+    border-top: 3px solid $kixoGreen;
 
     > .container {
       padding: 12px 0;
@@ -107,7 +106,7 @@ form .actions {
     #language {
       float: left;
       position: relative;
-      top: 15px;
+      top: 18px;
       left: 20px;
 
       a {
@@ -125,35 +124,84 @@ form .actions {
     }
 
     ul {
-      margin: 7px 0;
+      margin: 12px 0;
       float: right;
 
       ul {
         margin: 0;
       }
+    }
+  }
 
-      &.actions {
-        float: right;
-        list-style: none;
+  #actions {
+    #actions-tabs {
+      background: $kixoBlue;
+
+      .tabs {
+        border: none;
+        margin: 0;
 
         a {
-          display: inline-block;
-          padding: 3px 6px;
-          color: $lightTxtColor;
+          position: relative;
+          color: rgba($white, 0.75);
+          font-weight: bold;
+          height: 60px;
+          line-height: 60px;
+          background: none;
+          border: none;
 
-          &:hover { color: $txtColor; }
+          i { font-size: 30px; }
+
+          .hide-for-small .icon {
+            position: absolute;
+            left: 20px;
+            bottom: -30px;
+            @include boxRotate(-10deg);
+
+            i { font-size: 60px; }
+          }
+
+          .txt {
+            font-size: 1.15em;
+          }
+
+          &:hover {
+            color: $white;
+          }
         }
 
-        > li {
-          float: left;
-          margin: 0 0 0 10px;
+        .active {
+          border: none;
+          margin: 0;
+
+          a {
+            border: none;
+            color: $white;
+            background: darken($kixoBlue, 5%);
+          }
+        }
+      }
+    }
+
+    #actions-tabs-content {
+      padding: 20px 0;
+
+      .tabs-content {
+        background: $white;
+        margin: 0;
+
+        li {
+          border: none;
+
+          .container {
+            padding-top: 15px;
+            padding-bottom: 15px;
+          }
         }
       }
 
-      &.account {
-        margin-left: 20px;
-        padding-left: 20px;
-        border-left: 1px solid $borderColor;
+      form {
+        margin: 0;
       }
     }
   }
@@ -171,43 +219,6 @@ form .actions {
   #hero {
     margin: 0 0 40px 0;
     text-align: center;
-  }
-
-  #banner-actions {
-    .tabs {
-      border: none;
-      
-      a {
-        color: $lightTxtColor;
-        font-weight: bold;
-      }
-      
-      .active a {
-        border: none;
-        color: $txtColor;
-      }
-
-      .show-for-small {
-        font-size: 1.5em;
-      }
-    }
-
-    .tabs-content {
-      background: $white;
-      
-      li {
-        border: none;
-
-        .container {
-          padding-top: 15px;
-          padding-bottom: 15px;
-        }
-      }
-    }
-
-    form {
-      margin: 0;
-    }
   }
 }
 
@@ -278,10 +289,11 @@ form .actions {
 }
 
 .professional-profile {
-  padding: 20px;
+  position: relative;
+  padding: 20px 20px 60px 20px;
   border: 1px solid $borderColor;
   text-align: center;
-  background: $kixoLightGrey;
+  background: $white;
 
   ul {
     list-style: none;
@@ -320,7 +332,10 @@ form .actions {
   }
 
   .metrics {
-    margin: 0 -20px -20px -20px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
     border-top: 1px solid $borderColor;
 
     li {

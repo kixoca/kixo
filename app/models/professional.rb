@@ -51,11 +51,20 @@ class Professional < ActiveRecord::Base
     "#{self.locality}, #{self.region}"
   end
 
+  def profession_list
+    list = []
+    self.professions.each do |profession|
+      list.push(profession.name)
+    end
+    list.join(", ")
+  end
+
   # search method
   def self.search(term)
     Professional.all(:conditions => ["name like ?", "%#{term}%"])
   end
 
+  # find method
   def self.find(what, where)
     what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
     where_query = Professional.near(where, 50).order("distance")

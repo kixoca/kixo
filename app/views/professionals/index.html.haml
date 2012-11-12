@@ -1,57 +1,38 @@
 %section#content
   .container
     .row
-      .twelve.columns
-        .page
-          .page-head
-            .header-group
-              %i.foundicon-search
-              %h1 Find professionals
-              %h4.subheader Find top-rated professionals near you!
-          .page-subhead.blue
-            = form_tag professionals_path, :method => "get" do
-              .row
-                .six.columns
-                  = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize"
-                .four.columns
-                  = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
-                .two.columns
-                  = submit_tag t(:action_find), :class => "radius button secondary expand postfix"
-          .page-body
-            .row
+      .nine.columns
+        %h4.no-marg-top
+          = "#{@professionals.count} professionals found"
+        %ul.block-grid.three-up
+          - @professionals.each do |professional|
+            %li
+              = render "professionals/shared/profile", :professional => professional
 
-              .nine.columns
-                %h4.no-marg-top
-                  = "#{@professionals.count} professionals found"
-                %ul.block-grid.three-up
-                  - @professionals.each do |professional|
-                    %li
-                      = render "professionals/shared/profile", :professional => professional
-
-              .three.columns
-                - if @topics || @professions
-                  %ul.accordion.compact
-                    %li.active
-                      .title
-                        %h6 Related topics
-                      .content
-                        %ul.side-nav
-                          - if @topics
-                            - @topics.each do |topic|
-                              %li
-                                %a{:href => url_for(topic)}
-                                  = topic.name
-                          - else
-                            No related topics
-                    %li
-                      .title
-                        %h6 Related professions
-                      .content
-                        %ul.side-nav
-                          - if @professions
-                            - @professions.each do |profession|
-                              %li
-                                %a{:href => url_for(profession)}
-                                  = profession.name
-                          - else
-                            No related professions
+      .three.columns
+        - if @topics || @professions
+          %ul.accordion.compact
+            %li.active
+              .title
+                %h6 Related topics
+              .content
+                %ul.side-nav
+                  - if @topics
+                    - @topics.each do |topic|
+                      %li
+                        %a{:href => url_for(topic)}
+                          = topic.name
+                  - else
+                    No related topics
+            %li
+              .title
+                %h6 Related professions
+              .content
+                %ul.side-nav
+                  - if @professions
+                    - @professions.each do |profession|
+                      %li
+                        %a{:href => url_for(profession)}
+                          = profession.name
+                  - else
+                    No related professions

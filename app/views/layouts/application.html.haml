@@ -13,6 +13,8 @@
     = javascript_include_tag "application"
     = csrf_meta_tags
 
+    %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
+
   %body
 
     %header#header
@@ -32,7 +34,7 @@
           .row
             .six.columns
               %a.brand{:href => "/"}
-                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
+                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "50", :alt => t(:logo_alt)}
               #language
                 %a.toggle{:href => "#"}
                   = Locale.find_by_code(locale).name
@@ -64,16 +66,8 @@
                   %li
                     %a.small.button.secondary{:href => new_user_registration_path}
                       =t :sign_up
-              %ul.actions
-                %li
-                  %a{:href => new_question_path}
-                    =t :action_ask
-                %li
-                  %a{:href => "#"}
-                    =t :action_find
-                %li
-                  %a{:href => "#"}
-                    =t :action_review
+
+      = render "shared/header_actions"
 
     = yield
 

@@ -49,6 +49,11 @@ ul.side-nav {
   padding: 0;
 }
 
+.has-tip {
+  font-weight: normal;
+  color: $mainColor;
+}
+
 .reveal-modal {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }

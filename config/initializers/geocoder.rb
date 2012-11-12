@@ -1,7 +1,7 @@
 Geocoder.configure do |config|
 
   # geocoding service
-  config.lookup = :freegeoip
+  config.lookup = :google
 
   # geocoding service request timeout, in seconds (default 3):
   config.timeout = 5
