@@ -1,0 +1,82 @@
+%section#actions
+  #actions-tabs
+    .container
+      .row
+        .twelve.columns
+          %dl.tabs.three-up
+            %dd{:class => @current_action_tab == "ask" ? "active" : ""}
+              %a{:href => "#ask"}
+                .hide-for-small
+                  .icon
+                    %i.foundicon-page
+                  .txt
+                    =t :action_ask
+                .show-for-small
+                  %i.foundicon-page
+            %dd{:class => @current_action_tab == "find" ? "active" : ""}
+              %a.icon-search{:href => "#find"}
+                .hide-for-small
+                  .icon
+                    %i.foundicon-search
+                  .txt
+                    =t :action_find
+                .show-for-small
+                  %i.foundicon-search
+            %dd{:class => @current_action_tab == "review" ? "active" : ""}
+              %a.icon-search{:href => "#review"}
+                .hide-for-small
+                  .icon
+                    %i.foundicon-star
+                  .txt
+                    =t :action_review
+                .show-for-small
+                  %i.foundicon-star
+  #actions-tabs-content
+    %ul.tabs-content
+      %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}
+        .row
+          .two.columns.text-center
+            %img{:src => "/assets/banner_ask_char.png"}
+          .ten.columns
+            .container
+              .header-group
+                %h3 Ask professionals
+                %h4.subheader Get free advice from experienced professionals!
+              = form_tag new_question_path, :method => "get" do
+                .row
+                  .ten.columns
+                    = text_field_tag "question[title]", nil, :placeholder => t(:question_placeholder), :class => "oversize"
+                  .two.columns
+                    = submit_tag t(:action_ask), :class => "radius button expand postfix"
+      %li#findTab{:class => @current_action_tab == "find" ? "active" : ""}
+        .row
+          .two.columns.text-center
+            %img{:src => "/assets/banner_find_char.png"}
+          .ten.columns
+            .container
+              .header-group
+                %h3 Find professionals
+                %h4.subheader Find top-rated professionals near you!
+              = form_tag professionals_path, :method => "get" do
+                .row
+                  .six.columns
+                    = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize"
+                  .four.columns
+                    = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
+                  .two.columns
+                    = submit_tag t(:action_find), :class => "radius button expand postfix"
+      %li#reviewTab{:class => @current_action_tab == "review" ? "active" : ""}
+        .row
+          .two.columns.text-center
+            %img{:src => "/assets/banner_review_char.png"}
+          .ten.columns
+            .container
+              .header-group
+                %h3 Review professionals
+                %h4.subheader Review your professionals so everyone can benefit!
+              %form
+                .row
+                  .ten.columns
+                    %input#who{:type => "text", :placeholder => "Who do you want to review?", :class => "oversize"}
+                  .two.columns
+                    %a.radius.button.expand.postfix Review

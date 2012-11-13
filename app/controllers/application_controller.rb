@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # I18n
   before_filter :set_locale
 
+  # Set correct header action tab
+  before_filter :set_current_action_tab
+
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
@@ -10,6 +13,19 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
+  end
+
+  def set_current_action_tab
+    if params[:action] == "index"
+      @current_action_tab = case params[:controller]
+        when "questions"     then "ask"
+        when "professionals" then "find"
+        when "reviews"       then "review"
+        else "ask"
+      end
+    else
+      @current_action_tab = ""
+    end
   end
 
   # Devise extras

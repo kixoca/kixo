@@ -1,4 +1,4 @@
-.professional-profile
+.professional.loop
   .headshot
     = image_tag professional.headshot.url(:thumb)
   .name
@@ -13,7 +13,7 @@
     %i.foundicon-location
     = professional.short_address
   .cta
-    %a.button.small{:href => "#"} View profile
+    %a.button.small{:href => url_for(professional)} View profile
   %ul.metrics.block-grid.three-up
     %li
       .label score

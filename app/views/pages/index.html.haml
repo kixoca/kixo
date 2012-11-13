@@ -1,20 +1,12 @@
-%section#banner{:style => "background-image: url(http://maps.googleapis.com/maps/api/staticmap?sensor=true&center=#{request.location.latitude},#{request.location.longitude}&zoom=13&size=640x640&scale=2&style=lightness:75|saturation:-100|visibility:simplified);"}
-  .container
-    .row
-      .twelve.columns.centered
-        #hero
-          %h1#hero_title
-            =t :hero_title
-          %h3#hero_subtitle.subheader
-            =t :hero_subtitle
-
 %section#content
   .container
     .row
       .eight.columns
-        %section#main
-          %section.latest-questions
-            - @latest_questions.each do |question|
-              = link_to question.title, question
+        %section#recent-questions
+          %h3 Recent question
+          %ul.questions
+            - @questions.each do |question|
+              %li
+                = render "questions/shared/loop", :question => question
       .four.columns
         %aside#sidebar

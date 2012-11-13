@@ -13,7 +13,7 @@ class ProfessionalsController < ApplicationController
       @what = params[:what]
       @topics = Topic.search(@what)
       @professions = Profession.search(@what)
-      @professionals = Professional.find(@what, @where)
+      @professionals = Professional.search(@what, @where)
     else
       @professionals = Professional.all
     end

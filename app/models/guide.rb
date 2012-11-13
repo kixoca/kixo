@@ -15,8 +15,8 @@ class Guide < ActiveRecord::Base
   # track versions with paper trail
   has_paper_trail
 
-  # auto-generate slug from title
-  before_validation :generate_slug_from_title
+  # set default values on init
+  after_initialize :default_values
 
   # validation
   validates :title,   :presence => true
@@ -27,5 +27,12 @@ class Guide < ActiveRecord::Base
   validates_existence_of :topic
   validates_existence_of :professional
   validates_existence_of :locale
+
+  private
+
+  def default_values
+    self.slug = self.name.parameterize if self.slug.blank?
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+  end
 
 end

@@ -60,15 +60,19 @@ class Professional < ActiveRecord::Base
   end
 
   # search method
-  def self.search(term)
+  def self.lookup(name)
     Professional.all(:conditions => ["name like ?", "%#{term}%"])
   end
 
   # find method
-  def self.find(what, where)
+  def self.search(what, where)
     what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
     where_query = Professional.near(where, 50).order("distance")
     what_query & where_query
+  end
+
+  def to_param
+    "#{id}-#{name.parameterize}"
   end
 
   private
