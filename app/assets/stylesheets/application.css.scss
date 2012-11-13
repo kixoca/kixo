@@ -12,11 +12,19 @@
 
 body {
   background-color: $bodyBgColor;
+  line-height: 1.6;
 }
 
 h1 {
   color: $mainColor;
 }
+
+h1 { font-size: $baseFontSize * 2.50; }
+h2 { font-size: $baseFontSize * 2.00; }
+h3 { font-size: $baseFontSize * 1.50; }
+h4 { font-size: $baseFontSize * 1.25; }
+h5 { font-size: $baseFontSize * 1.15; }
+h6 { font-size: $baseFontSize * 1.00; }
 
 .header-group {
   margin: 0 0 1em 0;
@@ -106,7 +114,7 @@ form .actions {
     #language {
       float: left;
       position: relative;
-      top: 18px;
+      top: 14px;
       left: 20px;
 
       a {
@@ -124,7 +132,7 @@ form .actions {
     }
 
     ul {
-      margin: 12px 0;
+      margin: 7px 0;
       float: right;
 
       ul {
@@ -287,77 +295,68 @@ form .actions {
   }
 }
 
-.professional.loop {
-  position: relative;
-  padding: 20px 20px 60px 20px;
-  border: 1px solid $borderColor;
-  text-align: center;
-  background: $white;
-
-  ul {
-    list-style: none;
-    margin: 0;
-  }
-
+.professional {
   .name {
-    font-size: 1.25em;
-    font-weight: bold;
+    margin: 0.25em 0;
   }
 
   .professions {
     color: $lightTxtColor;
     font-style: italic;
-
-    li {
-      display: inline-block;
-      margin: 0 0.25em;
-
-      &:after {
-        content: "/";
-      }
-
-      &:last-child:after {
-        content: "";
-      }
-    }
   }
 
   .address {
     color: $lightTxtColor;
   }
 
-  .cta {
-    margin: 15px 0;
+  &.full {
   }
 
-  .metrics {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border-top: 1px solid $borderColor;
+  &.loop {
+    position: relative;
+    padding: 20px 20px 60px 20px;
+    border: 1px solid $borderColor;
+    text-align: center;
+    background: $white;
 
-    li {
-      border: 1px solid $borderColor;
-      border-width: 0 1px 0 0;
+    ul {
+      list-style: none;
+      margin: 0;
+    }
 
-      &:last-child {
-        border-right: 0;
+    .cta {
+      margin: 15px 0;
+    }
+
+    .metrics {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid $borderColor;
+
+      li {
+        border: 1px solid $borderColor;
+        border-width: 0 1px 0 0;
+
+        &:last-child {
+          border-right: 0;
+        }
       }
-    }
 
-    .label {
-      background: none;
-      color: $lightTxtColor;
-      text-transform: uppercase;
-      font-size: 0.7em;
-      font-weight: normal;
-    }
+      .label {
+        background: none;
+        color: $lightTxtColor;
+        text-transform: uppercase;
+        font-size: 0.7em;
+        font-weight: normal;
+      }
 
-    .value {
-      font-size: 1.5em;
-      font-weight: bold;
-      line-height: 1;
+      .value {
+        font-size: 1.5em;
+        font-weight: bold;
+        line-height: 1;
+      }
     }
   }
 }

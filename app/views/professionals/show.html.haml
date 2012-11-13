@@ -2,6 +2,23 @@
   .container
     .row
       .eight.columns
-        %h1
-          = @professional.name
+        .page.professional.full
+          .page-head
+            .row
+              .three.columns.text-center
+                .headshot
+                  = image_tag @professional.headshot.url(:thumb)
+              .nine.columns
+                %h1.name
+                  = @professional.name
+                .row.collapse
+                  .six.columns
+                    .professions
+                      = @professional.profession_list
+                  .six.columns
+                    .address
+                      %i.foundicon-location
+                      = @professional.short_address
+          .page-body
+
       .four.columns
