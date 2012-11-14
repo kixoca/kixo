@@ -1,50 +1,70 @@
-%section#content
+%section#content.professional.full
   .container
     .row
       .eight.columns
-        .page.professional.full
+        .page
           .page-head
             .row
               .three.columns.text-center
                 .headshot
                   = image_tag @professional.headshot.url(:thumb)
-              .nine.columns
+              .nine.columns.mobile-text-center
                 %h1.name
                   = @professional.name
-                .row.collapse
-                  .six.columns
-                    .professions
-                      = @professional.profession_list
-                  .six.columns
-                    .address.short
-                      %i.foundicon-location
-                      = @professional.short_address
+                .professions
+                  = @professional.profession_list
           .page-body
-            .row
-              .six.columns
-                .address
-                  %h4 Address
-                  - unless @professional.street_address_1.blank?
-                    %span.street-address-1
-                      = "#{@professional.street_address_1}, "
-                    - unless @professional.street_address_2.blank?
-                      %span.street-address-2
-                        = @professional.street_address_2
-                  %br
-                  - unless @professional.locality.blank?
-                    %span.locality
-                      = "#{@professional.locality}, "
-                  - unless @professional.region.blank?
-                    %span.region
-                      = @professional.region
-                  - unless @professional.postal_code.blank?
-                    %span.postal_code
-                      = @professional.postal_code
-                  %br
-                  - unless @professional.country.blank?
-                    %span.country
-                      = @professional.country
-              .six.columns
-                .map
-
+            .page-section.thin
+              .teaser
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
+            .page-section.thin
+              %ul.metrics.block-grid.three-up
+                %li
+                  .key score
+                  .row
+                    .three.columns
+                      .value 77
+                    .nine.columns
+                      .round.progress.success
+                        %span.meter{:style => "width: 77%;"}
+                %li
+                  .key answers
+                  .value 12
+                %li
+                  .key reviews
+                  .value 6
+            .page-section
+              .row
+                .six.columns
+                  .address
+                    %h4.no-marg-top Address
+                    - unless @professional.street_address_1.blank?
+                      %span.street-address-1
+                        = "#{@professional.street_address_1}, "
+                      - unless @professional.street_address_2.blank?
+                        %span.street-address-2
+                          = @professional.street_address_2
+                    %br
+                    - unless @professional.locality.blank?
+                      %span.locality
+                        = "#{@professional.locality}, "
+                    - unless @professional.region.blank?
+                      %span.region
+                        = @professional.region
+                    - unless @professional.postal_code.blank?
+                      %span.postal_code
+                        = @professional.postal_code
+                    %br
+                    - unless @professional.country.blank?
+                      %span.country
+                        = @professional.country
+                  .contacts
+                    %h4 Contacts
+                    .tel
+                      = @professional.tel
+                .six.columns
+                  .map{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+            .page-section
+              %h4.no-marg-top Reviews
       .four.columns
+        .panel

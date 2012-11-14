@@ -1,3 +1,7 @@
+form .actions {
+  margin-top: 20px;
+}
+
 .panel {
   background: $white;
 
@@ -54,6 +58,21 @@ ul.side-nav {
   color: $mainColor;
 }
 
+.map {
+  img {
+    max-width: none;
+    height: auto;
+  }
+}
+
 .reveal-modal {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
+}
+
+@media only screen and (max-width: $screenSmall - 1) {
+
+  .mobile-text-center {
+    text-align: center;
+  }
+
 }

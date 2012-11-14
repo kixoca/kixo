@@ -4,17 +4,16 @@
       .twelve.columns
         .page
           .page-head
-            .header-group
-              %i.foundicon-page
-              %h1 Ask
-              %h4.subheader Get free, personalized advice from experienced professionals!
+            %h1 Ask
+            - unless params[:question].nil?
+              %h3.subheader Please complete your question
           .page-body
             .row
               .eight.columns
                 = form_for @question do |f|
                   .header-group
-                    %h4 Your question
-                    %h5.subheader Give as much background information as possible to make your question clear
+                    %h3 Your question
+                    %h4.subheader Give as much background information as possible to make your question clear
                   %p
                     = f.label :title
                     = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
@@ -23,8 +22,8 @@
                     = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
                   %hr
                   .header-group
-                    %h4 Choose a category
-                    %h5.subheader Select a category to make sure the right professionals answer you
+                    %h3 Choose a category
+                    %h4.subheader Select a category to make sure the right professionals answer you
                   %ul.accordion.compact
                     - @categories.each do |category|
                       %li

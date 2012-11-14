@@ -21,10 +21,46 @@ $(document).ready(function() {
     var $body = $('body');
     var $head = $('#head');
     var $languageSelect = $('#language-select').hide();
+    var $maps = $('.map');
 
     $head.find('.toggle').click(function(e) {
         e.preventDefault();
         $languageSelect.slideToggle();
+    });
+
+    $maps.each(function() {
+        var $map = $(this);
+        var mapId = $map.attr('id') ? $map.attr('id') : $map.attr('id', 'map-' + (new Date().getTime())).attr('id');
+        var mapLat = $map.data('latitude');
+        var mapLng = $map.data('longitude');
+        var mapZoom = $map.data('zoom') || 14;
+        var mapContent = $map.html();
+
+        var mapLatLng = new google.maps.LatLng(mapLat, mapLng);
+
+        var mapOptions = {
+            zoom: mapZoom,
+            center: mapLatLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        }
+
+        var map = new google.maps.Map(document.getElementById(mapId), mapOptions);
+
+        var mapMarker = new google.maps.Marker({
+            position: mapLatLng,
+            map: map,
+            title: ''
+        });
+
+        if ( mapContent ) {
+            var mapInfoWindow = new google.maps.InfoWindow({
+                content: mapContent
+            });
+
+            google.maps.event.addListener(mapMarker, 'click', function() {
+                mapInfoWindow.open(map, mapMarker);
+            });
+        }
     });
 
 });

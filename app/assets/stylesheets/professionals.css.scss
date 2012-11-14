@@ -1,3 +1,88 @@
-// Place all the styles related to the Professionals controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.professional {
+  .name {
+    margin: 0.25em 0;
+  }
+
+  .professions {
+    color: $lightTxtColor;
+    font-style: italic;
+  }
+
+  .teaser {
+    font-size: 1.1em;
+    margin-bottom: 0.5em;
+  }
+
+  .map {
+    height: 250px;
+  }
+
+  .contacts {
+    .tel {
+      font-size: 1.25em;
+    }
+  }
+
+  .metrics {
+    margin: 0;
+
+    li {
+      padding: 0 2em 0 0;
+    }
+
+    .key {
+      color: $lightTxtColor;
+      text-transform: uppercase;
+      font-size: 0.9em;
+    }
+
+    .value {
+      font-size: 1.5em;
+      font-weight: bold;
+      line-height: 25px;
+    }
+  }
+
+  &.loop {
+    position: relative;
+    padding: 20px 20px 60px 20px;
+    border: 1px solid $borderColor;
+    text-align: center;
+    background: $white;
+
+    ul {
+      list-style: none;
+      margin: 0;
+    }
+
+    .address {
+      color: $lightTxtColor;
+    }
+
+    .cta {
+      margin: 15px 0;
+    }
+
+    .metrics {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-top: 1px solid $borderColor;
+
+      li {
+        border: 1px solid $borderColor;
+        border-width: 0 1px 0 0;
+        padding: 5px;
+
+        &:last-child {
+          border-right: 0;
+        }
+      }
+
+      .key {
+        font-size: 0.7em;
+      }
+    }
+  }
+}
