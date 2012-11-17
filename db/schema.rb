@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110223834) do
+ActiveRecord::Schema.define(:version => 20121117032044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -170,6 +170,13 @@ ActiveRecord::Schema.define(:version => 20121110223834) do
     t.integer "topic_id"
   end
 
+  create_table "ratings", :force => true do |t|
+    t.string   "label",      :default => "", :null => false
+    t.integer  "locale_id",  :default => 1,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
   create_table "representants", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
     t.string   "encrypted_password",     :default => "", :null => false
@@ -205,8 +212,7 @@ ActiveRecord::Schema.define(:version => 20121110223834) do
 
   create_table "reviews", :force => true do |t|
     t.text     "comment",         :default => "", :null => false
-    t.integer  "rating",          :default => 0,  :null => false
-    t.string   "status",          :default => "", :null => false
+    t.integer  "rating_id",       :default => 0,  :null => false
     t.integer  "professional_id", :default => 0,  :null => false
     t.integer  "user_id",         :default => 0,  :null => false
     t.integer  "locale_id",       :default => 1,  :null => false

@@ -37,7 +37,7 @@ class CreateRepresentants < ActiveRecord::Migration
       t.has_attached_file :headshot
 
       #I18n
-      t.integer :locale_id, :null => false, :default => 1
+      t.integer :locale_id, :null => false, :default => 0
 
       t.timestamps
     end
