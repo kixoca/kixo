@@ -14,10 +14,10 @@
                 .professions
                   = @professional.profession_list
           .page-body
-            .page-section.thin
+            .page-section
               .teaser
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
-            .page-section.thin
+            .page-section
               %ul.metrics.block-grid.three-up
                 %li
                   .key score
@@ -37,7 +37,7 @@
               .row
                 .six.columns
                   .address
-                    %h4.no-marg-top Address
+                    %h4 Address
                     - unless @professional.street_address_1.blank?
                       %span.street-address-1
                         = "#{@professional.street_address_1}, "
@@ -63,8 +63,48 @@
                     .tel
                       = @professional.tel
                 .six.columns
-                  .map{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+                  .map
+                    %h4 Map
+                    .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
             .page-section
-              %h4.no-marg-top Reviews
+              .row
+                .twelve.columns
+                  .reviews
+                    %h4 Reviews
+                    - if @professional.reviews.count == 0
+                      %p.no-records
+                        = "No reviews for #{@professional.name} yet."
+                    - else
+                      %ul
+                        - @professional.reviews.each do |review|
+                          %li
+                            = review.user.name
+                            = review.title
+                            = review.details
+                    %h5
+                      = "Write a review for #{@professional.name}"
+                    = form_for @review do |f|
+                      = f.label :rating
+                      = f.text_field :rating
+                      = f.label :comment
+                      = f.text_area :comment, :rows => 4
+                      = f.submit "Create Review", :class => "button small"
+            .page-section
+              .row
+                .twelve.columns
+                  .guides
+                    %h4 Guides
+                    %ul
+                      - @professional.guides.each do |guide|
+                        %li
+                          = guide.topic.name
+                          = guide.title
+                          = guide.excerpt
       .four.columns
         .panel
+          %h5
+            = "Similar professionals in #{@professional.locality}, #{@professional.region}"
+            %ul
+              - @professional.similar.each do |professional|
+                %li
+                  = professional.name

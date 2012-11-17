@@ -4,6 +4,7 @@ Locale.destroy_all
 Category.destroy_all
 Topic.destroy_all
 Profession.destroy_all
+Rating.destroy_all
 
 locale_id = Locale.create(:name => "English", :code => "en").id
 
@@ -69,5 +70,11 @@ locale_id = Locale.create(:name => "English", :code => "en").id
     profession_id = Profession.create(:name => "Bankruptcy Trustee", :category_id => category_id, :locale_id => locale_id)
     profession_id = Profession.create(:name => "Investment Broker", :category_id => category_id, :locale_id => locale_id)
     profession_id = Profession.create(:name => "Real Estate Broker", :category_id => category_id, :locale_id => locale_id)
+
+  rating_id = Rating.create(:label => "Disappointing", :locale_id => locale_id)
+  rating_id = Rating.create(:label => "Poor", :locale_id => locale_id)
+  rating_id = Rating.create(:label => "Average", :locale_id => locale_id)
+  rating_id = Rating.create(:label => "Good", :locale_id => locale_id)
+  rating_id = Rating.create(:label => "Excellent", :locale_id => locale_id)
 
 locale_id = Locale.create(:name => "French", :code => "fr").id

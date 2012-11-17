@@ -21,44 +21,44 @@ $(document).ready(function() {
     var $body = $('body');
     var $head = $('#head');
     var $languageSelect = $('#language-select').hide();
-    var $maps = $('.map');
+    var $gmaps = $('.gmap');
 
     $head.find('.toggle').click(function(e) {
         e.preventDefault();
         $languageSelect.slideToggle();
     });
 
-    $maps.each(function() {
-        var $map = $(this);
-        var mapId = $map.attr('id') ? $map.attr('id') : $map.attr('id', 'map-' + (new Date().getTime())).attr('id');
-        var mapLat = $map.data('latitude');
-        var mapLng = $map.data('longitude');
-        var mapZoom = $map.data('zoom') || 14;
-        var mapContent = $map.html();
+    $gmaps.each(function() {
+        var $gmap = $(this);
+        var gmapId = $gmap.attr('id') ? $gmap.attr('id') : $gmap.attr('id', 'map-' + (new Date().getTime())).attr('id');
+        var gmapLat = $gmap.data('latitude');
+        var gmapLng = $gmap.data('longitude');
+        var gmapZoom = $gmap.data('zoom') || 14;
+        var gmapContent = $gmap.html();
 
-        var mapLatLng = new google.maps.LatLng(mapLat, mapLng);
+        var gmapLatLng = new google.maps.LatLng(gmapLat, gmapLng);
 
-        var mapOptions = {
-            zoom: mapZoom,
-            center: mapLatLng,
+        var gmapOptions = {
+            zoom: gmapZoom,
+            center: gmapLatLng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
-        var map = new google.maps.Map(document.getElementById(mapId), mapOptions);
+        var gmap = new google.maps.Map(document.getElementById(gmapId), gmapOptions);
 
-        var mapMarker = new google.maps.Marker({
-            position: mapLatLng,
-            map: map,
+        var gmapMarker = new google.maps.Marker({
+            position: gmapLatLng,
+            map: gmap,
             title: ''
         });
 
-        if ( mapContent ) {
+        if ( gmapContent ) {
             var mapInfoWindow = new google.maps.InfoWindow({
-                content: mapContent
+                content: gmapContent
             });
 
-            google.maps.event.addListener(mapMarker, 'click', function() {
-                mapInfoWindow.open(map, mapMarker);
+            google.maps.event.addListener(gmapMarker, 'click', function() {
+                mapInfoWindow.open(gmap, gmapMarker);
             });
         }
     });

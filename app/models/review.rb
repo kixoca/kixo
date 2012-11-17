@@ -1,7 +1,10 @@
 class Review < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :details, :status, :professional_id, :user_id, :locale_id
+  attr_accessible :comment, :rating_id, :professional_id, :user_id, :locale_id
+
+  # a review has one rating
+  belongs_to :rating
 
   # a review belongs to a professional
   belongs_to :professional
@@ -15,12 +18,20 @@ class Review < ActiveRecord::Base
   # track versions with paper trail
   has_paper_trail
 
+  # set default values on init
+  after_initialize :default_values
+
   # validation
   validates :comment, :presence => true
-  validates :rating,  :presence => true
-  validates :status,  :presence => true
+  validates_existence_of :rating
   validates_existence_of :professional
   validates_existence_of :user
   validates_existence_of :locale
+
+  private
+
+  def default_values
+    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+  end
 
 end

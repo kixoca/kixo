@@ -14,16 +14,12 @@ body {
   line-height: 1.6;
 }
 
-h1 {
-  color: $mainColor;
-}
-
-h1 { font-size: $baseFontSize * 2.50; }
-h2 { font-size: $baseFontSize * 2.00; }
-h3 { font-size: $baseFontSize * 1.50; }
-h4 { font-size: $baseFontSize * 1.25; }
-h5 { font-size: $baseFontSize * 1.15; }
-h6 { font-size: $baseFontSize * 1.00; }
+h1 { font-size: 2.25 * $baseFontSize; color: $mainColor; }
+h2 { font-size: 1.75 * $baseFontSize; }
+h3 { font-size: 1.50 * $baseFontSize; }
+h4 { font-size: 1.25 * $baseFontSize; }
+h5 { font-size: 1.00 * $baseFontSize; }
+h6 { font-size: 0.90 * $baseFontSize; }
 
 .header-group {
   margin: 0 0 1em 0;
@@ -35,6 +31,12 @@ h6 { font-size: $baseFontSize * 1.00; }
 
 .no-marg { margin: 0; }
 .no-marg-top { margin-top: 0; }
+.no-marg-bottom { margin-bottom: 0; }
+
+.no-records {
+  font-style: italic;
+  color: $lightTxtColor;
+}
 
 form {
   margin: 10px 0 0 0;
@@ -53,24 +55,20 @@ form {
   }
 
   .page-body {
-    padding: 30px;
+    padding: 15px 30px;
 
     .page-section {
       margin: 0 -30px;
-      padding: 30px;
+      padding: 15px 30px;
       border-bottom: 1px solid $borderColor;
 
       &:first-child {
-        margin-top: -30px;
+        margin-top: -15px;
       }
 
       &:last-child {
-        margin-bottom: -30px;
+        margin-bottom: -15px;
         border-bottom: none;
-      }
-
-      &.thin {
-        padding: 15px 30px;
       }
 
       &.blue {
@@ -101,6 +99,7 @@ form {
   }
 
   #head {
+    line-height: 1.0;
     border-top: 3px solid $kixoGreen;
 
     > .container {
@@ -114,25 +113,26 @@ form {
     #language {
       float: left;
       position: relative;
-      top: 14px;
+      top: 12px;
       left: 20px;
 
       a {
         color: $lightTxtColor;
+        font-size: 0.90 * $baseFontSize;
 
         &:hover {
           color: $txtColor;
         }
 
         i {
-          font-size: 0.7em;
+          font-size: 0.7 * $baseFontSize;
           opacity: 0.7;
         }
       }
     }
 
     ul {
-      margin: 7px 0;
+      margin: 6px 0;
       float: right;
 
       ul {
@@ -170,7 +170,7 @@ form {
           }
 
           .txt {
-            font-size: 1.15em;
+            font-size: 1.15 * $baseFontSize;
           }
 
           &:hover {
@@ -249,7 +249,7 @@ form {
     }
 
     p {
-      font-size: 11px;
+      font-size: 0.80 * $baseFontSize;
     }
   }
 
@@ -257,7 +257,7 @@ form {
     border-bottom: 1px solid rgba(255,255,255,0.10);
 
     a {
-      font-size: 12px;
+      font-size: 0.90 * $baseFontSize;
       background: none;
       color: $white;
 
@@ -277,7 +277,7 @@ form {
       list-style: none;
 
       li, a {
-        font-size: 12px;
+        font-size: 0.90 * $baseFontSize;
         font-weight: bold;
         color: $white;
       }
@@ -286,7 +286,7 @@ form {
         margin: 0;
 
         li, a {
-          font-size: 11px;
+          font-size: 0.80 * $baseFontSize;
           font-weight: normal;
           color: $secondaryColor;
         }

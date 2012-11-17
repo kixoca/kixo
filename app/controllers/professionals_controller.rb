@@ -29,6 +29,7 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1.json
   def show
     @professional = Professional.find(params[:id])
+    @review = @professional.reviews.new
 
     respond_to do |format|
       format.html # show.html.haml

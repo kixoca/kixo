@@ -19,6 +19,9 @@ class Professional < ActiveRecord::Base
   # a professional can have one or many answers
   has_many :answers
 
+  # a professional can have one or many reviews
+  has_many :reviews
+
   # I18n
   belongs_to :locale
 
@@ -69,6 +72,13 @@ class Professional < ActiveRecord::Base
     what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
     where_query = Professional.near(where, 50).order("distance")
     what_query & where_query
+  end
+
+  # find similar professionals
+  def similar
+    what = self.professions.first.name
+    where = self.full_address
+    Professional.search(what, where)
   end
 
   def to_param
