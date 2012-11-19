@@ -20,6 +20,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
     @question = Question.find(params[:id])
+    @answers = @question.answers
 
     respond_to do |format|
       format.html # show.html.haml
@@ -77,7 +78,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     respond_to do |format|
-      if @question.update_attributes(params[:questions])
+      if @question.update_attributes(params[:question])
         format.html {
           flash[:success] = t(:question_was_updated)
           redirect_to @question

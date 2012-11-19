@@ -11,14 +11,19 @@ Kixo::Application.routes.draw do
     devise_for :professionals
     devise_for :representants
 
-    resources :professionals
-    resources :questions
-    resources :answers
-    resources :guides
-    resources :categories
-    resources :topics
-    resources :professions
-    resources :reviews
+    resources :professionals do
+      resources :reviews
+    end
+
+    resources :questions do
+      resources :answers
+    end
+
+    resources :categories do
+      resources :topics
+      resources :professions
+      resources :guides
+    end
 
   end
 

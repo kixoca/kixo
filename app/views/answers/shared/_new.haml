@@ -1,0 +1,13 @@
+- if current_professional && current_professional.can_answer?(@question)
+  %h5 Answer this question
+  = form_for [question, question.answers.new] do |f|
+    = f.hidden_field :question_id, :value => question.id
+    .row
+      .twelve.columns
+        = f.text_area :details, :rows => 6
+    .row
+      .twelve.columns
+        = f.submit "Post Answer", :class => "button small"
+- else
+  %p.not-allowed
+    You cannot answer this question.

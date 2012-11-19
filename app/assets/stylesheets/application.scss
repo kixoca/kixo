@@ -38,8 +38,28 @@ h6 { font-size: 0.90 * $baseFontSize; }
   color: $lightTxtColor;
 }
 
+.meta {
+  font-size: 0.90 * $baseFontSize;
+  color: $lightTxtColor;
+}
+
 form {
   margin: 10px 0 0 0;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  font-size: $baseFontSize;
 }
 
 .page {
@@ -296,5 +316,8 @@ form {
 }
 
 @import "professionals";
+@import "reviews";
+@import "questions";
+@import "answers";
 
 @import "fixes";

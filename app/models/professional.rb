@@ -20,7 +20,7 @@ class Professional < ActiveRecord::Base
   has_many :answers
 
   # a professional can have one or many reviews
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
 
   # I18n
   belongs_to :locale
@@ -72,6 +72,10 @@ class Professional < ActiveRecord::Base
     what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
     where_query = Professional.near(where, 50).order("distance")
     what_query & where_query
+  end
+
+  def can_answer?(question)
+    self.topics.all(:conditions => {:id => question.topics.pluck("id")}).count > 0
   end
 
   # find similar professionals

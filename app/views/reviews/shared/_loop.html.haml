@@ -1,0 +1,14 @@
+.review
+  .meta
+    %span.author_name
+      = review.user.name
+    %time.created_at{:datetime => review.created_at}
+      = "#{time_ago_in_words(review.created_at)} ago"
+  .content
+    %span.rating{:class => "rating#{review.rating.id}"}
+      = review.rating.label
+    %span.comment
+      = review.comment
+  - if review.user == current_user
+    .actions
+      = link_to 'Delete review', professional_review_path(review.professional, review), :confirm => 'Are you sure?', :method => :delete, :class => "button tiny alert"

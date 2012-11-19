@@ -14,6 +14,7 @@ class Rating < ActiveRecord::Base
 
   # validation
   validates :label, :presence => true
+  validates_existence_of :locale
 
   private
 

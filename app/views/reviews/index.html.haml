@@ -1,0 +1,29 @@
+%section#content.professional
+  .container
+    .row
+      .eight.columns
+        .page
+          .page-head
+            .row
+              .three.columns.text-center
+                .headshot
+                  = image_tag @professional.headshot.url(:thumb)
+              .nine.columns.mobile-text-center
+                %h1.name
+                  %a{:href => professional_path(@professional)}
+                    = @professional.name
+                .professions
+                  = @professional.profession_list
+          .page-body
+            .reviews
+              %h4
+                = "#{@reviews.count} reviews for #{@professional.name}"
+              - if @reviews.count == 0
+                %p.no-records
+                  = "No reviews for #{@professional.name} yet."
+              - else
+                %ul
+                  - @reviews.each do |review|
+                    %li
+                      = render "reviews/shared/loop", :review => review
+              = render "reviews/shared/new", :professional => @professional

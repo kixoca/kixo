@@ -123,7 +123,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
-    t.integer  "locale_id",              :default => 1,  :null => false
+    t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.float    "latitude"
@@ -172,7 +172,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
 
   create_table "ratings", :force => true do |t|
     t.string   "label",      :default => "", :null => false
-    t.integer  "locale_id",  :default => 1,  :null => false
+    t.integer  "locale_id",  :default => 0,  :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
@@ -200,7 +200,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
-    t.integer  "locale_id",              :default => 1,  :null => false
+    t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.float    "latitude"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
     t.integer  "rating_id",       :default => 0,  :null => false
     t.integer  "professional_id", :default => 0,  :null => false
     t.integer  "user_id",         :default => 0,  :null => false
-    t.integer  "locale_id",       :default => 1,  :null => false
+    t.integer  "locale_id",       :default => 0,  :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
@@ -255,7 +255,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
-    t.integer  "locale_id",              :default => 1,  :null => false
+    t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
     t.float    "latitude"

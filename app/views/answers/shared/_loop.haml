@@ -1,0 +1,12 @@
+.answer
+  .meta
+    %span.author_name
+      = answer.professional.name
+    %span.created_at
+      = "#{time_ago_in_words(answer.created_at)} ago"
+  .content
+    .details
+      = answer.details
+  - if answer.professional == current_professional
+    .actions
+      = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "button tiny alert"

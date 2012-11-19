@@ -6,6 +6,9 @@ class Question < ActiveRecord::Base
   # a questions belongs to a user
   belongs_to :user
 
+  # a question can have one or many answers
+  has_many :answers
+
   # a questions is related to one or many topics
   has_and_belongs_to_many :topics
 
@@ -24,6 +27,10 @@ class Question < ActiveRecord::Base
   validates_presence_of :topics
   validates_existence_of :user
   validates_existence_of :locale
+
+  def to_param
+    "#{id}-#{title.parameterize}"
+  end
 
   private
 

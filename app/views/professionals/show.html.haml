@@ -1,9 +1,9 @@
-%section#content.professional.full
+%section#content
   .container
     .row
       .eight.columns
-        .page
-          .page-head
+        .page.professional
+          %header.page-head
             .row
               .three.columns.text-center
                 .headshot
@@ -14,10 +14,9 @@
                 .professions
                   = @professional.profession_list
           .page-body
-            .page-section
-              .teaser
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
-            .page-section
+            %section#teaser.page-section
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
+            %section#metrics.page-section
               %ul.metrics.block-grid.three-up
                 %li
                   .key score
@@ -33,7 +32,7 @@
                 %li
                   .key reviews
                   .value 6
-            .page-section
+            %section#location.page-section
               .row
                 .six.columns
                   .address
@@ -66,40 +65,35 @@
                   .map
                     %h4 Map
                     .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-            .page-section
+            %section#reviews.page-section
               .row
                 .twelve.columns
-                  .reviews
-                    %h4 Reviews
-                    - if @professional.reviews.count == 0
-                      %p.no-records
-                        = "No reviews for #{@professional.name} yet."
-                    - else
-                      %ul
-                        - @professional.reviews.each do |review|
-                          %li
-                            = review.user.name
-                            = review.title
-                            = review.details
-                    %h5
-                      = "Write a review for #{@professional.name}"
-                    = form_for @review do |f|
-                      = f.label :rating
-                      = f.text_field :rating
-                      = f.label :comment
-                      = f.text_area :comment, :rows => 4
-                      = f.submit "Create Review", :class => "button small"
-            .page-section
+                  %h4 Reviews
+                  - unless @reviews.nil?
+                    %ul.reviews
+                      - @reviews.each do |review|
+                        %li
+                          = render "reviews/shared/loop", :review => review
+                    %p.view-all
+                      %a{:href => professional_reviews_path(@professional)} View all reviews
+                  - else
+                    %p.no-records
+                      = "No reviews for #{@professional.name} yet."
+                  = render "reviews/shared/new", :professional => @professional
+            %section#guides.page-section
               .row
                 .twelve.columns
-                  .guides
-                    %h4 Guides
-                    %ul
-                      - @professional.guides.each do |guide|
+                  %h4 Guides
+                  - unless @guides.nil?
+                    %ul.guides
+                      - @guides.each do |guide|
                         %li
                           = guide.topic.name
                           = guide.title
                           = guide.excerpt
+                  - else
+                    %p.no-records
+                      = "#{@professional.name} hasn't written any guide yet."
       .four.columns
         .panel
           %h5

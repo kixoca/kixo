@@ -1,12 +1,30 @@
 %section#content
   .container
     .row
-      .page
-        .page-body
-          .row
-            .eight.columns
-              %h1
-                = @question.title
-              %p
-                = @question.details
-            .four.columns
+      .eight.columns
+        .page.question
+          %header.page-head
+            %h1.title
+              = @question.title
+            .meta
+              %time.created_at{:datetime => @question.created_at}
+                = "Asked #{time_ago_in_words(@question.created_at)} ago"
+              %span.location
+                = "in #{@question.user.short_address}"
+            %ul.topics
+              - @question.topics.each do |topic|
+                %li
+                  = topic.name
+          .page-body
+            %section#details.page-section
+              = @question.details
+            %section#answers.page-section
+              - unless @answers.nil?
+                %ul
+                - @answers.each do |answer|
+                  %li
+                    = render "answers/shared/loop", :answer => answer
+              - else
+                %p.no-records No answers yet.
+              = render "answers/shared/new", :question => @question
+      .four.columns

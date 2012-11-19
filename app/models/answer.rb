@@ -13,7 +13,7 @@ class Answer < ActiveRecord::Base
 
   # validation
   validates :details, :presence => true
-  validates_existence_of :questions
+  validates_existence_of :question
   validates_existence_of :professional
 
 end

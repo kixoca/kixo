@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :questions
 
   # a user can be the author of many reviews
-  has_many :reviews
+  has_many :reviews, :dependent => :destroy
 
   # I18n
   belongs_to :locale
@@ -31,8 +31,16 @@ class User < ActiveRecord::Base
   validates :email, :presence => true
   validates_existence_of :locale
 
+  def short_address
+    "#{self.locality}, #{self.region}"
+  end
+
   def full_address
     "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+  end
+
+  def can_review?(professional)
+    self.reviews.all(:conditions => {:professional_id => professional.id}).count == 0
   end
 
   private

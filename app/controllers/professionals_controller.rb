@@ -13,9 +13,9 @@ class ProfessionalsController < ApplicationController
       @what = params[:what]
       @topics = Topic.search(@what)
       @professions = Profession.search(@what)
-      @professionals = Professional.search(@what, @where)
+      @professionals = Professional.search(@what, @where).paginate(:page => params[:page])
     else
-      @professionals = Professional.all
+      @professionals = Professional.paginate(:page => params[:page])
     end
 
     respond_to do |format|
@@ -29,7 +29,9 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1.json
   def show
     @professional = Professional.find(params[:id])
-    @review = @professional.reviews.new
+    @reviews = @professional.reviews.paginate(:page => params[:page])
+    @guides = @professional.guides.paginate(:page => params[:page])
+    @ratings = Rating.by_locale
 
     respond_to do |format|
       format.html # show.html.haml

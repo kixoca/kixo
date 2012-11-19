@@ -23,22 +23,22 @@
             %ul.categories.block-grid.five-up
               - Category.by_locale.each do |category|
                 %li
-                  %a.category{:href => url_for(category)}
+                  %a.category{:href => category_path(category)}
                     = category.name
                   %ul.topics
                     - category.topics.each do |topic|
                       %li
-                        %a.topic{:href => url_for(topic)}
+                        %a.topic{:href => category_topic_path(category, topic)}
                           = topic.name
           %li#browsebyprofessionTab
             %ul.categories.block-grid.five-up
               - Category.by_locale.each do |category|
                 %li
-                  %a.category{:href => url_for(category)}
+                  %a.category{:href => category_path(category)}
                     = category.name
                   %ul.topics
                     - category.professions.each do |profession|
                       %li
-                        %a.profession{:href => url_for(profession)}
+                        %a.profession{:href => category_profession_path(category, profession)}
                           = profession.name
           %li#browsebylocationTab
