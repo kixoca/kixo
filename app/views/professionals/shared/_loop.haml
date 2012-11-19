@@ -1,26 +1,29 @@
 .professional.loop.page
-  .headshot
-    = image_tag professional.headshot.url(:thumb)
-  %h4.name
-    = professional.name
-  .professions
-    = professional.professions.first.name
-    - if professional.professions.count > 1
-      and
-      %span.has-tip.tip-top.noradius{:title => "#{professional.profession_list}"}
-        = "#{professional.professions.count-1} more"
-  .address.short
-    %i.foundicon-location
-    = professional.short_address
-  .cta
-    %a.button.small{:href => url_for(professional)} View profile
-  %ul.metrics.block-grid.three-up
-    %li
-      .key score
-      .value 77
-    %li
-      .key answers
-      .value 12
-    %li
-      .key reviews
-      .value 6
+  .page-body
+    .page-section
+      .headshot
+        = image_tag professional.headshot.url(:thumb)
+      %h4.name
+        = professional.name
+      .professions
+        = professional.professions.first.name
+        - if professional.professions.count > 1
+          and
+          %span.has-tip.tip-top.noradius{:title => "#{professional.profession_list}"}
+            = "#{professional.professions.count-1} more"
+      .address.short
+        %i.foundicon-location
+        = professional.short_address
+      .cta
+        %a.button.small{:href => url_for(professional)} View profile
+    .page-section.no-pad
+      %ul.metrics.block-grid.three-up
+        %li
+          .key score
+          .value 77
+        %li
+          .key answers
+          .value 12
+        %li
+          .key reviews
+          .value 6

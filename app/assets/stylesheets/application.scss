@@ -29,9 +29,12 @@ h6 { font-size: 0.90 * $baseFontSize; }
   .subheader { margin-top: 0.25em; }
 }
 
-.no-marg { margin: 0; }
-.no-marg-top { margin-top: 0; }
-.no-marg-bottom { margin-bottom: 0; }
+.no-marg { margin: 0 !important; }
+.no-marg-top { margin-top: 0 !important; }
+.no-marg-bottom { margin-bottom: 0 !important; }
+.no-pad { padding: 0 !important; }
+.no-pad-top { padding-top: 0 !important; }
+.no-pad-bottom { padding-bottom: 0 !important; }
 
 .no-records {
   font-style: italic;
