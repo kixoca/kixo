@@ -54,4 +54,4 @@ gem 'google-webfonts'
 
 gem 'geocoder'
 
-gem 'will_paginate', '~> 3.0'
+gem 'kaminari'

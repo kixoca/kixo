@@ -13,9 +13,9 @@ class ProfessionalsController < ApplicationController
       @what = params[:what]
       @topics = Topic.search(@what)
       @professions = Profession.search(@what)
-      @professionals = Professional.search(@what, @where).paginate(:page => params[:page])
+      @professionals = Professional.search(@what, @where).page(params[:page])
     else
-      @professionals = Professional.paginate(:page => params[:page])
+      @professionals = Professional.page(params[:page])
     end
 
     respond_to do |format|

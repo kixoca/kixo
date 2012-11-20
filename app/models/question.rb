@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :details, :status, :topic_ids, :user_id, :locale_id
+  attr_accessible :title, :details, :status_id, :topic_ids, :user_id, :locale_id
 
   # a questions belongs to a user
   belongs_to :user
@@ -9,8 +9,11 @@ class Question < ActiveRecord::Base
   # a question can have one or many answers
   has_many :answers
 
-  # a questions is related to one or many topics
+  # a question is related to one or many topics
   has_and_belongs_to_many :topics
+
+  # a question has a status
+  has_one :question_status, :as => :status
 
   # I18n
   belongs_to :locale
@@ -27,6 +30,10 @@ class Question < ActiveRecord::Base
   validates_presence_of :topics
   validates_existence_of :user
   validates_existence_of :locale
+
+  def topics_list
+    self.topics.pluck("name").join(", ")
+  end
 
   def to_param
     "#{id}-#{title.parameterize}"

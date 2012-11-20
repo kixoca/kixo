@@ -7,7 +7,7 @@ class QuestionsController < ApplicationController
   # GET /questions
   # GET /questions.json
   def index
-    @questions = Question.by_locale.all
+    @questions = Question.by_locale.order("created_at").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.haml

@@ -218,7 +218,6 @@ GEM
     validates_existence (0.7.1)
     warden (1.2.1)
       rack (>= 1.0)
-    will_paginate (3.0.3)
     zurb-foundation (3.2.0)
       compass (>= 0.12.2)
       modular-scale (>= 1.0.2)
@@ -239,6 +238,7 @@ DEPENDENCIES
   google-webfonts
   haml-rails
   jquery-rails
+  kaminari
   less-rails (~> 2.2.4)
   meta_search (>= 1.1.0.pre)
   oauth2
@@ -255,5 +255,4 @@ DEPENDENCIES
   thin
   uglifier (>= 1.0.3)
   validates_existence (>= 0.4)
-  will_paginate (~> 3.0)
   zurb-foundation

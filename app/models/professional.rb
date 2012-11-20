@@ -24,6 +24,7 @@ class Professional < ActiveRecord::Base
 
   # I18n
   belongs_to :locale
+  has_and_belongs_to_many :locales
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :large => "150x150>", :medium => "100x100>", :thumb => "50x50>" }
@@ -54,12 +55,12 @@ class Professional < ActiveRecord::Base
     "#{self.locality}, #{self.region}"
   end
 
-  def profession_list
-    list = []
-    self.professions.each do |profession|
-      list.push(profession.name)
-    end
-    list.join(", ")
+  def topics_list
+    self.topics.pluck("name").join(", ")
+  end
+
+  def professions_list
+    self.professions.pluck("name").join(", ")
   end
 
   # search method
