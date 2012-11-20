@@ -1,12 +1,27 @@
 ActiveAdmin.register Category do
+  filter :locale
+  filter :name
+  filter :slug
+  filter :created_at
+  filter :updated_at
 
   index do
-    column :name do |category|
-      link_to category.name, admin_category_path(category)
-    end
+    column :name
     column :slug
     column :description
+    column :locale
     default_actions
+  end
+
+  show do
+    attributes_table do
+      row :name
+      row :slug
+      row :description
+      row :locale
+      row :created_at
+      row :updated_at
+    end
   end
 
 end

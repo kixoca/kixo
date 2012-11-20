@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121117032044) do
+ActiveRecord::Schema.define(:version => 20121120170618) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.integer  "representant_id"
     t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
@@ -132,6 +133,11 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
 
   add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true
   add_index "professionals", ["reset_password_token"], :name => "index_professionals_on_reset_password_token", :unique => true
+
+  create_table "professionals_locales", :id => false, :force => true do |t|
+    t.integer "professional_id"
+    t.integer "locale_id"
+  end
 
   create_table "professionals_professions", :id => false, :force => true do |t|
     t.integer "professional_id"
@@ -155,14 +161,23 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
 
   add_index "professions", ["slug"], :name => "index_professions_on_slug", :unique => true
 
+  create_table "question_statuses", :force => true do |t|
+    t.string "name", :default => "", :null => false
+  end
+
+  create_table "question_visibilities", :force => true do |t|
+    t.string "name", :default => "", :null => false
+  end
+
   create_table "questions", :force => true do |t|
-    t.string   "title",      :default => "",  :null => false
+    t.string   "title",         :default => "",  :null => false
     t.text     "details"
-    t.string   "status",     :default => "0", :null => false
-    t.integer  "user_id",    :default => 0,   :null => false
-    t.integer  "locale_id",  :default => 0,   :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.string   "status_id",     :default => "0", :null => false
+    t.integer  "visibility_id", :default => 0,   :null => false
+    t.integer  "user_id",       :default => 0,   :null => false
+    t.integer  "locale_id",     :default => 0,   :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "questions_topics", :id => false, :force => true do |t|
@@ -171,10 +186,7 @@ ActiveRecord::Schema.define(:version => 20121117032044) do
   end
 
   create_table "ratings", :force => true do |t|
-    t.string   "label",      :default => "", :null => false
-    t.integer  "locale_id",  :default => 0,  :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string "name", :default => "", :null => false
   end
 
   create_table "representants", :force => true do |t|

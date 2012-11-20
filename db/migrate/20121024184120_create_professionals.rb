@@ -36,6 +36,9 @@ class CreateProfessionals < ActiveRecord::Migration
       # profile picture (headshot)
       t.has_attached_file :headshot
 
+      # representant
+      t.integer :representant_id
+
       #I18n
       t.integer :locale_id, :null => false, :default => 0
 

@@ -1,4 +1,4 @@
-class QuestionStatus < ActiveRecord::Base
+class QuestionVisibility < ActiveRecord::Base
 
   attr_accessible :name
 

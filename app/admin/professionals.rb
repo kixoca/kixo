@@ -21,6 +21,7 @@ ActiveAdmin.register Professional do
     column :professions do |professional|
       professional.professions_list
     end
+    column :representant
     default_actions
   end
 
@@ -44,6 +45,7 @@ ActiveAdmin.register Professional do
       row :professions do
         professional.professions.pluck("name").join(", ")
       end
+      row :representant
       row :locale
       row :created_at
       row :updated_at
@@ -52,9 +54,11 @@ ActiveAdmin.register Professional do
   end
 
   form do |f|
-    f.inputs "Details" do
+    f.inputs do
       f.input :name
       f.input :email
+      f.input :password
+      f.input :password_confirmation
       f.input :tel
       f.input :street_address_1
       f.input :street_address_2
@@ -65,8 +69,9 @@ ActiveAdmin.register Professional do
       f.input :headshot
       f.input :topics
       f.input :professions
+      f.input :representant
       f.input :locale
     end
-    f.buttons
+    f.actions
   end
 end

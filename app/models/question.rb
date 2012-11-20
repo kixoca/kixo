@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :details, :status_id, :topic_ids, :user_id, :locale_id
+  attr_accessible :title, :details, :status_id, :visibility_id, :topic_ids, :user_id, :locale_id
 
   # a questions belongs to a user
   belongs_to :user
@@ -13,7 +13,10 @@ class Question < ActiveRecord::Base
   has_and_belongs_to_many :topics
 
   # a question has a status
-  has_one :question_status, :as => :status
+  belongs_to :status, :class_name => "QuestionStatus"
+
+  # a question has a visibility
+  belongs_to :visibility, :class_name => "QuestionVisibility"
 
   # I18n
   belongs_to :locale
@@ -26,10 +29,15 @@ class Question < ActiveRecord::Base
 
   # validation
   validates :title,  :presence => true
-  validates :status, :presence => true
   validates_presence_of :topics
+  validates_existence_of :status
+  validates_existence_of :visibility
   validates_existence_of :user
   validates_existence_of :locale
+
+  def is_open?
+    self.status == QuestionStatus.find_by_name("Open")
+  end
 
   def topics_list
     self.topics.pluck("name").join(", ")
@@ -42,8 +50,9 @@ class Question < ActiveRecord::Base
   private
 
   def default_values
-    self.status = 1 if (self.status.nil? or self.status == 0)
-    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+    self.status = QuestionStatus.find_by_name("Open") if self.status.nil?
+    self.visibility = QuestionVisibility.find_by_name("Public") if self.visibility.nil?
+    self.locale = Locale.find_by_code(I18n.locale) if (self.locale_id.nil? or self.locale_id == 0)
   end
 
 end

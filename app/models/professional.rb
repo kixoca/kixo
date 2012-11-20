@@ -5,7 +5,7 @@ class Professional < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot, :topic_ids, :profession_ids, :locale_id
+                  :headshot, :topic_ids, :profession_ids, :representant_id, :locale_id
 
   # a professional is associated with one or many topics
   has_and_belongs_to_many :topics
@@ -21,6 +21,9 @@ class Professional < ActiveRecord::Base
 
   # a professional can have one or many reviews
   has_many :reviews, :dependent => :destroy
+
+  # a professional belongs to a representant
+  belongs_to :representant
 
   # I18n
   belongs_to :locale
@@ -76,7 +79,9 @@ class Professional < ActiveRecord::Base
   end
 
   def can_answer?(question)
-    self.topics.all(:conditions => {:id => question.topics.pluck("id")}).count > 0
+    question_status_test = question.is_open?
+    topics_test = self.topics.all(:conditions => {:id => question.topics.pluck("id")}).count > 0
+    question_status_test && topics_test
   end
 
   # find similar professionals

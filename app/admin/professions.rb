@@ -1,4 +1,5 @@
 ActiveAdmin.register Profession do
+  filter :locale
   filter :category
   filter :name
   filter :slug
@@ -8,6 +9,7 @@ ActiveAdmin.register Profession do
   index do
     column :name
     column :slug
+    column :locale
     column :category
     default_actions
   end

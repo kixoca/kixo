@@ -29,8 +29,8 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1.json
   def show
     @professional = Professional.find(params[:id])
-    @reviews = @professional.reviews.paginate(:page => params[:page])
-    @guides = @professional.guides.paginate(:page => params[:page])
+    @reviews = @professional.reviews.page(params[:page])
+    @guides = @professional.guides.page(params[:page])
     @ratings = Rating.by_locale
 
     respond_to do |format|
