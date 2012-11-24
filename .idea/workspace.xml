@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_font_awesome.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/categories.rb" afterPath="$PROJECT_DIR$/app/admin/categories.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/guides.rb" afterPath="$PROJECT_DIR$/app/admin/guides.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/questions.rb" afterPath="$PROJECT_DIR$/app/admin/questions.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/reviews.rb" afterPath="$PROJECT_DIR$/app/admin/reviews.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_mixins.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_mixins.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/application.scss" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/category.rb" afterPath="$PROJECT_DIR$/app/models/category.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/guide.rb" afterPath="$PROJECT_DIR$/app/models/guide.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/profession.rb" afterPath="$PROJECT_DIR$/app/models/profession.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/professional.rb" afterPath="$PROJECT_DIR$/app/models/professional.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/topic.rb" afterPath="$PROJECT_DIR$/app/models/topic.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/reviews/shared/_loop.html.haml" afterPath="$PROJECT_DIR$/app/views/reviews/shared/_loop.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/reviews/shared/_new.html.haml" afterPath="$PROJECT_DIR$/app/views/reviews/shared/_new.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_actions.haml" afterPath="$PROJECT_DIR$/app/views/shared/_actions.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/locales/en.yml" afterPath="$PROJECT_DIR$/config/locales/en.yml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184126_create_topics.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184126_create_topics.rb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184127_create_professions.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184127_create_professions.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb" afterPath="$PROJECT_DIR$/db/migrate/20121024184235_create_guides.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121117032044_create_ratings.rb" afterPath="$PROJECT_DIR$/db/migrate/20121117032044_create_ratings.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121120163532_create_question_statuses.rb" afterPath="$PROJECT_DIR$/db/migrate/20121120163532_create_question_statuses.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/migrate/20121120170618_create_question_visibilities.rb" afterPath="$PROJECT_DIR$/db/migrate/20121120170618_create_question_visibilities.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/seeds.rb" afterPath="$PROJECT_DIR$/db/seeds.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -81,9 +57,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/models/topic.rb" />
-        <option value="$PROJECT_DIR$/db/migrate/20121024184126_create_topics.rb" />
-        <option value="$PROJECT_DIR$/app/admin/guides.rb" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_mixins.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_font_awesome.scss" />
@@ -97,6 +70,9 @@
         <option value="$PROJECT_DIR$/db/migrate/20121120170618_create_question_visibilities.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121121022330_create_guide_statuses.rb" />
         <option value="$PROJECT_DIR$/db/migrate/20121120163532_create_question_statuses.rb" />
+        <option value="$PROJECT_DIR$/app/models/category.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb" />
+        <option value="$PROJECT_DIR$/db/migrate/20121024184127_create_professions.rb" />
       </list>
     </option>
   </component>
@@ -231,24 +207,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="models" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="admin" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -647,48 +605,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/admin/guides.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="39" column="13" selection-start="674" selection-end="674" vertical-scroll-proportion="0.89041096">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/professional.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/professionals_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="36" selection-start="535" selection-end="535" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/admin/questions.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184120_create_professionals.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="68" selection-start="1332" selection-end="1396" vertical-scroll-proportion="0.7553018">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.24469821">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/config/initializers/kaminari_config.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
@@ -748,6 +664,48 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20121024184137_create_answers.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/admin/categories.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/category.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="36" selection-start="372" selection-end="372" vertical-scroll-proportion="0.41095892">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184125_create_categories.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="7" column="7" selection-start="256" selection-end="256" vertical-scroll-proportion="0.15981735">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184126_create_topics.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184127_create_professions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="7" selection-start="336" selection-end="336" vertical-scroll-proportion="0.1826484">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/db/migrate/20121024184129_create_questions.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="10" column="7" selection-start="458" selection-end="458" vertical-scroll-proportion="0.2283105">
           <folding />
         </state>
       </provider>

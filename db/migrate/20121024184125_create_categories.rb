@@ -6,8 +6,5 @@ class CreateCategories < ActiveRecord::Migration
       t.integer :locale_id,  :null => false, :default => 0
       t.timestamps
     end
-
-    # slug must be unique
-    add_index :categories, :slug, :unique => true
   end
 end

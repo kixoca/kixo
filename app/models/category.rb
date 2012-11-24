@@ -17,7 +17,6 @@ class Category < ActiveRecord::Base
 
   # validation
   validates :name, :presence => true
-  validates :slug, :presence => true
   validates_existence_of :locale
 
   private
