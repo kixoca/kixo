@@ -60,22 +60,20 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
 
   create_table "categories", :force => true do |t|
     t.string   "name",                       :null => false
-    t.string   "slug",                       :null => false
     t.text     "description"
     t.integer  "locale_id",   :default => 0, :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
 
-  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
-
   create_table "guide_statuses", :force => true do |t|
     t.string "name", :default => "", :null => false
   end
 
+  add_index "guide_statuses", ["name"], :name => "index_guide_statuses_on_name", :unique => true
+
   create_table "guides", :force => true do |t|
     t.string   "title",           :default => "", :null => false
-    t.string   "slug",            :default => "", :null => false
     t.string   "excerpt",         :default => "", :null => false
     t.string   "status",          :default => "", :null => false
     t.text     "content",         :default => "", :null => false
@@ -85,8 +83,6 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
   end
-
-  add_index "guides", ["slug"], :name => "index_guides_on_slug", :unique => true
 
   create_table "guides_topics", :id => false, :force => true do |t|
     t.integer "guide_id"
@@ -155,7 +151,6 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
 
   create_table "professions", :force => true do |t|
     t.string   "name",        :default => "", :null => false
-    t.string   "slug",        :default => "", :null => false
     t.text     "description"
     t.integer  "category_id", :default => 0,  :null => false
     t.integer  "locale_id",   :default => 0,  :null => false
@@ -163,15 +158,17 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
     t.datetime "updated_at",                  :null => false
   end
 
-  add_index "professions", ["slug"], :name => "index_professions_on_slug", :unique => true
-
   create_table "question_statuses", :force => true do |t|
     t.string "name", :default => "", :null => false
   end
 
+  add_index "question_statuses", ["name"], :name => "index_question_statuses_on_name", :unique => true
+
   create_table "question_visibilities", :force => true do |t|
     t.string "name", :default => "", :null => false
   end
+
+  add_index "question_visibilities", ["name"], :name => "index_question_visibilities_on_name", :unique => true
 
   create_table "questions", :force => true do |t|
     t.string   "title",         :default => "",  :null => false
@@ -192,6 +189,8 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
   create_table "ratings", :force => true do |t|
     t.string "name", :default => "", :null => false
   end
+
+  add_index "ratings", ["name"], :name => "index_ratings_on_name", :unique => true
 
   create_table "representants", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -238,7 +237,6 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
 
   create_table "topics", :force => true do |t|
     t.string   "name",        :default => "", :null => false
-    t.string   "slug",        :default => "", :null => false
     t.text     "description"
     t.integer  "category_id", :default => 0,  :null => false
     t.integer  "locale_id",   :default => 0,  :null => false

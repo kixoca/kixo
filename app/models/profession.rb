@@ -32,7 +32,6 @@ class Profession < ActiveRecord::Base
   private
 
   def default_values
-    self.slug = self.name.parameterize if self.slug.blank?
     self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 end

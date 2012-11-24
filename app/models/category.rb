@@ -19,10 +19,13 @@ class Category < ActiveRecord::Base
   validates :name, :presence => true
   validates_existence_of :locale
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   private
 
   def default_values
-    self.slug = self.name.parameterize if self.slug.blank?
     self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 end

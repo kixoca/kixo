@@ -28,10 +28,13 @@ class Topic < ActiveRecord::Base
     Topic.all(:conditions => ["name like ?", "%#{term}%"])
   end
 
+  def to_param
+    "#{id}-#{name.parameterize}"
+  end
+
   private
 
   def default_values
-    self.slug = self.name.parameterize if self.slug.blank?
     self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 
