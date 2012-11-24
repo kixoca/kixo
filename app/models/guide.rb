@@ -41,7 +41,6 @@ class Guide < ActiveRecord::Base
   private
 
   def default_values
-    self.slug = self.title.parameterize if self.slug.blank?
     self.status = GuideStatus.find_by_name("Draft") if self.status.nil?
     self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
