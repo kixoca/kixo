@@ -8,29 +8,29 @@
               %a{:href => "#ask"}
                 .hide-for-small
                   .icon
-                    %i.foundicon-page
+                    %i.icon-question-sign
                   .txt
                     =t :action_ask
                 .show-for-small
-                  %i.foundicon-page
+                  %i.icon-question-sign
             %dd{:class => @current_action_tab == "find" ? "active" : ""}
-              %a.icon-search{:href => "#find"}
+              %a{:href => "#find"}
                 .hide-for-small
                   .icon
-                    %i.foundicon-search
+                    %i.icon-search
                   .txt
                     =t :action_find
                 .show-for-small
-                  %i.foundicon-search
-            %dd{:class => @current_action_tab == "review" ? "active" : ""}
-              %a.icon-search{:href => "#review"}
+                  %i.icon-search
+            %dd{:class => @current_action_tab == "consult" ? "active" : ""}
+              %a{:href => "#consult"}
                 .hide-for-small
                   .icon
-                    %i.foundicon-star
+                    %i.icon-user
                   .txt
-                    =t :action_review
+                    =t :action_consult
                 .show-for-small
-                  %i.foundicon-star
+                  %i.icon-user
   #actions-tabs-content
     %ul.tabs-content
       %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}
@@ -65,18 +65,18 @@
                     = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
                   .two.columns
                     = submit_tag t(:action_find), :class => "radius button expand postfix"
-      %li#reviewTab{:class => @current_action_tab == "review" ? "active" : ""}
+      %li#consultTab{:class => @current_action_tab == "consult" ? "active" : ""}
         .row
           .two.columns.text-center
-            %img{:src => "/assets/banner_review_char.png"}
+            %img{:src => "/assets/banner_consult_char.png"}
           .ten.columns
             .container
               .header-group
-                %h2 Review professionals
-                %h3.subheader Review your professionals so everyone can benefit!
+                %h2 Consult professionals
+                %h3.subheader Meet online with experienced professionals
               %form
                 .row
                   .ten.columns
-                    %input#who{:type => "text", :placeholder => "Who do you want to review?", :class => "oversize"}
+                    %input#what{:type => "text", :placeholder => "Search for professionals by topic", :class => "oversize"}
                   .two.columns
-                    %a.radius.button.expand.postfix Review
+                    %a.radius.button.expand.postfix Search

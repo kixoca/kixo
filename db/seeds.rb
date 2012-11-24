@@ -22,6 +22,9 @@ question_status_id = QuestionStatus.create(:name => "Denied")
 question_visibility_id = QuestionVisibility.create(:name => "Public")
 question_visibility_id = QuestionVisibility.create(:name => "Private")
 
+guide_status_id = GuideStatus.create(:name => "Published")
+guide_status_id = GuideStatus.create(:name => "Draft")
+
 locale_id = Locale.create(:name => "English", :code => "en").id
 
   category_id = Category.create(:name => "Legal", :locale_id => locale_id).id

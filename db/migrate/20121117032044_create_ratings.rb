@@ -3,5 +3,7 @@ class CreateRatings < ActiveRecord::Migration
     create_table :ratings do |t|
       t.string :name, :null => false, :default => ""
     end
+
+    add_index :ratings, :name, :unique => true
   end
 end

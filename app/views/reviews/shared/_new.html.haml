@@ -9,6 +9,6 @@
         = f.text_area :comment, :rows => 4
     .row
       .six.columns
-        = f.select "rating_id", Rating.by_locale.map {|u| [u.label, u.id]}
+        = f.select "rating_id", Rating.by_locale.map {|u| [u.name, u.id]}
       .six.columns.text-right
         = f.submit "Post Review", :class => "button small"

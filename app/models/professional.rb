@@ -98,7 +98,6 @@ class Professional < ActiveRecord::Base
   private
 
   def default_values
-    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
-
 end

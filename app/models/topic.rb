@@ -1,7 +1,7 @@
 class Topic < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :slug, :description, :category_id, :locale_id
+  attr_accessible :name, :description, :category_id, :locale_id
 
   # a topic belongs in a category
   belongs_to :category
@@ -20,7 +20,6 @@ class Topic < ActiveRecord::Base
 
   # validation
   validates :name, :presence => true
-  validates :slug, :presence => true
   validates_existence_of :category
   validates_existence_of :locale
 
@@ -33,7 +32,7 @@ class Topic < ActiveRecord::Base
 
   def default_values
     self.slug = self.name.parameterize if self.slug.blank?
-    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 
 end

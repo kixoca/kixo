@@ -26,4 +26,17 @@ ActiveAdmin.register Question do
       row :updated_at
     end
   end
+
+  form do |f|
+    f.inputs do
+      f.input :user
+      f.input :status
+      f.input :visibility
+      f.input :locale
+      f.input :title
+      f.input :details
+      f.input :topics
+    end
+    f.actions
+  end
 end

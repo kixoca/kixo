@@ -20,9 +20,10 @@ Kixo::Application.routes.draw do
     end
 
     resources :categories do
-      resources :topics
+      resources :topics do
+        resources :guides
+      end
       resources :professions
-      resources :guides
     end
 
   end

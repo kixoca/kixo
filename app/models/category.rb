@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :slug, :description, :locale_id
+  attr_accessible :name, :description, :locale_id
 
   # a category has many topics
   has_many :topics
@@ -24,7 +24,6 @@ class Category < ActiveRecord::Base
 
   def default_values
     self.slug = self.name.parameterize if self.slug.blank?
-    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
-
 end

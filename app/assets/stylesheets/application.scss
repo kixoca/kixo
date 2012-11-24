@@ -7,7 +7,7 @@
 @import "settings";
 @import "foundation";
 @import "mixins";
-@import "general_foundicons";
+@import "font_awesome";
 
 body {
   background-color: $bodyBgColor;
@@ -35,6 +35,10 @@ h6 { font-size: 0.90 * $baseFontSize; }
 .no-pad { padding: 0 !important; }
 .no-pad-top { padding-top: 0 !important; }
 .no-pad-bottom { padding-bottom: 0 !important; }
+
+a {
+  @include transition();
+}
 
 .no-records {
   font-style: italic;
@@ -181,7 +185,7 @@ select {
           background: none;
           border: none;
 
-          i { font-size: 30px; }
+          i { font-size: 2.00 * $baseFontSize; }
 
           .hide-for-small .icon {
             position: absolute;
@@ -189,7 +193,7 @@ select {
             bottom: -30px;
             @include boxRotate(-10deg);
 
-            i { font-size: 60px; }
+            i { font-size: 5.00 * $baseFontSize; }
           }
 
           .txt {

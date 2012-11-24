@@ -6,7 +6,7 @@
       = "#{time_ago_in_words(review.created_at)} ago"
   .content
     %span.rating{:class => "rating#{review.rating.id}"}
-      = review.rating.label
+      = review.rating.name
     %span.comment
       = review.comment
   - if review.user == current_user
