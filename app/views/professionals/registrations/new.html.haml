@@ -12,14 +12,18 @@
               = devise_error_messages!
 
               .header-group
-                %h4 Personal details
-                %h5.subheader Give us some information about you
+                %h3 Personal details
+                %h4.subheader Give us some information about you
 
-              = f.label :name
-              = f.text_field :name
+              .row
+                .twelve.columns
+                  = f.label :name
+                  = f.text_field :name
 
-              = f.label :email
-              = f.email_field :email
+              .row
+                .twelve.columns
+                  = f.label :email
+                  = f.email_field :email
 
               .row
                 .six.columns
@@ -32,17 +36,23 @@
               %hr
 
               .header-group
-                %h4 Address
-                %h5.subheader Your address will enable clients to find you
+                %h3 Address
+                %h4.subheader Your address will enable clients to find you
 
-              = f.label :street_address_1, "Street address"
-              = f.text_field :street_address_1
+              .row
+                .twelve.columns
+                  = f.label :street_address_1, "Street address"
+                  = f.text_field :street_address_1
 
-              = f.label :street_address_2, "Street address (continued)"
-              = f.text_field :street_address_2
+              .row
+                .twelve.columns
+                  = f.label :street_address_2, "Street address (continued)"
+                  = f.text_field :street_address_2
 
-              = f.label :locality, "City"
-              = f.text_field :locality
+              .row
+                .twelve.columns
+                  = f.label :locality, "City"
+                  = f.text_field :locality
 
               .row
                 .six.columns
@@ -55,8 +65,8 @@
               %hr
 
               .header-group
-                %h4 Categories
-                %h5.subheader Specify your topics of expertise and professions
+                %h3 Categories
+                %h4.subheader Specify your topics of expertise and professions
 
               %ul.accordion.compact
                 - Category.by_locale.each do |category|

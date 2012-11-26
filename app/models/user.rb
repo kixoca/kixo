@@ -28,7 +28,10 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   # validation
-  validates :email, :presence => true
+  validates :email,    :presence => true
+  validates :locality, :presence => true
+  validates :region,   :presence => true
+  validates :country,  :presence => true
   validates_existence_of :locale
 
   def short_address

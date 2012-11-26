@@ -35,9 +35,9 @@
     %ul.tabs-content
       %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}
         .row
-          .two.columns.text-center
-            %img{:src => "/assets/banner_ask_char.png"}
-          .ten.columns
+          .three.columns.text-center
+            %img{:src => "/assets/banner_ask_char.png", :width => 250, :height => 160}
+          .nine.columns
             .container
               .header-group
                 %h2 Ask professionals
@@ -50,9 +50,9 @@
                     = submit_tag t(:action_ask), :class => "radius button expand postfix"
       %li#findTab{:class => @current_action_tab == "find" ? "active" : ""}
         .row
-          .two.columns.text-center
-            %img{:src => "/assets/banner_find_char.png"}
-          .ten.columns
+          .three.columns.text-center
+            %img{:src => "/assets/banner_find_char.png", :width => 250, :height => 160}
+          .nine.columns
             .container
               .header-group
                 %h2 Find professionals
@@ -67,9 +67,9 @@
                     = submit_tag t(:action_find), :class => "radius button expand postfix"
       %li#consultTab{:class => @current_action_tab == "consult" ? "active" : ""}
         .row
-          .two.columns.text-center
-            %img{:src => "/assets/banner_consult_char.png"}
-          .ten.columns
+          .three.columns.text-center
+            %img{:src => "/assets/banner_consult_char.png", :width => 250, :height => 160}
+          .nine.columns
             .container
               .header-group
                 %h2 Consult professionals

@@ -29,12 +29,9 @@ group :assets do
   gem 'less-rails',   '~> 2.2.4'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-
   gem 'compass-rails'
   gem 'zurb-foundation'
-
   gem 'therubyracer'
-
   gem 'uglifier', '>= 1.0.3'
 end
 
