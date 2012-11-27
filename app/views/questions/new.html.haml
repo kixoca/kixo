@@ -5,8 +5,6 @@
         .page
           .page-head
             %h1 Ask
-            - unless params[:question].nil?
-              %h3.subheader Please complete your question
           .page-body
             .row
               .eight.columns
@@ -25,7 +23,7 @@
                     %h3 Choose a category
                     %h4.subheader Select a category to make sure the right professionals answer you
                   %ul.accordion.compact
-                    - @categories.each do |category|
+                    - @all_categories.each do |category|
                       %li
                         .title
                           %h5
@@ -35,7 +33,7 @@
                             - category.topics.each do |topic|
                               %li
                                 %label
-                                  = check_box_tag("question[topic_ids][]", topic.id)
+                                  = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
                                   = topic.name
 
                   .actions

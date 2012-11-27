@@ -49,18 +49,13 @@ $textDirection: ltr !default; // Controls default global text direction, 'rtl' o
 $defaultFloat: left !default; // Change this to 'right' for right-to-left languages
 $defaultOpposite: right !default; // Change this to 'left' for right-to-left languages
 
-  @if $textDirection == ltr {
-    $defaultFloat: left;
-    $defaultOpposite: right;
-  } @else {
-    $defaultFloat: right;
-    $defaultOpposite: left;
-  }
-
-// Icon Settings
-
-$iconsPath: "../assets/glyphicons_halflings.png";
-$whiteIconsPath: "../assets/glyphicons_halflings_white.png";
+@if $textDirection == ltr {
+  $defaultFloat: left;
+  $defaultOpposite: right;
+} @else {
+  $defaultFloat: right;
+  $defaultOpposite: left;
+}
 
 // Button Settings
 
@@ -259,37 +254,6 @@ $tipScreenFill: rgba(0,0,0,0.5) !default;
 
 $mainWidth: 80% !default;
 $complementaryWidth: 20% !default;
-
-// Foundicons
-
-$foundiconsFontFileName: "/fonts/general_foundicons";
-$foundiconsFontName: "GeneralFoundicons";
-$foundiconsClassPrefix: "foundicon-";
-
-@mixin i-class($name,$pua) {
-  .#{$foundiconsClassPrefix}#{$name}:before {
-    content: "\f#{$pua}";
-  }
-}
-
-@mixin ie-class($name,$pua) {
-  .#{$foundiconsClassPrefix}#{$name} {
-    *zoom: expression( this.runtimeStyle['zoom'] = "1", this.innerHTML = "&#xf#{$pua};");
-  }
-}
-
-@mixin face {
-  @font-face {
-    font-family: $foundiconsFontName;
-    src: url('#{$foundiconsFontFileName}.eot');
-    src: url('#{$foundiconsFontFileName}.eot?#iefix') format('embedded-opentype'),
-    url('#{$foundiconsFontFileName}.woff') format('woff'),
-    url('#{$foundiconsFontFileName}.ttf') format('truetype'),
-    url('#{$foundiconsFontFileName}.svg##{$foundiconsFontName}') format('svg');
-    font-weight: normal;
-    font-style: normal;
-  }
-}
 
 // Modular Scale Settings
 

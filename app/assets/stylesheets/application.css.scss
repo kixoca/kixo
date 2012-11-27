@@ -86,19 +86,19 @@ select {
   }
 
   .page-body {
-    padding: 15px 30px;
+    padding: 20px 30px;
 
     .page-section {
       margin: 0 -30px;
-      padding: 15px 30px;
+      padding: 20px 30px;
       border-bottom: 1px solid $borderColor;
 
       &:first-child {
-        margin-top: -15px;
+        margin-top: -20px;
       }
 
       &:last-child {
-        margin-bottom: -15px;
+        margin-bottom: -20px;
         border-bottom: none;
       }
 

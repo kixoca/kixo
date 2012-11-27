@@ -1,8 +1,8 @@
 class QuestionsController < ApplicationController
 
   # filters
-  before_filter :remember_question, :only => [:new]
-  before_filter :authenticate!,     :only => [:update, :edit, :create, :destroy]
+  before_filter :remember_question, :only => [:new, :create]
+  before_filter :authenticate!,     :only => [:create, :update, :edit, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -33,7 +33,6 @@ class QuestionsController < ApplicationController
   # GET /questions/new.json
   def new
     @question = Question.new(session[:question])
-    @categories = Category.all
 
     respond_to do |format|
       format.html # new.html.haml
@@ -51,13 +50,7 @@ class QuestionsController < ApplicationController
   # POST /questions.json
   def create
     @question = Question.new(params[:question])
-
-    @question.user = current_user unless current_user.nil?
-
-    @categories = Category.all
-
-    logger.debug "New question: #{@question.attributes.inspect}"
-    logger.debug "Question should be valid: #{@question.valid?}"
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
@@ -112,12 +105,14 @@ class QuestionsController < ApplicationController
   private
 
   def authenticate!
-    session[:user_return_to] = request.path
+    session[:user_return_to] = case params[:action]
+      when "create"  then new_question_path
+      else request.path
+    end
     authenticate_user!
   end
 
   def remember_question
     session[:question] = params[:question] unless params[:question].nil?
   end
-
 end

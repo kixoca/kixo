@@ -6,6 +6,8 @@ class ApplicationController < ActionController::Base
   # Set correct header action tab
   before_filter :set_current_action_tab
 
+  before_filter :set_common_vars
+
   def default_url_options(options={})
     logger.debug "default_url_options is passed options: #{options.inspect}\n"
     { :locale => I18n.locale }
@@ -32,6 +34,12 @@ class ApplicationController < ActionController::Base
   def authenticate_user(email, password)
     user = User.find_by_email(email)
     user.valid_password?(password) unless user.nil?
+  end
+
+  def set_common_vars
+    @all_categories = Category.by_locale
+    @all_topics = Topic.by_locale
+    @all_professions = Profession.by_locale
   end
 
 end

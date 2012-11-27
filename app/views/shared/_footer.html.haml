@@ -21,7 +21,7 @@
         %ul.tabs-content
           %li#browsebytopicTab.active
             %ul.categories.block-grid.five-up
-              - Category.by_locale.each do |category|
+              - @all_categories.each do |category|
                 %li
                   %a.category{:href => category_path(category)}
                     = category.name
@@ -32,7 +32,7 @@
                           = topic.name
           %li#browsebyprofessionTab
             %ul.categories.block-grid.five-up
-              - Category.by_locale.each do |category|
+              - @all_categories.each do |category|
                 %li
                   %a.category{:href => category_path(category)}
                     = category.name
