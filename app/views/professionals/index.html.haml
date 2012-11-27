@@ -20,7 +20,7 @@
                   - if @topics
                     - @topics.each do |topic|
                       %li
-                        %a{:href => url_for(topic)}
+                        %a{:href => category_topic_path(topic.category, topic)}
                           = topic.name
                   - else
                     No related topics
@@ -32,7 +32,7 @@
                   - if @professions
                     - @professions.each do |profession|
                       %li
-                        %a{:href => url_for(profession)}
+                        %a{:href => category_profession_path(profession.category, profession)}
                           = profession.name
                   - else
                     No related professions

@@ -1,0 +1,53 @@
+h1, h2, h3, h4, h5, h6 { line-height: 1.4; }
+p { line-height: 1.6; }
+
+h1 { font-size: 2.25 * $baseFontSize; color: $mainColor; }
+h2 { font-size: 1.75 * $baseFontSize; }
+h3 { font-size: 1.50 * $baseFontSize; }
+h4 { font-size: 1.25 * $baseFontSize; }
+h5 { font-size: 1.00 * $baseFontSize; }
+h6 { font-size: 0.90 * $baseFontSize; }
+
+.header-group {
+  margin: 0 0 1em 0;
+
+  h1, h2, h3, h4, h5, h6 { margin: 0; }
+
+  .subheader { margin-top: 0.25em; }
+}
+
+.no-marg { margin: 0 !important; }
+.no-marg-top { margin-top: 0 !important; }
+.no-marg-bottom { margin-bottom: 0 !important; }
+.no-pad { padding: 0 !important; }
+.no-pad-top { padding-top: 0 !important; }
+.no-pad-bottom { padding-bottom: 0 !important; }
+
+a {
+  @include transition();
+}
+
+.no-records {
+  font-style: italic;
+  color: $lightTxtColor;
+}
+
+.meta {
+  font-size: 0.90 * $baseFontSize;
+  color: $lightTxtColor;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="datetime"],
+input[type="email"],
+input[type="number"],
+input[type="search"],
+input[type="tel"],
+input[type="time"],
+input[type="url"],
+textarea,
+select {
+  font-size: $baseFontSize;
+}

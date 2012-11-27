@@ -13,9 +13,16 @@ class ProfessionalsController < ApplicationController
       @what = params[:what]
       @topics = Topic.search(@what)
       @professions = Profession.search(@what)
-      @professionals = Professional.search(@what, @where).page(params[:page])
+      @professionals = Professional.search(@what, @where)
     else
-      @professionals = Professional.page(params[:page])
+      @professionals = Professional.all
+    end
+
+    # pagination
+    if @professionals.kind_of?(Array)
+      Kaminari.paginate_array(@professionals).page(params[:page])
+    else
+      @professionals.page(params[:page])
     end
 
     respond_to do |format|
