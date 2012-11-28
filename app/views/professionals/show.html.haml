@@ -4,96 +4,102 @@
       .eight.columns
         .page.professional
           %header.page-head
-            .row
-              .three.columns.text-center
-                .headshot
-                  = image_tag @professional.headshot.url(:medium)
-              .nine.columns.mobile-text-center
-                %h1.name
-                  = @professional.name
-                .professions
-                  = @professional.professions_list
+            .container
+              .row
+                .three.columns.text-center
+                  .headshot
+                    = image_tag @professional.headshot.url(:medium)
+                .nine.columns.mobile-text-center
+                  %h1.name
+                    = @professional.name
+                  .professions
+                    = @professional.professions_list
           .page-body
             %section#teaser.page-section
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
+              .container
+                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
             %section#metrics.page-section
-              %ul.metrics.block-grid.three-up
-                %li
-                  .key score
-                  .row
-                    .three.columns
-                      .value 77
-                    .nine.columns
-                      .round.progress.success
-                        %span.meter{:style => "width: 77%;"}
-                %li
-                  .key answers
-                  .value 12
-                %li
-                  .key reviews
-                  .value 6
+              .container
+                %ul.metrics.block-grid.three-up
+                  %li
+                    .key score
+                    .row
+                      .three.columns
+                        .value 77
+                      .nine.columns
+                        .round.progress.success
+                          %span.meter{:style => "width: 77%;"}
+                  %li
+                    .key answers
+                    .value 12
+                  %li
+                    .key reviews
+                    .value 6
             %section#location.page-section
-              .row
-                .six.columns
-                  .address
-                    %h4 Address
-                    - unless @professional.street_address_1.blank?
-                      %span.street-address-1
-                        = "#{@professional.street_address_1}, "
-                      - unless @professional.street_address_2.blank?
-                        %span.street-address-2
-                          = @professional.street_address_2
-                    %br
-                    - unless @professional.locality.blank?
-                      %span.locality
-                        = "#{@professional.locality}, "
-                    - unless @professional.region.blank?
-                      %span.region
-                        = @professional.region
-                    - unless @professional.postal_code.blank?
-                      %span.postal_code
-                        = @professional.postal_code
-                    %br
-                    - unless @professional.country.blank?
-                      %span.country
-                        = @professional.country
-                  .contacts
-                    %h4 Contacts
-                    .tel
-                      = @professional.tel
-                .six.columns
-                  .map
-                    %h4 Map
-                    .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+              .container
+                .row
+                  .six.columns
+                    .address
+                      %h4 Address
+                      - unless @professional.street_address_1.blank?
+                        %span.street-address-1
+                          = "#{@professional.street_address_1}, "
+                        - unless @professional.street_address_2.blank?
+                          %span.street-address-2
+                            = @professional.street_address_2
+                      %br
+                      - unless @professional.locality.blank?
+                        %span.locality
+                          = "#{@professional.locality}, "
+                      - unless @professional.region.blank?
+                        %span.region
+                          = @professional.region
+                      - unless @professional.postal_code.blank?
+                        %span.postal_code
+                          = @professional.postal_code
+                      %br
+                      - unless @professional.country.blank?
+                        %span.country
+                          = @professional.country
+                    .contacts
+                      %h4 Contacts
+                      .tel
+                        = @professional.tel
+                  .six.columns
+                    .map
+                      %h4 Map
+                      .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
             %section#reviews.page-section
-              .row
-                .twelve.columns
-                  %h4 Reviews
-                  - unless @reviews.nil?
-                    %ul.reviews
-                      - @reviews.each do |review|
-                        %li
-                          = render "reviews/shared/loop", :review => review
-                    %p.view-all
-                      %a{:href => professional_reviews_path(@professional)} View all reviews
-                  - else
-                    %p.no-records
-                      = "No reviews for #{@professional.name} yet."
-                  = render "reviews/shared/new", :professional => @professional
+              .container
+                .row
+                  .twelve.columns
+                    %h4 Reviews
+                    - unless @reviews.nil?
+                      %ul.reviews
+                        - @reviews.each do |review|
+                          %li
+                            = render "reviews/shared/loop", :review => review
+                      %p.view-all
+                        %a{:href => professional_reviews_path(@professional)} View all reviews
+                    - else
+                      %p.no-records
+                        = "No reviews for #{@professional.name} yet."
+                    = render "reviews/shared/new", :professional => @professional
             %section#guides.page-section
-              .row
-                .twelve.columns
-                  %h4 Guides
-                  - unless @guides.nil?
-                    %ul.guides
-                      - @guides.each do |guide|
-                        %li
-                          = guide.topic.name
-                          = guide.title
-                          = guide.excerpt
-                  - else
-                    %p.no-records
-                      = "#{@professional.name} hasn't written any guide yet."
+              .container
+                .row
+                  .twelve.columns
+                    %h4 Guides
+                    - unless @guides.nil?
+                      %ul.guides
+                        - @guides.each do |guide|
+                          %li
+                            = guide.topic.name
+                            = guide.title
+                            = guide.excerpt
+                    - else
+                      %p.no-records
+                        = "#{@professional.name} hasn't written any guide yet."
       .four.columns
         .panel
           %h5

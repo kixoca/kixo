@@ -1,4 +1,4 @@
-.answer
+.answer{:id => "#{answer.professional.name.parameterize}"}
   .meta
     %span.author_name
       = answer.professional.name
@@ -9,4 +9,4 @@
       = answer.details
   - if answer.professional == current_professional
     .actions
-      = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "button tiny alert"
+      = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"

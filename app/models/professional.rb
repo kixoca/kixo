@@ -30,7 +30,7 @@ class Professional < ActiveRecord::Base
   has_and_belongs_to_many :locales
 
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => { :large => "150x150>", :medium => "100x100>", :thumb => "50x50>" }
+  has_attached_file :headshot, :styles => { :large => "160x160", :medium => "120x120", :small => "80x80", :thumb => "50x50" }
 
   # track versions with paper trail
   has_paper_trail

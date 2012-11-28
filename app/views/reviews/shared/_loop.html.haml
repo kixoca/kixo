@@ -11,4 +11,4 @@
       = review.comment
   - if review.user == current_user
     .actions
-      = link_to 'Delete review', professional_review_path(review.professional, review), :confirm => 'Are you sure?', :method => :delete, :class => "button tiny alert"
+      = link_to 'Delete review', professional_review_path(review.professional, review), :confirm => 'Are you sure?', :method => :delete, :class => "delete"

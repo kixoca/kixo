@@ -1,8 +1,8 @@
 .professional.loop.page
-  .page-body
-    .page-section
+  .page-section
+    .container
       .headshot
-        = image_tag professional.headshot.url(:thumb)
+        = image_tag professional.headshot.url(:small)
       %h4.name
         = professional.name
       .professions
@@ -15,15 +15,15 @@
         %i.foundicon-location
         = professional.short_address
       .cta
-        %a.button.small{:href => url_for(professional)} View profile
-    .page-section.no-pad
-      %ul.metrics.block-grid.three-up
-        %li
-          .key score
-          .value 77
-        %li
-          .key answers
-          .value 12
-        %li
-          .key reviews
-          .value 6
+        %a.button.small.radius{:href => url_for(professional)} View profile
+  .page-section
+    %ul.metrics.block-grid.three-up
+      %li
+        .key score
+        .value 77
+      %li
+        .key answers
+        .value 12
+      %li
+        .key reviews
+        .value 6

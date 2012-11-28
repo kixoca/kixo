@@ -4,15 +4,24 @@
 
 .question {
   .topics {
-    list-style: none;
-    display: inline;
+    font-size: 0.90 * $baseFontSize;
+  }
+
+  .answers {
+    ul {
+      list-style: none;
+
+      .professional {
+        .has-tip {
+          border-bottom: 0 !important;
+        }
+      }
+    }
   }
 
   &.loop {
-
-    .title {
-      font-size: 1.25 * $baseFontSize;
-      margin: 0;
+    .answers .button {
+      margin: $baseFontSize 0;
     }
   }
 }

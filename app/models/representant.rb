@@ -14,7 +14,7 @@ class Representant < ActiveRecord::Base
   belongs_to :locale
 
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => { :large => "150x150>", :medium => "100x100>", :thumb => "50x50>" }
+  has_attached_file :headshot, :styles => { :large => "150x150", :medium => "100x100", :thumb => "50x50" }
 
   # geocoding
   geocoded_by :full_address

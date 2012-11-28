@@ -20,7 +20,7 @@ class Category < ActiveRecord::Base
   validates_existence_of :locale
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{name.parameterize}"
   end
 
   private

@@ -26,7 +26,7 @@ class Profession < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    "#{name.parameterize}"
   end
 
   private

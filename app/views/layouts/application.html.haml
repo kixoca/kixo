@@ -41,10 +41,10 @@
                   = Locale.find_by_code(locale).name
                   %i.icon-chevron-down
             .six.columns
-              %ul.account.button-group
+              %ul.account.button-group.radius
                 - if user_signed_in?
                   %li
-                    .small.button.secondary.split.dropdown
+                    .button.secondary.small.radius.split.dropdown
                       %a{:href => "#"}
                         = current_user.email
                       %span
@@ -53,7 +53,7 @@
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - elsif professional_signed_in?
                   %li
-                    .small.button.secondary.split.dropdown
+                    .button.secondary.small.split.dropdown
                       %a{:href => "#"}
                         = current_professional.email
                       %span
@@ -62,10 +62,10 @@
                           = link_to "Sign out", destroy_professional_session_path, :method => :delete
                 - else
                   %li
-                    %a.small.button.secondary{:href => new_user_session_path}
+                    %a.button.secondary.small{:href => new_user_session_path}
                       =t :sign_in
                   %li
-                    %a.small.button.secondary{:href => new_user_registration_path}
+                    %a.button.secondary.small{:href => new_user_registration_path}
                       =t :sign_up
 
       = render "shared/actions"
