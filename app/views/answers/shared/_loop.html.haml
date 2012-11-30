@@ -1,12 +1,18 @@
 .answer{:id => "#{answer.professional.name.parameterize}"}
-  .meta
-    %span.author_name
-      = answer.professional.name
-    %span.created_at
-      = "#{time_ago_in_words(answer.created_at)} ago"
-  .content
-    .details
-      = answer.details
-  - if answer.professional == current_professional
-    .actions
-      = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
+  .row
+    .two.columns.text-center
+      .headshot
+        = image_tag answer.professional.headshot.url(:small)
+      %h5.author_name
+        %a{:href => professional_path(answer.professional)}
+          = answer.professional.name
+    .ten.columns
+      .meta
+        %span.created_at
+          = "Answered #{time_ago_in_words(answer.created_at)} ago"
+      .content
+        .details
+          = answer.details
+      - if answer.professional == current_professional
+        .actions
+          = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"

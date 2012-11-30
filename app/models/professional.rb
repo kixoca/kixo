@@ -5,7 +5,7 @@ class Professional < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
                   :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
-                  :headshot, :topic_ids, :profession_ids, :representant_id, :locale_id
+                  :headshot, :bio, :topic_ids, :profession_ids, :representant_id, :locale_id
 
   # a professional is associated with one or many topics
   has_and_belongs_to_many :topics

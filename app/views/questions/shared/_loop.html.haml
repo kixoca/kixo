@@ -12,17 +12,18 @@
             = "in #{question.user.short_address}"
   %section.page-section.answers
     .container.thin
-      .row
-        .eight.columns
-          - if question.answers.blank?
-            %p.no-records No answers yet.
-          - else
+      - if question.answers.blank?
+        %p.no-records No answers yet.
+      - else
+        %h6 Answered by
+        .row
+          .eight.columns
             %ul.inline.spaced
               - question.answers.each do |answer|
                 %li
                   .professional
                     %a.headshot.thumb{:href => "#{question_path(question)}##{answer.professional.name.parameterize}"}
                       = image_tag answer.professional.headshot.url(:thumb)
-        .four.columns.text-right
-          - unless question.answers.blank?
-            %a.button.secondary.small.radius{:href => "#{question_path(question)}#answers"} View all answers
+          .four.columns.text-right
+            - unless question.answers.blank?
+              %a.button.secondary.radius{:href => "#{question_path(question)}#answers"} View all answers

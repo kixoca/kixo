@@ -12,35 +12,32 @@
                 .nine.columns.mobile-text-center
                   %h1.name
                     = @professional.name
-                  .professions
+                  %p.professions
                     = @professional.professions_list
+                  %p.bio
+                    = @professional.bio
           .page-body
-            %section#teaser.page-section
-              .container
-                %p Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum non dolor a tortor accumsan tristique in sollicitudin orci. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas facilisis, justo vitae porttitor blandit, orci nisl pretium nisl, ut commodo purus dolor at neque.
             %section#metrics.page-section
               .container
-                %ul.metrics.block-grid.three-up
+                %ul.metrics.block-grid.four-up
                   %li
-                    .key score
-                    .row
-                      .three.columns
-                        .value 77
-                      .nine.columns
-                        .round.progress.success
-                          %span.meter{:style => "width: 77%;"}
+                    .value 77
+                    .key points
                   %li
-                    .key answers
                     .value 12
+                    .key answers
                   %li
-                    .key reviews
                     .value 6
-            %section#location.page-section
+                    .key reviews
+                  %li
+                    .value 2
+                    .key guides
+            %section#location.location.page-section
               .container
                 .row
                   .six.columns
-                    .address
-                      %h4 Address
+                    %h4 Address
+                    %p.address
                       - unless @professional.street_address_1.blank?
                         %span.street-address-1
                           = "#{@professional.street_address_1}, "
@@ -61,13 +58,13 @@
                       - unless @professional.country.blank?
                         %span.country
                           = @professional.country
-                    .contacts
-                      %h4 Contacts
+                    %h4 Contacts
+                    %p.contacts
                       .tel
                         = @professional.tel
                   .six.columns
-                    .map
-                      %h4 Map
+                    %h4 Map
+                    %p.map
                       .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
             %section#reviews.page-section
               .container

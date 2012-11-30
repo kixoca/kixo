@@ -11,17 +11,38 @@
     ul {
       list-style: none;
 
-      .professional {
-        .has-tip {
-          border-bottom: 0 !important;
+      li {
+        margin-bottom: $unit;
+      }
+
+      .answer {
+        padding: $columnGutter;
+        background: $kixoLightGreen;
+        border: 1px solid darken($kixoLightGreen, 10%);
+        @include borderRadius($radius);
+
+        .details {
+          font-size: 0.90*$baseFontSize;
+        }
+
+        .professional {
+          .has-tip {
+            border-bottom: 0 !important;
+          }
         }
       }
     }
   }
 
   &.loop {
-    .answers .button {
-      margin: $baseFontSize 0;
+    .answers {
+      li {
+        margin-bottom: 0;
+      }
+
+      .button {
+        margin: $unit 0;
+      }
     }
   }
 }

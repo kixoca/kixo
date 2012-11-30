@@ -3,43 +3,45 @@
     .row
       .twelve.columns
         .page
-          .page-head
-            %h1 Ask
-          .page-body
-            .row
-              .eight.columns
-                = form_for @question do |f|
-                  .header-group
-                    %h3 Your question
-                    %h4.subheader Give as much background information as possible to make your question clear
-                  %p
-                    = f.label :title
-                    = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
-                  %p
-                    = f.label :details
-                    = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
-                  %hr
-                  .header-group
-                    %h3 Choose a category
-                    %h4.subheader Select a category to make sure the right professionals answer you
-                  %ul.accordion.compact
-                    - @all_categories.each do |category|
-                      %li
-                        .title
-                          %h5
-                            = category.name
-                        .content
-                          %ul.block-grid.three-up
-                            - category.topics.each do |topic|
-                              %li
-                                %label
-                                  = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
-                                  = topic.name
+          %header.page-head
+            .container
+              %h1 Ask
+          %section.page-body
+            .container
+              .row
+                .eight.columns
+                  = form_for @question do |f|
+                    .header-group
+                      %h3 Your question
+                      %h4.subheader Give as much background information as possible to make your question clear
+                    %p
+                      = f.label :title
+                      = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
+                    %p
+                      = f.label :details
+                      = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
+                    %hr
+                    .header-group
+                      %h3 Choose a category
+                      %h4.subheader Select a category to make sure the right professionals answer you
+                    %ul.accordion.compact
+                      - @all_categories.each do |category|
+                        %li
+                          .title
+                            %h5
+                              = category.name
+                          .content
+                            %ul.block-grid.three-up
+                              - category.topics.each do |topic|
+                                %li
+                                  %label
+                                    = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
+                                    = topic.name
 
-                  .actions
-                    = f.submit :class => "button"
+                    .actions
+                      = f.submit :class => "button"
 
-              .four.columns
-                .panel.grey
-                  %h5 Tips!
-                  %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.
+                .four.columns
+                  .panel.grey
+                    %h5 Tips!
+                    %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.

@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require foundation
-//= require jquery.transit
+//= require jquery
+//= require jquery
 //= require_tree .
 
 $(document).ready(function() {

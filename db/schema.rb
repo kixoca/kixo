@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121121022330) do
+ActiveRecord::Schema.define(:version => 20121129050626) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -129,6 +129,7 @@ ActiveRecord::Schema.define(:version => 20121121022330) do
     t.datetime "updated_at",                             :null => false
     t.float    "latitude"
     t.float    "longitude"
+    t.text     "bio"
   end
 
   add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true

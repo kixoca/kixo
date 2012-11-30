@@ -7,30 +7,30 @@
             %dd{:class => @current_action_tab == "ask" ? "active" : ""}
               %a{:href => "#ask"}
                 .hide-for-small
-                  .icon
-                    %i.icon-question-sign
-                  .txt
+                  %i.icon-question-sign
+                  %span
                     =t :action_ask
                 .show-for-small
                   %i.icon-question-sign
+                .arrow
             %dd{:class => @current_action_tab == "find" ? "active" : ""}
               %a{:href => "#find"}
                 .hide-for-small
-                  .icon
-                    %i.icon-search
-                  .txt
+                  %i.icon-search
+                  %span
                     =t :action_find
                 .show-for-small
                   %i.icon-search
+                .arrow
             %dd{:class => @current_action_tab == "consult" ? "active" : ""}
               %a{:href => "#consult"}
                 .hide-for-small
-                  .icon
-                    %i.icon-user
-                  .txt
+                  %i.icon-user
+                  %span
                     =t :action_consult
                 .show-for-small
                   %i.icon-user
+                .arrow
   #actions-tabs-content
     %ul.tabs-content
       %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}

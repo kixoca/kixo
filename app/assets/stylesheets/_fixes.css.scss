@@ -1,26 +1,14 @@
-form .actions {
-  margin-top: 20px;
+.button {
+  font-size: 0.90*$baseFontSize;
+  @include boxShadow(0,0,0,0);
+
+  &.small {
+    font-size: 0.80*$baseFontSize;
+  }
 }
 
-.panel {
-  background: $white;
-
-  &.callout h5 {
-    color: $white;
-  }
-
-  &.green {
-    background: $kixoGreen;
-    border-color: darken($kixoGreen, 15%);
-
-    a.button {
-      color: darken($kixoGreen, 15%);
-    }
-  }
-
-  &.grey {
-    background: $kixoLightGrey;
-  }
+form .actions {
+  margin-top: 20px;
 }
 
 div.custom.dropdown {

@@ -39,6 +39,7 @@ ActiveAdmin.register Professional do
       row :headshot do
         image_tag(professional.headshot.url)
       end
+      row :bio
       row :topics do
         professional.topics.pluck("name").join(", ")
       end
@@ -67,6 +68,7 @@ ActiveAdmin.register Professional do
       f.input :postal_code
       f.input :country
       f.input :headshot
+      f.input :bio
       f.input :topics
       f.input :professions
       f.input :representant
