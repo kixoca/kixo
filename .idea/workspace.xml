@@ -2,30 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/jquery.hoverIntent.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/assets/javascripts/question.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/assets/javascripts/question.js.coffee" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/public/index.html.haml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/admin/professionals.rb" afterPath="$PROJECT_DIR$/app/admin/professionals.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/javascripts/application.js" afterPath="$PROJECT_DIR$/app/assets/javascripts/application.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_helpers.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_helpers.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_layout.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_layout.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_professionals.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_professionals.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_questions.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_questions.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_settings.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_settings.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/assets/stylesheets/_typography.css.scss" afterPath="$PROJECT_DIR$/app/assets/stylesheets/_typography.css.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/models/professional.rb" afterPath="$PROJECT_DIR$/app/models/professional.rb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/answers/shared/_loop.html.haml" afterPath="$PROJECT_DIR$/app/views/answers/shared/_loop.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/pages/index.html.haml" afterPath="$PROJECT_DIR$/app/views/pages/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/professionals/index.html.haml" afterPath="$PROJECT_DIR$/app/views/professionals/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/professionals/shared/_loop.html.haml" afterPath="$PROJECT_DIR$/app/views/professionals/shared/_loop.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/professionals/show.html.haml" afterPath="$PROJECT_DIR$/app/views/professionals/show.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/questions/new.html.haml" afterPath="$PROJECT_DIR$/app/views/questions/new.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/questions/shared/_loop.html.haml" afterPath="$PROJECT_DIR$/app/views/questions/shared/_loop.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/reviews/index.html.haml" afterPath="$PROJECT_DIR$/app/views/reviews/index.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/shared/_actions.html.haml" afterPath="$PROJECT_DIR$/app/views/shared/_actions.html.haml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/db/schema.rb" afterPath="$PROJECT_DIR$/db/schema.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -50,62 +28,19 @@
       <file leaf-file-name="application.html.haml" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="46" column="50" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
+            <state line="13" column="40" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="_loop.html.haml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/views/questions/shared/_loop.html.haml">
+      <file leaf-file-name="index.html.haml" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/index.html.haml">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="11" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_fixes.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="11" column="1" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="show.html.haml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/views/professionals/show.html.haml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="66" column="22" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.023622047">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_typography.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_typography.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="14" column="19" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_professionals.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_professionals.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="24" column="12" selection-start="286" selection-end="286" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="_helpers.css.scss" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_helpers.css.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="21" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0">
-              <folding />
+            <state line="34" column="44" selection-start="951" selection-end="951" vertical-scroll-proportion="0.7762557">
+              <folding>
+                <element signature="n#t :site_title#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -123,7 +58,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/assets/stylesheets/_settings.css.scss" />
         <option value="$PROJECT_DIR$/app/views/questions/new.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/javascripts/question.js.coffee" />
@@ -139,6 +73,7 @@
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_professionals.css.scss" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_typography.css.scss" />
         <option value="$PROJECT_DIR$/app/views/professionals/show.html.haml" />
+        <option value="$PROJECT_DIR$/public/index.html.haml" />
       </list>
     </option>
   </component>
@@ -202,33 +137,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="kixo" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="professionals" />
+              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -263,10 +172,6 @@
               <option name="myItemId" value="assets" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="stylesheets" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -283,6 +188,10 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="images" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -625,13 +534,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="29" y="39" width="1384" height="781" extended-state="0" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3443114" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3443114" sideWeight="0.67105263" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -701,11 +610,6 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/assets/javascripts/question.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="36" selection-start="67" selection-end="67" vertical-scroll-proportion="0.023622047" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_settings.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="7" column="19" selection-start="156" selection-end="156" vertical-scroll-proportion="0.1688103" />
@@ -746,30 +650,6 @@
         <state line="7" column="34" selection-start="395" selection-end="395" vertical-scroll-proportion="0.16304348" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="50" selection-start="1380" selection-end="1380" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/questions/shared/_loop.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="17" column="11" selection-start="539" selection-end="539" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="1" selection-start="166" selection-end="166" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/views/professionals/show.html.haml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="66" column="22" selection-start="2470" selection-end="2470" vertical-scroll-proportion="0.023622047">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_typography.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="14" column="19" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" />
@@ -783,6 +663,43 @@
     <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_helpers.css.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="21" selection-start="462" selection-end="462" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/professionals/show.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="6" selection-start="6" selection-end="6" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/assets/stylesheets/_fixes.css.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="11" column="1" selection-start="166" selection-end="166" vertical-scroll-proportion="0.023622047">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/questions/shared/_loop.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="17" column="11" selection-start="539" selection-end="539" vertical-scroll-proportion="0.40996784">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/views/layouts/application.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="40" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/index.html.haml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="44" selection-start="951" selection-end="951" vertical-scroll-proportion="0.7762557">
+          <folding>
+            <element signature="n#t :site_title#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
       </provider>
     </entry>
   </component>

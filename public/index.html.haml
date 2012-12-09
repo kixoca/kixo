@@ -1,0 +1,35 @@
+!!!
+%html
+
+  %head
+
+    %title
+      =t :site_title
+
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+
+    = google_webfonts_link_tag :titillium_web => [400,700]
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = javascript_include_tag "//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+    = csrf_meta_tags
+
+    %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
+
+  %body
+
+    .container
+      .page
+        %section.page-section.blue
+          %h1 Kixo will change the way you search, choose and consult professionals
+          .well
+            %form
+              %h3 Pre-signup for the beta!
+              .row
+                .eight.columns
+                  %input
+                .four.columns
+                  %button
+        %section.page-section
+          .twelve.columns.text-center
+            %img{:src => "/assets/logo.png"}
