@@ -1,0 +1,49 @@
+.beta {
+  width: 700px;
+  margin: 100px auto;
+
+  h1, h4, h5 {
+    color: $white;
+    text-align: center;
+  }
+
+  h1 {
+    font-style: italic;
+    font-family: "Titillium Web";
+    padding: 30px;
+  }
+
+  h4 {
+    text-transform: uppercase;
+    margin-bottom: $columnGutter;
+  }
+
+  .container {
+    position: relative;
+
+    .arrow {
+      display: block;
+      width: 14px;
+      height: 14px;
+      position: absolute;
+      left: 48%;
+      bottom: -7px;
+      background: $kixoBlue;
+      @include boxRotate(45deg);
+    }
+  }
+
+  .well {
+    margin: 10px 0;
+    padding: 10px;
+    background: rgba(0,0,0,0.2);
+    @include borderRadius($radius);
+  }
+
+  .brand {
+    display: block;
+    width: 250px;
+    height: 80px;
+    margin: $columnGutter auto;
+  }
+}

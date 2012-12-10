@@ -26,10 +26,12 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
+    resources :eager_beavers
+
   end
 
-  match '/:locale' => 'pages#index'
+  match "/:locale" => "pages#index"
 
-  root :to => "pages#index"
+  root :to => "eager_beavers#new"
 
 end

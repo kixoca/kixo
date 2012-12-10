@@ -6,6 +6,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions
   # GET /questions.json
+  # GET /questions.xml
   def index
     @questions = Question.by_locale.order("created_at").page(params[:page])
 
@@ -18,6 +19,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1
   # GET /questions/1.json
+  # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
     @answers = @question.answers
@@ -31,6 +33,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/new
   # GET /questions/new.json
+  # GET /questions/new.xml
   def new
     @question = Question.new(session[:question])
 
@@ -48,6 +51,7 @@ class QuestionsController < ApplicationController
 
   # POST /questions
   # POST /questions.json
+  # POST /questions.xml
   def create
     @question = Question.new(params[:question])
     @question.user = current_user
@@ -67,6 +71,7 @@ class QuestionsController < ApplicationController
 
   # PUT /questions/1
   # PUT /questions/1.json
+  # PUT /questions/1.xml
   def update
     @question = Question.find(params[:id])
 
@@ -91,6 +96,7 @@ class QuestionsController < ApplicationController
 
   # DELETE /questions/1
   # DELETE /questions/1.json
+  # DELETE /questions/1.xml
   def destroy
     @question = Question.find(params[:id])
     @question.destroy

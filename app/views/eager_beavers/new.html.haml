@@ -1,0 +1,19 @@
+.beta
+  .container
+    .page
+      %section.page-section.blue
+        .container
+          %h1 &laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;
+          .well
+            = form_for @eager_beaver do |f|
+              %h4 Pre-signup for the beta and get early access!
+              .nine.columns
+                = f.email_field :email, :class => "oversize", :placeholder => "Your email..."
+              .three.columns
+                = f.submit :class => "button radius secondary expand", :value => "Notify me!"
+              .clear
+          %span.arrow
+      %section.page-section
+        .container
+          %a.brand{:href => "/"}
+            %img.logo{:src => "/assets/biglogo.png", :width => "250", :height => "80", :alt => t(:logo_alt)}

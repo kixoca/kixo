@@ -18,18 +18,4 @@
 
   %body
 
-    .container
-      .page
-        %section.page-section.blue
-          %h1 Kixo will change the way you search, choose and consult professionals
-          .well
-            %form
-              %h3 Pre-signup for the beta!
-              .row
-                .eight.columns
-                  %input
-                .four.columns
-                  %button
-        %section.page-section
-          .twelve.columns.text-center
-            %img{:src => "/assets/logo.png"}
+    = yield
