@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2c13730b-7eab-4499-b426-0afcb27ac709" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb" afterPath="$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/routes.rb" afterPath="$PROJECT_DIR$/config/routes.rb" />
     </list>
     <ignored path="kixo.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -33,19 +33,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="routes.rb" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="routes.rb" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/config/routes.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="8" column="2" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
+            <state line="34" column="2" selection-start="628" selection-end="628" vertical-scroll-proportion="0.8031496">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="eager_beavers_controller.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="eager_beavers_controller.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="86" selection-start="140" selection-end="140" vertical-scroll-proportion="0.047244094">
+            <state line="2" column="86" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -127,13 +127,13 @@
         <option value="$PROJECT_DIR$/app/views/eager_beavers/index.html.haml" />
         <option value="$PROJECT_DIR$/db/seeds.rb" />
         <option value="$PROJECT_DIR$/app/models/locale.rb" />
-        <option value="$PROJECT_DIR$/config/routes.rb" />
         <option value="$PROJECT_DIR$/app/views/eager_beavers/new.html.haml" />
         <option value="$PROJECT_DIR$/app/assets/stylesheets/_beta.css.scss" />
         <option value="$PROJECT_DIR$/config/locales/en.yml" />
         <option value="$PROJECT_DIR$/config/locales/fr.yml" />
         <option value="$PROJECT_DIR$/app/views/eager_beavers/show.html.haml" />
         <option value="$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb" />
+        <option value="$PROJECT_DIR$/config/routes.rb" />
       </list>
     </option>
   </component>
@@ -876,16 +876,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/config/routes.rb">
+    <entry file="file://$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="2" selection-start="175" selection-end="175" vertical-scroll-proportion="0.0">
+        <state line="2" column="86" selection-start="140" selection-end="140" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/eager_beavers_controller.rb">
+    <entry file="file://$PROJECT_DIR$/config/routes.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="86" selection-start="140" selection-end="140" vertical-scroll-proportion="0.047244094">
+        <state line="34" column="2" selection-start="628" selection-end="628" vertical-scroll-proportion="0.8031496">
           <folding />
         </state>
       </provider>
