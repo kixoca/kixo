@@ -2,19 +2,6 @@ class EagerBeaversController < ApplicationController
 
   before_filter :authenticate_admin_user!, :only => [:index, :update, :edit, :destroy]
 
-  # GET /eager_beavers
-  # GET /eager_beavers.json
-  # GET /eager_beavers.xml
-  def index
-    @eager_beavers = EagerBeaver.all
-
-    respond_to do |format|
-      format.html { render :layout => "naked" }
-      format.json { render :json => @eager_beavers }
-      format.xml  { render :xml => @eager_beavers }
-    end
-  end
-
   # GET /eager_beavers/1
   # GET /eager_beavers/1.json
   # GET /eager_beavers/1.xml
