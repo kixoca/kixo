@@ -10,4 +10,7 @@ class Locale < ActiveRecord::Base
   has_many :guides
   has_many :reviews
 
+  validates :name, :presence => true
+  validates :code, :presence => true
+
 end
