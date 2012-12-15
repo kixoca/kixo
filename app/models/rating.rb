@@ -1,5 +1,4 @@
 class Rating < ActiveRecord::Base
-  include CommonScopes
 
   attr_accessible :name
 
@@ -8,4 +7,5 @@ class Rating < ActiveRecord::Base
 
   # validation
   validates :name, :presence => true
+
 end

@@ -1,7 +1,7 @@
 class Topic < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description, :category_id, :locale_id
+  attr_accessible :name, :description, :category_id
 
   # a topic belongs in a category
   belongs_to :category
@@ -11,9 +11,6 @@ class Topic < ActiveRecord::Base
 
   # a topic is associated with one or many professionals
   has_and_belongs_to_many :professionals
-
-  # I18n
-  belongs_to :locale
 
   # set default values on init
   after_initialize :default_values

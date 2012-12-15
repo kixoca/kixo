@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  include CommonScopes
 
   devise :database_authenticatable,
          :registerable, :recoverable, :rememberable, :trackable, :validatable,
@@ -51,5 +52,4 @@ class User < ActiveRecord::Base
   def default_values
     self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
   end
-
 end

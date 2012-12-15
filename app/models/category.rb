@@ -1,7 +1,7 @@
 class Category < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description, :locale_id
+  attr_accessible :name, :description
 
   # a category has many topics
   has_many :topics
@@ -9,23 +9,13 @@ class Category < ActiveRecord::Base
   # a category has many professions
   has_many :professions
 
-  # I18n
-  belongs_to :locale
-
   # set default values on init
   after_initialize :default_values
 
   # validation
   validates :name, :presence => true
-  validates_existence_of :locale
 
   def to_param
     "#{name.parameterize}"
-  end
-
-  private
-
-  def default_values
-    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 end

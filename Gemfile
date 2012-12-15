@@ -39,8 +39,6 @@ gem 'jquery-rails'
 
 gem 'validates_existence', '>= 0.4'
 
-gem 'country-select'
-
 gem 'paperclip', '~> 3.0'
 
 gem 'rmagick'

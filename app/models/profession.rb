@@ -1,7 +1,7 @@
 class Profession < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description, :category_id, :locale_id
+  attr_accessible :name, :description, :category_id
 
   # a profession belongs in a category
   belongs_to :category
@@ -9,16 +9,12 @@ class Profession < ActiveRecord::Base
   # a profession is linked to one or many professionals
   has_and_belongs_to_many :professionals
 
-  # I18n
-  belongs_to :locale
-
   # set default values on init
   after_initialize :default_values
 
   # validation
   validates :name, :presence => true
   validates_existence_of :category
-  validates_existence_of :locale
 
   # search method
   def self.search(term)
@@ -27,11 +23,5 @@ class Profession < ActiveRecord::Base
 
   def to_param
     "#{name.parameterize}"
-  end
-
-  private
-
-  def default_values
-    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
   end
 end
