@@ -9,9 +9,6 @@ class Category < ActiveRecord::Base
   # a category has many professions
   has_many :professions
 
-  # set default values on init
-  after_initialize :default_values
-
   # validation
   validates :name, :presence => true
 

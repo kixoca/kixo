@@ -21,11 +21,26 @@ Kixo::Application.routes.draw do
     resources :categories do
       resources :topics do
         resources :guides
+        resources :countries do
+          resources :regions do
+            resources :localities
+          end
+        end
       end
-      resources :professions
+      resources :professions do
+        resources :countries do
+          resources :regions do
+            resources :localities
+          end
+        end
+      end
     end
 
-    resources :eager_beavers
+    resources :countries do
+      resources :regions do
+        resources :localities
+      end
+    end
 
   end
 

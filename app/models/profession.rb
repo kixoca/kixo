@@ -9,9 +9,6 @@ class Profession < ActiveRecord::Base
   # a profession is linked to one or many professionals
   has_and_belongs_to_many :professionals
 
-  # set default values on init
-  after_initialize :default_values
-
   # validation
   validates :name, :presence => true
   validates_existence_of :category
