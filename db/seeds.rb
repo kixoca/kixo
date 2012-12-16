@@ -1,15 +1,12 @@
 # encoding: UTF-8
 
-# clear existing seed data
+# locales
 Locale.destroy_all
-Category.destroy_all
-Topic.destroy_all
-Profession.destroy_all
-Rating.destroy_all
-QuestionStatus.destroy_all
-QuestionVisibility.destroy_all
+locale = Locale.create(:name => "English", :code => "en")
+locale = Locale.create(:name => "Français", :code => "fr")
 
 # ratings
+Rating.destroy_all
 rating = Rating.create(:name => "Disappointing")
 rating = Rating.create(:name => "Poor")
 rating = Rating.create(:name => "Average")
@@ -17,12 +14,14 @@ rating = Rating.create(:name => "Good")
 rating = Rating.create(:name => "Excellent")
 
 # question statuses
+QuestionStatus.destroy_all
 question_status = QuestionStatus.create(:name => "Open")
 question_status = QuestionStatus.create(:name => "Answered")
 question_status = QuestionStatus.create(:name => "Closed")
 question_status = QuestionStatus.create(:name => "Denied")
 
 # question visibilities
+QuestionVisibility.destroy_all
 question_visibility = QuestionVisibility.create(:name => "Public")
 question_visibility = QuestionVisibility.create(:name => "Private")
 
@@ -30,11 +29,10 @@ question_visibility = QuestionVisibility.create(:name => "Private")
 guide_status = GuideStatus.create(:name => "Published")
 guide_status = GuideStatus.create(:name => "Draft")
 
-# locales
-locale = Locale.create(:name => "English", :code => "en")
-locale = Locale.create(:name => "Français", :code => "fr")
-
 # categories, topics, and professions
+Category.destroy_all
+Topic.destroy_all
+Profession.destroy_all
 
 category = Category.create(:name => "Legal")
 
@@ -100,6 +98,9 @@ category = Category.create(:name => "Finance")
   profession = Profession.create(:name => "Real Estate Broker", :category_id => category.id)
 
 # countries, regions, and localities
+Country.destroy_all
+Region.destroy_all
+Locality.destroy_all
 
 country = Country.create(:name => "Canada")
 
@@ -205,7 +206,7 @@ country = Country.create(:name => "Canada")
     locality = Locality.create(:name => "Contrecoeur", :population => 5678, :region_id => region.id)
     locality = Locality.create(:name => "Cookshire-Eaton", :population => 5004, :region_id => region.id)
     locality = Locality.create(:name => "Côte-Saint-Luc", :population => 31395, :region_id => region.id)
-    locality = Locality.create(:name => "Coteau-du-Lac", :population => , :region_id => region.id)
+    locality = Locality.create(:name => "Coteau-du-Lac", :population => 6842, :region_id => region.id)
     locality = Locality.create(:name => "Cowansville", :population => 12182, :region_id => region.id)
     locality = Locality.create(:name => "Danville", :population => 4041, :region_id => region.id)
     locality = Locality.create(:name => "Daveluyville", :population => 1005, :region_id => region.id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121209205421) do
+ActiveRecord::Schema.define(:version => 20121215185044) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,16 +58,15 @@ ActiveRecord::Schema.define(:version => 20121209205421) do
     t.datetime "updated_at",                      :null => false
   end
 
-  create_table "beta", :force => true do |t|
-    t.string   "email",      :default => "", :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+  create_table "categories", :force => true do |t|
+    t.string   "name",        :default => "", :null => false
+    t.text     "description"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
-  create_table "categories", :force => true do |t|
-    t.string   "name",                       :null => false
-    t.text     "description"
-    t.integer  "locale_id",   :default => 0, :null => false
+  create_table "countries", :force => true do |t|
+    t.string   "name",       :default => "", :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
   end
@@ -109,6 +108,14 @@ ActiveRecord::Schema.define(:version => 20121209205421) do
   end
 
   add_index "locales", ["code"], :name => "index_locales_on_code", :unique => true
+
+  create_table "localities", :force => true do |t|
+    t.string   "name",       :default => "", :null => false
+    t.integer  "population"
+    t.integer  "region_id",  :default => 0,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "professionals", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -166,7 +173,6 @@ ActiveRecord::Schema.define(:version => 20121209205421) do
     t.string   "name",        :default => "", :null => false
     t.text     "description"
     t.integer  "category_id", :default => 0,  :null => false
-    t.integer  "locale_id",   :default => 0,  :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
@@ -204,6 +210,13 @@ ActiveRecord::Schema.define(:version => 20121209205421) do
   end
 
   add_index "ratings", ["name"], :name => "index_ratings_on_name", :unique => true
+
+  create_table "regions", :force => true do |t|
+    t.string   "name",       :default => "", :null => false
+    t.integer  "country_id", :default => 0,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
 
   create_table "representants", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -252,7 +265,6 @@ ActiveRecord::Schema.define(:version => 20121209205421) do
     t.string   "name",        :default => "", :null => false
     t.text     "description"
     t.integer  "category_id", :default => 0,  :null => false
-    t.integer  "locale_id",   :default => 0,  :null => false
     t.datetime "created_at",                  :null => false
     t.datetime "updated_at",                  :null => false
   end
