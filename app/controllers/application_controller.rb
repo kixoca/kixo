@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     @all_categories = Category.by_locale
     @all_topics = Topic.by_locale
     @all_professions = Profession.by_locale
+    @a
   end
 
 end

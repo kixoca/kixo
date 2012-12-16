@@ -9,6 +9,9 @@ class Locale < ActiveRecord::Base
   has_many :questions
   has_many :guides
   has_many :reviews
+  has_many :category_names
+  has_many :topic_names
+  has_many :profession_names
 
   validates :name, :presence => true
   validates :code, :presence => true

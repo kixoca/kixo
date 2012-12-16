@@ -1,7 +1,13 @@
 class Profession < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description, :category_id
+  attr_accessible :category_id
+
+  # a profession has many profession names (in different locales)
+  has_many :profession_names
+
+  # a profession has many profession descriptions (in different locales)
+  has_many :profession_descriptions
 
   # a profession belongs in a category
   belongs_to :category
@@ -10,15 +16,10 @@ class Profession < ActiveRecord::Base
   has_and_belongs_to_many :professionals
 
   # validation
-  validates :name, :presence => true
   validates_existence_of :category
 
   # search method
   def self.search(term)
-    Profession.all(:conditions => ["name like ?", "%#{term}%"])
-  end
-
-  def to_param
-    "#{name.parameterize}"
+    ProfessionName.search(term).profession
   end
 end

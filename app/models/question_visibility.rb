@@ -1,9 +1,8 @@
 class QuestionVisibility < ActiveRecord::Base
 
-  attr_accessible :name
+  # a question visibility has many question visibility names (in different locales)
+  has_many :question_visibility_names
 
   has_many :questions
-
-  validates :name, :presence => true
 
 end

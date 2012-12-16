@@ -1,7 +1,11 @@
 class Category < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description
+  # a category has many category names (in different locales)
+  has_many :category_names
+
+  # a category has many category descriptions (in different locales)
+  has_many :category_descriptions
 
   # a category has many topics
   has_many :topics
@@ -9,10 +13,13 @@ class Category < ActiveRecord::Base
   # a category has many professions
   has_many :professions
 
-  # validation
-  validates :name, :presence => true
+  # name (by locale)
+  def name(locale)
+    self.category_names.by_locale
+  end
 
-  def to_param
-    "#{name.parameterize}"
+  # search method
+  def self.search(term)
+    CategoryName.search(term).category
   end
 end

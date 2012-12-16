@@ -1,7 +1,13 @@
 class Topic < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :name, :description, :category_id
+  attr_accessible :category_id
+
+  # a topic has many topic names (in different locales)
+  has_many :topic_names
+
+  # a topic has many topic descriptions (in different locales)
+  has_many :topic_descriptions
 
   # a topic belongs in a category
   belongs_to :category
@@ -12,16 +18,14 @@ class Topic < ActiveRecord::Base
   # a topic is associated with one or many professionals
   has_and_belongs_to_many :professionals
 
+  # a topic has many guides
+  has_many :guides
+
   # validation
-  validates :name, :presence => true
   validates_existence_of :category
 
   # search method
   def self.search(term)
-    Topic.all(:conditions => ["name like ?", "%#{term}%"])
-  end
-
-  def to_param
-    "#{name.parameterize}"
+    TopicName.search(term).topic
   end
 end
