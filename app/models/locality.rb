@@ -11,12 +11,23 @@ class Locality < ActiveRecord::Base
 
   validates_existence_of :region
 
-  def to_param
-    "#{name.parameterize}"
+  def name(locale = nil)
+    self.locality_names.by_locale(locale).first.name
   end
 
-  # search method
-  def self.search(term)
-    LocalityName.search(term).locality
+  def self.find_by_name(name)
+    LocalityName.find_by_name(name).locality
+  end
+
+  def self.search(term, locale = nil)
+    localities = Array.new
+    LocalityName.by_locale(locale).search(term).each do |locality_name|
+      localities << locality_name.locality
+    end
+    localities
+  end
+
+  def to_param
+    "#{self.name.parameterize}"
   end
 end

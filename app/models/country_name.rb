@@ -15,7 +15,7 @@ class CountryName < ActiveRecord::Base
   validates_existence_of :country
 
   # search method
-  def self.search(term)
-    CountryName.all(:conditions => ["name like ?", "%#{term}%"])
+  def self.search(term, locale = nil)
+    CountryName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
 end

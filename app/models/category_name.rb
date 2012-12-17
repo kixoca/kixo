@@ -14,8 +14,7 @@ class CategoryName < ActiveRecord::Base
   validates_existence_of :locale
   validates_existence_of :category
 
-  # search method
-  def self.search(term)
-    CategoryName.all(:conditions => ["name like ?", "%#{term}%"])
+  def self.search(term, locale = nil)
+    CategoryName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
 end

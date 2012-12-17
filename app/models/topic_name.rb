@@ -14,8 +14,7 @@ class TopicName < ActiveRecord::Base
   validates_existence_of :locale
   validates_existence_of :topic
 
-  # search method
-  def self.search(term)
-    TopicName.all(:conditions => ["name like ?", "%#{term}%"])
+  def self.search(term, locale = nil)
+    TopicName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
 end

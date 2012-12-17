@@ -24,8 +24,27 @@ class Topic < ActiveRecord::Base
   # validation
   validates_existence_of :category
 
-  # search method
-  def self.search(term)
-    TopicName.search(term).topic
+  def name(locale = nil)
+    self.topic_names.by_locale(locale).first.name
+  end
+
+  def description(locale = nil)
+    self.topic_descriptions.by_locale(locale).first.description
+  end
+
+  def self.find_by_name(name)
+    TopicName.find_by_name(name).topic
+  end
+
+  def self.search(term, locale = nil)
+    topics = Array.new
+    TopicName.by_locale(locale).search(term).each do |topic_name|
+      topics << topic_name.topic
+    end
+    topics
+  end
+
+  def to_param
+    "#{self.name.parameterize}"
   end
 end

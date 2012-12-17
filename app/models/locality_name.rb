@@ -14,8 +14,7 @@ class LocalityName < ActiveRecord::Base
   validates_existence_of :locale
   validates_existence_of :locality
 
-  # search method
-  def self.search(term)
-    LocalityName.all(:conditions => ["name like ?", "%#{term}%"])
+  def self.search(term, locale = nil)
+    LocalityName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
 end

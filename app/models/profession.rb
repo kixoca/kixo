@@ -18,8 +18,27 @@ class Profession < ActiveRecord::Base
   # validation
   validates_existence_of :category
 
-  # search method
-  def self.search(term)
-    ProfessionName.search(term).profession
+  def name(locale = nil)
+    self.profession_names.by_locale(locale).first.name
+  end
+
+  def description(locale = nil)
+    self.profession_descriptions.by_locale(locale).first.description
+  end
+
+  def self.find_by_name(name)
+    ProfessionName.find_by_name(name).profession
+  end
+
+  def self.search(term, locale = nil)
+    professions = Array.new
+    ProfessionName.by_locale(locale).search(term).each do |profession_name|
+      professions << profession_name.profession
+    end
+    professions
+  end
+
+  def to_param
+    "#{self.name.parameterize}"
   end
 end
