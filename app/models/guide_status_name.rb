@@ -3,6 +3,9 @@ class GuideStatusName < ActiveRecord::Base
 
   attr_accessible :name, :locale_id, :guide_status_id
 
+  # a guide status name belongs to a locale
+  belongs_to :locale
+
   # a guide status name belongs to a guide status
   belongs_to :guide_status
 

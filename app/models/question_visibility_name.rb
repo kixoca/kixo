@@ -3,6 +3,9 @@ class QuestionVisibilityName < ActiveRecord::Base
 
   attr_accessible :name, :locale_id, :question_visibility_id
 
+  # a question visibility name belongs to a locale
+  belongs_to :locale
+
   # a question visibility name belongs to a question visibility
   belongs_to :question_visibility
 

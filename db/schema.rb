@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121215185044) do
+ActiveRecord::Schema.define(:version => 20121216230209) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -59,16 +59,29 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
   end
 
   create_table "categories", :force => true do |t|
-    t.string   "name",        :default => "", :null => false
-    t.text     "description"
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "category_descriptions", :force => true do |t|
+    t.string  "description", :default => "", :null => false
+    t.integer "locale_id",   :default => 0,  :null => false
+    t.integer "category_id", :default => 0,  :null => false
+  end
+
+  create_table "category_names", :force => true do |t|
+    t.string  "name",        :default => "", :null => false
+    t.integer "locale_id",   :default => 0,  :null => false
+    t.integer "category_id", :default => 0,  :null => false
   end
 
   create_table "countries", :force => true do |t|
-    t.string   "name",       :default => "", :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "country_names", :force => true do |t|
+    t.string  "name",       :default => "", :null => false
+    t.integer "locale_id",  :default => 0,  :null => false
+    t.integer "country_id", :default => 0,  :null => false
   end
 
   create_table "eager_beavers", :force => true do |t|
@@ -77,11 +90,14 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "guide_statuses", :force => true do |t|
-    t.string "name", :default => "", :null => false
+  create_table "guide_status_names", :force => true do |t|
+    t.string  "name",            :default => "", :null => false
+    t.integer "locale_id",       :default => 0,  :null => false
+    t.integer "guide_status_id", :default => 0,  :null => false
   end
 
-  add_index "guide_statuses", ["name"], :name => "index_guide_statuses_on_name", :unique => true
+  create_table "guide_statuses", :force => true do |t|
+  end
 
   create_table "guides", :force => true do |t|
     t.string   "title",           :default => "", :null => false
@@ -110,11 +126,26 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
   add_index "locales", ["code"], :name => "index_locales_on_code", :unique => true
 
   create_table "localities", :force => true do |t|
-    t.string   "name",       :default => "", :null => false
-    t.integer  "population"
-    t.integer  "region_id",  :default => 0,  :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer "population"
+    t.integer "region_id",  :default => 0, :null => false
+  end
+
+  create_table "locality_names", :force => true do |t|
+    t.string  "name",        :default => "", :null => false
+    t.integer "locale_id",   :default => 0,  :null => false
+    t.integer "locality_id", :default => 0,  :null => false
+  end
+
+  create_table "profession_descriptions", :force => true do |t|
+    t.string  "description",   :default => "", :null => false
+    t.integer "locale_id",     :default => 0,  :null => false
+    t.integer "profession_id", :default => 0,  :null => false
+  end
+
+  create_table "profession_names", :force => true do |t|
+    t.string  "name",          :default => "", :null => false
+    t.integer "locale_id",     :default => 0,  :null => false
+    t.integer "profession_id", :default => 0,  :null => false
   end
 
   create_table "professionals", :force => true do |t|
@@ -170,24 +201,28 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
   end
 
   create_table "professions", :force => true do |t|
-    t.string   "name",        :default => "", :null => false
-    t.text     "description"
-    t.integer  "category_id", :default => 0,  :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "category_id", :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  create_table "question_status_names", :force => true do |t|
+    t.string  "name",               :default => "", :null => false
+    t.integer "locale_id",          :default => 0,  :null => false
+    t.integer "question_status_id", :default => 0,  :null => false
   end
 
   create_table "question_statuses", :force => true do |t|
-    t.string "name", :default => "", :null => false
   end
-
-  add_index "question_statuses", ["name"], :name => "index_question_statuses_on_name", :unique => true
 
   create_table "question_visibilities", :force => true do |t|
-    t.string "name", :default => "", :null => false
   end
 
-  add_index "question_visibilities", ["name"], :name => "index_question_visibilities_on_name", :unique => true
+  create_table "question_visibility_names", :force => true do |t|
+    t.string  "name",                   :default => "", :null => false
+    t.integer "locale_id",              :default => 0,  :null => false
+    t.integer "question_visibility_id", :default => 0,  :null => false
+  end
 
   create_table "questions", :force => true do |t|
     t.string   "title",         :default => "",  :null => false
@@ -205,17 +240,23 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
     t.integer "topic_id"
   end
 
-  create_table "ratings", :force => true do |t|
-    t.string "name", :default => "", :null => false
+  create_table "rating_names", :force => true do |t|
+    t.string  "name",      :default => "", :null => false
+    t.integer "locale_id", :default => 0,  :null => false
+    t.integer "rating_id", :default => 0,  :null => false
   end
 
-  add_index "ratings", ["name"], :name => "index_ratings_on_name", :unique => true
+  create_table "ratings", :force => true do |t|
+  end
+
+  create_table "region_names", :force => true do |t|
+    t.string  "name",      :default => "", :null => false
+    t.integer "locale_id", :default => 0,  :null => false
+    t.integer "region_id", :default => 0,  :null => false
+  end
 
   create_table "regions", :force => true do |t|
-    t.string   "name",       :default => "", :null => false
-    t.integer  "country_id", :default => 0,  :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.integer "country_id", :default => 0, :null => false
   end
 
   create_table "representants", :force => true do |t|
@@ -261,12 +302,22 @@ ActiveRecord::Schema.define(:version => 20121215185044) do
     t.datetime "updated_at",                      :null => false
   end
 
+  create_table "topic_descriptions", :force => true do |t|
+    t.string  "description", :default => "", :null => false
+    t.integer "locale_id",   :default => 0,  :null => false
+    t.integer "topic_id",    :default => 0,  :null => false
+  end
+
+  create_table "topic_names", :force => true do |t|
+    t.string  "name",      :default => "", :null => false
+    t.integer "locale_id", :default => 0,  :null => false
+    t.integer "topic_id",  :default => 0,  :null => false
+  end
+
   create_table "topics", :force => true do |t|
-    t.string   "name",        :default => "", :null => false
-    t.text     "description"
-    t.integer  "category_id", :default => 0,  :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.integer  "category_id", :default => 0, :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "users", :force => true do |t|

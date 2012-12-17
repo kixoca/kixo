@@ -7,7 +7,7 @@ class CountryName < ActiveRecord::Base
   belongs_to :locale
 
   # a country name belongs to a country
-  belongs_to :category
+  belongs_to :country
 
   # validation
   validates :name, :presence => true
