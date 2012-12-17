@@ -4,7 +4,6 @@ class CreateCategoryDescriptions < ActiveRecord::Migration
       t.string  :description, :null => false, :default => ""
       t.integer :locale_id,   :null => false, :default => 0
       t.integer :category_id, :null => false, :default => 0
-      t.timestamps
     end
   end
 end

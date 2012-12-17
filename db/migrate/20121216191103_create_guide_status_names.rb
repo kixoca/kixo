@@ -4,7 +4,6 @@ class CreateGuideStatusNames < ActiveRecord::Migration
       t.string  :name,            :null => false, :default => ""
       t.integer :locale_id,       :null => false, :default => 0
       t.integer :guide_status_id, :null => false, :default => 0
-      t.timestamps
     end
   end
 end
