@@ -37,10 +37,9 @@ class ApplicationController < ActionController::Base
   end
 
   def set_common_vars
-    @all_categories = Category.by_locale
-    @all_topics = Topic.by_locale
-    @all_professions = Profession.by_locale
-    @a
+    @all_categories = Category.all
+    @all_topics = Topic.all
+    @all_professions = Profession.all
   end
 
 end
