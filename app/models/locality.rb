@@ -16,7 +16,8 @@ class Locality < ActiveRecord::Base
   end
 
   def self.find_by_name(name)
-    LocalityName.find_by_name(name).locality
+    locality_name = LocalityName.find_by_name(name)
+    locality = locality_name ? locality_name.locality : nil
   end
 
   def self.search(term, locale = nil)
@@ -25,6 +26,14 @@ class Locality < ActiveRecord::Base
       localities << locality_name.locality
     end
     localities
+  end
+
+  def self.sort_by_name
+    self.sort_by(&:name)
+  end
+
+  def self.sort_by_population
+    self.order("population DESC")
   end
 
   def to_param

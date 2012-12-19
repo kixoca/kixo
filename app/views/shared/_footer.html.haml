@@ -8,37 +8,62 @@
           %p
             =t :about_kixo_description
       .nine.columns
-        %dl.tabs.pill
-          %dd.active
-            %a.active{:href => "#browsebytopic"}
-              =t :browse_by_topic
-          %dd
-            %a{:href => "#browsebyprofession"}
-              =t :browse_by_profession
-          %dd
-            %a{:href => "#browsebylocation"}
-              =t :browse_by_location
-        %ul.tabs-content
-          %li#browsebytopicTab.active
-            %ul.categories.block-grid.five-up
-              - @all_categories.each do |category|
-                %li
-                  %a.category{:href => category_path(category)}
-                    = category.name
-                  %ul.topics
-                    - category.topics.each do |topic|
-                      %li
-                        %a.topic{:href => category_topic_path(category, topic)}
-                          = topic.name
-          %li#browsebyprofessionTab
-            %ul.categories.block-grid.five-up
-              - @all_categories.each do |category|
-                %li
-                  %a.category{:href => category_path(category)}
-                    = category.name
-                  %ul.topics
-                    - category.professions.each do |profession|
-                      %li
-                        %a.profession{:href => category_profession_path(category, profession)}
-                          = profession.name
-          %li#browsebylocationTab
+        %ul.browse_by.tabs.pill
+          %li.active
+            %a.active{:href => "#browse_by_category"}
+              =t("browse_by_category")
+          %li
+            %a{:href => "#browse_by_location"}
+              =t("browse_by_location")
+        %ul.browse_by.tabs-content
+          %li#browse_by_categoryTab.active
+            .two.columns
+              %ul.categories.tabs.pill.vertical-pill
+                - @all_categories.each do |category|
+                  %li
+                    %a.category{:href => "##{category.name.parameterize}"}
+                      = category.name
+            .ten.columns
+              %ul.tabs-content
+                - @all_categories.each do |category|
+                  %li{:id => "#{category.name.parameterize}Tab"}
+                    %h3
+                      = "#{category.name} Topics"
+                    %ul.topics.block-grid.three-up
+                      - category.topics.each do |topic|
+                        %li
+                          %a.topic{:href => category_topic_path(category, topic)}
+                            = topic.name
+                    %h3
+                      = "#{category.name} Professions"
+                    %ul.professions.block-grid.three-up
+                      - category.professions.each do |profession|
+                        %li
+                          %a.profession{:href => category_profession_path(category, profession)}
+                            = profession.name
+          %li#browse_by_locationTab
+            .two.columns
+              %ul.countries.tabs.pill.vertical-pill
+                - @all_countries.each do |country|
+                  %li.active
+                    %a.country{:href => "##{country.name.parameterize}"}
+                      = country.name
+            .two.columns
+              %ul.tabs-content
+                - @all_countries.each do |country|
+                  %li.active{:id => "#{country.name.parameterize}Tab"}
+                    %ul.regions.tabs.pill.vertical-pill
+                      - country.regions.each do |region|
+                        %li
+                          %a.region{:href => "##{region.name.parameterize}"}
+                            = region.name
+            .eight.columns
+              %ul.tabs-content
+                - @all_countries.each do |country|
+                  - country.regions.each do |region|
+                    %li{:id => "#{region.name.parameterize}Tab"}
+                      %ul.localities.block-grid.three-up
+                        - region.localities.each do |locality|
+                          %li
+                            %a.locality{:href => country_region_locality_path(country, region, locality)}
+                              = locality.name

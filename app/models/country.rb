@@ -15,7 +15,8 @@ class Country < ActiveRecord::Base
   end
 
   def self.find_by_name(name)
-    CountryName.find_by_name(name).country
+    country_name = CountryName.find_by_name(name)
+    country = country_name ? country_name.country : nil
   end
 
   def self.search(term, locale = nil)

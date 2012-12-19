@@ -33,7 +33,8 @@ class Topic < ActiveRecord::Base
   end
 
   def self.find_by_name(name)
-    TopicName.find_by_name(name).topic
+    topic_name = TopicName.find_by_name(name)
+    topic = topic_name ? topic_name.topic : nil
   end
 
   def self.search(term, locale = nil)

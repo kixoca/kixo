@@ -158,7 +158,7 @@
  * Apply a CSS3 transition
  * @include transition($property, $duration, $timingFunction, $delay)
  */
-@mixin transition($property: all, $duration: 0.25s, $timingFunction: ease, $delay: 0) {
+@mixin transition($property: all, $duration: 0.15s, $timingFunction: ease, $delay: 0) {
   transition: $property $duration $timingFunction $delay;
   -moz-transition: $property $duration $timingFunction $delay;
   -webkit-transition: $property $duration $timingFunction $delay;

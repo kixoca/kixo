@@ -317,8 +317,13 @@ category = Category.create()
 
 # countries, regions, and localities
 Country.destroy_all
+  CountryName.destroy_all
+
   Region.destroy_all
+    RegionName.destroy_all
+
     Locality.destroy_all
+      LocalityName.destroy_all
 
 country = Country.create()
   country_name = CountryName.create(:name => "Canada", :locale_id => en.id, :country_id => country.id)

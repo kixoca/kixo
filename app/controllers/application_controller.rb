@@ -40,6 +40,7 @@ class ApplicationController < ActionController::Base
     @all_categories = Category.all
     @all_topics = Topic.all
     @all_professions = Profession.all
+    @all_countries = Country.all
   end
 
 end

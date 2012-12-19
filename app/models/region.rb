@@ -21,7 +21,8 @@ class Region < ActiveRecord::Base
 
   # find a region by name
   def self.find_by_name(name)
-    RegionName.find_by_name(name).region
+    region_name = RegionName.find_by_name(name)
+    region = region_name ? region_name.region : nil
   end
 
   def self.search(term, locale = nil)
@@ -30,6 +31,14 @@ class Region < ActiveRecord::Base
       regions << region_name.region
     end
     regions
+  end
+
+  def self.population
+    population = 0
+    self.localities.each do |locality|
+      population += locality.population
+    end
+    population
   end
 
   # customize url

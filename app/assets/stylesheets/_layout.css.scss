@@ -189,42 +189,66 @@ form {
     }
   }
 
-  .tabs {
-    border-bottom: 1px solid rgba(255,255,255,0.10);
+  .tabs.pill {
+    > li {
+      > a {
+        display: block;
+        font-size: 0.90*$baseFontSize !important;
+        background: none !important;
+        color: $white !important;
+        @include boxShadow(0,0,0,0,rgba(0,0,0,0));
+      }
 
-    a {
-      font-size: 0.90*$baseFontSize;
-      background: none;
-      color: $white;
+      &:hover > a {
+        background: rgba($white,0.10) !important;
+      }
 
-      &:hover {
-        background: rgba(255,255,255,0.10);
+      &.active > a {
+        background: $secondaryColor !important;
+        color: $txtColor !important;
       }
     }
 
-    .active a {
-      background: $secondaryColor;
-      color: $txtColor;
+    &.vertical-pill {
+      > li {
+        margin: 0 0 3px 0;
+        float: none;
+      }
     }
   }
 
-  .tabs-content {
-    ul {
-      list-style: none;
+  .browse_by {
+    &.tabs {
+      border-bottom: 1px solid rgba(255,255,255,0.10);
+    }
 
-      li, a {
+    &.tabs-content {
+      h3 {
         font-size: 0.90*$baseFontSize;
-        font-weight: bold;
         color: $white;
       }
 
       ul {
-        margin: 0;
+        list-style: none;
+        margin: 0 0 $unit 0;
 
-        li, a {
-          font-size: 0.80*$baseFontSize;
-          font-weight: normal;
-          color: $secondaryColor;
+        li {
+          padding: 0;
+          margin: 0;
+
+          a {
+            font-size: 0.85*$baseFontSize;
+            color: $secondaryColor;
+          }
+
+          &:hover > a {
+            color: $white;
+          }
+
+          &.active > a {
+            color: $white;
+            font-weight: bold;
+          }
         }
       }
     }

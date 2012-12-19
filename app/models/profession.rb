@@ -27,7 +27,8 @@ class Profession < ActiveRecord::Base
   end
 
   def self.find_by_name(name)
-    ProfessionName.find_by_name(name).profession
+    profession_name = ProfessionName.find_by_name(name)
+    profession = profession_name ? profession_name.profession : nil
   end
 
   def self.search(term, locale = nil)

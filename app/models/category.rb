@@ -22,7 +22,8 @@ class Category < ActiveRecord::Base
   end
 
   def self.find_by_name(name)
-    CategoryName.find_by_name(name).category
+    category_name = CategoryName.find_by_name(name)
+    category = category_name ? category_name.category : nil
   end
 
   def self.search(term, locale = nil)
