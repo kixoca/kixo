@@ -41,6 +41,8 @@ class ApplicationController < ActionController::Base
     @all_topics = Topic.all
     @all_professions = Profession.all
     @all_countries = Country.all
+    @all_regions = Region.all
+    @all_localities = Locality.all
   end
 
 end

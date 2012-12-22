@@ -41,28 +41,7 @@
                   %h3 Address
                   %h4.subheader Your address will enable clients to find you
 
-                .row
-                  .twelve.columns
-                    = f.label :street_address_1, "Street address"
-                    = f.text_field :street_address_1
-
-                .row
-                  .twelve.columns
-                    = f.label :street_address_2, "Street address (continued)"
-                    = f.text_field :street_address_2
-
-                .row
-                  .twelve.columns
-                    = f.label :locality, "City"
-                    = f.text_field :locality
-
-                .row
-                  .six.columns
-                    = f.label :region, "Province/State"
-                    = f.text_field :region
-                  .six.columns
-                    = f.label :country
-                    = country_select('professional', 'country', ['Canada', 'United States'])
+                = render :partial => "shared/location_selector", :locals => {:f => f}
 
                 %hr
 
@@ -71,7 +50,7 @@
                   %h4.subheader Specify your topics of expertise and professions
 
                 %ul.accordion.compact
-                  - Category.by_locale.each do |category|
+                  - @all_categories.each do |category|
                     %li
                       .title
                         %h5

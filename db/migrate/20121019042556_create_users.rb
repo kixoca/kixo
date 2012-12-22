@@ -24,17 +24,21 @@ class CreateUsers < ActiveRecord::Migration
       t.string :uid
 
       # personal information
-      t.string :name
-      t.string :tel
-      t.string :street_address_1
-      t.string :street_address_2
-      t.string :locality,        :null => false, :default => ""
-      t.string :region,          :null => false, :default => ""
-      t.string :postal_code
-      t.string :country
+      t.string  :name
+      t.string  :tel
+      t.string  :street_address_1
+      t.string  :street_address_2
+      t.integer :locality_id,     :null => false, :default => 0
+      t.integer :region_id,       :null => false, :default => 0
+      t.string  :postal_code
+      t.integer :country_id,      :null => false, :default => 0
 
       # profile picture (headshot)
       t.has_attached_file :headshot
+
+      # geolocation
+      t.float :latitude
+      t.float :longitude
 
       #I18n
       t.integer :locale_id, :null => false, :default => 0

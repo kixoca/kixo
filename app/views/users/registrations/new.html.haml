@@ -43,21 +43,7 @@
                   %h3 Location
                   %h4.subheader Where are you located?
 
-                .row
-                  .eight.columns
-                    = f.label :locality, "City"
-                    = f.text_field :locality
-                  .four.columns
-                    = f.label :postal_code
-                    = f.text_field :postal_code
-
-                .row
-                  .six.columns
-                    = f.label :region, "Province/State"
-                    = f.text_field :region
-                  .six.columns
-                    = f.label :country
-                    = country_select('user', 'country', ['Canada', 'United States'])
+                = render :partial => "shared/location_selector", :locals => {:f => f, :street_address => false}
 
                 .actions
                   = f.submit "Sign up", :class => "button"

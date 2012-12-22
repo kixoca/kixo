@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
   validates_existence_of :locale
 
   def short_address
-    "#{self.locality}, #{self.region}"
+    "#{self.locality.name}, #{self.region.name}"
   end
 
   def full_address

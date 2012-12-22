@@ -24,17 +24,21 @@ class CreateRepresentants < ActiveRecord::Migration
       # t.string :uid
 
       # personal information
-      t.string :name,            :null => false, :default => ""
-      t.string :tel
-      t.string :street_address_1
-      t.string :street_address_2
-      t.string :locality
-      t.string :region
-      t.string :postal_code
-      t.string :country
+      t.string  :name,            :null => false, :default => ""
+      t.string  :tel
+      t.string  :street_address_1
+      t.string  :street_address_2
+      t.integer :locality_id
+      t.integer :region_id
+      t.string  :postal_code
+      t.integer :country_id
 
       # profile picture (headshot)
       t.has_attached_file :headshot
+
+      # geolocation
+      t.float :latitude
+      t.float :longitude
 
       #I18n
       t.integer :locale_id, :null => false, :default => 0

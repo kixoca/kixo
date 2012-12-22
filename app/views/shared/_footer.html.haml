@@ -62,6 +62,13 @@
                 - @all_countries.each do |country|
                   - country.regions.each do |region|
                     %li{:id => "#{region.name.parameterize}Tab"}
+                      %h3 Most populated
+                      %ul.localities.block-grid.three-up
+                        - region.localities.most_populated(12).each do |locality|
+                          %li
+                            %a.locality{:href => country_region_locality_path(country, region, locality)}
+                              = locality.name
+                      %h3 All
                       %ul.localities.block-grid.three-up
                         - region.localities.each do |locality|
                           %li

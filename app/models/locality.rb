@@ -36,6 +36,10 @@ class Locality < ActiveRecord::Base
     self.order("population DESC")
   end
 
+  def self.most_populated(n = 10)
+    self.sort_by_population.limit(n)
+  end
+
   def to_param
     "#{self.name.parameterize}"
   end
