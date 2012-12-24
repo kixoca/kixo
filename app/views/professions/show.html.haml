@@ -1,0 +1,53 @@
+%section#content
+  .container
+    .row
+      .twelve.columns
+        .page
+          %header.page-head
+            .container
+              .header-group
+                %h1
+                  - if @locality
+                    = "#{@profession.name.pluralize} in #{@locality.name}"
+                  - else
+                    = @profession.name.pluralize
+                %h3.subheader
+                  - if @locality
+                    = "Find, ask and consult #{@profession.name.downcase.pluralize} in #{@locality.name}"
+                  - else
+                    = "Find, ask and consult #{@profession.name.downcase.pluralize}"
+          .page-body
+            - if @profession.description
+              %section#description.page-section
+                .container
+                  %h4
+                    = "About #{@profession.name.downcase.pluralize}"
+                  %p
+                    = @profession.description
+            - unless @professionals.nil?
+              %section#professionals.page-section
+                .container
+                  %h4
+                    = "#{@professionals.count} #{@profession.name.downcase.pluralize} found in #{@locality.name}"
+                  %ul.block-grid.four-up.mobile-one-up
+                    - @professionals.each do |professional|
+                      %li.professional
+                        = render "professionals/shared/loop", :professional => professional
+            - if @locality.nil?
+              %section#browse.page-section
+                .container
+                  %h4
+                    = "Browse #{@profession.name.downcase.pluralize} by location"
+                  %ul.countries
+                    - @all_countries.each do |country|
+                      %li.country
+                        = country.name
+                        %ul.regions.block-grid.two-up
+                          - country.regions.each do |region|
+                            %li.region
+                              = region.name
+                              %ul.localities.csv
+                                - region.localities.most_populated(25).each do |locality|
+                                  %li.locality
+                                    %a{:href => locality_profession_path(locality, @profession), :title => "#{@profession.name.pluralize} in #{locality.name}, #{region.name}, #{country.name}"}
+                                      = locality.name

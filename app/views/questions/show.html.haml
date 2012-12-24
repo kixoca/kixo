@@ -14,7 +14,7 @@
                   = "in #{@question.user.short_address}"
               %p.topics
                 Posted in
-                = @question.topics.map {|topic| link_to topic.name, category_topic_path(topic.category, "#{topic.category} / #{topic}")}.join(", ").html_safe
+                = @question.topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
           .page-body
             %section#details.details.page-section
               .container
@@ -30,3 +30,9 @@
                   %p.no-records No answers yet.
                 = render "answers/shared/new", :question => @question
       .four.columns
+        .panel
+          %h5 Related professionals
+          %ul.related-professionals
+            - @question.related_professionals.each do |professional|
+              %li
+                = render :partial => "professionals/shared/list", :locals => {:professional => professional}

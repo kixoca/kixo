@@ -28,8 +28,8 @@ class Question < ActiveRecord::Base
   after_initialize :default_values
 
   # validation
-  validates :title,  :presence => true
-  validates_presence_of :topics
+  validates :title, :presence => true
+  validates_presence_of  :topics
   validates_existence_of :status
   validates_existence_of :visibility
   validates_existence_of :user
@@ -40,7 +40,15 @@ class Question < ActiveRecord::Base
   end
 
   def topics_list
-    self.topics.pluck("name").join(", ")
+    topic_names = Array.new
+    self.topics.each do |topic|
+      topic_names << topic.name
+    end
+    topic_names.join(", ")
+  end
+
+  def related_professionals
+    Professional.find_by_topic(self.topics)
   end
 
   def to_param

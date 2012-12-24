@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
          :omniauthable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
-                  :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
+                  :name, :tel, :street_address_1, :street_address_2, :locality_id, :region_id, :postal_code, :country_id,
                   :headshot, :locale_id
 
   # a user can have many questions
@@ -17,6 +17,11 @@ class User < ActiveRecord::Base
 
   # I18n
   belongs_to :locale
+
+  # location
+  belongs_to :country
+  belongs_to :region
+  belongs_to :locality
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :large => "150x150", :medium => "100x100", :thumb => "50x50" }
@@ -29,10 +34,10 @@ class User < ActiveRecord::Base
   after_validation :geocode
 
   # validation
-  validates :email,    :presence => true
-  validates :locality, :presence => true
-  validates :region,   :presence => true
-  validates :country,  :presence => true
+  validates :email, :presence => true
+  validates_existence_of :locality
+  validates_existence_of :region
+  validates_existence_of :country
   validates_existence_of :locale
 
   def short_address
@@ -40,7 +45,7 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+    "#{self.street_address_1}, #{self.locality}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
   end
 
   def can_review?(professional)

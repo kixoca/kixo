@@ -3,12 +3,12 @@
     .row
       .eight.columns
         .page
-          .page-head
+          %header.page-head
             .container
               .header-group
                 %h1 Professional Sign Up
                 %h3.subheader Sign up as a professional and connect with new clients
-          .page-body
+          %section.page-body
             .container
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
                 = devise_error_messages!

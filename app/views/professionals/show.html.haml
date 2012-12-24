@@ -44,20 +44,21 @@
                         - unless @professional.street_address_2.blank?
                           %span.street-address-2
                             = @professional.street_address_2
-                      %br
-                      - unless @professional.locality.blank?
+                        %br
+                      - unless @professional.locality.nil?
                         %span.locality
-                          = "#{@professional.locality}, "
-                      - unless @professional.region.blank?
+                          = @professional.locality.name
+                        %br
+                      - unless @professional.region.nil?
                         %span.region
-                          = @professional.region
+                          = @professional.region.name
                       - unless @professional.postal_code.blank?
                         %span.postal_code
                           = @professional.postal_code
                       %br
-                      - unless @professional.country.blank?
+                      - unless @professional.country.nil?
                         %span.country
-                          = @professional.country
+                          = @professional.country.name
                     %h4 Contacts
                     %p.contacts
                       .tel
@@ -66,6 +67,7 @@
                     %h4 Map
                     %p.map
                       .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+                        .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
             %section#reviews.page-section
               .container
                 .row
@@ -100,8 +102,8 @@
       .four.columns
         .panel
           %h5
-            = "Similar professionals in #{@professional.locality}, #{@professional.region}"
-            %ul
-              - @professional.similar.each do |professional|
-                %li
-                  = professional.name
+            = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
+          %ul.similar-professionals
+            - @professional.similar.each do |professional|
+              %li
+                = render :partial => "professionals/shared/list", :locals => {:professional => professional}

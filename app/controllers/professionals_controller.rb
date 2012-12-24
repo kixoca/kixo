@@ -38,7 +38,7 @@ class ProfessionalsController < ApplicationController
     @professional = Professional.find(params[:id])
     @reviews = @professional.reviews.page(params[:page])
     @guides = @professional.guides.page(params[:page])
-    @ratings = Rating.by_locale
+    @ratings = Rating.all
 
     respond_to do |format|
       format.html # show.html.haml

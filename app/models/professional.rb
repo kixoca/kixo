@@ -4,7 +4,7 @@ class Professional < ActiveRecord::Base
          :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
-                  :name, :tel, :street_address_1, :street_address_2, :locality, :region, :postal_code, :country,
+                  :name, :tel, :street_address_1, :street_address_2, :locality_id, :region_id, :postal_code, :country_id,
                   :headshot, :bio, :topic_ids, :profession_ids, :representant_id, :locale_id
 
   # a professional is associated with one or many topics
@@ -25,6 +25,11 @@ class Professional < ActiveRecord::Base
   # a professional belongs to a representant
   belongs_to :representant
 
+  # location
+  belongs_to :country
+  belongs_to :region
+  belongs_to :locality
+
   # I18n
   belongs_to :locale
   has_and_belongs_to_many :locales
@@ -43,52 +48,87 @@ class Professional < ActiveRecord::Base
   after_initialize :default_values
 
   # validation
-  validates :email,    :presence => true
-  validates :name,     :presence => true
-  validates :locality, :presence => true
-  validates :region,   :presence => true
-  validates :country,  :presence => true
+  validates :email, :presence => true
+  validates :name,  :presence => true
+  validates_existence_of :locality
+  validates_existence_of :region
+  validates_existence_of :country
   validates_existence_of :locale
 
   def full_address
-    "#{self.street_address_1}, #{self.locality}, #{self.region} #{self.postal_code}, #{self.country}"
+    "#{self.street_address_1}, #{self.locality.name}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
   end
 
   def short_address
-    "#{self.locality}, #{self.region}"
+    "#{self.locality.name}, #{self.region.name}"
   end
 
   def topics_list
-    self.topics.pluck("name").join(", ")
+    topic_names = Array.new
+    self.topics.each do |topic|
+      topic_names << topic.name
+    end
+    topic_names.join(", ")
   end
 
   def professions_list
-    self.professions.pluck("name").join(", ")
+    profession_names = Array.new
+    self.professions.each do |profession|
+      profession_names << profession.name
+    end
+    profession_names.join(", ")
   end
 
-  # search method
+  def self.rank
+    self.order("id DESC")
+  end
+
   def self.lookup(name)
-    Professional.all(:conditions => ["name like ?", "%#{term}%"])
+    self.where(:conditions => ["name like ?", "%#{term}%"])
   end
 
-  # find method
+  def self.find_by_topic(topic)
+    self.joins(:topics).where(:conditions => {:topics => {:id => topic}})
+  end
+
+  def self.search_by_topic(topic)
+    self.find_by_topic(Topic.search(topic))
+  end
+
+  def self.find_by_profession(profession)
+    self.joins(:professions).where(:conditions => {:professions => {:id => profession}})
+  end
+
+  def self.search_by_profession(profession)
+    self.find_by_profession(Profession.search(profession))
+  end
+
+  def self.find_by_locality(locality)
+    self.where(:conditions => {:locality_id => locality})
+  end
+
+  def self.search_by_locality(locality)
+    self.find_by_locality(Locality.search(locality))
+  end
+
   def self.search(what, where)
-    what_query = Professional.all(:include => [:topics, :professions], :conditions => ["topics.id in (?) or professions.id in (?)", Topic.search(what), Profession.search(what)])
-    where_query = Professional.near(where, 50).order("distance")
-    what_query & where_query
+    what_query = self.search_by_topic(what) or self.search_by_profession(what)
+    where_query = self.near(where, 50).order("distance")
+    what_query + where_query
   end
 
   def can_answer?(question)
     question_status_test = question.is_open?
-    topics_test = self.topics.all(:conditions => {:id => question.topics.pluck("id")}).count > 0
+    topics_test = self.topics.where(:conditions => {:id => question.topics.pluck("id")}).count > 0
     question_status_test && topics_test
   end
 
   # find similar professionals
   def similar
-    what = self.professions.first.name
-    where = self.full_address
-    Professional.search(what, where)
+    similar_topics = Professional.find_by_topic(self.topics)
+    similar_professions = Professional.find_by_profession(self.professions)
+    similar_location = Professional.near(self.full_address, 50).order("distance")
+    (similar_topics or similar_professions) and similar_location
   end
 
   def to_param

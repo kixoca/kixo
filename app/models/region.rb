@@ -25,12 +25,8 @@ class Region < ActiveRecord::Base
     region = region_name ? region_name.region : nil
   end
 
-  def self.search(term, locale = nil)
-    regions = Array.new
-    RegionName.by_locale(locale).search(term).each do |region_name|
-      regions << region_name.region
-    end
-    regions
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:region_names).where(:conditions => {:region_names => {:name => term, :locale_id => locale}})
   end
 
   def self.population
@@ -41,8 +37,7 @@ class Region < ActiveRecord::Base
     population
   end
 
-  # customize url
   def to_param
-    "#{self.name.parameterize}"
+    "#{self.id}-#{self.name.parameterize}"
   end
 end

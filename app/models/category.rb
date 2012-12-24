@@ -26,15 +26,11 @@ class Category < ActiveRecord::Base
     category = category_name ? category_name.category : nil
   end
 
-  def self.search(term, locale = nil)
-    categories = Array.new
-    CategoryName.by_locale(locale).search(term).each do |category_name|
-      categories << category_name.category
-    end
-    categories
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:category_names).where(:conditions => {:category_names => {:name => term, :locale_id => locale}})
   end
 
   def to_param
-    "#{self.name.parameterize}"
+    "#{self.id}-#{self.name.parameterize}"
   end
 end

@@ -1,0 +1,54 @@
+%section#content
+  .container
+    .row
+      .twelve.columns
+        %h1
+          - if @locality
+            = "#{@topic.name} in #{@locality.name}"
+          - else
+            = @topic.name
+        - if @topic.description
+          %p.description
+            = @topic.description
+        %hr
+      .eight.columns
+        - unless @professionals.nil?
+          %section#professionals
+            .container
+              %h4
+                - unless @locality.nil?
+                  = "#{@professionals.count} #{@topic.name.downcase} experts found in #{@locality.name}"
+                - else
+                  = "#{@professionals.count} #{@topic.name.downcase} experts found"
+              %ul.block-grid.three-up.mobile-one-up
+                - @professionals.each do |professional|
+                  %li.professional
+                    = render "professionals/shared/loop", :professional => professional
+        - if @locality.nil?
+          %section#browse.page-section
+            .container
+              %h4
+                = "Browse #{@topic.name.downcase} experts by location"
+              %ul.countries
+                - @all_countries.each do |country|
+                  %li.country
+                    = country.name
+                    %ul.regions.block-grid.two-up
+                      - country.regions.each do |region|
+                        %li.region
+                          = region.name
+                          %ul.localities.csv
+                            - region.localities.most_populated(25).each do |locality|
+                              %li.locality
+                                %a{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} in #{locality.name}, #{region.name}, #{country.name}"}
+                                  = locality.name
+      .four.columns
+        - unless @questions.nil?
+          %section#questions.page-section
+            .container
+              %h4
+                = "#{@topic.name} questions"
+              %ul.questions
+                - @questions.each do |question|
+                  %li.question
+                    = render "questions/shared/loop", :question => question

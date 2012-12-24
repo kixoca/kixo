@@ -9,6 +9,9 @@ class Locality < ActiveRecord::Base
   # a locality (a.k.a. city) belongs to a region (which belongs to a country in turn)
   belongs_to :region
 
+  # a locality has many professionals
+  has_many :professionals
+
   validates_existence_of :region
 
   def name(locale = nil)
@@ -20,12 +23,8 @@ class Locality < ActiveRecord::Base
     locality = locality_name ? locality_name.locality : nil
   end
 
-  def self.search(term, locale = nil)
-    localities = Array.new
-    LocalityName.by_locale(locale).search(term).each do |locality_name|
-      localities << locality_name.locality
-    end
-    localities
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:locality_names).where(:conditions => {:locality_names => {:name => term, :locale_id => locale}})
   end
 
   def self.sort_by_name
@@ -41,6 +40,6 @@ class Locality < ActiveRecord::Base
   end
 
   def to_param
-    "#{self.name.parameterize}"
+    "#{self.id}-#{self.name.parameterize}"
   end
 end

@@ -4,20 +4,20 @@
 
     .six.columns
 
-      = f.label :country
-      = f.select :country, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
+      = f.label :country_id
+      = f.select :country_id, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
 
     .six.columns
 
-      = f.label :region, "Province/State"
-      = f.select :region, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
+      = f.label :region_id, "Province/State"
+      = f.select :region_id, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
 
   .row
 
     .eight.columns
 
-      = f.label :locality, "City"
-      = f.select :locality, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
+      = f.label :locality_id, "City"
+      = f.select :locality_id, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
 
     .four.columns
 

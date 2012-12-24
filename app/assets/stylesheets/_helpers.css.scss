@@ -106,3 +106,21 @@ ul.inline {
     margin-right: 0.50*$baseFontSize;
   }
 }
+
+ul.csv {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+
+    &:after { content: ","; }
+    &:last-child:after { content: ""; }
+
+    a {
+      display: inline-block;
+      margin-right: -0.25em;
+    }
+  }
+}

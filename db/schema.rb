@@ -165,21 +165,21 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.string   "tel"
     t.string   "street_address_1"
     t.string   "street_address_2"
-    t.string   "locality",               :default => "", :null => false
-    t.string   "region",                 :default => "", :null => false
+    t.integer  "locality_id",            :default => 0,  :null => false
+    t.integer  "region_id",              :default => 0,  :null => false
     t.string   "postal_code"
-    t.string   "country",                :default => "", :null => false
+    t.integer  "country_id",             :default => 0,  :null => false
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.text     "bio"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "representant_id"
     t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.float    "latitude"
-    t.float    "longitude"
-    t.text     "bio"
   end
 
   add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true
@@ -274,19 +274,19 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.string   "tel"
     t.string   "street_address_1"
     t.string   "street_address_2"
-    t.string   "locality"
-    t.string   "region"
+    t.integer  "locality_id"
+    t.integer  "region_id"
     t.string   "postal_code"
-    t.string   "country"
+    t.integer  "country_id"
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "representants", ["email"], :name => "index_representants_on_email", :unique => true
@@ -337,19 +337,19 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.string   "tel"
     t.string   "street_address_1"
     t.string   "street_address_2"
-    t.string   "locality",               :default => "", :null => false
-    t.string   "region",                 :default => "", :null => false
+    t.integer  "locality_id",            :default => 0,  :null => false
+    t.integer  "region_id",              :default => 0,  :null => false
     t.string   "postal_code"
-    t.string   "country"
+    t.integer  "country_id",             :default => 0,  :null => false
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "locale_id",              :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
-    t.float    "latitude"
-    t.float    "longitude"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

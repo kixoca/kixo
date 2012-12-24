@@ -19,15 +19,11 @@ class Country < ActiveRecord::Base
     country = country_name ? country_name.country : nil
   end
 
-  def self.search(term, locale = nil)
-    countries = Array.new
-    CountryName.by_locale(locale).search(term).each do |country_name|
-      countries << country_name.country
-    end
-    countries
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:country_names).where(:conditions => {:country_names => {:name => term, :locale_id => locale}})
   end
 
   def to_param
-    "#{self.name.parameterize}"
+    "#{self.id}-#{self.name.parameterize}"
   end
 end

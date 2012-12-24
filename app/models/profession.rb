@@ -23,7 +23,8 @@ class Profession < ActiveRecord::Base
   end
 
   def description(locale = nil)
-    self.profession_descriptions.by_locale(locale).first.description
+    profession_description = self.profession_descriptions.by_locale(locale).first
+    profession_description ? profession_description.description : nil
   end
 
   def self.find_by_name(name)
@@ -31,15 +32,11 @@ class Profession < ActiveRecord::Base
     profession = profession_name ? profession_name.profession : nil
   end
 
-  def self.search(term, locale = nil)
-    professions = Array.new
-    ProfessionName.by_locale(locale).search(term).each do |profession_name|
-      professions << profession_name.profession
-    end
-    professions
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:profession_names).where(:conditions => {:profession_names => {:name => term, :locale_id => locale}})
   end
 
   def to_param
-    "#{self.name.parameterize}"
+    "#{self.id}-#{self.name.parameterize}"
   end
 end

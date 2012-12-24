@@ -6,7 +6,7 @@
           %h2 Recent questions
           %ul.questions
             - @questions.each do |question|
-              %li
+              %li.question
                 = render "questions/shared/loop", :question => question
       .four.columns
         %aside#sidebar
