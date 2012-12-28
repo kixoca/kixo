@@ -12,6 +12,9 @@ class Region < ActiveRecord::Base
   # a region has many localities (a.k.a. cities)
   has_many :localities
 
+  # a region has many professionals
+  has_many :professionals
+
   validates_existence_of :country
 
   # name (by locale)
@@ -29,7 +32,7 @@ class Region < ActiveRecord::Base
     self.joins(:region_names).where(:conditions => {:region_names => {:name => term, :locale_id => locale}})
   end
 
-  def self.population
+  def population
     population = 0
     self.localities.each do |locality|
       population += locality.population

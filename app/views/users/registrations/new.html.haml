@@ -3,14 +3,14 @@
     .row
       .eight.columns
         .page
-          .page-head
+          %header.page-head
             .container
               .header-group
                 %h1 Sign Up
                 %h3.subheader Create a free account and connect with professionals
-          .page-body
+          %section.page-body
             .container
-              = render :partial => "shared/show_flash"
+              = render "shared/show_flash"
 
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
                 = devise_error_messages!
@@ -43,7 +43,7 @@
                   %h3 Location
                   %h4.subheader Where are you located?
 
-                = render :partial => "shared/location_selector", :locals => {:f => f, :street_address => false}
+                = render "shared/location_selector", :f => f, :street_address => false
 
                 .actions
                   = f.submit "Sign up", :class => "button"

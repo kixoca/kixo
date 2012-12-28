@@ -9,7 +9,7 @@
           %time.created_at{:datetime => question.created_at}
             = "Asked #{time_ago_in_words(question.created_at)} ago"
           %span.location
-            = "in #{question.user.short_address}"
+            = "in #{question.author.short_address}"
   %section.page-section.answers
     .container.thin
       - if question.answers.blank?
@@ -21,9 +21,9 @@
             %ul.inline.spaced
               - question.answers.each do |answer|
                 %li
-                  .professional
-                    %a.headshot.thumb{:href => "#{question_path(question)}##{answer.professional.name.parameterize}"}
-                      = image_tag answer.professional.headshot.url(:thumb)
+                  .author
+                    %a.headshot.thumb{:href => "#{question_path(question)}#ans#{answer.id}"}
+                      = image_tag answer.author.headshot.url(:thumb)
           .four.columns.text-right
             - unless question.answers.blank?
               %a.button.secondary.radius{:href => "#{question_path(question)}#answers"} View all answers

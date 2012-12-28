@@ -1,5 +1,18 @@
 class TopicsController < ApplicationController
 
+  def index
+    @category = Category.find(params[:category_id]) unless params[:category_id].nil?
+    @topics = @category ? @category.topics : Topic.all
+
+    @humanized_topics = @topics.map {|topic| {:id => topic.id, :name => topic.name}}
+
+    respond_to do |format|
+      format.html # index.html.haml
+      format.json { render :json => @humanized_topics }
+      format.xml  { render :xml => @humanized_topics }
+    end
+  end
+
   def show
     @topic = Topic.find(params[:id])
 

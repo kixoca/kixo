@@ -11,10 +11,10 @@
                 %time.created_at{:datetime => @question.created_at}
                   = "Asked #{time_ago_in_words(@question.created_at)} ago"
                 %span.location
-                  = "in #{@question.user.short_address}"
+                  = "in #{@author.short_address}"
               %p.topics
                 Posted in
-                = @question.topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
+                = @topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
           .page-body
             %section#details.details.page-section
               .container
@@ -33,6 +33,6 @@
         .panel
           %h5 Related professionals
           %ul.related-professionals
-            - @question.related_professionals.each do |professional|
+            - @related_professionals.each do |professional|
               %li
-                = render :partial => "professionals/shared/list", :locals => {:professional => professional}
+                = render "professionals/shared/list", :professional => professional

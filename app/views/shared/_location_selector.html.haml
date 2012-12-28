@@ -24,7 +24,7 @@
       = f.label :postal_code, "Zip/Postal Code"
       = f.text_field :postal_code
 
-  - if defined? street_address and street_address != false
+  - if !defined?(street_address) or street_address != false
 
     .row
 

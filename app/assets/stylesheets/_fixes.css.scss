@@ -53,6 +53,10 @@ ul.side-nav {
   }
 }
 
+.vertical.tabs.white a {
+  background: #fff;
+}
+
 .reveal-modal {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }

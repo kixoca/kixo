@@ -3,7 +3,11 @@
     .row
       .eight.columns
         %section#questions
-          %h2 Recent questions
+          %h2
+            - if current_professional
+              = "Recent questions for you"
+            - else
+              = "Recent questions"
           %ul.questions
             - @questions.each do |question|
               %li.question

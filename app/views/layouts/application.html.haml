@@ -12,6 +12,10 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = javascript_include_tag "//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
+
+    - unless @canonical_url.nil?
+      %link{:rel => "canonical", :href => @canonical_url}
+
     = csrf_meta_tags
 
     %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
@@ -41,37 +45,39 @@
                   = Locale.find_by_code(locale).name
                   %i.icon-chevron-down
             .six.columns
-              %ul.account.button-group.radius
+              %ul.account.button-group
                 - if user_signed_in?
                   %li
-                    .button.secondary.small.radius.split.dropdown
-                      %a{:href => "#"}
-                        = current_user.email
+                    .button.secondary.small.split.dropdown
+                      = link_to current_user.email, edit_user_registration_path
                       %span
                       %ul.dropdown-menu
+                        %li
+                          = link_to "Settings", edit_user_registration_path
                         %li
                           = link_to "Sign out", destroy_user_session_path, :method => :delete
                 - elsif professional_signed_in?
                   %li
                     .button.secondary.small.split.dropdown
-                      %a{:href => "#"}
-                        = current_professional.email
+                      = link_to current_professional.email, edit_professional_registration_path
                       %span
                       %ul.dropdown-menu
+                        %li
+                          = link_to "Settings", edit_professional_registration_path
                         %li
                           = link_to "Sign out", destroy_professional_session_path, :method => :delete
                 - else
                   %li
                     %a.button.secondary.small{:href => new_user_session_path}
-                      =t :sign_in
+                      =t("sign_in")
                   %li
                     %a.button.secondary.small{:href => new_user_registration_path}
-                      =t :sign_up
+                      =t("sign_up")
 
       = render "shared/actions"
 
     = yield
 
-    = render :partial => "shared/footer", :locales => {:categories => @categories, :professions => @professions}
+    = render "shared/footer", :categories => @categories, :professions => @professions
 
     %section#modal

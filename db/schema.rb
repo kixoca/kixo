@@ -51,11 +51,12 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
   add_index "admin_users", ["unlock_token"], :name => "index_admin_users_on_unlock_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.text     "details",         :default => "", :null => false
-    t.integer  "question_id",     :default => 0,  :null => false
-    t.integer  "professional_id", :default => 0,  :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.text     "details",     :default => "", :null => false
+    t.integer  "question_id", :default => 0,  :null => false
+    t.integer  "author_id",   :default => 0,  :null => false
+    t.string   "author_type", :default => "", :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "categories", :force => true do |t|
@@ -229,7 +230,8 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.text     "details"
     t.string   "status_id",     :default => "0", :null => false
     t.integer  "visibility_id", :default => 0,   :null => false
-    t.integer  "user_id",       :default => 0,   :null => false
+    t.integer  "author_id",     :default => 0,   :null => false
+    t.string   "author_type",   :default => "",  :null => false
     t.integer  "locale_id",     :default => 0,   :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
@@ -296,7 +298,8 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.text     "comment",         :default => "", :null => false
     t.integer  "rating_id",       :default => 0,  :null => false
     t.integer  "professional_id", :default => 0,  :null => false
-    t.integer  "user_id",         :default => 0,  :null => false
+    t.integer  "author_id",       :default => 0,  :null => false
+    t.string   "author_type",     :default => "", :null => false
     t.integer  "locale_id",       :default => 0,  :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false

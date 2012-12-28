@@ -1,0 +1,109 @@
+%section#content
+  .container
+
+    .row
+
+      .four.columns
+
+        %ul.vertical.tabs.white
+          %li
+            %a.active{:href => "#account"} Account
+          %li
+            %a{:href => "#password"} Password
+          %li
+            %a{:href => "#notifications"} Notifications
+          %li
+            %a{:href => "#profile"} Profile
+          %li
+            %a{:href => "#contact"} Contact
+
+      .eight.columns
+
+        .page
+
+          %header.page-head
+            .container
+              .header-group
+                %h1 My Account
+
+          %section.page-body
+            .container
+
+              = render "shared/show_flash"
+
+              %ul.tabs-content
+
+                %li#accountTab.active
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
+
+                    .header-group
+                      %h3 Account
+                      %h4.subheader Change your basic account, language and privacy settings
+
+                    .row
+                      .twelve.columns
+                        = f.label :email
+                        = f.email_field :email
+
+                    .row
+                      .twelve.columns
+                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
+                        = f.password_field :current_password
+
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"
+
+                  %hr
+
+                  .row
+                    .twelve.columns
+                      %h3 Cancel my account
+                      %p
+                        = "Unhappy?"
+                        = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+
+                %li#passwordTab
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
+
+                    .header-group
+                      %h3 Password
+                      %h4.subheader Change your password or recover your current one
+
+                    .row
+                      .twelve.columns
+                        = f.label :password
+                        = f.password_field :password, :autocomplete => "off"
+
+                    .row
+                      .twelve.columns
+                        = f.label :password_confirmation
+                        = f.password_field :password_confirmation
+
+                    .row
+                      .twelve.columns
+                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
+                        = f.password_field :current_password
+
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"
+
+                %li#contactTab
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
+
+                    .header-group
+                      %h3 Contact Information
+                      %h4.subheader Edit your contact information
+
+                    = render "shared/location_selector", :f => f
+
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"

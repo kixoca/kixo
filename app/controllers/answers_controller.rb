@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(params[:answer])
-    @answer.professional = current_professional unless current_professional.nil?
+    @answer.author = current_professional
 
     respond_to do |format|
       if @answer.save

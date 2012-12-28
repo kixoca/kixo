@@ -10,6 +10,9 @@ class Country < ActiveRecord::Base
   # a country has many localities (a.k.a. cities) through regions
   has_many :localities, :through => :regions
 
+  # a country has many professionals
+  has_many :professionals
+
   def name(locale = nil)
     self.country_names.by_locale(locale).first.name
   end
@@ -21,6 +24,14 @@ class Country < ActiveRecord::Base
 
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:country_names).where(:conditions => {:country_names => {:name => term, :locale_id => locale}})
+  end
+
+  def population
+    population = 0
+    self.regions.each do |region|
+      population += region.population
+    end
+    population
   end
 
   def to_param

@@ -17,10 +17,10 @@
             .container
               %h4
                 - unless @locality.nil?
-                  = "#{@professionals.count} #{@topic.name.downcase} experts found in #{@locality.name}"
+                  = "#{@professionals.count} professionals in <em>#{@topic.name.downcase}</em> found in #{@locality.name}".html_safe
                 - else
-                  = "#{@professionals.count} #{@topic.name.downcase} experts found"
-              %ul.block-grid.three-up.mobile-one-up
+                  = "#{@professionals.count} professionals in <em>#{@topic.name.downcase}</em> found".html_safe
+              %ul.professionals.block-grid.three-up.mobile-one-up
                 - @professionals.each do |professional|
                   %li.professional
                     = render "professionals/shared/loop", :professional => professional
@@ -28,7 +28,7 @@
           %section#browse.page-section
             .container
               %h4
-                = "Browse #{@topic.name.downcase} experts by location"
+                = "Browse professionals in <em>#{@topic.name.downcase}</em> by location".html_safe
               %ul.countries
                 - @all_countries.each do |country|
                   %li.country
@@ -37,7 +37,7 @@
                       - country.regions.each do |region|
                         %li.region
                           = region.name
-                          %ul.localities.csv
+                          %ul.localities
                             - region.localities.most_populated(25).each do |locality|
                               %li.locality
                                 %a{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} in #{locality.name}, #{region.name}, #{country.name}"}

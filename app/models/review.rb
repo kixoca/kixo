@@ -1,7 +1,7 @@
 class Review < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :comment, :rating_id, :professional_id, :user_id, :locale_id
+  attr_accessible :comment, :rating_id, :professional_id, :author_id, :locale_id
 
   # a review has one rating
   belongs_to :rating
@@ -10,7 +10,7 @@ class Review < ActiveRecord::Base
   belongs_to :professional
 
   # a review belongs to a user
-  belongs_to :user
+  belongs_to :author, :polymorphic => true
 
   # I18n
   belongs_to :locale
@@ -25,7 +25,7 @@ class Review < ActiveRecord::Base
   validates :comment, :presence => true
   validates_existence_of :rating
   validates_existence_of :professional
-  validates_existence_of :user
+  validates_existence_of :author
   validates_existence_of :locale
 
   private

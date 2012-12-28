@@ -1,10 +1,10 @@
 class Question < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :details, :status_id, :visibility_id, :topic_ids, :user_id, :locale_id
+  attr_accessible :title, :details, :status_id, :visibility_id, :topic_ids, :author_id, :locale_id
 
   # a questions belongs to a user
-  belongs_to :user
+  belongs_to :author, :polymorphic => true
 
   # a question can have one or many answers
   has_many :answers
@@ -32,7 +32,7 @@ class Question < ActiveRecord::Base
   validates_presence_of  :topics
   validates_existence_of :status
   validates_existence_of :visibility
-  validates_existence_of :user
+  validates_existence_of :author
   validates_existence_of :locale
 
   def is_open?
@@ -40,11 +40,7 @@ class Question < ActiveRecord::Base
   end
 
   def topics_list
-    topic_names = Array.new
-    self.topics.each do |topic|
-      topic_names << topic.name
-    end
-    topic_names.join(", ")
+    self.topics.map {|topic| topic.name}.join(", ").html_safe
   end
 
   def related_professionals

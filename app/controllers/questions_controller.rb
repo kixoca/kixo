@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   # GET /questions.xml
   def index
-    @questions = Question.by_locale.order("created_at").page(params[:page])
+    @questions = Question.by_locale.order("created_at DESC").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.haml
@@ -23,6 +23,9 @@ class QuestionsController < ApplicationController
   def show
     @question = Question.find(params[:id])
     @answers = @question.answers
+    @author = @question.author
+    @topics = @question.topics
+    @related_professionals = @question.related_professionals
 
     respond_to do |format|
       format.html # show.html.haml
@@ -54,7 +57,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
-    @question.user = current_user
+    @question.author = current_user || current_professional
 
     respond_to do |format|
       if @question.save
@@ -112,10 +115,14 @@ class QuestionsController < ApplicationController
 
   def authenticate!
     session[:user_return_to] = case params[:action]
-      when "create"  then new_question_path
-      else request.path
+                                 when "create"  then new_question_path
+                                 else request.path
+                               end
+    if current_professional
+      authenticate_professional!
+    else
+      authenticate_user!
     end
-    authenticate_user!
   end
 
   def remember_question

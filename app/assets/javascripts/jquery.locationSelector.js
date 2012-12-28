@@ -23,8 +23,8 @@
 
                 // disable region and locality
 
-                $region.attr("disabled", "disabled");
-                $locality.attr("disabled", "disabled");
+                $region.find(":selected").val()   ? $region.removeAttr("disabled")   : $region.attr("disabled", "disabled")
+                $locality.find(":selected").val() ? $locality.removeAttr("disabled") : $locality.attr("disabled", "disabled")
 
                 // append 'basket' selects
 

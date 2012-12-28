@@ -31,7 +31,6 @@ class Topic < ActiveRecord::Base
   def description(locale = nil)
     topic_description = self.topic_descriptions.by_locale(locale).first
     topic_description ? topic_description.description : nil
-    #"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed a tincidunt massa. Nunc id risus id ipsum euismod adipiscing a in neque. In quis massa felis. Donec adipiscing varius purus nec tincidunt. Curabitur non dapibus mauris. Quisque vel sapien sit amet tortor volutpat adipiscing. Mauris vehicula, magna eget luctus lacinia, lacus justo porttitor mi, in volutpat tortor sapien nec lacus. Sed lacinia suscipit fringilla. Nunc varius velit nec elit condimentum porttitor. Duis neque lacus, scelerisque placerat fermentum eget, pulvinar nec ipsum."
   end
 
   def self.find_by_name(name)

@@ -1,19 +1,13 @@
 class User < ActiveRecord::Base
   include CommonScopes
 
-  devise :database_authenticatable,
-         :registerable, :recoverable, :rememberable, :trackable, :validatable,
-         :omniauthable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
-                  :name, :tel, :street_address_1, :street_address_2, :locality_id, :region_id, :postal_code, :country_id,
-                  :headshot, :locale_id
-
-  # a user can have many questions
-  has_many :questions
-
-  # a user can be the author of many reviews
-  has_many :reviews, :dependent => :destroy
+                  :name, :tel, :headshot, :bio, :locale_id,
+                  :street_address_1, :street_address_2, :locality_id, :region_id, :postal_code, :country_id,
+                  :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?,
+                  :notify_of_replies?, :notify_of_similar_questions?
 
   # I18n
   belongs_to :locale
@@ -23,8 +17,14 @@ class User < ActiveRecord::Base
   belongs_to :region
   belongs_to :locality
 
+  # a user can have one or many questions
+  has_many :questions, :as => :author
+
+  # a user can be the author of many reviews
+  has_many :reviews, :as => :author, :dependent => :destroy
+
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => { :large => "150x150", :medium => "100x100", :thumb => "50x50" }
+  has_attached_file :headshot, :styles => { :large => "160x160", :medium => "120x120", :small => "80x80", :thumb => "50x50" }
 
   # set default values on init
   after_initialize :default_values
@@ -50,6 +50,14 @@ class User < ActiveRecord::Base
 
   def can_review?(professional)
     self.reviews.all(:conditions => {:professional_id => professional.id}).count == 0
+  end
+
+  def self.find_by_locality(locality)
+    self.where(:conditions => {:locality_id => locality})
+  end
+
+  def self.search_by_locality(locality)
+    self.find_by_locality(Locality.search(locality))
   end
 
   private
