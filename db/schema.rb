@@ -103,10 +103,10 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
   create_table "guides", :force => true do |t|
     t.string   "title",           :default => "", :null => false
     t.string   "excerpt",         :default => "", :null => false
-    t.string   "status",          :default => "", :null => false
+    t.integer  "guide_status_id", :default => 0,  :null => false
     t.text     "content",         :default => "", :null => false
     t.integer  "topic_id",        :default => 0,  :null => false
-    t.integer  "professional_id", :default => 0,  :null => false
+    t.integer  "author_id",       :default => 0,  :null => false
     t.integer  "locale_id",       :default => 0,  :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
@@ -148,43 +148,6 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.integer "locale_id",     :default => 0,  :null => false
     t.integer "profession_id", :default => 0,  :null => false
   end
-
-  create_table "professionals", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "name",                   :default => "", :null => false
-    t.string   "tel"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.integer  "locality_id",            :default => 0,  :null => false
-    t.integer  "region_id",              :default => 0,  :null => false
-    t.string   "postal_code"
-    t.integer  "country_id",             :default => 0,  :null => false
-    t.string   "headshot_file_name"
-    t.string   "headshot_content_type"
-    t.integer  "headshot_file_size"
-    t.datetime "headshot_updated_at"
-    t.text     "bio"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "representant_id"
-    t.integer  "locale_id",              :default => 0,  :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "professionals", ["email"], :name => "index_professionals_on_email", :unique => true
-  add_index "professionals", ["reset_password_token"], :name => "index_professionals_on_reset_password_token", :unique => true
 
   create_table "professionals_locales", :id => false, :force => true do |t|
     t.integer "professional_id"
@@ -261,39 +224,6 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.integer "country_id", :default => 0, :null => false
   end
 
-  create_table "representants", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip"
-    t.string   "last_sign_in_ip"
-    t.string   "name",                   :default => "", :null => false
-    t.string   "tel"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.integer  "locality_id"
-    t.integer  "region_id"
-    t.string   "postal_code"
-    t.integer  "country_id"
-    t.string   "headshot_file_name"
-    t.string   "headshot_content_type"
-    t.integer  "headshot_file_size"
-    t.datetime "headshot_updated_at"
-    t.float    "latitude"
-    t.float    "longitude"
-    t.integer  "locale_id",              :default => 0,  :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
-  end
-
-  add_index "representants", ["email"], :name => "index_representants_on_email", :unique => true
-  add_index "representants", ["reset_password_token"], :name => "index_representants_on_reset_password_token", :unique => true
-
   create_table "reviews", :force => true do |t|
     t.text     "comment",         :default => "", :null => false
     t.integer  "rating_id",       :default => 0,  :null => false
@@ -324,35 +254,44 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                  :default => "", :null => false
-    t.string   "encrypted_password",     :default => "", :null => false
+    t.string   "type"
+    t.string   "email",                        :default => "",    :null => false
+    t.string   "encrypted_password",           :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          :default => 0
+    t.integer  "sign_in_count",                :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.string   "provider"
-    t.string   "uid"
     t.string   "name"
     t.string   "tel"
-    t.string   "street_address_1"
-    t.string   "street_address_2"
-    t.integer  "locality_id",            :default => 0,  :null => false
-    t.integer  "region_id",              :default => 0,  :null => false
-    t.string   "postal_code"
-    t.integer  "country_id",             :default => 0,  :null => false
+    t.text     "bio"
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.string   "street_address_1"
+    t.string   "street_address_2"
+    t.integer  "locality_id",                  :default => 0,     :null => false
+    t.integer  "region_id",                    :default => 0,     :null => false
+    t.string   "postal_code"
+    t.integer  "country_id",                   :default => 0,     :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "locale_id",              :default => 0,  :null => false
-    t.datetime "created_at",                             :null => false
-    t.datetime "updated_at",                             :null => false
+    t.integer  "locale_id",                    :default => 0,     :null => false
+    t.boolean  "notify_of_kixo_news?",         :default => true,  :null => false
+    t.boolean  "notify_of_partner_news?",      :default => true,  :null => false
+    t.boolean  "notify_of_new_messages?",      :default => true,  :null => false
+    t.boolean  "notify_of_answers?",           :default => true,  :null => false
+    t.boolean  "notify_of_replies?",           :default => true,  :null => false
+    t.boolean  "notify_of_similar_questions?", :default => false, :null => false
+    t.boolean  "notify_of_questions?",         :default => true,  :null => false
+    t.boolean  "notify_of_other_answers?",     :default => true,  :null => false
+    t.integer  "referer_id"
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -22,10 +22,6 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      # facebook auth
-      t.string :provider
-      t.string :uid
-
       # personal information
       t.string  :name
       t.string  :tel
@@ -62,6 +58,9 @@ class CreateUsers < ActiveRecord::Migration
       # notifications (professionals only)
       t.boolean :notify_of_questions?,     :null => false, :default => true
       t.boolean :notify_of_other_answers?, :null => false, :default => true
+
+      # referer
+      t.integer :referer_id
 
       t.timestamps
     end

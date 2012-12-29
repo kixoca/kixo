@@ -1,5 +1,8 @@
 # encoding: UTF-8
 
+# create admin user
+AdminUser.find_or_create_by_email(:email => 'admin@example.com', :password => 'password', :password_confirmation => 'password')
+
 # locales
 Locale.destroy_all
 
