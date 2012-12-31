@@ -16,8 +16,11 @@ class Question < ActiveRecord::Base
   belongs_to :visibility, :class_name => "QuestionVisibility"
 
   # classifications
-  has_many :classifications, :foreign_key => :classifiable_id, :dependent => :destroy
-  has_many :topics, :through => :classifications, :source => :taxonomy, :source_type => "Topic"
+  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
+  has_many :taxonomies, :through => :classifications, :source => :taxonomy
+  has_many :topics,     :through => :classifications, :source => :taxonomy, :source_type => "Topic"
+
+  accepts_nested_attributes_for :topics
 
   # I18n
   belongs_to :locale

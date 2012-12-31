@@ -17,7 +17,8 @@ class Taxonomy < ActiveRecord::Base
   has_many :children, :class_name => "Taxonomy", :foreign_key => :parent_id
 
   # a taxonomy can classify many models
-  has_many :classifications
+  has_many :classifications, :as => :taxonomy, :foreign_key => :taxonomy_id
+  has_many :classifiables, :through => :classifications, :source => :classifiable
   has_many :users,         :through => :classifications, :source => :classifiable, :source_type => "User"
   has_many :professionals, :through => :classifications, :source => :classifiable, :source_type => "Professional"
   has_many :representants, :through => :classifications, :source => :classifiable, :source_type => "Representant"

@@ -4,9 +4,12 @@ class Professional < User
                   :notify_of_questions?, :notify_of_other_answers?
 
   # classifications
-  has_many :classifications, :dependent => :destroy
-  has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic", :foreign_key => :taxonomy_id
+  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
+  has_many :taxonomies,  :through => :classifications, :source => :taxonomy
+  has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic"
   has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
+
+  accepts_nested_attributes_for :topics, :professions
 
   # a professional can be the author of one or many guides
   has_many :guides, :as => :author

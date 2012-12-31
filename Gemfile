@@ -50,3 +50,5 @@ gem 'google-webfonts'
 gem 'geocoder'
 
 gem 'kaminari'
+
+gem 'store_base_sti_class'
