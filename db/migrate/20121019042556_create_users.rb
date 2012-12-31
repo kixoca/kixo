@@ -33,34 +33,34 @@ class CreateUsers < ActiveRecord::Migration
       t.has_attached_file :headshot
 
       # contact information
-      t.string  :street_address_1
-      t.string  :street_address_2
-      t.integer :locality_id,     :null => false, :default => 0
-      t.integer :region_id,       :null => false, :default => 0
-      t.string  :postal_code
-      t.integer :country_id,      :null => false, :default => 0
+      t.string     :street_address_1
+      t.string     :street_address_2
+      t.references :locality,        :null => false, :default => 0
+      t.references :region,          :null => false, :default => 0
+      t.string     :postal_code
+      t.references :country,         :null => false, :default => 0
 
       # geolocation
       t.float :latitude
       t.float :longitude
 
       # I18n
-      t.integer :locale_id, :null => false, :default => 0
+      t.references :locale, :null => false, :default => 0
 
       # notifications (general)
-      t.boolean :notify_of_kixo_news?,         :null => false, :default => true
-      t.boolean :notify_of_partner_news?,      :null => false, :default => true
-      t.boolean :notify_of_new_messages?,      :null => false, :default => true
-      t.boolean :notify_of_answers?,           :null => false, :default => true
-      t.boolean :notify_of_replies?,           :null => false, :default => true
-      t.boolean :notify_of_similar_questions?, :null => false, :default => false
+      t.boolean :notify_of_kixo_news,         :null => false, :default => true
+      t.boolean :notify_of_partner_news,      :null => false, :default => true
+      t.boolean :notify_of_new_messages,      :null => false, :default => true
+      t.boolean :notify_of_answers,           :null => false, :default => true
+      t.boolean :notify_of_replies,           :null => false, :default => true
+      t.boolean :notify_of_similar_questions, :null => false, :default => false
 
       # notifications (professionals only)
-      t.boolean :notify_of_questions?,     :null => false, :default => true
-      t.boolean :notify_of_other_answers?, :null => false, :default => true
+      t.boolean :notify_of_questions,     :null => false, :default => true
+      t.boolean :notify_of_other_answers, :null => false, :default => true
 
       # referer
-      t.integer :referer_id
+      t.references :referer
 
       t.timestamps
     end

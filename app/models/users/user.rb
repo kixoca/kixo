@@ -1,13 +1,13 @@
 class User < ActiveRecord::Base
+
   include CommonScopes
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :provider, :uid,
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :tel, :headshot, :bio, :locale_id,
-                  :street_address_1, :street_address_2, :locality_id, :region_id, :postal_code, :country_id,
-                  :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?,
-                  :notify_of_replies?, :notify_of_similar_questions?
+                  :street_address_1, :street_address_2, :locality, :locality_id, :region, :region_id, :postal_code, :country, :country_id,
+                  :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?, :notify_of_replies?, :notify_of_similar_questions?
 
   # I18n
   belongs_to :locale
@@ -53,7 +53,7 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    "#{self.street_address_1}, #{self.locality}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
+    "#{self.street_address_1} (#{self.street_address_2}), #{self.locality.name}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
   end
 
   def can_review?(professional)
@@ -71,6 +71,7 @@ class User < ActiveRecord::Base
   private
 
   def default_values
-    self.locale_id = Locale.find_by_code(I18n.locale).id if (self.locale_id.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
   end
+
 end

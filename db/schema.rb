@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121216230209) do
+ActiveRecord::Schema.define(:version => 20121230212530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -51,39 +51,23 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
   add_index "admin_users", ["unlock_token"], :name => "index_admin_users_on_unlock_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.text     "details",     :default => "", :null => false
-    t.integer  "question_id", :default => 0,  :null => false
-    t.integer  "author_id",   :default => 0,  :null => false
-    t.string   "author_type", :default => "", :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.text     "details",     :default => "",             :null => false
+    t.integer  "question_id", :default => 0,              :null => false
+    t.integer  "author_id",   :default => 0,              :null => false
+    t.string   "author_type", :default => "Professional"
+    t.datetime "created_at",                              :null => false
+    t.datetime "updated_at",                              :null => false
   end
 
-  create_table "categories", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+  create_table "classifications", :id => false, :force => true do |t|
+    t.integer "classifiable_id",   :default => 0,   :null => false
+    t.string  "classifiable_type", :default => "0", :null => false
+    t.integer "taxonomy_id",       :default => 0,   :null => false
+    t.string  "taxonomy_type",     :default => "0", :null => false
   end
 
-  create_table "category_descriptions", :force => true do |t|
-    t.string  "description", :default => "", :null => false
-    t.integer "locale_id",   :default => 0,  :null => false
-    t.integer "category_id", :default => 0,  :null => false
-  end
-
-  create_table "category_names", :force => true do |t|
-    t.string  "name",        :default => "", :null => false
-    t.integer "locale_id",   :default => 0,  :null => false
-    t.integer "category_id", :default => 0,  :null => false
-  end
-
-  create_table "countries", :force => true do |t|
-  end
-
-  create_table "country_names", :force => true do |t|
-    t.string  "name",       :default => "", :null => false
-    t.integer "locale_id",  :default => 0,  :null => false
-    t.integer "country_id", :default => 0,  :null => false
-  end
+  add_index "classifications", ["classifiable_id", "taxonomy_id"], :name => "index_classifications_on_classifiable_id_and_taxonomy_id"
+  add_index "classifications", ["taxonomy_id", "classifiable_id"], :name => "index_classifications_on_taxonomy_id_and_classifiable_id"
 
   create_table "eager_beavers", :force => true do |t|
     t.string   "email",      :default => "", :null => false
@@ -91,30 +75,16 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.datetime "updated_at",                 :null => false
   end
 
-  create_table "guide_status_names", :force => true do |t|
-    t.string  "name",            :default => "", :null => false
-    t.integer "locale_id",       :default => 0,  :null => false
-    t.integer "guide_status_id", :default => 0,  :null => false
-  end
-
-  create_table "guide_statuses", :force => true do |t|
-  end
-
   create_table "guides", :force => true do |t|
-    t.string   "title",           :default => "", :null => false
-    t.string   "excerpt",         :default => "", :null => false
-    t.integer  "guide_status_id", :default => 0,  :null => false
-    t.text     "content",         :default => "", :null => false
-    t.integer  "topic_id",        :default => 0,  :null => false
-    t.integer  "author_id",       :default => 0,  :null => false
-    t.integer  "locale_id",       :default => 0,  :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
-  end
-
-  create_table "guides_topics", :id => false, :force => true do |t|
-    t.integer "guide_id"
-    t.integer "topic_id"
+    t.string   "title",           :default => "",             :null => false
+    t.string   "excerpt",         :default => "",             :null => false
+    t.integer  "guide_status_id", :default => 0,              :null => false
+    t.text     "content",         :default => "",             :null => false
+    t.integer  "author_id",       :default => 0,              :null => false
+    t.string   "author_type",     :default => "Professional"
+    t.integer  "locale_id",       :default => 0,              :null => false
+    t.datetime "created_at",                                  :null => false
+    t.datetime "updated_at",                                  :null => false
   end
 
   create_table "locales", :force => true do |t|
@@ -126,141 +96,66 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
 
   add_index "locales", ["code"], :name => "index_locales_on_code", :unique => true
 
-  create_table "localities", :force => true do |t|
-    t.integer "population"
-    t.integer "region_id",  :default => 0, :null => false
+  create_table "localizations", :id => false, :force => true do |t|
+    t.integer "localizable_id",   :default => 0,   :null => false
+    t.string  "localizable_type", :default => "0", :null => false
+    t.integer "locale_id",        :default => 0,   :null => false
   end
 
-  create_table "locality_names", :force => true do |t|
-    t.string  "name",        :default => "", :null => false
-    t.integer "locale_id",   :default => 0,  :null => false
-    t.integer "locality_id", :default => 0,  :null => false
-  end
-
-  create_table "profession_descriptions", :force => true do |t|
-    t.string  "description",   :default => "", :null => false
-    t.integer "locale_id",     :default => 0,  :null => false
-    t.integer "profession_id", :default => 0,  :null => false
-  end
-
-  create_table "profession_names", :force => true do |t|
-    t.string  "name",          :default => "", :null => false
-    t.integer "locale_id",     :default => 0,  :null => false
-    t.integer "profession_id", :default => 0,  :null => false
-  end
-
-  create_table "professionals_locales", :id => false, :force => true do |t|
-    t.integer "professional_id"
-    t.integer "locale_id"
-  end
-
-  create_table "professionals_professions", :id => false, :force => true do |t|
-    t.integer "professional_id"
-    t.integer "profession_id"
-  end
-
-  create_table "professionals_topics", :id => false, :force => true do |t|
-    t.integer "professional_id"
-    t.integer "topic_id"
-  end
-
-  create_table "professions", :force => true do |t|
-    t.integer  "category_id", :default => 0, :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "question_status_names", :force => true do |t|
-    t.string  "name",               :default => "", :null => false
-    t.integer "locale_id",          :default => 0,  :null => false
-    t.integer "question_status_id", :default => 0,  :null => false
-  end
-
-  create_table "question_statuses", :force => true do |t|
-  end
-
-  create_table "question_visibilities", :force => true do |t|
-  end
-
-  create_table "question_visibility_names", :force => true do |t|
-    t.string  "name",                   :default => "", :null => false
-    t.integer "locale_id",              :default => 0,  :null => false
-    t.integer "question_visibility_id", :default => 0,  :null => false
-  end
+  add_index "localizations", ["locale_id", "localizable_id"], :name => "index_localizations_on_locale_id_and_localizable_id"
+  add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
 
   create_table "questions", :force => true do |t|
-    t.string   "title",         :default => "",  :null => false
+    t.string   "title",         :default => "",     :null => false
     t.text     "details"
-    t.string   "status_id",     :default => "0", :null => false
-    t.integer  "visibility_id", :default => 0,   :null => false
-    t.integer  "author_id",     :default => 0,   :null => false
-    t.string   "author_type",   :default => "",  :null => false
-    t.integer  "locale_id",     :default => 0,   :null => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-  end
-
-  create_table "questions_topics", :id => false, :force => true do |t|
-    t.integer "question_id"
-    t.integer "topic_id"
-  end
-
-  create_table "rating_names", :force => true do |t|
-    t.string  "name",      :default => "", :null => false
-    t.integer "locale_id", :default => 0,  :null => false
-    t.integer "rating_id", :default => 0,  :null => false
-  end
-
-  create_table "ratings", :force => true do |t|
-  end
-
-  create_table "region_names", :force => true do |t|
-    t.string  "name",      :default => "", :null => false
-    t.integer "locale_id", :default => 0,  :null => false
-    t.integer "region_id", :default => 0,  :null => false
-  end
-
-  create_table "regions", :force => true do |t|
-    t.integer "country_id", :default => 0, :null => false
+    t.integer  "status_id",     :default => 0,      :null => false
+    t.integer  "visibility_id", :default => 0,      :null => false
+    t.integer  "author_id",     :default => 0,      :null => false
+    t.string   "author_type",   :default => "User"
+    t.integer  "locale_id",     :default => 0,      :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "reviews", :force => true do |t|
-    t.text     "comment",         :default => "", :null => false
-    t.integer  "rating_id",       :default => 0,  :null => false
-    t.integer  "professional_id", :default => 0,  :null => false
-    t.integer  "author_id",       :default => 0,  :null => false
-    t.string   "author_type",     :default => "", :null => false
-    t.integer  "locale_id",       :default => 0,  :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.text     "comment",         :default => "",     :null => false
+    t.integer  "rating_id",       :default => 0,      :null => false
+    t.integer  "professional_id", :default => 0,      :null => false
+    t.integer  "author_id",       :default => 0,      :null => false
+    t.string   "author_type",     :default => "User"
+    t.integer  "locale_id",       :default => 0,      :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
   end
 
-  create_table "topic_descriptions", :force => true do |t|
-    t.string  "description", :default => "", :null => false
-    t.integer "locale_id",   :default => 0,  :null => false
-    t.integer "topic_id",    :default => 0,  :null => false
+  create_table "taxonomies", :force => true do |t|
+    t.string  "type"
+    t.integer "parent_id"
+    t.integer "rank"
   end
 
-  create_table "topic_names", :force => true do |t|
-    t.string  "name",      :default => "", :null => false
-    t.integer "locale_id", :default => 0,  :null => false
-    t.integer "topic_id",  :default => 0,  :null => false
+  create_table "taxonomy_descriptions", :force => true do |t|
+    t.string  "type"
+    t.string  "description"
+    t.integer "locale_id",   :default => 0, :null => false
+    t.integer "taxonomy_id", :default => 0, :null => false
   end
 
-  create_table "topics", :force => true do |t|
-    t.integer  "category_id", :default => 0, :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+  create_table "taxonomy_names", :force => true do |t|
+    t.string  "type"
+    t.string  "name"
+    t.integer "locale_id",   :default => 0, :null => false
+    t.integer "taxonomy_id", :default => 0, :null => false
   end
 
   create_table "users", :force => true do |t|
     t.string   "type"
-    t.string   "email",                        :default => "",    :null => false
-    t.string   "encrypted_password",           :default => "",    :null => false
+    t.string   "email",                       :default => "",    :null => false
+    t.string   "encrypted_password",          :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                :default => 0
+    t.integer  "sign_in_count",               :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -274,24 +169,24 @@ ActiveRecord::Schema.define(:version => 20121216230209) do
     t.datetime "headshot_updated_at"
     t.string   "street_address_1"
     t.string   "street_address_2"
-    t.integer  "locality_id",                  :default => 0,     :null => false
-    t.integer  "region_id",                    :default => 0,     :null => false
+    t.integer  "locality_id",                 :default => 0,     :null => false
+    t.integer  "region_id",                   :default => 0,     :null => false
     t.string   "postal_code"
-    t.integer  "country_id",                   :default => 0,     :null => false
+    t.integer  "country_id",                  :default => 0,     :null => false
     t.float    "latitude"
     t.float    "longitude"
-    t.integer  "locale_id",                    :default => 0,     :null => false
-    t.boolean  "notify_of_kixo_news?",         :default => true,  :null => false
-    t.boolean  "notify_of_partner_news?",      :default => true,  :null => false
-    t.boolean  "notify_of_new_messages?",      :default => true,  :null => false
-    t.boolean  "notify_of_answers?",           :default => true,  :null => false
-    t.boolean  "notify_of_replies?",           :default => true,  :null => false
-    t.boolean  "notify_of_similar_questions?", :default => false, :null => false
-    t.boolean  "notify_of_questions?",         :default => true,  :null => false
-    t.boolean  "notify_of_other_answers?",     :default => true,  :null => false
+    t.integer  "locale_id",                   :default => 0,     :null => false
+    t.boolean  "notify_of_kixo_news",         :default => true,  :null => false
+    t.boolean  "notify_of_partner_news",      :default => true,  :null => false
+    t.boolean  "notify_of_new_messages",      :default => true,  :null => false
+    t.boolean  "notify_of_answers",           :default => true,  :null => false
+    t.boolean  "notify_of_replies",           :default => true,  :null => false
+    t.boolean  "notify_of_similar_questions", :default => false, :null => false
+    t.boolean  "notify_of_questions",         :default => true,  :null => false
+    t.boolean  "notify_of_other_answers",     :default => true,  :null => false
     t.integer  "referer_id"
-    t.datetime "created_at",                                      :null => false
-    t.datetime "updated_at",                                      :null => false
+    t.datetime "created_at",                                     :null => false
+    t.datetime "updated_at",                                     :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,11 +1,9 @@
 class Locality < Taxonomy
-  include CommonScopes
 
-  # a locality has many names (in different locales)
-  has_many :names, :class_name => "LocalityName"
+  attr_accessible :region
 
   # a locality (a.k.a. city) belongs to a region (which belongs to a country in turn)
-  belongs_to :region, :foreign_key => "parent_id"
+  belongs_to :region, :foreign_key => :parent_id
 
   def population
     self.order
@@ -25,10 +23,11 @@ class Locality < Taxonomy
   end
 
   def self.sort_by_population
-    self.order("order DESC")
+    self.order("rank DESC")
   end
 
   def self.most_populated(n = 10)
     self.sort_by_population.limit(n)
   end
+
 end

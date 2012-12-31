@@ -1,8 +1,9 @@
 class LocalityName < TaxonomyName
-  include CommonScopes
+
+  attr_accessible :locality
 
   # a locality name belongs to a locality
-  belongs_to :locality, :foreign_key => "taxonomy_id"
+  belongs_to :locality, :foreign_key => :taxonomy_id
 
   # validation
   validates_existence_of :locality
@@ -10,4 +11,5 @@ class LocalityName < TaxonomyName
   def self.search(term, locale = nil)
     LocalityName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
+
 end

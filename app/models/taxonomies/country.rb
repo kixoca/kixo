@@ -1,11 +1,7 @@
 class Country < Taxonomy
-  include CommonScopes
-
-  # a country has many names (in different locales)
-  has_many :names, :class_name => "CountryName"
 
   # a country has many regions (states, provinces, etc.)
-  has_many :regions, :foreign_key => "parent_id"
+  has_many :regions, :foreign_key => :parent_id
 
   # a country has many localities (a.k.a. cities) through regions
   has_many :localities, :through => :regions
@@ -26,4 +22,5 @@ class Country < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:country_names).where(:conditions => {:country_names => {:name => term, :locale_id => locale}})
   end
+
 end

@@ -1,11 +1,4 @@
 class Category < Taxonomy
-  include CommonScopes
-
-  # a category has many names (in different locales)
-  has_many :names, :class_name => "CategoryName"
-
-  # a category has many descriptions (in different locales)
-  has_many :descriptions, :class_name => "CategoryDescription"
 
   # a category has many topics
   has_many :topics, :foreign_key => "parent_id"
@@ -21,4 +14,5 @@ class Category < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:category_names).where(:conditions => {:category_names => {:name => term, :locale_id => locale}})
   end
+
 end

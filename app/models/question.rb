@@ -1,7 +1,7 @@
 class Question < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :details, :status_id, :visibility_id, :topic_ids, :author_id, :locale_id
+  attr_accessible :title, :details, :status, :status_id, :visibility, :visibility_id, :topics, :topic_ids, :author, :author_id, :locale, :locale_id
 
   # a questions belongs to a user
   belongs_to :author, :polymorphic => true
@@ -9,14 +9,15 @@ class Question < ActiveRecord::Base
   # a question can have one or many answers
   has_many :answers
 
-  # a question is related to one or many topics
-  has_and_belongs_to_many :topics
-
   # a question has a status
   belongs_to :status, :class_name => "QuestionStatus"
 
   # a question has a visibility
   belongs_to :visibility, :class_name => "QuestionVisibility"
+
+  # classifications
+  has_many :classifications, :foreign_key => :classifiable_id, :dependent => :destroy
+  has_many :topics, :through => :classifications, :source => :taxonomy, :source_type => "Topic"
 
   # I18n
   belongs_to :locale

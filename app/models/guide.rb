@@ -1,16 +1,17 @@
 class Guide < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :excerpt, :content, :status_id, :topic_id, :professional_id, :locale_id
+  attr_accessible :title, :excerpt, :content, :status_id, :author_id, :locale_id
 
   # a guide has a status
   belongs_to :status, :class_name => "GuideStatus"
 
-  # a guide is associated with a topic
-  belongs_to :topic
+  # classifications
+  has_many :classifications
+  has_many :topics, :through => :classifications
 
   # a guide belongs to its author, a professional
-  belongs_to :professional
+  belongs_to :author, :polymorphic => true
 
   # I18n
   belongs_to :locale
@@ -25,9 +26,9 @@ class Guide < ActiveRecord::Base
   validates :title,   :presence => true
   validates :excerpt, :presence => true
   validates :content, :presence => true
-  validates_existence_of :topic
+  validates_existence_of :classifications
   validates_existence_of :status
-  validates_existence_of :professional
+  validates_existence_of :author
   validates_existence_of :locale
 
   def is_published?
@@ -41,7 +42,7 @@ class Guide < ActiveRecord::Base
   private
 
   def default_values
-    self.status = GuideStatus.find_by_name("Draft") if self.status.nil?
-    self.locale = Locale.find_by_code(I18n.locale) if self.locale.nil?
+    self.status = GuideStatus.find_by_name("Draft") if (self.status.nil? or self.status == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
   end
 end

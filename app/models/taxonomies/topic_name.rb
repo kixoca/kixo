@@ -1,8 +1,9 @@
 class TopicName < TaxonomyName
-  include CommonScopes
+
+  attr_accessible :topic
 
   # a topic name belongs to a topic
-  belongs_to :topic, :foreign_key => "taxonomy_id"
+  belongs_to :topic, :foreign_key => :taxonomy_id
 
   # validation
   validates_existence_of :topic
@@ -10,4 +11,5 @@ class TopicName < TaxonomyName
   def self.search(term, locale = nil)
     TopicName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
+
 end

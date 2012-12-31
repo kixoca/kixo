@@ -1,11 +1,6 @@
 class Topic < Taxonomy
-  include CommonScopes
 
-  # a topic has many names (in different locales)
-  has_many :names, :class_name => "TopicName"
-
-  # a topic has many descriptions (in different locales)
-  has_many :descriptions, :class_name => "TopicDescription"
+  attr_accessible :category
 
   # a topic belongs in a category
   belongs_to :category, :foreign_key => "parent_id"
@@ -18,4 +13,5 @@ class Topic < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:topic_names).where(:conditions => {:topic_names => {:name => term, :locale_id => locale}})
   end
+
 end

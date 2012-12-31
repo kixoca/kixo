@@ -1,17 +1,15 @@
 class Professional < User
-  include CommonScopes
 
-  attr_accessible :topic_ids, :profession_ids, :representant_id,
+  attr_accessible :topics, :topic_ids, :professions, :profession_ids,
                   :notify_of_questions?, :notify_of_other_answers?
 
-  # a professional is associated with one or many topics
-  has_and_belongs_to_many :topics
-
-  # a professional is associated with one or many professions
-  has_and_belongs_to_many :professions
+  # classifications
+  has_many :classifications, :dependent => :destroy
+  has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic", :foreign_key => :taxonomy_id
+  has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
 
   # a professional can be the author of one or many guides
-  has_many :guides
+  has_many :guides, :as => :author
 
   # a professional can have one or many answers
   has_many :answers, :as => :author
@@ -73,4 +71,5 @@ class Professional < User
   def to_param
     "#{id}-#{name.parameterize}"
   end
+
 end

@@ -1,16 +1,20 @@
 class TaxonomyName < ActiveRecord::Base
+
   include CommonScopes
 
-  attr_accessible :name, :locale_id, :taxonomy_id
+  attr_accessible :name, :locale, :taxonomy
+
+  # a taxonomy name belongs to a taxonomy
+  belongs_to :taxonomy
 
   # a taxonomy name belongs to a locale
   belongs_to :locale
 
-  # a taxonomy name belongs to a taxonomy
-  belongs_to :taxonomy
+  accepts_nested_attributes_for :locale, :taxonomy
 
   # validation
   validates :name, :presence => true
   validates_existence_of :locale
   validates_existence_of :taxonomy
+
 end
