@@ -1,5 +1,4 @@
 class Topic < Taxonomy
-
   attr_accessible :category
 
   # a topic belongs in a category
@@ -13,5 +12,4 @@ class Topic < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:topic_names).where(:conditions => {:topic_names => {:name => term, :locale_id => locale}})
   end
-
 end

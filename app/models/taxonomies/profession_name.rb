@@ -1,5 +1,4 @@
 class ProfessionName < TaxonomyName
-
   attr_accessible :profession
 
   # a profession name belongs to a profession
@@ -11,5 +10,4 @@ class ProfessionName < TaxonomyName
   def self.search(term, locale = nil)
     ProfessionName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
-
 end

@@ -1,5 +1,4 @@
 class RatingName < TaxonomyName
-
   attr_accessible :rating
 
   # a rating name belongs to a rating
@@ -7,5 +6,4 @@ class RatingName < TaxonomyName
 
   # validation
   validates_existence_of :rating
-
 end

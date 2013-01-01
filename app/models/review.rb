@@ -1,10 +1,11 @@
 class Review < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :comment, :rating_id, :professional_id, :author_id, :locale_id
+  attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id, :locale, :locale_id
 
   # a review has one rating
-  belongs_to :rating
+  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
+  has_one :rating, :through => :classifications, :source => :taxonomy, :source_type => "Rating"
 
   # a review belongs to a professional
   belongs_to :professional
@@ -12,11 +13,9 @@ class Review < ActiveRecord::Base
   # a review belongs to a user
   belongs_to :author, :polymorphic => true
 
-  # I18n
-  belongs_to :locale
-
-  # track versions with paper trail
-  has_paper_trail
+  # localization
+  has_one :localization, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
+  has_one :locale, :through => :localization
 
   # set default values on init
   after_initialize :default_values

@@ -1,5 +1,4 @@
 class PagesController < ApplicationController
-
   def index
 
     if current_professional
@@ -10,5 +9,4 @@ class PagesController < ApplicationController
 
     @questions = @questions.order("created_at DESC").page(params[:page]) unless @questions.nil?
   end
-
 end

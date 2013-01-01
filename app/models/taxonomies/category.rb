@@ -1,5 +1,4 @@
 class Category < Taxonomy
-
   # a category has many topics
   has_many :topics, :foreign_key => "parent_id"
 
@@ -14,5 +13,4 @@ class Category < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:category_names).where(:conditions => {:category_names => {:name => term, :locale_id => locale}})
   end
-
 end

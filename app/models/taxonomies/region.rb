@@ -1,5 +1,4 @@
 class Region < Taxonomy
-
   attr_accessible :country
 
   # a region (state, province, etc.) belongs to a country
@@ -25,5 +24,4 @@ class Region < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:region_names).where(:conditions => {:region_names => {:name => term, :locale_id => locale}})
   end
-
 end

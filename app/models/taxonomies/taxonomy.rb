@@ -1,5 +1,4 @@
 class Taxonomy < ActiveRecord::Base
-
   include CommonScopes
 
   attr_accessible :parent, :rank
@@ -42,5 +41,4 @@ class Taxonomy < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.name.parameterize}"
   end
-
 end

@@ -1,5 +1,4 @@
 class TopicName < TaxonomyName
-
   attr_accessible :topic
 
   # a topic name belongs to a topic
@@ -11,5 +10,4 @@ class TopicName < TaxonomyName
   def self.search(term, locale = nil)
     TopicName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
-
 end

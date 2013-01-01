@@ -1,5 +1,4 @@
 class CategoryDescription < TaxonomyDescription
-
   attr_accessible :category
 
   # a category description belongs to a category
@@ -7,5 +6,4 @@ class CategoryDescription < TaxonomyDescription
 
   # validation
   validates_existence_of :category
-
 end

@@ -1,5 +1,4 @@
 class TopicDescription < TaxonomyDescription
-
   attr_accessible :topic
 
   # a topic description belongs to a topic
@@ -7,5 +6,4 @@ class TopicDescription < TaxonomyDescription
 
   # validation
   validates_existence_of :topic
-
 end

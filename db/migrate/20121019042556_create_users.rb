@@ -44,9 +44,6 @@ class CreateUsers < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
 
-      # I18n
-      t.references :locale, :null => false, :default => 0
-
       # notifications (general)
       t.boolean :notify_of_kixo_news,         :null => false, :default => true
       t.boolean :notify_of_partner_news,      :null => false, :default => true

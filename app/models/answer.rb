@@ -1,6 +1,7 @@
 class Answer < ActiveRecord::Base
+  include CommonScopes
 
-  attr_accessible :details, :question_id, :author_id
+  attr_accessible :details, :question, :question_id, :author, :author_id
 
   # an answer is associated with a questions
   belongs_to :question
@@ -8,12 +9,8 @@ class Answer < ActiveRecord::Base
   # an answer is associated with a professional
   belongs_to :author, :polymorphic => true
 
-  # track versions with paper trail
-  has_paper_trail
-
   # validation
   validates :details, :presence => true
   validates_existence_of :question
   validates_existence_of :author
-
 end

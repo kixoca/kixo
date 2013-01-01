@@ -1,23 +1,19 @@
 class Guide < ActiveRecord::Base
   include CommonScopes
 
-  attr_accessible :title, :excerpt, :content, :status_id, :author_id, :locale_id
-
-  # a guide has a status
-  belongs_to :status, :class_name => "GuideStatus"
+  attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id, :locale, :locale_id
 
   # classifications
-  has_many :classifications
-  has_many :topics, :through => :classifications
+  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
+  has_one  :status, :through => :classifications, :source => :taxonomy, :source_type => "GuideStatus"
+  has_many :topics, :through => :classifications, :source => :taxonomy
 
   # a guide belongs to its author, a professional
   belongs_to :author, :polymorphic => true
 
   # I18n
-  belongs_to :locale
-
-  # track versions with paper trail
-  has_paper_trail
+  has_one :localization, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
+  has_one :locale, :through => :localization
 
   # set default values on init
   after_initialize :default_values

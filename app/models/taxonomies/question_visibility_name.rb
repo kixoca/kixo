@@ -1,5 +1,4 @@
 class QuestionVisibilityName < TaxonomyName
-
   attr_accessible :question_visibility
 
   # a question visibility name belongs to a question visibility
@@ -7,5 +6,4 @@ class QuestionVisibilityName < TaxonomyName
 
   # validation
   validates_existence_of :question_visibility
-
 end

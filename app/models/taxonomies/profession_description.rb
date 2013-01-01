@@ -1,5 +1,4 @@
 class ProfessionDescription < TaxonomyDescription
-
   attr_accessible :profession
 
   # a profession description belongs to a profession
@@ -7,5 +6,4 @@ class ProfessionDescription < TaxonomyDescription
 
   # validation
   validates_existence_of :profession
-
 end

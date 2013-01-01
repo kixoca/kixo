@@ -1,5 +1,4 @@
 class CountryName < TaxonomyName
-
   attr_accessible :country
 
   # a country name belongs to a country
@@ -12,5 +11,4 @@ class CountryName < TaxonomyName
   def self.search(term, locale = nil)
     CountryName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
   end
-
 end

@@ -1,5 +1,4 @@
 class Country < Taxonomy
-
   # a country has many regions (states, provinces, etc.)
   has_many :regions, :foreign_key => :parent_id
 
@@ -22,5 +21,4 @@ class Country < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:country_names).where(:conditions => {:country_names => {:name => term, :locale_id => locale}})
   end
-
 end

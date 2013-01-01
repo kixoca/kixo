@@ -1,5 +1,4 @@
 class Profession < Taxonomy
-
   attr_accessible :category
 
   # a profession belongs in a category
@@ -13,5 +12,4 @@ class Profession < Taxonomy
   def self.search(term, locale = Locale.find_by_code(I18n.locale))
     self.joins(:profession_names).where(:conditions => {:profession_names => {:name => term, :locale_id => locale}})
   end
-
 end

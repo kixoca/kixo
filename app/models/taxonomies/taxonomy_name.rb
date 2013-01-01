@@ -1,5 +1,4 @@
 class TaxonomyName < ActiveRecord::Base
-
   include CommonScopes
 
   attr_accessible :name, :locale, :taxonomy
@@ -16,5 +15,4 @@ class TaxonomyName < ActiveRecord::Base
   validates :name, :presence => true
   validates_existence_of :locale
   validates_existence_of :taxonomy
-
 end

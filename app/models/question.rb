@@ -9,24 +9,18 @@ class Question < ActiveRecord::Base
   # a question can have one or many answers
   has_many :answers
 
-  # a question has a status
-  belongs_to :status, :class_name => "QuestionStatus"
-
-  # a question has a visibility
-  belongs_to :visibility, :class_name => "QuestionVisibility"
-
   # classifications
   has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
   has_many :taxonomies, :through => :classifications, :source => :taxonomy
+  has_one  :visibility, :through => :classifications, :source => :taxonomy, :source_type => "QuestionVisibility"
+  has_one  :status,     :through => :classifications, :source => :taxonomy, :source_type => "QuestionStatus"
   has_many :topics,     :through => :classifications, :source => :taxonomy, :source_type => "Topic"
 
   accepts_nested_attributes_for :topics
 
-  # I18n
-  belongs_to :locale
-
-  # track versions with paper trail
-  has_paper_trail
+  # localization
+  has_one :localization
+  has_one :locale, :through => :localization
 
   # set default values on init
   after_initialize :default_values
@@ -62,5 +56,4 @@ class Question < ActiveRecord::Base
     self.visibility = QuestionVisibility.find_by_name("Public") if self.visibility.nil?
     self.locale = Locale.find_by_code(I18n.locale) if (self.locale_id.nil? or self.locale_id == 0)
   end
-
 end

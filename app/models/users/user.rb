@@ -1,16 +1,16 @@
 class User < ActiveRecord::Base
-
   include CommonScopes
 
-  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
-
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :tel, :headshot, :bio, :locale_id,
+                  :name, :tel, :headshot, :bio, :locales, :locale_ids, :locale, :locale_id,
                   :street_address_1, :street_address_2, :locality, :locality_id, :region, :region_id, :postal_code, :country, :country_id,
                   :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?, :notify_of_replies?, :notify_of_similar_questions?
 
-  # I18n
-  belongs_to :locale
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
+
+  # localization
+  has_many :localizations, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
+  has_many :locales, :through => :localizations
 
   # location
   belongs_to :country
@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   has_many :questions, :as => :author
 
   # a user can be the author of many reviews
-  has_many :reviews, :as => :author, :dependent => :destroy
+  has_many :reviews, :as => :author
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => { :large => "160x160", :medium => "120x120", :small => "80x80", :thumb => "50x50" }
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   validates_existence_of :locality
   validates_existence_of :region
   validates_existence_of :country
-  validates_existence_of :locale
+  validates_existence_of :locales
 
   def short_address
     "#{self.locality.name}, #{self.region.name}"
@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def self.find_by_locality(locality)
-    self.where(:conditions => {:locality_id => locality})
+    self.where(:conditions => {:locality => {:id => locality}})
   end
 
   def self.search_by_locality(locality)
@@ -71,7 +71,7 @@ class User < ActiveRecord::Base
   private
 
   def default_values
-    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
+    self.locales << Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
   end
 
 end

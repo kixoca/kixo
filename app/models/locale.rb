@@ -1,5 +1,4 @@
 class Locale < ActiveRecord::Base
-
   attr_accessible :name, :code
 
   # I18n
@@ -15,5 +14,4 @@ class Locale < ActiveRecord::Base
 
   validates :name, :presence => true
   validates :code, :presence => true
-
 end

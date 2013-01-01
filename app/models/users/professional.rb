@@ -1,5 +1,4 @@
 class Professional < User
-
   attr_accessible :topics, :topic_ids, :professions, :profession_ids,
                   :notify_of_questions?, :notify_of_other_answers?
 
@@ -8,8 +7,6 @@ class Professional < User
   has_many :taxonomies,  :through => :classifications, :source => :taxonomy
   has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic"
   has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
-
-  accepts_nested_attributes_for :topics, :professions
 
   # a professional can be the author of one or many guides
   has_many :guides, :as => :author
@@ -74,5 +71,4 @@ class Professional < User
   def to_param
     "#{id}-#{name.parameterize}"
   end
-
 end

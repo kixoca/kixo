@@ -1,5 +1,4 @@
 class QuestionStatusName < TaxonomyName
-
   attr_accessible :question_status
 
   # a question status name belongs to a question status
@@ -7,5 +6,4 @@ class QuestionStatusName < TaxonomyName
 
   # validation
   validates_existence_of :question_status
-
 end

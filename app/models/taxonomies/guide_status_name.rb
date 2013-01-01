@@ -1,5 +1,4 @@
 class GuideStatusName < TaxonomyName
-
   attr_accessible :guide_status
 
   # a guide status name belongs to a guide status
@@ -7,5 +6,4 @@ class GuideStatusName < TaxonomyName
 
   # validation
   validates_existence_of :guide_status
-
 end
