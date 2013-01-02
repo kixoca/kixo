@@ -4,7 +4,6 @@ module Localizable
                          :locales, :locale_ids
 
     base.has_many :localizations, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
-    base.has_many :locales, :through => :localizations
 
     base.belongs_to :locale if base.column_names.include?("locale_id")
 
