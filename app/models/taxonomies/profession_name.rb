@@ -6,8 +6,4 @@ class ProfessionName < TaxonomyName
 
   # validation
   validates_existence_of :profession
-
-  def self.search(term, locale = nil)
-    ProfessionName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
-  end
 end

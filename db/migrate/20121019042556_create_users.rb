@@ -40,6 +40,9 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :postal_code
       t.references :country,         :null => false, :default => 0
 
+      # localization
+      t.references :locale, :null => false, :default => 0
+
       # geolocation
       t.float :latitude
       t.float :longitude

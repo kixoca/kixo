@@ -6,5 +6,7 @@ class CreateTaxonomyNames < ActiveRecord::Migration
       t.references :locale,   :null => false, :default => 0
       t.references :taxonomy, :null => false, :default => 0
     end
+
+    add_index :taxonomy_names, [:locale_id, :name]
   end
 end

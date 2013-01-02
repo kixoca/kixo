@@ -1,10 +1,7 @@
 class TaxonomyDescription < ActiveRecord::Base
-  include CommonScopes
+  include Localizable
 
-  attr_accessible :description, :locale, :taxonomy
-
-  # a taxonomy description belongs to a locale
-  belongs_to :locale
+  attr_accessible :description, :taxonomy, :taxonomy_id
 
   # a taxonomy description belongs to a taxonomy
   belongs_to :taxonomy

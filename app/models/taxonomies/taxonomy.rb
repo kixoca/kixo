@@ -1,7 +1,5 @@
 class Taxonomy < ActiveRecord::Base
-  include CommonScopes
-
-  attr_accessible :parent, :rank
+  attr_accessible :parent, :parent_id, :rank
 
   # a taxonomy has one or many names (in different locales)
   has_many :names, :class_name => "TaxonomyName", :foreign_key => :taxonomy_id
@@ -24,18 +22,26 @@ class Taxonomy < ActiveRecord::Base
   has_many :questions,     :through => :classifications, :source => :classifiable, :source_type => "Question"
   has_many :guides,        :through => :classifications, :source => :classifiable, :source_type => "Guide"
 
-  def name(locale = nil)
-    tax_name = self.names.by_locale(locale).first
-    tax_name ? tax_name.name : nil
+  def name(locale = Locale.find_by_code(I18n.locale))
+    tax_name = self.names.find_by_locale(locale)
+    tax_name.name unless tax_name.nil?
   end
 
-  def description(locale = nil)
-    tax_description = self.descriptions.by_locale(locale).first
-    tax_description ? tax_description.description : nil
+  def description(locale = Locale.find_by_code(I18n.locale))
+    tax_description = self.descriptions.find_by_locale(locale)
+    tax_description.description unless tax_description.nil?
   end
 
   def self.find_by_name(term, locale = Locale.find_by_code(I18n.locale))
-    self.joins(:taxonomy_names).where(:conditions => {:taxonomy_names => {:name => term, :locale_id => locale}})
+    self.joins(:names).first(:conditions => {:taxonomy_names => {:name => term, :locale_id => locale}})
+  end
+
+  def self.sort_by_name
+    self.sort_by(&:name)
+  end
+
+  def self.order_by_rank
+    self.order("rank DESC")
   end
 
   def to_param

@@ -6,8 +6,4 @@ class LocalityName < TaxonomyName
 
   # validation
   validates_existence_of :locality
-
-  def self.search(term, locale = nil)
-    LocalityName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
-  end
 end

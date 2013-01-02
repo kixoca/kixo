@@ -1,21 +1,16 @@
 class Review < ActiveRecord::Base
-  include CommonScopes
+  include Localizable
+  include Classifiable
 
-  attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id, :locale, :locale_id
+  attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id
 
-  # a review has one rating
-  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
-  has_one :rating, :through => :classifications, :source => :taxonomy, :source_type => "Rating"
+  belongs_to :rating
 
   # a review belongs to a professional
   belongs_to :professional
 
   # a review belongs to a user
   belongs_to :author, :polymorphic => true
-
-  # localization
-  has_one :localization, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
-  has_one :locale, :through => :localization
 
   # set default values on init
   after_initialize :default_values
@@ -30,6 +25,6 @@ class Review < ActiveRecord::Base
   private
 
   def default_values
-    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id.blank?)
   end
 end

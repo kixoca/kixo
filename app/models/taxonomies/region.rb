@@ -14,14 +14,4 @@ class Region < Taxonomy
     end
     population
   end
-
-  # find a region by name
-  def self.find_by_name(name)
-    region_name = RegionName.find_by_name(name)
-    region = region_name ? region_name.region : nil
-  end
-
-  def self.search(term, locale = Locale.find_by_code(I18n.locale))
-    self.joins(:region_names).where(:conditions => {:region_names => {:name => term, :locale_id => locale}})
-  end
 end

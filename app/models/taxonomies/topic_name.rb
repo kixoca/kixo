@@ -6,8 +6,4 @@ class TopicName < TaxonomyName
 
   # validation
   validates_existence_of :topic
-
-  def self.search(term, locale = nil)
-    TopicName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
-  end
 end

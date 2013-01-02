@@ -6,8 +6,4 @@ class RegionName < TaxonomyName
 
   # validation
   validates_existence_of :region
-
-  def self.search(term, locale = nil)
-    RegionName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
-  end
 end

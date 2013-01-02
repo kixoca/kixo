@@ -1,19 +1,15 @@
 class Guide < ActiveRecord::Base
-  include CommonScopes
+  include Localizable
+  include Classifiable
 
-  attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id, :locale, :locale_id
+  attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id
 
   # classifications
-  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
-  has_one  :status, :through => :classifications, :source => :taxonomy, :source_type => "GuideStatus"
   has_many :topics, :through => :classifications, :source => :taxonomy
 
-  # a guide belongs to its author, a professional
-  belongs_to :author, :polymorphic => true
+  belongs_to :status, :class_name => "GuideStatus"
 
-  # I18n
-  has_one :localization, :as => :localizable, :foreign_key => :localizable_id, :dependent => :destroy
-  has_one :locale, :through => :localization
+  belongs_to :author, :polymorphic => true
 
   # set default values on init
   after_initialize :default_values
@@ -39,6 +35,6 @@ class Guide < ActiveRecord::Base
 
   def default_values
     self.status = GuideStatus.find_by_name("Draft") if (self.status.nil? or self.status == 0)
-    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id == 0)
+    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id.blank?)
   end
 end

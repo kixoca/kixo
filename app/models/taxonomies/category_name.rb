@@ -6,8 +6,4 @@ class CategoryName < TaxonomyName
 
   # validation
   validates_existence_of :category
-
-  def self.search(term, locale = nil)
-    CategoryName.by_locale(locale).all(:conditions => ["name like ?", "%#{term}%"])
-  end
 end

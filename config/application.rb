@@ -16,7 +16,6 @@ module Kixo
     # -- all .rb files in that directory are automatically loaded.
 
     # Custom directories with classes and modules you want to be autoloadable.
-    config.autoload_paths += %W(#{config.root}/lib)
     config.autoload_paths += Dir[Rails.root.join('app', 'models', '{**}')]
 
     # Only load the plugins named here, in the order given (default is alphabetical).

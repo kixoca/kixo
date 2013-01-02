@@ -3,8 +3,6 @@ class Professional < User
                   :notify_of_questions?, :notify_of_other_answers?
 
   # classifications
-  has_many :classifications, :as => :classifiable, :foreign_key => :classifiable_id, :dependent => :destroy
-  has_many :taxonomies,  :through => :classifications, :source => :taxonomy
   has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic"
   has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
 
@@ -18,7 +16,7 @@ class Professional < User
   has_many :reviews, :dependent => :destroy
 
   # validation
-  validates :name,  :presence => true
+  validates :name, :presence => true
 
   def topics_list
     self.topics.map {|topic| topic.name}.join(", ").html_safe

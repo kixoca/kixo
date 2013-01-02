@@ -1,6 +1,4 @@
 class Answer < ActiveRecord::Base
-  include CommonScopes
-
   attr_accessible :details, :question, :question_id, :author, :author_id
 
   # an answer is associated with a questions
