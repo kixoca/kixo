@@ -6,12 +6,12 @@
       .four.columns
 
         %ul.vertical.tabs.white
-          %li
-            %a.active{:href => "#account"} Account
+          %li.active
+            %a{:href => "#account"} Account
           %li
             %a{:href => "#password"} Password
           %li
-            %a{:href => "#notifications"} Notifications
+            %a{:href => "#notifications"} Email notifications
           %li
             %a{:href => "#profile"} Profile
           %li
@@ -19,28 +19,24 @@
 
       .eight.columns
 
-        .page
+        %ul.tabs-content
 
-          %header.page-head
-            .container
-              .header-group
-                %h1 My Account
+          %li#accountTab.active
 
-          %section.page-body
-            .container
+            .page
 
-              = render "shared/show_flash"
+              %header.page-head
+                .container
 
-              %ul.tabs-content
+                  %hgroup
+                    %h1 My Account
+                    %h3.subheader Change your basic account, language and privacy settings
 
-                %li#accountTab.active
+              %section.page-body
+                .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                     = devise_error_messages!
-
-                    .header-group
-                      %h3 Account
-                      %h4.subheader Change your basic account, language and privacy settings
 
                     .row
                       .twelve.columns
@@ -65,14 +61,22 @@
                         = "Unhappy?"
                         = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
 
-                %li#passwordTab
+          %li#passwordTab
+
+            .page
+
+              %header.page-head
+                .container
+
+                  %hgroup
+                    %h1 Password
+                    %h3.subheader Change your password or recover your current one
+
+              %section.page-body
+                .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                     = devise_error_messages!
-
-                    .header-group
-                      %h3 Password
-                      %h4.subheader Change your password or recover your current one
 
                     .row
                       .twelve.columns
@@ -93,16 +97,98 @@
                       .twelve.columns
                         = f.submit "Update", :class => "button"
 
-                %li#contactTab
+          %li#notificationsTab
+
+            .page
+
+              %header.page-head
+                .container
+
+                  %hgroup
+                    %h1 Email notifications
+                    %h3.subheader Control when and how often Kixo sends email to you
+
+              %section.page-body
+                .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                     = devise_error_messages!
 
-                    .header-group
-                      %h3 Contact Information
-                      %h4.subheader Edit your contact information
+                    %fieldset
+
+                      %legend
+                        Email me when
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_kixo_news
+                        .two.columns.text-right
+                          = f.select :notify_of_kixo_news, [["Yes", true], ["No", false]]
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_partner_news
+                        .two.columns.text-right
+                          = f.select :notify_of_partner_news, [["Yes", true], ["No", false]]
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_new_messages
+                        .two.columns.text-right
+                          = f.select :notify_of_new_messages, [["Yes", true], ["No", false]]
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_answers
+                        .two.columns.text-right
+                          = f.select :notify_of_answers, [["Yes", true], ["No", false]]
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_replies
+                        .two.columns.text-right
+                          = f.select :notify_of_replies, [["Yes", true], ["No", false]]
+
+                      .row
+                        .ten.columns
+                          = f.label :notify_of_similar_questions
+                        .two.columns.text-right
+                          = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
+
+                    %fieldset
+
+                      .row
+                        .twelve.columns
+                          = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
+                          = f.password_field :current_password
+
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"
+
+          %li#contactTab
+
+            .page
+
+              %header.page-head
+                .container
+
+                  %hgroup
+                    %h1 Contact Information
+                    %h3.subheader Edit your contact information
+
+              %section.page-body
+                .container
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
 
                     = render "shared/location_selector", :f => f
+
+                    .row
+                      .twelve.columns
+                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
+                        = f.password_field :current_password
 
                     .row
                       .twelve.columns

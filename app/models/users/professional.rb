@@ -31,23 +31,7 @@ class Professional < User
   end
 
   def self.lookup(name)
-    self.where(:conditions => ["name like ?", "%#{term}%"])
-  end
-
-  def self.find_by_topic(topic)
-    self.joins(:topics).where(:conditions => {:topics => {:id => topic}})
-  end
-
-  def self.search_by_topic(topic)
-    self.find_by_topic(Topic.search(topic))
-  end
-
-  def self.find_by_profession(profession)
-    self.joins(:professions).where(:conditions => {:professions => {:id => profession}})
-  end
-
-  def self.search_by_profession(profession)
-    self.find_by_profession(Profession.search(profession))
+    self.where(:conditions => ["name LIKE ?", "%#{term}%"])
   end
 
   def self.search(what, where)

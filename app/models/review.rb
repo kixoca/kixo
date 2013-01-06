@@ -4,6 +4,10 @@ class Review < ActiveRecord::Base
 
   attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id
 
+  # localization
+  belongs_to :locale
+
+  # a review has a rating
   belongs_to :rating
 
   # a review belongs to a professional

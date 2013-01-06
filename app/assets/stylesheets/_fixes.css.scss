@@ -46,11 +46,9 @@ ul.side-nav {
   color: $mainColor;
 }
 
-.gmap {
-  img {
-    max-width: none;
-    height: auto;
-  }
+.gmap img {
+  max-width: none;
+  height: auto;
 }
 
 .vertical.tabs.white a {
@@ -59,12 +57,4 @@ ul.side-nav {
 
 .reveal-modal {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
-}
-
-@media only screen and (max-width: $screenSmall - 1) {
-
-  .mobile-text-center {
-    text-align: center;
-  }
-
 }

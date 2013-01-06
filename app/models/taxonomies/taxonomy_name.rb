@@ -6,6 +6,9 @@ class TaxonomyName < ActiveRecord::Base
   # a taxonomy name belongs to a taxonomy
   belongs_to :taxonomy
 
+  # a taxonomy name belongs to a locale
+  belongs_to :locale
+
   # validation
   validates :name, :presence => true
   validates_existence_of :locale

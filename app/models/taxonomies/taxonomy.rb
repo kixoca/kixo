@@ -32,8 +32,12 @@ class Taxonomy < ActiveRecord::Base
     tax_description.description unless tax_description.nil?
   end
 
-  def self.find_by_name(term, locale = Locale.find_by_code(I18n.locale))
-    self.joins(:names).first(:conditions => {:taxonomy_names => {:name => term, :locale_id => locale}})
+  def self.find_by_name(name, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
+  end
+
+  def self.search(term, locale = Locale.find_by_code(I18n.locale))
+    self.joins(:names).where(["lower(taxonomy_names.name) LIKE ? AND taxonomy_names.locale_id = ?", "%#{term.downcase}%", locale]).uniq
   end
 
   def self.sort_by_name

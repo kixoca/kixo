@@ -6,6 +6,6 @@ class PagesController < ApplicationController
       @questions = Question.find_all_by_locale
     end
 
-    @questions = @questions.order("created_at DESC").page(params[:page]) unless @questions.nil?
+    @questions = @questions.uniq.order("created_at DESC").page(params[:page]) unless @questions.nil?
   end
 end

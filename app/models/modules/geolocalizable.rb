@@ -17,23 +17,23 @@ module Geolocalizable
     base.geocoded_by :full_address
     base.after_validation :geocode
 
-    def base.short_address
+    def short_address
       "#{self.locality.name}, #{self.region.name}"
     end
 
-    def base.full_address
+    def full_address
       "#{self.locality.name}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
     end
 
-    def base.find_by_locality(locality)
+    def base.find_all_by_locality(locality)
       self.where(:conditions => {:locality => {:id => locality}})
     end
 
-    def base.find_by_region(region)
+    def base.find_all_by_region(region)
       self.where(:conditions => {:region => {:id => region}})
     end
 
-    def base.find_by_country(country)
+    def base.find_all_by_country(country)
       self.where(:conditions => {:country => {:id => country}})
     end
   end

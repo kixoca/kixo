@@ -4,6 +4,9 @@ class Guide < ActiveRecord::Base
 
   attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id
 
+  # localization
+  belongs_to :locale
+
   # classifications
   has_many :topics, :through => :classifications, :source => :taxonomy
 

@@ -4,14 +4,20 @@ class Question < ActiveRecord::Base
 
   attr_accessible :title, :details, :status, :status_id, :visibility, :visibility_id, :topics, :topic_ids, :author, :author_id
 
+  # localization
+  belongs_to :locale
+
   # classifications
   has_many :topics, :through => :classifications, :source => :taxonomy, :source_type => "Topic"
 
+  # a question has a visibility and a status
   belongs_to :visibility, :class_name => "QuestionVisibility"
   belongs_to :status,     :class_name => "QuestionStatus"
 
+  # a question belongs to an author (user, professional, other)
   belongs_to :author, :polymorphic => true
 
+  # a question can have many answers
   has_many :answers
 
   # set default values on init
@@ -34,7 +40,7 @@ class Question < ActiveRecord::Base
   end
 
   def related_professionals
-    Professional.find_by_topic(self.topics)
+    Professional.find_all_by_topic(self.topics)
   end
 
   def to_param

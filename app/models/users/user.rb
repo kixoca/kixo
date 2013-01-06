@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  # a user has a main locale
+  belongs_to :locale
+
+  # a user can understand many locales
   has_many :locales, :through => :localizations
 
   # a user can have one or many questions
