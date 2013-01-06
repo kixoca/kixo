@@ -6,7 +6,7 @@ class ReviewsController < ApplicationController
 
   def index
     @professional = Professional.find(params[:professional_id])
-    @reviews = @professional.reviews.by_locale
+    @reviews = @professional.reviews.find_all_by_locale
 
     respond_to do |format|
       format.html # index.html.haml
@@ -27,7 +27,7 @@ class ReviewsController < ApplicationController
 
   def create
     @review = Review.new(params[:review])
-    @review.user = current_user unless current_user.nil?
+    @review.author = current_user unless current_user.nil?
 
     respond_to do |format|
       if @review.save

@@ -1,7 +1,6 @@
 .professional.list
-  .page-section
-    .container
-      .headshot
-        = image_tag professional.headshot.url(:small)
-      %a.name{:href => professional_path(professional)}
-        = professional.name
+  .container
+    .headshot
+      = image_tag professional.headshot.url(:small)
+    %a.name{:href => professional_path(professional)}
+      = professional.name

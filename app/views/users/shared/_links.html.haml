@@ -1,6 +1,7 @@
 - if devise_mapping.recoverable? && controller_name != 'passwords'
-  %h5 Forgot your password?
-  %a.small.button.secondary{:href => new_password_path(resource_name)} Reset my password
+  %p
+    Forgot your password?
+    = link_to "Reset my password", new_password_path(resource_name)
 
 - if devise_mapping.confirmable? && controller_name != 'confirmations'
   %h5 Didn't receive confirmation instructions?

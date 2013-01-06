@@ -39,10 +39,6 @@ class Question < ActiveRecord::Base
     self.topics.map {|topic| topic.name}.join(", ").html_safe
   end
 
-  def related_professionals
-    Professional.find_all_by_topic(self.topics)
-  end
-
   def to_param
     "#{id}-#{title.parameterize}"
   end

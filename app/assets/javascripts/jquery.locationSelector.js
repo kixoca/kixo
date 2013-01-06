@@ -21,10 +21,21 @@
                 var $region   = $this.find("select.region");
                 var $locality = $this.find("select.locality");
 
-                // disable region and locality
+                // handle enable/disable region and locality
 
-                $region.find(":selected").val()   ? $region.removeAttr("disabled")   : $region.attr("disabled", "disabled")
-                $locality.find(":selected").val() ? $locality.removeAttr("disabled") : $locality.attr("disabled", "disabled")
+                if ( $country.find(":selected").val() ) {
+                    $country.removeAttr("disabled");
+                    $region.removeAttr("disabled");
+
+                    if ( $region.find(":selected").val() ) {
+                        $locality.removeAttr("disabled");
+                    } else {
+                        $locality.attr("disabled", "disabled");
+                    }
+                } else {
+                    $region.attr("disabled", "disabled");
+                    $locality.attr("disabled", "disabled");
+                }
 
                 // append 'basket' selects
 

@@ -8,7 +8,7 @@ class QuestionsController < ApplicationController
   # GET /questions.json
   # GET /questions.xml
   def index
-    @questions = Question.by_locale.order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale.order("created_at DESC").page(params[:page])
 
     respond_to do |format|
       format.html # index.html.haml
@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
     @author = @question.author
     @topics = @question.topics
-    @related_professionals = @question.related_professionals
+    @related_professionals = Professional.find_all_by_topic(@topics)
 
     respond_to do |format|
       format.html # show.html.haml

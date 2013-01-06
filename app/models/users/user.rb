@@ -37,14 +37,38 @@ class User < ActiveRecord::Base
 
   # validation
   validates :email, :presence => true
+  validates_existence_of :country
+  validates_existence_of :region
+  validates_existence_of :locality
   validates_existence_of :locale
+
+  def short_address
+    "#{self.locality.name}, #{self.region.name}"
+  end
+
+  def full_address
+    "#{self.locality.name}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
+  end
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
   end
 
   def can_review?(professional)
-    self.reviews.all(:conditions => {:professional_id => professional}).count == 0
+    self.reviews.all(:conditions => {:professional_id => professional}).count == 0 and
+        self != professional
+  end
+
+  def is_a_regular_user?
+    self.type == "User"
+  end
+
+  def is_a_professional?
+    self.type == "Professional"
+  end
+
+  def is_a_representant?
+    self.type == "Representant"
   end
 
   private

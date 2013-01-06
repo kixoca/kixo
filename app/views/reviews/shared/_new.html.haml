@@ -1,4 +1,4 @@
-- if current_user && current_user.can_review?(professional)
+- if (current_user and current_user.can_review?(professional)) or (current_professional and current_professional.can_review?(professional))
   %h5
     = "Write a review for #{professional.name}"
   = form_for [professional, professional.reviews.new] do |f|

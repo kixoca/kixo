@@ -25,7 +25,7 @@
                   %li.professional
                     = render "professionals/shared/loop", :professional => professional
         - if @locality.nil?
-          %section#browse.page-section
+          %section#browse
             .container
               %h4
                 = "Browse professionals in <em>#{@topic.name.downcase}</em> by location".html_safe
@@ -44,11 +44,11 @@
                                   = locality.name
       .four.columns
         - unless @questions.nil?
-          %section#questions.page-section
+          %section#questions
             .container
               %h4
                 = "#{@topic.name} questions"
               %ul.questions
                 - @questions.each do |question|
-                  %li.question
+                  %li
                     = render "questions/shared/loop", :question => question

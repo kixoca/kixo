@@ -39,7 +39,7 @@
             %img{:src => "/assets/banner_ask_char.png", :width => 250, :height => 160}
           .nine.columns
             .container
-              .header-group
+              %hgroup
                 %h2 Ask professionals
                 %h3.subheader Get free advice from experienced professionals!
               = form_tag new_question_path, :method => "get" do
@@ -54,7 +54,7 @@
             %img{:src => "/assets/banner_find_char.png", :width => 250, :height => 160}
           .nine.columns
             .container
-              .header-group
+              %hgroup
                 %h2 Find professionals
                 %h3.subheader Find top-rated professionals near you!
               = form_tag professionals_path, :method => "get" do
@@ -71,7 +71,7 @@
             %img{:src => "/assets/banner_consult_char.png", :width => 250, :height => 160}
           .nine.columns
             .container
-              .header-group
+              %hgroup
                 %h2 Consult professionals
                 %h3.subheader Meet online with experienced professionals
               %form

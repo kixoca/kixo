@@ -1,11 +1,12 @@
 - unless professional.nil?
-  .professional.loop.page
-    .page-section
+  .page.professional.loop
+    %section
       .container
         .headshot
-          = image_tag professional.headshot.url(:small)
+          %a{:href => professional_path(professional)}
+            = image_tag professional.headshot.url(:medium)
         %h4.name
-          = professional.name
+          = link_to professional.name, professional_path(professional)
         .professions
           = professional.professions.first.name unless professional.professions.empty?
           - if professional.professions.count > 1
@@ -15,16 +16,17 @@
         .address.short
           %i.foundicon-location
           = professional.short_address
-        .cta
-          %a.button.small.radius{:href => url_for(professional)} View profile
-    .page-section
+    %section
       %ul.metrics.block-grid.three-up
         %li
-          .value 77
+          .value
+            = professional.points
           .key points
         %li
-          .value 12
+          .value
+            = professional.answers.count
           .key answers
         %li
-          .value 6
+          .value
+            = professional.reviews.count
           .key reviews

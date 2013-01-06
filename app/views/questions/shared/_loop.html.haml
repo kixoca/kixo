@@ -1,16 +1,15 @@
-.question.loop.page
-  %section.page-head
-    .container
-      .header-group
-        %h3.title
-          %a{:href => question_path(question)}
-            = question.title
-        %p.meta
-          %time.created_at{:datetime => question.created_at}
-            = "Asked #{time_ago_in_words(question.created_at)} ago"
-          %span.location
-            = "in #{question.author.short_address}"
-  %section.page-section.answers
+.page.question.loop
+  %header
+    .container.thin
+      %h3
+        %a{:href => question_path(question)}
+          = question.title
+      %p.meta
+        %time.created_at{:datetime => question.created_at}
+          = "Asked #{time_ago_in_words(question.created_at)} ago"
+        %span.location
+          = "in #{question.author.short_address}"
+  %section
     .container.thin
       - if question.answers.blank?
         %p.no-records No answers yet.

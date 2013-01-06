@@ -4,7 +4,7 @@
       .nine.columns
         %h4
           = "#{@professionals.count} professionals found"
-        %ul.block-grid.three-up.mobile-one-up
+        %ul.professionals.block-grid.three-up.mobile-one-up
           - @professionals.each do |professional|
             %li
               = render "professionals/shared/loop", :professional => professional
@@ -16,7 +16,7 @@
               .title
                 %h6 Related topics
               .content
-                %ul.side-nav
+                %ul.related-topics.side-nav
                   - if @topics
                     - @topics.each do |topic|
                       %li
@@ -28,7 +28,7 @@
               .title
                 %h6 Related professions
               .content
-                %ul.side-nav
+                %ul.related-professions.side-nav
                   - if @professions
                     - @professions.each do |profession|
                       %li

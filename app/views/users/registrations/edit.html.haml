@@ -25,14 +25,13 @@
 
             .page
 
-              %header.page-head
+              %header
                 .container
-
                   %hgroup
                     %h1 My Account
                     %h3.subheader Change your basic account, language and privacy settings
 
-              %section.page-body
+              %section
                 .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
@@ -65,14 +64,13 @@
 
             .page
 
-              %header.page-head
+              %header
                 .container
-
                   %hgroup
                     %h1 Password
                     %h3.subheader Change your password or recover your current one
 
-              %section.page-body
+              %section
                 .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
@@ -101,21 +99,19 @@
 
             .page
 
-              %header.page-head
+              %header
                 .container
-
                   %hgroup
                     %h1 Email notifications
                     %h3.subheader Control when and how often Kixo sends email to you
 
-              %section.page-body
+              %section
                 .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                     = devise_error_messages!
 
                     %fieldset
-
                       %legend
                         Email me when
 
@@ -170,14 +166,13 @@
 
             .page
 
-              %header.page-head
+              %header
                 .container
-
                   %hgroup
                     %h1 Contact Information
                     %h3.subheader Edit your contact information
 
-              %section.page-body
+              %section
                 .container
 
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|

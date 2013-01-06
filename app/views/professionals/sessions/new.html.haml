@@ -3,12 +3,12 @@
     .row
       .eight.columns
         .page
-          .page-head
+          %header
             .container
-              .header-group
+              %hgroup
                 %h1 Professional Sign In
                 %h3.subheader Sign in to your professional account
-          .page-body
+          %section
             .container
               = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
 

@@ -2,19 +2,6 @@
   @include clearfix();
 }
 
-hgroup,
-.header-group {
-  margin: 0 0 1em 0;
-
-  h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-  }
-
-  .subheader {
-    margin-top: 0.4*$unit;
-  }
-}
-
 .no-marg { margin: 0 !important; }
 .no-marg-top { margin-top: 0 !important; }
 .no-marg-bottom { margin-bottom: 0 !important; }
@@ -26,32 +13,29 @@ hgroup,
 .page {
   background: $white;
   border: 1px solid $borderColor;
-  margin-bottom: $rowGutter;
+  margin-bottom: $gutter;
 
   .container {
-    padding: $rowGutter $columnGutter;
+    margin: $gutter;
 
     &.thin {
-      padding-top: 0.5*$rowGutter;
-      padding-bottom: 0.5*$rowGutter;
+      margin: 0.618*$gutter $gutter;
     }
   }
 
-  .page-head {
+  > header {
     border-bottom: 1px solid $borderColor;
 
-    hgroup,
-    .header-group {
+    hgroup {
       margin: 0;
     }
 
-    h1, h2, h3, h4, h5, h6,
-    p {
-      margin: 0;
+    h1, h2, h3, h4, h5, h6, p {
+      margin: 0.125em 0;
     }
   }
 
-  .page-section {
+  > section {
     border-bottom: 1px solid $borderColor;
 
     &:first-child {
@@ -75,7 +59,6 @@ hgroup,
 
 .panel {
   background: $white;
-  @include boxShadow(0,1px,3px,0,rgba(0,0,0,0.10));
 
   &.callout h5 {
     color: $white;

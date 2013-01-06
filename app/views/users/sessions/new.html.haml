@@ -3,16 +3,17 @@
     .row
       .eight.columns
         .page
-          .page-head
+          %header
             .container
-              .header-group
+              %hgroup
                 %h1 Sign In
                 %h3.subheader Sign in to your existing account
-          .page-body
+          %section
             .container
               = render :partial => "shared/show_flash"
 
               = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+                = devise_error_messages!
 
                 = f.label :email
                 = f.email_field :email

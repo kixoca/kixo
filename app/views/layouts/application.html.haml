@@ -37,35 +37,37 @@
       %section#head
         .container
           .row
+
             .six.columns
+
               %a.brand{:href => "/"}
                 %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
+
               #language
                 %a.toggle{:href => "#"}
                   = Locale.find_by_code(locale).name
                   %i.icon-chevron-down
+
             .six.columns
+
               %ul.account.button-group
+
                 - if user_signed_in?
                   %li
                     .button.secondary.small.split.dropdown
                       = link_to current_user.email, edit_user_registration_path
                       %span
                       %ul.dropdown-menu
-                        %li
-                          = link_to "Settings", edit_user_registration_path
-                        %li
-                          = link_to "Sign out", destroy_user_session_path, :method => :delete
-                - elsif professional_signed_in?
-                  %li
-                    .button.secondary.small.split.dropdown
-                      = link_to current_professional.email, edit_professional_registration_path
-                      %span
-                      %ul.dropdown-menu
-                        %li
-                          = link_to "Settings", edit_professional_registration_path
-                        %li
-                          = link_to "Sign out", destroy_professional_session_path, :method => :delete
+
+                        - if current_user.is_a_professional?
+                          %li= link_to "My profile", professional_path(current_user)
+                          %li= link_to "Settings", edit_professional_registration_path
+
+                        - elsif current_user.is_a_regular_user?
+                          %li= link_to "Settings", edit_user_registration_path
+
+                        %li= link_to "Sign out", destroy_user_session_path, :method => :delete
+
                 - else
                   %li
                     %a.button.secondary.small{:href => new_user_session_path}

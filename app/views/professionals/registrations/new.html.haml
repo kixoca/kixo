@@ -3,51 +3,59 @@
     .row
       .eight.columns
         .page
-          %header.page-head
+          %header
             .container
-              .header-group
+              %hgroup
                 %h1 Professional Sign Up
                 %h3.subheader Sign up as a professional and connect with new clients
-          %section.page-body
+          %section
             .container
-              = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+              = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => {:multipart => true} do |f|
                 = devise_error_messages!
 
-                .header-group
-                  %h3 Personal details
-                  %h4.subheader Give us some information about you
+                %fieldset
+                  %legend Account details
 
-                .row
-                  .twelve.columns
-                    = f.label :name
-                    = f.text_field :name
+                  .row
+                    .twelve.columns
+                      = f.label :email
+                      = f.email_field :email
 
-                .row
-                  .twelve.columns
-                    = f.label :email
-                    = f.email_field :email
+                  .row
+                    .six.columns
+                      = f.label :password
+                      = f.password_field :password
+                    .six.columns
+                      = f.label :password_confirmation
+                      = f.password_field :password_confirmation
 
-                .row
-                  .six.columns
-                    = f.label :password
-                    = f.password_field :password
-                  .six.columns
-                    = f.label :password_confirmation
-                    = f.password_field :password_confirmation
+                %fieldset
+                  %legend Personal details
 
-                %hr
+                  .row
+                    .twelve.columns
+                      = f.label :name
+                      = f.text_field :name
 
-                .header-group
-                  %h3 Address
-                  %h4.subheader Your address will enable clients to find you
+                  .row
+                    .twelve.columns
+                      = f.label :headshot
+                      = f.file_field :headshot
 
-                = render :partial => "shared/location_selector", :locals => {:f => f}
+                  .row
+                    .twelve.columns
+                      = f.label :bio
+                      = f.text_area :bio, :rows => 5
 
-                %hr
+                %fieldset
+                  %legend Address
 
-                .header-group
+                  = render :partial => "shared/location_selector", :locals => {:f => f}
+
+                %hgroup
                   %h3 Categories
-                  %h4.subheader Specify your topics of expertise and professions
+                  %h4.subheader Select topics and professions
+
 
                 %ul.accordion.compact
                   - @all_categories.each do |category|
@@ -56,20 +64,22 @@
                         %h5
                           = category.name
                       .content
-                        %h6 Select topics
-                        %ul.block-grid.three-up
-                          - category.topics.each do |topic|
-                            %li
-                              %label
-                                = check_box_tag("professional[topic_ids][]", topic.id)
-                                = topic.name
-                        %h6 Select professions
-                        %ul.block-grid.three-up
-                          - category.professions.each do |profession|
-                            %li
-                              %label
-                                = check_box_tag("professional[profession_ids][]", profession.id)
-                                = profession.name
+                        %fieldset
+                          %legend Select topics
+                          %ul.block-grid.three-up
+                            - category.topics.each do |topic|
+                              %li
+                                %label
+                                  = check_box_tag("professional[topic_ids][]", topic.id)
+                                  = topic.name
+                        %fieldset
+                          %legend Select professions
+                          %ul.block-grid.three-up
+                            - category.professions.each do |profession|
+                              %li
+                                %label
+                                  = check_box_tag("professional[profession_ids][]", profession.id)
+                                  = profession.name
 
                 .actions
                   = f.submit "Sign up", :class => "button"

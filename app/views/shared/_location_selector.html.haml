@@ -3,24 +3,20 @@
   .row
 
     .six.columns
-
       = f.label :country_id
       = f.select :country_id, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
 
     .six.columns
-
       = f.label :region_id, "Province/State"
       = f.select :region_id, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
 
   .row
 
     .eight.columns
-
       = f.label :locality_id, "City"
       = f.select :locality_id, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
 
     .four.columns
-
       = f.label :postal_code, "Zip/Postal Code"
       = f.text_field :postal_code
 
@@ -29,13 +25,11 @@
     .row
 
       .twelve.columns
-
         = f.label :street_address_1, "Street address"
         = f.text_field :street_address_1
 
     .row
 
       .twelve.columns
-
         = f.label :street_address_2, "Street address (continued)"
         = f.text_field :street_address_2

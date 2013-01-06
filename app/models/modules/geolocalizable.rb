@@ -10,19 +10,17 @@ module Geolocalizable
     base.belongs_to :region
     base.belongs_to :locality
 
-    base.validates_existence_of :locality
-    base.validates_existence_of :region
-    base.validates_existence_of :country
-
-    base.geocoded_by :full_address
+    base.geocoded_by :geocoding_address
     base.after_validation :geocode
 
-    def short_address
-      "#{self.locality.name}, #{self.region.name}"
-    end
-
-    def full_address
-      "#{self.locality.name}, #{self.region.name} #{self.postal_code}, #{self.country.name}"
+    def geocoding_address
+      addr = Array.new
+      addr << self.street_address_1 unless self.street_address_1.blank?
+      addr << self.locality.name    unless self.locality.nil?
+      addr << self.region.name      unless self.region.nil?
+      addr << self.postal_code      unless self.postal_code.blank?
+      addr << self.country.name     unless self.country.nil?
+      addr.join(" ")
     end
 
     def base.find_all_by_locality(locality)

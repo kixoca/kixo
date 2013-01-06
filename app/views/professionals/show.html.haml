@@ -3,107 +3,116 @@
     .row
       .eight.columns
         .page.professional
-          %header.page-head
+          %header
             .container
               .row
                 .three.columns.text-center
                   .headshot
-                    = image_tag @professional.headshot.url(:medium)
+                    = image_tag @professional.headshot.url(:large)
                 .nine.columns.mobile-text-center
                   %h1.name
                     = @professional.name
                   %p.professions
                     = @professional.professions_list
+                  %p.topics
+                    = "Specializes in"
+                    = "<strong>#{@professional.topics_list}</strong>".html_safe
                   %p.bio
                     = @professional.bio
-          .page-body
-            %section#metrics.page-section
-              .container
-                %ul.metrics.block-grid.four-up
-                  %li
-                    .value 77
-                    .key points
-                  %li
-                    .value 12
-                    .key answers
-                  %li
-                    .value 6
-                    .key reviews
-                  %li
-                    .value 2
-                    .key guides
-            %section#location.location.page-section
-              .container
-                .row
-                  .six.columns
-                    %h4 Address
-                    %p.address
-                      - unless @professional.street_address_1.blank?
-                        %span.street-address-1
-                          = "#{@professional.street_address_1}, "
-                        - unless @professional.street_address_2.blank?
-                          %span.street-address-2
-                            = @professional.street_address_2
-                        %br
-                      - unless @professional.locality.nil?
-                        %span.locality
-                          = @professional.locality.name
-                        %br
-                      - unless @professional.region.nil?
-                        %span.region
-                          = @professional.region.name
-                      - unless @professional.postal_code.blank?
-                        %span.postal_code
-                          = @professional.postal_code
+          %section#metrics.page-section
+            .container
+              %ul.metrics.block-grid.four-up
+                %li
+                  .value
+                    = @professional.points
+                  .key points
+                %li
+                  .value
+                    = @professional.answers.count
+                  .key answers
+                %li
+                  .value
+                    = @professional.reviews.count
+                  .key reviews
+                %li
+                  .value
+                    = @professional.guides.count
+                  .key guides
+          %section#location.location.page-section
+            .container
+              .row
+                .six.columns
+                  %h4 Address
+                  %p.address
+                    - unless @professional.street_address_1.blank?
+                      %span.street-address-1
+                        = "#{@professional.street_address_1}, "
+                      - unless @professional.street_address_2.blank?
+                        %span.street-address-2
+                          = @professional.street_address_2
                       %br
-                      - unless @professional.country.nil?
-                        %span.country
-                          = @professional.country.name
-                    %h4 Contacts
-                    %p.contacts
-                      .tel
-                        = @professional.tel
-                  .six.columns
-                    %h4 Map
-                    %p.map
-                      .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-                        .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-            %section#reviews.page-section
-              .container
-                .row
-                  .twelve.columns
-                    %h4 Reviews
-                    - unless @reviews.nil?
-                      %ul.reviews
-                        - @reviews.each do |review|
-                          %li
-                            = render "reviews/shared/loop", :review => review
-                      %p.view-all
-                        %a{:href => professional_reviews_path(@professional)} View all reviews
-                    - else
-                      %p.no-records
-                        = "No reviews for #{@professional.name} yet."
-                    = render "reviews/shared/new", :professional => @professional
-            %section#guides.page-section
-              .container
-                .row
-                  .twelve.columns
-                    %h4 Guides
-                    - unless @guides.nil?
-                      %ul.guides
-                        - @guides.each do |guide|
-                          %li
-                            = guide.topic.name
-                            = guide.title
-                            = guide.excerpt
-                    - else
-                      %p.no-records
-                        = "#{@professional.name} hasn't written any guide yet."
+                    - unless @professional.locality.nil?
+                      %span.locality
+                        = @professional.locality.name
+                      %br
+                    - unless @professional.region.nil?
+                      %span.region
+                        = @professional.region.name
+                    - unless @professional.postal_code.blank?
+                      %span.postal_code
+                        = @professional.postal_code
+                    %br
+                    - unless @professional.country.nil?
+                      %span.country
+                        = @professional.country.name
+                  %h4 Contacts
+                  %p.contacts
+                    .tel
+                      = @professional.tel
+                .six.columns
+                  %h4 Map
+                  %p.map
+                    .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+                      .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+          %section#reviews.page-section
+            .container
+              .row
+                .twelve.columns
+                  %h4 Reviews
+                  - unless @reviews.blank?
+                    %ul.reviews
+                      - @reviews.each do |review|
+                        %li
+                          = render "reviews/shared/loop", :review => review
+                    = paginate @reviews
+                  - else
+                    %p.no-records
+                      = "No reviews for #{@professional.name} yet."
+                  = render "reviews/shared/new", :professional => @professional
+          %section#guides.page-section
+            .container
+              .row
+                .twelve.columns
+                  %h4 Guides
+                  - unless @guides.nil?
+                    %ul.guides
+                      - @guides.each do |guide|
+                        %li
+                          = guide.topic.name
+                          = guide.title
+                          = guide.excerpt
+                  - else
+                    %p.no-records
+                      = "#{@professional.name} hasn't written any guide yet."
       .four.columns
         .panel
           %h5
             = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
-          %ul.similar-professionals
-            - @professional.similar.each do |professional|
-              %li
-                = render :partial => "professionals/shared/list", :locals => {:professional => professional}
+          - unless @similar_professionals.blank?
+            %ul.similar-professionals
+              - @similar_professionals.each do |professional|
+                %li
+                  = render "professionals/shared/list", :professional => professional
+          - else
+            %p.no-records
+              No similar professionals found.

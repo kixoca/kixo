@@ -3,7 +3,7 @@ body {
 }
 
 form {
-  margin: $unit 0 0 0;
+  margin: $rowGutter 0 0 0;
 }
 
 #header {
@@ -28,7 +28,7 @@ form {
     border-top: 3px solid $kixoGreen;
 
     > .container {
-      padding: $rowGutter 0;
+      padding: $gutter 0;
     }
 
     .brand {
@@ -57,7 +57,7 @@ form {
     }
 
     ul {
-      margin: 6px 0;
+      padding: 7px 0;
       float: right;
 
       ul {
@@ -75,7 +75,7 @@ form {
         margin: 0;
 
         a {
-          height: 60px;
+          height: 50px;
           position: relative;
           color: rgba($white, 0.75);
           font-weight: bold;
@@ -83,7 +83,7 @@ form {
           border: none;
 
           i, span {
-            line-height: 60px;
+            line-height: 50px;
           }
 
           i {

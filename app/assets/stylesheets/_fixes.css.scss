@@ -1,3 +1,15 @@
+h1, h2, h3, h4, h5, h6, p, ul {
+  margin: 0.5em 0;
+
+  &:first-child {
+    margin-top: 0 !important;
+  }
+
+  &:last-child {
+    margin-bottom: 0 !important;
+  }
+}
+
 .button {
   font-size: 0.90*$baseFontSize;
   @include boxShadow(0,0,0,0);
@@ -24,6 +36,14 @@ div.custom.dropdown {
     h1, h2, h3, h4, h5, h6 {
       margin: 0;
     }
+  }
+
+  :first-child {
+    margin-top: 0;
+  }
+
+  :last-child {
+    margin-bottom: 0;
   }
 
   &.compact {

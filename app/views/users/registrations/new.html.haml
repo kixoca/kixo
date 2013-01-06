@@ -3,47 +3,38 @@
     .row
       .eight.columns
         .page
-          %header.page-head
+          %header
             .container
-              .header-group
+              %hgroup
                 %h1 Sign Up
                 %h3.subheader Create a free account and connect with professionals
-          %section.page-body
+          %section
             .container
               = render "shared/show_flash"
 
               = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
                 = devise_error_messages!
 
-                .header-group
-                  %h3 Personal details
-                  %h4.subheader Give us some information about you
+                %fieldset
+                  %legend Account details
 
-                .row
-                  .twelve.columns
-                    = f.label :name
-                    = f.text_field :name
+                  .row
+                    .twelve.columns
+                      = f.label :email
+                      = f.email_field :email
 
-                .row
-                  .twelve.columns
-                    = f.label :email
-                    = f.email_field :email
+                  .row
+                    .six.columns
+                      = f.label :password
+                      = f.password_field :password
+                    .six.columns
+                      = f.label :password_confirmation
+                      = f.password_field :password_confirmation
 
-                .row
-                  .six.columns
-                    = f.label :password
-                    = f.password_field :password
-                  .six.columns
-                    = f.label :password_confirmation
-                    = f.password_field :password_confirmation
+                %fieldset
+                  %legend Location
 
-                %hr
-
-                .header-group
-                  %h3 Location
-                  %h4.subheader Where are you located?
-
-                = render "shared/location_selector", :f => f, :street_address => false
+                  = render "shared/location_selector", :f => f, :street_address => false
 
                 .actions
                   = f.submit "Sign up", :class => "button"

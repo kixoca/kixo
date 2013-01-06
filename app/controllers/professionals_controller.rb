@@ -36,9 +36,11 @@ class ProfessionalsController < ApplicationController
   # GET /professionals/1.json
   def show
     @professional = Professional.find(params[:id])
+    @answers = @professional.answers.page(params[:page])
     @reviews = @professional.reviews.page(params[:page])
     @guides = @professional.guides.page(params[:page])
     @ratings = Rating.all
+    @similar_professionals = @professional.similar
 
     respond_to do |format|
       format.html # show.html.haml

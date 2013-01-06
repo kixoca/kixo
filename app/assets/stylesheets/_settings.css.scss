@@ -1,12 +1,13 @@
 // Settings file containing Foundation defaults and Kixo overrides
 
 $unit: 10px !default;
+$gutter: 2*$unit;
 
 // Grid Settings
 
 $rowWidth: 1000px !default;
-$columnGutter: 2.00*$unit !default;
-$rowGutter: 1.50*$unit !default;
+$columnGutter: $gutter;
+$rowGutter: 0.618*$columnGutter;
 $totalColumns: 12 !default;
 $mobileTotalColumns: 4 !default;
 $blockGridElements: 12 !default; // Highest number of block grid elements, Maximum of 24 supported

@@ -16,7 +16,8 @@ class Professional < User
   has_many :reviews, :dependent => :destroy
 
   # validation
-  validates :name, :presence => true
+  validates :name,        :presence => true
+  validates :postal_code, :presence => true
 
   def topics_list
     self.topics.map {|topic| topic.name}.join(", ").html_safe
@@ -46,8 +47,12 @@ class Professional < User
   end
 
   def similar
-    (Professional.find_by_topic(self.topics) or Professional.find_by_profession(self.professions)) and
-        Professional.near(self.full_address, 50).order("distance")
+    (Professional.find_all_by_topic(self.topics) or Professional.find_all_by_profession(self.professions)) and
+        Professional.where(["id != ?", self.id]).near(self.geocoding_address, 50).order("distance")
+  end
+
+  def points
+    46
   end
 
   def to_param

@@ -26,6 +26,8 @@ class Review < ActiveRecord::Base
   validates_existence_of :author
   validates_existence_of :locale
 
+  paginates_per 2
+
   private
 
   def default_values
