@@ -14,8 +14,8 @@ class Question < ActiveRecord::Base
   belongs_to :visibility, :class_name => "QuestionVisibility"
   belongs_to :status,     :class_name => "QuestionStatus"
 
-  # a question belongs to an author (user, professional, other)
-  belongs_to :author, :polymorphic => true
+  # a question belongs to an author
+  belongs_to :author
 
   # a question can have many answers
   has_many :answers
@@ -24,8 +24,8 @@ class Question < ActiveRecord::Base
   after_initialize :default_values
 
   # validation
-  validates :title, :presence => true
-  validates_presence_of  :topics
+  validates :title,  :presence => {:message => "Your question must have a descriptive title"}
+  validates :topics, :presence => {:message => "Your question must be filed under one or many topics"}
   validates_existence_of :status
   validates_existence_of :visibility
   validates_existence_of :author

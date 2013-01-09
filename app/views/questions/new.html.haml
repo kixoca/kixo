@@ -11,6 +11,7 @@
               .row
                 .eight.columns
                   = form_for @question do |f|
+                    = render "/shared/errors", :errors => @question.errors
 
                     %hgroup
                       %h3 Your question

@@ -57,7 +57,7 @@
               %hgroup
                 %h2 Find professionals
                 %h3.subheader Find top-rated professionals near you!
-              = form_tag professionals_path, :method => "get" do
+              = form_tag users_path, :method => "get" do
                 .row
                   .six.columns
                     = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize"

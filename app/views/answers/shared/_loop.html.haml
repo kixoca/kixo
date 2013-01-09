@@ -5,7 +5,7 @@
         .headshot
           = image_tag answer.author.headshot.url(:small)
         %h5.author_name
-          %a{:href => professional_path(answer.author)}
+          %a{:href => user_path(answer.author)}
             = answer.author.name
       .ten.columns
         .meta
@@ -14,6 +14,6 @@
         .content
           .details
             = answer.details
-        - if answer.author == current_professional or answer.author == current_user
+        - if answer.author == current_user
           .actions
             = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"

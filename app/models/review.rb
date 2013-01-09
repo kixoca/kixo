@@ -14,7 +14,7 @@ class Review < ActiveRecord::Base
   belongs_to :professional
 
   # a review belongs to a user
-  belongs_to :author, :polymorphic => true
+  belongs_to :author
 
   # set default values on init
   after_initialize :default_values

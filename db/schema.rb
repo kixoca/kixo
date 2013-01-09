@@ -51,12 +51,11 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
   add_index "admin_users", ["unlock_token"], :name => "index_admin_users_on_unlock_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.text     "details",     :default => "",             :null => false
-    t.integer  "question_id", :default => 0,              :null => false
-    t.integer  "author_id",   :default => 0,              :null => false
-    t.string   "author_type", :default => "Professional"
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.text     "details",     :default => "", :null => false
+    t.integer  "question_id", :default => 0,  :null => false
+    t.integer  "author_id",   :default => 0,  :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "classifications", :id => false, :force => true do |t|
@@ -76,15 +75,14 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
   end
 
   create_table "guides", :force => true do |t|
-    t.string   "title",       :default => "",             :null => false
-    t.string   "excerpt",     :default => "",             :null => false
-    t.text     "content",     :default => "",             :null => false
-    t.integer  "status_id",   :default => 0,              :null => false
-    t.integer  "author_id",   :default => 0,              :null => false
-    t.string   "author_type", :default => "Professional"
-    t.integer  "locale_id",   :default => 0,              :null => false
-    t.datetime "created_at",                              :null => false
-    t.datetime "updated_at",                              :null => false
+    t.string   "title",      :default => "", :null => false
+    t.string   "excerpt",    :default => "", :null => false
+    t.text     "content",    :default => "", :null => false
+    t.integer  "status_id",  :default => 0,  :null => false
+    t.integer  "author_id",  :default => 0,  :null => false
+    t.integer  "locale_id",  :default => 0,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "locales", :force => true do |t|
@@ -106,26 +104,24 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
   add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
 
   create_table "questions", :force => true do |t|
-    t.string   "title",         :default => "",     :null => false
+    t.string   "title",         :default => "", :null => false
     t.text     "details"
-    t.integer  "status_id",     :default => 0,      :null => false
-    t.integer  "visibility_id", :default => 0,      :null => false
-    t.integer  "author_id",     :default => 0,      :null => false
-    t.string   "author_type",   :default => "User"
-    t.integer  "locale_id",     :default => 0,      :null => false
-    t.datetime "created_at",                        :null => false
-    t.datetime "updated_at",                        :null => false
+    t.integer  "status_id",     :default => 0,  :null => false
+    t.integer  "visibility_id", :default => 0,  :null => false
+    t.integer  "author_id",     :default => 0,  :null => false
+    t.integer  "locale_id",     :default => 0,  :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "reviews", :force => true do |t|
-    t.text     "comment",         :default => "",     :null => false
-    t.integer  "professional_id", :default => 0,      :null => false
-    t.integer  "rating_id",       :default => 0,      :null => false
-    t.integer  "author_id",       :default => 0,      :null => false
-    t.string   "author_type",     :default => "User"
-    t.integer  "locale_id",       :default => 0,      :null => false
-    t.datetime "created_at",                          :null => false
-    t.datetime "updated_at",                          :null => false
+    t.text     "comment",         :default => "", :null => false
+    t.integer  "professional_id", :default => 0,  :null => false
+    t.integer  "rating_id",       :default => 0,  :null => false
+    t.integer  "author_id",       :default => 0,  :null => false
+    t.integer  "locale_id",       :default => 0,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "taxonomies", :force => true do |t|
@@ -153,7 +149,6 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
   add_index "taxonomy_names", ["locale_id", "name"], :name => "index_taxonomy_names_on_locale_id_and_name"
 
   create_table "users", :force => true do |t|
-    t.string   "type"
     t.string   "email",                       :default => "",    :null => false
     t.string   "encrypted_password",          :default => "",    :null => false
     t.string   "reset_password_token"

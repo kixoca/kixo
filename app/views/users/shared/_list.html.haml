@@ -1,0 +1,6 @@
+.user.list
+  .container
+    .headshot
+      = image_tag user.headshot.url(:small)
+    %a.name{:href => user_path(user)}
+      = user.name

@@ -1,7 +1,7 @@
 class PagesController < ApplicationController
   def index
-    if current_professional
-      @questions = Question.joins(:topics).where(:conditions => {:taxonomies => {:id => current_professional.topics}})
+    if current_user
+      @questions = Question.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}})
     else
       @questions = Question.find_all_by_locale
     end

@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
     @author = @question.author
     @topics = @question.topics
-    @related_professionals = Professional.find_all_by_topic(@topics)
+    @related_users = User.find_all_by_topic(@topics)
 
     respond_to do |format|
       format.html # show.html.haml
@@ -57,7 +57,7 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
-    @question.author = current_user || current_professional
+    @question.author = current_user
 
     respond_to do |format|
       if @question.save
@@ -118,11 +118,7 @@ class QuestionsController < ApplicationController
                                  when "create"  then new_question_path
                                  else request.path
                                end
-    if current_professional
-      authenticate_professional!
-    else
-      authenticate_user!
-    end
+    authenticate_user!
   end
 
   def remember_question

@@ -58,14 +58,8 @@
                       = link_to current_user.email, edit_user_registration_path
                       %span
                       %ul.dropdown-menu
-
-                        - if current_user.is_a_professional?
-                          %li= link_to "My profile", professional_path(current_user)
-                          %li= link_to "Settings", edit_professional_registration_path
-
-                        - elsif current_user.is_a_regular_user?
-                          %li= link_to "Settings", edit_user_registration_path
-
+                        %li= link_to "My profile", user_path(current_user)
+                        %li= link_to "Settings", edit_user_registration_path
                         %li= link_to "Sign out", destroy_user_session_path, :method => :delete
 
                 - else

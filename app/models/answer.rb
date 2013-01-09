@@ -4,8 +4,8 @@ class Answer < ActiveRecord::Base
   # an answer is associated with a questions
   belongs_to :question
 
-  # an answer is associated with a professional
-  belongs_to :author, :polymorphic => true
+  # an answer is associated with an author
+  belongs_to :author
 
   # validation
   validates :details, :presence => true

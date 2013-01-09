@@ -3,7 +3,7 @@ class CreateAnswers < ActiveRecord::Migration
     create_table :answers do |t|
       t.text       :details,  :null => false, :default => ""
       t.references :question, :null => false, :default => 0
-      t.references :author,   :null => false, :default => 0, :polymorphic => {:default => "Professional"}
+      t.references :author,   :null => false, :default => 0
       t.timestamps
     end
   end

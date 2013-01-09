@@ -1,0 +1,32 @@
+- unless user.nil?
+  .page.user.loop
+    %section
+      .container
+        .headshot
+          %a{:href => user_path(user)}
+            = image_tag user.headshot.url(:medium)
+        %h4.name
+          = link_to user.name, user_path(user)
+        .professions
+          = user.professions.first.name unless user.professions.empty?
+          - if user.professions.count > 1
+            and
+            %span.has-tip.tip-top.noradius{:title => user.profession_list}
+              = "#{user.professions.count-1} more"
+        .address.short
+          %i.foundicon-location
+          = user.short_address
+    %section
+      %ul.metrics.block-grid.three-up
+        %li
+          .value
+            = user.points
+          .key points
+        %li
+          .value
+            = user.answers.count
+          .key answers
+        %li
+          .value
+            = user.reviews.count
+          .key reviews

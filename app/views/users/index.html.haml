@@ -1,0 +1,43 @@
+%section#content
+  .container
+    .row
+      .nine.columns
+        %h4
+          = "#{@users.count} professionals found"
+        - unless @users.blank?
+          %ul.professionals.block-grid.three-up.mobile-one-up
+            - @users.each do |professional|
+              %li
+                = render "users/shared/loop", :user => user
+        - else
+          %p.no-records
+            Sorry, we could not find any professionals.
+
+      .three.columns
+        - if @topics || @professions
+          %ul.accordion.compact
+            %li.active
+              .title
+                %h6 Related topics
+              .content
+                - unless @topics.blank?
+                  %ul.related-topics.side-nav
+                    - @topics.each do |topic|
+                      %li
+                        = link_to topic.name, category_topic_path(topic.category, topic)
+                - else
+                  %p.no-records
+                    No related topics found.
+            %li
+              .title
+                %h6 Related professions
+              .content
+                - unless @professions.blank?
+                  %ul.related-professions.side-nav
+                    - @professions.each do |profession|
+                      %li
+                        %a{:href => category_profession_path(profession.category, profession)}
+                          = profession.name
+                - else
+                  %p.no-records
+                    No related professions found.

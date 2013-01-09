@@ -1,4 +1,4 @@
-- if current_professional && current_professional.can_answer?(@question)
+- if current_user && current_user.can_answer?(@question)
   %h5 Answer this question
   = form_for [question, question.answers.new] do |f|
     = f.hidden_field :question_id, :value => question.id

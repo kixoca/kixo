@@ -8,73 +8,72 @@
               .row
                 .three.columns.text-center
                   .headshot
-                    = image_tag @professional.headshot.url(:large)
+                    = image_tag @user.headshot.url(:large)
                 .nine.columns.mobile-text-center
                   %h1.name
-                    = @professional.name
+                    = @user.name
                   %p.professions
-                    = @professional.professions_list
+                    = @user.professions_list
                   %p.topics
-                    = "Specializes in"
-                    = "<strong>#{@professional.topics_list}</strong>".html_safe
+                    = @user.topics_list
                   %p.bio
-                    = @professional.bio
-          %section#metrics.page-section
+                    = @user.bio
+          %section
             .container
               %ul.metrics.block-grid.four-up
                 %li
                   .value
-                    = @professional.points
+                    = @user.points
                   .key points
                 %li
                   .value
-                    = @professional.answers.count
+                    = @user.answers.count
                   .key answers
                 %li
                   .value
-                    = @professional.reviews.count
+                    = @user.reviews.count
                   .key reviews
                 %li
                   .value
-                    = @professional.guides.count
+                    = @user.guides.count
                   .key guides
-          %section#location.location.page-section
+          %section
             .container
               .row
                 .six.columns
                   %h4 Address
                   %p.address
-                    - unless @professional.street_address_1.blank?
+                    - unless @user.street_address_1.blank?
                       %span.street-address-1
-                        = "#{@professional.street_address_1}, "
-                      - unless @professional.street_address_2.blank?
+                        = "#{@user.street_address_1}, "
+                      - unless @user.street_address_2.blank?
                         %span.street-address-2
-                          = @professional.street_address_2
+                          = @user.street_address_2
                       %br
-                    - unless @professional.locality.nil?
+                    - unless @user.locality.nil?
                       %span.locality
-                        = @professional.locality.name
+                        = @user.locality.name
                       %br
-                    - unless @professional.region.nil?
+                    - unless @user.region.nil?
                       %span.region
-                        = @professional.region.name
-                    - unless @professional.postal_code.blank?
+                        = @user.region.name
+                    - unless @user.postal_code.blank?
                       %span.postal_code
-                        = @professional.postal_code
+                        = @user.postal_code
                     %br
-                    - unless @professional.country.nil?
+                    - unless @user.country.nil?
                       %span.country
-                        = @professional.country.name
+                        = @user.country.name
                   %h4 Contacts
                   %p.contacts
                     .tel
-                      = @professional.tel
+                      = @user.tel
                 .six.columns
                   %h4 Map
                   %p.map
-                    .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-                      .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-          %section#reviews.page-section
+                    .gmap{:data => {:latitude => @user.latitude, :longitude => @user.longitude}}
+                      .marker{:data => {:latitude => @user.latitude, :longitude => @user.longitude}}
+          %section
             .container
               .row
                 .twelve.columns
@@ -87,9 +86,9 @@
                     = paginate @reviews
                   - else
                     %p.no-records
-                      = "No reviews for #{@professional.name} yet."
-                  = render "reviews/shared/new", :professional => @professional
-          %section#guides.page-section
+                      = "No reviews for #{@user.name} yet."
+                  = render "reviews/shared/new", :user => @user
+          %section
             .container
               .row
                 .twelve.columns
@@ -103,16 +102,16 @@
                           = guide.excerpt
                   - else
                     %p.no-records
-                      = "#{@professional.name} hasn't written any guide yet."
+                      = "#{@user.name} hasn't written any guide yet."
       .four.columns
         .panel
           %h5
-            = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
-          - unless @similar_professionals.blank?
+            = "Similar professionals in #{@user.locality.name}, #{@user.region.name}"
+          - unless @similar_users.blank?
             %ul.similar-professionals
-              - @similar_professionals.each do |professional|
+              - @similar_users.each do |user|
                 %li
-                  = render "professionals/shared/list", :professional => professional
+                  = render "users/shared/list", :user => user
           - else
             %p.no-records
               No similar professionals found.

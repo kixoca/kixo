@@ -4,7 +4,7 @@ class CreateReviews < ActiveRecord::Migration
       t.text       :comment,      :null => false, :default => ""
       t.references :professional, :null => false, :default => 0
       t.references :rating,       :null => false, :default => 0
-      t.references :author,       :null => false, :default => 0, :polymorphic => {:default => "User"}
+      t.references :author,       :null => false, :default => 0
       t.references :locale,       :null => false, :default => 0
       t.timestamps
     end

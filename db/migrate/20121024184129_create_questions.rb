@@ -5,7 +5,7 @@ class CreateQuestions < ActiveRecord::Migration
       t.text       :details
       t.references :status,     :null => false, :default => 0
       t.references :visibility, :null => false, :default => 0
-      t.references :author,     :null => false, :default => 0, :polymorphic => {:default => "User"}
+      t.references :author,     :null => false, :default => 0
       t.references :locale,     :null => false, :default => 0
       t.timestamps
     end

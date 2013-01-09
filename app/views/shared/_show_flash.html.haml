@@ -1,4 +1,3 @@
 - flash.each do |type, value|
-  .flash.alert-box{ :class => type.to_s }
+  .flash-alert{ :class => type.to_s }
     = value
-    %a.close{:href => ""} &times;

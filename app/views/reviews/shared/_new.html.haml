@@ -1,14 +1,14 @@
-- if (current_user and current_user.can_review?(professional)) or (current_professional and current_professional.can_review?(professional))
+- if current_user and current_user.can_review?(user)
   %h5
-    = "Write a review for #{professional.name}"
-  = form_for [professional, professional.reviews.new] do |f|
-    = f.hidden_field :professional_id, :value => professional.id
+    = "Write a review for #{user.name}"
+  = form_for [user, user.reviews.new] do |f|
+    = f.hidden_field :user_id, :value => user.id
     .row
       .twelve.columns
         = f.label :comment
         = f.text_area :comment, :rows => 4
     .row
       .six.columns
-        = f.select "rating_id", Rating.all.map {|u| [u.name, u.id]}
+        = f.select "rating_id", @all_ratings.map {|u| [u.name, u.id]}
       .six.columns.text-right
         = f.submit "Post Review", :class => "button small"

@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
 
   def create
     @answer = Answer.new(params[:answer])
-    @answer.author = current_professional
+    @answer.author = current_user
 
     respond_to do |format|
       if @answer.save
@@ -54,10 +54,7 @@ class AnswersController < ApplicationController
         format.json { head :no_content }
         format.xml  { head :no_content }
       else
-        format.html {
-          flash[:error] = "Cannot update review!"
-          redirect_to @question
-        }
+        format.html { redirect_to @question }
         format.json { render :json => @answer.errors, :status => :unprocessable_entity }
         format.xml  { render :xml => @answer.errors, :status => :unprocessable_entity }
       end
@@ -80,7 +77,7 @@ class AnswersController < ApplicationController
 
   def authenticate!
     session[:user_return_to] = request.path
-    authenticate_professional!
+    authenticate_user!
   end
 
   def remember_answer
