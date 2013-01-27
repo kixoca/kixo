@@ -23,7 +23,7 @@
               %ul.professionals.block-grid.three-up.mobile-one-up
                 - @professionals.each do |professional|
                   %li.professional
-                    = render "professionals/shared/loop", :professional => professional
+                    = render "users/shared/loops/professional", :professional => professional
         - if @locality.nil?
           %section#browse
             .container

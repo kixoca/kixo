@@ -3,7 +3,7 @@
     .container
       .row
         .twelve.columns
-          %dl.tabs.three-up
+          %dl.tabs.two-up
             %dd{:class => @current_action_tab == "ask" ? "active" : ""}
               %a{:href => "#ask"}
                 .hide-for-small
@@ -21,15 +21,6 @@
                     =t :action_find
                 .show-for-small
                   %i.icon-search
-                .arrow
-            %dd{:class => @current_action_tab == "consult" ? "active" : ""}
-              %a{:href => "#consult"}
-                .hide-for-small
-                  %i.icon-user
-                  %span
-                    =t :action_consult
-                .show-for-small
-                  %i.icon-user
                 .arrow
   #actions-tabs-content
     %ul.tabs-content
@@ -65,18 +56,3 @@
                     = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
                   .two.columns
                     = submit_tag t(:action_find), :class => "radius button expand postfix"
-      %li#consultTab{:class => @current_action_tab == "consult" ? "active" : ""}
-        .row
-          .three.columns.text-center
-            %img{:src => "/assets/banner_consult_char.png", :width => 250, :height => 160}
-          .nine.columns
-            .container
-              %hgroup
-                %h2 Consult professionals
-                %h3.subheader Meet online with experienced professionals
-              %form
-                .row
-                  .ten.columns
-                    %input#what{:type => "text", :placeholder => "Search for professionals by topic", :class => "oversize"}
-                  .two.columns
-                    %a.radius.button.expand.postfix Search

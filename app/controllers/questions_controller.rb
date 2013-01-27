@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
 
   # filters
   before_filter :remember_question, :only => [:new, :create]
-  before_filter :authenticate!,     :only => [:create, :update, :edit, :destroy]
+  before_filter :authenticate!,     :only => [:update, :edit, :destroy]
 
   # GET /questions
   # GET /questions.json
@@ -39,6 +39,7 @@ class QuestionsController < ApplicationController
   # GET /questions/new.xml
   def new
     @question = Question.new(session[:question])
+    @author = current_user || User.new
 
     respond_to do |format|
       format.html # new.html.haml
@@ -57,6 +58,24 @@ class QuestionsController < ApplicationController
   # POST /questions.xml
   def create
     @question = Question.new(params[:question])
+
+    unless user_signed_in? or current_user
+      if !params[:user][:email].blank? and !params[:user][:password].blank?
+        # existing user
+        @author = User.authenticate(params[:user][:email], params[:user][:password])
+      elsif !params[:new_user][:email].blank? and !params[:new_user][:password].blank? and !params[:new_user][:password_confirmation].blank?
+        # new user
+        @author = User.find_or_create_by_email(params[:new_user])
+      end
+
+      if @author
+        sign_in :user, @author
+      else
+        flash[:error] = "Invalid email or password."
+        authenticate!
+      end
+    end
+
     @question.author = current_user
 
     respond_to do |format|

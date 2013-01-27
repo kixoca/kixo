@@ -45,6 +45,53 @@
                                     = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
                                     = topic.name
 
+                    - unless current_user
+
+                      %hr
+
+                      %hgroup
+                        %h3 Sign in to Kixo
+                        %h4.subheader Sign in or sign up to Kixo to ask your question
+
+                      %ul.tabs.pill
+                        %li.active
+                          %a{:href => "#signup"} Create a Kixo account
+                        %li
+                          %a{:href => "#signin"} Sign in to my Kixo account
+
+                      %ul.tabs-content
+                        %li#signupTab.active
+                          = fields_for :new_user, @author do |author_f|
+
+                            .row
+                              .twelve.columns
+                                = author_f.label :email
+                                = author_f.email_field :email
+
+                            .row
+                              .six.columns
+                                = author_f.label :password
+                                = author_f.password_field :password
+                              .six.columns
+                                = author_f.label :password_confirmation
+                                = author_f.password_field :password_confirmation
+
+                            %fieldset
+                              %legend Location
+
+                              = render "shared/location_selector", :f => author_f
+
+                        %li#signinTab
+                          = fields_for :user, @author do |author_f|
+
+                            .row
+                              .six.columns
+                                = author_f.label :email
+                                = author_f.email_field :email
+                              .six.columns
+                                = author_f.label :password
+                                = author_f.password_field :password
+
                     .actions
                       = f.submit :class => "button"
 

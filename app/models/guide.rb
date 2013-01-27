@@ -12,7 +12,7 @@ class Guide < ActiveRecord::Base
 
   belongs_to :status, :class_name => "GuideStatus"
 
-  belongs_to :author, :polymorphic => true
+  belongs_to :author, :class_name => "User"
 
   # set default values on init
   after_initialize :default_values

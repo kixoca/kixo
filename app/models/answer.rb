@@ -5,7 +5,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
 
   # an answer is associated with an author
-  belongs_to :author
+  belongs_to :author, :class_name => "User"
 
   # validation
   validates :details, :presence => true

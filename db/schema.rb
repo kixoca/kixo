@@ -115,13 +115,13 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
   end
 
   create_table "reviews", :force => true do |t|
-    t.text     "comment",         :default => "", :null => false
-    t.integer  "professional_id", :default => 0,  :null => false
-    t.integer  "rating_id",       :default => 0,  :null => false
-    t.integer  "author_id",       :default => 0,  :null => false
-    t.integer  "locale_id",       :default => 0,  :null => false
-    t.datetime "created_at",                      :null => false
-    t.datetime "updated_at",                      :null => false
+    t.text     "comment",    :default => "", :null => false
+    t.integer  "user_id",    :default => 0,  :null => false
+    t.integer  "rating_id",  :default => 0,  :null => false
+    t.integer  "author_id",  :default => 0,  :null => false
+    t.integer  "locale_id",  :default => 0,  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   create_table "taxonomies", :force => true do |t|
@@ -166,6 +166,7 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
+    t.boolean  "is_a_professional",           :default => false, :null => false
     t.string   "street_address_1"
     t.string   "street_address_2"
     t.integer  "locality_id",                 :default => 0,     :null => false

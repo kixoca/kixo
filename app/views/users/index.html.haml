@@ -3,12 +3,12 @@
     .row
       .nine.columns
         %h4
-          = "#{@users.count} professionals found"
-        - unless @users.blank?
+          = "#{@professionals.count} professionals found"
+        - unless @professionals.blank?
           %ul.professionals.block-grid.three-up.mobile-one-up
-            - @users.each do |professional|
+            - @professionals.each do |professional|
               %li
-                = render "users/shared/loop", :user => user
+                = render "users/shared/loops/professional", :professional => professional
         - else
           %p.no-records
             Sorry, we could not find any professionals.

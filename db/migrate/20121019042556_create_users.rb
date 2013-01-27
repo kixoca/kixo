@@ -29,6 +29,9 @@ class CreateUsers < ActiveRecord::Migration
       # profile picture (headshot)
       t.has_attached_file :headshot
 
+      # professional?
+      t.boolean :is_a_professional, :null => false, :default => false
+
       # contact information
       t.string     :street_address_1
       t.string     :street_address_2

@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include Classifiable
   include Geolocalizable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tel, :headshot, :bio,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tel, :headshot, :bio, :is_a_professional,
                   :topics, :topic_ids, :professions, :profession_ids,
                   :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?,
                   :notify_of_replies?, :notify_of_similar_questions?, :notify_of_questions?, :notify_of_other_answers?
@@ -21,25 +21,25 @@ class User < ActiveRecord::Base
   has_many :locales, :through => :localizations
 
   # a user can have one or many questions
-  has_many :questions, :as => :author
+  has_many :questions, :foreign_key => :author_id
 
   # a user can be the author of many answers
-  has_many :answers, :as => :author
+  has_many :answers, :foreign_key => :author_id
 
   # a user can be the author of many reviews
-  has_many :reviews, :as => :author
+  has_many :reviews, :foreign_key => :author_id
 
   # a user can be the author of one or many guides
-  has_many :guides, :as => :author
+  has_many :guides, :foreign_key => :author_id
+
+  # a user might belong to its referer (another user)
+  belongs_to :referer, :class_name => "User"
+
+  # a user can be the referer of one or many other users (users, professionals, representants)
+  has_many :users, :foreign_key => :referer_id
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => {:large => "160x160", :medium => "120x120", :small => "80x80", :thumb => "50x50"}
-
-  # a user might belong to its referer (another user)
-  belongs_to :referer, :polymorphic => true
-
-  # a user can be the referer of one or many other users (users, professionals, representants)
-  has_many :users, :as => :referer
 
   # set default values on init
   after_initialize :default_values
@@ -61,6 +61,10 @@ class User < ActiveRecord::Base
 
   def self.lookup(name)
     self.where(:conditions => ["name LIKE ?", "%#{name}%"])
+  end
+
+  def self.professionals
+    self.where(:is_a_professional => true)
   end
 
   def self.search(what, where)
@@ -105,10 +109,19 @@ class User < ActiveRecord::Base
   end
 
   def to_param
-    "#{id}-#{name.parameterize}"
+    unless name.blank?
+      "#{id}-#{name.parameterize}"
+    else
+      "#{id}"
+    end
   end
 
   private
+
+  def self.authenticate(email, password)
+    user = self.find_for_authentication(:email => email)
+    user.valid_password?(password) ? user : nil
+  end
 
   def default_values
     self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id.blank?)

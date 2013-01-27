@@ -24,15 +24,15 @@ module Geolocalizable
     end
 
     def base.find_all_by_locality(locality)
-      self.where(:conditions => {:locality => {:id => locality}})
+      self.where(:locality_id => locality)
     end
 
     def base.find_all_by_region(region)
-      self.where(:conditions => {:region => {:id => region}})
+      self.where(:region_id => region)
     end
 
     def base.find_all_by_country(country)
-      self.where(:conditions => {:country => {:id => country}})
+      self.where(:country_id => country)
     end
   end
 end

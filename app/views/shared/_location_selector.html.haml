@@ -12,15 +12,19 @@
 
   .row
 
-    .eight.columns
+    .twelve.columns
       = f.label :locality_id, "City"
       = f.select :locality_id, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
 
-    .four.columns
-      = f.label :postal_code, "Zip/Postal Code"
-      = f.text_field :postal_code
+  - if defined?(postal_code) and postal_code != false
 
-  - if !defined?(street_address) or street_address != false
+    .row
+
+      .twelve.columns
+        = f.label :postal_code, "Zip/Postal Code"
+        = f.text_field :postal_code
+
+  - if defined?(street_address) and street_address != false
 
     .row
 

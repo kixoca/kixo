@@ -4,6 +4,9 @@ class Locality < Taxonomy
   # a locality (a.k.a. city) belongs to a region (which belongs to a country in turn)
   belongs_to :region, :foreign_key => :parent_id
 
+  has_many :users, :foreign_key => :locality_id
+  has_many :professionals, :class_name => "User", :foreign_key => :locality_id, :conditions => {:is_a_professional => true}
+
   def population
     self.rank
   end

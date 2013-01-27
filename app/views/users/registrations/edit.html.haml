@@ -9,11 +9,11 @@
           %li.active
             %a{:href => "#account"} Account
           %li
-            %a{:href => "#password"} Password
-          %li
             %a{:href => "#notifications"} Email notifications
           %li
             %a{:href => "#profile"} Profile
+          %li
+            %a{:href => "#categories"} Categories
           %li
             %a{:href => "#contact"} Contact
 
@@ -29,7 +29,7 @@
                 .container
                   %hgroup
                     %h1 My Account
-                    %h3.subheader Change your basic account, language and privacy settings
+                    %h3.subheader Change your basic account, password and language setting
 
               %section
                 .container
@@ -44,8 +44,13 @@
 
                     .row
                       .twelve.columns
-                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
-                        = f.password_field :current_password
+                        = f.label :password
+                        = f.password_field :password, :autocomplete => "off"
+
+                    .row
+                      .twelve.columns
+                        = f.label :password_confirmation
+                        = f.password_field :password_confirmation
 
                     .row
                       .twelve.columns
@@ -59,41 +64,6 @@
                       %p
                         = "Unhappy?"
                         = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
-
-          %li#passwordTab
-
-            .page
-
-              %header
-                .container
-                  %hgroup
-                    %h1 Password
-                    %h3.subheader Change your password or recover your current one
-
-              %section
-                .container
-
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
-
-                    .row
-                      .twelve.columns
-                        = f.label :password
-                        = f.password_field :password, :autocomplete => "off"
-
-                    .row
-                      .twelve.columns
-                        = f.label :password_confirmation
-                        = f.password_field :password_confirmation
-
-                    .row
-                      .twelve.columns
-                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
-                        = f.password_field :current_password
-
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "button"
 
           %li#notificationsTab
 
@@ -151,12 +121,87 @@
                         .two.columns.text-right
                           = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
 
-                    %fieldset
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"
 
-                      .row
-                        .twelve.columns
-                          = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
-                          = f.password_field :current_password
+
+          %li#profileTab
+
+            .page
+
+              %header
+                .container
+                  %hgroup
+                    %h1 Profile
+                    %h3.subheader Edit your profile
+
+              %section
+                .container
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
+
+                    .row
+                      .twelve.columns
+                        = f.label :name
+                        = f.text_field :name
+
+                    .row
+                      .twelve.columns
+                        = f.label :headshot
+                        = f.file_field :headshot
+
+                    .row
+                      .twelve.columns
+                        = f.label :bio
+                        = f.text_area :bio, :rows => 5
+
+                    .row
+                      .twelve.columns
+                        = f.submit "Update", :class => "button"
+
+          %li#categoriesTab
+
+            .page
+
+              %header
+                .container
+                  %hgroup
+                    %h1 Categories
+                    %h3.subheader Select topics and professions
+
+              %section
+                .container
+
+                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+                    = devise_error_messages!
+
+                    .row
+                      .twelve.columns
+                        %ul.accordion.compact.marg-bottom
+                          - @all_categories.each do |category|
+                            %li
+                              .title
+                                %h5
+                                  = category.name
+                              .content
+                                %fieldset
+                                  %legend Select topics
+                                  %ul.block-grid.three-up
+                                    - category.topics.each do |topic|
+                                      %li
+                                        %label
+                                          = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
+                                          = topic.name
+                                %fieldset
+                                  %legend Select professions
+                                  %ul.block-grid.three-up
+                                    - category.professions.each do |profession|
+                                      %li
+                                        %label
+                                          = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
+                                          = profession.name
 
                     .row
                       .twelve.columns
@@ -179,11 +224,6 @@
                     = devise_error_messages!
 
                     = render "shared/location_selector", :f => f
-
-                    .row
-                      .twelve.columns
-                        = f.label :current_password, "Current password <em>(we need your current password to confirm your changes)</em>".html_safe
-                        = f.password_field :current_password
 
                     .row
                       .twelve.columns

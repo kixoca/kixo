@@ -1,0 +1,32 @@
+- unless professional.nil?
+  .page.professional.loop
+    %section
+      .container
+        .headshot
+          %a{:href => user_path(professional)}
+            = image_tag professional.headshot.url(:medium)
+        %h4.name
+          = link_to professional.name, user_path(professional)
+        .professions
+          = professional.professions.first.name unless professional.professions.empty?
+          - if professional.professions.count > 1
+            and
+            %span.has-tip.tip-top.noradius{:title => professional.profession_list}
+              = "#{professional.professions.count-1} more"
+        .address.short
+          %i.foundicon-location
+          = professional.short_address
+    %section
+      %ul.metrics.block-grid.three-up
+        %li
+          .value
+            = professional.points
+          .key points
+        %li
+          .value
+            = professional.answers.count
+          .key answers
+        %li
+          .value
+            = professional.reviews.count
+          .key reviews

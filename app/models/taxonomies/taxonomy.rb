@@ -17,8 +17,7 @@ class Taxonomy < ActiveRecord::Base
   has_many :classifications, :as => :taxonomy, :foreign_key => :taxonomy_id
   has_many :classifiables, :through => :classifications, :source => :classifiable
   has_many :users,         :through => :classifications, :source => :classifiable, :source_type => "User"
-  has_many :professionals, :through => :classifications, :source => :classifiable, :source_type => "Professional"
-  has_many :representants, :through => :classifications, :source => :classifiable, :source_type => "Representant"
+  has_many :professionals, :through => :classifications, :source => :classifiable, :source_type => "User", :conditions => {:is_a_professional => true}
   has_many :questions,     :through => :classifications, :source => :classifiable, :source_type => "Question"
   has_many :guides,        :through => :classifications, :source => :classifiable, :source_type => "Guide"
 

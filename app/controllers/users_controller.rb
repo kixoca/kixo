@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def index
-    @users = Array.new
+    @professionals = Array.new
 
     unless params[:where].blank?
       @where = params[:where]
@@ -10,21 +10,21 @@ class UsersController < ApplicationController
         @what = params[:what]
         @topics = Topic.search(@what)
         @professions = Profession.search(@what)
-        @users = User.search(@what, @where)
+        @professionals = User.professionals.search(@what, @where)
       end
     end
 
     # pagination
-    if @users.kind_of?(Array)
-      Kaminari.paginate_array(@users).page(params[:page])
+    if @professionals.kind_of?(Array)
+      Kaminari.paginate_array(@professionals).page(params[:page])
     else
-      @users.page(params[:page])
+      @professionals.page(params[:page])
     end
 
     respond_to do |format|
       format.html # index.html.haml
-      format.json { render :json => @users }
-      format.xml  { render :xml => @users }
+      format.json { render :json => @professionals }
+      format.xml  { render :xml => @professionals }
     end
   end
 

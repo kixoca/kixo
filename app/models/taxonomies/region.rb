@@ -7,6 +7,9 @@ class Region < Taxonomy
   # a region has many localities (a.k.a. cities)
   has_many :localities, :foreign_key => :parent_id
 
+  has_many :users, :foreign_key => :region_id
+  has_many :professionals, :class_name => "User", :foreign_key => :region_id, :conditions => {:is_a_professional => true}
+
   def population
     population = 0
     self.localities.each do |locality|

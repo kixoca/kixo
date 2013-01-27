@@ -27,9 +27,9 @@
                 - else
                   = "#{@professionals.count} #{@profession.name.downcase.pluralize} found"
               %ul.professionals.block-grid.four-up.mobile-one-up
-                - @professionals.each do |professional|
+                - @professionals.each do |user|
                   %li.professional
-                    = render "professionals/shared/loop", :professional => professional
+                    = render "users/shared/loops/professional", :professional => professional
         - if @locality.nil?
           %section#browse.page-section
             .container

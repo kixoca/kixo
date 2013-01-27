@@ -15,7 +15,7 @@ class Question < ActiveRecord::Base
   belongs_to :status,     :class_name => "QuestionStatus"
 
   # a question belongs to an author
-  belongs_to :author
+  belongs_to :author, :class_name => "User"
 
   # a question can have many answers
   has_many :answers
