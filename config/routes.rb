@@ -34,6 +34,9 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
+    resources :whats
+    resources :wheres
+
   end
 
   match "/:locale" => "pages#index"

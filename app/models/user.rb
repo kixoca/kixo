@@ -68,8 +68,7 @@ class User < ActiveRecord::Base
   end
 
   def self.search(what, where)
-    (self.search_by_topic(what) or self.search_by_profession(what)) and
-        self.near(where, 50).order("distance")
+    (self.search_by_topic(what) + self.search_by_profession(what)) & self.near(where, 50).order("distance")
   end
 
   def short_address

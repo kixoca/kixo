@@ -1,0 +1,10 @@
+- unless professional.nil?
+  .professional.loop.minimal
+    .container
+      .row
+        .four.columns
+          %a.headshot{:href => user_path(professional)}
+            = image_tag professional.headshot.url(:small)
+        .eight.columns
+          %a.name{:href => user_path(professional)}
+            = professional.name

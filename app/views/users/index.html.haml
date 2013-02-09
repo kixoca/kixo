@@ -2,41 +2,58 @@
   .container
     .row
       .nine.columns
-        %h4
-          = "#{@professionals.count} professionals found"
+        %hgroup.hr
+          %h3
+            Search Results
+          %h4.subheader
+            = "#{@professionals.count} professionals found for <em>#{@what}</em> in <em>#{@where}</em>".html_safe
         - unless @professionals.blank?
           %ul.professionals.block-grid.three-up.mobile-one-up
             - @professionals.each do |professional|
               %li
-                = render "users/shared/loops/professional", :professional => professional
+                = render "users/shared/loops/regular", :professional => professional
         - else
           %p.no-records
             Sorry, we could not find any professionals.
 
       .three.columns
-        - if @topics || @professions
+        - if @nearby_localities || @topics || @professions
           %ul.accordion.compact
-            %li.active
+            %li
               .title
-                %h6 Related topics
+                %h5 Nearby cities
               .content
-                - unless @topics.blank?
-                  %ul.related-topics.side-nav
-                    - @topics.each do |topic|
+                - unless @nearby_localities.blank?
+                  %ul.localities.nearby.side-nav
+                    - @nearby_localities.each do |locality|
                       %li
-                        = link_to topic.name, category_topic_path(topic.category, topic)
+                        %a.locality-name{:href => locality_path(locality)}
+                          = locality.name
+                - else
+                  %p.no-records
+                    No nearby cities found.
+            %li
+              .title
+                %h5 Related topics
+              .content
+                - unless @related_topics.blank?
+                  %ul.topics.related.side-nav
+                    - @related_topics.each do |topic|
+                      %li
+                        %a.topic-name{:href => category_topic_path(topic.category, topic)}
+                          = topic.name
                 - else
                   %p.no-records
                     No related topics found.
             %li
               .title
-                %h6 Related professions
+                %h5 Related professions
               .content
-                - unless @professions.blank?
-                  %ul.related-professions.side-nav
-                    - @professions.each do |profession|
+                - unless @related_professions.blank?
+                  %ul.professions.related.side-nav
+                    - @related_professions.each do |profession|
                       %li
-                        %a{:href => category_profession_path(profession.category, profession)}
+                        %a.profession-name{:href => category_profession_path(profession.category, profession)}
                           = profession.name
                 - else
                   %p.no-records

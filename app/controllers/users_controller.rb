@@ -3,13 +3,16 @@ class UsersController < ApplicationController
   def index
     @professionals = Array.new
 
-    unless params[:where].blank?
-      @where = params[:where]
+    @where = params[:where]
+    @what = params[:what]
 
-      unless params[:what].blank?
-        @what = params[:what]
-        @topics = Topic.search(@what)
-        @professions = Profession.search(@what)
+    unless @where.blank?
+      @nearby_localities = Locality.near(@where).limit(15)
+
+      unless @what.blank?
+        @related_topics = Topic.search(@what)
+        @related_professions = Profession.search(@what)
+
         @professionals = User.professionals.search(@what, @where)
       end
     end
@@ -33,7 +36,8 @@ class UsersController < ApplicationController
     @answers = @user.answers.page(params[:page])
     @reviews = @user.reviews.page(params[:page])
     @guides = @user.guides.page(params[:page])
-    @similar_users = @user.similar
+
+    @similar_professionals = @user.similar.professionals if @user.is_a_professional?
 
     respond_to do |format|
       format.html # show.html.haml

@@ -8,11 +8,18 @@ class Country < Taxonomy
   has_many :users, :foreign_key => :country_id
   has_many :professionals, :class_name => "User", :foreign_key => :country_id, :conditions => {:is_a_professional => true}
 
+  geocoded_by :geocoding_address
+  after_validation :geocode
+
   def population
     population = 0
     self.regions.each do |region|
       population += region.population
     end
     population
+  end
+
+  def geocoding_address
+    "#{self.name}"
   end
 end

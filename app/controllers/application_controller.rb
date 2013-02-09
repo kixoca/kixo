@@ -20,9 +20,9 @@ class ApplicationController < ActionController::Base
   def set_current_action_tab
     if params[:action] == "index"
       @current_action_tab = case params[:controller]
-        when "questions"     then "ask"
-        when "professionals" then "find"
-        when "reviews"       then "review"
+        when "questions" then "ask"
+        when "users"     then "find"
+        when "reviews"   then "review"
         else "ask"
       end
     else

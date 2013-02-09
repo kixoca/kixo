@@ -107,11 +107,11 @@
         .panel
           %h5
             = "Similar professionals in #{@user.locality.name}, #{@user.region.name}"
-          - unless @similar_users.blank?
+          - unless @similar_professionals.blank?
             %ul.similar-professionals
-              - @similar_users.each do |user|
+              - @similar_professionals.each do |professional|
                 %li
-                  = render "users/shared/list", :user => user
+                  = render "users/shared/loops/minimal", :professional => professional
           - else
             %p.no-records
               No similar professionals found.

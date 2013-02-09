@@ -9,13 +9,17 @@ class LocalitiesController < ApplicationController
       @country = Country.find(params[:country_id])
       @localities = @country.localities
     else
-      @localities = Locality.all
+      if params[:term]
+        @localities = Locality.search(params[:term])
+      else
+        @localities = Locality.all
+      end
     end
 
     @humanized_localities = @localities.map {|locality|
       {:id => locality.id,
        :name => locality.name,
-       :label => "#{locality.name}, #{locality.region.name}, #{locality.region.country.name}",
+       :label => "#{locality.name}, #{locality.region.name}",
        :population => locality.population}
     }
 

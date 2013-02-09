@@ -2,7 +2,7 @@
   .container
     .row
       .twelve.columns
-        .header-group
+        %hgroup.hr
           %h1
             - if @locality
               = "#{@profession.name.pluralize} in #{@locality.name}"
@@ -16,10 +16,10 @@
         - if @profession.description
           %p.description
             = @profession.description
-        %hr
+          %hr
       .twelve.columns
         - unless @professionals.nil?
-          %section#professionals.page-section
+          %section
             .container
               %h4
                 - unless @locality.nil?
@@ -27,24 +27,26 @@
                 - else
                   = "#{@professionals.count} #{@profession.name.downcase.pluralize} found"
               %ul.professionals.block-grid.four-up.mobile-one-up
-                - @professionals.each do |user|
+                - @professionals.each do |professional|
                   %li.professional
-                    = render "users/shared/loops/professional", :professional => professional
+                    = render "users/shared/loops/regular", :professional => professional
         - if @locality.nil?
-          %section#browse.page-section
+          %section.browse-by-taxonomy
             .container
               %h4
                 = "Browse #{@profession.name.downcase.pluralize} by location"
               %ul.countries
                 - @all_countries.each do |country|
                   %li.country
-                    = country.name
+                    %span.country-name
+                      = country.name
                     %ul.regions.block-grid.two-up
                       - country.regions.each do |region|
                         %li.region
-                          = region.name
+                          %span.region-name
+                            = region.name
                           %ul.localities.csv
                             - region.localities.most_populated(25).each do |locality|
                               %li.locality
-                                %a{:href => locality_profession_path(locality, @profession), :title => "#{@profession.name.pluralize} in #{locality.name}, #{region.name}, #{country.name}"}
+                                %a.taxonomy-link.locality-name{:href => locality_profession_path(locality, @profession), :title => "#{@profession.name.pluralize} in #{locality.name}, #{region.name}, #{country.name}"}
                                   = locality.name

@@ -1,28 +1,13 @@
 .page.question.loop
-  %header
-    .container.thin
-      %h3
-        %a{:href => question_path(question)}
-          = question.title
-      %p.meta
-        %time.created_at{:datetime => question.created_at}
-          = "Asked #{time_ago_in_words(question.created_at)} ago"
-        %span.location
-          = "in #{question.author.short_address}"
   %section
     .container.thin
-      - if question.answers.blank?
-        %p.no-records No answers yet.
-      - else
-        %h6 Answered by
-        .row
-          .eight.columns
-            %ul.inline.spaced
-              - question.answers.each do |answer|
-                %li
-                  .author
-                    %a.headshot.thumb{:href => "#{question_path(question)}#ans#{answer.id}"}
-                      = image_tag answer.author.headshot.url(:thumb)
-          .four.columns.text-right
-            - unless question.answers.blank?
-              %a.button.secondary.radius{:href => "#{question_path(question)}#answers"} View all answers
+      .row
+        .twelve.columns
+          %h4.title
+            %a{:href => question_path(question)}
+              = question.title
+          %p.meta
+            %time.created_at{:datetime => question.created_at}
+              = "Asked #{time_ago_in_words(question.created_at)} ago"
+            %span.location
+              = "in #{question.author.short_address}"

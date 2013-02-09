@@ -3,11 +3,14 @@
     .row
       .eight.columns
         %section#questions
-          %h2
-            - if current_user
-              = "Recent questions for you"
-            - else
-              = "Recent questions"
+          %hgroup.hr
+            %h3
+              - if current_user
+                = "Recent questions for you"
+              - else
+                = "Recent questions"
+            %h4.subheader
+              Browse the latest questions asked by Kixo users
           %ul.questions
             - @questions.each do |question|
               %li.question

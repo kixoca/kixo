@@ -13,7 +13,7 @@
         %hr
       .eight.columns
         - unless @professionals.nil?
-          %section#professionals
+          %section
             .container
               %h4
                 - unless @locality.nil?
@@ -23,24 +23,26 @@
               %ul.professionals.block-grid.three-up.mobile-one-up
                 - @professionals.each do |professional|
                   %li.professional
-                    = render "users/shared/loops/professional", :professional => professional
+                    = render "users/shared/loops/regular", :professional => professional
         - if @locality.nil?
-          %section#browse
+          %section.browse-by-taxonomy
             .container
               %h4
                 = "Browse professionals in <em>#{@topic.name.downcase}</em> by location".html_safe
               %ul.countries
                 - @all_countries.each do |country|
                   %li.country
-                    = country.name
+                    %span.country-name
+                      = country.name
                     %ul.regions.block-grid.two-up
                       - country.regions.each do |region|
                         %li.region
-                          = region.name
-                          %ul.localities
+                          %span.region-name
+                            = region.name
+                          %ul.localities.csv
                             - region.localities.most_populated(25).each do |locality|
                               %li.locality
-                                %a{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} in #{locality.name}, #{region.name}, #{country.name}"}
+                                %a.taxonomy-link.locality-name{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} in #{locality.name}, #{region.name}, #{country.name}"}
                                   = locality.name
       .four.columns
         - unless @questions.nil?
@@ -48,7 +50,11 @@
             .container
               %h4
                 = "#{@topic.name} questions"
-              %ul.questions
-                - @questions.each do |question|
-                  %li
-                    = render "questions/shared/loop", :question => question
+              - unless @questions.blank?
+                %ul.questions
+                  - @questions.each do |question|
+                    %li
+                      = render "questions/shared/loop", :question => question
+              - else
+                %p.no-records
+                  No questions found

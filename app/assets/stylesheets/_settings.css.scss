@@ -1,7 +1,7 @@
 // Settings file containing Foundation defaults and Kixo overrides
 
 $unit: 10px !default;
-$gutter: 2*$unit;
+$gutter: 1.5*$unit;
 
 // Grid Settings
 
@@ -34,6 +34,7 @@ $white: #fff !default;
 $shinyEdge: rgba(#fff, .5) !default;
 $darkEdge: rgba(#000, .2) !default;
 $borderColor: #e4e4e4;
+$hrColor: #ddd;
 
 $bodyBgColor: #f0f0f0;
 

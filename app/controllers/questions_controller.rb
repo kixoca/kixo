@@ -25,7 +25,7 @@ class QuestionsController < ApplicationController
     @answers = @question.answers
     @author = @question.author
     @topics = @question.topics
-    @related_users = User.find_all_by_topic(@topics)
+    @related_professionals = User.professionals.find_all_by_topic(@topics)
 
     respond_to do |format|
       format.html # show.html.haml

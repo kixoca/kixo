@@ -51,8 +51,8 @@
               = form_tag users_path, :method => "get" do
                 .row
                   .six.columns
-                    = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize"
+                    = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/whats.json"}
                   .four.columns
-                    = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize"
+                    = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/wheres.json"}
                   .two.columns
                     = submit_tag t(:action_find), :class => "radius button expand postfix"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121230212530) do
+ActiveRecord::Schema.define(:version => 20130209075013) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(:version => 20121230212530) do
     t.string  "type"
     t.integer "parent_id"
     t.integer "rank"
+    t.float   "latitude"
+    t.float   "longitude"
   end
 
   create_table "taxonomy_descriptions", :force => true do |t|

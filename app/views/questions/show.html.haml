@@ -15,11 +15,14 @@
               %p.topics
                 Posted in
                 = @topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
-          %section#details
-            .container
-              = @question.details
+          - unless @question.details.empty?
+            %section#details
+              .container
+                = @question.details
           %section#answers
             .container
+              %h3
+                Answers
               - unless @answers.nil?
                 %ul.answers
                   - @answers.each do |answer|
@@ -31,11 +34,11 @@
       .four.columns
         .panel
           %h5 Related professionals
-          - unless @related_users.blank?
-            %ul.related-users
-              - @related_users.each do |user|
+          - unless @related_professionals.blank?
+            %ul.professionals.related
+              - @related_professionals.each do |professional|
                 %li
-                  = render "users/shared/list", :user => user
+                  = render "users/shared/loops/minimal", :professional => professional
           - else
             %p.no-records
               No related professionals found.

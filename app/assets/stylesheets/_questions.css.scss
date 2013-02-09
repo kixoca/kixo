@@ -33,14 +33,9 @@
   }
 
   &.loop {
-    .answers {
-      li {
-        margin-bottom: 0;
-      }
-
-      .button {
-        margin: $unit 0;
-      }
+    .title,
+    .meta {
+      margin: 0;
     }
   }
 }
