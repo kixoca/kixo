@@ -67,8 +67,8 @@ class User < ActiveRecord::Base
     self.where(:is_a_professional => true)
   end
 
-  def self.search(what, where)
-    (self.search_by_topic(what) + self.search_by_profession(what)) & self.near(where, 50).order("distance")
+  def self.search(what, where, locale = Locale.all)
+    (self.search_by_topic(what, locale) + self.search_by_profession(what, locale)) & self.near(where, 50).order("distance")
   end
 
   def short_address

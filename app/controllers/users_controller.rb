@@ -10,8 +10,8 @@ class UsersController < ApplicationController
       @nearby_localities = Locality.near(@where).limit(15)
 
       unless @what.blank?
-        @related_topics = Topic.search(@what)
-        @related_professions = Profession.search(@what)
+        @related_topics = Topic.search(@what, Locale.all)
+        @related_professions = Profession.search(@what, Locale.all)
 
         @professionals = User.professionals.search(@what, @where)
       end

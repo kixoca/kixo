@@ -10,30 +10,30 @@
       .eight.columns
         %section.browse-by-taxonomy
           .container
-            %h4
-              = "Browse #{@locality.name} professionals"
-            %ul.categories.block-grid.two-up
+            %ul.categories.accordion.compact
               - @all_categories.each do |category|
                 %li.category
-                  %span.category-name
-                    = category.name
-                  %ul
-                    %li
-                      %span.topics-title
-                        = "Topics"
-                      %ul.topics.csv
-                        - category.topics.each do |topic|
-                          %li.topic
-                            %a.taxonomy-link.topic-name{:href => locality_topic_path(@locality, topic), :title => "#{topic.name} in #{@locality.name}, #{@region.name}, #{@country.name}"}
-                              = topic.name
-                    %li
-                      %span.professions-title
-                        = "Professions"
-                      %ul.professions.csv
-                        - category.professions.each do |profession|
-                          %li.profession
-                            %a.taxonomy-link.profession-name{:href => locality_profession_path(@locality, profession), :title => "#{profession.name} in #{@locality.name}, #{@region.name}, #{@country.name}"}
-                              = profession.name
+                  .title
+                    %h5.category-name
+                      = category.name
+                  .content
+                    %ul
+                      %li
+                        %h5.topics-title
+                          = "Topics"
+                        %ul.topics.block-grid.three-up
+                          - category.topics.each do |topic|
+                            %li.topic
+                              %a.topic-name{:href => locality_topic_path(@locality, topic), :title => "#{topic.name} in #{@locality.name}, #{@region.name}"}
+                                = topic.name
+                      %li
+                        %h5.professions-title
+                          = "Professions"
+                        %ul.professions.block-grid.three-up
+                          - category.professions.each do |profession|
+                            %li.profession
+                              %a.profession-name{:href => locality_profession_path(@locality, profession), :title => "#{profession.name} in #{@locality.name}, #{@region.name}"}
+                                = profession.name
       .four.columns
         %section
           .panel
