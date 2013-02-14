@@ -13,12 +13,12 @@
                 .show-for-small
                   %i.icon-question-sign
                 .arrow
-            %dd{:class => @current_action_tab == "find" ? "active" : ""}
-              %a{:href => "#find"}
+            %dd{:class => @current_action_tab == "search" ? "active" : ""}
+              %a{:href => "#search"}
                 .hide-for-small
                   %i.icon-search
                   %span
-                    =t :action_find
+                    =t :action_search
                 .show-for-small
                   %i.icon-search
                 .arrow
@@ -39,14 +39,14 @@
                     = text_field_tag "question[title]", nil, :placeholder => t(:question_placeholder), :class => "oversize"
                   .two.columns
                     = submit_tag t(:action_ask), :class => "radius button expand postfix"
-      %li#findTab{:class => @current_action_tab == "find" ? "active" : ""}
+      %li#searchTab{:class => @current_action_tab == "search" ? "active" : ""}
         .row
           .three.columns.text-center
-            %img{:src => "/assets/banner_find_char.png", :width => 250, :height => 160}
+            %img{:src => "/assets/banner_search_char.png", :width => 250, :height => 160}
           .nine.columns
             .container
               %hgroup
-                %h2 Find professionals
+                %h2 Search professionals
                 %h3.subheader Find top-rated professionals near you!
               = form_tag users_path, :method => "get" do
                 .row
@@ -55,4 +55,4 @@
                   .four.columns
                     = text_field_tag "where", @where, :placeholder => "Where?", :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/wheres.json"}
                   .two.columns
-                    = submit_tag t(:action_find), :class => "radius button expand postfix"
+                    = submit_tag t(:action_search), :class => "radius button expand postfix"

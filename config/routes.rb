@@ -37,6 +37,8 @@ Kixo::Application.routes.draw do
     resources :whats
     resources :wheres
 
+    resources :cards
+
   end
 
   match "/:locale" => "pages#index"

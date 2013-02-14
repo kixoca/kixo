@@ -13,6 +13,8 @@
           %li
             %a{:href => "#profile"} Profile
           %li
+            %a{:href => "#billing"} Billing
+          %li
             %a{:href => "#categories"} Categories
           %li
             %a{:href => "#contact"} Contact
@@ -43,18 +45,16 @@
                         = f.email_field :email
 
                     .row
-                      .twelve.columns
+                      .six.columns
                         = f.label :password
                         = f.password_field :password, :autocomplete => "off"
-
-                    .row
-                      .twelve.columns
+                      .six.columns
                         = f.label :password_confirmation
                         = f.password_field :password_confirmation
 
                     .row
                       .twelve.columns
-                        = f.submit "Update", :class => "button"
+                        = f.submit "Update", :class => "submit button"
 
                   %hr
 
@@ -123,7 +123,7 @@
 
                     .row
                       .twelve.columns
-                        = f.submit "Update", :class => "button"
+                        = f.submit "Update", :class => "submit button"
 
 
           %li#profileTab
@@ -159,7 +159,23 @@
 
                     .row
                       .twelve.columns
-                        = f.submit "Update", :class => "button"
+                        = f.submit "Update", :class => "submit button"
+
+          %li#billingTab
+
+            .page
+
+              %header
+                .container
+                  %hgroup
+                    %h1 Billing
+                    %h3.subheader Edit your billing information
+
+              %section
+                .container
+
+                  %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
+                    Add/Edit Credit Card
 
           %li#categoriesTab
 
@@ -205,7 +221,7 @@
 
                     .row
                       .twelve.columns
-                        = f.submit "Update", :class => "button"
+                        = f.submit "Update", :class => "submit button"
 
           %li#contactTab
 
@@ -223,8 +239,36 @@
                   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
                     = devise_error_messages!
 
-                    = render "shared/location_selector", :f => f
+                    = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
 
                     .row
                       .twelve.columns
-                        = f.submit "Update", :class => "button"
+                        = f.submit "Update", :class => "submit button"
+
+#create_card.reveal-modal
+  %hgroup.hr
+    %h3 Credit Card
+    %h4.subheader Add or edit a credit card
+  = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "stripe" } do |f|
+    = devise_error_messages!
+    .stripe-errors.alert-box.alert.hidden
+    = f.hidden_field :card
+    .row
+      .twelve.columns
+        = label_tag :card_number, "Card Number"
+        = text_field_tag :card_number, nil, :name => nil
+    .row
+      .six.columns
+        = label_tag :card_exp_month, "Card Expiration"
+        .row
+          .six.columns
+            = select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_exp_month"}
+          .six.columns
+            = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_exp_year"}
+      .six.columns
+        = label_tag :card_cvc, "Security Code (CVC)"
+        = text_field_tag :card_cvc, nil, :name => nil
+    .row
+      .twelve.columns
+        = f.submit "Add/Edit Card", :class => "submit button small"
+  %a.close-reveal-modal &#215;

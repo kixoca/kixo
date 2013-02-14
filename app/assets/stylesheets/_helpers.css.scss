@@ -1,6 +1,6 @@
 .clear { @include clearfix(); }
 
-.hidden { display: none; }
+.hidden { display: none !important; }
 .invisible { visibility: hidden; }
 
 .no-marg { margin: 0 !important; }

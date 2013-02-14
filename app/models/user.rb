@@ -5,8 +5,11 @@ class User < ActiveRecord::Base
 
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tel, :headshot, :bio, :is_a_professional,
                   :topics, :topic_ids, :professions, :profession_ids,
-                  :notify_of_kixo_news?, :notify_of_partner_news?, :notify_of_new_messages?, :notify_of_answers?,
-                  :notify_of_replies?, :notify_of_similar_questions?, :notify_of_questions?, :notify_of_other_answers?
+                  :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
+                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
+                  :card
+
+  attr_accessor :card
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -43,6 +46,11 @@ class User < ActiveRecord::Base
 
   # set default values on init
   after_initialize :default_values
+
+  # sync stripe customer
+  before_create  :create_stripe_customer
+  before_update  :update_stripe_customer
+  before_destroy :delete_stripe_customer
 
   # validation
   validates :email, :presence => true
@@ -94,17 +102,20 @@ class User < ActiveRecord::Base
   end
 
   def can_review?(user)
-    self.reviews.all(:conditions => {:user_id => user}).count == 0 and
-        self != user
+    self.reviews.all(:conditions => {:user_id => user}).count == 0 and self != user
   end
 
   def similar
-    (User.find_all_by_topic(self.topics) or User.find_all_by_profession(self.professions)) and
+    (User.find_all_by_topic(self.topics) + User.find_all_by_profession(self.professions)) &
         User.where(["id != ?", self.id]).near(self.geocoding_address, 50).order("distance")
   end
 
   def points
     46
+  end
+
+  def customer
+    Stripe::Customer.retrieve(self.stripe_customer_id)
   end
 
   def to_param
@@ -120,6 +131,33 @@ class User < ActiveRecord::Base
   def self.authenticate(email, password)
     user = self.find_for_authentication(:email => email)
     user.valid_password?(password) ? user : nil
+  end
+
+  def create_stripe_customer
+    customer = Stripe::Customer.create(:email => self.email)
+    self.stripe_customer_id = customer.id
+  end
+
+  def update_stripe_customer
+    customer = self.customer
+    if customer
+      if self.email != self.customer.email
+        customer.email = self.email
+        modified = true
+      end
+
+      if self.card
+        customer.card = self.card
+        modified = true
+      end
+
+      customer.save if modified
+    end
+  end
+
+  def delete_stripe_customer
+    customer = self.customer
+    customer.delete if customer
   end
 
   def default_values

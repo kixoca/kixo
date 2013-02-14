@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209232704) do
+ActiveRecord::Schema.define(:version => 20130209221557) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,18 +103,6 @@ ActiveRecord::Schema.define(:version => 20130209232704) do
   add_index "localizations", ["locale_id", "localizable_id"], :name => "index_localizations_on_locale_id_and_localizable_id"
   add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
 
-  create_table "plans", :force => true do |t|
-    t.string   "name",                                            :default => "",  :null => false
-    t.decimal  "amount",            :precision => 8, :scale => 2, :default => 0.0, :null => false
-    t.string   "currency",                                        :default => "",  :null => false
-    t.string   "interval",                                        :default => "",  :null => false
-    t.integer  "interval_count"
-    t.integer  "trial_period_days"
-    t.datetime "created_at",                                                       :null => false
-    t.datetime "updated_at",                                                       :null => false
-    t.string   "stripe_id",                                       :default => "",  :null => false
-  end
-
   create_table "questions", :force => true do |t|
     t.string   "title",         :default => "", :null => false
     t.text     "details"
@@ -134,13 +122,6 @@ ActiveRecord::Schema.define(:version => 20130209232704) do
     t.integer  "locale_id",  :default => 0,  :null => false
     t.datetime "created_at",                 :null => false
     t.datetime "updated_at",                 :null => false
-  end
-
-  create_table "subscriptions", :force => true do |t|
-    t.integer  "user_id",    :default => 0, :null => false
-    t.integer  "plan_id",    :default => 0, :null => false
-    t.datetime "created_at",                :null => false
-    t.datetime "updated_at",                :null => false
   end
 
   create_table "taxonomies", :force => true do |t|
@@ -208,7 +189,7 @@ ActiveRecord::Schema.define(:version => 20130209232704) do
     t.integer  "referer_id"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
-    t.integer  "stripe_customer_id"
+    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

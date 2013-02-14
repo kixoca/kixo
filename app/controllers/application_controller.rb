@@ -21,8 +21,7 @@ class ApplicationController < ActionController::Base
     if params[:action] == "index"
       @current_action_tab = case params[:controller]
         when "questions" then "ask"
-        when "users"     then "find"
-        when "reviews"   then "review"
+        when "users"     then "search"
         else "ask"
       end
     else
@@ -47,6 +46,8 @@ class ApplicationController < ActionController::Base
 
     # misc.
     @all_ratings = Rating.all
+
+    @new_card = Card.new
   end
 
 end

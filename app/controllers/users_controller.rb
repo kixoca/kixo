@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.page(params[:page])
     @guides = @user.guides.page(params[:page])
 
-    @similar_professionals = @user.similar.professionals if @user.is_a_professional?
+    @similar_professionals = @user.similar.professionals if @user.is_a_professional? and !@user.similar.blank?
 
     respond_to do |format|
       format.html # show.html.haml

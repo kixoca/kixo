@@ -6,7 +6,7 @@ fr:
   sign_up: "Inscription"
   sign_out: "Déconnexion"
   action_ask: "Demander"
-  action_find: "Trouver"
+  action_search: "Rechercher"
   action_consult: "Consulter"
   about_kixo_title: "Qu'est-ce que Kixo?"
   about_kixo_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."

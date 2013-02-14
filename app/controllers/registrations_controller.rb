@@ -1,22 +1,20 @@
 class RegistrationsController < Devise::RegistrationsController
+
   def update
     @user = User.find(current_user.id)
-    email_changed = @user.email != params[:user][:email]
-    password_changed = !params[:user][:password].blank?
 
-    successfully_updated = if email_changed or password_changed
-                             @user.update_with_password(params[:user])
-                           else
-                             @user.update_without_password(params[:user])
-                           end
-
-    if successfully_updated
+    if @user.update_without_password(params[:user])
       set_flash_message :notice, :updated
-      # sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
       redirect_to after_update_path_for(@user)
     else
       render "edit"
     end
+  end
+
+  protected
+
+  def after_update_path_for(resource)
+    edit_user_registration_path
   end
 end

@@ -1,0 +1,22 @@
+- unless current_user
+  #create_session.reveal-modal
+    %hgroup.hr
+      %h1 Sign In
+      %h3.subheader Sign in to your existing account
+    = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+      = devise_error_messages!
+
+      = f.label :email
+      = f.email_field :email
+
+      = f.label :password
+      = f.password_field :password
+
+      - if devise_mapping.rememberable?
+        %label
+          = f.check_box :remember_me
+          = t(:remember_me)
+
+      .actions
+        = f.submit "Sign in", :class => "submit button"
+    %a.close-reveal-modal &#215;
