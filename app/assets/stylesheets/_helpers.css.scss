@@ -11,84 +11,27 @@
 .no-pad-top { padding-top: 0 !important; }
 .no-pad-bottom { padding-bottom: 0 !important; }
 
-.marg { margin: 1em !important; }
-.marg-bottom { margin-bottom: 1em !important; }
-.marg-top { margin-bottom: 1em !important; }
+.marg { margin: $unit !important; }
+.marg-bottom { margin-bottom: $unit !important; }
+.marg-top { margin-bottom: $unit !important; }
 
-.pad { padding: 1em !important; }
-.pad-bottom { padding-bottom: 1em !important; }
-.pad-top { padding-bottom: 1em !important; }
+.pad { padding: $unit !important; }
+.pad-bottom { padding-bottom: $unit !important; }
+.pad-top { padding-bottom: $unit !important; }
 
-.page {
-  background: $white;
-  border: 1px solid $borderColor;
-  margin-bottom: $unit;
-
-  .container {
-    margin: $gutter;
-
-    &.thin {
-      margin: 0.618*$gutter $gutter;
-    }
-  }
-
-  > header {
-    border-bottom: 1px solid $borderColor;
-
-    hgroup {
-      margin: 0;
-    }
-
-    h1, h2, h3, h4, h5, h6, p {
-      margin: 0.125em 0;
-    }
-  }
-
-  > section {
-    border-bottom: 1px solid $borderColor;
-
-    &:first-child {
-      @include borderTopRadius($radius);
-    }
-
-    &:last-child {
-      border-bottom: none;
-      @include borderBottomRadius($radius);
-    }
-
-    &.blue {
-      background: $kixoBlue;
-    }
-
-    &.green {
-      background: $kixoGreen;
-    }
-  }
+.no-records {
+  font-style: italic;
+  color: $lightTxtColor;
+  margin: 0;
 }
 
-.panel {
-  background: $white;
-
-  &.callout h5 {
-    color: $white;
-  }
-
-  &.green {
-    background: $kixoGreen;
-    border-color: darken($kixoGreen, 15%);
-
-    a.button {
-      color: darken($kixoGreen, 15%);
-    }
-  }
-
-  &.grey {
-    background: $kixoLightGrey;
-  }
+.meta {
+  font-size: 0.90*$baseFontSize;
+  color: $lightTxtColor;
 }
 
 .headshot img {
-  @include borderRadius($buttonRadius);
+  @include borderRadius(500px);
 }
 
 ul.inline {
@@ -135,7 +78,6 @@ ul.csv {
 .text-right {
   text-align: right;
 }
-
 
 .ui-autocomplete {
   position: absolute;

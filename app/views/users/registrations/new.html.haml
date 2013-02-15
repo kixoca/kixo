@@ -1,97 +1,95 @@
-%section#content
-  .container
-    .row
-      .eight.columns
-        .page
-          %header
-            .container
-              %hgroup
-                %h1 Sign Up
-                %h3.subheader Create a free account and connect with professionals
-          %section
-            .container
-              = render "shared/show_flash"
+.row
+  .eight.columns
+    .page.box
+      %header
+        .container
+          %hgroup
+            %h1 Sign Up
+            %h4.subheader Create a free account and connect with professionals
+      %section
+        .container
+          = render "shared/show_flash"
 
-              = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-                = devise_error_messages!
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+            = devise_error_messages!
 
-                %fieldset
-                  %legend Account details
+            %fieldset
+              %legend Account details
 
-                  .row
-                    .twelve.columns
-                      = f.label :email
-                      = f.email_field :email
+              .row
+                .twelve.columns
+                  = f.label :email
+                  = f.email_field :email
 
-                  .row
-                    .six.columns
-                      = f.label :password
-                      = f.password_field :password
-                    .six.columns
-                      = f.label :password_confirmation
-                      = f.password_field :password_confirmation
+              .row
+                .six.columns
+                  = f.label :password
+                  = f.password_field :password
+                .six.columns
+                  = f.label :password_confirmation
+                  = f.password_field :password_confirmation
 
-                %fieldset
-                  %legend Location
+            %fieldset
+              %legend Location
 
-                  = render "shared/location_selector", :f => f, :street_address => false
+              = render "shared/location_selector", :f => f, :street_address => false
+
+            .row
+              .twelve.columns
+                %label
+                  = check_box_tag "user[is_a_professional]", true, false, :class => "toggle", :data => {:target => "#if_user_is_a_professional"}
+                  I am a professional
+
+            %section#if_user_is_a_professional.hidden
+
+              %fieldset
+                %legend Personal details
 
                 .row
                   .twelve.columns
-                    %label
-                      = check_box_tag "user[is_a_professional]", true, false, :class => "toggle", :data => {:target => "#if_user_is_a_professional"}
-                      I am a professional
+                    = f.label :name
+                    = f.text_field :name
 
-                %section#if_user_is_a_professional.hidden
+                .row
+                  .twelve.columns
+                    = f.label :headshot
+                    = f.file_field :headshot
 
-                  %fieldset
-                    %legend Personal details
+                .row
+                  .twelve.columns
+                    = f.label :bio
+                    = f.text_area :bio, :rows => 5
 
-                    .row
-                      .twelve.columns
-                        = f.label :name
-                        = f.text_field :name
+              %hgroup
+                %h3 Categories
+                %h4.subheader Select topics and professions
 
-                    .row
-                      .twelve.columns
-                        = f.label :headshot
-                        = f.file_field :headshot
+              %ul.accordion.compact
+                - @all_categories.each do |category|
+                  %li
+                    .title
+                      %h5
+                        = category.name
+                    .content
+                      %fieldset
+                        %legend Select topics
+                        %ul.block-grid.three-up
+                          - category.topics.each do |topic|
+                            %li
+                              %label
+                                = check_box_tag "user[topic_ids][]", topic.id
+                                = topic.name
+                      %fieldset
+                        %legend Select professions
+                        %ul.block-grid.three-up
+                          - category.professions.each do |profession|
+                            %li
+                              %label
+                                = check_box_tag "user[profession_ids][]", profession.id
+                                = profession.name
 
-                    .row
-                      .twelve.columns
-                        = f.label :bio
-                        = f.text_area :bio, :rows => 5
+            .actions
+              = f.submit "Sign up", :class => "button"
 
-                  %hgroup
-                    %h3 Categories
-                    %h4.subheader Select topics and professions
-
-                  %ul.accordion.compact
-                    - @all_categories.each do |category|
-                      %li
-                        .title
-                          %h5
-                            = category.name
-                        .content
-                          %fieldset
-                            %legend Select topics
-                            %ul.block-grid.three-up
-                              - category.topics.each do |topic|
-                                %li
-                                  %label
-                                    = check_box_tag "user[topic_ids][]", topic.id
-                                    = topic.name
-                          %fieldset
-                            %legend Select professions
-                            %ul.block-grid.three-up
-                              - category.professions.each do |profession|
-                                %li
-                                  %label
-                                    = check_box_tag "user[profession_ids][]", profession.id
-                                    = profession.name
-
-                .actions
-                  = f.submit "Sign up", :class => "button"
-
-      .four.columns
-        = render "users/shared/panels"
+  .four.columns
+    = render "users/shared/panels"

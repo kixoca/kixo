@@ -1,19 +1,14 @@
-%section#content
-  .container
-    .row
-      .eight.columns
-        %section#questions
-          %hgroup.hr
-            %h3
-              - if current_user
-                = "Recent questions for you"
-              - else
-                = "Recent questions"
-            %h4.subheader
-              Browse the latest questions asked by Kixo users
-          %ul.questions
-            - @questions.each do |question|
-              %li.question
-                = render "questions/shared/loop", :question => question
-      .four.columns
-        %aside#sidebar
+.row
+  .eight.columns
+    %section#questions
+      %h4.section-title
+        - if current_user
+          = "Recent questions for you"
+        - else
+          = "Recent questions"
+      %ul.questions
+        - @questions.each do |question|
+          %li.question
+            = render "questions/shared/loop", :question => question
+  .four.columns
+    %aside#sidebar

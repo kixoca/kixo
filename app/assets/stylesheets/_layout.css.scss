@@ -2,13 +2,10 @@ body {
   background-color: $bodyBgColor;
 }
 
-form {
-  margin: $rowGutter 0 0 0;
-}
-
 #header {
   background: $white;
-  @include boxShadow(0,1px,3px,0,rgba(0,0,0,0.1));
+  margin: 0;
+  @include boxShadow(0,5px,10px,0,rgba(0,0,0,0.1));
 
   #language-select {
     .container {
@@ -28,7 +25,7 @@ form {
     border-top: 3px solid $kixoGreen;
 
     > .container {
-      padding: $gutter 0;
+      padding: $golden*$unit 0;
     }
 
     .brand {
@@ -167,7 +164,7 @@ form {
 
 #content {
   > .container {
-    margin: 2*$rowGutter 0;
+    margin: $rowGutter 0;
   }
 }
 
@@ -176,7 +173,7 @@ form {
   color: $secondaryColor;
 
   > .container {
-    padding: 2*$rowGutter 0;
+    padding: $rowGutter 0;
   }
 
   #about-kixo {
@@ -252,5 +249,86 @@ form {
         }
       }
     }
+  }
+}
+
+.box,
+.page {
+  background: $white;
+
+  > header {
+    border-bottom: 1px solid $borderColor;
+    margin: 0;
+
+    hgroup {
+      margin: 0;
+    }
+
+    h1, h2, h3, h4, h5, h6, p {
+      margin: 0;
+    }
+  }
+
+  > section,
+  > .section {
+    border-bottom: 1px solid $borderColor;
+
+    &:first-child {
+      @include borderTopRadius($radius);
+    }
+
+    &:last-child {
+      border-bottom: none;
+      @include borderBottomRadius($radius);
+    }
+
+    &.blue {
+      background: $kixoBlue;
+    }
+
+    &.green {
+      background: $kixoGreen;
+    }
+  }
+}
+
+.box {
+  border-top: 2px solid $kixoGreen;
+  margin-bottom: $unit;
+
+  .container {
+    padding: $unit $golden*$unit;
+  }
+}
+
+.page {
+  border-top: 3px solid $kixoGreen;
+  margin-bottom: $golden*$unit;
+
+  .container {
+    padding: $golden*$unit $golden*$golden*$unit;
+  }
+}
+
+.panel {
+  background: $white;
+  padding: $golden*$unit;
+  border: none;
+
+  &.callout h5 {
+    color: $white;
+  }
+
+  &.green {
+    background: $kixoGreen;
+    border-color: darken($kixoGreen, 15%);
+
+    a.button {
+      color: darken($kixoGreen, 15%);
+    }
+  }
+
+  &.grey {
+    background: $kixoLightGrey;
   }
 }

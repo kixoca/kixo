@@ -1,249 +1,261 @@
-%section#content
-  .container
+.row
 
-    .row
+  .four.columns
 
-      .four.columns
+    %ul.vertical.tabs.white
+      %li.active
+        %a{:href => "#account"} Account
+      %li
+        %a{:href => "#notifications"} Email notifications
+      %li
+        %a{:href => "#profile"} Profile
+      %li
+        %a{:href => "#billing"} Billing
+      %li
+        %a{:href => "#categories"} Categories
+      %li
+        %a{:href => "#contact"} Contact
 
-        %ul.vertical.tabs.white
-          %li.active
-            %a{:href => "#account"} Account
-          %li
-            %a{:href => "#notifications"} Email notifications
-          %li
-            %a{:href => "#profile"} Profile
-          %li
-            %a{:href => "#billing"} Billing
-          %li
-            %a{:href => "#categories"} Categories
-          %li
-            %a{:href => "#contact"} Contact
+  .eight.columns
 
-      .eight.columns
+    %ul.tabs-content
 
-        %ul.tabs-content
+      %li#accountTab.active
 
-          %li#accountTab.active
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
-            .page
+          .page
 
-              %header
-                .container
-                  %hgroup
-                    %h1 My Account
-                    %h3.subheader Change your basic account, password and language setting
+            %header
+              .container
+                %hgroup
+                  %h1 My Account
+                  %h4.subheader Change your basic account, password and language setting
 
-              %section
-                .container
+            %section
+              .container
+                .row
+                  .three.columns
+                    = f.label :email, :class => "inline right"
+                  .seven.columns.end
+                    = f.email_field :email
+                .row
+                  .three.columns
+                    = f.label :password, :class => "inline right"
+                  .seven.columns.end
+                    = f.password_field :password, :autocomplete => "off"
+                .row
+                  .three.columns
+                    = f.label :password_confirmation, "Confirmation", :class => "inline right"
+                  .seven.columns.end
+                    = f.password_field :password_confirmation
 
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
+            %section
+              .container
+                .row
+                  .three.columns
+                    = f.label :locale_id, "Main language", :class => "inline right"
+                  .seven.columns.end
+                    = f.select :locale_id, @all_locales.collect {|locale| [locale.name, locale.id]}
+                .row
+                  .three.columns
+                    = f.label :locale_ids, "Other languages", :class => "inline right"
+                  .seven.columns.end
+                    %ul.block-grid.three-up
+                      - @all_locales.each do |locale|
+                        %li
+                          %label
+                            = check_box_tag "user[locale_ids][]", locale.id, (current_user and current_user.locales.include?(locale))
+                            = locale.name
 
-                    .row
-                      .twelve.columns
-                        = f.label :email
-                        = f.email_field :email
+            %section
+              .container
+                .row
+                  .seven.columns.offset-by-three.end
+                    = f.submit "Update", :class => "submit button"
 
-                    .row
-                      .six.columns
-                        = f.label :password
-                        = f.password_field :password, :autocomplete => "off"
-                      .six.columns
-                        = f.label :password_confirmation
-                        = f.password_field :password_confirmation
+            %section
+              .container
+                .row
+                  .seven.columns.offset-by-three.end
+                    %p
+                      = "Unhappy?"
+                      = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
 
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "submit button"
+      %li#notificationsTab
 
-                  %hr
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
+          .page
+
+            %header
+              .container
+                %hgroup
+                  %h1 Email notifications
+                  %h4.subheader Control when and how often Kixo sends email to you
+
+            %section
+              .container
+                %fieldset
+                  %legend
+                    Email me when
                   .row
-                    .twelve.columns
-                      %h3 Cancel my account
-                      %p
-                        = "Unhappy?"
-                        = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+                    .ten.columns
+                      = f.label :notify_of_kixo_news
+                    .two.columns.text-right
+                      = f.select :notify_of_kixo_news, [["Yes", true], ["No", false]]
+                  .row
+                    .ten.columns
+                      = f.label :notify_of_partner_news
+                    .two.columns.text-right
+                      = f.select :notify_of_partner_news, [["Yes", true], ["No", false]]
+                  .row
+                    .ten.columns
+                      = f.label :notify_of_new_messages
+                    .two.columns.text-right
+                      = f.select :notify_of_new_messages, [["Yes", true], ["No", false]]
+                  .row
+                    .ten.columns
+                      = f.label :notify_of_answers
+                    .two.columns.text-right
+                      = f.select :notify_of_answers, [["Yes", true], ["No", false]]
+                  .row
+                    .ten.columns
+                      = f.label :notify_of_replies
+                    .two.columns.text-right
+                      = f.select :notify_of_replies, [["Yes", true], ["No", false]]
+                  .row
+                    .ten.columns
+                      = f.label :notify_of_similar_questions
+                    .two.columns.text-right
+                      = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
 
-          %li#notificationsTab
-
-            .page
-
-              %header
-                .container
-                  %hgroup
-                    %h1 Email notifications
-                    %h3.subheader Control when and how often Kixo sends email to you
-
-              %section
-                .container
-
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
-
-                    %fieldset
-                      %legend
-                        Email me when
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_kixo_news
-                        .two.columns.text-right
-                          = f.select :notify_of_kixo_news, [["Yes", true], ["No", false]]
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_partner_news
-                        .two.columns.text-right
-                          = f.select :notify_of_partner_news, [["Yes", true], ["No", false]]
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_new_messages
-                        .two.columns.text-right
-                          = f.select :notify_of_new_messages, [["Yes", true], ["No", false]]
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_answers
-                        .two.columns.text-right
-                          = f.select :notify_of_answers, [["Yes", true], ["No", false]]
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_replies
-                        .two.columns.text-right
-                          = f.select :notify_of_replies, [["Yes", true], ["No", false]]
-
-                      .row
-                        .ten.columns
-                          = f.label :notify_of_similar_questions
-                        .two.columns.text-right
-                          = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
-
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "submit button"
+            %section
+              .container
+                .row
+                  .twelve.columns
+                    = f.submit "Update", :class => "submit button"
 
 
-          %li#profileTab
+      %li#profileTab
 
-            .page
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
-              %header
-                .container
-                  %hgroup
-                    %h1 Profile
-                    %h3.subheader Edit your profile
+          .page
 
-              %section
-                .container
+            %header
+              .container
+                %hgroup
+                  %h1 Profile
+                  %h4.subheader Edit your profile
 
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
+            %section
+              .container
+                .row
+                  .three.columns
+                    = f.label :name, :class => "inline right"
+                  .seven.columns.end
+                    = f.text_field :name
+                .row
+                  .three.columns
+                    = f.label :headshot, :class => "inline right"
+                  .seven.columns.end
+                    = f.file_field :headshot
+                .row
+                  .three.columns
+                    = f.label :bio, :class => "inline right"
+                  .seven.columns.end
+                    = f.text_area :bio, :rows => 5
 
-                    .row
-                      .twelve.columns
-                        = f.label :name
-                        = f.text_field :name
+            %section
+              .container
+                .row
+                  .seven.columns.offset-by-three.end
+                    = f.submit "Update", :class => "submit button"
 
-                    .row
-                      .twelve.columns
-                        = f.label :headshot
-                        = f.file_field :headshot
+      %li#billingTab
 
-                    .row
-                      .twelve.columns
-                        = f.label :bio
-                        = f.text_area :bio, :rows => 5
+        .page
 
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "submit button"
+          %header
+            .container
+              %hgroup
+                %h1 Billing
+                %h4.subheader Edit your billing information
 
-          %li#billingTab
+          %section
+            .container
 
-            .page
+              %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
+                Add/Edit Credit Card
 
-              %header
-                .container
-                  %hgroup
-                    %h1 Billing
-                    %h3.subheader Edit your billing information
+      %li#categoriesTab
 
-              %section
-                .container
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
-                  %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
-                    Add/Edit Credit Card
+          .page
 
-          %li#categoriesTab
+            %header
+              .container
+                %hgroup
+                  %h1 Categories
+                  %h4.subheader Select topics and professions
 
-            .page
+            %section
+              .container
+                .row
+                  .twelve.columns
+                    %ul.accordion.compact.marg-bottom
+                      - @all_categories.each do |category|
+                        %li
+                          .title
+                            %h5
+                              = category.name
+                          .content
+                            %fieldset
+                              %legend Select topics
+                              %ul.block-grid.three-up
+                                - category.topics.each do |topic|
+                                  %li
+                                    %label
+                                      = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
+                                      = topic.name
+                            %fieldset
+                              %legend Select professions
+                              %ul.block-grid.three-up
+                                - category.professions.each do |profession|
+                                  %li
+                                    %label
+                                      = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
+                                      = profession.name
 
-              %header
-                .container
-                  %hgroup
-                    %h1 Categories
-                    %h3.subheader Select topics and professions
+            %section
+              .container
+                .row
+                  .twelve.columns
+                    = f.submit "Update", :class => "submit button"
 
-              %section
-                .container
+      %li#contactTab
 
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
+        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
-                    .row
-                      .twelve.columns
-                        %ul.accordion.compact.marg-bottom
-                          - @all_categories.each do |category|
-                            %li
-                              .title
-                                %h5
-                                  = category.name
-                              .content
-                                %fieldset
-                                  %legend Select topics
-                                  %ul.block-grid.three-up
-                                    - category.topics.each do |topic|
-                                      %li
-                                        %label
-                                          = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
-                                          = topic.name
-                                %fieldset
-                                  %legend Select professions
-                                  %ul.block-grid.three-up
-                                    - category.professions.each do |profession|
-                                      %li
-                                        %label
-                                          = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
-                                          = profession.name
+          .page
 
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "submit button"
+            %header
+              .container
+                %hgroup
+                  %h1 Contact Information
+                  %h4.subheader Edit your contact information
 
-          %li#contactTab
+            %section
+              .container
+                = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
 
-            .page
-
-              %header
-                .container
-                  %hgroup
-                    %h1 Contact Information
-                    %h3.subheader Edit your contact information
-
-              %section
-                .container
-
-                  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-                    = devise_error_messages!
-
-                    = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
-
-                    .row
-                      .twelve.columns
-                        = f.submit "Update", :class => "submit button"
+            %section
+              .container
+                .row
+                  .seven.columns.offset-by-three.end
+                    = f.submit "Update", :class => "submit button"
 
 #create_card.reveal-modal
   %hgroup.hr
@@ -270,5 +282,5 @@
         = text_field_tag :card_cvc, nil, :name => nil
     .row
       .twelve.columns
-        = f.submit "Add/Edit Card", :class => "submit button small"
+        = f.submit "Add/Edit Card", :class => "submit button"
   %a.close-reveal-modal &#215;

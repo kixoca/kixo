@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   has_many :users, :foreign_key => :referer_id
 
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => {:large => "160x160", :medium => "120x120", :small => "80x80", :thumb => "50x50"}
+  has_attached_file :headshot, :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#"}
 
   # set default values on init
   after_initialize :default_values

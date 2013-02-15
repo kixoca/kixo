@@ -9,12 +9,14 @@
     = tag :meta, :name => "viewport",   :content => "width=device-width, initial-scale=1.0"
     = tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY
 
-    = google_webfonts_link_tag :titillium_web => [400,700]
+    = google_webfonts_link_tag :bree_serif => 400, :open_sans => ["300italic", "400italic", "600italic", "700italic", "800italic", 400, 300, 600, 700, 800]
     = stylesheet_link_tag    "application", :media => "all"
 
     = javascript_include_tag "https://js.stripe.com/v1/"
     = javascript_include_tag "//maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"
     = javascript_include_tag "application"
+
+    = render "shared/mixpanel"
 
     - unless @canonical_url.nil?
       %link{:rel => "canonical", :href => @canonical_url}
@@ -75,21 +77,9 @@
 
       = render "shared/actions"
 
-    = yield
-
-    .row
-      .one.column 1
-      .one.column 2
-      .one.column 3
-      .one.column 4
-      .one.column 5
-      .one.column 6
-      .one.column 7
-      .one.column 8
-      .one.column 9
-      .one.column 10
-      .one.column 11
-      .one.column 12
+    %section#content
+      .container
+        = yield
 
 
     %section#modals

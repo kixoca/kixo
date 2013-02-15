@@ -44,9 +44,13 @@ class ApplicationController < ActionController::Base
     @all_regions = Region.all
     @all_localities = Locality.all
 
+    # locales
+    @all_locales = Locale.all
+
     # misc.
     @all_ratings = Rating.all
 
+    # stripe
     @new_card = Card.new
   end
 

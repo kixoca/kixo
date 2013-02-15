@@ -1,44 +1,42 @@
-%section#content
-  .container
-    .row
-      .eight.columns
-        .page.question
-          %header
-            .container
-              %h1.title
-                = @question.title
-              %p.meta
-                %time.created_at{:datetime => @question.created_at}
-                  = "Asked #{time_ago_in_words(@question.created_at)} ago"
-                %span.location
-                  = "in #{@author.short_address}"
-              %p.topics
-                Posted in
-                = @topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
-          - unless @question.details.empty?
-            %section#details
-              .container
-                = @question.details
-          %section#answers
-            .container
-              %h3
-                Answers
-              - unless @answers.nil?
-                %ul.answers
-                  - @answers.each do |answer|
-                    %li
-                      = render "answers/shared/loop", :answer => answer
-              - else
-                %p.no-records No answers yet.
-              = render "answers/shared/new", :question => @question
-      .four.columns
-        .panel
-          %h5 Related professionals
-          - unless @related_professionals.blank?
-            %ul.professionals.related
-              - @related_professionals.each do |professional|
+.row
+  .eight.columns
+    .page.box.question
+      %header
+        .container
+          %h1.title
+            = @question.title
+          %p.meta
+            %time.created_at{:datetime => @question.created_at}
+              = "Asked #{time_ago_in_words(@question.created_at)} ago"
+            %span.location
+              = "in #{@author.short_address}"
+          %p.topics
+            Posted in
+            = @topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
+      - unless @question.details.empty?
+        %section#details
+          .container
+            = @question.details
+      %section#answers
+        .container
+          %h3
+            Answers
+          - unless @answers.nil?
+            %ul.answers
+              - @answers.each do |answer|
                 %li
-                  = render "users/shared/loops/minimal", :professional => professional
+                  = render "answers/shared/loop", :answer => answer
           - else
-            %p.no-records
-              No related professionals found.
+            %p.no-records No answers yet.
+          = render "answers/shared/new", :question => @question
+  .four.columns
+    .panel
+      %h5 Related professionals
+      - unless @related_professionals.blank?
+        %ul.professionals.related
+          - @related_professionals.each do |professional|
+            %li
+              = render "users/shared/loops/minimal", :professional => professional
+      - else
+        %p.no-records
+          No related professionals found.

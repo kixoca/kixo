@@ -1,37 +1,35 @@
-%section#content
-  .container
-    .row
-      .eight.columns
-        .page
-          %header
-            .container
-              %hgroup
-                %h1 Sign In
-                %h3.subheader Sign in to your existing account
-          %section
-            .container
-              = render :partial => "shared/show_flash"
+.row
+  .eight.columns
+    .page.box
+      %header
+        .container
+          %hgroup
+            %h1 Sign In
+            %h3.subheader Sign in to your existing account
+      %section
+        .container
+          = render :partial => "shared/show_flash"
 
-              = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-                = devise_error_messages!
+          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            = devise_error_messages!
 
-                = f.label :email
-                = f.email_field :email
+            = f.label :email
+            = f.email_field :email
 
-                = f.label :password
-                = f.password_field :password
+            = f.label :password
+            = f.password_field :password
 
-                - if devise_mapping.rememberable?
-                  %label
-                    = f.check_box :remember_me
-                    = t(:remember_me)
+            - if devise_mapping.rememberable?
+              %label
+                = f.check_box :remember_me
+                = t(:remember_me)
 
-                .actions
-                  = f.submit "Sign in", :class => "button"
+            .actions
+              = f.submit "Sign in", :class => "button"
 
-              %hr
+          %hr
 
-              = render "users/shared/links"
+          = render "users/shared/links"
 
-      .four.columns
-        = render "users/shared/panels"
+  .four.columns
+    = render "users/shared/panels"

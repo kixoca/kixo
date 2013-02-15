@@ -1,5 +1,5 @@
 .professional {
-  .professions {
+  .whois {
     color: $lightTxtColor;
     font-style: italic;
   }
@@ -18,7 +18,7 @@
   }
 
   .metrics {
-    margin: 0;
+    margin: $golden*$unit 0 0 0;
 
     li {
       padding: 0;
@@ -44,34 +44,28 @@
       text-align: left;
     }
 
+    &.standard {
+      .headshot {
+        margin: $unit/$golden 0;
+      }
+    }
+
     ul {
       list-style: none;
       margin: 0;
     }
 
     .professions {
-      font-size: 0.90 * $baseFontSize;
+      font-size: 0.90*$baseFontSize;
     }
 
     .address {
-      font-size: 0.90 * $baseFontSize;
+      font-size: 0.90*$baseFontSize;
       color: $lightTxtColor;
     }
 
     .cta {
-      margin-top: 1.5*$unit;
-    }
-
-    .metrics {
-      li {
-        border: 1px solid $borderColor;
-        border-width: 0 1px 0 0;
-        padding: 0.5*$unit;
-
-        &:last-child {
-          border-right: 0;
-        }
-      }
+      margin-top: $golden*$unit;
     }
   }
 }

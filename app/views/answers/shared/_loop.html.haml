@@ -1,13 +1,7 @@
 - unless answer.nil? or answer.author.nil?
   .answer{:id => "ans#{answer.id}"}
     .row
-      .two.columns.text-center
-        .headshot
-          = image_tag answer.author.headshot.url(:small)
-        %h5.author_name
-          %a{:href => user_path(answer.author)}
-            = answer.author.name
-      .ten.columns
+      .nine.columns
         .meta
           %span.created_at
             = "Answered #{time_ago_in_words(answer.created_at)} ago"
@@ -17,3 +11,9 @@
         - if answer.author == current_user
           .actions
             = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
+      .three.columns.text-center
+        .headshot
+          = image_tag answer.author.headshot.url(:small)
+        %h5.author_name
+          %a{:href => user_path(answer.author)}
+            = answer.author.name

@@ -2,30 +2,43 @@ body {
   line-height: 1.4;
 }
 
-h1 { font-size: 2.25*$baseFontSize; color: $mainColor; }
-h2 { font-size: 1.75*$baseFontSize; }
-h3 { font-size: 1.50*$baseFontSize; }
-h4 { font-size: 1.25*$baseFontSize; }
-h5 { font-size: 1.00*$baseFontSize; }
-h6 { font-size: 0.90*$baseFontSize; }
+h1 { font-size: 2.20*$baseFontSize; color: $mainColor; }
+h2 { font-size: 1.80*$baseFontSize; }
+h3 { font-size: 1.60*$baseFontSize; }
+h4 { font-size: 1.20*$baseFontSize; }
+h5 { font-size: 1.10*$baseFontSize; }
+h6 { font-size: 1.00*$baseFontSize; }
 
 h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
+
+  &.subheader {
+    font-family: $subheaderFontFamily;
+  }
+
+  &.section-title {
+    text-transform: uppercase;
+  }
 }
 
-hgroup {
-  margin: 1em 0;
+h4, h5, h6 {
+  font-family: $bodyFontFamily;
+}
+
+hgroup,
+header {
+  margin: $unit 0;
 
   &.hr {
     border-bottom: 1px solid $hrColor;
     padding-bottom: 1em;
   }
 
-  h1, h2, h3, h4, h5, h6 {
+  h1, h2, h3, h4, h5, h6, p {
     margin: 0;
   }
 
-  .subheader {
+  .subheader, p {
     margin-top: 0.25em;
   }
 }
@@ -37,32 +50,4 @@ a {
   &.delete {
     color: $kixoRed;
   }
-}
-
-.no-records {
-  font-style: italic;
-  color: $lightTxtColor;
-  margin: 0;
-}
-
-.meta {
-  font-size: 0.90*$baseFontSize;
-  color: $lightTxtColor;
-}
-
-input[type="text"],
-input[type="password"],
-input[type="date"],
-input[type="datetime"],
-input[type="email"],
-input[type="number"],
-input[type="search"],
-input[type="tel"],
-input[type="time"],
-input[type="url"],
-input[type="file"],
-textarea,
-select {
-  font-size: $baseFontSize;
-  margin-bottom: $rowGutter;
 }

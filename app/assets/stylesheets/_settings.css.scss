@@ -1,13 +1,12 @@
 // Settings file containing Foundation defaults and Kixo overrides
 
 $unit: 10px;
-$gutter: $unit;
 
 // Grid Settings
 
 $rowWidth: 1020px;
 $columnGutter: 3*$unit;
-$rowGutter: 2*$unit;
+$rowGutter: 3*$unit;
 $totalColumns: 12;
 $mobileTotalColumns: 4;
 $blockGridElements: 12; // Highest number of block grid elements, Maximum of 24 supported
@@ -34,17 +33,18 @@ $white: #fff;
 $shinyEdge: rgba(#fff, .5);
 $darkEdge: rgba(#000, .2);
 $borderColor: #e4e4e4;
-$hrColor: #ddd;
+$hrColor: #dddddd;
 
 $bodyBgColor: #f0f0f0;
 
 // Font Settings
 
-$headerFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$headerFontFamily: "Bree Serif", Helvetica, Arial, sans-serif;
 $headerFontWeight: bold;
 $headerFontStyle: normal;
 $headerFontColor: $kixoDarkBlue;
-$bodyFontFamily: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$subheaderFontFamily: "Open Sans", Helvetica, Arial, sans-serif;
+$bodyFontFamily: "Open Sans", Helvetica, Arial, sans-serif;
 $bodyFontWeight: normal;
 $bodyFontStyle: normal;
 $bodyFontColor: $txtColor;

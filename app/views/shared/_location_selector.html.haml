@@ -1,39 +1,39 @@
 .location-selector
 
   .row
-
-    .six.columns
-      = f.label :country_id
+    .three.columns
+      = f.label :country_id, :class => "inline right"
+    .seven.columns.end
       = f.select :country_id, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
 
-    .six.columns
-      = f.label :region_id, "Province/State"
+  .row
+    .three.columns
+      = f.label :region_id, "Province/State", :class => "inline right"
+    .seven.columns.end
       = f.select :region_id, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
 
   .row
-
-    .twelve.columns
-      = f.label :locality_id, "City"
+    .three.columns
+      = f.label :locality_id, "City", :class => "inline right"
+    .seven.columns.end
       = f.select :locality_id, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
 
   - if defined?(postal_code) and postal_code != false
 
     .row
-
-      .twelve.columns
-        = f.label :postal_code, "Zip/Postal Code"
+      .three.columns
+        = f.label :postal_code, "Zip/Postal Code", :class => "inline right"
+      .seven.columns.end
         = f.text_field :postal_code
 
   - if defined?(street_address) and street_address != false
 
     .row
-
-      .twelve.columns
-        = f.label :street_address_1, "Street address"
+      .three.columns
+        = f.label :street_address_1, "Street address", :class => "inline right"
+      .seven.columns.end
         = f.text_field :street_address_1
 
     .row
-
-      .twelve.columns
-        = f.label :street_address_2, "Street address (continued)"
+      .seven.columns.offset-by-three.end
         = f.text_field :street_address_2

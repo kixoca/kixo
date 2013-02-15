@@ -1,6 +1,8 @@
 - unless errors.blank?
-  %ul.errors
-    - errors.each do |attribute, message|
-      - if message.is_a?(String)
-        %li
-          = message
+  %section.errors
+    .container
+      %ul.errors
+        - errors.each do |attribute, message|
+          - if message.is_a?(String)
+            %li
+              = message

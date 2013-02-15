@@ -1,5 +1,5 @@
 - unless professional.nil?
-  .page.professional.loop.standard
+  .box.professional.loop.standard
     %section
       .container
         .headshot
@@ -17,16 +17,17 @@
           %i.foundicon-location
           = professional.short_address
     %section
-      %ul.metrics.block-grid.three-up
-        %li
-          .value
-            = professional.points
-          .key points
-        %li
-          .value
-            = professional.answers.count
-          .key answers
-        %li
-          .value
-            = professional.reviews.count
-          .key reviews
+      .container
+        %ul.metrics.block-grid.three-up
+          %li
+            .value
+              = professional.points
+            .key points
+          %li
+            .value
+              = professional.answers.count
+            .key answers
+          %li
+            .value
+              = professional.reviews.count
+            .key reviews

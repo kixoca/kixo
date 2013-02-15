@@ -15,11 +15,6 @@
     }
 
     .answer {
-      padding: $columnGutter;
-      background: $kixoLightGreen;
-      border: 1px solid darken($kixoLightGreen, 10%);
-      @include borderRadius($radius);
-
       .details {
         font-size: 0.90*$baseFontSize;
       }
