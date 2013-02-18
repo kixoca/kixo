@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.html # index.html.haml
       format.json { render :json => @professionals }
-      format.xml  { render :xml => @professionals }
+      format.xml  { render :xml  => @professionals }
     end
   end
 
@@ -37,12 +37,14 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.page(params[:page])
     @guides = @user.guides.page(params[:page])
 
-    @similar_professionals = @user.similar.professionals if @user.is_a_professional? and !@user.similar.blank?
+    if @user.is_a_professional?
+      @similar_professionals = @user.similar_professionals
+    end
 
     respond_to do |format|
       format.html # show.html.haml
       format.json { render :json => @user }
-      format.xml  { render :xml => @user }
+      format.xml  { render :xml  => @user }
     end
   end
 

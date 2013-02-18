@@ -1,0 +1,29 @@
+.row
+  .eight.columns
+
+    .page
+
+      %header
+        .container
+          %hgroup
+            %h1 Messages
+            %h4.subheader Messages
+
+      %section
+        .container
+          %a.button{:href => "#", :data => {"reveal-id" => "new_message"}}
+            New message
+
+          %ul.messages
+            - @messages.each do |message|
+              %li
+                From:
+                = message.from.name
+                To:
+                = message.to.name
+                Content:
+                = message.content
+                Read:
+                = message.read
+
+  .four.columns

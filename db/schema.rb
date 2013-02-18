@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130209221557) do
+ActiveRecord::Schema.define(:version => 20130217161153) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -103,6 +103,24 @@ ActiveRecord::Schema.define(:version => 20130209221557) do
   add_index "localizations", ["locale_id", "localizable_id"], :name => "index_localizations_on_locale_id_and_localizable_id"
   add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
 
+  create_table "messages", :force => true do |t|
+    t.integer  "from_id",    :default => 0,     :null => false
+    t.integer  "to_id",      :default => 0,     :null => false
+    t.string   "content"
+    t.boolean  "read",       :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id",    :default => 0,     :null => false
+    t.string   "message",    :default => "0",   :null => false
+    t.string   "link_to"
+    t.boolean  "seen",       :default => false, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+  end
+
   create_table "questions", :force => true do |t|
     t.string   "title",         :default => "", :null => false
     t.text     "details"
@@ -115,13 +133,13 @@ ActiveRecord::Schema.define(:version => 20130209221557) do
   end
 
   create_table "reviews", :force => true do |t|
-    t.text     "comment",    :default => "", :null => false
-    t.integer  "user_id",    :default => 0,  :null => false
-    t.integer  "rating_id",  :default => 0,  :null => false
-    t.integer  "author_id",  :default => 0,  :null => false
-    t.integer  "locale_id",  :default => 0,  :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.text     "comment",         :default => "", :null => false
+    t.integer  "professional_id", :default => 0,  :null => false
+    t.integer  "rating_id",       :default => 0,  :null => false
+    t.integer  "author_id",       :default => 0,  :null => false
+    t.integer  "locale_id",       :default => 0,  :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
   end
 
   create_table "taxonomies", :force => true do |t|

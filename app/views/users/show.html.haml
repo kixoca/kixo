@@ -14,9 +14,10 @@
               %p.whois
                 %span.professions
                   = @user.professions_list
-                specializing in
-                %span.topics
-                  = @user.topics_list
+                - unless @user.topics.count == 0
+                  specializing in
+                  %span.topics
+                    = @user.topics_list
               %ul.metrics.block-grid.four-up
                 %li
                   .value
@@ -35,12 +36,13 @@
                     = @user.guides.count
                   .key guides
 
-      %section
-        .container
-          %h5.section-title
-            = "About #{@user.name}"
-          %p.bio
-            = @user.bio
+      - unless @user.bio.blank?
+        %section
+          .container
+            %h5.section-title
+              = "About #{@user.name}"
+            %p.bio
+              = @user.bio
 
       %section
         .container
@@ -100,13 +102,13 @@
               - else
                 %p.no-records
                   = "No reviews for #{@user.name} yet."
-              = render "reviews/shared/new", :user => @user
+              = render "reviews/shared/new", :professional => @user
       %section
         .container
           .row
             .twelve.columns
               %h5.section-title Guides
-              - unless @guides.nil?
+              - unless @guides.blank?
                 %ul.guides
                   - @guides.each do |guide|
                     %li

@@ -1,8 +1,8 @@
-- if current_user and current_user.can_review?(user)
+- if current_user and current_user.can_review?(professional)
   %h5
-    = "Write a review for #{user.name}"
-  = form_for [user, user.reviews.new] do |f|
-    = f.hidden_field :user_id, :value => user.id
+    = "Write a review for #{professional.name}"
+  = form_for [professional, professional.reviews.new] do |f|
+    = f.hidden_field :professional_id, :value => professional.id
     .row
       .twelve.columns
         = f.label :comment

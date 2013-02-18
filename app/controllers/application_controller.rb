@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
       @current_action_tab = case params[:controller]
         when "questions" then "ask"
         when "users"     then "search"
-        else "ask"
+        else ""
       end
     else
       @current_action_tab = ""
@@ -52,6 +52,11 @@ class ApplicationController < ActionController::Base
 
     # stripe
     @new_card = Card.new
+
+    # messages
+    if current_user
+      @new_message = Message.new
+    end
   end
 
 end

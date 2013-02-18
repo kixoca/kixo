@@ -1,0 +1,19 @@
+- if current_user
+
+  #new_message.reveal-modal
+
+    %hgroup.hr
+      %h3 New Message
+      %h4.subheader Compose a private message
+
+    = form_for @new_message do |f|
+      = render "shared/errors", :errors => @new_message.errors
+
+      = f.text_field :to, :placeholder => "To"
+
+      = f.text_area :content, :rows => 10
+
+      .actions
+        = f.submit "Send", :class => "submit button"
+
+    %a.close-reveal-modal &#215;

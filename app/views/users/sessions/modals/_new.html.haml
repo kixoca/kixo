@@ -1,7 +1,7 @@
 - unless current_user
-  #create_session.reveal-modal
+  #new_session.reveal-modal
     %hgroup.hr
-      %h1 Sign In
+      %h3 Sign In
       %h4.subheader Sign in to your existing account
     = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
       = devise_error_messages!

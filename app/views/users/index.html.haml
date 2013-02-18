@@ -6,7 +6,7 @@
       %h4.subheader
         = "#{@professionals.count} professionals found for <em>#{@what}</em> in <em>#{@where}</em>".html_safe
     - unless @professionals.blank?
-      %ul.professionals.block-grid.three-up.mobile-one-up
+      %ul.professionals.block-grid.four-up.mobile-one-up
         - @professionals.each do |professional|
           %li
             = render "users/shared/loops/regular", :professional => professional

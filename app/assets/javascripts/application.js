@@ -16,7 +16,7 @@ $(document).ready(function() {
     $togglers.click(function(e) {
         var $this = $(this);
         var target = $this.data( "target" ) || $this.attr( "href" );
-        var $target = $(target).first();
+        var $target = $(target);
         if ( $target.tagName == "A" ) e.preventDefault();
         $this.hasClass( "slide" ) ? $target.slideToggle() : $target.toggle();
     });

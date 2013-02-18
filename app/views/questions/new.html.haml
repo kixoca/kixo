@@ -1,103 +1,104 @@
 .row
-  .twelve.columns
-    .page.box
-      %header
-        .container
-          %h1 Ask
-      %section
-        .container
-          .row
-            .eight.columns
-              = form_for @question do |f|
-                = render "/shared/errors", :errors => @question.errors
+  .eight.columns
 
-                %section
+    = form_for @question do |f|
 
-                  %header
-                    %h3 Your question
-                    %p Give as much background information as possible to make your question clear.
+      .page
 
-                  .row
-                    .twelve.columns
-                      = f.label :title
-                      = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
+        %header
+          .container
+            %h1 Ask
 
-                  .row
-                    .twelve.columns
-                      = f.label :details
-                      = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
+        - unless @question.errors.blank?
+          %section.errors
+            .container
+              = render "/shared/errors", :errors => @question.errors
 
-                %section
+        %section
+          .container
+            %h3 Your question
+            %p Give as much background information as possible to make your question clear.
 
-                  %header
-                    %h3 Choose a category
-                    %p Select a category to make sure the right professionals answer you
+            .row
+              .twelve.columns
+                = f.label :title
+                = f.text_field :title, :class => "oversize", :placeholder => "Ex.: 'Do I need a lawyer to incorporate a company?'"
+            .row
+              .twelve.columns
+                = f.label :details
+                = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
 
-                  %ul.accordion.compact
-                    - @all_categories.each do |category|
-                      %li
-                        .title
-                          %h5
-                            = category.name
-                        .content
-                          %ul.block-grid.three-up
-                            - category.topics.each do |topic|
-                              %li
-                                %label
-                                  = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
-                                  = topic.name
+        %section
+          .container
+            %h3 Choose a category
+            %p Select a category to make sure the right professionals answer you
 
-                - unless current_user
+            %ul.accordion.compact
+              - @all_categories.each do |category|
+                %li
+                  .title
+                    %h5
+                      = category.name
+                  .content
+                    %ul.block-grid.three-up
+                      - category.topics.each do |topic|
+                        %li
+                          %label
+                            = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
+                            = topic.name
 
-                  %section
+        - unless current_user
+          %section
+            .container
+              %h3 Sign in to Kixo
+              %p Sign in or sign up to Kixo to ask your question
 
-                    %header
-                      %h3 Sign in to Kixo
-                      %p Sign in or sign up to Kixo to ask your question
+              %ul.tabs.pill
+                %li.active
+                  %a{:href => "#signup"} Create a Kixo account
+                %li
+                  %a{:href => "#signin"} Sign in to my Kixo account
 
-                    %ul.tabs.pill
-                      %li.active
-                        %a{:href => "#signup"} Create a Kixo account
-                      %li
-                        %a{:href => "#signin"} Sign in to my Kixo account
+              %ul.tabs-content
+                %li#signupTab.active
+                  = fields_for :new_user, @author do |author_f|
 
-                    %ul.tabs-content
-                      %li#signupTab.active
-                        = fields_for :new_user, @author do |author_f|
+                    .row
+                      .twelve.columns
+                        = author_f.label :email
+                        = author_f.email_field :email
 
-                          .row
-                            .twelve.columns
-                              = author_f.label :email
-                              = author_f.email_field :email
+                    .row
+                      .six.columns
+                        = author_f.label :password
+                        = author_f.password_field :password
+                      .six.columns
+                        = author_f.label :password_confirmation
+                        = author_f.password_field :password_confirmation
 
-                          .row
-                            .six.columns
-                              = author_f.label :password
-                              = author_f.password_field :password
-                            .six.columns
-                              = author_f.label :password_confirmation
-                              = author_f.password_field :password_confirmation
+                    %fieldset
+                      %legend Location
 
-                          %fieldset
-                            %legend Location
+                      = render "shared/location_selector", :f => author_f
 
-                            = render "shared/location_selector", :f => author_f
+                %li#signinTab
+                  = fields_for :user, @author do |author_f|
 
-                      %li#signinTab
-                        = fields_for :user, @author do |author_f|
+                    .row
+                      .six.columns
+                        = author_f.label :email
+                        = author_f.email_field :email
+                      .six.columns
+                        = author_f.label :password
+                        = author_f.password_field :password
 
-                          .row
-                            .six.columns
-                              = author_f.label :email
-                              = author_f.email_field :email
-                            .six.columns
-                              = author_f.label :password
-                              = author_f.password_field :password
+        %section.actions
+          .container
+            .row
+              .twelve.columns
+                = f.submit :class => "button"
 
-                %section.actions
-                  = f.submit :class => "button"
-
-            .four.columns
-              .panel.grey
-                %h5 Tips!
-                %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.
+  .four.columns
+    .panel
+      %h5 Tips!
+      %p Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum.

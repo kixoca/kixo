@@ -1,6 +1,6 @@
 .clear { @include clearfix(); }
 
-.hidden { display: none !important; }
+.hidden { display: none; }
 .invisible { visibility: hidden; }
 
 .no-marg { margin: 0 !important; }
@@ -13,11 +13,11 @@
 
 .marg { margin: $unit !important; }
 .marg-bottom { margin-bottom: $unit !important; }
-.marg-top { margin-bottom: $unit !important; }
+.marg-top { margin-top: $unit !important; }
 
 .pad { padding: $unit !important; }
 .pad-bottom { padding-bottom: $unit !important; }
-.pad-top { padding-bottom: $unit !important; }
+.pad-top { padding-top: $unit !important; }
 
 .no-records {
   font-style: italic;

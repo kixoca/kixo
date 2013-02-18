@@ -6,8 +6,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tel, :headshot, :bio, :is_a_professional,
                   :topics, :topic_ids, :professions, :profession_ids,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
-                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
-                  :card
+                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers
 
   attr_accessor :card
 
@@ -23,14 +22,22 @@ class User < ActiveRecord::Base
   # a user can understand many locales
   has_many :locales, :through => :localizations
 
+  # a user can have one or many notifications
+  has_many :notifications
+
+  # a user can have one or many messages (as sender and as recipient)
+  has_many :messages, :foreign_key => :from_id
+  has_many :messages, :foreign_key => :to_id
+
   # a user can have one or many questions
   has_many :questions, :foreign_key => :author_id
 
   # a user can be the author of many answers
   has_many :answers, :foreign_key => :author_id
 
-  # a user can be the author of many reviews
+  # a user can be the author or recipient of many reviews
   has_many :reviews, :foreign_key => :author_id
+  has_many :reviews, :foreign_key => :professional_id
 
   # a user can be the author of one or many guides
   has_many :guides, :foreign_key => :author_id
@@ -39,7 +46,7 @@ class User < ActiveRecord::Base
   belongs_to :referer, :class_name => "User"
 
   # a user can be the referer of one or many other users (users, professionals, representants)
-  has_many :users, :foreign_key => :referer_id
+  has_many :referrals, :class_name => "User", :foreign_key => :referer_id
 
   # use paperclip to attach an headshot
   has_attached_file :headshot, :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#"}
@@ -54,6 +61,7 @@ class User < ActiveRecord::Base
 
   # validation
   validates :email, :presence => true
+  validates :name,  :presence => true, :if => :is_a_professional?
   validates_existence_of :country
   validates_existence_of :region
   validates_existence_of :locality
@@ -95,19 +103,24 @@ class User < ActiveRecord::Base
     self.professions.map {|profession| profession.name}.join(", ").html_safe
   end
 
+  def is_a_professional?
+    self.is_a_professional == true
+  end
+
   def can_answer?(question)
     question.is_open? and
         !self.topics.merge(question.topics).empty? and
         self.answers.merge(question.answers).empty?
   end
 
-  def can_review?(user)
-    self.reviews.all(:conditions => {:user_id => user}).count == 0 and self != user
+  def can_review?(professional)
+    professional.is_a_professional? and self.reviews.all(:conditions => {:professional_id => professional}).count == 0 and self != professional
   end
 
-  def similar
+  def similar_professionals
     (User.find_all_by_topic(self.topics) + User.find_all_by_profession(self.professions)) &
-        User.where(["id != ?", self.id]).near(self.geocoding_address, 50).order("distance")
+        User.where(["id != ?", self.id]).near(self.geocoding_address, 50).order("distance") &
+        User.professionals
   end
 
   def points

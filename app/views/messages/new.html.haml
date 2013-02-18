@@ -1,0 +1,30 @@
+.row
+  .eight.columns
+
+    = form_for @message do |f|
+
+      .page
+
+        %header
+          .container
+            %hgroup
+              %h1 New Message
+              %h4.subheader Compose a private message
+
+        %section
+          .container
+            .row
+              .twelve.columns
+                = f.text_field :to, :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/users.json"}
+            .row
+              .twelve.columns
+                = f.text_area :content, :rows => 10
+
+        %section.actions
+          .container
+            .row
+              .twelve.columns
+                = f.submit :class => "submit button"
+
+
+  .four.columns

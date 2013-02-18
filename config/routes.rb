@@ -12,6 +12,8 @@ Kixo::Application.routes.draw do
       resources :reviews
     end
 
+    resources :messages
+
     resources :questions do
       resources :answers
     end
