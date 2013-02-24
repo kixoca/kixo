@@ -11,7 +11,7 @@ class CountriesController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @humanized_countries }
       format.xml  { render :xml => @humanized_countries }
     end

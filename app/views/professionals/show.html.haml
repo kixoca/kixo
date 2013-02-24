@@ -1,5 +1,6 @@
 .row
   .eight.columns
+    
     .page.professional
 
       %header
@@ -7,42 +8,42 @@
           .row
             .three.columns.text-center
               .headshot
-                = image_tag @user.headshot.url(:large)
+                = image_tag @professional.headshot.url(:large)
             .nine.columns.mobile-text-center
               %h1.name
-                = @user.name
+                = @professional.name
               %p.whois
                 %span.professions
-                  = @user.professions_list
-                - unless @user.topics.count == 0
+                  = @professional.professions_list
+                - unless @professional.topics.count == 0
                   specializing in
                   %span.topics
-                    = @user.topics_list
+                    = @professional.topics_list
               %ul.metrics.block-grid.four-up
                 %li
                   .value
-                    = @user.points
+                    = @professional.points
                   .key points
                 %li
                   .value
-                    = @user.answers.count
+                    = @professional.answers.count
                   .key answers
                 %li
                   .value
-                    = @user.reviews.count
+                    = @professional.reviews.count
                   .key reviews
                 %li
                   .value
-                    = @user.guides.count
+                    = @professional.guides.count
                   .key guides
 
-      - unless @user.bio.blank?
+      - unless @professional.bio.blank?
         %section
           .container
             %h5.section-title
-              = "About #{@user.name}"
+              = "About #{@professional.name}"
             %p.bio
-              = @user.bio
+              = @professional.bio
 
       %section
         .container
@@ -51,42 +52,42 @@
 
               %h5.section-title Address
               %p.address
-                - unless @user.street_address_1.blank?
+                - unless @professional.street_address_1.blank?
                   %span.street-address-1
-                    = "#{@user.street_address_1}, "
-                  - unless @user.street_address_2.blank?
+                    = "#{@professional.street_address_1}, "
+                  - unless @professional.street_address_2.blank?
                     %span.street-address-2
-                      = @user.street_address_2
+                      = @professional.street_address_2
                   %br
-                - unless @user.locality.nil?
+                - unless @professional.locality.nil?
                   %span.locality
-                    = @user.locality.name
+                    = @professional.locality.name
                   %br
-                - unless @user.region.nil?
+                - unless @professional.region.nil?
                   %span.region
-                    = @user.region.name
-                - unless @user.postal_code.blank?
+                    = @professional.region.name
+                - unless @professional.postal_code.blank?
                   %span.postal_code
-                    = @user.postal_code
+                    = @professional.postal_code
                 %br
-                - unless @user.country.nil?
+                - unless @professional.country.nil?
                   %span.country
-                    = @user.country.name
+                    = @professional.country.name
               %h5.section-title Contacts
 
               %p.contacts
                 .tel
-                  = @user.tel
+                  = @professional.tel
                 %p
-                  %a.button.small{:href => "#"} Send an email
+                  %a.new_message_trigger.button.small{:href => "#", :data => {"to-name" => @professional.name, "to-id" => @professional.id}} Send a private message
                 %p
                   %a.button.small{:href => "#"} Book an appointment
 
             .six.columns
               %h5.section-title Map
               %p.map
-                .gmap{:data => {:latitude => @user.latitude, :longitude => @user.longitude}}
-                  .marker{:data => {:latitude => @user.latitude, :longitude => @user.longitude}}
+                .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+                  .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
 
       %section
         .container
@@ -101,8 +102,8 @@
                 = paginate @reviews
               - else
                 %p.no-records
-                  = "No reviews for #{@user.name} yet."
-              = render "reviews/shared/new", :professional => @user
+                  = "No reviews for #{@professional.name} yet."
+              = render "reviews/shared/new", :professional => @professional
       %section
         .container
           .row
@@ -117,17 +118,18 @@
                       = guide.excerpt
               - else
                 %p.no-records
-                  = "#{@user.name} hasn't written any guide yet."
+                  = "#{@professional.name} hasn't written any guide yet."
 
   .four.columns
+
     .panel
       %h5
-        = "Similar professionals in #{@user.locality.name}, #{@user.region.name}"
+        = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
       - unless @similar_professionals.blank?
         %ul.similar-professionals
           - @similar_professionals.each do |professional|
             %li
-              = render "users/shared/loops/minimal", :professional => professional
+              = render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
           No similar professionals found.

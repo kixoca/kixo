@@ -4,22 +4,16 @@ class QuestionsController < ApplicationController
   before_filter :remember_question, :only => [:new, :create]
   before_filter :authenticate!,     :only => [:update, :edit, :destroy]
 
-  # GET /questions
-  # GET /questions.json
-  # GET /questions.xml
   def index
     @questions = Question.find_all_by_locale.order("created_at DESC").page(params[:page])
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @questions }
       format.xml  { render :xml => @questions }
     end
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
-  # GET /questions/1.xml
   def show
     @question = Question.find(params[:id])
     @answers = @question.answers
@@ -34,9 +28,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # GET /questions/new
-  # GET /questions/new.json
-  # GET /questions/new.xml
   def new
     @question = Question.new(session[:question])
     @author = current_user || User.new
@@ -48,14 +39,10 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # GET /questions/1/edit
   def edit
     @question = Question.find(params[:id])
   end
 
-  # POST /questions
-  # POST /questions.json
-  # POST /questions.xml
   def create
     @question = Question.new(params[:question])
 
@@ -91,9 +78,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # PUT /questions/1
-  # PUT /questions/1.json
-  # PUT /questions/1.xml
   def update
     @question = Question.find(params[:id])
 
@@ -116,9 +100,6 @@ class QuestionsController < ApplicationController
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
-  # DELETE /questions/1.xml
   def destroy
     @question = Question.find(params[:id])
     @question.destroy

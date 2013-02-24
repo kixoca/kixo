@@ -26,8 +26,9 @@ class User < ActiveRecord::Base
   has_many :notifications
 
   # a user can have one or many messages (as sender and as recipient)
-  has_many :messages, :foreign_key => :from_id
-  has_many :messages, :foreign_key => :to_id
+  has_many :messages_sent,     :class_name => "Message", :foreign_key => :from_id
+  has_many :messages_received, :class_name => "Message", :foreign_key => :to_id
+  has_many :messages, :finder_sql => proc { "SELECT * FROM messages WHERE from_id = #{self.id} or to_id = #{self.id}" }
 
   # a user can have one or many questions
   has_many :questions, :foreign_key => :author_id
@@ -76,7 +77,7 @@ class User < ActiveRecord::Base
   end
 
   def self.lookup(name)
-    self.where(:conditions => ["name LIKE ?", "%#{name}%"])
+    self.where(["name LIKE ?", "%#{name}%"])
   end
 
   def self.professionals

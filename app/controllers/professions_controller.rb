@@ -7,7 +7,7 @@ class ProfessionsController < ApplicationController
     @humanized_professions = @professions.map {|profession| {:id => profession.id, :name => profession.name}}
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @humanized_professions }
       format.xml  { render :xml => @humanized_professions }
     end

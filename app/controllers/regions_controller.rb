@@ -16,7 +16,7 @@ class RegionsController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @humanized_regions }
       format.xml  { render :xml => @humanized_regions }
     end

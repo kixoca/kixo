@@ -9,7 +9,7 @@ class AnswersController < ApplicationController
     @answers = @question.answers
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @answers }
       format.xml  { render :xml => @answers }
     end

@@ -3,10 +3,10 @@
     %section
       .container
         .headshot
-          %a{:href => user_path(professional)}
+          %a{:href => professional_path(professional)}
             = image_tag professional.headshot.url(:medium)
         %h4.name
-          = link_to professional.name, user_path(professional)
+          = link_to professional.name, professional_path(professional)
         .professions
           = professional.professions.first.name unless professional.professions.empty?
           - if professional.professions.count > 1

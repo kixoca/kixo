@@ -19,6 +19,10 @@
 .pad-bottom { padding-bottom: $unit !important; }
 .pad-top { padding-top: $unit !important; }
 
+.goto {
+  cursor: pointer;
+}
+
 .no-records {
   font-style: italic;
   color: $lightTxtColor;
@@ -30,7 +34,8 @@
   color: $lightTxtColor;
 }
 
-.headshot img {
+.headshot img,
+img.headshot {
   @include borderRadius(500px);
 }
 

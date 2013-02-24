@@ -35,6 +35,7 @@ $(document).ready(function() {
                     success: function( data ) {
                         response( $.map( data, function( item ) {
                             return {
+                                id:    item.id,
                                 label: item.label,
                                 value: item.name
                             }

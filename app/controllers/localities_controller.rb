@@ -24,7 +24,7 @@ class LocalitiesController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @humanized_localities }
       format.xml  { render :xml => @humanized_localities }
     end

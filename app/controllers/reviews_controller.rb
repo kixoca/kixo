@@ -9,7 +9,7 @@ class ReviewsController < ApplicationController
     @reviews = @professional.reviews.find_all_by_locale
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html # search.html.haml
       format.json { render :json => @reviews }
       format.xml  { render :xml => @reviews }
     end

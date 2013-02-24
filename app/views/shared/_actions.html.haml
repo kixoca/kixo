@@ -48,7 +48,7 @@
               %hgroup
                 %h2 Search professionals
                 %h3.subheader Find top-rated professionals near you!
-              = form_tag users_path, :method => "get" do
+              = form_tag search_professionals_path, :method => "get" do
                 .row
                   .six.columns
                     = text_field_tag "what", @what, :placeholder => "What?", :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/whats.json"}

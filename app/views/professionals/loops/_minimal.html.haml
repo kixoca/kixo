@@ -3,8 +3,8 @@
     .container
       .row
         .four.columns
-          %a.headshot{:href => user_path(professional)}
+          %a.headshot{:href => professional_path(professional)}
             = image_tag professional.headshot.url(:small)
         .eight.columns
-          %a.name{:href => user_path(professional)}
+          %a.name{:href => professional_path(professional)}
             = professional.name

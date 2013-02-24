@@ -1,22 +1,23 @@
 .row
   .two.columns
     %ul.side-nav
-      %li.active= link_to "Inbox", messages_path
-      %li= link_to "Sent", sent_messages_path
+      %li= link_to "Inbox", messages_path
+      %li.active= link_to "Sent", sent_messages_path
       %li.divider
       %li= link_to "New message", new_message_path
   .ten.columns
     .page
       %header
         .container
-          %h1 Messages
+          %h1 Sent Messages
       %section
         .container
           - unless @messages.blank?
             %ul.messages
               - @messages.each do |message|
                 %li
-                  = render "messages/loops/inbox", :message => message
+                  = render "messages/inbox", :message => message
           - else
             %p.no-records
-              You haven't received any messages yet.
+              You haven't sent any messages yet.
+              = link_to "Click here to send one!", new_message_path

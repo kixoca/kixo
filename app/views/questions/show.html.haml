@@ -36,7 +36,7 @@
         %ul.professionals.related
           - @related_professionals.each do |professional|
             %li
-              = render "users/shared/loops/minimal", :professional => professional
+              = render "users/loops/loops/minimal", :professional => professional
       - else
         %p.no-records
           No related professionals found.

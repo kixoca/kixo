@@ -8,7 +8,7 @@
             %h3.subheader Sign in to your existing account
       %section
         .container
-          = render :partial => "shared/show_flash"
+          = render :partial => "loops/show_flash"
 
           = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
             = devise_error_messages!
@@ -29,7 +29,7 @@
 
           %hr
 
-          = render "users/shared/links"
+          = render "users/loops/links"
 
   .four.columns
-    = render "users/shared/panels"
+    = render "users/loops/panels"

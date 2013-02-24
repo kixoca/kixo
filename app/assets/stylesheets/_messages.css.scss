@@ -1,0 +1,11 @@
+ul.messages {
+  list-style: none;
+}
+
+.message {
+  padding: $unit/$golden 0;
+
+  .created-at {
+    font-size: 0.85*$baseFontSize;
+  }
+}

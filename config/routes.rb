@@ -8,11 +8,19 @@ Kixo::Application.routes.draw do
     devise_for :admin_users, ActiveAdmin::Devise.config
     devise_for :users, :controllers => {:registrations => "registrations"}
 
-    resources :users do
+    resources :professionals do
+      collection do
+        get "search"
+      end
+
       resources :reviews
     end
 
-    resources :messages
+    resources :messages do
+      collection do
+        get "sent"
+      end
+    end
 
     resources :questions do
       resources :answers
