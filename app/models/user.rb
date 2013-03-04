@@ -25,6 +25,10 @@ class User < ActiveRecord::Base
   # a user can have one or many notifications
   has_many :notifications
 
+  # a user can be a participant in one or many conversations
+  has_many :conversation_participations, :foreign_key => :participant_id
+  has_many :conversations, :through => :conversation_participations
+
   # a user can have one or many messages (as sender and as recipient)
   has_many :messages_sent,     :class_name => "Message", :foreign_key => :from_id
   has_many :messages_received, :class_name => "Message", :foreign_key => :to_id
@@ -86,6 +90,10 @@ class User < ActiveRecord::Base
 
   def self.search(what, where, locale = Locale.all)
     (self.search_by_topic(what, locale) + self.search_by_profession(what, locale)) & self.near(where, 50).order("distance")
+  end
+
+  def display_name
+    self.name.blank? ? "Kixo user" : self.name
   end
 
   def short_address

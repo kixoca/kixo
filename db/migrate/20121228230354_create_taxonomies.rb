@@ -4,6 +4,8 @@ class CreateTaxonomies < ActiveRecord::Migration
       t.string     :type
       t.references :parent
       t.integer    :rank
+      t.float      :latitude
+      t.float      :longitude
     end
   end
 end

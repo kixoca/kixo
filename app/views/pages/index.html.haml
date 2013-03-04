@@ -2,7 +2,7 @@
   .eight.columns
     %section#questions
       %h4.section-title
-        - if current_user
+        - if current_user and current_user.is_a_professional?
           = "Recent questions for you"
         - else
           = "Recent questions"

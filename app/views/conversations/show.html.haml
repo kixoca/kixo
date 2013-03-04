@@ -1,0 +1,25 @@
+.row
+  .two.columns
+    %ul.side-nav
+      %li= link_to "Inbox", conversations_path
+      %li.divider
+      %li= link_to "New message", new_conversation_path
+  .ten.columns
+    .page
+      %section
+        .container
+          - @messages.each do |message|
+            = render "messages/shared/loop", :message => message
+      %section.reply
+        .container
+          .row
+            .two.columns.text-center
+              = image_tag current_user.headshot.url(:small), :class => "headshot"
+            .ten.columns
+              %h4 Reply
+              = form_for [@conversation, @reply] do |f|
+                - unless @reply.errors.blank?
+                  .errors
+                    = render "shared/errors", :errors => @reply.errors
+                = f.text_area :message, :rows => 5
+                = f.submit "Reply", :class => "submit button"

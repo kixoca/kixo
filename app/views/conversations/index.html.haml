@@ -1,0 +1,21 @@
+.row
+  .two.columns
+    %ul.side-nav
+      %li.active= link_to "Inbox", conversations_path
+      %li.divider
+      %li= link_to "New message", new_conversation_path
+  .ten.columns
+    .page
+      %header
+        .container
+          %h1 Messages
+      %section
+        .container
+          - unless @conversations.blank?
+            %ul.conversations
+              - @conversations.each do |conversation|
+                %li
+                  = render "conversations/shared/loop", :conversation => conversation
+          - else
+            %p.no-records
+              You haven't received any messages yet.

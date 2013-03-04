@@ -1,12 +1,12 @@
 .box.question.loop
   .container
-    .row
-      .twelve.columns
-        %h4.title
-          %a{:href => question_path(question)}
-            = question.title
-        %p.meta
-          %time.created_at{:datetime => question.created_at}
-            = "Asked #{time_ago_in_words(question.created_at)} ago"
-          %span.location
-            = "in #{question.author.short_address}"
+    %h4.title
+      %a{:href => question_path(question)}
+        = question.title
+    %p.meta
+      %time.created_at{:datetime => question.created_at}
+        = "Asked #{time_ago_in_words(question.created_at)} ago"
+      %span.location
+        = "in #{question.author.short_address}"
+    %p.details
+      = truncate(question.details, :omission => "...", :length => 150)

@@ -21,13 +21,15 @@
         .container
           %h3
             Answers
-          - unless @answers.nil?
+          - unless @answers.blank?
             %ul.answers
               - @answers.each do |answer|
                 %li
                   = render "answers/shared/loop", :answer => answer
           - else
             %p.no-records No answers yet.
+      %section#answer
+        .container
           = render "answers/shared/new", :question => @question
   .four.columns
     .panel
@@ -36,7 +38,7 @@
         %ul.professionals.related
           - @related_professionals.each do |professional|
             %li
-              = render "users/loops/loops/minimal", :professional => professional
+              = render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
           No related professionals found.

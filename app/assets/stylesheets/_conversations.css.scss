@@ -1,0 +1,9 @@
+ul.conversations {
+  list-style: none;
+}
+
+.conversation {
+  .created-at {
+    font-size: 0.85*$baseFontSize;
+  }
+}

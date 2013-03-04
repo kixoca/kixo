@@ -11,8 +11,9 @@
         %a{:href => "#profile"} Profile
       %li
         %a{:href => "#billing"} Billing
-      %li
-        %a{:href => "#categories"} Categories
+      - if current_user.is_a_professional?
+        %li
+          %a{:href => "#categories"} Categories
       %li
         %a{:href => "#contact"} Contact
 
@@ -163,6 +164,11 @@
                     = f.file_field :headshot
                 .row
                   .three.columns
+                    = f.label :is_a_professional, "I am a professional", :class => "inline right"
+                  .two.columns.end
+                    = f.select :is_a_professional, [["Yes", true], ["No", false]]
+                .row
+                  .three.columns
                     = f.label :bio, :class => "inline right"
                   .seven.columns.end
                     = f.text_area :bio, :rows => 5
@@ -189,51 +195,52 @@
               %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
                 Add/Edit Credit Card
 
-      %li#categoriesTab
+      - if current_user.is_a_professional?
+        %li#categoriesTab
 
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+          = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
 
-          .page
+            .page
 
-            %header
-              .container
-                %hgroup
-                  %h1 Categories
-                  %h4.subheader Select topics and professions
+              %header
+                .container
+                  %hgroup
+                    %h1 Categories
+                    %h4.subheader Select topics and professions
 
-            %section
-              .container
-                .row
-                  .twelve.columns
-                    %ul.accordion.compact.marg-bottom
-                      - @all_categories.each do |category|
-                        %li
-                          .title
-                            %h5
-                              = category.name
-                          .content
-                            %fieldset
-                              %legend Select topics
-                              %ul.block-grid.three-up
-                                - category.topics.each do |topic|
-                                  %li
-                                    %label
-                                      = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
-                                      = topic.name
-                            %fieldset
-                              %legend Select professions
-                              %ul.block-grid.three-up
-                                - category.professions.each do |profession|
-                                  %li
-                                    %label
-                                      = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
-                                      = profession.name
+              %section
+                .container
+                  .row
+                    .twelve.columns
+                      %ul.accordion.compact.marg-bottom
+                        - @all_categories.each do |category|
+                          %li
+                            .title
+                              %h5
+                                = category.name
+                            .content
+                              %fieldset
+                                %legend Select topics
+                                %ul.block-grid.three-up
+                                  - category.topics.each do |topic|
+                                    %li
+                                      %label
+                                        = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
+                                        = topic.name
+                              %fieldset
+                                %legend Select professions
+                                %ul.block-grid.three-up
+                                  - category.professions.each do |profession|
+                                    %li
+                                      %label
+                                        = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
+                                        = profession.name
 
-            %section
-              .container
-                .row
-                  .twelve.columns
-                    = f.submit "Update", :class => "submit button"
+              %section
+                .container
+                  .row
+                    .twelve.columns
+                      = f.submit "Update", :class => "submit button"
 
       %li#contactTab
 
@@ -249,7 +256,7 @@
 
             %section
               .container
-                = render "loops/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
+                = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
 
             %section
               .container

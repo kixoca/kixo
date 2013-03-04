@@ -47,6 +47,9 @@ class CreateUsers < ActiveRecord::Migration
       t.float :latitude
       t.float :longitude
 
+      # customer (Stripe)
+      t.string :stripe_customer_id
+
       # notifications (general)
       t.boolean :notify_of_kixo_news,         :null => false, :default => true
       t.boolean :notify_of_partner_news,      :null => false, :default => true

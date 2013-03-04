@@ -1,0 +1,13 @@
+- unless message.blank?
+  .message{:id => "message_#{message.id}"}
+    .row
+      .two.columns.text-center
+        .from-headshot
+          = image_tag message.author.headshot.url(:small), :class => "headshot"
+      .ten.columns
+        %h5.author-name
+          = message.author.id == current_user.id ? "Me" : message.author.display_name
+        .content
+          = simple_format(message.message)
+        .created-at
+          = "Sent #{time_ago_in_words(message.created_at)} ago"

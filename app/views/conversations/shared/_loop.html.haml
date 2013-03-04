@@ -1,0 +1,17 @@
+- unless conversation.blank?
+  .conversation.inbox.goto{:id => "conversation_#{conversation.id}", :class => conversation.messages.last.read ? "read" : "unread", :data => {:goto => conversation_path(conversation)}}
+    .row
+      .four.columns
+        - conversation.participants.each do |participant|
+          - unless participant.id == current_user.id
+            .row
+              .four.columns
+                .participant-headshot
+                  = image_tag participant.headshot.url(:thumb), :class => "headshot"
+              .eight.columns
+                .participant-name
+                  = participant.display_name
+                .created-at
+                  = "#{time_ago_in_words(conversation.messages.last.created_at)} ago"
+      .eight.columns
+        = truncate(conversation.messages.last.message, :omission => "...", :length => 150)

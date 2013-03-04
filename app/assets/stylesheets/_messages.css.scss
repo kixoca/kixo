@@ -1,11 +1,13 @@
 ul.messages {
-  list-style: none;
-}
+   list-style: none;
+ }
 
 .message {
-  padding: $unit/$golden 0;
+  padding: $unit 0;
 
   .created-at {
+    margin-top: $unit;
     font-size: 0.85*$baseFontSize;
+    color: $lightTxtColor;
   }
 }

@@ -30,7 +30,7 @@
 
         %section
           .container
-            = render "loops/location_selector", :f => f, :street_address => false
+            = render "shared/location_selector", :f => f, :street_address => false
 
         %section
           .container
@@ -60,4 +60,4 @@
                 = f.submit "Sign up", :class => "button"
 
   .four.columns
-    = render "users/loops/panels"
+    = render "users/shared/panels"

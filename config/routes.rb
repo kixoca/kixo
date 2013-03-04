@@ -16,10 +16,8 @@ Kixo::Application.routes.draw do
       resources :reviews
     end
 
-    resources :messages do
-      collection do
-        get "sent"
-      end
+    resources :conversations do
+      resources :messages
     end
 
     resources :questions do

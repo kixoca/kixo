@@ -1,0 +1,34 @@
+.row
+  .two.columns
+    %ul.side-nav
+      %li= link_to "Inbox", conversations_path
+      %li.divider
+      %li.active= link_to "New message", new_conversation_path
+  .ten.columns
+    = form_for @conversation do |f|
+      .page
+        %header
+          .container
+            %hgroup
+              %h1 New Message
+              %h4.subheader Compose a private message
+        - unless @conversation.errors.blank?
+          %section.errors
+            .container
+              = render "shared/errors", :errors => @conversation.errors
+        %section
+          .container
+            .row
+              .twelve.columns
+                = f.fields_for :participants do |p|
+                  = text_field_tag nil, nil, :id => "new_conversation_participant_name", :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/professionals.json"}
+                  = hidden_field_tag "conversation[participant_ids][]", nil, :id => "new_conversation_participant_id"
+            .row
+              .twelve.columns
+                = f.fields_for :messages do |m|
+                  = m.text_area :message, :rows => 10
+        %section.actions
+          .container
+            .row
+              .twelve.columns
+                = f.submit :class => "submit button"

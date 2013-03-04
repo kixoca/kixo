@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224194727) do
+ActiveRecord::Schema.define(:version => 20130224213416) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -68,6 +68,18 @@ ActiveRecord::Schema.define(:version => 20130224194727) do
   add_index "classifications", ["classifiable_id", "taxonomy_id"], :name => "index_classifications_on_classifiable_id_and_taxonomy_id"
   add_index "classifications", ["taxonomy_id", "classifiable_id"], :name => "index_classifications_on_taxonomy_id_and_classifiable_id"
 
+  create_table "conversation_participations", :id => false, :force => true do |t|
+    t.integer  "conversation_id", :default => 0, :null => false
+    t.integer  "participant_id",  :default => 0, :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "conversations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "eager_beavers", :force => true do |t|
     t.string   "email",      :default => "", :null => false
     t.datetime "created_at",                 :null => false
@@ -104,13 +116,12 @@ ActiveRecord::Schema.define(:version => 20130224194727) do
   add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
 
   create_table "messages", :force => true do |t|
-    t.integer  "from_id",    :default => 0,     :null => false
-    t.integer  "to_id",      :default => 0,     :null => false
-    t.string   "content"
-    t.boolean  "read",       :default => false, :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.integer  "parent_id"
+    t.integer  "conversation_id", :default => 0,     :null => false
+    t.integer  "author_id",       :default => 0,     :null => false
+    t.boolean  "read",            :default => false, :null => false
+    t.string   "message"
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
   end
 
   create_table "notifications", :force => true do |t|
@@ -197,6 +208,7 @@ ActiveRecord::Schema.define(:version => 20130224194727) do
     t.integer  "locale_id",                   :default => 0,     :null => false
     t.float    "latitude"
     t.float    "longitude"
+    t.string   "stripe_customer_id"
     t.boolean  "notify_of_kixo_news",         :default => true,  :null => false
     t.boolean  "notify_of_partner_news",      :default => true,  :null => false
     t.boolean  "notify_of_new_messages",      :default => true,  :null => false
@@ -208,7 +220,6 @@ ActiveRecord::Schema.define(:version => 20130224194727) do
     t.integer  "referer_id"
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
-    t.string   "stripe_customer_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

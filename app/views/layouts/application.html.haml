@@ -63,7 +63,7 @@
                       = link_to current_user.email, edit_user_registration_path
                       %span
                       %ul.dropdown-menu
-                        %li= link_to "Messages", messages_path
+                        %li= link_to "Messages", conversations_path
                         %li= link_to "Settings", edit_user_registration_path
                         %li= link_to "My profile", professional_path(current_user)
                         %li.divider
@@ -87,6 +87,6 @@
     %section#modals
 
       = render "users/sessions/modals/new"
-      = render "messages/modals/new"
+      = render "conversations/shared/modals/new"
 
     = render "shared/footer", :categories => @categories, :professions => @professions
