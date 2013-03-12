@@ -19,6 +19,9 @@
 .pad-bottom { padding-bottom: $unit !important; }
 .pad-top { padding-top: $unit !important; }
 
+.pull-left { float: left; }
+.pull-right { float: right; }
+
 .goto {
   cursor: pointer;
 }

@@ -1,9 +1,24 @@
-ul.conversations {
+ul.conversations,
+ul.messages {
   list-style: none;
 }
 
-.conversation {
+.conversation,
+.message {
+  padding: $unit 0;
+
+  &.unread {
+    background: $kixoLightGreen;
+  }
+
   .created-at {
     font-size: 0.85*$baseFontSize;
+  }
+}
+
+.message {
+  .created-at {
+    margin-top: $unit;
+    color: $lightTxtColor;
   }
 }

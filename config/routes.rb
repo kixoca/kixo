@@ -17,7 +17,9 @@ Kixo::Application.routes.draw do
     end
 
     resources :conversations do
-      resources :messages
+      resources :messages do
+        post "read", :on => :member
+      end
     end
 
     resources :questions do

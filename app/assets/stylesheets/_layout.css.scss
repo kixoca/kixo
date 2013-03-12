@@ -53,13 +53,30 @@ body {
       }
     }
 
-    ul {
+    #account {
       padding: 7px 0;
-      float: right;
 
-      ul {
-        margin: 0;
+      #messages {
+        margin: 0 $unit;
+
+        .count {
+          position: absolute;
+          top: -5px;
+          right: -5px;
+          display: block;
+          font-size: 0.80*$baseFontSize;
+          font-weight: bold;
+          padding: 3px 5px;
+          line-height: 1.0;
+          color: $white;
+          background: $kixoRed;
+          @include borderRadius(100px);
+        }
       }
+    }
+
+    ul ul {
+      margin: 0;
     }
   }
 

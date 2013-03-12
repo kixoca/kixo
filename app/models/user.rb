@@ -29,10 +29,8 @@ class User < ActiveRecord::Base
   has_many :conversation_participations, :foreign_key => :participant_id
   has_many :conversations, :through => :conversation_participations
 
-  # a user can have one or many messages (as sender and as recipient)
-  has_many :messages_sent,     :class_name => "Message", :foreign_key => :from_id
-  has_many :messages_received, :class_name => "Message", :foreign_key => :to_id
-  has_many :messages, :finder_sql => proc { "SELECT * FROM messages WHERE from_id = #{self.id} or to_id = #{self.id}" }
+  # a user can have one or many messages through conversations
+  has_many :messages, :through => :conversations
 
   # a user can have one or many questions
   has_many :questions, :foreign_key => :author_id

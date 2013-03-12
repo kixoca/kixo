@@ -9,6 +9,10 @@ class Message < ActiveRecord::Base
 
   validates_existence_of :author
 
+  def self.unread
+    self.where(:read => false)
+  end
+
   private
 
   def default_values

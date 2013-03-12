@@ -1,5 +1,5 @@
 - unless message.blank?
-  .message{:id => "message_#{message.id}"}
+  .message{:id => "message_#{message.id}", :class => message.read ? "read" : "unread", :data => {"read-url" => read_conversation_message_path(message)}}
     .row
       .two.columns.text-center
         .from-headshot
