@@ -1,135 +1,109 @@
 .row
   .eight.columns
-    
     .page.professional
-
       %header
         .container
           .row
-            .three.columns.text-center
-              .headshot
-                = image_tag @professional.headshot.url(:large)
-            .nine.columns.mobile-text-center
+            .four.columns.text-center
+              .headshot-2.large{:style => "background-image: url(#{@professional.headshot.url(:large)});"}
+              =# image_tag @professional.headshot.url(:large), :class => "headshot"
+            .eight.columns.mobile-text-center
               %h1.name
                 = @professional.name
               %p.whois
-                %span.professions
-                  = @professional.professions_list
-                - unless @professional.topics.count == 0
-                  specializing in
-                  %span.topics
-                    = @professional.topics_list
+                = "#{@professional.locality.name} #{@professional.professions_list} specializing in #{@professional.topics_list}"
               %ul.metrics.block-grid.four-up
                 %li
-                  .value
-                    = @professional.points
-                  .key points
+                  .value= @professional.points
+                  .key= "points"
                 %li
-                  .value
-                    = @professional.answers.count
-                  .key answers
+                  .value= @professional.answers.count
+                  .key= "answers"
                 %li
-                  .value
-                    = @professional.reviews.count
-                  .key reviews
+                  .value= @professional.reviews.count
+                  .key= "reviews"
                 %li
-                  .value
-                    = @professional.guides.count
-                  .key guides
-
-      - unless @professional.bio.blank?
-        %section
-          .container
-            %h5.section-title
-              = "About #{@professional.name}"
-            %p.bio
-              = @professional.bio
-
+                  .value= @professional.guides.count
+                  .key= "guides"
       %section
         .container
-          .row
-            .six.columns
-
-              %h5.section-title Address
-              %p.address
-                - unless @professional.street_address_1.blank?
-                  %span.street-address-1
-                    = "#{@professional.street_address_1}, "
-                  - unless @professional.street_address_2.blank?
-                    %span.street-address-2
-                      = @professional.street_address_2
+          - unless @professional.bio.blank?
+            .about
+              %h5.section-title
+                = "About #{@professional.name}"
+              %p.bio
+                = @professional.bio
+          .contacts
+            - unless @professional.tel.blank?
+              .tel.pull-left
+                = @professional.tel
+            .pull-left
+              %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
+                = "Send a private message"
+            .clear
+      %section
+        .container.no-pad
+          .map
+            .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+              .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
+                %p.address
+                  - unless @professional.street_address_1.blank?
+                    %span.street-address-1
+                      = "#{@professional.street_address_1}, "
+                    - unless @professional.street_address_2.blank?
+                      %span.street-address-2
+                        = @professional.street_address_2
+                    %br
+                  - unless @professional.locality.nil?
+                    %span.locality
+                      = @professional.locality.name
+                    %br
+                  - unless @professional.region.nil?
+                    %span.region
+                      = @professional.region.name
+                  - unless @professional.postal_code.blank?
+                    %span.postal_code
+                      = @professional.postal_code
                   %br
-                - unless @professional.locality.nil?
-                  %span.locality
-                    = @professional.locality.name
-                  %br
-                - unless @professional.region.nil?
-                  %span.region
-                    = @professional.region.name
-                - unless @professional.postal_code.blank?
-                  %span.postal_code
-                    = @professional.postal_code
-                %br
-                - unless @professional.country.nil?
-                  %span.country
-                    = @professional.country.name
-              %h5.section-title Contacts
-
-              %p.contacts
-                .tel
-                  = @professional.tel
-                %p
-                  %a.new_message_trigger.button.small{:href => "#", :data => {"to-name" => @professional.name, "to-id" => @professional.id}} Send a private message
-                %p
-                  %a.button.small{:href => "#"} Book an appointment
-
-            .six.columns
-              %h5.section-title Map
-              %p.map
-                .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-                  .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
-
-      %section
+                  - unless @professional.country.nil?
+                    %span.country
+                      = @professional.country.name
+      %section#reviews
         .container
-          .row
-            .twelve.columns
-              %h5.section-title Reviews
-              - unless @reviews.blank?
-                %ul.reviews
-                  - @reviews.each do |review|
-                    %li
-                      = render "reviews/shared/loop", :review => review
-                = paginate @reviews
-              - else
-                %p.no-records
-                  = "No reviews for #{@professional.name} yet."
-              = render "reviews/shared/new", :professional => @professional
-      %section
+          %h5.section-title
+            = "Reviews"
+          - unless @reviews.blank?
+            %ul.looper.reviews
+              - @reviews.each do |review|
+                %li= render "reviews/shared/loop", :review => review
+            = paginate @reviews
+          - else
+            %p.no-records
+              = "No reviews for #{@professional.name} yet."
+          = render "reviews/shared/new", :professional => @professional
+      %section#guides
         .container
-          .row
-            .twelve.columns
-              %h5.section-title Guides
-              - unless @guides.blank?
-                %ul.guides
-                  - @guides.each do |guide|
-                    %li
-                      = guide.topic.name
-                      = guide.title
-                      = guide.excerpt
-              - else
-                %p.no-records
-                  = "#{@professional.name} hasn't written any guide yet."
-
+          %h5.section-title
+            = "Guides"
+          - unless @guides.blank?
+            %ul.guides
+              - @guides.each do |guide|
+                %li
+                  = guide.topic.name
+                  = guide.title
+                  = guide.excerpt
+          - else
+            %p.no-records
+              = "#{@professional.name} hasn't written any guide yet."
   .four.columns
-
     .panel
       %h5
         = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
       - unless @similar_professionals.blank?
-        %ul.similar-professionals
+        %ul.looper.similar-professionals
           - @similar_professionals.each do |professional|
-            %li
-              = render "professionals/loops/minimal", :professional => professional
+            %li= render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
-          No similar professionals found.
+          = "No similar professionals found."
+    = render "shared/ads"

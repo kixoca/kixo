@@ -11,7 +11,7 @@ class Review < ActiveRecord::Base
   belongs_to :rating
 
   # a review belongs to the reviewed professional (User)
-  belongs_to :professional, :class_name => "User"
+  belongs_to :professional, :class_name => "User", :counter_cache => true
 
   # a review belongs to an author (a user)
   belongs_to :author, :class_name => "User"

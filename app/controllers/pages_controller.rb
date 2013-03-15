@@ -1,11 +1,23 @@
 class PagesController < ApplicationController
-  def index
-    if current_user and current_user.is_a_professional?
-      @questions = Question.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}})
-    else
-      @questions = Question.find_all_by_locale
-    end
 
-    @questions = @questions.uniq.order("created_at DESC").page(params[:page]) unless @questions.blank?
+  def index
+    @questions = case params[:filter]
+                   when "mine" then
+                     Kaminari.paginate_array(current_user.questions)
+                   when "for_me" then
+                     Question.find_all_by_locale.public.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}})
+                   when "most_popular" then
+                     Question.find_all_by_locale.public.most_popular
+                   when "answered" then
+                     Question.find_all_by_locale.public.answered
+                   when "unanswered" then
+                     Question.find_all_by_locale.public.unanswered
+                   else Question.find_all_by_locale.public
+                 end
+
+    @questions = @questions.page(params[:page])
+
+    @top_contributors = User.professionals.order("answers_count DESC").limit(10)
   end
+
 end

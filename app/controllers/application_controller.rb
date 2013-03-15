@@ -56,6 +56,7 @@ class ApplicationController < ActionController::Base
     # messages
     if current_user
       @new_conversation = Conversation.new
+      @new_conversation.messages.build
     end
   end
 

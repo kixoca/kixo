@@ -12,10 +12,9 @@
       %section
         .container
           - unless @conversations.blank?
-            %ul.conversations
+            .conversations
               - @conversations.each do |conversation|
-                %li
-                  = render "conversations/shared/loop", :conversation => conversation
+                = render "conversations/shared/loop", :conversation => conversation
           - else
             %p.no-records
               You haven't received any messages yet.

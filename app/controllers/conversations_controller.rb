@@ -10,7 +10,7 @@ class ConversationsController < ApplicationController
     @reply = @conversation.messages.build
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @conversation }
       format.xml  { render :xml => @conversation }
     end
@@ -27,7 +27,7 @@ class ConversationsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # index.html.haml
+      format.html
       format.json { render :json => @conversations }
       format.xml  { render :xml  => @conversations }
     end

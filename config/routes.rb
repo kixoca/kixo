@@ -17,10 +17,10 @@ Kixo::Application.routes.draw do
     end
 
     resources :conversations do
-      resources :messages do
-        post "read", :on => :member
-      end
+      resources :messages
     end
+
+    resources :notifications
 
     resources :questions do
       resources :answers

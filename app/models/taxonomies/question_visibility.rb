@@ -1,2 +1,0 @@
-class QuestionVisibility < Taxonomy
-end

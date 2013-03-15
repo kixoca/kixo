@@ -8,4 +8,8 @@ class Notification < ActiveRecord::Base
   validates_existence_of :user
   validates :message, :presence => true
   validates :seen,    :presence => true, :inclusion => {:in => [true, false]}
+
+  def self.unseen
+    self.where(:seen => false)
+  end
 end

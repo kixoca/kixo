@@ -56,15 +56,46 @@ body {
     #account {
       padding: 7px 0;
 
-      #messages {
-        margin: 0 $unit;
+      #profile {
+        font-size: 0.85*$baseFontSize;
+        line-height: 30px;
+        border-left: 1px solid $borderColor;
+        padding-left: $golden*$unit;
+        color: $lightTxtColor;
+
+        .headshot {
+          vertical-align: middle;
+          margin-right: 5px;
+        }
+      }
+
+      #messages,
+      #notifications,
+      #settings,
+      #signout {
+        margin-right: $golden*$unit;
+        padding: 5px 0;
+        position: relative;
+
+        a {
+          padding: 0 5px;
+        }
+
+        i {
+          color: $kixoGrey;
+          font-size: 1.5*$baseFontSize;
+          @include transition;
+
+          &:hover {
+            color: darken($kixoGrey, 20%);
+          }
+        }
 
         .count {
           position: absolute;
           top: -5px;
-          right: -5px;
-          display: block;
-          font-size: 0.80*$baseFontSize;
+          right: -10px;
+          font-size: 0.70*$baseFontSize;
           font-weight: bold;
           padding: 3px 5px;
           line-height: 1.0;
@@ -73,7 +104,7 @@ body {
           @include borderRadius(100px);
         }
       }
-    }
+      }
 
     ul ul {
       margin: 0;
@@ -284,6 +315,10 @@ body {
     h1, h2, h3, h4, h5, h6, p {
       margin: 0;
     }
+
+    .filter {
+      margin-top: $unit;
+    }
   }
 
   > section,
@@ -315,6 +350,10 @@ body {
 
   .container {
     padding: $golden*$unit;
+
+    &.tight {
+      padding: $unit $golden*$unit;
+    }
   }
 }
 

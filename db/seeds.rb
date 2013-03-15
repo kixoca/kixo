@@ -50,18 +50,6 @@ question_status = QuestionStatus.create()
   question_status_name = QuestionStatusName.create(:name => "Denied", :locale => en, :question_status => question_status)
   question_status_name = QuestionStatusName.create(:name => "Refusée", :locale => fr, :question_status => question_status)
 
-# question visibilities
-QuestionVisibility.destroy_all
-  QuestionVisibilityName.destroy_all
-
-question_visibility = QuestionVisibility.create()
-  question_visibility_name = QuestionVisibilityName.create(:name => "Public", :locale => en, :question_visibility => question_visibility)
-  question_visibility_name = QuestionVisibilityName.create(:name => "Publique", :locale => fr, :question_visibility => question_visibility)
-
-question_visibility = QuestionVisibility.create()
-  question_visibility_name = QuestionVisibilityName.create(:name => "Private", :locale => en, :question_visibility => question_visibility)
-  question_visibility_name = QuestionVisibilityName.create(:name => "Privée", :locale => fr, :question_visibility => question_visibility)
-
 # guide statuses
 GuideStatus.destroy_all
   GuideStatusName.destroy_all
@@ -92,12 +80,16 @@ category = Category.create()
   category_name = CategoryName.create(:name => "Juridique", :locale => fr, :category => category)
 
   topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Business", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Corporatif", :locale => fr, :topic => topic)
+    topic_name = TopicName.create(:name => "Business Law", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Droit corporatif", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Car Accidents", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Accidents automobiles", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Contracts", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Contrats", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Child Custody", :locale => en, :topic => topic)
@@ -112,8 +104,16 @@ category = Category.create()
     topic_name = TopicName.create(:name => "Défense pénale", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Debt Collection", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Recouvrement de créances", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Divorce", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Séparation", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Domestic Violence", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Violence domestique", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "DUI", :locale => en, :topic => topic)
@@ -124,8 +124,8 @@ category = Category.create()
     topic_name = TopicName.create(:name => "Emploi", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Family", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Famille", :locale => fr, :topic => topic)
+    topic_name = TopicName.create(:name => "Family Law", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Droit de la famille", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Foreclosure", :locale => en, :topic => topic)
@@ -136,16 +136,32 @@ category = Category.create()
     topic_name = TopicName.create(:name => "Immigration", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Landlord / Tenant", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Propriétaire / locataire", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Lawsuits", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Poursuites", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Mariage", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Mariage", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Medical Malpractice", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Faute médicale", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Personal Injury", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Blessures", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Real Estate", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Immobilier", :locale => fr, :topic => topic)
+    topic_name = TopicName.create(:name => "Traffic Ticket", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Contraventions", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Real Estate Law", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Droit immobilier", :locale => fr, :topic => topic)
 
   profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Attorney", :locale => en, :profession => profession)
@@ -192,8 +208,20 @@ category = Category.create()
     topic_name = TopicName.create(:name => "Cancer du col utérin", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Depression", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Dépression", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Emotional Dependence", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Dépendance affective", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Face Lift", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Lifting facial", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Eating Disorder", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Trouble des conduites alimentaires", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "HPV", :locale => en, :topic => topic)
@@ -216,8 +244,16 @@ category = Category.create()
     topic_name = TopicName.create(:name => "Mélanome", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Neurosis", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Névrose", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Pregnancy", :locale => en, :topic => topic)
     topic_name = TopicName.create(:name => "Grossesse", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Psychosis", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Psychose", :locale => fr, :topic => topic)
 
   topic = Topic.create(:category => category)
     topic_name = TopicName.create(:name => "Rhinoplasty", :locale => en, :topic => topic)
@@ -242,6 +278,14 @@ category = Category.create()
   profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Nurse", :locale => en, :profession => profession)
     profession_name = ProfessionName.create(:name => "Infirmière", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Psychologist", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Psychologue", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Psychiatrist", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Psychiatre", :locale => fr, :profession => profession)
 
 category = Category.create()
   category_name = CategoryName.create(:name => "Finance", :locale => en, :category => category)

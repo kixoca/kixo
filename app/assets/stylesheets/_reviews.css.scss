@@ -16,7 +16,7 @@
       font-weight: bold;
 
       &.rating1 {
-        color: $kixoRed;
+        color: $kixoGreen;
       }
 
       &.rating2, &.rating3, &.rating4 {
@@ -24,7 +24,7 @@
       }
 
       &.rating5 {
-        color: $kixoGreen;
+        color: $kixoRed;
       }
     }
 
@@ -32,6 +32,15 @@
       &:before {
         content: " - ";
       }
+    }
+
+    .actions {
+      visibility: hidden;
+      font-size: 0.90*$baseFontSize;
+    }
+
+    &:hover .actions {
+      visibility: visible;
     }
   }
 }

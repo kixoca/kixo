@@ -1,10 +1,22 @@
-- if current_user && current_user.can_answer?(@question)
-  %h5 Answer this question
-  = form_for [question, question.answers.new] do |f|
-    = f.hidden_field :question_id, :value => question.id
-    .row
-      .twelve.columns
-        = f.text_area :details, :rows => 6
-    .row
-      .twelve.columns
-        = f.submit "Post Answer", :class => "button small"
+%h5
+  = "Answer this question"
+- if user_signed_in?
+  - if current_user.can_answer?(question)
+    = form_for [question, question.answers.new] do |f|
+      = f.hidden_field :question_id, :value => question.id
+      = f.text_area :details, :rows => 6
+      = f.submit "Post Answer", :class => "button small"
+  - else
+    - if current_user.is_a_professional?
+      - if !(current_user.answers & question.answers).empty?
+        %p.access-denied
+          = "You have already answered this question."
+      - else
+        %p.access-denied
+          = "You are not allowed to answer this question."
+    - else
+      %p.access-denied
+        = "You must be a professional to answer questions."
+- else
+  %p.access-denied
+    = "You must be a signed in professional to answer questions."

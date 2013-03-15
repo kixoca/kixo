@@ -1,14 +1,39 @@
 .row
   .eight.columns
-    %section#questions
-      %h4.section-title
-        - if current_user and current_user.is_a_professional?
-          = "Recent questions for you"
-        - else
-          = "Recent questions"
-      %ul.questions
-        - @questions.each do |question|
-          %li.question
-            = render "questions/shared/loop", :question => question
+    .page
+      %header
+        .container
+          %h2
+            = "Recent questions"
+          %dl.sub-nav.filter
+            %dd{:class => (params[:filter].blank? or params[:filter] == "all") ? "active" : ""}
+              %a{:href => "?filter=all"} All
+            %dd{:class => params[:filter] == "mine" ? "active" : ""}
+              %a{:href => "?filter=mine"} My questions
+            - if current_user and current_user.is_a_professional?
+              %dd{:class => params[:filter] == "for_me" ? "active" : ""}
+                %a{:href => "?filter=for_me"} For me
+            %dd{:class => params[:filter] == "most_popular" ? "active" : ""}
+              %a{:href => "?filter=most_popular"} Most Popular
+            %dd{:class => params[:filter] == "answered" ? "active" : ""}
+              %a{:href => "?filter=answered"} Answered
+            %dd{:class => params[:filter] == "unanswered" ? "active" : ""}
+              %a{:href => "?filter=unanswered"} Unanswered
+      %section
+        .container
+          - unless @questions.blank?
+            %ul.looper.questions
+              - @questions.each do |question|
+                %li= render "questions/shared/loop", :question => question
+          - else
+            %p.no-records
+              = "No questions found."
   .four.columns
     %aside#sidebar
+      .panel
+        %h5
+          = "Top Contributors"
+        %ul.looper.tight.professionals.top-contributors
+          - @top_contributors.each do |professional|
+            %li= render "professionals/loops/minimal", :professional => professional
+      = render "shared/ads"

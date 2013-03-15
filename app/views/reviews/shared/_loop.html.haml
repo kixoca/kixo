@@ -1,14 +1,15 @@
 .review
-  .meta
-    %span.author_name
-      = review.user.name
-    %time.created_at{:datetime => review.created_at}
-      = "#{time_ago_in_words(review.created_at)} ago"
   .content
     %span.rating{:class => "rating#{review.rating.id}"}
       = review.rating.name
     %span.comment
       = review.comment
-  - if review.user == current_user
+  .meta
+    %span.author_name
+      = review.author.display_name
+    = "-"
+    %time.created_at{:datetime => review.created_at}
+      = "#{time_ago_in_words(review.created_at)} ago"
+  - if review.author == current_user
     .actions
-      = link_to 'Delete review', user_review_path(review.user, review), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
+      = link_to 'Delete review', professional_review_path(review.author, review), :confirm => 'Are you sure?', :method => :delete, :class => "delete"

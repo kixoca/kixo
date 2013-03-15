@@ -5,10 +5,10 @@ class QuestionsController < ApplicationController
   before_filter :authenticate!,     :only => [:update, :edit, :destroy]
 
   def index
-    @questions = Question.find_all_by_locale.order("created_at DESC").page(params[:page])
+    @questions = Question.find_by_locale.public.
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @questions }
       format.xml  { render :xml => @questions }
     end
@@ -22,7 +22,7 @@ class QuestionsController < ApplicationController
     @related_professionals = User.professionals.find_all_by_topic(@topics)
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @question }
       format.xml  { render :xml => @question }
     end
@@ -33,7 +33,7 @@ class QuestionsController < ApplicationController
     @author = current_user || User.new
 
     respond_to do |format|
-      format.html # new.html.haml
+      format.html
       format.json { render :json => @question }
       format.xml  { render :xml => @question }
     end
@@ -115,7 +115,7 @@ class QuestionsController < ApplicationController
 
   def authenticate!
     session[:user_return_to] = case params[:action]
-                                 when "create"  then new_question_path
+                                 when "create" then new_question_path
                                  else request.path
                                end
     authenticate_user!

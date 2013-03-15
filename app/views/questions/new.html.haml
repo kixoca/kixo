@@ -27,6 +27,11 @@
               .twelve.columns
                 = f.label :details
                 = f.text_area :details, :size => "x5", :placeholder => "Give more details and background information..."
+            .row
+              .twelve.columns
+                %label
+                  = f.check_box :is_private
+                  Make my question private
 
         %section
           .container

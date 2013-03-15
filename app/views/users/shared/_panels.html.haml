@@ -2,7 +2,7 @@
   .panel.callout.green
     %h5 Already have an account?
     %p No need to create a new account! Sign in to your existing one.
-    %a.button{:href => new_session_path(resource_name)} Sign in
+    %a.button{:href => "#", :data => {"reveal-id" => "new_session"}} Sign in
 
 - if devise_mapping.registerable? && controller_name != 'registrations'
   .panel.callout.green

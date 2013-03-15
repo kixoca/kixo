@@ -1,12 +1,13 @@
-.box.question.loop
-  .container
-    %h4.title
-      %a{:href => question_path(question)}
-        = question.title
-    %p.meta
+.question.loop
+  %h4.title
+    = link_to question.title, question_path(question)
+  %p.details
+    = truncate(question.details, :omission => "...", :length => 150)
+  %ul.ssv
+    %li.meta
       %time.created_at{:datetime => question.created_at}
         = "Asked #{time_ago_in_words(question.created_at)} ago"
       %span.location
         = "in #{question.author.short_address}"
-    %p.details
-      = truncate(question.details, :omission => "...", :length => 150)
+    %li.answers-count
+      = link_to "#{question.answers.count} answer(s)", "#{question_path(question)}#answers"

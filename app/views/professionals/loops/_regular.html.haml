@@ -2,22 +2,23 @@
   .box.professional.loop.standard
     %section
       .container
-        .headshot
-          %a{:href => professional_path(professional)}
-            = image_tag professional.headshot.url(:medium)
+        = link_to professional_path(professional), :class => "headshot" do
+          .headshot-2.medium{:style => "background-image: url(#{professional.headshot.url(:medium)});"}
+          =# image_tag professional.headshot.url(:medium), :class => "headshot"
         %h4.name
           = link_to professional.name, professional_path(professional)
-        .professions
-          = professional.professions.first.name unless professional.professions.empty?
-          - if professional.professions.count > 1
-            and
-            %span.has-tip.tip-top.noradius{:title => professional.profession_list}
-              = "#{professional.professions.count-1} more"
+        .whois
+          %span.professions
+            = professional.professions.first.name unless professional.professions.empty?
+            - if professional.professions.count > 1
+              and
+              %span.has-tip.tip-top.noradius{:title => professional.profession_list}
+                = "#{professional.professions.count-1} more"
         .address.short
           %i.foundicon-location
           = professional.short_address
     %section
-      .container
+      .container.tight
         %ul.metrics.block-grid.three-up
           %li
             .value

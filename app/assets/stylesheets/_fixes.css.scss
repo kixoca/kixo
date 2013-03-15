@@ -61,6 +61,15 @@ ul.side-nav {
 .has-tip {
   font-weight: normal;
   color: $mainColor;
+
+  &.no-style {
+    border-bottom: none !important;
+    cursor: pointer;
+  }
+}
+
+.sub-nav {
+  margin-bottom: 0 !important;
 }
 
 .gmap img {

@@ -13,8 +13,16 @@
     }
   }
 
+  .about {
+    margin-bottom: $unit;
+  }
+
   .gmap {
-    height: 250px;
+    height: 300px;
+
+    .address {
+      font-size: 0.90*$baseFontSize;
+    }
   }
 
   .metrics {
@@ -65,10 +73,6 @@
       }
     }
 
-    .professions {
-      font-size: 0.90*$baseFontSize;
-    }
-
     .address {
       font-size: 0.90*$baseFontSize;
       color: $lightTxtColor;
@@ -78,8 +82,4 @@
       margin-top: $golden*$unit;
     }
   }
-}
-
-ul.professionals {
-  list-style: none;
 }

@@ -1,30 +1,6 @@
-.questions {
-  list-style: none;
-}
-
 .question {
-  .topics {
-    font-size: 0.90 * $baseFontSize;
-  }
-
-  ul.answers {
-    list-style: none;
-
-    li {
-      margin-bottom: $unit;
-    }
-
-    .answer {
-      .details {
-        font-size: 0.90*$baseFontSize;
-      }
-
-      .professional {
-        .has-tip {
-          border-bottom: 0 !important;
-        }
-      }
-    }
+  .meta {
+    margin: $unit 0;
   }
 
   &.loop {
@@ -34,7 +10,22 @@
     }
 
     .details {
-      font-size: 0.85*$baseFontSize;
+      font-size: 0.90*$baseFontSize;
     }
+
+    .answers-count {
+      font-size: 0.90*$baseFontSize;
+    }
+  }
+}
+
+.answer {
+  .actions {
+    visibility: hidden;
+    font-size: 0.90*$baseFontSize;
+  }
+
+  &:hover .actions {
+    visibility: visible;
   }
 }

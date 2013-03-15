@@ -3,10 +3,10 @@
     jQuery(function() {
 
         $('.goto').click(function(event) {
-            var goto = $(this).data('goto');
+            var url = $(this).data('url');
 
-            if ( goto ) {
-                window.location = goto;
+            if ( url ) {
+                window.location = url;
             }
         });
 

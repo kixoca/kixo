@@ -14,7 +14,8 @@
         .container
           .row
             .two.columns.text-center
-              = image_tag current_user.headshot.url(:small), :class => "headshot"
+              .headshot-2.small{:style => "background-image: url(#{current_user.headshot.url(:small)});"}
+              =# image_tag current_user.headshot.url(:small), :class => "headshot"
             .ten.columns
               %h4 Reply
               = form_for [@conversation, @reply] do |f|

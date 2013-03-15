@@ -5,11 +5,11 @@ class ReviewsController < ApplicationController
   before_filter :authenticate!,   :only => [:update, :edit, :create, :destroy]
 
   def index
-    @professional = Professional.find(params[:professional_id])
+    @professional = User.find(params[:professional_id])
     @reviews = @professional.reviews.find_all_by_locale
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @reviews }
       format.xml  { render :xml => @reviews }
     end
@@ -19,15 +19,26 @@ class ReviewsController < ApplicationController
     @review = Review.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @review }
       format.xml  { render :xml => @review }
     end
   end
 
+  def new
+    @professional = Professional.find(params[:professional_id])
+    @new_review = @professional.reviews.new
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @new_review }
+      format.xml  { render :xml => @new_review }
+    end
+  end
+
   def create
     @review = Review.new(params[:review])
-    @review.author = current_user unless current_user.nil?
+    @review.author = current_user if user_signed_in?
 
     respond_to do |format|
       if @review.save

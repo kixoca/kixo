@@ -46,13 +46,13 @@ class User < ActiveRecord::Base
   has_many :guides, :foreign_key => :author_id
 
   # a user might belong to its referer (another user)
-  belongs_to :referer, :class_name => "User"
+  belongs_to :referer, :class_name => "User", :counter_cache => true
 
   # a user can be the referer of one or many other users (users, professionals, representants)
   has_many :referrals, :class_name => "User", :foreign_key => :referer_id
 
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#"}
+  has_attached_file :headshot, :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#", :mini => "30x30#"}
 
   # set default values on init
   after_initialize :default_values
@@ -63,7 +63,7 @@ class User < ActiveRecord::Base
   before_destroy :delete_stripe_customer
 
   # validation
-  validates :email, :presence => true
+  validates :email, :presence => {:message => "You must enter a valid email address"}
   validates :name,  :presence => true, :if => :is_a_professional?
   validates_existence_of :country
   validates_existence_of :region

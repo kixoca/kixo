@@ -1,7 +1,7 @@
 class Message < ActiveRecord::Base
   attr_accessible :author, :message, :read
 
-  belongs_to :conversation
+  belongs_to :conversation, :counter_cache => true
   belongs_to :author, :class_name => "User"
 
   # set default values on init

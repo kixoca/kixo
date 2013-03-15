@@ -40,7 +40,6 @@
             %h5
               = "Top-rated professionals in #{@locality.name}"
             - unless @professionals.empty?
-              %ul.professionals.top-rated
+              %ul.looper.professionals.top-rated-professionals
                 - @professionals.each do |professional|
-                  %li.professional
-                    = render "professionals/loops/minimal", :professional => professional
+                  %li= render "professionals/loops/minimal", :professional => professional

@@ -1,13 +1,13 @@
 - unless conversation.blank?
-  .conversation.inbox.goto{:id => "conversation_#{conversation.id}", :class => conversation.messages.last.read ? "read" : "unread", :data => {:goto => conversation_path(conversation)}}
+  .conversation.inbox.goto{:id => "conversation_#{conversation.id}", :class => conversation.messages.last.read ? "read" : "unread", :data => {:url => conversation_path(conversation)}}
     .row
       .four.columns
         - conversation.participants.each do |participant|
           - unless participant.id == current_user.id
             .row
               .four.columns
-                .participant-headshot
-                  = image_tag participant.headshot.url(:thumb), :class => "headshot"
+                .headshot-2.thumb.participant-headshot{:style => "background-image: url(#{participant.headshot.url(:thumb)});"}
+                  =# image_tag participant.headshot.url(:thumb), :class => "headshot"
               .eight.columns
                 .participant-name
                   = participant.display_name

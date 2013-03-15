@@ -1,11 +1,10 @@
 - if current_user and current_user.can_review?(professional)
   %h5
     = "Write a review for #{professional.name}"
-  = form_for [professional, professional.reviews.new] do |f|
+  = form_for [professional, professional.reviews.new], :url => professional_reviews_path(professional) do |f|
     = f.hidden_field :professional_id, :value => professional.id
     .row
       .twelve.columns
-        = f.label :comment
         = f.text_area :comment, :rows => 4
     .row
       .six.columns

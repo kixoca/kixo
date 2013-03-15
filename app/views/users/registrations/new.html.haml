@@ -11,6 +11,11 @@
               %h1 Sign Up
               %h4.subheader Create a free account and connect with professionals
 
+        - unless resource.errors.blank?
+          %section.errors
+            .container
+              = render "/shared/errors", :errors => resource.errors
+
         %section
           .container
             .row

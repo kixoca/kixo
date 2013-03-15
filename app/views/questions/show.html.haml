@@ -10,35 +10,37 @@
               = "Asked #{time_ago_in_words(@question.created_at)} ago"
             %span.location
               = "in #{@author.short_address}"
-          %p.topics
-            Posted in
-            = @topics.map {|topic| link_to topic.name, category_topic_path(topic.category, topic)}.join(", ").html_safe
+          %ul.tags.green-tags.topics
+            - @topics.each do |topic|
+              %li= link_to topic.name, category_topic_path(topic.category, topic)
       - unless @question.details.empty?
         %section#details
           .container
-            = @question.details
+            %h5.section-title
+              = "Question Details"
+            = simple_format(@question.details)
       %section#answers
         .container
           %h3
-            Answers
+            = "Answers"
           - unless @answers.blank?
-            %ul.answers
+            %ul.looper.answers
               - @answers.each do |answer|
-                %li
-                  = render "answers/shared/loop", :answer => answer
+                %li= render "answers/shared/loop", :answer => answer
           - else
-            %p.no-records No answers yet.
+            %p.no-records
+              = "No answers yet."
       %section#answer
         .container
           = render "answers/shared/new", :question => @question
   .four.columns
     .panel
-      %h5 Related professionals
+      %h5
+        = "Related professionals"
       - unless @related_professionals.blank?
-        %ul.professionals.related
+        %ul.looper.professionals.related-professionals
           - @related_professionals.each do |professional|
-            %li
-              = render "professionals/loops/minimal", :professional => professional
+            %li= render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
-          No related professionals found.
+          = "No related professionals found."

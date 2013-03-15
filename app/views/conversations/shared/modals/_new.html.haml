@@ -1,15 +1,14 @@
-- if false and current_user
+- if user_signed_in?
   #new_conversation_modal.reveal-modal
     %hgroup.hr
-      %h3 New Message
-      %h4.subheader Compose a private message
+      %h3
+        = "New Message"
+      %h4.subheader
+        = "Compose a private message"
     = form_for @new_conversation do |f|
       = render "shared/errors", :errors => @new_conversation.errors
-      = f.label :to
-      = f.text_field :to_name, :id => "new_conversation_to_name", :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/professionals.json"}
-      = f.hidden_field :to_id, :id => "new_conversation_to_id"
-      = f.fields_for :message do |m|
-        = m.label :message
+      = f.hidden_field :participant_ids, :id => "new_conversation_participant_id"
+      = f.fields_for :messages, @new_conversation.messages do |m|
         = m.text_area :message, :rows => 10
       .actions
         = f.submit "Send", :class => "submit button"

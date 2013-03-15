@@ -76,8 +76,9 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
   end
 
   create_table "conversations", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "messages_count", :default => 0, :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
   end
 
   create_table "eager_beavers", :force => true do |t|
@@ -134,14 +135,15 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
   end
 
   create_table "questions", :force => true do |t|
-    t.string   "title",         :default => "", :null => false
+    t.string   "title",         :default => "",    :null => false
     t.text     "details"
-    t.integer  "status_id",     :default => 0,  :null => false
-    t.integer  "visibility_id", :default => 0,  :null => false
-    t.integer  "author_id",     :default => 0,  :null => false
-    t.integer  "locale_id",     :default => 0,  :null => false
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
+    t.boolean  "is_private",    :default => false, :null => false
+    t.integer  "status_id",     :default => 0,     :null => false
+    t.integer  "author_id",     :default => 0,     :null => false
+    t.integer  "locale_id",     :default => 0,     :null => false
+    t.integer  "answers_count", :default => 0,     :null => false
+    t.datetime "created_at",                       :null => false
+    t.datetime "updated_at",                       :null => false
   end
 
   create_table "reviews", :force => true do |t|
@@ -218,6 +220,10 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
     t.boolean  "notify_of_questions",         :default => true,  :null => false
     t.boolean  "notify_of_other_answers",     :default => true,  :null => false
     t.integer  "referer_id"
+    t.integer  "answers_count",               :default => 0,     :null => false
+    t.integer  "questions_count",             :default => 0,     :null => false
+    t.integer  "reviews_count",               :default => 0,     :null => false
+    t.integer  "referrals_count",             :default => 0,     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
   end

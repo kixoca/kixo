@@ -1,7 +1,20 @@
 class MessagesController < ApplicationController
 
   before_filter :authenticate_user!
-  before_filter :check_if_participant!, :only => [:read]
+  before_filter :check_if_participant!, :only => [:show]
+
+  def show
+    @message = Message.find(params[:id])
+
+    @message.read = true
+    @message.save
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @message }
+      format.xml  { render :xml => @message }
+    end
+  end
 
   def create
     @conversation = Conversation.find(params[:conversation_id])
@@ -17,28 +30,6 @@ class MessagesController < ApplicationController
       else
         format.html {
           flash[:alert] = "Could not create the message."
-          redirect_to @conversation
-        }
-        format.json { render :json => @message.errors, :status => :unprocessable_entity }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  def read
-    @message = Message.find(params[:id])
-    @conversation = Conversation.find(params[:conversation_id])
-
-    @message.read = true
-
-    respond_to do |format|
-      if @message.save
-        format.html { redirect_to @conversation }
-        format.json { render :json => @message, :status => :created, :location => @message }
-        format.xml  { render :xml => @message, :status => :created, :location => @message }
-      else
-        format.html {
-          flash[:alert] = "Could not read the message."
           redirect_to @conversation
         }
         format.json { render :json => @message.errors, :status => :unprocessable_entity }

@@ -22,6 +22,10 @@
 .pull-left { float: left; }
 .pull-right { float: right; }
 
+.text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+
 .goto {
   cursor: pointer;
 }
@@ -32,14 +36,47 @@
   margin: 0;
 }
 
+.access-denied {
+  font-style: italic;
+  color: $lightTxtColor;
+}
+
 .meta {
   font-size: 0.90*$baseFontSize;
   color: $lightTxtColor;
 }
 
-.headshot img,
+.headshot > img,
 img.headshot {
   @include borderRadius(500px);
+}
+
+.headshot-2 {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-position: 0 0;
+  background-size: 110% 110%;
+  @include borderRadius(500px);
+
+  &.large {
+    width: 160px;
+    height: 160px;
+  }
+
+  &.medium {
+    width: 120px;
+    height: 120px;
+  }
+
+  &.small {
+    width: 80px;
+    height: 80px;
+  }
+
+  &.thumb {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 ul.inline {
@@ -75,16 +112,110 @@ ul.csv {
   }
 }
 
-.text-left {
-  text-align: left;
+ul.ssv {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  li {
+    display: inline;
+
+    &:after { content: "\00a0\00a0/\00a0\00a0"; }
+    &:last-child:after { content: ""; }
+  }
 }
 
-.text-center {
-  text-align: center;
+ul.looper {
+  list-style: none;
+  margin-top: $golden*$unit;
+
+  li {
+    margin-bottom: $golden*$unit;
+  }
+
+  &.tight {
+    margin-top: $unit;
+
+    li {
+      margin-bottom: $unit;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
 }
 
-.text-right {
-  text-align: right;
+ul.tags {
+  li, a {
+    display: inline-block;
+    height: 24px;
+    line-height: 24px;
+    position: relative;
+    font-size: 0.90*$baseFontSize;
+  }
+
+  a {
+    margin: 0 12px 0 6px;
+    padding: 0 10px 0 12px;
+    background: $kixoLightGrey;
+    color: $lightTxtColor;
+    text-decoration: none;
+    @include borderRightRadius($radius);
+
+    &:before {
+      content: "";
+      float: left;
+      position: absolute;
+      top: 0;
+      left: -12px;
+      width: 0;
+      height: 0;
+      border-color: transparent $kixoLightGrey transparent transparent;
+      border-style: solid;
+      border-width: 12px 12px 12px 0;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 10px;
+      left: 0;
+      float: left;
+      width: 4px;
+      height: 4px;
+      background: #fff;
+      @include borderRadius($radius);
+    }
+  }
+
+  &.blue-tags {
+    a {
+      background: $kixoBlue;
+      color: $white;
+
+      &:before {
+        border-color: transparent $kixoBlue transparent transparent;
+      }
+    }
+  }
+
+  &.green-tags {
+    a {
+      background: $kixoGreen;
+      color: $white;
+
+      &:before {
+        border-color: transparent $kixoGreen transparent transparent;
+      }
+    }
+  }
+}
+
+.filter {
+  dt, dd, a {
+    font-size: 0.90*$baseFontSize;
+  }
 }
 
 .ui-autocomplete {

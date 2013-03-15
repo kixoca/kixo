@@ -13,12 +13,7 @@ ul.messages {
 
   .created-at {
     font-size: 0.85*$baseFontSize;
-  }
-}
-
-.message {
-  .created-at {
-    margin-top: $unit;
+    margin-top: $unit/$golden;
     color: $lightTxtColor;
   }
 }

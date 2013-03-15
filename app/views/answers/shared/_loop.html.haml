@@ -2,18 +2,20 @@
   .answer{:id => "ans#{answer.id}"}
     .row
       .nine.columns
-        .meta
+        .details
+          = simple_format(answer.details)
+        %p.meta
           %span.created_at
             = "Answered #{time_ago_in_words(answer.created_at)} ago"
-        .content
-          .details
-            = answer.details
         - if answer.author == current_user
           .actions
             = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
       .three.columns.text-center
-        .headshot
-          = image_tag answer.author.headshot.url(:small)
-        %h5.author_name
-          %a{:href => user_path(answer.author)}
-            = answer.author.name
+        = link_to professional_path(answer.author) do
+          = image_tag answer.author.headshot.url(:small), :class => "headshot"
+          .author.professional
+            .name
+              = link_to answer.author.name, professional_path(answer.author)
+            .whois
+              %span.professions
+                = answer.author.professions_list

@@ -1,35 +1,26 @@
-%section#content
-  .container
-    .row
-      .eight.columns
-        .page
-          %header
-            .container
-              .professional
-                .row
-                  .three.columns.text-center
-                    .headshot
-                      = image_tag @professional.headshot.url(:large)
-                  .nine.columns.mobile-text-center
-                    %h1.name
-                      %a{:href => professional_path(@professional)}
-                        = @professional.name
-                    %p.professions
-                      = @professional.professions_list
-          %section
-            .container
-
-              %h4
-                = "#{@reviews.count} reviews for #{@professional.name}"
-
-              - if @reviews.count == 0
-                %p.no-records
-                  = "There are no reviews for #{@professional.name} yet."
-
-              - else
-                %ul.reviews
-                  - @reviews.each do |review|
-                    %li
-                      = render "reviews/shared/loop", :review => review
-
-              = render "reviews/shared/new", :professional => @professional
+.row
+  .eight.columns
+    .page
+      %header
+        .container
+          .professional
+            .row
+              .two.columns.text-center
+                = image_tag @professional.headshot.url(:small), :class => "headshot"
+              .ten.columns.mobile-text-center
+                %h1.name
+                  = link_to @professional.name, professional_path(@professional)
+                %p.whois
+                  = "#{@professional.locality.name} #{@professional.professions_list} specializing in #{@professional.topics_list}"
+      %section
+        .container
+          - if @reviews.blank?
+            %h4
+              = "#{@reviews.count} reviews for #{@professional.name}"
+            %ul.looper.reviews
+              - @reviews.each do |review|
+                %li= render "reviews/shared/loop", :review => review
+          - else
+            %p.no-records
+              = "There are no reviews for #{@professional.name} yet."
+          = render "reviews/shared/new", :professional => @professional
