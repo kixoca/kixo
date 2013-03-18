@@ -29,6 +29,7 @@ gem 'less-rails',   '~> 2.2.4'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'compass-rails'
 gem 'zurb-foundation'
+gem 'coffee-rails'
 gem 'therubyracer'
 gem 'uglifier', '>= 1.0.3'
 
