@@ -36,6 +36,7 @@ en:
     profession: "Browse by Profession"
     location: "Browse by Location"
   no_records:
+    general: "No records found."
     professionals: "No professionals found."
     questions: "No questions found."
     categories: "No categories found."
@@ -46,6 +47,7 @@ en:
     localities: "No localities found."
     reviews: "No reviews found."
     guides: "No guides found."
+    custom: "No %{objects} found."
   questions:
     title: "Questions"
     recent:
@@ -57,6 +59,7 @@ en:
       most_popular: "Most popular"
       answered: "Answered"
       unanswered: "Unanswered"
+    in_taxonomy: "Questions in %{tax}"
   answers:
     title: "Answers"
     answer:
@@ -70,11 +73,18 @@ en:
         not_signed_in: "You must be a signed in professional to answer questions."
   professionals:
     title: "Professionals"
-    contributors:
-      top:
-        title: "Top Contributors"
+    top_contributors:
+      title: "Top Contributors"
     top_rated:
+      in_taxonomy: "Top-rated professionals in %{tax}"
       in_locality: "Top-rated professionals in %{locality}"
+    count:
+      in_taxonomy: "%{count} professionals in %{tax}"
+      in_locality: "%{count} professionals in %{locality}"
+      in_taxonomy_found_in_locality: "%{count} professionals in %{tax} found in %{locality}"
+    browse:
+      in_taxonomy: "Browse professionals in %{tax}"
+      in_taxonomy_by_location: "Browse professionals in %{tax} by location"
   categories:
     title: "Categories"
   topics:

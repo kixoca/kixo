@@ -2,7 +2,7 @@
   .twelve.columns
     %h1
       - if @locality
-        = "#{@topic.name} in #{@locality.name}"
+        =t "taxonomy.in_taxonomy", :tax_1 => @topic.name, :tax_2 => @locality.name
       - else
         = @topic.name
     - if @topic.description
@@ -10,26 +10,26 @@
         = @topic.description
     %hr
   .eight.columns
-    - unless @professionals.blank?
+    - unless @professionals.empty?
       %section
         .container
           %h4
-            - unless @locality.nil?
-              = "#{@professionals.count} professionals in <em>#{@topic.name.downcase}</em> found in #{@locality.name}".html_safe
+            - unless @locality.blank?
+              =t "professionals.count.in_taxonomy_found_in_locality", :count => @professionals.count, :tax => @topic.name.downcase, :locality => @locality.name
             - else
-              = "#{@professionals.count} professionals in <em>#{@topic.name.downcase}</em> found".html_safe
+              =t "professionals.count.in_taxonomy", :count => @professionals.count, :tax => @topic.name.downcase
           - unless @professionals.empty?
             %ul.looper.professionals.block-grid.three-up.mobile-one-up
               - @professionals.each do |professional|
                 %li= render "professionals/loops/regular", :professional => professional
           - else
             %p.no-records
-              = "No professionals found."
-    - if @locality.nil?
+              =t "no_records.professionals"
+    - if @locality.blank?
       %section.browse-by-taxonomy
         .container
           %h4
-            = "Browse professionals in <em>#{@topic.name.downcase}</em> by location".html_safe
+            =t "professionals.browse.in_taxonomy_by_location", :tax => @topic.name.downcase
           %ul.countries.accordion.compact
             - @all_countries.each do |country|
               %li.country
@@ -51,11 +51,11 @@
     %section#questions
       .container
         %h4
-          = "#{@topic.name} questions"
+          =t "questions.in_taxonomy", :tax => @topic.name
         - unless @questions.empty?
           %ul.looper.questions
             - @questions.each do |question|
               %li= render "questions/shared/loop", :question => question
         - else
           %p.no-records
-            = "No questions found"
+            =t "no_records.questions"
