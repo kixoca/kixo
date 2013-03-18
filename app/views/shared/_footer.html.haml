@@ -4,73 +4,13 @@
       .three.columns
         #about-kixo
           %h5
-            =t :about_kixo_title
+            =t("site.about.title")
           %p
-            =t :about_kixo_description
+            =t("site.about.description")
       .nine.columns
-        %ul.browse_by.tabs.pill
-          %li.active
-            %a.active{:href => "#browse_by_category"}
-              =t("browse_by_category")
-          %li
-            %a{:href => "#browse_by_location"}
-              =t("browse_by_location")
-        %ul.browse_by.tabs-content
-          %li#browse_by_categoryTab.active
-            .two.columns
-              %ul.categories.tabs.pill.vertical-pill
-                - @all_categories.each do |category|
-                  %li
-                    %a.category{:href => "##{category.name.parameterize}"}
-                      = category.name
-            .ten.columns
-              %ul.tabs-content
-                - @all_categories.each do |category|
-                  %li{:id => "#{category.name.parameterize}Tab"}
-                    %h3
-                      = "#{category.name} Topics"
-                    %ul.topics.block-grid.three-up
-                      - category.topics.each do |topic|
-                        %li
-                          %a.topic{:href => category_topic_path(category, topic)}
-                            = topic.name
-                    %h3
-                      = "#{category.name} Professions"
-                    %ul.professions.block-grid.three-up
-                      - category.professions.each do |profession|
-                        %li
-                          %a.profession{:href => category_profession_path(category, profession)}
-                            = profession.name
-          %li#browse_by_locationTab
-            .two.columns
-              %ul.countries.tabs.pill.vertical-pill
-                - @all_countries.each do |country|
-                  %li.active
-                    %a.country{:href => "##{country.name.parameterize}"}
-                      = country.name
-            .two.columns
-              %ul.tabs-content
-                - @all_countries.each do |country|
-                  %li.active{:id => "#{country.name.parameterize}Tab"}
-                    %ul.regions.tabs.pill.vertical-pill
-                      - country.regions.each do |region|
-                        %li
-                          %a.region{:href => "##{region.name.parameterize}"}
-                            = region.name
-            .eight.columns
-              %ul.tabs-content
-                - @all_countries.each do |country|
-                  - country.regions.each do |region|
-                    %li{:id => "#{region.name.parameterize}Tab"}
-                      %h3 Most populated
-                      %ul.localities.block-grid.three-up
-                        - region.localities.most_populated(12).each do |locality|
-                          %li
-                            %a.locality{:href => country_region_locality_path(country, region, locality)}
-                              = locality.name
-                      %h3 All
-                      %ul.localities.block-grid.three-up
-                        - region.localities.each do |locality|
-                          %li
-                            %a.locality{:href => country_region_locality_path(country, region, locality)}
-                              = locality.name
+        #browse_by_category
+          %h5
+            =t("browse_by.category")
+          %ul.categories.block-grid.four-up
+            - @all_categories.each do |category|
+              %li= link_to category.name, category_path(category)

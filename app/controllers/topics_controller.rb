@@ -7,7 +7,7 @@ class TopicsController < ApplicationController
     @humanized_topics = @topics.map {|topic| {:id => topic.id, :name => topic.name}}
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @humanized_topics }
       format.xml  { render :xml => @humanized_topics }
     end
@@ -25,7 +25,7 @@ class TopicsController < ApplicationController
     end
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @topic }
       format.xml  { render :xml => @topic }
     end

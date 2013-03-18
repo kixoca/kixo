@@ -4,21 +4,28 @@
       %header
         .container
           %h2
-            = "Recent questions"
+            =t("questions.recent.title")
           %dl.sub-nav.filter
             %dd{:class => (params[:filter].blank? or params[:filter] == "all") ? "active" : ""}
-              %a{:href => "?filter=all"} All
-            %dd{:class => params[:filter] == "mine" ? "active" : ""}
-              %a{:href => "?filter=mine"} My questions
-            - if current_user and current_user.is_a_professional?
+              %a{:href => "?filter=all"}
+                =t("questions.filters.all")
+            - if user_signed_in?
+              %dd{:class => params[:filter] == "mine" ? "active" : ""}
+                %a{:href => "?filter=mine"}
+                  =t("questions.filters.mine")
+            - if user_signed_in? and current_user.is_a_professional?
               %dd{:class => params[:filter] == "for_me" ? "active" : ""}
-                %a{:href => "?filter=for_me"} For me
+                %a{:href => "?filter=for_me"}
+                  =t("questions.filters.for_me")
             %dd{:class => params[:filter] == "most_popular" ? "active" : ""}
-              %a{:href => "?filter=most_popular"} Most Popular
+              %a{:href => "?filter=most_popular"}
+                =t("questions.filters.most_popular")
             %dd{:class => params[:filter] == "answered" ? "active" : ""}
-              %a{:href => "?filter=answered"} Answered
+              %a{:href => "?filter=answered"}
+                =t("questions.filters.answered")
             %dd{:class => params[:filter] == "unanswered" ? "active" : ""}
-              %a{:href => "?filter=unanswered"} Unanswered
+              %a{:href => "?filter=unanswered"}
+                =t("questions.filters.unanswered")
       %section
         .container
           - unless @questions.blank?
@@ -27,17 +34,17 @@
                 %li= render "questions/shared/loop", :question => question
           - else
             %p.no-records
-              = "No questions found."
+              =t("no_records.questions")
   .four.columns
     %aside#sidebar
       .panel
         %h5
-          = "Top Contributors"
+          =t("professionals.contributors.top.title")
         - unless @top_contributors.blank?
           %ul.looper.tight.professionals.top-contributors
             - @top_contributors.each do |professional|
               %li= render "professionals/loops/minimal", :professional => professional
         - else
           %p.no-records
-            = "No professionals found."
+            =t("no_records.professionals")
       = render "shared/ads"

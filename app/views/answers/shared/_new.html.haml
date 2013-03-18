@@ -1,22 +1,22 @@
 %h5
-  = "Answer this question"
+  =t "answers.answer.cta"
 - if user_signed_in?
   - if current_user.can_answer?(question)
     = form_for [question, question.answers.new] do |f|
       = f.hidden_field :question_id, :value => question.id
       = f.text_area :details, :rows => 6
-      = f.submit "Post Answer", :class => "button small"
+      = f.submit t("answers.answer.form.submit"), :class => "button small"
   - else
     - if current_user.is_a_professional?
       - if !(current_user.answers & question.answers).empty?
         %p.access-denied
-          = "You have already answered this question."
+          =t "answers.answer.access_denied.already_answered"
       - else
         %p.access-denied
-          = "You are not allowed to answer this question."
+          =t "answers.answer.access_denied.not_allowed"
     - else
       %p.access-denied
-        = "You must be a professional to answer questions."
+        =t "answers.answer.access_denied.not_a_professional"
 - else
   %p.access-denied
-    = "You must be a signed in professional to answer questions."
+    =t "answers.answer.access_denied.not_signed_in"

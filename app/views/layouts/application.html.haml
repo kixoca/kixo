@@ -4,7 +4,7 @@
   %head
 
     %title
-      =t :site_title
+      =t "site.title"
 
     = tag :meta, :name => "viewport",   :content => "width=device-width, initial-scale=1.0"
     = tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY
@@ -34,10 +34,8 @@
           .row
             .eight.columns.centered.mobile-twelve
               %ul.block-grid.four-up
-                - Locale.all.each do |loc|
-                  %li
-                    %a{:href => url_for(:locale => loc.code)}
-                      = loc.name
+                - @all_locales.each do |loc|
+                  %li= link_to loc.name, url_for(:locale => loc.code)
 
       %section#head
         .container
@@ -45,8 +43,8 @@
 
             .six.columns
 
-              %a.brand{:href => "/"}
-                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t(:logo_alt)}
+              = link_to "/", :class => "brand" do
+                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t("layout.logo.alt")}
 
               #language
                 %a.toggle.slide{:href => "#language-select"}
@@ -66,35 +64,94 @@
                     - else
                       = current_user.name.blank? ? current_user.email : current_user.name
                   #signout.pull-right
-                    = link_to destroy_user_session_path, :class => "has-tip no-style", :title => "Sign out", :method => :delete do
+                    = link_to destroy_user_session_path, :class => "has-tip no-style", :title => t("layout.account.sign_out"), :method => :delete do
                       %i.icon-signout
                   #settings.pull-right
-                    = link_to edit_user_registration_path, :class => "has-tip no-style", :title => "Settings" do
+                    = link_to edit_user_registration_path, :class => "has-tip no-style", :title => t("layout.account.settings") do
                       %i.icon-cog
                   #messages.pull-right
-                    = link_to conversations_path, :class => "has-tip no-style", :title => "Messages" do
+                    = link_to conversations_path, :class => "has-tip no-style", :title => t("layout.account.messages") do
                       %i.icon-envelope
                       - if current_user.messages.unread.count > 0
-                        .count
-                          = current_user.messages.unread.count
+                        .count= current_user.messages.unread.count
                   #notifications.pull-right
-                    = link_to notifications_path, :class => "has-tip no-style", :title => "Notifications" do
+                    = link_to notifications_path, :class => "has-tip no-style", :title => t("layout.account.notifications") do
                       %i.icon-bell
                       - if current_user.notifications.unseen.count > 0
-                        .count
-                          = current_user.notifications.unseen.count
+                        .count= current_user.notifications.unseen.count
 
                 - else
                   #login.pull-right
                     %ul.button-group
                       %li
                         %a.button.secondary.small{:href => "#", :data => {"reveal-id" => "new_session"}}
-                          =t("sign_in")
+                          =t "layout.account.sign_in"
                       %li
                         %a.button.secondary.small{:href => new_user_registration_path}
-                          =t("sign_up")
+                          =t "layout.account.sign_up"
 
-      = render "shared/actions"
+      %section#actions
+        #actions-tabs
+          .container
+            .row
+              .twelve.columns
+                %dl.tabs.two-up
+                  %dd{:class => @current_action_tab == "ask" ? "active" : ""}
+                    %a{:href => "#ask"}
+                      .hide-for-small
+                        %i.icon-question-sign
+                        %span
+                          =t "layout.actions.ask.tab_name"
+                      .show-for-small
+                        %i.icon-question-sign
+                      .arrow
+                  %dd{:class => @current_action_tab == "search" ? "active" : ""}
+                    %a{:href => "#search"}
+                      .hide-for-small
+                        %i.icon-search
+                        %span
+                          =t "layout.actions.search.tab_name"
+                      .show-for-small
+                        %i.icon-search
+                      .arrow
+        #actions-tabs-content
+          %ul.tabs-content
+            %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}
+              .row
+                .three.columns.text-center
+                  %img{:src => "/assets/banner_ask_char.png", :width => 250, :height => 160}
+                .nine.columns
+                  .container
+                    %hgroup
+                      %h2
+                        =t "layout.actions.ask.title"
+                      %h3.subheader
+                        =t "layout.actions.ask.subtitle"
+                    = form_tag new_question_path, :method => "get" do
+                      .row
+                        .ten.columns
+                          = text_field_tag "question[title]", nil, :placeholder => t("layout.actions.ask.placeholder"), :class => "oversize"
+                        .two.columns
+                          = submit_tag t("layout.actions.ask.button"), :class => "radius button expand postfix"
+            %li#searchTab{:class => @current_action_tab == "search" ? "active" : ""}
+              .row
+                .three.columns.text-center
+                  %img{:src => "/assets/banner_search_char.png", :width => 250, :height => 160}
+                .nine.columns
+                  .container
+                    %hgroup
+                      %h2
+                        =t "layout.actions.search.title"
+                      %h3.subheader
+                        =t "layout.actions.search.subtitle"
+                    = form_tag search_professionals_path, :method => "get" do
+                      .row
+                        .six.columns
+                          = text_field_tag "what", @what, :placeholder => t("layout.actions.search.placeholders.what"), :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/whats.json"}
+                        .four.columns
+                          = text_field_tag "where", @where, :placeholder => t("layout.actions.search.placeholders.where"), :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/wheres.json"}
+                        .two.columns
+                          = submit_tag t("layout.actions.search.button"), :class => "radius button expand postfix"
 
     %section#content
       .container

@@ -6,7 +6,7 @@
           %h1
             = @locality.name
           %h3.subheader
-            = "Find, ask and consult professionals in #{@locality.name}"
+            =t "taxonomy.find_ask_consult_in", :tax => @locality.name
       .eight.columns
         %section.browse-by-taxonomy
           .container
@@ -20,26 +20,27 @@
                     %ul
                       %li
                         %h5.topics-title
-                          = "Topics"
+                          =t "topics.title"
                         %ul.topics.block-grid.three-up
                           - category.topics.each do |topic|
                             %li.topic
-                              %a.topic-name{:href => locality_topic_path(@locality, topic), :title => "#{topic.name} in #{@locality.name}, #{@region.name}"}
-                                = topic.name
+                              = link_to topic.name, locality_topic_path(@locality, topic), :class => "topic-name", :title => "#{topic.name} in #{@locality.name}, #{@region.name}"
                       %li
                         %h5.professions-title
-                          = "Professions"
+                          =t "professions.title"
                         %ul.professions.block-grid.three-up
                           - category.professions.each do |profession|
                             %li.profession
-                              %a.profession-name{:href => locality_profession_path(@locality, profession), :title => "#{profession.name} in #{@locality.name}, #{@region.name}"}
-                                = profession.name
+                              = link_to profession.name, locality_profession_path(@locality, profession), :class => "profession-name", :title => "#{profession.name} in #{@locality.name}, #{@region.name}"
       .four.columns
         %section
           .panel
             %h5
-              = "Top-rated professionals in #{@locality.name}"
+              =t "professionals.top_rated.in_locality", :locality => @locality.name
             - unless @professionals.empty?
               %ul.looper.professionals.top-rated-professionals
                 - @professionals.each do |professional|
                   %li= render "professionals/loops/minimal", :professional => professional
+            - else
+              %p.no-records
+                =t "no_records.professionals"

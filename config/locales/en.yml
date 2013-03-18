@@ -1,21 +1,90 @@
 en:
-  site_title: "Kixo"
-  logo_alt: "Kixo"
-  tagline: "&laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;"
-  sign_in: "Sign in"
-  sign_up: "Sign up"
-  sign_out: "Sign out"
-  action_ask: "Ask"
-  action_search: "Search"
-  action_consult: "Consult"
-  about_kixo_title: "What is Kixo?"
-  about_kixo_description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
-  browse_by_topic: "Browse by Topic"
-  browse_by_profession: "Browse by Profession"
-  browse_by_location: "Browse by Location"
-  hero_title: "A network of professionals at your service"
-  hero_subtitle: "Connect with lawyers, doctors, accountants, advisors and other experts!"
-  question_placeholder: "Type your question here..."
+  site:
+    title: "Kixo"
+    about:
+      title: "What is Kixo?"
+      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
+  layout:
+    logo:
+      alt: "Kixo"
+    tagline: "&laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;"
+    account:
+      sign_in: "Sign in"
+      sign_up: "Sign up"
+      sign_out: "Sign out"
+      settings: "Settings"
+      messages: "Messages"
+      notifications: "Notifications"
+    actions:
+      ask:
+        tab_name: "Ask"
+        title: "Ask professionals"
+        subtitle: "Get free advice from experienced professionals!"
+        placeholder: "Type your question here..."
+        button: "Ask"
+      search:
+        tab_name: "Search"
+        title: "Search professionals"
+        subtitle: "Find top-rated professionals near you!"
+        placeholders:
+          what: "What?"
+          where: "Where?"
+        button: "Search"
+  browse_by:
+    category: "Browse by Category"
+    topic: "Browse by Topic"
+    profession: "Browse by Profession"
+    location: "Browse by Location"
+  no_records:
+    professionals: "No professionals found."
+    questions: "No questions found."
+    categories: "No categories found."
+    topics: "No topics found."
+    professions: "No professions found."
+    countries: "No countries found."
+    regions: "No regions found."
+    localities: "No localities found."
+    reviews: "No reviews found."
+    guides: "No guides found."
+  questions:
+    title: "Questions"
+    recent:
+      title: "Recent Questions"
+    filters:
+      all: "All"
+      mine: "My questions"
+      for_me: "For me"
+      most_popular: "Most popular"
+      answered: "Answered"
+      unanswered: "Unanswered"
+  answers:
+    title: "Answers"
+    answer:
+      cta: "Answer this question"
+      form:
+        submit: "Post Answer"
+      access_denied:
+        already_answered: "You have already answered this question."
+        not_allowed: "You are not allowed to answer this question."
+        not_a_professional:  "You must be a professional to answer questions."
+        not_signed_in: "You must be a signed in professional to answer questions."
+  professionals:
+    title: "Professionals"
+    contributors:
+      top:
+        title: "Top Contributors"
+    top_rated:
+      in_locality: "Top-rated professionals in %{locality}"
+  categories:
+    title: "Categories"
+  topics:
+    title: "Topics"
+  professions:
+    title: "Professions"
+  taxonomy:
+    in_taxonomy: "%{tax_1} in %{tax_2}"
+    count_in_taxonomy: "%{count} %{tax_1} in %{tax_2}"
+    find_ask_consult_in: "Find, ask and consult professionals in %{tax}"
   beta:
     cta: "Pre-signup for the beta and get early access!"
     email_placeholder: "Your email..."

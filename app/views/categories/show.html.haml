@@ -1,0 +1,47 @@
+.row
+  .twelve.columns
+    %h1
+      = @category.name
+    - if @category.description
+      %p.description
+        = @category.description
+    %hr
+  .eight.columns
+    %section#browse-by-taxonomy
+      .container
+        %h5.topics-title
+          =t("topics.title")
+        %ul.topics.block-grid.three-up
+          - @category.topics.each do |topic|
+            %li.topic
+              = link_to topic.name, category_topic_path(@category, topic), :class => "topic-name", :title => "#{@category.name} / #{topic.name}"
+        %h5.professions-title
+          =t("professions.title")
+        %ul.professions.block-grid.three-up
+          - @category.professions.each do |profession|
+            %li.profession
+              = link_to profession.name, category_profession_path(@category, profession), :class => "profession-name", :title => "#{@category.name} / #{profession.name}"
+    - unless @professionals.empty?
+      %section
+        .container
+          %h4
+            =t "taxonomy.count_in_taxonomy", :count => @professionals.count, :tax_1 => t("professionals.title").downcase, :tax_2 => @category.name.downcase
+          - unless @professionals.blank?
+            %ul.looper.professionals.block-grid.three-up.mobile-one-up
+              - @professionals.each do |professional|
+                %li= render "professionals/loops/regular", :professional => professional
+          - else
+            %p.no-records
+              =t "no_records.professionals"
+  .four.columns
+    %section#questions
+      .container
+        %h4
+          =t "taxonomy.in_taxonomy", :tax_1 => t("questions.title"), :tax_2 => @category.name.downcase
+        - unless @questions.empty?
+          %ul.looper.questions
+            - @questions.each do |question|
+              %li= render "questions/shared/loop", :question => question
+        - else
+          %p.no-records
+            =t "no_records.questions"
