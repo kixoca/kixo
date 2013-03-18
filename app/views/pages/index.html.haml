@@ -33,7 +33,11 @@
       .panel
         %h5
           = "Top Contributors"
-        %ul.looper.tight.professionals.top-contributors
-          - @top_contributors.each do |professional|
-            %li= render "professionals/loops/minimal", :professional => professional
+        - unless @top_contributors.blank?
+          %ul.looper.tight.professionals.top-contributors
+            - @top_contributors.each do |professional|
+              %li= render "professionals/loops/minimal", :professional => professional
+        - else
+          %p.no-records
+            = "No professionals found."
       = render "shared/ads"
