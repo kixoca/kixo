@@ -359,6 +359,110 @@ category = Category.create()
     profession_name = ProfessionName.create(:name => "Real Estate Broker", :locale => en, :profession => profession)
     profession_name = ProfessionName.create(:name => "Courtier immobilier", :locale => fr, :profession => profession)
 
+category = Category.create()
+  category_name = CategoryName.create(:name => "Marketing and Advertising", :locale => en, :category => category)
+  category_name = CategoryName.create(:name => "Marketing et publicité", :locale => fr, :category => category)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Advertising", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Publicité", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Branding", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Image de marque", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Direct Marketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Marketing direct", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Event Marketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Marketing événementiel", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Internet Marketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Marketing Internet", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Market Research", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Étude de marché", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Promotional Items", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Articles promotionnels", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Public Relations", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Relations publiques", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Relationship Marketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Marketing relationnel", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Strategic Marketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Marketing stratégique", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Telemarketing", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Télémarketing", :locale => fr, :topic => topic)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Consultant", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Consultant", :locale => fr, :profession => profession)
+
+category = Category.create()
+  category_name = CategoryName.create(:name => "Real Estate", :locale => en, :category => category)
+  category_name = CategoryName.create(:name => "Immobilier", :locale => fr, :category => category)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Agricultural Real Estate", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Immobilier agricole", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Commercial Real Estate", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Immobilier commercial", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Residential Real Estate", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Immobilier résidentiel", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Real Estate Appraisal", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Évaluation immobilière", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Property Management", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Gestion de propriété", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Real Estate Investment", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Investissement immobilier", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Mortages", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Hypothèques", :locale => fr, :topic => topic)
+
+  topic = Topic.create(:category => category)
+    topic_name = TopicName.create(:name => "Inspection", :locale => en, :topic => topic)
+    topic_name = TopicName.create(:name => "Inspection", :locale => fr, :topic => topic)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Real Estate Broker", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Courtier Immobilier", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Inspector", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Inspecteur", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Real Estate Appraiser", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Évaluateur immobilier", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Mortage Broker", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Courtier hypothécaire", :locale => fr, :profession => profession)
+
 # countries, regions, and localities
 Country.destroy_all
   CountryName.destroy_all
