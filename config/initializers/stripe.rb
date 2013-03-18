@@ -1,6 +1,7 @@
 if Rails.env.production?
 
-  # production
+  Stripe.api_key = "sk_live_JTb7y5ACCpO3PP8CfyS3ZwIH"
+  STRIPE_PUBLIC_KEY = "pk_live_2snYGks3tiyn9ogXHIig8mX9"
 
 elsif Rails.env.development?
 
