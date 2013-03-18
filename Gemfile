@@ -25,14 +25,12 @@ gem 'omniauth-facebook'
 gem 'activeadmin'
 gem 'meta_search', '>= 1.1.0.pre'
 
-group :assets do
-  gem 'less-rails',   '~> 2.2.4'
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'compass-rails'
-  gem 'zurb-foundation'
-  gem 'therubyracer'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'less-rails',   '~> 2.2.4'
+gem 'sass-rails',   '~> 3.2.3'
+gem 'compass-rails'
+gem 'zurb-foundation'
+gem 'therubyracer'
+gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 
