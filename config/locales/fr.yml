@@ -2,89 +2,495 @@ fr:
   site:
     title: "Kixo"
     about:
-      title: "What is Kixo?"
+      title: "Qu'est-ce que Kixo?"
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
   layout:
     logo:
       alt: "Kixo"
-    tagline: "&laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;"
-    account:
-      sign_in: "Sign in"
-      sign_up: "Sign up"
-      sign_out: "Sign out"
-      settings: "Settings"
-      messages: "Messages"
-      notifications: "Notifications"
+    tagline: "&laquo; Kixo changera la façon dont vous cherchez, choisissez et consultez vos professionnels &raquo;"
     actions:
       ask:
-        tab_name: "Ask"
-        title: "Ask professionals"
-        subtitle: "Get free advice from experienced professionals!"
-        placeholder: "Type your question here..."
-        button: "Ask"
+        tab_name: "Question"
+        title: "Poser une question aux professionnels"
+        subtitle: "Obtenez des conseils gratuits de professionnels expérimentés !"
+        placeholder: "Entrez votre question ici..."
+        button: "Poser ma question"
       search:
-        tab_name: "Search"
-        title: "Search professionals"
-        subtitle: "Find top-rated professionals near you!"
+        tab_name: "Recherche"
+        title: "Recherchez des professionnels"
+        subtitle: "Trouvez les meilleurs professionnels près de chez vous !"
         placeholders:
-          what: "What?"
-          where: "Where?"
-        button: "Search"
+          what: "Quoi?"
+          where: "Où?"
+        button: "Rechercher"
   browse_by:
-    category: "Browse by Category"
-    topic: "Browse by Topic"
-    profession: "Browse by Profession"
-    location: "Browse by Location"
-  no_records:
-    professionals: "No professionals found."
-    questions: "No questions found."
-    categories: "No categories found."
-    topics: "No topics found."
-    professions: "No professions found."
-    countries: "No countries found."
-    regions: "No regions found."
-    localities: "No localities found."
-    reviews: "No reviews found."
-    guides: "No guides found."
+    category: "Parcourir par catégorie"
+    topic: "Parcourir par sujet"
+    profession: "Parcourir par profession"
+    location: "Parcourir par emplacement"
+  alerts:
+    are_you_sure: "Êtes-vous certain?"
   questions:
-    title: "Questions"
-    recent:
-      title: "Recent Questions"
+    index:
+      title: "Questions"
+      label: "Questions"
+    show:
+      details:
+        title: "Détails de la question"
+      meta:
+        time_ago_in_location: "Posée il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> à <span class='location'>%{location}</span>"
+    new:
+      title: "Poser une question"
+      sections:
+        details:
+          title: "Votre question"
+          subtitle: "Donnez autant d'information que possible pour clarifier votre question."
+        category:
+          title: "Choisissez une catégorie"
+          subtitle: "Sélectionnez une catégorie afin que les bons professionnels vous répondent."
+        account:
+          title: "Enregistrez-vous sur Kixo"
+          subtitle: "Connectez-vous ou inscrivez-vous sur Kixo pour poser votre question"
+          sign_up: "Créer un compte Kixo"
+          sign_in: "J'ai déjà un compte"
+      fields:
+        title:
+          label: "Question"
+          placeholder: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"
+        details:
+          label: "Détails"
+          placeholder: "Donnez plus détails et d'informations..."
+        is_private:
+          label: "Faire ma question privée"
+        new_user_email:
+          label: "Courriel"
+        new_user_password:
+          label: "Mot de passe"
+        new_user_password_confirmation:
+          label: "Confirmation du mot de passe"
+        user_email:
+          label: "Courriel"
+        user_password:
+          label: "Mot de passe"
+      submit: "Poser ma question"
+      tips:
+        title: "Conseils !"
+        content: "Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum."
+    count:
+      zero: "Aucune question trouvée"
+      one: "1 question trouvée"
+      other: "%{count} questions trouvée"
+    count_in_taxonomy:
+      zero: "Aucune question en %{taxonomy}"
+      one: "1 question en %{taxonomy}"
+      other: "%{count} questions en %{taxonomy}"
+    count_in_locality:
+      zero: "Aucune question à %{locality}"
+      one: "1 question à %{locality}"
+      other: "%{count} questions à %{locality}"
+    count_in_taxonomy_and_locality:
+      zero: "Aucune question en %{taxonomy} à %{locality}"
+      one: "1 question en %{taxonomy} à %{locality}"
+      other: "%{count} questions en %{taxonomy} à %{locality}"
     filters:
-      all: "All"
-      mine: "My questions"
-      for_me: "For me"
-      most_popular: "Most popular"
-      answered: "Answered"
-      unanswered: "Unanswered"
+      all: "Toutes"
+      mine: "Mes questions"
+      for_me: "Pour moi"
+      most_popular: "Les plus populaires"
+      answered: "Répondues"
+      unanswered: "Non répondues"
+    recent:
+      title: "Questions récentes"
+    in_taxonomy:
+      title: "Questions en %{taxonomy}"
+      count:
+        zero: "Aucune question en %{taxonomy}"
+        one: "1 question en %{taxonomy}"
+        other: "%{count} questions en %{taxonomy}"
   answers:
-    title: "Answers"
-    answer:
-      cta: "Answer this question"
-      form:
-        submit: "Post Answer"
-      access_denied:
-        already_answered: "You have already answered this question."
-        not_allowed: "You are not allowed to answer this question."
-        not_a_professional:  "You must be a professional to answer questions."
-        not_signed_in: "You must be a signed in professional to answer questions."
+    index:
+      title: "Réponses"
+    delete:
+      title: "Supprimer la réponse"
+      confirm: "Êtes-vous certain de vouloir supprimer cette réponse ?"
+    new:
+      title: "Répondez à cette question"
+      submit: "Publier ma réponse"
+      errors:
+        already_answered: "Vous avez déjà répondu à cette question."
+        not_allowed: "Vous n'êtes pas autorisé à répondre à cette question."
+        not_a_professional:  "Vous devez être un professionnel pour répondre aux questions."
+        not_signed_in: "Vous devez être un professionnel connecté pour répondre aux questions."
+    count:
+      zero: "Aucune réponse trouvée"
+      one: "1 réponse trouvée"
+      other: "%{count} réponses trouvées"
   professionals:
-    title: "Professionals"
-    contributors:
-      top:
-        title: "Top Contributors"
+    index:
+      title: "Professionnels"
+    search:
+      title: "Résultats de recherche"
+      count:
+        zero: "No professionals found for %{what} in %{where}"
+        one: "1 professionals found for %{what} in %{where}"
+        other: "%{count} professionals found for %{what} in %{where}"
+      no_records: "Sorry, we could not find any professionals for your search query."
+    show:
+      whois: "%{locality} %{professions} specializing in %{topics}"
+      about: "About %{name}"
+      send_message: "Send a private message"
+    count:
+      zero: "No professionals found"
+      one: "1 professional found"
+      other: "%{count} professionals found"
+    count_in_taxonomy:
+      zero: "No professionals in %{taxonomy}"
+      one: "1 professional in %{taxonomy}"
+      other: "%{count} professionals in %{taxonomy}"
+    count_in_locality:
+      zero: "No professionals in %{locality}"
+      one: "1 professional in %{locality}"
+      other: "%{count} professionals in %{locality}"
+    count_in_taxonomy_and_locality:
+      zero: "No professionals in %{taxonomy} found in %{locality}"
+      one: "1 professional in %{taxonomy} found in %{locality}"
+      other: "%{count} professionals in %{taxonomy} found in %{locality}"
+    reviews:
+      count:
+        zero: "There are no reviews for %{name} yet"
+        one: "There is one review for %{name}"
+        other: "There are %{count} reviews for %{name}"
+    guides:
+      count:
+        zero: "%{name} has not written any guides yet"
+        one: "%{name} has written one guide"
+        other: "%{name} has written %{count} guides"
+    top_contributors:
+      title: "Top Contributors"
+      count:
+        zero: "No top contributors found"
+        one: "1 top contributor found"
+        other: "%{count} top contributors found"
     top_rated:
-      in_locality: "Top-rated professionals in %{locality}"
+      in_taxonomy:
+        title: "Top-rated professionals in %{taxonomy}"
+        count:
+          zero: "No top-rated professionals in %{taxonomy}"
+          one: "1 top-rated professional in %{taxonomy}"
+          other: "%{count} top-rated professionals in %{taxonomy}"
+      in_locality:
+        title: "Top-rated professionals in %{locality}"
+        count:
+          zero: "No top-rated professionals in %{locality}"
+          one: "1 top-rated professional in %{locality}"
+          other: "%{count} top-rated professionals in %{locality}"
+    related:
+      title: "Related professionals"
+      count:
+        zero: "No related professionals found"
+        one: "1 related professional found"
+        other: "%{count} related professionals found"
+    similar:
+      title: "Similar professionals"
+      count:
+        zero: "No similar professionals found"
+        one: "1 similar professional found"
+        other: "%{count} similar professionals found"
+    browse:
+      in_taxonomy: "Browse professionals in %{taxonomy}"
+      in_taxonomy_by_location: "Browse professionals in %{taxonomy} by location"
+    metrics:
+      points: "points"
+      answers: "answers"
+      reviews: "reviews"
+  conversations:
+    index:
+      title: "Messages"
+      label: "Messages"
+    inbox:
+      label: "Inbox"
+      empty: "Hooray! Your inbox is empty."
+    count:
+      zero: "No conversations found"
+      one: "1 conversation found"
+      other: "%{count} conversations found"
+  messages:
+    index:
+      title: "Messages"
+    new:
+      label: "New message"
+      title: "New Message"
+      subtitle: "Compose a private message"
+      submit: "Send"
+    reply:
+      title: "Reply"
+      submit: "Reply"
+    count:
+      zero: "No messages found"
+      one: "1 message found"
+      other: "%{count} messages found"
+  notifications:
+    index:
+      title: "Notifications"
+      label: "Notifications"
+  reviews:
+    index:
+      title: "Reviews"
+      label: "Reviews"
+    show:
+      meta:
+        time_ago_by_author: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time> by <span class='author-name'>%{author}</span>"
+    new:
+      title: "Write a review for %{name}"
+      submit: "Post Review"
+    delete:
+      title: "Delete Review"
+      confirm: "Are you sure you want to delete this review?"
+    count:
+      zero: "No reviews found"
+      one: "1 review found"
+      other: "%{count} reviews found"
+    count_for_professional:
+      zero: "No reviews for %{name}"
+      one: "1 review for %{name}"
+      other: "%{count} reviews for %{name}"
+  guides:
+    index:
+      title: "Guides"
+    count:
+      zero: "No guides found"
+      one: "1 guide found"
+      other: "%{count} guides found"
   categories:
-    title: "Categories"
+    index:
+      title: "Categories"
+    count:
+      zero: "No categories found"
+      one: "1 category found"
+      other: "%{count} categories found"
   topics:
-    title: "Topics"
+    index:
+      title: "Topics"
+    count:
+      zero: "No topics found"
+      one: "1 topic found"
+      other: "%{count} topics found"
   professions:
-    title: "Professions"
+    index:
+      title: "Professions"
+    count:
+      zero: "No professions found"
+      one: "1 profession found"
+      other: "%{count} professions found"
   taxonomy:
-    in_taxonomy: "%{tax_1} in %{tax_2}"
-    count_in_taxonomy: "%{count} %{tax_1} in %{tax_2}"
-    find_ask_consult_in: "Find, ask and consult professionals in %{tax}"
+    in_taxonomy: "%{taxonomy_1} in %{taxonomy_2}"
+    browse_by:
+      category: "Browse %{taxonomy} by category"
+      topic: "Browse %{taxonomy} by topic"
+      profession: "Browse %{taxonomy} by profession"
+      location: "Browse %{taxonomy} by location"
+    count_in_taxonomy:
+      zero: "No %{tax_1} in %{tax_2}"
+      other: "%{count} %{tax_1} in %{tax_2}"
+    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
+  users:
+    registrations:
+      edit:
+        title: "Settings"
+        label: "Settings"
+        sections:
+          account:
+            label: "Account"
+            title: "My Account"
+            subtitle: "Change your basic account, password and language setting"
+          email_notifications:
+            label: "Email notifications"
+            title: "Email Notifications"
+            subtitle: "Control when and how often Kixo sends email to you"
+            legend: "Email me when"
+          profile:
+            label: "Profile"
+            title: "Profile"
+            subtitle: "Edit your profile"
+          billing:
+            label: "Billing"
+            title: "Billing"
+            subtitle: "Edit your billing information"
+          categories:
+            label: "Categories"
+            title: "Categories"
+            subtitle: "Select topics and professions"
+            select_topics:
+              legend: "Select topics"
+            select_professions:
+              legend: "Select professions"
+          contact:
+            label: "Contact"
+            title: "Contact Information"
+            subtitle: "Edit your contact information"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          password_confirmation:
+            label: "Password Confirmation"
+          locale:
+            label: "Main Language"
+          locales:
+            label: "Other Languages"
+          notify_of_kixo_news:
+            label: "we release new features and promotions"
+          notifiy_of_partner_news:
+            label: "our partners have offers for you"
+          notify_of_new_messages:
+            label: "you receive a private message"
+          notify_of_answers:
+            label: "someone answers your questions"
+          notify_of_replies:
+            label: "someone replies to your answer"
+          notify_of_similar_questions:
+            label: "someone asks a question similar to yours"
+          name:
+            label: "Name"
+          headshot:
+            label: "Headshot"
+          is_a_professional:
+            label: "I am a professional"
+          bio:
+            label: "Bio"
+        submit: "Update"
+        panels:
+          new_session:
+            title: "Already have an account?"
+            content: "No need to create a new account! Sign in to your existing one."
+      new:
+        title: "Sign Up"
+        label: "Sign up"
+        subtitle: "Create a free account and connect with professionals"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          password_confirmation:
+            label: "Password Confirmation"
+          is_a_professional:
+            label: "I am a professional"
+          name:
+            label: "Name"
+          professions:
+            label: "Profession"
+          submit: "Sign Up"
+      delete:
+        title: "Cancel my account"
+        unhappy: "Unhappy?"
+        confirm: "Are you sure you want to cancel your account?"
+    sessions:
+      new:
+        title: "Sign In"
+        label: "Sign in"
+        subtitle: "Sign in to your existing account"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          remember_me:
+            label: "Remember me?"
+        submit: "Sign in"
+        panels:
+          new_registration:
+            title: "Don't have an account?"
+            content: "You can join for free today and benefit from all the features."
+            label: "Sign up"
+      destroy:
+        title: "Sign Out"
+        label: "Sign out"
+    passwords:
+      new:
+        title: "Reset my password"
+        label: "Reset my password"
+        legend: "Forgot your password?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        fields:
+          password:
+            label: "New password"
+          password_confirmation:
+            label: "Confirm new password"
+        submit: "Change my password"
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        label: "Resend confirmation instructions"
+        legend: "Didn't receive confirmation instructions?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Resend confirmation instructions"
+    unlocks:
+      new:
+        title: "Resend unlock instructions"
+        label: "Resend unlock instructions"
+        legend: "Didn't receive unlock instructions?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Resend unlock instructions"
+    mailer:
+      common:
+        hello: "Hello %{display_name}!"
+      confirmation_instructions:
+        welcome: "Welcome, %{display_name}!"
+        content: "You can confirm your account email through the link below:"
+        label: "Confirm my account"
+      reset_password_instructions:
+        content: "Someone has requested a link to change your password, and you can do this through the link below."
+        label: "Change my password"
+        ps1: "If you didn't request this, please ignore this email."
+        ps2: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        content: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+        legend: "Click the link below to unlock your account:"
+        label: "Unlock my account"
+  cards:
+    new:
+      label: "Add/Edit Credit Card"
+      title: "Credit Card"
+      subtitle: "Add or edit a credit card"
+      fields:
+        card_number:
+          label: "Card Number"
+        card_exp_month:
+          label: "Card Expiration"
+        card_cvc:
+          label: "Security Code (CVC)"
+      submit: "Add/Edit Card"
+  location_selector:
+    fields:
+      country:
+        label: "Country"
+      region:
+        label: "Province/State"
+      locality:
+        label: "City"
+      postal_code:
+        label: "Zip/Postal Code"
+      street_address_1:
+        label: "Street address"
+      street_address_2:
+        label: "Continued"
+  misc:
+    yes: "Yes"
+    no: "No"
+    time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
+    sent_time_ago: "Sent %{time} ago"
+    me: "Me"
   beta:
     cta: "Pre-signup for the beta and get early access!"
     email_placeholder: "Your email..."

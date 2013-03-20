@@ -7,7 +7,7 @@ en:
   layout:
     logo:
       alt: "Kixo"
-    tagline: "&laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;"
+    tagline: "&laquo; kixo will change the way you search, choose and consult professionals &raquo;"
     actions:
       ask:
         tab_name: "Ask"
