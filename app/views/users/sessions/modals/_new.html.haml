@@ -1,18 +1,18 @@
 - unless user_signed_in?
   #new_session.reveal-modal
     %hgroup.hr
-      %h3 Sign In
-      %h4.subheader Sign in to your existing account
+      %h3=t "users.sessions.new.title"
+      %h4.subheader=t "users.sessions.new.subtitle"
     = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
       = devise_error_messages!
-      = f.label :email
+      = f.label :email, t("users.sessions.new.fields.email.label")
       = f.email_field :email
-      = f.label :password
+      = f.label :password, t("users.sessions.new.fields.password.label")
       = f.password_field :password
       - if devise_mapping.rememberable?
         %label
           = f.check_box :remember_me
-          = t(:remember_me)
+          =t "users.sessions.new.fields.remember_me.label"
       .actions
-        = f.submit "Sign in", :class => "submit button"
+        = f.submit t("users.sessions.new.submit"), :class => "submit button"
     %a.close-reveal-modal &#215;

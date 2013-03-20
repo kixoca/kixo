@@ -3,23 +3,23 @@
     %ul.vertical.tabs.white
       %li.active
         %a{:href => "#account"}
-          =t "users.registrations.edit.tabs.account.label"
+          =t "users.registrations.edit.sections.account.label"
       %li
         %a{:href => "#notifications"}
-          =t "users.registrations.edit.tabs.email_notifications.label"
+          =t "users.registrations.edit.sections.email_notifications.label"
       %li
         %a{:href => "#profile"}
-          =t "users.registrations.edit.tabs.profile.label"
+          =t "users.registrations.edit.sections.profile.label"
       %li
         %a{:href => "#billing"}
-          =t "users.registrations.edit.tabs.billing.label"
+          =t "users.registrations.edit.sections.billing.label"
       - if current_user.is_a_professional?
         %li
           %a{:href => "#categories"}
-            =t "users.registrations.edit.tabs.categories.label"
+            =t "users.registrations.edit.sections.categories.label"
       %li
         %a{:href => "#contact"}
-          =t "users.registrations.edit.tabs.contact.label"
+          =t "users.registrations.edit.sections.contact.label"
   .eight.columns
     %ul.tabs-content
       %li#accountTab.active
@@ -28,35 +28,35 @@
             %header
               .container
                 %hgroup
-                  %h1=t "users.registrations.edit.tabs.account.title"
-                  %h4.subheader=t "users.registrations.edit.tabs.account.subtitle"
+                  %h1=t "users.registrations.edit.sections.account.title"
+                  %h4.subheader=t "users.registrations.edit.sections.account.subtitle"
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :email, :class => "inline right"
+                    = f.label :email, t("users.registrations.edit.fields.email.label"), :class => "inline right"
                   .seven.columns.end
                     = f.email_field :email
                 .row
                   .three.columns
-                    = f.label :password, :class => "inline right"
+                    = f.label :password, t("users.registrations.edit.fields.password.label"), :class => "inline right"
                   .seven.columns.end
                     = f.password_field :password, :autocomplete => "off"
                 .row
                   .three.columns
-                    = f.label :password_confirmation, "Confirmation", :class => "inline right"
+                    = f.label :password_confirmation, t("users.registrations.edit.fields.password_confirmation.label"), :class => "inline right"
                   .seven.columns.end
                     = f.password_field :password_confirmation
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :locale_id, "Main language", :class => "inline right"
+                    = f.label :locale_id, t("users.registrations.edit.fields.locale.label"), :class => "inline right"
                   .seven.columns.end
                     = f.select :locale_id, @all_locales.collect {|locale| [locale.name, locale.id]}
                 .row
                   .three.columns
-                    = f.label :locale_ids, "Other languages", :class => "inline right"
+                    = f.label :locale_ids, t("users.registrations.edit.fields.locales.label"), :class => "inline right"
                   .seven.columns.end
                     %ul.block-grid.three-up
                       - @all_locales.each do |locale|
@@ -68,108 +68,107 @@
               .container
                 .row
                   .seven.columns.offset-by-three.end
-                    = f.submit "Update", :class => "submit button"
+                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
             %section
               .container
                 .row
                   .seven.columns.offset-by-three.end
                     %p
-                      = "Unhappy?"
-                      = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
+                      = t("users.registrations.delete.unhappy")
+                      = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
       %li#notificationsTab
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
-                  %h1=t "users.registrations.edit.tabs.email_notifications.title"
-                  %h4.subheader=t "users.registrations.edit.tabs.email_notifications.subtitle"
+                  %h1=t "users.registrations.edit.sections.email_notifications.title"
+                  %h4.subheader=t "users.registrations.edit.sections.email_notifications.subtitle"
             %section
               .container
                 %fieldset
-                  %legend
-                    Email me when
+                  %legend=t "users.registrations.edit.sections.email_notifications.legend"
                   .row
                     .ten.columns
-                      = f.label :notify_of_kixo_news
+                      = f.label :notify_of_kixo_news, t("users.registrations.edit.fields.notify_of_kixo_news.label")
                     .two.columns.text-right
-                      = f.select :notify_of_kixo_news, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_kixo_news, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_partner_news
+                      = f.label :notify_of_partner_news, t("users.registrations.edit.fields.notify_of_partner_news.label")
                     .two.columns.text-right
-                      = f.select :notify_of_partner_news, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_partner_news, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_new_messages
+                      = f.label :notify_of_new_messages, t("users.registrations.edit.fields.notify_of_new_messages.label")
                     .two.columns.text-right
-                      = f.select :notify_of_new_messages, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_new_messages, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_answers
+                      = f.label :notify_of_answers, t("users.registrations.edit.fields.notify_of_answers.label")
                     .two.columns.text-right
-                      = f.select :notify_of_answers, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_answers, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_replies
+                      = f.label :notify_of_replies, t("users.registrations.edit.fields.notify_of_replies.label")
                     .two.columns.text-right
-                      = f.select :notify_of_replies, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_replies, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_similar_questions
+                      = f.label :notify_of_similar_questions, t("users.registrations.edit.fields.notify_of_similar_questions.label")
                     .two.columns.text-right
-                      = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
+                      = f.select :notify_of_similar_questions, [[t("misc.yes"), true], [t("misc.no"), false]]
             %section
               .container
                 .row
                   .twelve.columns
-                    = f.submit "Update", :class => "submit button"
+                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
       %li#profileTab
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
-                  %h1=t "users.registrations.edit.tabs.profile.title"
-                  %h4.subheader=t "users.registrations.edit.tabs.profile.subtitle"
+                  %h1=t "users.registrations.edit.sections.profile.title"
+                  %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :name, :class => "inline right"
+                    = f.label :name, t("users.registrations.edit.fields.name.label") :class => "inline right"
                   .seven.columns.end
                     = f.text_field :name
                 .row
                   .three.columns
-                    = f.label :headshot, :class => "inline right"
+                    = f.label :headshot, t("users.registrations.edit.fields.headshot.label"), :class => "inline right"
                   .seven.columns.end
                     = f.file_field :headshot
                 .row
                   .three.columns
-                    = f.label :is_a_professional, "I am a professional", :class => "inline right"
+                    = f.label :is_a_professional, , t("users.registrations.edit.fields.is_a_professional.label"), :class => "inline right"
                   .two.columns.end
-                    = f.select :is_a_professional, [["Yes", true], ["No", false]]
+                    = f.select :is_a_professional, [[t("misc.yes"), true], [t("misc.no"), false]]
                 .row
                   .three.columns
-                    = f.label :bio, :class => "inline right"
+                    = f.label :bio, t("users.registrations.edit.fields.bio.label"), :class => "inline right"
                   .seven.columns.end
                     = f.text_area :bio, :rows => 5
             %section
               .container
                 .row
                   .seven.columns.offset-by-three.end
-                    = f.submit "Update", :class => "submit button"
+                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
       %li#billingTab
         .page
           %header
             .container
               %hgroup
-                %h1=t "users.registrations.edit.tabs.billing.title"
-                %h4.subheader=t "users.registrations.edit.tabs.billing.subtitle"
+                %h1=t "users.registrations.edit.sections.billing.title"
+                %h4.subheader=t "users.registrations.edit.sections.billing.subtitle"
           %section
             .container
               %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
-                Add/Edit Credit Card
+                =t "cards.new.label"
       - if current_user.is_a_professional?
         %li#categoriesTab
           = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
@@ -177,8 +176,8 @@
               %header
                 .container
                   %hgroup
-                    %h1=t "users.registrations.edit.tabs.categories.title"
-                    %h4.subheader=t "users.registrations.edit.tabs.categories.subtitle"
+                    %h1=t "users.registrations.edit.sections.categories.title"
+                    %h4.subheader=t "users.registrations.edit.sections.categories.subtitle"
               %section
                 .container
                   .row
@@ -190,7 +189,7 @@
                               %h5= category.name
                             .content
                               %fieldset
-                                %legend Select topics
+                                %legend=t "users.registrations.edit.sections.categories.select_topics.legend"
                                 %ul.block-grid.three-up
                                   - category.topics.each do |topic|
                                     %li
@@ -198,7 +197,7 @@
                                         = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
                                         = topic.name
                               %fieldset
-                                %legend Select professions
+                                %legend=t "users.registrations.edit.sections.categories.select_professions.legend"
                                 %ul.block-grid.three-up
                                   - category.professions.each do |profession|
                                     %li
@@ -209,15 +208,15 @@
                 .container
                   .row
                     .twelve.columns
-                      = f.submit "Update", :class => "submit button"
+                      = f.submit t("users.registrations.edit.submit"), :class => "submit button"
       %li#contactTab
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
-                  %h1=t "users.registrations.edit.tabs.contact.title"
-                  %h4.subheader=t "users.registrations.edit.tabs.contact.subtitle"
+                  %h1=t "users.registrations.edit.sections.contact.title"
+                  %h4.subheader=t "users.registrations.edit.sections.contact.subtitle"
             %section
               .container
                 = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
@@ -228,28 +227,28 @@
                     = f.submit "Update", :class => "submit button"
 #create_card.reveal-modal
   %hgroup.hr
-    %h3 Credit Card
-    %h4.subheader Add or edit a credit card
+    %h3=t "cards.new.title"
+    %h4.subheader=t "cards.new.subtitle"
   = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "stripe" } do |f|
     = devise_error_messages!
     .stripe-errors.alert-box.alert.hidden
     = f.hidden_field :card
     .row
       .twelve.columns
-        = label_tag :card_number, "Card Number"
+        = label_tag :card_number, t("cards.new.fields.card_number.label")
         = text_field_tag :card_number, nil, :name => nil
     .row
       .six.columns
-        = label_tag :card_exp_month, "Card Expiration"
+        = label_tag :card_exp_month, t("cards.new.fields.card_exp_month.label")
         .row
           .six.columns
             = select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_exp_month"}
           .six.columns
             = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_exp_year"}
       .six.columns
-        = label_tag :card_cvc, "Security Code (CVC)"
+        = label_tag :card_cvc, t("cards.new.fields.card_cvc.label")
         = text_field_tag :card_cvc, nil, :name => nil
     .row
       .twelve.columns
-        = f.submit "Add/Edit Card", :class => "submit button"
+        = f.submit t("cards.new.submit"), :class => "submit button"
   %a.close-reveal-modal &#215;

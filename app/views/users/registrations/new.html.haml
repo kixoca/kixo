@@ -1,68 +1,58 @@
 .row
   .eight.columns
-
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-
       .page
-
         %header
           .container
             %hgroup
-              %h1 Sign Up
-              %h4.subheader Create a free account and connect with professionals
-
+              %h1=t "users.registrations.new.title"
+              %h4.subheader=t "users.registrations.new.subtitle"
         - unless resource.errors.blank?
           %section.errors
             .container
               = render "/shared/errors", :errors => resource.errors
-
         %section
           .container
             .row
               .three.columns
-                = f.label :email, :class => "inline right"
+                = f.label :email, t("users.registrations.new.fields.email.label"), :class => "inline right"
               .seven.columns.end
                 = f.email_field :email
             .row
               .three.columns
-                = f.label :password, :class => "inline right"
+                = f.label :password, t("users.registrations.new.fields.password.label"), :class => "inline right"
               .seven.columns.end
                 = f.password_field :password
               .three.columns
-                = f.label :password_confirmation, "Confirmation", :class => "inline right"
+                = f.label :password_confirmation, t("users.registrations.new.fields.password_confirmation.label"), :class => "inline right"
               .seven.columns.end
                 = f.password_field :password_confirmation
-
         %section
           .container
             = render "shared/location_selector", :f => f, :street_address => false
-
         %section
           .container
             .row
               .seven.columns.offset-by-three.end
                 %label
                   = check_box_tag "user[is_a_professional]", true, false, :class => "toggle", :data => {:target => "#if_user_is_a_professional"}
-                  I am a professional
-
+                  =t "users.registrations.new.fields.is_a_professional.label"
         %section#if_user_is_a_professional.hidden
           .container
             .row
               .three.columns
-                = f.label :name, :class => "inline right"
+                = f.label :name, t("users.registrations.new.fields.name.label"), :class => "inline right"
               .seven.columns.end
                 = f.text_field :name
             .row
               .three.columns
-                = f.label :professions, "Profession", :class => "inline right"
+                = f.label :professions, t("users.registrations.new.fields.professions.label"), :class => "inline right"
               .seven.columns.end
                 = select_tag "user[profession_ids][]", options_from_collection_for_select(@all_professions, "id", "name"), {:include_blank => true}
-
         %section
           .container
             .row
               .seven.columns.offset-by-three
-                = f.submit "Sign up", :class => "button"
-
+                = f.submit t("users.registrations.new.submit"), :class => "button"
   .four.columns
     = render "users/shared/panels"

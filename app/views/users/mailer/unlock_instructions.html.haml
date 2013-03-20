@@ -1,0 +1,4 @@
+%p= t "users.mailer.common.hello", :display_name => @resource.display_name
+%p= t "users.mailer.unlock_instructions.content"
+%p= t "users.mailer.unlock_instructions.legend"
+%p= link_to t("users.mailer.unlock_instructions.label"), unlock_url(@resource, :unlock_token => @resource.unlock_token)

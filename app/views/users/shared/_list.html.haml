@@ -1,9 +1,0 @@
-.user.list
-  .container
-    .row
-      .four.columns
-        %a.headshot{:href => user_path(user)}
-          = image_tag user.headshot.url(:small)
-      .eight.columns
-        %a.name{:href => user_path(user)}
-          = user.name

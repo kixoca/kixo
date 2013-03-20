@@ -1,0 +1,17 @@
+.row
+  .eight.columns
+    .page
+      %header
+        .container
+          %h1= t "users.unlocks.new.title"
+      %section
+        .container
+          = form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
+            = devise_error_messages!
+            = f.label :email, t("users.unlocks.new.fields.email.label")
+            = f.email_field :email
+            = f.submit t("users.unlocks.new.submit")
+          %hr
+          = render "users/shared/links"
+  .four.columns
+

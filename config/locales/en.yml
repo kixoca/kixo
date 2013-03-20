@@ -8,13 +8,6 @@ en:
     logo:
       alt: "Kixo"
     tagline: "&laquo; kixo will change the way you <u>search</u>, <u>choose</u> and <u>consult</u> professionals &raquo;"
-    account:
-      sign_in: "Sign in"
-      sign_up: "Sign up"
-      sign_out: "Sign out"
-      settings: "Settings"
-      messages: "Messages"
-      notifications: "Notifications"
     actions:
       ask:
         tab_name: "Ask"
@@ -40,6 +33,7 @@ en:
   questions:
     index:
       title: "Questions"
+      label: "Questions"
     show:
       details:
         title: "Question Details"
@@ -211,7 +205,8 @@ en:
       reviews: "reviews"
   conversations:
     index:
-      title: "Conversations"
+      title: "Messages"
+      label: "Messages"
     inbox:
       label: "Inbox"
       empty: "Hooray! Your inbox is empty."
@@ -234,9 +229,14 @@ en:
       zero: "No messages found"
       one: "1 message found"
       other: "%{count} messages found"
+  notifications:
+    index:
+      title: "Notifications"
+      label: "Notifications"
   reviews:
     index:
       title: "Reviews"
+      label: "Reviews"
     show:
       meta:
         time_ago_by_author: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time> by <span class='author-name'>%{author}</span>"
@@ -296,7 +296,9 @@ en:
   users:
     registrations:
       edit:
-        tabs:
+        title: "Settings"
+        label: "Settings"
+        sections:
           account:
             label: "Account"
             title: "My Account"
@@ -305,6 +307,7 @@ en:
             label: "Email notifications"
             title: "Email Notifications"
             subtitle: "Control when and how often Kixo sends email to you"
+            legend: "Email me when"
           profile:
             label: "Profile"
             title: "Profile"
@@ -317,10 +320,157 @@ en:
             label: "Categories"
             title: "Categories"
             subtitle: "Select topics and professions"
+            select_topics:
+              legend: "Select topics"
+            select_professions:
+              legend: "Select professions"
           contact:
             label: "Contact"
             title: "Contact Information"
             subtitle: "Edit your contact information"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          password_confirmation:
+            label: "Password Confirmation"
+          locale:
+            label: "Main Language"
+          locales:
+            label: "Other Languages"
+          notify_of_kixo_news:
+            label: "we release new features and promotions"
+          notifiy_of_partner_news:
+            label: "our partners have offers for you"
+          notify_of_new_messages:
+            label: "you receive a private message"
+          notify_of_answers:
+            label: "someone answers your questions"
+          notify_of_replies:
+            label: "someone replies to your answer"
+          notify_of_similar_questions:
+            label: "someone asks a question similar to yours"
+          name:
+            label: "Name"
+          headshot:
+            label: "Headshot"
+          is_a_professional:
+            label: "I am a professional"
+          bio:
+            label: "Bio"
+        submit: "Update"
+        panels:
+          new_session:
+            title: "Already have an account?"
+            content: "No need to create a new account! Sign in to your existing one."
+      new:
+        title: "Sign Up"
+        label: "Sign up"
+        subtitle: "Create a free account and connect with professionals"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          password_confirmation:
+            label: "Password Confirmation"
+          is_a_professional:
+            label: "I am a professional"
+          name:
+            label: "Name"
+          professions:
+            label: "Profession"
+          submit: "Sign Up"
+      delete:
+        title: "Cancel my account"
+        unhappy: "Unhappy?"
+        confirm: "Are you sure you want to cancel your account?"
+    sessions:
+      new:
+        title: "Sign In"
+        label: "Sign in"
+        subtitle: "Sign in to your existing account"
+        fields:
+          email:
+            label: "Email"
+          password:
+            label: "Password"
+          remember_me:
+            label: "Remember me?"
+        submit: "Sign in"
+        panels:
+          new_registration:
+            title: "Don't have an account?"
+            content: "You can join for free today and benefit from all the features."
+            label: "Sign up"
+      destroy:
+        title: "Sign Out"
+        label: "Sign out"
+    passwords:
+      new:
+        title: "Reset my password"
+        label: "Reset my password"
+        legend: "Forgot your password?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Send me reset password instructions"
+      edit:
+        title: "Change your password"
+        fields:
+          password:
+            label: "New password"
+          password_confirmation:
+            label: "Confirm new password"
+        submit: "Change my password"
+    confirmations:
+      new:
+        title: "Resend confirmation instructions"
+        label: "Resend confirmation instructions"
+        legend: "Didn't receive confirmation instructions?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Resend confirmation instructions"
+    unlocks:
+      new:
+        title: "Resend unlock instructions"
+        label: "Resend unlock instructions"
+        legend: "Didn't receive unlock instructions?"
+        fields:
+          email:
+            label: "Email"
+        submit: "Resend unlock instructions"
+    mailer:
+      common:
+        hello: "Hello %{display_name}!"
+      confirmation_instructions:
+        welcome: "Welcome, %{display_name}!"
+        content: "You can confirm your account email through the link below:"
+        label: "Confirm my account"
+      reset_password_instructions:
+        content: "Someone has requested a link to change your password, and you can do this through the link below."
+        label: "Change my password"
+        ps1: "If you didn't request this, please ignore this email."
+        ps2: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        content: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+        legend: "Click the link below to unlock your account:"
+        label: "Unlock my account"
+  cards:
+    new:
+      label: "Add/Edit Credit Card"
+      title: "Credit Card"
+      subtitle: "Add or edit a credit card"
+      fields:
+        card_number:
+          label: "Card Number"
+        card_exp_month:
+          label: "Card Expiration"
+        card_cvc:
+          label: "Security Code (CVC)"
+      submit: "Add/Edit Card"
   location_selector:
     fields:
       country:
@@ -336,6 +486,8 @@ en:
       street_address_2:
         label: "Continued"
   misc:
+    yes: "Yes"
+    no: "No"
     time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
     sent_time_ago: "Sent %{time} ago"
     me: "Me"

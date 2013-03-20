@@ -1,0 +1,20 @@
+.row
+  .eight.columns
+    .page
+      %header
+        .container
+          %h1= t "users.passwords.edit.title"
+      %section
+        .container
+          = form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f|
+            = devise_error_messages!
+            = f.hidden_field :reset_password_token
+            = f.label :password, t("users.passwords.edit.fields.password.label")
+            = f.password_field :password
+            = f.label :password_confirmation, t("users.passwords.edit.fields.password_confirmation.label")
+            = f.password_field :password_confirmation
+            = f.submit t("users.passwords.edit.submit"), :class => "button submit"
+          %hr
+          = render "users/shared/links"
+  .four.columns
+
