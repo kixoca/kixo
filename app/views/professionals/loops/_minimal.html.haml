@@ -4,11 +4,9 @@
       .row
         .three.columns
           = link_to professional_path(professional) do
-            .headshot-2.thumb{:style => "background-image: url(#{professional.headshot.url(:thumb)});"}
-            =# image_tag professional.headshot.url(:thumb), :class => "headshot"
+            = image_tag professional.headshot.url(:thumb), :class => "headshot"
         .nine.columns
-          = link_to professional_path(professional), :class => "name" do
-            = professional.name
+          = link_to professional.name, professional_path(professional), :class => "name"
           .whois
             %span.professions
               = professional.professions_list

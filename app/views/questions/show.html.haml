@@ -6,10 +6,7 @@
           %h1.title
             = @question.title
           %p.meta
-            %time.created_at{:datetime => @question.created_at}
-              = "Asked #{time_ago_in_words(@question.created_at)} ago"
-            %span.location
-              = "in #{@author.short_address}"
+            =t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
           %ul.tags.green-tags.topics
             - @topics.each do |topic|
               %li= link_to topic.name, category_topic_path(topic.category, topic)
@@ -17,30 +14,29 @@
         %section#details
           .container
             %h5.section-title
-              = "Question Details"
+              =t "questions.show.details.title"
             = simple_format(@question.details)
       %section#answers
         .container
-          %h3
-            = "Answers"
+          %h3.section-title
+            =t "answers.index.title"
           - unless @answers.blank?
             %ul.looper.answers
               - @answers.each do |answer|
                 %li= render "answers/shared/loop", :answer => answer
           - else
             %p.no-records
-              = "No answers yet."
+              =t "answers.count.zero"
       %section#answer
         .container
           = render "answers/shared/new", :question => @question
   .four.columns
     .panel
-      %h5
-        = "Related professionals"
+      %h5=t "professionals.related.title"
       - unless @related_professionals.blank?
         %ul.looper.professionals.related-professionals
           - @related_professionals.each do |professional|
             %li= render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
-          = "No related professionals found."
+          =t "professionals.related.count.zero"

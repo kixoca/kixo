@@ -1,22 +1,22 @@
 %h5
-  =t "answers.answer.cta"
+  =t "answers.new.title"
 - if user_signed_in?
   - if current_user.can_answer?(question)
     = form_for [question, question.answers.new] do |f|
       = f.hidden_field :question_id, :value => question.id
       = f.text_area :details, :rows => 6
-      = f.submit t("answers.answer.form.submit"), :class => "button small"
+      = f.submit t("answers.new.submit"), :class => "button small"
   - else
     - if current_user.is_a_professional?
       - if !(current_user.answers & question.answers).empty?
         %p.access-denied
-          =t "answers.answer.access_denied.already_answered"
+          =t "answers.new.errors.already_answered"
       - else
         %p.access-denied
-          =t "answers.answer.access_denied.not_allowed"
+          =t "answers.new.errors.not_allowed"
     - else
       %p.access-denied
-        =t "answers.answer.access_denied.not_a_professional"
+        =t "answers.new.errors.not_a_professional"
 - else
   %p.access-denied
-    =t "answers.answer.access_denied.not_signed_in"
+    =t "answers.new.errors.not_signed_in"

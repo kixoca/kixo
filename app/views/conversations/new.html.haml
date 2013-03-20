@@ -1,17 +1,19 @@
 .row
   .two.columns
     %ul.side-nav
-      %li= link_to "Inbox", conversations_path
+      %li= link_to t("conversations.inbox.label"), conversations_path
       %li.divider
-      %li.active= link_to "New message", new_conversation_path
+      %li.active= link_to t("messages.new.label"), new_conversation_path
   .ten.columns
     = form_for @conversation do |f|
       .page
         %header
           .container
             %hgroup
-              %h1 New Message
-              %h4.subheader Compose a private message
+              %h1
+                =t "messages.new.title"
+              %h4.subheader
+                =t "messages.new.subtitle"
         - unless @conversation.errors.blank?
           %section.errors
             .container
@@ -31,4 +33,4 @@
           .container
             .row
               .twelve.columns
-                = f.submit :class => "submit button"
+                = f.submit t("messages.new.submit"), :class => "submit button"

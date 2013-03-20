@@ -2,14 +2,13 @@
   .twelve.columns
     %hgroup.hr
       %h3.section-title
-        Search Results
+        =t "professionals.search.title"
       %h4.subheader
-        = "#{@professionals.count} professionals found for <em>#{@what}</em> in <em>#{@where}</em>".html_safe
+        =t "professionals.search.count", :count => @professionals.count, :what => @what, :where => @where
     - unless @professionals.blank?
-      %ul.professionals.block-grid.five-up.mobile-two-up
+      %ul.looper.professionals.block-grid.five-up.mobile-two-up
         - @professionals.each do |professional|
-          %li
-            = render "professionals/loops/regular", :professional => professional
+          %li= render "professionals/loops/regular", :professional => professional
     - else
       %p.no-records
-        Sorry, we could not find any professionals.
+        =t "professionals.count.zero"

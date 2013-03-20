@@ -5,36 +5,30 @@
         %hgroup.hr
           %h1
             - if @locality
-              = "#{@profession.name.pluralize} in #{@locality.name}"
+              =t "taxonomy.in_taxonomy", :taxonomy_1 => @profession.name.pluralize, :taxonomy_2 => @locality.name
             - else
               = @profession.name.pluralize
-          %h3.subheader
-            - if @locality
-              = "Find, ask and consult #{@profession.name.downcase.pluralize} in #{@locality.name}"
-            - else
-              = "Find, ask and consult #{@profession.name.downcase.pluralize}"
         - if @profession.description
           %p.description
             = @profession.description
           %hr
       .twelve.columns
-        - unless @professionals.nil?
+        - unless @professionals.empty?
           %section
             .container
               %h4
                 - unless @locality.nil?
-                  = "#{@professionals.count} #{@profession.name.downcase.pluralize} found in #{@locality.name}"
+                  =t "professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name
                 - else
-                  = "#{@professionals.count} #{@profession.name.downcase.pluralize} found"
-              %ul.professionals.block-grid.five-up.mobile-one-up
+                  =t "professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name
+              %ul.looper.professionals.block-grid.five-up.mobile-one-up
                 - @professionals.each do |professional|
-                  %li.professional
-                    = render "professionals/loops/regular", :professional => professional
+                  %li= render "professionals/loops/regular", :professional => professional
         - if @locality.nil?
           %section.browse-by-taxonomy
             .container
               %h4
-                = "Browse #{@profession.name.downcase.pluralize} by location"
+                =t "taxonomy.browse_by.location", :taxonomy => @profession.name.downcase.pluralize
               %ul.countries
                 - @all_countries.each do |country|
                   %li.country

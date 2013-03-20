@@ -1,38 +1,35 @@
 .row
-
   .four.columns
-
     %ul.vertical.tabs.white
       %li.active
-        %a{:href => "#account"} Account
+        %a{:href => "#account"}
+          =t "users.registrations.edit.tabs.account.label"
       %li
-        %a{:href => "#notifications"} Email notifications
+        %a{:href => "#notifications"}
+          =t "users.registrations.edit.tabs.email_notifications.label"
       %li
-        %a{:href => "#profile"} Profile
+        %a{:href => "#profile"}
+          =t "users.registrations.edit.tabs.profile.label"
       %li
-        %a{:href => "#billing"} Billing
+        %a{:href => "#billing"}
+          =t "users.registrations.edit.tabs.billing.label"
       - if current_user.is_a_professional?
         %li
-          %a{:href => "#categories"} Categories
+          %a{:href => "#categories"}
+            =t "users.registrations.edit.tabs.categories.label"
       %li
-        %a{:href => "#contact"} Contact
-
+        %a{:href => "#contact"}
+          =t "users.registrations.edit.tabs.contact.label"
   .eight.columns
-
     %ul.tabs-content
-
       %li#accountTab.active
-
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-
           .page
-
             %header
               .container
                 %hgroup
-                  %h1 My Account
-                  %h4.subheader Change your basic account, password and language setting
-
+                  %h1=t "users.registrations.edit.tabs.account.title"
+                  %h4.subheader=t "users.registrations.edit.tabs.account.subtitle"
             %section
               .container
                 .row
@@ -50,7 +47,6 @@
                     = f.label :password_confirmation, "Confirmation", :class => "inline right"
                   .seven.columns.end
                     = f.password_field :password_confirmation
-
             %section
               .container
                 .row
@@ -68,13 +64,11 @@
                           %label
                             = check_box_tag "user[locale_ids][]", locale.id, (current_user and current_user.locales.include?(locale))
                             = locale.name
-
             %section
               .container
                 .row
                   .seven.columns.offset-by-three.end
                     = f.submit "Update", :class => "submit button"
-
             %section
               .container
                 .row
@@ -82,19 +76,14 @@
                     %p
                       = "Unhappy?"
                       = link_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete
-
       %li#notificationsTab
-
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-
           .page
-
             %header
               .container
                 %hgroup
-                  %h1 Email notifications
-                  %h4.subheader Control when and how often Kixo sends email to you
-
+                  %h1=t "users.registrations.edit.tabs.email_notifications.title"
+                  %h4.subheader=t "users.registrations.edit.tabs.email_notifications.subtitle"
             %section
               .container
                 %fieldset
@@ -130,26 +119,19 @@
                       = f.label :notify_of_similar_questions
                     .two.columns.text-right
                       = f.select :notify_of_similar_questions, [["Yes", true], ["No", false]]
-
             %section
               .container
                 .row
                   .twelve.columns
                     = f.submit "Update", :class => "submit button"
-
-
       %li#profileTab
-
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-
           .page
-
             %header
               .container
                 %hgroup
-                  %h1 Profile
-                  %h4.subheader Edit your profile
-
+                  %h1=t "users.registrations.edit.tabs.profile.title"
+                  %h4.subheader=t "users.registrations.edit.tabs.profile.subtitle"
             %section
               .container
                 .row
@@ -172,42 +154,31 @@
                     = f.label :bio, :class => "inline right"
                   .seven.columns.end
                     = f.text_area :bio, :rows => 5
-
             %section
               .container
                 .row
                   .seven.columns.offset-by-three.end
                     = f.submit "Update", :class => "submit button"
-
       %li#billingTab
-
         .page
-
           %header
             .container
               %hgroup
-                %h1 Billing
-                %h4.subheader Edit your billing information
-
+                %h1=t "users.registrations.edit.tabs.billing.title"
+                %h4.subheader=t "users.registrations.edit.tabs.billing.subtitle"
           %section
             .container
-
               %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
                 Add/Edit Credit Card
-
       - if current_user.is_a_professional?
         %li#categoriesTab
-
           = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-
             .page
-
               %header
                 .container
                   %hgroup
-                    %h1 Categories
-                    %h4.subheader Select topics and professions
-
+                    %h1=t "users.registrations.edit.tabs.categories.title"
+                    %h4.subheader=t "users.registrations.edit.tabs.categories.subtitle"
               %section
                 .container
                   .row
@@ -216,8 +187,7 @@
                         - @all_categories.each do |category|
                           %li
                             .title
-                              %h5
-                                = category.name
+                              %h5= category.name
                             .content
                               %fieldset
                                 %legend Select topics
@@ -235,35 +205,27 @@
                                       %label
                                         = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
                                         = profession.name
-
               %section
                 .container
                   .row
                     .twelve.columns
                       = f.submit "Update", :class => "submit button"
-
       %li#contactTab
-
         = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
-
           .page
-
             %header
               .container
                 %hgroup
-                  %h1 Contact Information
-                  %h4.subheader Edit your contact information
-
+                  %h1=t "users.registrations.edit.tabs.contact.title"
+                  %h4.subheader=t "users.registrations.edit.tabs.contact.subtitle"
             %section
               .container
                 = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
-
             %section
               .container
                 .row
                   .seven.columns.offset-by-three.end
                     = f.submit "Update", :class => "submit button"
-
 #create_card.reveal-modal
   %hgroup.hr
     %h3 Credit Card

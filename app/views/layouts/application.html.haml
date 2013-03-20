@@ -4,7 +4,10 @@
   %head
 
     %title
-      =t "site.title"
+      - unless @page_title.blank?
+        = @page_title
+      - else
+        =t "site.title"
 
     = tag :meta, :name => "viewport",   :content => "width=device-width, initial-scale=1.0"
     = tag :meta, :name => "stripe-key", :content => STRIPE_PUBLIC_KEY
@@ -163,4 +166,4 @@
       = render "users/sessions/modals/new"
       = render "conversations/shared/modals/new"
 
-    = render "shared/footer", :categories => @categories, :professions => @professions
+    = render "shared/footer"

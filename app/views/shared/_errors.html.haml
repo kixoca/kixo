@@ -2,5 +2,4 @@
   %ul.errors
     - errors.each do |attribute, message|
       - if message.is_a?(String)
-        %li
-          = message
+        %li= message

@@ -35,23 +35,69 @@ en:
     topic: "Browse by Topic"
     profession: "Browse by Profession"
     location: "Browse by Location"
-  no_records:
-    general: "No records found."
-    professionals: "No professionals found."
-    questions: "No questions found."
-    categories: "No categories found."
-    topics: "No topics found."
-    professions: "No professions found."
-    countries: "No countries found."
-    regions: "No regions found."
-    localities: "No localities found."
-    reviews: "No reviews found."
-    guides: "No guides found."
-    custom: "No %{objects} found."
+  alerts:
+    are_you_sure: "Are you sure?"
   questions:
-    title: "Questions"
-    recent:
-      title: "Recent Questions"
+    index:
+      title: "Questions"
+    show:
+      details:
+        title: "Question Details"
+      meta:
+        time_ago_in_location: "Asked <time class='created-at' datetime='%{time}'>%{time_ago}</time> ago in <span class='location'>%{location}</span>"
+    new:
+      title: "Ask a question"
+      sections:
+        details:
+          title: "Your question"
+          subtitle: "Give as much background information as possible to make your question clear."
+        category:
+          title: "Choose a category"
+          subtitle: "Select a category to make sure the right professionals answer you."
+        account:
+          title: "Sign in to Kixo"
+          subtitle: "Sign in or sign up to Kixo to ask your question"
+          sign_up: "Create a Kixo account"
+          sign_in: "Sign in to my Kixo account"
+      fields:
+        title:
+          label: "Question"
+          placeholder: "Ex.: 'Do I need a lawyer to incorporate a company?'"
+        details:
+          label: "Details"
+          placeholder: "Give more details and background information..."
+        is_private:
+          label: "Make my question private"
+        new_user_email:
+          label: "Email"
+        new_user_password:
+          label: "Password"
+        new_user_password_confirmation:
+          label: "Password confirmation"
+        user_email:
+          label: "Email"
+        user_password:
+          label: "Password"
+      submit: "Ask Question"
+      tips:
+        title: "Tips!"
+        content: "Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum."
+    count:
+      zero: "No questions found"
+      one: "1 question found"
+      other: "%{count} questions found"
+    count_in_taxonomy:
+      zero: "No questions in %{taxonomy}"
+      one: "1 question in %{taxonomy}"
+      other: "%{count} questions in %{taxonomy}"
+    count_in_locality:
+      zero: "No questions in %{locality}"
+      one: "1 question in %{locality}"
+      other: "%{count} questions in %{locality}"
+    count_in_taxonomy_and_locality:
+      zero: "No questions in %{taxonomy} found in %{locality}"
+      one: "1 question in %{taxonomy} found in %{locality}"
+      other: "%{count} questions in %{taxonomy} found in %{locality}"
     filters:
       all: "All"
       mine: "My questions"
@@ -59,42 +105,240 @@ en:
       most_popular: "Most popular"
       answered: "Answered"
       unanswered: "Unanswered"
-    in_taxonomy: "Questions in %{tax}"
+    recent:
+      title: "Recent Questions"
+    in_taxonomy:
+      title: "Questions in %{taxonomy}"
+      count:
+        zero: "No questions in %{taxonomy}"
+        one: "1 question in %{taxonomy}"
+        other: "%{count} questions in %{taxonomy}"
   answers:
-    title: "Answers"
-    answer:
-      cta: "Answer this question"
-      form:
-        submit: "Post Answer"
-      access_denied:
+    index:
+      title: "Answers"
+    delete:
+      title: "Delete answer"
+      confirm: "Are you sure you want to delete this answer?"
+    new:
+      title: "Answer this question"
+      submit: "Post Answer"
+      errors:
         already_answered: "You have already answered this question."
         not_allowed: "You are not allowed to answer this question."
         not_a_professional:  "You must be a professional to answer questions."
         not_signed_in: "You must be a signed in professional to answer questions."
+    count:
+      zero: "No answers found"
+      one: "1 answer found"
+      other: "%{count} answers found"
   professionals:
-    title: "Professionals"
+    index:
+      title: "Professionals"
+    search:
+      title: "Search Results"
+      count:
+        zero: "No professionals found for %{what} in %{where}"
+        one: "1 professionals found for %{what} in %{where}"
+        other: "%{count} professionals found for %{what} in %{where}"
+      no_records: "Sorry, we could not find any professionals for your search query."
+    show:
+      whois: "%{locality} %{professions} specializing in %{topics}"
+      about: "About %{name}"
+      send_message: "Send a private message"
+    count:
+      zero: "No professionals found"
+      one: "1 professional found"
+      other: "%{count} professionals found"
+    count_in_taxonomy:
+      zero: "No professionals in %{taxonomy}"
+      one: "1 professional in %{taxonomy}"
+      other: "%{count} professionals in %{taxonomy}"
+    count_in_locality:
+      zero: "No professionals in %{locality}"
+      one: "1 professional in %{locality}"
+      other: "%{count} professionals in %{locality}"
+    count_in_taxonomy_and_locality:
+      zero: "No professionals in %{taxonomy} found in %{locality}"
+      one: "1 professional in %{taxonomy} found in %{locality}"
+      other: "%{count} professionals in %{taxonomy} found in %{locality}"
+    reviews:
+      count:
+        zero: "There are no reviews for %{name} yet"
+        one: "There is one review for %{name}"
+        other: "There are %{count} reviews for %{name}"
+    guides:
+      count:
+        zero: "%{name} has not written any guides yet"
+        one: "%{name} has written one guide"
+        other: "%{name} has written %{count} guides"
     top_contributors:
       title: "Top Contributors"
+      count:
+        zero: "No top contributors found"
+        one: "1 top contributor found"
+        other: "%{count} top contributors found"
     top_rated:
-      in_taxonomy: "Top-rated professionals in %{tax}"
-      in_locality: "Top-rated professionals in %{locality}"
-    count:
-      in_taxonomy: "%{count} professionals in %{tax}"
-      in_locality: "%{count} professionals in %{locality}"
-      in_taxonomy_found_in_locality: "%{count} professionals in %{tax} found in %{locality}"
+      in_taxonomy:
+        title: "Top-rated professionals in %{taxonomy}"
+        count:
+          zero: "No top-rated professionals in %{taxonomy}"
+          one: "1 top-rated professional in %{taxonomy}"
+          other: "%{count} top-rated professionals in %{taxonomy}"
+      in_locality:
+        title: "Top-rated professionals in %{locality}"
+        count:
+          zero: "No top-rated professionals in %{locality}"
+          one: "1 top-rated professional in %{locality}"
+          other: "%{count} top-rated professionals in %{locality}"
+    related:
+      title: "Related professionals"
+      count:
+        zero: "No related professionals found"
+        one: "1 related professional found"
+        other: "%{count} related professionals found"
+    similar:
+      title: "Similar professionals"
+      count:
+        zero: "No similar professionals found"
+        one: "1 similar professional found"
+        other: "%{count} similar professionals found"
     browse:
-      in_taxonomy: "Browse professionals in %{tax}"
-      in_taxonomy_by_location: "Browse professionals in %{tax} by location"
+      in_taxonomy: "Browse professionals in %{taxonomy}"
+      in_taxonomy_by_location: "Browse professionals in %{taxonomy} by location"
+    metrics:
+      points: "points"
+      answers: "answers"
+      reviews: "reviews"
+  conversations:
+    index:
+      title: "Conversations"
+    inbox:
+      label: "Inbox"
+      empty: "Hooray! Your inbox is empty."
+    count:
+      zero: "No conversations found"
+      one: "1 conversation found"
+      other: "%{count} conversations found"
+  messages:
+    index:
+      title: "Messages"
+    new:
+      label: "New message"
+      title: "New Message"
+      subtitle: "Compose a private message"
+      submit: "Send"
+    reply:
+      title: "Reply"
+      submit: "Reply"
+    count:
+      zero: "No messages found"
+      one: "1 message found"
+      other: "%{count} messages found"
+  reviews:
+    index:
+      title: "Reviews"
+    show:
+      meta:
+        time_ago_by_author: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time> by <span class='author-name'>%{author}</span>"
+    new:
+      title: "Write a review for %{name}"
+      submit: "Post Review"
+    delete:
+      title: "Delete Review"
+      confirm: "Are you sure you want to delete this review?"
+    count:
+      zero: "No reviews found"
+      one: "1 review found"
+      other: "%{count} reviews found"
+    count_for_professional:
+      zero: "No reviews for %{name}"
+      one: "1 review for %{name}"
+      other: "%{count} reviews for %{name}"
+  guides:
+    index:
+      title: "Guides"
+    count:
+      zero: "No guides found"
+      one: "1 guide found"
+      other: "%{count} guides found"
   categories:
-    title: "Categories"
+    index:
+      title: "Categories"
+    count:
+      zero: "No categories found"
+      one: "1 category found"
+      other: "%{count} categories found"
   topics:
-    title: "Topics"
+    index:
+      title: "Topics"
+    count:
+      zero: "No topics found"
+      one: "1 topic found"
+      other: "%{count} topics found"
   professions:
-    title: "Professions"
+    index:
+      title: "Professions"
+    count:
+      zero: "No professions found"
+      one: "1 profession found"
+      other: "%{count} professions found"
   taxonomy:
-    in_taxonomy: "%{tax_1} in %{tax_2}"
-    count_in_taxonomy: "%{count} %{tax_1} in %{tax_2}"
-    find_ask_consult_in: "Find, ask and consult professionals in %{tax}"
+    in_taxonomy: "%{taxonomy_1} in %{taxonomy_2}"
+    browse_by:
+      category: "Browse %{taxonomy} by category"
+      topic: "Browse %{taxonomy} by topic"
+      profession: "Browse %{taxonomy} by profession"
+      location: "Browse %{taxonomy} by location"
+    count_in_taxonomy:
+      zero: "No %{tax_1} in %{tax_2}"
+      other: "%{count} %{tax_1} in %{tax_2}"
+    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
+  users:
+    registrations:
+      edit:
+        tabs:
+          account:
+            label: "Account"
+            title: "My Account"
+            subtitle: "Change your basic account, password and language setting"
+          email_notifications:
+            label: "Email notifications"
+            title: "Email Notifications"
+            subtitle: "Control when and how often Kixo sends email to you"
+          profile:
+            label: "Profile"
+            title: "Profile"
+            subtitle: "Edit your profile"
+          billing:
+            label: "Billing"
+            title: "Billing"
+            subtitle: "Edit your billing information"
+          categories:
+            label: "Categories"
+            title: "Categories"
+            subtitle: "Select topics and professions"
+          contact:
+            label: "Contact"
+            title: "Contact Information"
+            subtitle: "Edit your contact information"
+  location_selector:
+    fields:
+      country:
+        label: "Country"
+      region:
+        label: "Province/State"
+      locality:
+        label: "City"
+      postal_code:
+        label: "Zip/Postal Code"
+      street_address_1:
+        label: "Street address"
+      street_address_2:
+        label: "Continued"
+  misc:
+    time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
+    sent_time_ago: "Sent %{time} ago"
+    me: "Me"
   beta:
     cta: "Pre-signup for the beta and get early access!"
     email_placeholder: "Your email..."

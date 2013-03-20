@@ -6,12 +6,11 @@
           - unless participant.id == current_user.id
             .row
               .four.columns
-                .headshot-2.thumb.participant-headshot{:style => "background-image: url(#{participant.headshot.url(:thumb)});"}
-                  =# image_tag participant.headshot.url(:thumb), :class => "headshot"
+                = image_tag participant.headshot.url(:thumb), :class => "headshot"
               .eight.columns
                 .participant-name
                   = participant.display_name
                 .created-at
-                  = "#{time_ago_in_words(conversation.messages.last.created_at)} ago"
+                  =t "misc.time_ago", :time => time_ago_in_words(conversation.messages.last.created_at)
       .eight.columns
         = truncate(conversation.messages.last.message, :omission => "...", :length => 150)

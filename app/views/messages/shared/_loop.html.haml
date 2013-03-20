@@ -2,12 +2,11 @@
   .message{:id => "message_#{message.id}", :class => message.read ? "read" : "unread", :data => {"url" => conversation_message_path(message.conversation, message, :format => :json)}}
     .row
       .two.columns.text-center
-        .headshot-2.small.from-headshot{:style => "background-image: url(#{message.author.headshot.url(:small)});"}
-        =# image_tag message.author.headshot.url(:small), :class => "headshot"
+        = image_tag message.author.headshot.url(:small), :class => "headshot"
       .ten.columns
         %h5.author-name
-          = message.author.id == current_user.id ? "Me" : message.author.display_name
+          = message.author.id == current_user.id ? t("misc.me") : message.author.display_name
         .content
           = simple_format(message.message)
         .created-at
-          = "Sent #{time_ago_in_words(message.created_at)} ago"
+          =t "misc.sent_time_ago", :time => time_ago_in_words(message.created_at)

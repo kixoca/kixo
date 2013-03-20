@@ -1,11 +1,11 @@
 .row
   .twelve.columns
     %h1
-      - if @locality
-        =t "taxonomy.in_taxonomy", :tax_1 => @topic.name, :tax_2 => @locality.name
+      - unless @locality.blank?
+        =t "taxonomy.in_taxonomy", :taxonomy_1 => @topic.name, :taxonomy_2 => @locality.name
       - else
         = @topic.name
-    - if @topic.description
+    - unless @topic.description.blank?
       %p.description
         = @topic.description
     %hr
@@ -51,11 +51,8 @@
     %section#questions
       .container
         %h4
-          =t "questions.in_taxonomy", :tax => @topic.name
+          =t "questions.count_in_taxonomy", :taxonomy => @topic.name
         - unless @questions.empty?
           %ul.looper.questions
             - @questions.each do |question|
               %li= render "questions/shared/loop", :question => question
-        - else
-          %p.no-records
-            =t "no_records.questions"

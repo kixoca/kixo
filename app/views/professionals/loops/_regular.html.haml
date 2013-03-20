@@ -2,18 +2,14 @@
   .box.professional.loop.standard
     %section
       .container
-        = link_to professional_path(professional), :class => "headshot" do
-          .headshot-2.medium{:style => "background-image: url(#{professional.headshot.url(:medium)});"}
-          =# image_tag professional.headshot.url(:medium), :class => "headshot"
+        = link_to professional_path(professional) do
+          = image_tag professional.headshot.url(:medium), :class => "headshot"
         %h4.name
           = link_to professional.name, professional_path(professional)
         .whois
-          %span.professions
-            = professional.professions.first.name unless professional.professions.empty?
-            - if professional.professions.count > 1
-              and
-              %span.has-tip.tip-top.noradius{:title => professional.profession_list}
-                = "#{professional.professions.count-1} more"
+          - unless professional.professions.empty?
+            %span.professions
+              = professional.profession_list
         .address.short
           %i.foundicon-location
           = professional.short_address
@@ -21,14 +17,11 @@
       .container.tight
         %ul.metrics.block-grid.three-up
           %li
-            .value
-              = professional.points
-            .key points
+            .value= professional.points
+            .key=t "professionals.metrics.points"
           %li
-            .value
-              = professional.answers.count
-            .key answers
+            .value= professional.answers.count
+            .key=t "professionals.metrics.answers"
           %li
-            .value
-              = professional.reviews.count
-            .key reviews
+            .value= professional.reviews.count
+            .key=t "professionals.metrics.reviews"

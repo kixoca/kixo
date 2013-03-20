@@ -2,14 +2,14 @@
   #new_conversation_modal.reveal-modal
     %hgroup.hr
       %h3
-        = "New Message"
+        =t "messages.new.title"
       %h4.subheader
-        = "Compose a private message"
+        =t "messages.new.subtitle"
     = form_for @new_conversation do |f|
       = render "shared/errors", :errors => @new_conversation.errors
       = f.hidden_field :participant_ids, :id => "new_conversation_participant_id"
       = f.fields_for :messages, @new_conversation.messages do |m|
         = m.text_area :message, :rows => 10
       .actions
-        = f.submit "Send", :class => "submit button"
+        = f.submit t("messages.new.submit"), :class => "submit button"
     %a.close-reveal-modal &#215;

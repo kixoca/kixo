@@ -1,14 +1,15 @@
 .row
   .two.columns
     %ul.side-nav
-      %li.active= link_to "Inbox", conversations_path
+      %li.active= link_to t("conversations.inbox.label"), conversations_path
       %li.divider
-      %li= link_to "New message", new_conversation_path
+      %li= link_to t("messages.new.label"), new_conversation_path
   .ten.columns
     .page
       %header
         .container
-          %h1 Messages
+          %h1
+            =t "messages.index.title"
       %section
         .container
           - unless @conversations.blank?
@@ -17,4 +18,4 @@
                 = render "conversations/shared/loop", :conversation => conversation
           - else
             %p.no-records
-              You haven't received any messages yet.
+              =t "conversations.inbox.empty"

@@ -1,9 +1,9 @@
 .row
   .two.columns
     %ul.side-nav
-      %li= link_to "Inbox", conversations_path
+      %li= link_to t("conversations.inbox.label"), conversations_path
       %li.divider
-      %li= link_to "New message", new_conversation_path
+      %li= link_to t("messages.new.label"), new_conversation_path
   .ten.columns
     .page
       %section
@@ -14,13 +14,13 @@
         .container
           .row
             .two.columns.text-center
-              .headshot-2.small{:style => "background-image: url(#{current_user.headshot.url(:small)});"}
-              =# image_tag current_user.headshot.url(:small), :class => "headshot"
+              = image_tag current_user.headshot.url(:small), :class => "headshot"
             .ten.columns
-              %h4 Reply
+              %h4
+                =t "messages.reply.title"
               = form_for [@conversation, @reply] do |f|
                 - unless @reply.errors.blank?
                   .errors
                     = render "shared/errors", :errors => @reply.errors
                 = f.text_area :message, :rows => 5
-                = f.submit "Reply", :class => "submit button"
+                = f.submit t("messages.reply.submit"), :class => "submit button"

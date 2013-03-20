@@ -5,13 +5,12 @@
         .container
           .row
             .four.columns.text-center
-              .headshot-2.large{:style => "background-image: url(#{@professional.headshot.url(:large)});"}
-              =# image_tag @professional.headshot.url(:large), :class => "headshot"
+              = image_tag @professional.headshot.url(:large), :class => "headshot"
             .eight.columns.mobile-text-center
               %h1.name
                 = @professional.name
               %p.whois
-                = "#{@professional.locality.name} #{@professional.professions_list} specializing in #{@professional.topics_list}"
+                =t("professionals.show.whois", :locality => @professional.locality.name, :professions => @professional.professions_list, :topics => @professional.topics_list).html_safe
               %ul.metrics.block-grid.four-up
                 %li
                   .value= @professional.points
@@ -30,7 +29,7 @@
           - unless @professional.bio.blank?
             .about
               %h5.section-title
-                = "About #{@professional.name}"
+                =t "professionals.show.about", :name => @professional.name
               %p.bio
                 = @professional.bio
           .contacts
@@ -39,7 +38,7 @@
                 = @professional.tel
             .pull-left
               %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
-                = "Send a private message"
+                =t "professionals.show.send_message"
             .clear
       %section
         .container.no-pad
@@ -71,7 +70,7 @@
       %section#reviews
         .container
           %h5.section-title
-            = "Reviews"
+            =t "reviews.index.title"
           - unless @reviews.blank?
             %ul.looper.reviews
               - @reviews.each do |review|
@@ -79,14 +78,14 @@
             = paginate @reviews
           - else
             %p.no-records
-              = "No reviews for #{@professional.name} yet."
+              =t "professionals.reviews.count.zero", :name => @professional.name
           = render "reviews/shared/new", :professional => @professional
       %section#guides
         .container
           %h5.section-title
-            = "Guides"
-          - unless @guides.blank?
-            %ul.guides
+            =t "guides.index.title"
+          - unless @guides.empty?
+            %ul.looper.guides
               - @guides.each do |guide|
                 %li
                   = guide.topic.name
@@ -94,16 +93,16 @@
                   = guide.excerpt
           - else
             %p.no-records
-              = "#{@professional.name} hasn't written any guide yet."
+              =t "professionals.guides.count.zero", :name => @professional.name
   .four.columns
     .panel
       %h5
-        = "Similar professionals in #{@professional.locality.name}, #{@professional.region.name}"
-      - unless @similar_professionals.blank?
+        =t "professionals.similar.title"
+      - unless @similar_professionals.empty?
         %ul.looper.similar-professionals
           - @similar_professionals.each do |professional|
             %li= render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
-          = "No similar professionals found."
+          =t "professionals.similar.count.zero"
     = render "shared/ads"

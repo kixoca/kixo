@@ -5,11 +5,7 @@
     %span.comment
       = review.comment
   .meta
-    %span.author_name
-      = review.author.display_name
-    = "-"
-    %time.created_at{:datetime => review.created_at}
-      = "#{time_ago_in_words(review.created_at)} ago"
+    =t("reviews.show.meta.time_ago_by_author", :time => review.created_at, :time_ago => time_ago_in_words(review.created_at), :author => review.author.display_name).html_safe
   - if review.author == current_user
     .actions
-      = link_to 'Delete review', professional_review_path(review.author, review), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
+      = link_to t("reviews.delete.title"), professional_review_path(review.author, review), :confirm => t("reviews.delete.confirm"), :method => :delete, :class => "delete"

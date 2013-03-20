@@ -1,4 +1,4 @@
-- unless answer.nil? or answer.author.nil?
+- unless answer.blank? or answer.author.blank?
   .answer{:id => "ans#{answer.id}"}
     .row
       .nine.columns
@@ -6,10 +6,10 @@
           = simple_format(answer.details)
         %p.meta
           %span.created_at
-            = "Answered #{time_ago_in_words(answer.created_at)} ago"
+            =t "misc.time_ago", :time => time_ago_in_words(answer.created_at)
         - if answer.author == current_user
           .actions
-            = link_to 'Delete answer', question_answer_path(answer.question, answer), :confirm => 'Are you sure?', :method => :delete, :class => "delete"
+            = link_to t("answers.delete.title"), question_answer_path(answer.question, answer), :confirm => t("answers.delete.confirm"), :method => :delete, :class => "delete"
       .three.columns.text-center
         = link_to professional_path(answer.author) do
           = image_tag answer.author.headshot.url(:small), :class => "headshot"

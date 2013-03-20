@@ -11,16 +11,12 @@
                 %h1.name
                   = link_to @professional.name, professional_path(@professional)
                 %p.whois
-                  = "#{@professional.locality.name} #{@professional.professions_list} specializing in #{@professional.topics_list}"
+                  =t("professionals.show.whois", :locality => @professional.locality.name, :professions => @professional.professions_list, :topics => @professional.topics_list).html_safe
       %section
         .container
-          - if @reviews.blank?
-            %h4
-              = "#{@reviews.count} reviews for #{@professional.name}"
+          - unless @reviews.empty?
+            %h4=t "reviews.count_for_professional", :count => @reviews.count, :name => @professional.name
             %ul.looper.reviews
               - @reviews.each do |review|
                 %li= render "reviews/shared/loop", :review => review
-          - else
-            %p.no-records
-              = "There are no reviews for #{@professional.name} yet."
           = render "reviews/shared/new", :professional => @professional

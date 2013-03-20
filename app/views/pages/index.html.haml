@@ -34,7 +34,7 @@
                 %li= render "questions/shared/loop", :question => question
           - else
             %p.no-records
-              =t("no_records.questions")
+              =t("questions.count.zero")
   .four.columns
     %aside#sidebar
       .panel
@@ -46,5 +46,5 @@
               %li= render "professionals/loops/minimal", :professional => professional
         - else
           %p.no-records
-            =t("no_records.professionals")
+            =t("professionals.top_contributors.count.zero")
       = render "shared/ads"
