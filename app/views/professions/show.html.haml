@@ -1,46 +1,45 @@
-%section#content
-  .container
-    .row
-      .twelve.columns
-        %hgroup.hr
-          %h1
-            - if @locality
-              =t "taxonomy.in_taxonomy", :taxonomy_1 => @profession.name.pluralize, :taxonomy_2 => @locality.name
-            - else
-              = @profession.name.pluralize
-        - if @profession.description
-          %p.description
-            = @profession.description
-          %hr
-      .twelve.columns
+.row
+  .twelve.columns
+    %hgroup.hr
+      %h1
+        - if @locality
+          =t "professions.show.in_locality.title", :profession => @profession.name.pluralize, :locality => @locality.name
+        - else
+          = @profession.name.pluralize
+    - if @profession.description
+      %p.description
+        = @profession.description
+      %hr
+  .twelve.columns
+    %section
+      .container
         - unless @professionals.empty?
-          %section
-            .container
-              %h4
-                - unless @locality.nil?
-                  =t "professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name
-                - else
-                  =t "professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name
-              %ul.looper.professionals.block-grid.five-up.mobile-one-up
-                - @professionals.each do |professional|
-                  %li= render "professionals/loops/regular", :professional => professional
-        - if @locality.nil?
-          %section.browse-by-taxonomy
-            .container
-              %h4
-                =t "taxonomy.browse_by.location", :taxonomy => @profession.name.downcase.pluralize
-              %ul.countries
-                - @all_countries.each do |country|
-                  %li.country
-                    %span.country-name
-                      = country.name
-                    %ul.regions.block-grid.two-up
-                      - country.regions.each do |region|
-                        %li.region
-                          %span.region-name
-                            = region.name
-                          %ul.localities.csv
-                            - region.localities.most_populated(25).each do |locality|
-                              %li.locality
-                                %a.taxonomy-link.locality-name{:href => locality_profession_path(locality, @profession), :title => "#{@profession.name.pluralize} in #{locality.name}, #{region.name}, #{country.name}"}
-                                  = locality.name
+          %h4
+            - unless @locality.nil?
+              =t "professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name
+            - else
+              =t "professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name
+          %ul.looper.professionals.block-grid.five-up.mobile-one-up
+            - @professionals.each do |professional|
+              %li= render "professionals/loops/regular", :professional => professional
+    - if @locality.blank?
+      %section.browse-by-taxonomy
+        .container
+          %h4=t("professions.browse_by.location", :profession => @profession.name.downcase).html_safe
+          %ul.countries.accordion.compact
+            - @all_countries.each do |country|
+              %li.country
+                .title
+                  %h5.country-name
+                    = country.name
+                .content
+                  %ul.regions
+                    - country.regions.each do |region|
+                      %li.region
+                        %h5.region-name
+                          = region.name
+                        %ul.localities.block-grid.four-up
+                          - region.localities.each do |locality|
+                            %li.locality
+                              %a.locality-name{:href => locality_profession_path(locality, @profession), :title => "#{@profession.name} - #{locality.name}, #{region.name}"}
+                                = locality.name

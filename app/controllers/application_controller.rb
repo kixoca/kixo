@@ -3,9 +3,6 @@ class ApplicationController < ActionController::Base
   # I18n
   before_filter :set_locale
 
-  # Set correct header action tab
-  before_filter :set_current_action_tab
-
   before_filter :set_common_vars
 
   def default_url_options(options={})
@@ -15,18 +12,6 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = params[:locale] || I18n.default_locale
-  end
-
-  def set_current_action_tab
-    if params[:action] == "index"
-      @current_action_tab = case params[:controller]
-        when "questions" then "ask"
-        when "users"     then "search"
-        else ""
-      end
-    else
-      @current_action_tab = ""
-    end
   end
 
   # Devise extras

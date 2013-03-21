@@ -23,6 +23,8 @@ class ProfessionsController < ApplicationController
       @professionals = @professionals.merge(@locality.professionals) unless @locality.nil?
     end
 
+    @current_action_tab = "ask"
+
     respond_to do |format|
       format.html # show.html.haml
       format.json { render :json => @profession }

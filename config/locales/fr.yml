@@ -3,20 +3,20 @@ fr:
     title: "Kixo"
     about:
       title: "Qu'est-ce que Kixo?"
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
+      description: "Chez Kixo il est de notre mission de vous aider à obtenir des réponses précises à vos questions. Nous nous efforçons de vous fournir les meilleures informations afin que vous puissiez prendre des décisions éclairées. Le choix d'un professionnel qualifié n'est pas facile, mais nous voulons le rendre plus simple!"
   layout:
     logo:
       alt: "Kixo"
     tagline: "&laquo; Kixo changera la façon dont vous cherchez, choisissez et consultez vos professionnels &raquo;"
     actions:
       ask:
-        tab_name: "Question"
+        tab_name: "Poser une question"
         title: "Poser une question aux professionnels"
         subtitle: "Obtenez des conseils gratuits de professionnels expérimentés !"
         placeholder: "Entrez votre question ici..."
-        button: "Poser ma question"
+        button: "Soumettre"
       search:
-        tab_name: "Recherche"
+        tab_name: "Faire une recherche"
         title: "Recherchez des professionnels"
         subtitle: "Trouvez les meilleurs professionnels près de chez vous !"
         placeholders:
@@ -131,366 +131,379 @@ fr:
     search:
       title: "Résultats de recherche"
       count:
-        zero: "No professionals found for %{what} in %{where}"
-        one: "1 professionals found for %{what} in %{where}"
-        other: "%{count} professionals found for %{what} in %{where}"
-      no_records: "Sorry, we could not find any professionals for your search query."
+        zero: "Aucun professionnel trouvé pour %{what} à %{where}"
+        one: "1 professionnel trouvé pour %{what} à %{where}"
+        other: "%{count} professionnels trouvé pour %{what} à %{where}"
     show:
-      whois: "%{locality} %{professions} specializing in %{topics}"
-      about: "About %{name}"
-      send_message: "Send a private message"
+      whois: "%{professions} à %{locality} spécialisé en %{topics}"
+      about: "À propos de %{name}"
+      send_message: "Envoyer un message privé"
     count:
-      zero: "No professionals found"
-      one: "1 professional found"
-      other: "%{count} professionals found"
+      zero: "Aucun professionnel trouvé"
+      one: "1 professionnel trouvé"
+      other: "%{count} professionnels trouvés"
     count_in_taxonomy:
-      zero: "No professionals in %{taxonomy}"
-      one: "1 professional in %{taxonomy}"
-      other: "%{count} professionals in %{taxonomy}"
+      zero: "Aucun professionnel en %{taxonomy}"
+      one: "1 professionnel en %{taxonomy}"
+      other: "%{count} professionnels en %{taxonomy}"
     count_in_locality:
-      zero: "No professionals in %{locality}"
-      one: "1 professional in %{locality}"
-      other: "%{count} professionals in %{locality}"
+      zero: "Aucun professionnel à %{locality}"
+      one: "1 professionnel à %{locality}"
+      other: "%{count} professionnels à %{locality}"
     count_in_taxonomy_and_locality:
-      zero: "No professionals in %{taxonomy} found in %{locality}"
-      one: "1 professional in %{taxonomy} found in %{locality}"
-      other: "%{count} professionals in %{taxonomy} found in %{locality}"
+      zero: "Aucun professionnel en %{taxonomy} à %{locality}"
+      one: "1 professionnel en %{taxonomy} à %{locality}"
+      other: "%{count} professionnels en %{taxonomy} à %{locality}"
     reviews:
       count:
-        zero: "There are no reviews for %{name} yet"
-        one: "There is one review for %{name}"
-        other: "There are %{count} reviews for %{name}"
+        zero: "Il n'y a pas encore d'avis pour %{name}"
+        one: "Il y a un avis pour %{name}"
+        other: "Il y a %{count} avis pour %{name}"
     guides:
       count:
-        zero: "%{name} has not written any guides yet"
-        one: "%{name} has written one guide"
-        other: "%{name} has written %{count} guides"
+        zero: "%{name} n'a pas encore écrit de guides"
+        one: "%{name} a écrit un guide"
+        other: "%{name} a écrit %{count} guides"
     top_contributors:
-      title: "Top Contributors"
+      title: "Contributeurs majeurs"
       count:
-        zero: "No top contributors found"
-        one: "1 top contributor found"
-        other: "%{count} top contributors found"
+        zero: "Aucun contributeur majeur trouvé"
+        one: "1 contributeur majeur trouvé"
+        other: "%{count} contributeurs majeurs trouvé"
     top_rated:
       in_taxonomy:
-        title: "Top-rated professionals in %{taxonomy}"
-        count:
-          zero: "No top-rated professionals in %{taxonomy}"
-          one: "1 top-rated professional in %{taxonomy}"
-          other: "%{count} top-rated professionals in %{taxonomy}"
+        title: "Les meilleurs professionnels à %{taxonomy}"
       in_locality:
-        title: "Top-rated professionals in %{locality}"
-        count:
-          zero: "No top-rated professionals in %{locality}"
-          one: "1 top-rated professional in %{locality}"
-          other: "%{count} top-rated professionals in %{locality}"
+        title: "Les meilleurs professionnels à %{locality}"
     related:
-      title: "Related professionals"
-      count:
-        zero: "No related professionals found"
-        one: "1 related professional found"
-        other: "%{count} related professionals found"
+      title: "Professionnels connexes"
     similar:
-      title: "Similar professionals"
-      count:
-        zero: "No similar professionals found"
-        one: "1 similar professional found"
-        other: "%{count} similar professionals found"
+      title: "Professionnels similaires"
     browse:
-      in_taxonomy: "Browse professionals in %{taxonomy}"
-      in_taxonomy_by_location: "Browse professionals in %{taxonomy} by location"
-    metrics:
-      points: "points"
-      answers: "answers"
-      reviews: "reviews"
+      in_taxonomy: "Parcourir les professionnels à %{taxonomy}"
+      in_taxonomy_by_location: "Parcourir les professionnels en %{taxonomy} par emplacement"
+    points:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>point</span>"
+        one: "<span class='value'>1</span> <span class='key'>point</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
+    answers:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>réponse</span>"
+        one: "<span class='value'>1</span> <span class='key'>réponse</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>réponses</span>"
+    reviews:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>avis</span>"
+        one: "<span class='value'>1</span> <span class='key'>avis</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>avis</span>"
+    guides:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>guide</span>"
+        one: "<span class='value'>1</span> <span class='key'>guide</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
   conversations:
     index:
       title: "Messages"
       label: "Messages"
     inbox:
-      label: "Inbox"
-      empty: "Hooray! Your inbox is empty."
+      label: "Boîte de réception"
+      empty: "Hourra! Votre boîte de réception est vide!"
     count:
-      zero: "No conversations found"
-      one: "1 conversation found"
-      other: "%{count} conversations found"
+      zero: "Aucune conversation trouvée"
+      one: "1 conversation trouvée"
+      other: "%{count} conversations trouvées"
   messages:
     index:
       title: "Messages"
     new:
-      label: "New message"
-      title: "New Message"
-      subtitle: "Compose a private message"
-      submit: "Send"
+      label: "Nouveau message"
+      title: "Nouveau message"
+      subtitle: "Composer un message privé"
+      submit: "Envoyer"
     reply:
-      title: "Reply"
-      submit: "Reply"
+      title: "Répondre"
+      submit: "Répondre"
     count:
-      zero: "No messages found"
-      one: "1 message found"
-      other: "%{count} messages found"
+      zero: "Aucun message trouvé"
+      one: "1 message trouvé"
+      other: "%{count} messages trouvés"
   notifications:
     index:
       title: "Notifications"
       label: "Notifications"
   reviews:
     index:
-      title: "Reviews"
-      label: "Reviews"
+      title: "Avis"
+      label: "Avis"
     show:
       meta:
-        time_ago_by_author: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time> by <span class='author-name'>%{author}</span>"
+        time_ago_by_author: "Il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> par <span class='author-name'>%{author}</span>"
     new:
-      title: "Write a review for %{name}"
-      submit: "Post Review"
+      title: "Rédiger un avis pour %{name}"
+      submit: "Publier mon avis"
     delete:
-      title: "Delete Review"
-      confirm: "Are you sure you want to delete this review?"
+      title: "Supprimer mon avis"
+      confirm: "Êtes-vous sûr de vouloir supprimer cet avis?"
     count:
-      zero: "No reviews found"
-      one: "1 review found"
-      other: "%{count} reviews found"
+      zero: "Aucun avis trouvé"
+      one: "1 avis trouvé"
+      other: "%{count} avis trouvés"
     count_for_professional:
-      zero: "No reviews for %{name}"
-      one: "1 review for %{name}"
-      other: "%{count} reviews for %{name}"
+      zero: "Aucun avis pour %{name}"
+      one: "1 avis pour %{name}"
+      other: "%{count} avis pour %{name}"
   guides:
     index:
       title: "Guides"
     count:
-      zero: "No guides found"
-      one: "1 guide found"
-      other: "%{count} guides found"
+      zero: "Aucun guide trouvé"
+      one: "1 guide trouvé"
+      other: "%{count} guides trouvés"
   categories:
     index:
-      title: "Categories"
+      title: "Catégories"
     count:
-      zero: "No categories found"
-      one: "1 category found"
-      other: "%{count} categories found"
+      zero: "Aucune catégorie trouvée"
+      one: "1 catégorie trouvée"
+      other: "%{count} catégories trouvées"
   topics:
     index:
-      title: "Topics"
+      title: "Sujets"
+    show:
+      in_locality:
+        title: "%{topic} à %{locality}"
     count:
-      zero: "No topics found"
-      one: "1 topic found"
-      other: "%{count} topics found"
+      zero: "Aucun sujet trouvé"
+      one: "1 sujet trouvé"
+      other: "%{count} sujets trouvés"
+    browse_by:
+      location: "Parcourir <em>%{topic}</em> par emplacement"
+      category: "Parcourir <em>%{topic}</em> par catégorie"
+      profession: "Parcourir <em>%{topic}</em> par profession"
   professions:
     index:
       title: "Professions"
+    show:
+      in_locality:
+        title: "%{profession} à %{locality}"
     count:
-      zero: "No professions found"
-      one: "1 profession found"
-      other: "%{count} professions found"
-  taxonomy:
-    in_taxonomy: "%{taxonomy_1} in %{taxonomy_2}"
+      zero: "Aucune profession trouvée"
+      one: "1 profession trouvée"
+      other: "%{count} professions trouvées"
     browse_by:
-      category: "Browse %{taxonomy} by category"
-      topic: "Browse %{taxonomy} by topic"
-      profession: "Browse %{taxonomy} by profession"
-      location: "Browse %{taxonomy} by location"
+      location: "Parcourir les %{profession} par emplacement"
+      category: "Parcourir les %{profession} par catégorie"
+      topic: "Parcourir les %{profession} par sujet"
+  taxonomy:
+    in_taxonomy: "%{taxonomy_1} en %{taxonomy_2}"
+    browse_by:
+      category: "Parcourir %{taxonomy} par catégorie"
+      topic: "Parcourir %{taxonomy} par sujet"
+      profession: "Parcourir %{taxonomy} par profession"
+      location: "Parcourir %{taxonomy} par emplacement"
     count_in_taxonomy:
-      zero: "No %{tax_1} in %{tax_2}"
-      other: "%{count} %{tax_1} in %{tax_2}"
+      zero: "Aucune %{taxonomy_1} en %{taxonomy_2}"
+      other: "%{count} %{taxonomy_1} en %{taxonomy_2}"
     find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
   users:
     registrations:
       edit:
-        title: "Settings"
-        label: "Settings"
+        title: "Paramètres"
+        label: "Paramètres"
         sections:
           account:
-            label: "Account"
-            title: "My Account"
-            subtitle: "Change your basic account, password and language setting"
+            label: "Compte"
+            title: "Mon compte"
+            subtitle: "Modifiez les réglages de base de votre compte, votre mot de passe et vos langues"
           email_notifications:
-            label: "Email notifications"
-            title: "Email Notifications"
-            subtitle: "Control when and how often Kixo sends email to you"
-            legend: "Email me when"
+            label: "Notifications par courriel"
+            title: "Notifications par courriel"
+            subtitle: "Contrôler les courriels que Kixo vous envoie"
+            legend: "Envoyez-moi un courriel lorsque"
           profile:
-            label: "Profile"
-            title: "Profile"
-            subtitle: "Edit your profile"
+            label: "Profil"
+            title: "Profil"
+            subtitle: "Modifiez votre profil"
           billing:
-            label: "Billing"
-            title: "Billing"
-            subtitle: "Edit your billing information"
+            label: "Facturation"
+            title: "Facturation"
+            subtitle: "Modifiez vos informations de facturation"
           categories:
-            label: "Categories"
-            title: "Categories"
-            subtitle: "Select topics and professions"
+            label: "Catégories"
+            title: "Catégories"
+            subtitle: "Choisissez des sujets et professions"
             select_topics:
-              legend: "Select topics"
+              legend: "Choisissez un ou plusieurs sujets"
             select_professions:
-              legend: "Select professions"
+              legend: "Choisissez une ou plusieurs professions"
           contact:
             label: "Contact"
-            title: "Contact Information"
-            subtitle: "Edit your contact information"
+            title: "Information de contact"
+            subtitle: "Modifiez vos informations de contact"
         fields:
           email:
-            label: "Email"
+            label: "Courriel"
           password:
-            label: "Password"
+            label: "Mot de passe"
           password_confirmation:
-            label: "Password Confirmation"
+            label: "Confirmation du mot de passe"
           locale:
-            label: "Main Language"
+            label: "Langue principale"
           locales:
-            label: "Other Languages"
+            label: "Autres langues"
           notify_of_kixo_news:
-            label: "we release new features and promotions"
+            label: "Kixo publie de nouvelles fonctionnalités et promotions"
           notifiy_of_partner_news:
-            label: "our partners have offers for you"
+            label: "les partenaires de Kixo ont des offres pour vous"
           notify_of_new_messages:
-            label: "you receive a private message"
+            label: "je reçois un message privé"
           notify_of_answers:
-            label: "someone answers your questions"
+            label: "quelqu'un répond à mes questions"
           notify_of_replies:
-            label: "someone replies to your answer"
+            label: "quelqu'un répond à mes réponses"
           notify_of_similar_questions:
-            label: "someone asks a question similar to yours"
+            label: "quelqu'un pose une question similaire aux miennes"
           name:
-            label: "Name"
+            label: "Nom"
           headshot:
-            label: "Headshot"
+            label: "Portrait"
           is_a_professional:
-            label: "I am a professional"
+            label: "Je suis un professionnel"
           bio:
             label: "Bio"
-        submit: "Update"
+        submit: "Mettre à jour"
         panels:
           new_session:
-            title: "Already have an account?"
-            content: "No need to create a new account! Sign in to your existing one."
+            title: "Vous avez déjà un compte?"
+            content: "Pas besoin de créer un nouveau compte! Connectez-vous à votre compte existant."
       new:
-        title: "Sign Up"
-        label: "Sign up"
-        subtitle: "Create a free account and connect with professionals"
+        title: "Inscription"
+        label: "Inscription"
+        subtitle: "Créez un compte gratuit et connectez avec des professionnels"
         fields:
           email:
-            label: "Email"
+            label: "Courriel"
           password:
-            label: "Password"
+            label: "Mot de passe"
           password_confirmation:
-            label: "Password Confirmation"
+            label: "Confirmation du mot de passe"
           is_a_professional:
-            label: "I am a professional"
+            label: "Je suis un professionnel"
           name:
-            label: "Name"
+            label: "Nom"
           professions:
             label: "Profession"
-          submit: "Sign Up"
+          submit: "Inscription"
       delete:
-        title: "Cancel my account"
-        unhappy: "Unhappy?"
-        confirm: "Are you sure you want to cancel your account?"
+        title: "Annuler mon compte"
+        unhappy: "Mécontent?"
+        confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
     sessions:
       new:
-        title: "Sign In"
-        label: "Sign in"
-        subtitle: "Sign in to your existing account"
+        title: "Connexion"
+        label: "Connexion"
+        subtitle: "Connectez-vous à votre compte existant"
         fields:
           email:
-            label: "Email"
+            label: "Courriel"
           password:
-            label: "Password"
+            label: "Mot de passe"
           remember_me:
-            label: "Remember me?"
-        submit: "Sign in"
+            label: "Rester connecté?"
+        submit: "Connexion"
         panels:
           new_registration:
-            title: "Don't have an account?"
-            content: "You can join for free today and benefit from all the features."
-            label: "Sign up"
+            title: "Vous n'avez pas de compte?"
+            content: "Rejoignez Kixo gratuitement aujourd'hui!"
+            label: "Inscription"
       destroy:
-        title: "Sign Out"
-        label: "Sign out"
+        title: "Déconnexion"
+        label: "Déconnexion"
     passwords:
       new:
-        title: "Reset my password"
-        label: "Reset my password"
-        legend: "Forgot your password?"
+        title: "Réinitialiser mon mot de passe"
+        label: "Réinitialiser mon mot de passe"
+        legend: "Mot de passe oublié?"
         fields:
           email:
-            label: "Email"
-        submit: "Send me reset password instructions"
+            label: "Courriel"
+        submit: "Envoyez-moi les instructions de réinitialisation de mot de passe"
       edit:
-        title: "Change your password"
+        title: "Changez votre mot de passe"
         fields:
           password:
-            label: "New password"
+            label: "Nouveau mot de passe"
           password_confirmation:
-            label: "Confirm new password"
-        submit: "Change my password"
+            label: "Confirmer nouveau mot de passe"
+        submit: "Changer mon mot de passe"
     confirmations:
       new:
-        title: "Resend confirmation instructions"
-        label: "Resend confirmation instructions"
-        legend: "Didn't receive confirmation instructions?"
+        title: "Recevoir à nouveau les instructions de confirmation"
+        label: "Recevoir à nouveau les instructions de confirmation"
+        legend: "Vous n'avez pas reçu les instructions de confirmation?"
         fields:
           email:
-            label: "Email"
-        submit: "Resend confirmation instructions"
+            label: "Courriel"
+        submit: "Renvoyer les instructions de confirmation"
     unlocks:
       new:
-        title: "Resend unlock instructions"
-        label: "Resend unlock instructions"
-        legend: "Didn't receive unlock instructions?"
+        title: "Recevoir à nouveau les instruction de déverrouillement"
+        label: "Recevoir à nouveau les instruction de déverrouillement"
+        legend: "Vous n'avez pas reçu les instructions de déverrouillement?"
         fields:
           email:
-            label: "Email"
-        submit: "Resend unlock instructions"
+            label: "Courriel"
+        submit: "Renvoyer les instructions de déverrouillement"
     mailer:
       common:
-        hello: "Hello %{display_name}!"
+        hello: "Bonjour %{display_name}!"
       confirmation_instructions:
-        welcome: "Welcome, %{display_name}!"
-        content: "You can confirm your account email through the link below:"
-        label: "Confirm my account"
+        welcome: "Bienvenue, %{display_name}!"
+        content: "Vous pouvez confirmer le courriel de votre compte via le lien ci-dessous :"
+        label: "Confirmer mon compte"
       reset_password_instructions:
-        content: "Someone has requested a link to change your password, and you can do this through the link below."
-        label: "Change my password"
-        ps1: "If you didn't request this, please ignore this email."
-        ps2: "Your password won't change until you access the link above and create a new one."
+        content: "Quelqu'un a demandé un lien pour changer votre mot de passe, vous pouvez le faire via le lien ci-dessous."
+        label: "Changer mon mot de passe"
+        ps1: "Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message."
+        ps2: "Votre mot de passe ne changera pas jusqu'à ce que vous ouvriez le lien ci-dessus et en créer un nouveau."
       unlock_instructions:
-        content: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
-        legend: "Click the link below to unlock your account:"
-        label: "Unlock my account"
+        content: "Votre compte a été bloqué en raison d'une quantité excessive de tentatives de connexion échouées."
+        legend: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte :"
+        label: "Déverrouiller mon compte"
   cards:
     new:
-      label: "Add/Edit Credit Card"
-      title: "Credit Card"
-      subtitle: "Add or edit a credit card"
+      label: "Ajouter/modifier une carte de crédit"
+      title: "Carte de crédit"
+      subtitle: "Ajouter ou modifiez une carte de crédit"
       fields:
         card_number:
-          label: "Card Number"
+          label: "Numéro de carte"
         card_exp_month:
-          label: "Card Expiration"
+          label: "Expiration de la carte"
         card_cvc:
-          label: "Security Code (CVC)"
-      submit: "Add/Edit Card"
+          label: "Code de sécurité (CVC)"
+      submit: "Ajouter/Modifier la carte"
   location_selector:
     fields:
       country:
-        label: "Country"
+        label: "Pays"
       region:
-        label: "Province/State"
+        label: "Province/État"
       locality:
-        label: "City"
+        label: "Ville"
       postal_code:
-        label: "Zip/Postal Code"
+        label: "Code postal"
       street_address_1:
-        label: "Street address"
+        label: "Adresse"
       street_address_2:
-        label: "Continued"
+        label: "(suite)"
   misc:
-    yes: "Yes"
-    no: "No"
-    time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
-    sent_time_ago: "Sent %{time} ago"
-    me: "Me"
+    yes: "Oui"
+    no: "Non"
+    me: "Moi"
+    time_ago: "<time class='created-at' datetime='%{time}'>Il y a %{time_ago}</time>"
+    sent_time_ago: "<time class='created-at' datetime='%{time}'>Envoyé il y a %{time_ago}</time>"
   beta:
     cta: "Pre-signup for the beta and get early access!"
     email_placeholder: "Your email..."

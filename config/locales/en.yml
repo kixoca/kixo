@@ -3,7 +3,7 @@ en:
     title: "Kixo"
     about:
       title: "What is Kixo?"
-      description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam blandit metus id mauris malesuada tempus. Fusce eu neque libero. Vivamus in sem ante. Nullam libero elit, adipiscing id ultrices sed, pulvinar id massa. Phasellus faucibus iaculis velit, et adipiscing tortor tristique eget."
+      description: "At Kixo it is our mission to help you get accurate answers to your questions. We strive to provide you the best information so you can make informed decisions. Choosing a qualified professional is not easy, but we make it simpler!"
   layout:
     logo:
       alt: "Kixo"
@@ -134,9 +134,8 @@ en:
         zero: "No professionals found for %{what} in %{where}"
         one: "1 professionals found for %{what} in %{where}"
         other: "%{count} professionals found for %{what} in %{where}"
-      no_records: "Sorry, we could not find any professionals for your search query."
     show:
-      whois: "%{locality} %{professions} specializing in %{topics}"
+      whois: "%{professions} in %{locality} specializing in %{topics}"
       about: "About %{name}"
       send_message: "Send a private message"
     count:
@@ -152,9 +151,9 @@ en:
       one: "1 professional in %{locality}"
       other: "%{count} professionals in %{locality}"
     count_in_taxonomy_and_locality:
-      zero: "No professionals in %{taxonomy} found in %{locality}"
-      one: "1 professional in %{taxonomy} found in %{locality}"
-      other: "%{count} professionals in %{taxonomy} found in %{locality}"
+      zero: "No professionals in %{taxonomy} in %{locality}"
+      one: "1 professional in %{taxonomy} in %{locality}"
+      other: "%{count} professionals in %{taxonomy} in %{locality}"
     reviews:
       count:
         zero: "There are no reviews for %{name} yet"
@@ -174,42 +173,42 @@ en:
     top_rated:
       in_taxonomy:
         title: "Top-rated professionals in %{taxonomy}"
-        count:
-          zero: "No top-rated professionals in %{taxonomy}"
-          one: "1 top-rated professional in %{taxonomy}"
-          other: "%{count} top-rated professionals in %{taxonomy}"
       in_locality:
         title: "Top-rated professionals in %{locality}"
-        count:
-          zero: "No top-rated professionals in %{locality}"
-          one: "1 top-rated professional in %{locality}"
-          other: "%{count} top-rated professionals in %{locality}"
     related:
       title: "Related professionals"
-      count:
-        zero: "No related professionals found"
-        one: "1 related professional found"
-        other: "%{count} related professionals found"
     similar:
       title: "Similar professionals"
-      count:
-        zero: "No similar professionals found"
-        one: "1 similar professional found"
-        other: "%{count} similar professionals found"
     browse:
       in_taxonomy: "Browse professionals in %{taxonomy}"
       in_taxonomy_by_location: "Browse professionals in %{taxonomy} by location"
-    metrics:
-      points: "points"
-      answers: "answers"
-      reviews: "reviews"
+    points:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>points</span>"
+        one: "<span class='value'>1</span> <span class='key'>point</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
+    answers:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>answers</span>"
+        one: "<span class='value'>1</span> <span class='key'>answer</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>answers</span>"
+    reviews:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>reviews</span>"
+        one: "<span class='value'>1</span> <span class='key'>review</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>reviews</span>"
+    guides:
+      count:
+        zero: "<span class='value'>0</span> <span class='key'>guides</span>"
+        one: "<span class='value'>1</span> <span class='key'>guide</span>"
+        other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
   conversations:
     index:
       title: "Messages"
       label: "Messages"
     inbox:
       label: "Inbox"
-      empty: "Hooray! Your inbox is empty."
+      empty: "Hooray! Your inbox is empty!"
     count:
       zero: "No conversations found"
       one: "1 conversation found"
@@ -271,17 +270,31 @@ en:
   topics:
     index:
       title: "Topics"
+    show:
+      in_locality:
+        title: "%{topic} in %{locality}"
     count:
       zero: "No topics found"
       one: "1 topic found"
       other: "%{count} topics found"
+    browse_by:
+      location: "Browse <em>%{topic}</em> by location"
+      category: "Browse <em>%{topic}</em> by category"
+      profession: "Browse <em>%{topic}</em> by profession"
   professions:
     index:
       title: "Professions"
+    show:
+      in_locality:
+        title: "%{profession} in %{locality}"
     count:
       zero: "No professions found"
       one: "1 profession found"
       other: "%{count} professions found"
+    browse_by:
+      location: "Browse %{profession} by location"
+      category: "Browse %{profession} by category"
+      topic: "Browse %{profession} by topic"
   taxonomy:
     in_taxonomy: "%{taxonomy_1} in %{taxonomy_2}"
     browse_by:
@@ -302,7 +315,7 @@ en:
           account:
             label: "Account"
             title: "My Account"
-            subtitle: "Change your basic account, password and language setting"
+            subtitle: "Change your basic account, password and language settings"
           email_notifications:
             label: "Email notifications"
             title: "Email Notifications"
@@ -321,9 +334,9 @@ en:
             title: "Categories"
             subtitle: "Select topics and professions"
             select_topics:
-              legend: "Select topics"
+              legend: "Select one or many topics"
             select_professions:
-              legend: "Select professions"
+              legend: "Select one or many professions"
           contact:
             label: "Contact"
             title: "Contact Information"
@@ -340,17 +353,17 @@ en:
           locales:
             label: "Other Languages"
           notify_of_kixo_news:
-            label: "we release new features and promotions"
+            label: "Kixo releases new features and promotions"
           notifiy_of_partner_news:
-            label: "our partners have offers for you"
+            label: "Kixo's partners have offers for you"
           notify_of_new_messages:
-            label: "you receive a private message"
+            label: "I receive a private message"
           notify_of_answers:
-            label: "someone answers your questions"
+            label: "someone answers my questions"
           notify_of_replies:
-            label: "someone replies to your answer"
+            label: "someone replies to my answers"
           notify_of_similar_questions:
-            label: "someone asks a question similar to yours"
+            label: "someone asks a question similar to mine"
           name:
             label: "Name"
           headshot:
@@ -480,7 +493,7 @@ en:
       locality:
         label: "City"
       postal_code:
-        label: "Zip/Postal Code"
+        label: "Postal Code/Zip"
       street_address_1:
         label: "Street address"
       street_address_2:
@@ -488,9 +501,9 @@ en:
   misc:
     yes: "Yes"
     no: "No"
-    time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
-    sent_time_ago: "Sent %{time} ago"
     me: "Me"
+    time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
+    sent_time_ago: "<time class='created-at' datetime='%{time}'>Sent %{time_ago} ago</time>"
   beta:
     cta: "Pre-signup for the beta and get early access!"
     email_placeholder: "Your email..."

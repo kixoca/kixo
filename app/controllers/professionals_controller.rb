@@ -52,6 +52,8 @@ class ProfessionalsController < ApplicationController
       @professionals.page(params[:page])
     end
 
+    @current_action_tab = "search"
+
     respond_to do |format|
       format.html # search.html.haml
       format.json { render :json => @professionals }

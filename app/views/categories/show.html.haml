@@ -24,8 +24,7 @@
     - unless @professionals.empty?
       %section
         .container
-          %h4
-            =t "professionals.count_in_taxonomy", :count => @professionals.count, :tax => @category.name.downcase
+          %h4=t "professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @category.name.downcase
           - unless @professionals.blank?
             %ul.looper.professionals.block-grid.three-up.mobile-one-up
               - @professionals.each do |professional|
@@ -36,8 +35,7 @@
   .four.columns
     %section#questions
       .container
-        %h4
-          =t "questions.count_in_taxonomy", :count => @questions.count, :tax => @category.name.downcase
+        %h4=t "questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @category.name.downcase
         - unless @questions.empty?
           %ul.looper.questions
             - @questions.each do |question|

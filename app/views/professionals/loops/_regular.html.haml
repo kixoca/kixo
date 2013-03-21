@@ -16,12 +16,6 @@
     %section
       .container.tight
         %ul.metrics.block-grid.three-up
-          %li
-            .value= professional.points
-            .key=t "professionals.metrics.points"
-          %li
-            .value= professional.answers.count
-            .key=t "professionals.metrics.answers"
-          %li
-            .value= professional.reviews.count
-            .key=t "professionals.metrics.reviews"
+          %li=t("professionals.metrics.points", :count => professional.points).html.safe
+          %li=t("professionals.metrics.answers", :count => professional.answers.count).html_safe
+          %li=t("professionals.metrics.reviews", :count => professional.reviews.count).html_safe

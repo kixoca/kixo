@@ -24,6 +24,8 @@ class TopicsController < ApplicationController
       @professionals = @professionals.merge(@locality.professionals) unless @locality.nil?
     end
 
+    @current_action_tab = "ask"
+
     respond_to do |format|
       format.html
       format.json { render :json => @topic }

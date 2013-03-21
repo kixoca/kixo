@@ -2,7 +2,7 @@
   .twelve.columns
     %h1
       - unless @locality.blank?
-        =t "taxonomy.in_taxonomy", :taxonomy_1 => @topic.name, :taxonomy_2 => @locality.name
+        =t "topics.show.in_locality.title", :topic => @topic.name, :locality => @locality.name
       - else
         = @topic.name
     - unless @topic.description.blank?
@@ -10,26 +10,22 @@
         = @topic.description
     %hr
   .eight.columns
-    - unless @professionals.empty?
-      %section
-        .container
+    %section
+      .container
+        - unless @professionals.empty?
           %h4
             - unless @locality.blank?
               =t "professionals.count.in_taxonomy_found_in_locality", :count => @professionals.count, :tax => @topic.name.downcase, :locality => @locality.name
             - else
-              =t "professionals.count.in_taxonomy", :count => @professionals.count, :tax => @topic.name.downcase
+              =t "professionals.count.in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase
           - unless @professionals.empty?
             %ul.looper.professionals.block-grid.three-up.mobile-one-up
               - @professionals.each do |professional|
                 %li= render "professionals/loops/regular", :professional => professional
-          - else
-            %p.no-records
-              =t "no_records.professionals"
     - if @locality.blank?
       %section.browse-by-taxonomy
         .container
-          %h4
-            =t "professionals.browse.in_taxonomy_by_location", :tax => @topic.name.downcase
+          %h4=t("topics.browse_by.location", :topic => @topic.name.downcase).html_safe
           %ul.countries.accordion.compact
             - @all_countries.each do |country|
               %li.country
@@ -45,13 +41,13 @@
                         %ul.localities.block-grid.four-up
                           - region.localities.each do |locality|
                             %li.locality
-                              %a.locality-name{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} in #{locality.name}, #{region.name}"}
+                              %a.locality-name{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} - #{locality.name}, #{region.name}"}
                                 = locality.name
   .four.columns
     %section#questions
       .container
         %h4
-          =t "questions.count_in_taxonomy", :taxonomy => @topic.name
+          =t "questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @topic.name.downcase
         - unless @questions.empty?
           %ul.looper.questions
             - @questions.each do |question|

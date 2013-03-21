@@ -12,18 +12,10 @@
               %p.whois
                 =t("professionals.show.whois", :locality => @professional.locality.name, :professions => @professional.professions_list, :topics => @professional.topics_list).html_safe
               %ul.metrics.block-grid.four-up
-                %li
-                  .value= @professional.points
-                  .key= "points"
-                %li
-                  .value= @professional.answers.count
-                  .key= "answers"
-                %li
-                  .value= @professional.reviews.count
-                  .key= "reviews"
-                %li
-                  .value= @professional.guides.count
-                  .key= "guides"
+                %li=t("professionals.metrics.points", :count =>  @professional.points).html_safe
+                %li=t("professionals.metrics.answers", :count => @professional.answers.count).html_safe
+                %li=t("professionals.metrics.reviews", :count => @professional.reviews.count).html_safe
+                %li=t("professionals.metrics.guides", :count => @professional.guides.count).html_safe
       %section
         .container
           - unless @professional.bio.blank?
