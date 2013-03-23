@@ -29,7 +29,7 @@ class QuestionsController < ApplicationController
   end
 
   def new
-    @question = Question.new(session[:question])
+    @question = Question.new(params[:question])
     @author = current_user || User.new
 
     respond_to do |format|

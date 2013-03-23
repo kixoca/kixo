@@ -6,7 +6,7 @@
           = simple_format(answer.details)
         %p.meta
           %span.created_at
-            =t "misc.time_ago", :time => time_ago_in_words(answer.created_at)
+            =t("misc.time_ago", :time => answer.created_at, :time_ago => time_ago_in_words(answer.created_at)).html_safe
         - if answer.author == current_user
           .actions
             = link_to t("answers.delete.title"), question_answer_path(answer.question, answer), :confirm => t("answers.delete.confirm"), :method => :delete, :class => "delete"

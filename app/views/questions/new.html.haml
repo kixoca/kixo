@@ -9,6 +9,7 @@
           %section.errors
             .container
               = render "/shared/errors", :errors => @question.errors
+              = debug @question
         %section
           .container
             %h3=t "questions.new.sections.details.title"

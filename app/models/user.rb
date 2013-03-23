@@ -188,7 +188,7 @@ class User < ActiveRecord::Base
   end
 
   def default_values
-    self.locale = Locale.find_by_code(I18n.locale) if (self.locale.nil? or self.locale_id.blank?)
-    self.locales << self.locale if (self.locales.nil? or self.locale_ids.blank?)
+    self.locale ||= Locale.find_by_code(I18n.locale)
+    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
   end
 end
