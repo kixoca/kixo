@@ -1,0 +1,12 @@
+development:
+  bucket: kixo-dev
+  access_key_id: AKIAIEVVWLUWE5D7LCTA
+  secret_access_key: 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
+test:
+  bucket: kixo-test
+  access_key_id: AKIAIEVVWLUWE5D7LCTA
+  secret_access_key: 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
+production:
+  bucket: kixo-production
+  access_key_id: AKIAJNYLZFWMCNPE7BQA
+  secret_access_key: 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

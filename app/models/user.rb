@@ -52,7 +52,10 @@ class User < ActiveRecord::Base
   has_many :referrals, :class_name => "User", :foreign_key => :referer_id
 
   # use paperclip to attach an headshot
-  has_attached_file :headshot, :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#", :mini => "30x30#"}
+  has_attached_file :headshot,
+                    :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#", :mini => "30x30#"},
+                    :path => "/headshots/:id/:style.:extension",
+                    :default_url => "/headshots/defaults/:style.png"
 
   # set default values on init
   after_initialize :default_values

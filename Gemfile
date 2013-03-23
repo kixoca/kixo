@@ -39,6 +39,8 @@ gem 'validates_existence', '>= 0.4'
 
 gem 'paperclip', '~> 3.0'
 
+gem 'aws-sdk'
+
 gem 'rmagick'
 
 gem 'haml-rails'
