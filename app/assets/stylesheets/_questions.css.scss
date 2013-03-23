@@ -10,11 +10,11 @@
     }
 
     .details {
-      font-size: 0.90*$baseFontSize;
+      font-size: $smallFontSize;
     }
 
     .answers-count {
-      font-size: 0.90*$baseFontSize;
+      font-size: $smallFontSize;
     }
   }
 }
@@ -22,7 +22,7 @@
 .answer {
   .actions {
     visibility: hidden;
-    font-size: 0.90*$baseFontSize;
+    font-size: $smallFontSize;
   }
 
   &:hover .actions {

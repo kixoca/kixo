@@ -7,6 +7,8 @@ class WheresController < ApplicationController
       @wheres = Locality.all + Region.all + Country.all
     end
 
+    @wheres = @wheres.sort_by(&:rank).reverse
+
     @humanized_wheres = @wheres.map {|where|
       name = label = case where.class.name
                 when "Locality" then "#{where.name}, #{where.region.name}"

@@ -143,17 +143,17 @@ en:
       one: "1 professional found"
       other: "%{count} professionals found"
     count_in_taxonomy:
-      zero: "No professionals in %{taxonomy}"
-      one: "1 professional in %{taxonomy}"
-      other: "%{count} professionals in %{taxonomy}"
+      zero: "No professionals in <em>%{taxonomy}</em>"
+      one: "1 professional in <em>%{taxonomy}</em>"
+      other: "%{count} professionals in <em>%{taxonomy}</em>"
     count_in_locality:
-      zero: "No professionals in %{locality}"
-      one: "1 professional in %{locality}"
-      other: "%{count} professionals in %{locality}"
+      zero: "No professionals in <em>%{locality}</em>"
+      one: "1 professional in <em>%{locality}</em>"
+      other: "%{count} professionals in <em>%{locality}</em>"
     count_in_taxonomy_and_locality:
-      zero: "No professionals in %{taxonomy} in %{locality}"
-      one: "1 professional in %{taxonomy} in %{locality}"
-      other: "%{count} professionals in %{taxonomy} in %{locality}"
+      zero: "No professionals in <em>%{taxonomy}</em> in <em>%{locality}</em>"
+      one: "1 professional in <em>%{taxonomy}</em> in <em>%{locality}</em>"
+      other: "%{count} professionals in <em>%{taxonomy}</em> in <em>%{locality}</em>"
     reviews:
       count:
         zero: "There are no reviews for %{name} yet"
@@ -182,26 +182,27 @@ en:
     browse:
       in_taxonomy: "Browse professionals in %{taxonomy}"
       in_taxonomy_by_location: "Browse professionals in %{taxonomy} by location"
-    points:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>points</span>"
-        one: "<span class='value'>1</span> <span class='key'>point</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
-    answers:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>answers</span>"
-        one: "<span class='value'>1</span> <span class='key'>answer</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>answers</span>"
-    reviews:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>reviews</span>"
-        one: "<span class='value'>1</span> <span class='key'>review</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>reviews</span>"
-    guides:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>guides</span>"
-        one: "<span class='value'>1</span> <span class='key'>guide</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
+    metrics:
+      points:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>points</span>"
+          one: "<span class='value'>1</span> <span class='key'>point</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
+      answers:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>answers</span>"
+          one: "<span class='value'>1</span> <span class='key'>answer</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>answers</span>"
+      reviews:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>reviews</span>"
+          one: "<span class='value'>1</span> <span class='key'>review</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>reviews</span>"
+      guides:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>guides</span>"
+          one: "<span class='value'>1</span> <span class='key'>guide</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
   conversations:
     index:
       title: "Messages"
@@ -347,7 +348,7 @@ en:
           password:
             label: "Password"
           password_confirmation:
-            label: "Password Confirmation"
+            label: "Confirmation"
           locale:
             label: "Main Language"
           locales:
@@ -366,6 +367,10 @@ en:
             label: "someone asks a question similar to mine"
           name:
             label: "Name"
+          url:
+            label: "Website"
+          tel:
+            label: "Phone number"
           headshot:
             label: "Headshot"
           is_a_professional:
@@ -377,6 +382,7 @@ en:
           new_session:
             title: "Already have an account?"
             content: "No need to create a new account! Sign in to your existing one."
+            label: "Sign in"
       new:
         title: "Sign Up"
         label: "Sign up"
@@ -387,14 +393,14 @@ en:
           password:
             label: "Password"
           password_confirmation:
-            label: "Password Confirmation"
+            label: "Confirmation"
           is_a_professional:
             label: "I am a professional"
           name:
             label: "Name"
           professions:
             label: "Profession"
-          submit: "Sign Up"
+        submit: "Sign Up"
       delete:
         title: "Cancel my account"
         unhappy: "Unhappy?"
@@ -435,7 +441,7 @@ en:
           password:
             label: "New password"
           password_confirmation:
-            label: "Confirm new password"
+            label: "Confirm"
         submit: "Change my password"
     confirmations:
       new:

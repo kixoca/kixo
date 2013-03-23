@@ -1,9 +1,9 @@
 - if controller_name == 'registrations'
   .panel.callout.green
-    %h5=t "users.registrations.panels.new_session.title"
-    %p=t "users.registrations.panels.new_session.content"
+    %h5=t "users.registrations.edit.panels.new_session.title"
+    %p=t "users.registrations.edit.panels.new_session.content"
     %a.button{:href => "#", :data => {"reveal-id" => "new_session"}}
-      =t "users.registrations.panels.new_session.label"
+      =t "users.registrations.edit.panels.new_session.label"
 
 - if devise_mapping.registerable? && controller_name == 'sessions'
   .panel.callout.green

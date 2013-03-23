@@ -40,14 +40,14 @@ body {
 
       a {
         color: $lightTxtColor;
-        font-size: 0.90*$baseFontSize;
+        font-size: $smallFontSize;
 
         &:hover {
           color: $txtColor;
         }
 
         i {
-          font-size: 0.80*$baseFontSize;
+          font-size: $miniFontSize;
           opacity: 0.80;
         }
       }
@@ -57,7 +57,7 @@ body {
       padding: 7px 0;
 
       #profile {
-        font-size: 0.85*$baseFontSize;
+        font-size: $smallFontSize;
         line-height: 30px;
         border-left: 1px solid $borderColor;
         padding-left: $golden*$unit;
@@ -83,7 +83,7 @@ body {
 
         i {
           color: $kixoGrey;
-          font-size: 1.5*$baseFontSize;
+          font-size: $xxlFontSize;
           @include transition;
 
           &:hover {
@@ -95,7 +95,7 @@ body {
           position: absolute;
           top: -5px;
           right: -10px;
-          font-size: 0.70*$baseFontSize;
+          font-size: $microFontSize;
           font-weight: bold;
           padding: 3px 5px;
           line-height: 1.0;
@@ -104,7 +104,7 @@ body {
           @include borderRadius(100px);
         }
       }
-      }
+    }
 
     ul ul {
       margin: 0;
@@ -132,11 +132,11 @@ body {
           }
 
           i {
-            font-size: 2.00*$baseFontSize;
+            font-size: $xxxlFontSize;
           }
 
           span {
-            font-size: 1.15*$baseFontSize;
+            font-size: $largeFontSize;
           }
 
           .hide-for-small {
@@ -229,7 +229,7 @@ body {
   }
 
   p, a {
-    font-size: 0.85*$baseFontSize;
+    font-size: $smallFontSize;
   }
 
   a {

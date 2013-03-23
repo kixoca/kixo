@@ -42,7 +42,7 @@
 }
 
 .meta {
-  font-size: 0.90*$baseFontSize;
+  font-size: $smallFontSize;
   color: $lightTxtColor;
 }
 
@@ -90,7 +90,7 @@ ul.inline {
   }
 
   &.spaced > li {
-    margin-right: 0.50*$baseFontSize;
+    margin-right: 0.5em;
   }
 }
 
@@ -129,14 +129,14 @@ ul.looper {
   list-style: none;
   margin-top: $golden*$unit;
 
-  li {
+  > li {
     margin-bottom: $golden*$unit;
   }
 
   &.tight {
     margin-top: $unit;
 
-    li {
+    > li {
       margin-bottom: $unit;
 
       &:last-child {
@@ -149,15 +149,19 @@ ul.looper {
 ul.tags {
   li, a {
     display: inline-block;
-    height: 24px;
-    line-height: 24px;
+    height: 22px;
+    line-height: 22px;
     position: relative;
-    font-size: 0.90*$baseFontSize;
+    font-size: $smallFontSize;
+  }
+
+  li {
+    margin-bottom: 6px;
   }
 
   a {
     margin: 0 12px 0 6px;
-    padding: 0 10px 0 12px;
+    padding: 0 8px 0 10px;
     background: $kixoLightGrey;
     color: $lightTxtColor;
     text-decoration: none;
@@ -168,18 +172,18 @@ ul.tags {
       float: left;
       position: absolute;
       top: 0;
-      left: -12px;
+      left: -11px;
       width: 0;
       height: 0;
       border-color: transparent $kixoLightGrey transparent transparent;
       border-style: solid;
-      border-width: 12px 12px 12px 0;
+      border-width: 11px 11px 11px 0;
     }
 
     &:after {
       content: "";
       position: absolute;
-      top: 10px;
+      top: 9px;
       left: 0;
       float: left;
       width: 4px;
@@ -214,7 +218,7 @@ ul.tags {
 
 .filter {
   dt, dd, a {
-    font-size: 0.90*$baseFontSize;
+    font-size: $mediumFontSize;
   }
 }
 

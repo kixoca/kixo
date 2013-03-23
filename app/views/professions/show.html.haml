@@ -16,16 +16,16 @@
         - unless @professionals.empty?
           %h4
             - unless @locality.nil?
-              =t "professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name
+              =t("professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name).html_safe
             - else
-              =t "professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name
+              =t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name).html_safe
           %ul.looper.professionals.block-grid.five-up.mobile-one-up
             - @professionals.each do |professional|
               %li= render "professionals/loops/regular", :professional => professional
     - if @locality.blank?
       %section.browse-by-taxonomy
         .container
-          %h4=t("professions.browse_by.location", :profession => @profession.name.downcase).html_safe
+          %h4=t("professions.browse_by.location", :profession => @profession.name.downcase.pluralize).html_safe
           %ul.countries.accordion.compact
             - @all_countries.each do |country|
               %li.country

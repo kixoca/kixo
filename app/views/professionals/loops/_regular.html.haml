@@ -6,16 +6,19 @@
           = image_tag professional.headshot.url(:medium), :class => "headshot"
         %h4.name
           = link_to professional.name, professional_path(professional)
-        .whois
-          - unless professional.professions.empty?
-            %span.professions
-              = professional.profession_list
-        .address.short
-          %i.foundicon-location
-          = professional.short_address
-    %section
-      .container.tight
-        %ul.metrics.block-grid.three-up
-          %li=t("professionals.metrics.points", :count => professional.points).html.safe
-          %li=t("professionals.metrics.answers", :count => professional.answers.count).html_safe
-          %li=t("professionals.metrics.reviews", :count => professional.reviews.count).html_safe
+        %ul.taxonomies.block-grid.one-up.mobile-one-up
+          %li.professions
+            %h6.subheader
+              %i.icon-user
+              = professional.professions_list
+          %li.location
+            %h6.subheader
+              %i.icon-map-marker
+              = professional.short_address
+    - if false
+      %section
+        .container.tight
+          %ul.metrics.block-grid.three-up
+            %li=t("professionals.metrics.points.count", :count => professional.points).html_safe
+            %li=t("professionals.metrics.answers.count", :count => professional.answers.count).html_safe
+            %li=t("professionals.metrics.reviews.count", :count => professional.reviews.count).html_safe

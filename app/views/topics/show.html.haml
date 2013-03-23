@@ -15,9 +15,9 @@
         - unless @professionals.empty?
           %h4
             - unless @locality.blank?
-              =t "professionals.count.in_taxonomy_found_in_locality", :count => @professionals.count, :tax => @topic.name.downcase, :locality => @locality.name
+              =t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :tax => @topic.name.downcase, :locality => @locality.name).html_safe
             - else
-              =t "professionals.count.in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase
+              =t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase).html_safe
           - unless @professionals.empty?
             %ul.looper.professionals.block-grid.three-up.mobile-one-up
               - @professionals.each do |professional|

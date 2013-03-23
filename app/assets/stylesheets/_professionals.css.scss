@@ -1,7 +1,10 @@
 .professional {
-  .whois {
-    color: $lightTxtColor;
-    font-style: italic;
+  h1.name {
+    margin-bottom: $golden*$unit;
+  }
+
+  ul.taxonomies {
+    margin-bottom: $golden*$unit;
   }
 
   ul.topics {
@@ -21,25 +24,26 @@
     height: 300px;
 
     .address {
-      font-size: 0.90*$baseFontSize;
+      font-size: $smallFontSize;
     }
   }
 
   .metrics {
-    margin: $golden*$unit 0 0 0;
-
     li {
-      padding: 0;
+      padding-bottom: 0;
+      margin: 0;
     }
 
     .key {
+      display: block;
       color: $lightTxtColor;
       text-transform: uppercase;
-      font-size: 0.80*$baseFontSize;
+      font-size: $miniFontSize;
     }
 
     .value {
-      font-size: 1.5*$baseFontSize;
+      display: block;
+      font-size: $xxlFontSize;
       font-weight: bold;
       line-height: 2.5*$unit;
     }
@@ -65,16 +69,16 @@
 
     .metrics {
       .key {
-        font-size: 0.65*$baseFontSize;
+        font-size: $microFontSize;
       }
 
       .value {
-        font-size: 1.2*$baseFontSize;
+        font-size: $largeFontSize;
       }
     }
 
     .address {
-      font-size: 0.90*$baseFontSize;
+      font-size: $smallFontSize;
       color: $lightTxtColor;
     }
 

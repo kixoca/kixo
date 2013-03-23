@@ -135,9 +135,19 @@
               .container
                 .row
                   .three.columns
-                    = f.label :name, t("users.registrations.edit.fields.name.label") :class => "inline right"
+                    = f.label :name, t("users.registrations.edit.fields.name.label"), :class => "inline right"
                   .seven.columns.end
                     = f.text_field :name
+                .row
+                  .three.columns
+                    = f.label :url, t("users.registrations.edit.fields.url.label"), :class => "inline right"
+                  .seven.columns.end
+                    = f.text_field :url, :placeholder => "http://"
+                .row
+                  .three.columns
+                    = f.label :tel, t("users.registrations.edit.fields.tel.label"), :class => "inline right"
+                  .seven.columns.end
+                    = f.text_field :tel
                 .row
                   .three.columns
                     = f.label :headshot, t("users.registrations.edit.fields.headshot.label"), :class => "inline right"
@@ -145,7 +155,7 @@
                     = f.file_field :headshot
                 .row
                   .three.columns
-                    = f.label :is_a_professional, , t("users.registrations.edit.fields.is_a_professional.label"), :class => "inline right"
+                    = f.label :is_a_professional, t("users.registrations.edit.fields.is_a_professional.label"), :class => "inline right"
                   .two.columns.end
                     = f.select :is_a_professional, [[t("misc.yes"), true], [t("misc.no"), false]]
                 .row

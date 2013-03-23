@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   include Classifiable
   include Geolocalizable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :tel, :headshot, :bio, :is_a_professional,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :url, :tel, :headshot, :bio, :is_a_professional,
                   :topics, :topic_ids, :professions, :profession_ids,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
                   :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers
@@ -95,6 +95,10 @@ class User < ActiveRecord::Base
 
   def display_name
     self.name.blank? ? "Kixo user" : self.name
+  end
+
+  def display_url
+    self.url.gsub("http://", "") unless self.url.blank?
   end
 
   def short_address

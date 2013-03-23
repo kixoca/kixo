@@ -6,16 +6,26 @@ class ApplicationController < ActionController::Base
   before_filter :set_common_vars
 
   def default_url_options(options={})
-    logger.debug "default_url_options is passed options: #{options.inspect}\n"
     {:locale => I18n.locale}
   end
 
   def set_locale
     if params[:locale].blank?
-      browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
-      redirect_to Locale.find_by_code(browser_locale) ? "/#{browser_locale}" : "/#{I18n.default_locale}"
+      if session[:locale]
+        redirect_to "/#{session[:locale]}"
+      elsif cookies[:locale]
+        redirect_to "/#{cookies[:locale]}"
+      else
+        browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
+        if Locale.find_by_code(browser_locale)
+          redirect_to "/#{browser_locale}"
+        else
+          redirect_to "/#{I18n.default_locale}"
+        end
+      end
     else
       I18n.locale = params[:locale]
+      session[:locale] = cookies[:locale] = I18n.locale
     end
   end
 

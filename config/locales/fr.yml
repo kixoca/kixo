@@ -143,17 +143,17 @@ fr:
       one: "1 professionnel trouvé"
       other: "%{count} professionnels trouvés"
     count_in_taxonomy:
-      zero: "Aucun professionnel en %{taxonomy}"
-      one: "1 professionnel en %{taxonomy}"
-      other: "%{count} professionnels en %{taxonomy}"
+      zero: "Aucun professionnel en <em>%{taxonomy}</em>"
+      one: "1 professionnel en <em>%{taxonomy}</em>"
+      other: "%{count} professionnels en <em>%{taxonomy}</em>"
     count_in_locality:
-      zero: "Aucun professionnel à %{locality}"
-      one: "1 professionnel à %{locality}"
-      other: "%{count} professionnels à %{locality}"
+      zero: "Aucun professionnel à <em>%{locality}</em>"
+      one: "1 professionnel à <em>%{locality}</em>"
+      other: "%{count} professionnels à <em>%{locality}</em>"
     count_in_taxonomy_and_locality:
-      zero: "Aucun professionnel en %{taxonomy} à %{locality}"
-      one: "1 professionnel en %{taxonomy} à %{locality}"
-      other: "%{count} professionnels en %{taxonomy} à %{locality}"
+      zero: "Aucun professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      one: "1 professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      other: "%{count} professionnels en <em>%{taxonomy}</em> à <em>%{locality}</em>"
     reviews:
       count:
         zero: "Il n'y a pas encore d'avis pour %{name}"
@@ -182,26 +182,27 @@ fr:
     browse:
       in_taxonomy: "Parcourir les professionnels à %{taxonomy}"
       in_taxonomy_by_location: "Parcourir les professionnels en %{taxonomy} par emplacement"
-    points:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>point</span>"
-        one: "<span class='value'>1</span> <span class='key'>point</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
-    answers:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>réponse</span>"
-        one: "<span class='value'>1</span> <span class='key'>réponse</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>réponses</span>"
-    reviews:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>avis</span>"
-        one: "<span class='value'>1</span> <span class='key'>avis</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>avis</span>"
-    guides:
-      count:
-        zero: "<span class='value'>0</span> <span class='key'>guide</span>"
-        one: "<span class='value'>1</span> <span class='key'>guide</span>"
-        other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
+    metrics:
+      points:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>point</span>"
+          one: "<span class='value'>1</span> <span class='key'>point</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
+      answers:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>réponse</span>"
+          one: "<span class='value'>1</span> <span class='key'>réponse</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>réponses</span>"
+      reviews:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>avis</span>"
+          one: "<span class='value'>1</span> <span class='key'>avis</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>avis</span>"
+      guides:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>guide</span>"
+          one: "<span class='value'>1</span> <span class='key'>guide</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
   conversations:
     index:
       title: "Messages"
@@ -292,9 +293,9 @@ fr:
       one: "1 profession trouvée"
       other: "%{count} professions trouvées"
     browse_by:
-      location: "Parcourir les %{profession} par emplacement"
-      category: "Parcourir les %{profession} par catégorie"
-      topic: "Parcourir les %{profession} par sujet"
+      location: "Parcourir les <em>%{profession}</em> par emplacement"
+      category: "Parcourir les <em>%{profession}</em> par catégorie"
+      topic: "Parcourir les <em>%{profession}</em> par sujet"
   taxonomy:
     in_taxonomy: "%{taxonomy_1} en %{taxonomy_2}"
     browse_by:
@@ -366,6 +367,10 @@ fr:
             label: "quelqu'un pose une question similaire aux miennes"
           name:
             label: "Nom"
+          url:
+            label: "Site web"
+          tel:
+            label: "Téléphone"
           headshot:
             label: "Portrait"
           is_a_professional:
@@ -377,6 +382,7 @@ fr:
           new_session:
             title: "Vous avez déjà un compte?"
             content: "Pas besoin de créer un nouveau compte! Connectez-vous à votre compte existant."
+            label: "Connexion"
       new:
         title: "Inscription"
         label: "Inscription"
@@ -387,14 +393,14 @@ fr:
           password:
             label: "Mot de passe"
           password_confirmation:
-            label: "Confirmation du mot de passe"
+            label: "Confirmation"
           is_a_professional:
             label: "Je suis un professionnel"
           name:
             label: "Nom"
           professions:
             label: "Profession"
-          submit: "Inscription"
+        submit: "Inscription"
       delete:
         title: "Annuler mon compte"
         unhappy: "Mécontent?"

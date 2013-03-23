@@ -9,13 +9,37 @@
             .eight.columns.mobile-text-center
               %h1.name
                 = @professional.name
-              %p.whois
-                =t("professionals.show.whois", :locality => @professional.locality.name, :professions => @professional.professions_list, :topics => @professional.topics_list).html_safe
-              %ul.metrics.block-grid.four-up
-                %li=t("professionals.metrics.points", :count =>  @professional.points).html_safe
-                %li=t("professionals.metrics.answers", :count => @professional.answers.count).html_safe
-                %li=t("professionals.metrics.reviews", :count => @professional.reviews.count).html_safe
-                %li=t("professionals.metrics.guides", :count => @professional.guides.count).html_safe
+              %ul.taxonomies.block-grid.two-up.mobile-one-up
+                %li.professions
+                  %h5.subheader
+                    %i.icon-user
+                    = @professional.professions_list
+                %li.location
+                  %h5.subheader
+                    %i.icon-map-marker
+                    = @professional.short_address
+                - unless @professional.url.blank?
+                  %li.url
+                    %h5.subheader
+                      %i.icon-external-link
+                      = link_to @professional.display_url, @professional.url
+                - unless @professional.tel.blank?
+                  %li.tel
+                    %h5.subheader
+                      %i.icon-phone
+                      = @professional.tel
+              %ul.tags.green-tags.topics
+                - @professional.topics.each do |topic|
+                  %li= link_to topic.name, category_topic_path(topic.category, topic)
+              .clear
+      - if false
+        %section
+          .container
+            %ul.metrics.block-grid.four-up
+              %li=t("professionals.metrics.points.count", :count =>  @professional.points).html_safe
+              %li=t("professionals.metrics.answers.count", :count => @professional.answers.count).html_safe
+              %li=t("professionals.metrics.reviews.count", :count => @professional.reviews.count).html_safe
+              %li=t("professionals.metrics.guides.count", :count => @professional.guides.count).html_safe
       %section
         .container
           - unless @professional.bio.blank?
@@ -25,13 +49,8 @@
               %p.bio
                 = @professional.bio
           .contacts
-            - unless @professional.tel.blank?
-              .tel.pull-left
-                = @professional.tel
-            .pull-left
-              %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
-                =t "professionals.show.send_message"
-            .clear
+            %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
+              =t "professionals.show.send_message"
       %section
         .container.no-pad
           .map
@@ -96,5 +115,5 @@
             %li= render "professionals/loops/minimal", :professional => professional
       - else
         %p.no-records
-          =t "professionals.similar.count.zero"
+          =t "professionals.count.zero"
     = render "shared/ads"

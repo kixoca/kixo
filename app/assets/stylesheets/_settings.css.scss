@@ -45,10 +45,20 @@ $headerFontWeight: bold;
 $headerFontStyle: normal;
 $headerFontColor: $kixoDarkBlue;
 $subheaderFontFamily: "Open Sans", Helvetica, Arial, sans-serif;
-$bodyFontFamily: "Open Sans", Helvetica, Arial, sans-serif;
+$bodyFontFamily: Arial, Helvetica, sans-serif;
 $bodyFontWeight: normal;
 $bodyFontStyle: normal;
 $bodyFontColor: $txtColor;
+
+$microFontSize: 9px;
+$miniFontSize: 10px;
+$smallFontSize: 12px;
+$mediumFontSize: 13px;
+$baseFontSize: 14px;
+$largeFontSize: 16px;
+$xlargeFontSize: 18px;
+$xxlFontSize: 22px;
+$xxxlFontSize: 26px;
 
 // Misc. Settings
 
@@ -269,7 +279,6 @@ $complementaryWidth: 20%;
 // Modular Scale Settings
 
 // $ratio: $golden; // THIS IS DEFAULT IN MODULAR-SCALE
-$baseFontSize: 1.40 * $unit;
 //$importantModNum: 44px;
 $importantModNum: 44px;
 $base-size: $baseFontSize $importantModNum;

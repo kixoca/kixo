@@ -169,11 +169,11 @@ category = Category.create()
 
   profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Lawyer", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Avocat(e)", :locale => fr, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Avocat", :locale => fr, :profession => profession)
 
   profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Paralegal", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Technicien(ne) juridique", :locale => fr, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Technicien juridique", :locale => fr, :profession => profession)
 
 category = Category.create()
   category_name = CategoryName.create(:name => "Health", :locale => en, :category => category)
