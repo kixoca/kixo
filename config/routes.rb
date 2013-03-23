@@ -1,7 +1,7 @@
 Kixo::Application.routes.draw do
 
   # I18n
-  scope "(:locale)", :locale => /en|fr/ do
+  scope "(:locale)", :locale => /fr|en/ do
 
     ActiveAdmin.routes(self)
 
