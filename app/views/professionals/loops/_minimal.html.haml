@@ -6,7 +6,9 @@
           = link_to professional_path(professional) do
             = image_tag professional.headshot.url(:thumb), :class => "headshot"
         .nine.columns
-          = link_to professional.name, professional_path(professional), :class => "name"
-          .whois
-            %span.professions
+          %h5.name
+            = link_to professional.name, professional_path(professional), :class => "name"
+          .professions
+            %h6.subheader
+              %i.icon-user
               = professional.professions_list
