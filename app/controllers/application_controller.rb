@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
         redirect_to "/#{session[:locale]}"
       elsif cookies[:locale]
         redirect_to "/#{cookies[:locale]}"
+      elsif user_signed_in?
+        redirect_to "/#{current_user.locale.code}"
       else
         browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
         if Locale.find_by_code(browser_locale)
