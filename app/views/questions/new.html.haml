@@ -41,7 +41,7 @@
                       - category.topics.each do |topic|
                         %li
                           %label
-                            = check_box_tag "question[topic_ids][]", topic.id, (session[:question][:topic_ids] and session[:question][:topic_ids].include?("#{topic.id}"))
+                            = check_box_tag "question[topic_ids][]", topic.id
                             = topic.name
         - unless current_user
           %section
