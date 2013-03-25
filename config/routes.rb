@@ -1,10 +1,5 @@
 Kixo::Application.routes.draw do
 
-  constraints(:host => /kixo.ca/) do
-    root :to => redirect("http://www.kixo.ca")
-    match '/*path', :to => redirect {|params| "http://www.kixo.ca/#{params[:path]}"}
-  end
-
   # I18n
   scope "(:locale)", :locale => /fr|en/ do
 
