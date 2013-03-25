@@ -1,6 +1,6 @@
 %p.center= image_tag "http://kixo.ca/assets/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240
-%p=t "users.mailer.welcome_email.welcome", :display_name => @user.display_name
+%p= t("users.mailer.welcome_email.welcome", :display_name => @user.display_name, :locale => @user.locale).html_safe
 - if @user.is_a_professional?
-  %p= t("users.mailer.welcome_email.content.for_professional", :new_user_session_url => new_user_session_url, :new_question_url => new_question_path, :root_url => root_url, :edit_user_registration_url => edit_user_registration_path).html_safe
+  %p= t("users.mailer.welcome_email.content.for_professional", :new_user_session_url => new_user_session_url(:locale => @user.locale), :new_question_url => new_question_url(:locale => @user.locale), :root_url => root_url(:locale => @user.locale), :edit_user_registration_url => edit_user_registration_url(:locale => @user.locale), :locale => @user.locale).html_safe
 - else
-  %p= t("users.mailer.welcome_email.content.for_user", :new_user_session_url => new_user_session_url, :new_question_url => new_question_url, :search_professionals_url => search_professionals_url).html_safe
+  %p= t("users.mailer.welcome_email.content.for_user", :new_user_session_url => new_user_session_url(:locale => @user.locale), :new_question_url => new_question_url(:locale => @user.locale), :search_professionals_url => search_professionals_url(:locale => @user.locale), :locale => @user.locale).html_safe
