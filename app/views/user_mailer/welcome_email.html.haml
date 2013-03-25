@@ -1,4 +1,4 @@
-%p.center= image_tag "http://kixo.ca/images/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240
+%p.center= image_tag "http://kixo.ca/assets/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240
 %p=t "users.mailer.welcome_email.welcome", :display_name => @user.display_name
 - if @user.is_a_professional?
   %p= t("users.mailer.welcome_email.content.for_professional", :new_user_session_url => new_user_session_url, :new_question_url => new_question_path, :root_url => root_url, :edit_user_registration_url => edit_user_registration_path).html_safe
