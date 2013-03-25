@@ -221,7 +221,7 @@ en:
         hello: "Hello %{display_name}!"
         signature: "- Kixo Team"
       layout:
-        change_preferences: "If you do not want to receive more emails like this one, <a href='%{edit_user_registration_notifications_url}'>change preferences</a>."
+        change_preferences: "If you do not want to receive more emails like this one, <a href='%{edit_user_registration_notifications_url}'>change your preferences</a>."
       confirmation_instructions:
         welcome: "Welcome, %{display_name}!"
         content: "You can confirm your account email through the link below:"

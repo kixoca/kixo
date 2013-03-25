@@ -3,4 +3,4 @@
 - if @user.is_a_professional?
   %p= t("users.mailer.welcome_email.content.for_professional", :new_user_session_url => new_user_session_url, :new_question_url => new_question_path, :root_url => root_url, :edit_user_registration_url => edit_user_registration_path).html_safe
 - else
-  %p= t("users.mailer.welcome_email.content.for_user", :new_user_session_url => new_user_session_path, :new_question_url => new_question_path, :search_professionals_url => search_professionals_path).html_safe
+  %p= t("users.mailer.welcome_email.content.for_user", :new_user_session_url => new_user_session_url, :new_question_url => new_question_url, :search_professionals_url => search_professionals_url).html_safe
