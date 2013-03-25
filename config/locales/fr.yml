@@ -1,9 +1,11 @@
 fr:
+
   site:
     title: "Kixo"
     about:
       title: "Qu'est-ce que Kixo?"
       description: "Chez Kixo il est de notre mission de vous aider à obtenir des réponses précises à vos questions. Nous nous efforçons de vous fournir les meilleures informations afin que vous puissiez prendre des décisions éclairées. Le choix d'un professionnel qualifié n'est pas facile, mais nous voulons le rendre plus simple!"
+
   layout:
     logo:
       alt: "Kixo"
@@ -11,7 +13,7 @@ fr:
     actions:
       ask:
         tab_name: "Poser une question"
-        title: "Poser une question aux professionnels"
+        title: "Demandez à des professionnels"
         subtitle: "Obtenez des conseils gratuits de professionnels expérimentés !"
         placeholder: "Entrez votre question ici..."
         button: "Soumettre"
@@ -23,13 +25,373 @@ fr:
           what: "Quoi?"
           where: "Où?"
         button: "Rechercher"
+
   browse_by:
     category: "Parcourir par catégorie"
     topic: "Parcourir par sujet"
     profession: "Parcourir par profession"
     location: "Parcourir par emplacement"
-  alerts:
-    are_you_sure: "Êtes-vous certain?"
+
+  location_selector:
+    fields:
+      country:
+        label: "Pays"
+      region:
+        label: "Province/État"
+      locality:
+        label: "Ville"
+      postal_code:
+        label: "Code postal"
+      street_address_1:
+        label: "Adresse"
+      street_address_2:
+        label: "(suite)"
+
+  misc:
+    yes: "Oui"
+    no: "Non"
+    me: "Moi"
+    time_ago: "<time class='created-at' datetime='%{time}'>Il y a %{time_ago}</time>"
+    sent_time_ago: "<time class='created-at' datetime='%{time}'>Envoyé il y a %{time_ago}</time>"
+
+  beta:
+    cta: "Pre-signup for the beta and get early access!"
+    email_placeholder: "Your email..."
+    button_text: "Notify me!"
+    thank_you:
+      title: "Thank you for signing up!"
+      subtitle: "We will contact you when we launch!"
+
+  users:
+    registrations:
+      edit:
+        title: "Paramètres"
+        label: "Paramètres"
+        sections:
+          account:
+            label: "Compte"
+            title: "Mon compte"
+            subtitle: "Modifiez les réglages de base de votre compte, votre mot de passe et vos langues"
+          email_notifications:
+            label: "Notifications par courriel"
+            title: "Notifications par courriel"
+            subtitle: "Contrôler les courriels que Kixo vous envoie"
+            legend: "Envoyez-moi un courriel lorsque"
+          profile:
+            label: "Profil"
+            title: "Profil"
+            subtitle: "Modifiez votre profil"
+          billing:
+            label: "Facturation"
+            title: "Facturation"
+            subtitle: "Modifiez vos informations de facturation"
+          categories:
+            label: "Catégories"
+            title: "Catégories"
+            subtitle: "Choisissez des sujets et professions"
+            select_topics:
+              legend: "Choisissez un ou plusieurs sujets"
+            select_professions:
+              legend: "Choisissez une ou plusieurs professions"
+          contact:
+            label: "Contact"
+            title: "Information de contact"
+            subtitle: "Modifiez vos informations de contact"
+        fields:
+          email:
+            label: "Courriel"
+          password:
+            label: "Mot de passe"
+          password_confirmation:
+            label: "Confirmation du mot de passe"
+          locale:
+            label: "Langue principale"
+          locales:
+            label: "Autres langues"
+          notify_of_kixo_news:
+            label: "Kixo publie de nouvelles fonctionnalités et promotions"
+          notifiy_of_partner_news:
+            label: "les partenaires de Kixo ont des offres pour vous"
+          notify_of_new_messages:
+            label: "je reçois un message privé"
+          notify_of_answers:
+            label: "quelqu'un répond à mes questions"
+          notify_of_replies:
+            label: "quelqu'un répond à mes réponses"
+          notify_of_similar_questions:
+            label: "quelqu'un pose une question similaire aux miennes"
+          name:
+            label: "Nom"
+          url:
+            label: "Site web"
+          tel:
+            label: "Téléphone"
+          headshot:
+            label: "Portrait"
+          is_a_professional:
+            label: "Je suis un professionnel"
+          bio:
+            label: "Bio"
+        submit: "Mettre à jour"
+        panels:
+          new_session:
+            title: "Vous avez déjà un compte?"
+            content: "Pas besoin de créer un nouveau compte! Connectez-vous à votre compte existant."
+            label: "Connexion"
+      new:
+        title: "Inscription"
+        label: "Créer un compte"
+        subtitle: "Créez un compte, c'est gratuit et rapide!"
+        fields:
+          email:
+            label: "Courriel"
+          password:
+            label: "Mot de passe"
+          password_confirmation:
+            label: "Confirmation"
+          is_a_professional:
+            label: "Je suis un professionnel"
+          name:
+            label: "Nom"
+          professions:
+            label: "Profession"
+        submit: "Inscription"
+      delete:
+        title: "Annuler mon compte"
+        unhappy: "Mécontent?"
+        confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
+    sessions:
+      new:
+        title: "Connexion"
+        label: "Connexion"
+        subtitle: "Connectez-vous à votre compte existant"
+        fields:
+          email:
+            label: "Courriel"
+          password:
+            label: "Mot de passe"
+          remember_me:
+            label: "Rester connecté?"
+        submit: "Connexion"
+        panels:
+          new_registration:
+            title: "Vous n'avez pas de compte?"
+            content: "Rejoignez Kixo gratuitement aujourd'hui!"
+            label: "Inscription"
+      destroy:
+        title: "Déconnexion"
+        label: "Déconnexion"
+    passwords:
+      new:
+        title: "Réinitialiser mon mot de passe"
+        label: "Réinitialiser mon mot de passe"
+        legend: "Mot de passe oublié?"
+        fields:
+          email:
+            label: "Courriel"
+        submit: "Envoyez-moi les instructions de réinitialisation de mot de passe"
+      edit:
+        title: "Changez votre mot de passe"
+        fields:
+          password:
+            label: "Nouveau mot de passe"
+          password_confirmation:
+            label: "Confirmer nouveau mot de passe"
+        submit: "Changer mon mot de passe"
+    confirmations:
+      new:
+        title: "Recevoir à nouveau les instructions de confirmation"
+        label: "Recevoir à nouveau les instructions de confirmation"
+        legend: "Vous n'avez pas reçu les instructions de confirmation?"
+        fields:
+          email:
+            label: "Courriel"
+        submit: "Renvoyer les instructions de confirmation"
+    unlocks:
+      new:
+        title: "Recevoir à nouveau les instruction de déverrouillement"
+        label: "Recevoir à nouveau les instruction de déverrouillement"
+        legend: "Vous n'avez pas reçu les instructions de déverrouillement?"
+        fields:
+          email:
+            label: "Courriel"
+        submit: "Renvoyer les instructions de déverrouillement"
+    mailer:
+      common:
+        hello: "Bonjour %{display_name}!"
+      layout:
+        change_preferences: "Si vous ne voulez plus recevoir de courriel comme celui-ci, <a href='%{edit_user_registration_notifications_url}'>modifiez vos préférences</a>."
+      confirmation_instructions:
+        welcome: "Bienvenue, %{display_name}!"
+        content: "Vous pouvez confirmer le courriel de votre compte via le lien ci-dessous :"
+        label: "Confirmer mon compte"
+      reset_password_instructions:
+        content: "Quelqu'un a demandé un lien pour changer votre mot de passe, vous pouvez le faire via le lien ci-dessous."
+        label: "Changer mon mot de passe"
+        ps1: "Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message."
+        ps2: "Votre mot de passe ne changera pas jusqu'à ce que vous ouvriez le lien ci-dessus et en créer un nouveau."
+      unlock_instructions:
+        content: "Votre compte a été bloqué en raison d'une quantité excessive de tentatives de connexion échouées."
+        legend: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte :"
+        label: "Déverrouiller mon compte"
+      welcome_email:
+        subject: "Bienvenue sur Kixo!"
+        welcome: "Bienvenue sur Kixo, %{display_name}!"
+        content:
+          for_user: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a> et <a href='%{search_professionals_url}'>rechercher un professionnel près de chez vous</a>."
+          for_professional: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a>, <a href='%{pages_url}'>répondre à une question</a> et <a href='%{edit_user_registration_url}'>mettre à jour votre profil</a>."
+
+  professionals:
+    index:
+      title: "Professionnels"
+    search:
+      title: "Résultats de recherche"
+      count:
+        zero: "Aucun professionnel trouvé pour %{what} à %{where}"
+        one: "1 professionnel trouvé pour %{what} à %{where}"
+        other: "%{count} professionnels trouvé pour %{what} à %{where}"
+    show:
+      whois: "%{professions} à %{locality} spécialisé en %{topics}"
+      about: "À propos de %{name}"
+      send_message: "Envoyer un message privé"
+    count:
+      zero: "Aucun professionnel trouvé"
+      one: "1 professionnel trouvé"
+      other: "%{count} professionnels trouvés"
+    count_in_taxonomy:
+      zero: "Aucun professionnel en <em>%{taxonomy}</em>"
+      one: "1 professionnel en <em>%{taxonomy}</em>"
+      other: "%{count} professionnels en <em>%{taxonomy}</em>"
+    count_in_locality:
+      zero: "Aucun professionnel à <em>%{locality}</em>"
+      one: "1 professionnel à <em>%{locality}</em>"
+      other: "%{count} professionnels à <em>%{locality}</em>"
+    count_in_taxonomy_and_locality:
+      zero: "Aucun professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      one: "1 professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      other: "%{count} professionnels en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+    reviews:
+      count:
+        zero: "Il n'y a pas encore d'avis pour %{name}"
+        one: "Il y a un avis pour %{name}"
+        other: "Il y a %{count} avis pour %{name}"
+    guides:
+      count:
+        zero: "%{name} n'a pas encore écrit de guides"
+        one: "%{name} a écrit un guide"
+        other: "%{name} a écrit %{count} guides"
+    top_contributors:
+      title: "Contributeurs majeurs"
+      count:
+        zero: "Aucun contributeur majeur trouvé"
+        one: "1 contributeur majeur trouvé"
+        other: "%{count} contributeurs majeurs trouvé"
+    top_rated:
+      in_taxonomy:
+        title: "Les meilleurs professionnels à %{taxonomy}"
+      in_locality:
+        title: "Les meilleurs professionnels à %{locality}"
+    related:
+      title: "Professionnels connexes"
+    similar:
+      title: "Professionnels similaires"
+    browse:
+      in_taxonomy: "Parcourir les professionnels à %{taxonomy}"
+      in_taxonomy_by_location: "Parcourir les professionnels en %{taxonomy} par emplacement"
+    metrics:
+      points:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>point</span>"
+          one: "<span class='value'>1</span> <span class='key'>point</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
+      answers:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>réponse</span>"
+          one: "<span class='value'>1</span> <span class='key'>réponse</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>réponses</span>"
+      reviews:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>avis</span>"
+          one: "<span class='value'>1</span> <span class='key'>avis</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>avis</span>"
+      guides:
+        count:
+          zero: "<span class='value'>0</span> <span class='key'>guide</span>"
+          one: "<span class='value'>1</span> <span class='key'>guide</span>"
+          other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
+
+  taxonomy:
+    in_taxonomy: "%{taxonomy_1} en %{taxonomy_2}"
+    browse_by:
+      category: "Parcourir %{taxonomy} par catégorie"
+      topic: "Parcourir %{taxonomy} par sujet"
+      profession: "Parcourir %{taxonomy} par profession"
+      location: "Parcourir %{taxonomy} par emplacement"
+    count_in_taxonomy:
+      zero: "Aucune %{taxonomy_1} en %{taxonomy_2}"
+      other: "%{count} %{taxonomy_1} en %{taxonomy_2}"
+    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
+
+  categories:
+    index:
+      title: "Catégories"
+    count:
+      zero: "Aucune catégorie trouvée"
+      one: "1 catégorie trouvée"
+      other: "%{count} catégories trouvées"
+
+  topics:
+    index:
+      title: "Sujets"
+    show:
+      in_locality:
+        title: "%{topic} à %{locality}"
+    count:
+      zero: "Aucun sujet trouvé"
+      one: "1 sujet trouvé"
+      other: "%{count} sujets trouvés"
+    browse_by:
+      location: "Parcourir <em>%{topic}</em> par emplacement"
+      category: "Parcourir <em>%{topic}</em> par catégorie"
+      profession: "Parcourir <em>%{topic}</em> par profession"
+
+  professions:
+    index:
+      title: "Professions"
+    show:
+      in_locality:
+        title: "%{profession} à %{locality}"
+    count:
+      zero: "Aucune profession trouvée"
+      one: "1 profession trouvée"
+      other: "%{count} professions trouvées"
+    browse_by:
+      location: "Parcourir les <em>%{profession}</em> par emplacement"
+      category: "Parcourir les <em>%{profession}</em> par catégorie"
+      topic: "Parcourir les <em>%{profession}</em> par sujet"
+
+  reviews:
+    index:
+      title: "Avis"
+      label: "Avis"
+    show:
+      meta:
+        time_ago_by_author: "Il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> par <span class='author-name'>%{author}</span>"
+    new:
+      title: "Rédiger un avis pour %{name}"
+      submit: "Publier mon avis"
+    delete:
+      title: "Supprimer mon avis"
+      confirm: "Êtes-vous sûr de vouloir supprimer cet avis?"
+    count:
+      zero: "Aucun avis trouvé"
+      one: "1 avis trouvé"
+      other: "%{count} avis trouvés"
+    count_for_professional:
+      zero: "Aucun avis pour %{name}"
+      one: "1 avis pour %{name}"
+      other: "%{count} avis pour %{name}"
+
   questions:
     index:
       title: "Questions"
@@ -125,84 +487,20 @@ fr:
       zero: "Aucune réponse trouvée"
       one: "1 réponse trouvée"
       other: "%{count} réponses trouvées"
-  professionals:
+
+  notifications:
     index:
-      title: "Professionnels"
-    search:
-      title: "Résultats de recherche"
-      count:
-        zero: "Aucun professionnel trouvé pour %{what} à %{where}"
-        one: "1 professionnel trouvé pour %{what} à %{where}"
-        other: "%{count} professionnels trouvé pour %{what} à %{where}"
-    show:
-      whois: "%{professions} à %{locality} spécialisé en %{topics}"
-      about: "À propos de %{name}"
-      send_message: "Envoyer un message privé"
+      title: "Notifications"
+      label: "Notifications"
+
+  guides:
+    index:
+      title: "Guides"
     count:
-      zero: "Aucun professionnel trouvé"
-      one: "1 professionnel trouvé"
-      other: "%{count} professionnels trouvés"
-    count_in_taxonomy:
-      zero: "Aucun professionnel en <em>%{taxonomy}</em>"
-      one: "1 professionnel en <em>%{taxonomy}</em>"
-      other: "%{count} professionnels en <em>%{taxonomy}</em>"
-    count_in_locality:
-      zero: "Aucun professionnel à <em>%{locality}</em>"
-      one: "1 professionnel à <em>%{locality}</em>"
-      other: "%{count} professionnels à <em>%{locality}</em>"
-    count_in_taxonomy_and_locality:
-      zero: "Aucun professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
-      one: "1 professionnel en <em>%{taxonomy}</em> à <em>%{locality}</em>"
-      other: "%{count} professionnels en <em>%{taxonomy}</em> à <em>%{locality}</em>"
-    reviews:
-      count:
-        zero: "Il n'y a pas encore d'avis pour %{name}"
-        one: "Il y a un avis pour %{name}"
-        other: "Il y a %{count} avis pour %{name}"
-    guides:
-      count:
-        zero: "%{name} n'a pas encore écrit de guides"
-        one: "%{name} a écrit un guide"
-        other: "%{name} a écrit %{count} guides"
-    top_contributors:
-      title: "Contributeurs majeurs"
-      count:
-        zero: "Aucun contributeur majeur trouvé"
-        one: "1 contributeur majeur trouvé"
-        other: "%{count} contributeurs majeurs trouvé"
-    top_rated:
-      in_taxonomy:
-        title: "Les meilleurs professionnels à %{taxonomy}"
-      in_locality:
-        title: "Les meilleurs professionnels à %{locality}"
-    related:
-      title: "Professionnels connexes"
-    similar:
-      title: "Professionnels similaires"
-    browse:
-      in_taxonomy: "Parcourir les professionnels à %{taxonomy}"
-      in_taxonomy_by_location: "Parcourir les professionnels en %{taxonomy} par emplacement"
-    metrics:
-      points:
-        count:
-          zero: "<span class='value'>0</span> <span class='key'>point</span>"
-          one: "<span class='value'>1</span> <span class='key'>point</span>"
-          other: "<span class='value'>%{count}</span> <span class='key'>points</span>"
-      answers:
-        count:
-          zero: "<span class='value'>0</span> <span class='key'>réponse</span>"
-          one: "<span class='value'>1</span> <span class='key'>réponse</span>"
-          other: "<span class='value'>%{count}</span> <span class='key'>réponses</span>"
-      reviews:
-        count:
-          zero: "<span class='value'>0</span> <span class='key'>avis</span>"
-          one: "<span class='value'>1</span> <span class='key'>avis</span>"
-          other: "<span class='value'>%{count}</span> <span class='key'>avis</span>"
-      guides:
-        count:
-          zero: "<span class='value'>0</span> <span class='key'>guide</span>"
-          one: "<span class='value'>1</span> <span class='key'>guide</span>"
-          other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
+      zero: "Aucun guide trouvé"
+      one: "1 guide trouvé"
+      other: "%{count} guides trouvés"
+
   conversations:
     index:
       title: "Messages"
@@ -214,6 +512,7 @@ fr:
       zero: "Aucune conversation trouvée"
       one: "1 conversation trouvée"
       other: "%{count} conversations trouvées"
+
   messages:
     index:
       title: "Messages"
@@ -229,254 +528,7 @@ fr:
       zero: "Aucun message trouvé"
       one: "1 message trouvé"
       other: "%{count} messages trouvés"
-  notifications:
-    index:
-      title: "Notifications"
-      label: "Notifications"
-  reviews:
-    index:
-      title: "Avis"
-      label: "Avis"
-    show:
-      meta:
-        time_ago_by_author: "Il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> par <span class='author-name'>%{author}</span>"
-    new:
-      title: "Rédiger un avis pour %{name}"
-      submit: "Publier mon avis"
-    delete:
-      title: "Supprimer mon avis"
-      confirm: "Êtes-vous sûr de vouloir supprimer cet avis?"
-    count:
-      zero: "Aucun avis trouvé"
-      one: "1 avis trouvé"
-      other: "%{count} avis trouvés"
-    count_for_professional:
-      zero: "Aucun avis pour %{name}"
-      one: "1 avis pour %{name}"
-      other: "%{count} avis pour %{name}"
-  guides:
-    index:
-      title: "Guides"
-    count:
-      zero: "Aucun guide trouvé"
-      one: "1 guide trouvé"
-      other: "%{count} guides trouvés"
-  categories:
-    index:
-      title: "Catégories"
-    count:
-      zero: "Aucune catégorie trouvée"
-      one: "1 catégorie trouvée"
-      other: "%{count} catégories trouvées"
-  topics:
-    index:
-      title: "Sujets"
-    show:
-      in_locality:
-        title: "%{topic} à %{locality}"
-    count:
-      zero: "Aucun sujet trouvé"
-      one: "1 sujet trouvé"
-      other: "%{count} sujets trouvés"
-    browse_by:
-      location: "Parcourir <em>%{topic}</em> par emplacement"
-      category: "Parcourir <em>%{topic}</em> par catégorie"
-      profession: "Parcourir <em>%{topic}</em> par profession"
-  professions:
-    index:
-      title: "Professions"
-    show:
-      in_locality:
-        title: "%{profession} à %{locality}"
-    count:
-      zero: "Aucune profession trouvée"
-      one: "1 profession trouvée"
-      other: "%{count} professions trouvées"
-    browse_by:
-      location: "Parcourir les <em>%{profession}</em> par emplacement"
-      category: "Parcourir les <em>%{profession}</em> par catégorie"
-      topic: "Parcourir les <em>%{profession}</em> par sujet"
-  taxonomy:
-    in_taxonomy: "%{taxonomy_1} en %{taxonomy_2}"
-    browse_by:
-      category: "Parcourir %{taxonomy} par catégorie"
-      topic: "Parcourir %{taxonomy} par sujet"
-      profession: "Parcourir %{taxonomy} par profession"
-      location: "Parcourir %{taxonomy} par emplacement"
-    count_in_taxonomy:
-      zero: "Aucune %{taxonomy_1} en %{taxonomy_2}"
-      other: "%{count} %{taxonomy_1} en %{taxonomy_2}"
-    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
-  users:
-    registrations:
-      edit:
-        title: "Paramètres"
-        label: "Paramètres"
-        sections:
-          account:
-            label: "Compte"
-            title: "Mon compte"
-            subtitle: "Modifiez les réglages de base de votre compte, votre mot de passe et vos langues"
-          email_notifications:
-            label: "Notifications par courriel"
-            title: "Notifications par courriel"
-            subtitle: "Contrôler les courriels que Kixo vous envoie"
-            legend: "Envoyez-moi un courriel lorsque"
-          profile:
-            label: "Profil"
-            title: "Profil"
-            subtitle: "Modifiez votre profil"
-          billing:
-            label: "Facturation"
-            title: "Facturation"
-            subtitle: "Modifiez vos informations de facturation"
-          categories:
-            label: "Catégories"
-            title: "Catégories"
-            subtitle: "Choisissez des sujets et professions"
-            select_topics:
-              legend: "Choisissez un ou plusieurs sujets"
-            select_professions:
-              legend: "Choisissez une ou plusieurs professions"
-          contact:
-            label: "Contact"
-            title: "Information de contact"
-            subtitle: "Modifiez vos informations de contact"
-        fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          password_confirmation:
-            label: "Confirmation du mot de passe"
-          locale:
-            label: "Langue principale"
-          locales:
-            label: "Autres langues"
-          notify_of_kixo_news:
-            label: "Kixo publie de nouvelles fonctionnalités et promotions"
-          notifiy_of_partner_news:
-            label: "les partenaires de Kixo ont des offres pour vous"
-          notify_of_new_messages:
-            label: "je reçois un message privé"
-          notify_of_answers:
-            label: "quelqu'un répond à mes questions"
-          notify_of_replies:
-            label: "quelqu'un répond à mes réponses"
-          notify_of_similar_questions:
-            label: "quelqu'un pose une question similaire aux miennes"
-          name:
-            label: "Nom"
-          url:
-            label: "Site web"
-          tel:
-            label: "Téléphone"
-          headshot:
-            label: "Portrait"
-          is_a_professional:
-            label: "Je suis un professionnel"
-          bio:
-            label: "Bio"
-        submit: "Mettre à jour"
-        panels:
-          new_session:
-            title: "Vous avez déjà un compte?"
-            content: "Pas besoin de créer un nouveau compte! Connectez-vous à votre compte existant."
-            label: "Connexion"
-      new:
-        title: "Inscription"
-        label: "Inscription"
-        subtitle: "Créez un compte gratuit et connectez avec des professionnels"
-        fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          password_confirmation:
-            label: "Confirmation"
-          is_a_professional:
-            label: "Je suis un professionnel"
-          name:
-            label: "Nom"
-          professions:
-            label: "Profession"
-        submit: "Inscription"
-      delete:
-        title: "Annuler mon compte"
-        unhappy: "Mécontent?"
-        confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
-    sessions:
-      new:
-        title: "Connexion"
-        label: "Connexion"
-        subtitle: "Connectez-vous à votre compte existant"
-        fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          remember_me:
-            label: "Rester connecté?"
-        submit: "Connexion"
-        panels:
-          new_registration:
-            title: "Vous n'avez pas de compte?"
-            content: "Rejoignez Kixo gratuitement aujourd'hui!"
-            label: "Inscription"
-      destroy:
-        title: "Déconnexion"
-        label: "Déconnexion"
-    passwords:
-      new:
-        title: "Réinitialiser mon mot de passe"
-        label: "Réinitialiser mon mot de passe"
-        legend: "Mot de passe oublié?"
-        fields:
-          email:
-            label: "Courriel"
-        submit: "Envoyez-moi les instructions de réinitialisation de mot de passe"
-      edit:
-        title: "Changez votre mot de passe"
-        fields:
-          password:
-            label: "Nouveau mot de passe"
-          password_confirmation:
-            label: "Confirmer nouveau mot de passe"
-        submit: "Changer mon mot de passe"
-    confirmations:
-      new:
-        title: "Recevoir à nouveau les instructions de confirmation"
-        label: "Recevoir à nouveau les instructions de confirmation"
-        legend: "Vous n'avez pas reçu les instructions de confirmation?"
-        fields:
-          email:
-            label: "Courriel"
-        submit: "Renvoyer les instructions de confirmation"
-    unlocks:
-      new:
-        title: "Recevoir à nouveau les instruction de déverrouillement"
-        label: "Recevoir à nouveau les instruction de déverrouillement"
-        legend: "Vous n'avez pas reçu les instructions de déverrouillement?"
-        fields:
-          email:
-            label: "Courriel"
-        submit: "Renvoyer les instructions de déverrouillement"
-    mailer:
-      common:
-        hello: "Bonjour %{display_name}!"
-      confirmation_instructions:
-        welcome: "Bienvenue, %{display_name}!"
-        content: "Vous pouvez confirmer le courriel de votre compte via le lien ci-dessous :"
-        label: "Confirmer mon compte"
-      reset_password_instructions:
-        content: "Quelqu'un a demandé un lien pour changer votre mot de passe, vous pouvez le faire via le lien ci-dessous."
-        label: "Changer mon mot de passe"
-        ps1: "Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message."
-        ps2: "Votre mot de passe ne changera pas jusqu'à ce que vous ouvriez le lien ci-dessus et en créer un nouveau."
-      unlock_instructions:
-        content: "Votre compte a été bloqué en raison d'une quantité excessive de tentatives de connexion échouées."
-        legend: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte :"
-        label: "Déverrouiller mon compte"
+
   cards:
     new:
       label: "Ajouter/modifier une carte de crédit"
@@ -490,33 +542,113 @@ fr:
         card_cvc:
           label: "Code de sécurité (CVC)"
       submit: "Ajouter/Modifier la carte"
-  location_selector:
-    fields:
-      country:
-        label: "Pays"
-      region:
-        label: "Province/État"
-      locality:
-        label: "Ville"
-      postal_code:
-        label: "Code postal"
-      street_address_1:
-        label: "Adresse"
-      street_address_2:
-        label: "(suite)"
-  misc:
-    yes: "Oui"
-    no: "Non"
-    me: "Moi"
-    time_ago: "<time class='created-at' datetime='%{time}'>Il y a %{time_ago}</time>"
-    sent_time_ago: "<time class='created-at' datetime='%{time}'>Envoyé il y a %{time_ago}</time>"
-  beta:
-    cta: "Pre-signup for the beta and get early access!"
-    email_placeholder: "Your email..."
-    button_text: "Notify me!"
-    thank_you:
-      title: "Thank you for signing up!"
-      subtitle: "We will contact you when we launch!"
+
+  helpers:
+    select:
+      prompt: "Veuillez sélectionner"
+    submit:
+      create: "Créer un(e) %{model}"
+      update: "Modifier ce(tte) %{model}"
+      submit: "Enregistrer ce(tte) %{model}"
+
+  errors: &errors
+    format: "%{attribute} %{message}"
+    messages: &errors_messages
+      inclusion: "n'est pas inclus(e) dans la liste"
+      exclusion: "n'est pas disponible"
+      invalid: "n'est pas valide"
+      confirmation: "ne concorde pas avec la confirmation"
+      accepted: "doit être accepté(e)"
+      empty: "doit être rempli(e)"
+      blank: "doit être rempli(e)"
+      too_long:
+        one: "est trop long (pas plus d'un caractère)"
+        other: "est trop long (pas plus de %{count} caractères)"
+      too_short:
+        one: "est trop court (au moins un caractère)"
+        other: "est trop court (au moins %{count} caractères)"
+      wrong_length:
+        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
+        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
+      not_a_number: "n'est pas un nombre"
+      not_an_integer: "doit être un nombre entier"
+      greater_than: "doit être supérieur à %{count}"
+      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+      equal_to: "doit être égal à %{count}"
+      less_than: "doit être inférieur à %{count}"
+      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+      odd: "doit être impair"
+      even: "doit être pair"
+      taken: "n'est pas disponible"
+      record_invalid: "La validation a échoué : %{errors}"
+
+    template: &errors_template
+      header:
+        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
+        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+      body: "Veuillez vérifier les champs suivants : "
+
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: " et "
+
+  activerecord:
+    errors:
+      <<: *errors
+
+  activemodel:
+    errors:
+      <<: *errors
+
+  number:
+    format:
+      separator: ","
+      delimiter: " "
+      precision: 3
+      significant: false
+      strip_insignificant_zeros: false
+    currency:
+      format:
+        format: "%n %u"
+        unit: "€"
+        separator: ","
+        delimiter: " "
+        precision: 2
+        significant: false
+        strip_insignificant_zeros: false
+    percentage:
+      format:
+        delimiter: ""
+    precision:
+      format:
+        delimiter: ""
+    human:
+      format:
+        delimiter: ""
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: "%n %u"
+        units:
+          byte:
+            one:   "octet"
+            other: "octets"
+          kb: "ko"
+          mb: "Mo"
+          gb: "Go"
+          tb: "To"
+      decimal_units:
+        format: "%n %u"
+        units:
+          unit: ""
+          thousand: "millier"
+          million: "million"
+          billion: "milliard"
+          trillion: "billion"
+          quadrillion: "million de milliards"
 
   date:
     formats:
@@ -625,109 +757,3 @@ fr:
       hour:   "Heure"
       minute: "Minute"
       second: "Seconde"
-
-  number:
-    format:
-      separator: ","
-      delimiter: " "
-      precision: 3
-      significant: false
-      strip_insignificant_zeros: false
-    currency:
-      format:
-        format: "%n %u"
-        unit: "€"
-        separator: ","
-        delimiter: " "
-        precision: 2
-        significant: false
-        strip_insignificant_zeros: false
-    percentage:
-      format:
-        delimiter: ""
-    precision:
-      format:
-        delimiter: ""
-    human:
-      format:
-        delimiter: ""
-        precision: 2
-        significant: true
-        strip_insignificant_zeros: true
-      storage_units:
-        format: "%n %u"
-        units:
-          byte:
-            one:   "octet"
-            other: "octets"
-          kb: "ko"
-          mb: "Mo"
-          gb: "Go"
-          tb: "To"
-      decimal_units:
-        format: "%n %u"
-        units:
-          unit: ""
-          thousand: "millier"
-          million: "million"
-          billion: "milliard"
-          trillion: "billion"
-          quadrillion: "million de milliards"
-
-  support:
-    array:
-      words_connector: ", "
-      two_words_connector: " et "
-      last_word_connector: " et "
-
-  helpers:
-    select:
-      prompt: "Veuillez sélectionner"
-    submit:
-      create: "Créer un(e) %{model}"
-      update: "Modifier ce(tte) %{model}"
-      submit: "Enregistrer ce(tte) %{model}"
-
-  errors: &errors
-    format: "%{attribute} %{message}"
-    messages: &errors_messages
-      inclusion: "n'est pas inclus(e) dans la liste"
-      exclusion: "n'est pas disponible"
-      invalid: "n'est pas valide"
-      confirmation: "ne concorde pas avec la confirmation"
-      accepted: "doit être accepté(e)"
-      empty: "doit être rempli(e)"
-      blank: "doit être rempli(e)"
-      too_long:
-        one: "est trop long (pas plus d'un caractère)"
-        other: "est trop long (pas plus de %{count} caractères)"
-      too_short:
-        one: "est trop court (au moins un caractère)"
-        other: "est trop court (au moins %{count} caractères)"
-      wrong_length:
-        one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
-        other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
-      not_a_number: "n'est pas un nombre"
-      not_an_integer: "doit être un nombre entier"
-      greater_than: "doit être supérieur à %{count}"
-      greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
-      equal_to: "doit être égal à %{count}"
-      less_than: "doit être inférieur à %{count}"
-      less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
-      odd: "doit être impair"
-      even: "doit être pair"
-      taken: "n'est pas disponible"
-      record_invalid: "La validation a échoué : %{errors}"
-
-    template: &errors_template
-      header:
-        one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
-        other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
-      body: "Veuillez vérifier les champs suivants : "
-
-  activemodel:
-    errors:
-      <<: *errors
-  activerecord:
-    errors:
-      <<: *errors

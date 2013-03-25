@@ -34,4 +34,7 @@ Kixo::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  # Action Mailer Host URL
+  config.action_mailer.default_url_options = { :host => "localhost:#{ENV['PORT']}" }
 end

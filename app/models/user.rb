@@ -12,6 +12,16 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
+  # set default values on init
+  after_initialize :default_values
+
+  # sync stripe customer
+  before_create  :create_stripe_customer
+  before_update  :update_stripe_customer
+  before_destroy :delete_stripe_customer
+
+  before_create :welcome_by_email
+
   # classifications
   has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic"
   has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
@@ -56,14 +66,6 @@ class User < ActiveRecord::Base
                     :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#", :mini => "30x30#"},
                     :path => "/headshots/:id/:style.:extension",
                     :default_url => "/headshots/defaults/:style.png"
-
-  # set default values on init
-  after_initialize :default_values
-
-  # sync stripe customer
-  before_create  :create_stripe_customer
-  before_update  :update_stripe_customer
-  before_destroy :delete_stripe_customer
 
   # validation
   validates :email, :presence => {:message => "You must enter a valid email address"}
@@ -185,6 +187,10 @@ class User < ActiveRecord::Base
   def delete_stripe_customer
     customer = self.customer
     customer.delete if customer
+  end
+
+  def welcome_by_email
+    UserMailer.welcome_email(self).deliver
   end
 
   def default_values
