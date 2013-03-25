@@ -219,6 +219,7 @@ en:
     mailer:
       common:
         hello: "Hello %{display_name}!"
+        signature: "- Kixo Team"
       layout:
         change_preferences: "If you do not want to receive more emails like this one, <a href='%{edit_user_registration_notifications_url}'>change preferences</a>."
       confirmation_instructions:
@@ -238,8 +239,10 @@ en:
         subject: "Welcome to Kixo!"
         welcome: "Welcome to Kixo, %{display_name}!"
         content:
+          for_professional: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking</a> and <a href='%{root_url}'>answering</a> questions, and <a href='%{edit_user_registration_url}'>updating your profile</a>."
           for_user: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking a question</a>, and <a href='%{search_professionals_url}'>searching for a professional near you</a>."
-          for_professional: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking</a> and <a href='%{pages_url}'>answering</a> questions, and <a href='%{edit_user_registration_url}'>updating your profile</a>."
+    misc:
+      default_public_name: "Kixo user"
 
   professionals:
     index:
@@ -469,6 +472,7 @@ en:
         zero: "No questions in %{taxonomy}"
         one: "1 question in %{taxonomy}"
         other: "%{count} questions in %{taxonomy}"
+
   answers:
     index:
       title: "Answers"

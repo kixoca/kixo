@@ -95,8 +95,16 @@ class User < ActiveRecord::Base
     (self.search_by_topic(what, locale) + self.search_by_profession(what, locale)) & self.near(where, 50).order("distance")
   end
 
+  def public_name
+    if self.is_a_professional?
+      self.name.blank? ? t("users.misc.default_public_name") : self.name
+    else
+      t("users.misc.default_public_name")
+    end
+  end
+
   def display_name
-    self.name.blank? ? "Kixo user" : self.name
+    self.name.blank? ? self.email : self.name
   end
 
   def display_url
