@@ -1,7 +1,7 @@
 class UserMailer < Devise::Mailer
   default from: "Kixo <info@kixo.ca>"
 
-  before_filter :set_locale
+  #before_filter :set_locale
 
   def welcome_email(user)
     @user = user
