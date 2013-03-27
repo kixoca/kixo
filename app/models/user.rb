@@ -68,8 +68,8 @@ class User < ActiveRecord::Base
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
-  validates :email, :presence => {:message => "You must enter a valid email address"}
-  validates :name,  :presence => true, :if => :is_a_professional?
+  validates :email, :presence => {:message => I18n.t("users.fields.emails.validation.presence")}
+  validates :name,  :presence => {:message => I18n.t("users.fields.name.validation.presence")}, :if => :is_a_professional?
   validates_existence_of :country
   validates_existence_of :region
   validates_existence_of :locality

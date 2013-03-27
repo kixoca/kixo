@@ -7,9 +7,10 @@
       %li
         %a{:href => "#notifications"}
           =t "users.registrations.edit.sections.email_notifications.label"
-      %li
-        %a{:href => "#profile"}
-          =t "users.registrations.edit.sections.profile.label"
+      - if current_user.is_a_professional?
+        %li
+          %a{:href => "#profile"}
+            =t "users.registrations.edit.sections.profile.label"
       %li
         %a{:href => "#billing"}
           =t "users.registrations.edit.sections.billing.label"
@@ -23,47 +24,63 @@
   .eight.columns
     %ul.tabs-content
       %li#accountTab.active
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#account", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.account.title"
                   %h4.subheader=t "users.registrations.edit.sections.account.subtitle"
+            - unless resource.errors.blank?
+              %section.errors
+                .container
+                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :email, t("users.registrations.edit.fields.email.label"), :class => "inline right"
+                    = f.label :name, t("users.registrations.fields.name.label"), :class => "inline right"
+                  .seven.columns.end
+                    = f.text_field :name
+                .row
+                  .three.columns
+                    = f.label :email, t("users.registrations.fields.email.label"), :class => "inline right"
                   .seven.columns.end
                     = f.email_field :email
                 .row
                   .three.columns
-                    = f.label :password, t("users.registrations.edit.fields.password.label"), :class => "inline right"
+                    = f.label :password, t("users.registrations.fields.password.label"), :class => "inline right"
                   .seven.columns.end
                     = f.password_field :password, :autocomplete => "off"
                 .row
                   .three.columns
-                    = f.label :password_confirmation, t("users.registrations.edit.fields.password_confirmation.label"), :class => "inline right"
+                    = f.label :password_confirmation, t("users.registrations.fields.password_confirmation.label"), :class => "inline right"
                   .seven.columns.end
                     = f.password_field :password_confirmation
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :locale_id, t("users.registrations.edit.fields.locale.label"), :class => "inline right"
+                    = f.label :locale_id, t("users.registrations.fields.locale.label"), :class => "inline right"
                   .seven.columns.end
                     = f.select :locale_id, @all_locales.collect {|locale| [locale.name, locale.id]}
                 .row
                   .three.columns
-                    = f.label :locale_ids, t("users.registrations.edit.fields.locales.label"), :class => "inline right"
+                    = f.label :locale_ids, t("users.registrations.fields.locales.label"), :class => "inline right"
                   .seven.columns.end
                     %ul.block-grid.three-up
                       - @all_locales.each do |locale|
                         %li
                           %label
-                            = check_box_tag "user[locale_ids][]", locale.id, (current_user and current_user.locales.include?(locale))
+                            = check_box_tag "user[locale_ids][]", locale.id, (resource.locales.include?(locale))
                             = locale.name
+            %section
+              .container
+                .row
+                  .seven.columns.offset-by-three.end
+                    %label
+                      = f.check_box :is_a_professional
+                      = t("users.registrations.fields.is_a_professional.label")
             %section
               .container
                 .row
@@ -77,45 +94,49 @@
                       = t("users.registrations.delete.unhappy")
                       = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
       %li#notificationsTab
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#notifications", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.email_notifications.title"
                   %h4.subheader=t "users.registrations.edit.sections.email_notifications.subtitle"
+            - unless resource.errors.blank?
+              %section.errors
+                .container
+                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 %fieldset
                   %legend=t "users.registrations.edit.sections.email_notifications.legend"
                   .row
                     .ten.columns
-                      = f.label :notify_of_kixo_news, t("users.registrations.edit.fields.notify_of_kixo_news.label")
+                      = f.label :notify_of_kixo_news, t("users.registrations.fields.notify_of_kixo_news.label")
                     .two.columns.text-right
                       = f.select :notify_of_kixo_news, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_partner_news, t("users.registrations.edit.fields.notify_of_partner_news.label")
+                      = f.label :notify_of_partner_news, t("users.registrations.fields.notify_of_partner_news.label")
                     .two.columns.text-right
                       = f.select :notify_of_partner_news, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_new_messages, t("users.registrations.edit.fields.notify_of_new_messages.label")
+                      = f.label :notify_of_new_messages, t("users.registrations.fields.notify_of_new_messages.label")
                     .two.columns.text-right
                       = f.select :notify_of_new_messages, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_answers, t("users.registrations.edit.fields.notify_of_answers.label")
+                      = f.label :notify_of_answers, t("users.registrations.fields.notify_of_answers.label")
                     .two.columns.text-right
                       = f.select :notify_of_answers, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_replies, t("users.registrations.edit.fields.notify_of_replies.label")
+                      = f.label :notify_of_replies, t("users.registrations.fields.notify_of_replies.label")
                     .two.columns.text-right
                       = f.select :notify_of_replies, [[t("misc.yes"), true], [t("misc.no"), false]]
                   .row
                     .ten.columns
-                      = f.label :notify_of_similar_questions, t("users.registrations.edit.fields.notify_of_similar_questions.label")
+                      = f.label :notify_of_similar_questions, t("users.registrations.fields.notify_of_similar_questions.label")
                     .two.columns.text-right
                       = f.select :notify_of_similar_questions, [[t("misc.yes"), true], [t("misc.no"), false]]
             %section
@@ -124,43 +145,37 @@
                   .twelve.columns
                     = f.submit t("users.registrations.edit.submit"), :class => "submit button"
       %li#profileTab
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.profile.title"
                   %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
+            - unless resource.errors.blank?
+              %section.errors
+                .container
+                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 .row
                   .three.columns
-                    = f.label :name, t("users.registrations.edit.fields.name.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.text_field :name
-                .row
-                  .three.columns
-                    = f.label :url, t("users.registrations.edit.fields.url.label"), :class => "inline right"
+                    = f.label :url, t("users.registrations.fields.url.label"), :class => "inline right"
                   .seven.columns.end
                     = f.text_field :url, :placeholder => "http://"
                 .row
                   .three.columns
-                    = f.label :tel, t("users.registrations.edit.fields.tel.label"), :class => "inline right"
+                    = f.label :tel, t("users.registrations.fields.tel.label"), :class => "inline right"
                   .seven.columns.end
                     = f.text_field :tel
                 .row
                   .three.columns
-                    = f.label :headshot, t("users.registrations.edit.fields.headshot.label"), :class => "inline right"
+                    = f.label :headshot, t("users.registrations.fields.headshot.label"), :class => "inline right"
                   .seven.columns.end
                     = f.file_field :headshot
                 .row
                   .three.columns
-                    = f.label :is_a_professional, t("users.registrations.edit.fields.is_a_professional.label"), :class => "inline right"
-                  .two.columns.end
-                    = f.select :is_a_professional, [[t("misc.yes"), true], [t("misc.no"), false]]
-                .row
-                  .three.columns
-                    = f.label :bio, t("users.registrations.edit.fields.bio.label"), :class => "inline right"
+                    = f.label :bio, t("users.registrations.fields.bio.label"), :class => "inline right"
                   .seven.columns.end
                     = f.text_area :bio, :rows => 5
             %section
@@ -175,19 +190,27 @@
               %hgroup
                 %h1=t "users.registrations.edit.sections.billing.title"
                 %h4.subheader=t "users.registrations.edit.sections.billing.subtitle"
+          - unless resource.errors.blank?
+            %section.errors
+              .container
+                = render "/shared/errors", :errors => resource.errors
           %section
             .container
               %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
                 =t "cards.new.label"
       - if current_user.is_a_professional?
         %li#categoriesTab
-          = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+          = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#categories", :html => { :method => :put }) do |f|
             .page
               %header
                 .container
                   %hgroup
                     %h1=t "users.registrations.edit.sections.categories.title"
                     %h4.subheader=t "users.registrations.edit.sections.categories.subtitle"
+              - unless resource.errors.blank?
+                %section.errors
+                  .container
+                    = render "/shared/errors", :errors => resource.errors
               %section
                 .container
                   .row
@@ -220,13 +243,17 @@
                     .twelve.columns
                       = f.submit t("users.registrations.edit.submit"), :class => "submit button"
       %li#contactTab
-        = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f|
+        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#contact", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.contact.title"
                   %h4.subheader=t "users.registrations.edit.sections.contact.subtitle"
+            - unless resource.errors.blank?
+              %section.errors
+                .container
+                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
@@ -239,24 +266,24 @@
   %hgroup.hr
     %h3=t "cards.new.title"
     %h4.subheader=t "cards.new.subtitle"
-  = form_for resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => "stripe" } do |f|
+  = form_for resource, :as => resource_name, :url => "#{registration_path(resource_name)}#billing", :html => { :method => :put, :class => "stripe" } do |f|
     = devise_error_messages!
     .stripe-errors.alert-box.alert.hidden
     = f.hidden_field :card
     .row
       .twelve.columns
-        = label_tag :card_number, t("cards.new.fields.card_number.label")
+        = label_tag :card_number, t("cards.fields.card_number.label")
         = text_field_tag :card_number, nil, :name => nil
     .row
       .six.columns
-        = label_tag :card_exp_month, t("cards.new.fields.card_exp_month.label")
+        = label_tag :card_exp_month, t("cards.fields.card_exp_month.label")
         .row
           .six.columns
             = select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_exp_month"}
           .six.columns
             = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_exp_year"}
       .six.columns
-        = label_tag :card_cvc, t("cards.new.fields.card_cvc.label")
+        = label_tag :card_cvc, t("cards.fields.card_cvc.label")
         = text_field_tag :card_cvc, nil, :name => nil
     .row
       .twelve.columns

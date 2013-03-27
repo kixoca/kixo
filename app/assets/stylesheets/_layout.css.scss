@@ -28,15 +28,8 @@ body {
       padding: $golden*$unit 0;
     }
 
-    .brand {
-      float: left;
-    }
-
     #language {
-      float: left;
-      position: relative;
-      top: 12px;
-      left: 20px;
+      padding: 12px 0;
 
       a {
         color: $lightTxtColor;

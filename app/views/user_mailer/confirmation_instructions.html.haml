@@ -1,3 +1,3 @@
-%p=t "users.mailer.confirmation_instructions.welcome", :display_name => @resource.display_name
-%p=t "users.mailer.confirmation_instructions.content"
-%p= link_to t("users.mailer.confirmation_instructions.label"), confirmation_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= t("users.mailer.confirmation_instructions.welcome", :display_name => @resource.display_name, :locale => @locale).html_safe
+%p= t("users.mailer.confirmation_instructions.content", :locale => @locale).html_safe
+%p= link_to t("users.mailer.confirmation_instructions.label", :locale => @locale).html_safe, confirmation_url(@resource, :confirmation_token => @resource.confirmation_token, :locale => @locale)

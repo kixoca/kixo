@@ -11,23 +11,19 @@
                 = @professional.name
               %ul.taxonomies.block-grid.two-up.mobile-one-up
                 %li.professions
-                  %h5.subheader
-                    %i.icon-user
-                    = @professional.professions_list
+                  %i.icon-user
+                  = @professional.professions_list
                 %li.location
-                  %h5.subheader
-                    %i.icon-map-marker
-                    = @professional.short_address
+                  %i.icon-map-marker
+                  = @professional.short_address
                 - unless @professional.url.blank?
                   %li.url
-                    %h5.subheader
-                      %i.icon-external-link
-                      = link_to @professional.display_url, @professional.url
+                    %i.icon-external-link
+                    = link_to @professional.display_url, @professional.url
                 - unless @professional.tel.blank?
                   %li.tel
-                    %h5.subheader
-                      %i.icon-phone
-                      = @professional.tel
+                    %i.icon-phone
+                    = @professional.tel
               %ul.tags.green-tags.topics
                 - @professional.topics.each do |topic|
                   %li= link_to topic.name, category_topic_path(topic.category, topic)

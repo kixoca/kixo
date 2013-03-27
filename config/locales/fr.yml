@@ -64,6 +64,49 @@ fr:
 
   users:
     registrations:
+      fields:
+        name:
+          label: "Nom"
+          validation:
+            presence: "En tant que professional vous devez indiquer votre nom"
+        email:
+          label: "Courriel"
+          validation:
+            presence: "Vous devez indiquer une adresse courriel"
+        password:
+          label: "Mot de passe"
+          validation:
+            presence: "Vous devez indiquer un mot de passe"
+        password_confirmation:
+          label: "Confirmation"
+          validation:
+            presence: "Vous devez confirmer votre mot de passe"
+        locale:
+          label: "Langue principale"
+        locales:
+          label: "Autres langues"
+        notify_of_kixo_news:
+          label: "Kixo publie de nouvelles fonctionnalités et promotions"
+        notifiy_of_partner_news:
+          label: "les partenaires de Kixo ont des offres pour vous"
+        notify_of_new_messages:
+          label: "je reçois un message privé"
+        notify_of_answers:
+          label: "quelqu'un répond à mes questions"
+        notify_of_replies:
+          label: "quelqu'un répond à mes réponses"
+        notify_of_similar_questions:
+          label: "quelqu'un pose une question similaire aux miennes"
+        url:
+          label: "Site web"
+        tel:
+          label: "Téléphone"
+        headshot:
+          label: "Portrait"
+        is_a_professional:
+          label: "Je suis un professionnel"
+        bio:
+          label: "Bio"
       edit:
         title: "Paramètres"
         label: "Paramètres"
@@ -97,41 +140,6 @@ fr:
             label: "Contact"
             title: "Information de contact"
             subtitle: "Modifiez vos informations de contact"
-        fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          password_confirmation:
-            label: "Confirmation du mot de passe"
-          locale:
-            label: "Langue principale"
-          locales:
-            label: "Autres langues"
-          notify_of_kixo_news:
-            label: "Kixo publie de nouvelles fonctionnalités et promotions"
-          notifiy_of_partner_news:
-            label: "les partenaires de Kixo ont des offres pour vous"
-          notify_of_new_messages:
-            label: "je reçois un message privé"
-          notify_of_answers:
-            label: "quelqu'un répond à mes questions"
-          notify_of_replies:
-            label: "quelqu'un répond à mes réponses"
-          notify_of_similar_questions:
-            label: "quelqu'un pose une question similaire aux miennes"
-          name:
-            label: "Nom"
-          url:
-            label: "Site web"
-          tel:
-            label: "Téléphone"
-          headshot:
-            label: "Portrait"
-          is_a_professional:
-            label: "Je suis un professionnel"
-          bio:
-            label: "Bio"
         submit: "Mettre à jour"
         panels:
           new_session:
@@ -143,16 +151,6 @@ fr:
         label: "Créer un compte"
         subtitle: "Créez un compte, c'est gratuit et rapide!"
         fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          password_confirmation:
-            label: "Confirmation"
-          is_a_professional:
-            label: "Je suis un professionnel"
-          name:
-            label: "Nom"
           professions:
             label: "Profession"
         submit: "Inscription"
@@ -161,17 +159,17 @@ fr:
         unhappy: "Mécontent?"
         confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
     sessions:
+      fields:
+        email:
+          label: "Courriel"
+        password:
+          label: "Mot de passe"
+        remember_me:
+          label: "Rester connecté?"
       new:
         title: "Connexion"
         label: "Connexion"
         subtitle: "Connectez-vous à votre compte existant"
-        fields:
-          email:
-            label: "Courriel"
-          password:
-            label: "Mot de passe"
-          remember_me:
-            label: "Rester connecté?"
         submit: "Connexion"
         panels:
           new_registration:
@@ -250,9 +248,9 @@ fr:
     search:
       title: "Résultats de recherche"
       count:
-        zero: "Aucun professionnel trouvé pour %{what} à %{where}"
-        one: "1 professionnel trouvé pour %{what} à %{where}"
-        other: "%{count} professionnels trouvé pour %{what} à %{where}"
+        zero: "Aucun professionnel trouvé pour <em>%{what}</em> à <em>%{where}</em>"
+        one: "1 professionnel trouvé pour <em>%{what}</em> à <em>%{where}</em>"
+        other: "%{count} professionnels trouvé pour <em>%{what}</em> à <em>%{where}</em>"
     show:
       whois: "%{professions} à %{locality} spécialisé en %{topics}"
       about: "À propos de %{name}"
@@ -534,17 +532,17 @@ fr:
       other: "%{count} messages trouvés"
 
   cards:
+    fields:
+      card_number:
+        label: "Numéro de carte"
+      card_exp_month:
+        label: "Expiration de la carte"
+      card_cvc:
+        label: "Code de sécurité (CVC)"
     new:
       label: "Ajouter/modifier une carte de crédit"
       title: "Carte de crédit"
       subtitle: "Ajouter ou modifiez une carte de crédit"
-      fields:
-        card_number:
-          label: "Numéro de carte"
-        card_exp_month:
-          label: "Expiration de la carte"
-        card_cvc:
-          label: "Code de sécurité (CVC)"
       submit: "Ajouter/Modifier la carte"
 
   helpers:

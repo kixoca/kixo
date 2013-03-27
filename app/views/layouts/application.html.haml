@@ -25,41 +25,45 @@
       %section#head
         .container
           .row
-            .six.columns
-              = link_to "/", :class => "brand" do
-                %img.logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t("layout.logo.alt")}
-              #language
-                %a.toggle.slide{:href => "#language-select"}
-                  = Locale.find_by_code(locale).name
-                  %i.icon-chevron-down
-            .six.columns
-              #account
+            .four.columns.mobile-text-center
+              .row
+                .six.columns
+                  #brand
+                  = link_to "/" do
+                    %img#logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t("layout.logo.alt")}
+                .six.columns
+                  #language
+                    %a.toggle.slide{:href => "#language-select"}
+                      = Locale.find_by_code(locale).name
+                      %i.icon-chevron-down
+            .eight.columns
+              #account.pull-right.mobile-no-float
                 - if user_signed_in?
-                  #profile.pull-right
+                  #notifications.pull-left
+                    = link_to notifications_path do
+                      %i.icon-bell
+                      - if current_user.notifications.unseen.count > 0
+                        .count= current_user.notifications.unseen.count
+                  #messages.pull-left
+                    = link_to conversations_path do
+                      %i.icon-envelope
+                      - if current_user.messages.unread.count > 0
+                        .count= current_user.messages.unread.count
+                  #settings.pull-left
+                    = link_to edit_user_registration_path do
+                      %i.icon-cog
+                  #signout.pull-left
+                    = link_to destroy_user_session_path, :method => :delete do
+                      %i.icon-signout
+                  #profile.pull-left
                     - if current_user.is_a_professional?
                       = link_to professional_path(current_user) do
                         = image_tag current_user.headshot.url(:mini), :class => "headshot"
                         = current_user.name.blank? ? current_user.email : current_user.name
                     - else
                       = current_user.name.blank? ? current_user.email : current_user.name
-                  #signout.pull-right
-                    = link_to destroy_user_session_path, :class => "has-tip no-style", :title => t("users.sessions.destroy.label"), :method => :delete do
-                      %i.icon-signout
-                  #settings.pull-right
-                    = link_to edit_user_registration_path, :class => "has-tip no-style", :title => t("users.registrations.edit.label") do
-                      %i.icon-cog
-                  #messages.pull-right
-                    = link_to conversations_path, :class => "has-tip no-style", :title => t("conversations.index.label") do
-                      %i.icon-envelope
-                      - if current_user.messages.unread.count > 0
-                        .count= current_user.messages.unread.count
-                  #notifications.pull-right
-                    = link_to notifications_path, :class => "has-tip no-style", :title => t("notifications.index.label") do
-                      %i.icon-bell
-                      - if current_user.notifications.unseen.count > 0
-                        .count= current_user.notifications.unseen.count
                 - else
-                  #login.pull-right
+                  #login.pull-left
                     %ul.button-group
                       %li
                         %a.button.secondary.small{:href => "#", :data => {"reveal-id" => "new_session"}}

@@ -1,10 +1,10 @@
 .row
   .twelve.columns
     %hgroup.hr
-      %h3.section-title
+      %h3
         =t "professionals.search.title"
       %h4.subheader
-        =t "professionals.search.count", :count => @professionals.count, :what => @what, :where => @where
+        = t("professionals.search.count", :count => @professionals.count, :what => @what, :where => @where).html_safe
     - unless @professionals.blank?
       %ul.looper.professionals.block-grid.five-up.mobile-two-up
         - @professionals.each do |professional|

@@ -64,6 +64,49 @@ en:
 
   users:
     registrations:
+      fields:
+        name:
+          label: "Name"
+          validation:
+            presence: "As a professional you must provide your name"
+        email:
+          label: "Email"
+          validation:
+            presence: "You must provide an email address"
+        password:
+          label: "Password"
+          validation:
+            presence: "You must provide a password"
+        password_confirmation:
+          label: "Confirmation"
+          validation:
+            presence: "You must confirm your password"
+        locale:
+          label: "Main Language"
+        locales:
+          label: "Other Languages"
+        notify_of_kixo_news:
+          label: "Kixo releases new features and promotions"
+        notifiy_of_partner_news:
+          label: "Kixo's partners have offers for you"
+        notify_of_new_messages:
+          label: "I receive a private message"
+        notify_of_answers:
+          label: "someone answers my questions"
+        notify_of_replies:
+          label: "someone replies to my answers"
+        notify_of_similar_questions:
+          label: "someone asks a question similar to mine"
+        url:
+          label: "Website"
+        tel:
+          label: "Phone number"
+        headshot:
+          label: "Headshot"
+        is_a_professional:
+          label: "I am a professional"
+        bio:
+          label: "Bio"
       edit:
         title: "Settings"
         label: "Settings"
@@ -97,41 +140,6 @@ en:
             label: "Contact"
             title: "Contact Information"
             subtitle: "Edit your contact information"
-        fields:
-          email:
-            label: "Email"
-          password:
-            label: "Password"
-          password_confirmation:
-            label: "Confirmation"
-          locale:
-            label: "Main Language"
-          locales:
-            label: "Other Languages"
-          notify_of_kixo_news:
-            label: "Kixo releases new features and promotions"
-          notifiy_of_partner_news:
-            label: "Kixo's partners have offers for you"
-          notify_of_new_messages:
-            label: "I receive a private message"
-          notify_of_answers:
-            label: "someone answers my questions"
-          notify_of_replies:
-            label: "someone replies to my answers"
-          notify_of_similar_questions:
-            label: "someone asks a question similar to mine"
-          name:
-            label: "Name"
-          url:
-            label: "Website"
-          tel:
-            label: "Phone number"
-          headshot:
-            label: "Headshot"
-          is_a_professional:
-            label: "I am a professional"
-          bio:
-            label: "Bio"
         submit: "Update"
         panels:
           new_session:
@@ -143,16 +151,6 @@ en:
         label: "Create an account"
         subtitle: "Create an account, it's free and fast!"
         fields:
-          email:
-            label: "Email"
-          password:
-            label: "Password"
-          password_confirmation:
-            label: "Confirmation"
-          is_a_professional:
-            label: "I am a professional"
-          name:
-            label: "Name"
           professions:
             label: "Profession"
         submit: "Sign Up"
@@ -161,17 +159,17 @@ en:
         unhappy: "Unhappy?"
         confirm: "Are you sure you want to cancel your account?"
     sessions:
+      fields:
+        email:
+          label: "Email"
+        password:
+          label: "Password"
+        remember_me:
+          label: "Remember me?"
       new:
         title: "Login"
         label: "Login"
         subtitle: "Sign in to your existing account"
-        fields:
-          email:
-            label: "Email"
-          password:
-            label: "Password"
-          remember_me:
-            label: "Remember me?"
         submit: "Sign in"
         panels:
           new_registration:
@@ -186,35 +184,21 @@ en:
         title: "Reset my password"
         label: "Reset my password"
         legend: "Forgot your password?"
-        fields:
-          email:
-            label: "Email"
         submit: "Send me reset password instructions"
       edit:
         title: "Change your password"
-        fields:
-          password:
-            label: "New password"
-          password_confirmation:
-            label: "Confirm"
         submit: "Change my password"
     confirmations:
       new:
         title: "Resend confirmation instructions"
         label: "Resend confirmation instructions"
         legend: "Didn't receive confirmation instructions?"
-        fields:
-          email:
-            label: "Email"
         submit: "Resend confirmation instructions"
     unlocks:
       new:
         title: "Resend unlock instructions"
         label: "Resend unlock instructions"
         legend: "Didn't receive unlock instructions?"
-        fields:
-          email:
-            label: "Email"
         submit: "Resend unlock instructions"
     mailer:
       common:
@@ -250,9 +234,9 @@ en:
     search:
       title: "Search Results"
       count:
-        zero: "No professionals found for %{what} in %{where}"
-        one: "1 professionals found for %{what} in %{where}"
-        other: "%{count} professionals found for %{what} in %{where}"
+        zero: "No professionals found for <em>%{what}</em> in <em>%{where}</em>"
+        one: "1 professionals found for <em>%{what}</em> in <em>%{where}</em>"
+        other: "%{count} professionals found for <em>%{what}</em> in <em>%{where}</em>"
     show:
       whois: "%{professions} in %{locality} specializing in %{topics}"
       about: "About %{name}"
@@ -534,15 +518,15 @@ en:
       other: "%{count} messages found"
 
   cards:
+    fields:
+      card_number:
+        label: "Card Number"
+      card_exp_month:
+        label: "Card Expiration"
+      card_cvc:
+        label: "Security Code (CVC)"
     new:
       label: "Add/Edit Credit Card"
       title: "Credit Card"
       subtitle: "Add or edit a credit card"
-      fields:
-        card_number:
-          label: "Card Number"
-        card_exp_month:
-          label: "Card Expiration"
-        card_cvc:
-          label: "Security Code (CVC)"
       submit: "Add/Edit Card"
