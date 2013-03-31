@@ -54,6 +54,10 @@
 
     &.minimal {
       text-align: left;
+
+      .professional-details {
+        padding-left: $unit;
+      }
     }
 
     &.standard {

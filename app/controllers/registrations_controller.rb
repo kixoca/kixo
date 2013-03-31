@@ -4,6 +4,14 @@ class RegistrationsController < Devise::RegistrationsController
     params[resource_name].delete(:password) if params[resource_name][:password].blank?
     params[resource_name].delete(:password_confirmation) if params[resource_name][:password_confirmation].blank?
 
+    if params[resource_name][:clear_topics]
+      resource.destroy_classifications("Topic")
+    end
+
+    if params[resource_name][:clear_professions]
+      resource.destroy_classifications("Profession")
+    end
+
     if resource.update_attributes(params[resource_name])
       set_flash_message :notice, :updated
       sign_in resource_name, resource, :bypass => true

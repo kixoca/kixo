@@ -13,10 +13,14 @@ h1, h2, h3, h4, h5, h6, p, ul {
 .button {
   font-size: $smallFontSize;
   border: none;
-  @include boxShadow(0,0,0,0);
+  @include borderRadius($radius);
 
   &.small {
     font-size: $smallFontSize;
+  }
+
+  &:hover {
+    @include boxShadow(0, 0, 0, 0);
   }
 }
 

@@ -3,7 +3,7 @@
     %hgroup.hr
       %h1
         - if @locality
-          =t "professions.show.in_locality.title", :profession => @profession.name.pluralize, :locality => @locality.name
+          = t("professions.show.in_locality.title", :profession => @profession.name.pluralize, :locality => @locality.name).html_safe
         - else
           = @profession.name.pluralize
     - if @profession.description
@@ -15,17 +15,17 @@
       .container
         - unless @professionals.empty?
           %h4
-            - unless @locality.nil?
-              =t("professionals.count_in_locality", :count => @professionals.count, :locality => @locality.name).html_safe
+            - unless @locality.blank?
+              = t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name).html_safe
             - else
-              =t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @profession.name.downcase.pluralize, :locality => @locality.name).html_safe
+              = t("professionals.count", :count => @professionals.count).html_safe
           %ul.looper.professionals.block-grid.five-up.mobile-one-up
             - @professionals.each do |professional|
               %li= render "professionals/loops/regular", :professional => professional
     - if @locality.blank?
       %section.browse-by-taxonomy
         .container
-          %h4=t("professions.browse_by.location", :profession => @profession.name.downcase.pluralize).html_safe
+          %h4 =t("professions.browse_by.location", :profession => @profession.name.downcase.pluralize).html_safe
           %ul.countries.accordion.compact
             - @all_countries.each do |country|
               %li.country

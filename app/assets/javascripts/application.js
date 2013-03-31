@@ -13,30 +13,39 @@ $(document).ready(function() {
     var $locationSelector = $( ".location-selector" ).locationSelector();
     var $togglers = $( ".toggle" );
 
-    $togglers.bind("click change", function(e) {
+    $togglers.filter("a").click(function(e) {
         var $this = $(this);
         var target = $this.data("target") || $this.attr("href");
         var $target = $(target);
 
-        if ( $this.tagName == "A" ) {
-            e.preventDefault();
-            $this.hasClass("slide") ? $target.slideToggle() : $target.toggle();
-        }
+        e.preventDefault();
 
-        else if ( $this.tagName == "SELECT" ) {
-            var value = $this.find("option:selected").val();
-            console.log(value);
-
-            if ( $.inArray(value, ["false", "no", "0"] ) ) {
-                $this.hasClass("slide") ? $target.slideUp() : $target.hide();
-            } else {
-                $this.hasClass("slide") ? $target.slideDown() : $target.show();
-            }
-        }
-
-        else {
-            $this.hasClass("slide") ? $target.slideToggle() : $target.toggle();
-        }
+        $this.hasClass("slide") ? $target.slideToggle() : $target.toggle();
     });
+
+    $togglers.filter("select").bind("change initSelectTogglers", function(e) {
+        var $this = $(this);
+        var target = $this.data("target") || $this.attr("href");
+        var $target = $(target);
+        var value = $this.find("option:selected").val();
+
+        if ( $.inArray(value, ["false", "no", "0"] ) ) {
+            $this.hasClass("slide") ? $target.slideUp() : $target.hide();
+        } else {
+            $this.hasClass("slide") ? $target.slideDown() : $target.show();
+        }
+    }).trigger("initSelectTogglers");
+
+    $togglers.filter("input:checkbox").bind("change initCheckboxTogglers", function(e) {
+        var $this = $(this);
+        var target = $this.data("target") || $this.attr("href");
+        var $target = $(target);
+
+        if ( $this.prop("checked") ) {
+            $this.hasClass("slide") ? $target.slideDown() : $target.show();
+        } else {
+            $this.hasClass("slide") ? $target.slideUp() : $target.hide();
+        }
+    }).trigger("initCheckboxTogglers");
 
 });

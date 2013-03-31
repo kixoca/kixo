@@ -1,11 +1,10 @@
 body {
-  background-color: $bodyBgColor;
+  background-color: $white;
 }
 
 #header {
   background: $white;
   margin: 0;
-  @include boxShadow(0,5px,10px,0,rgba(0,0,0,0.1));
 
   #language-select {
     .container {
@@ -29,7 +28,7 @@ body {
     }
 
     #language {
-      padding: 12px 0;
+      padding: 15px 0;
 
       a {
         color: $lightTxtColor;
@@ -204,34 +203,59 @@ body {
 }
 
 #content {
+  background: $kixoSandy;
+  border-top: 1px solid $kixoDarkSandy;
+  border-bottom: 1px solid $kixoDarkSandy;
+
   > .container {
-    margin: $rowGutter 0;
+    padding: $rowGutter 0;
   }
 }
 
 #footer {
-  background: $kixoDarkBlue;
-  color: $secondaryColor;
+  background: $white;
+  color: $lightTxtColor;
 
   > .container {
     padding: $rowGutter 0;
   }
 
   h5 {
-    color: $white;
-  }
-
-  p, a {
-    font-size: $smallFontSize;
+    color: $lightTxtColor;
   }
 
   a {
-    color: $secondaryColor;
+    color: $lightTxtColor;
 
     &:hover {
-      color: $white;
+      color: $txtColor;
     }
   }
+
+  p, li {
+    font-size: $smallFontSize;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  #social-media {
+    margin: $rowGutter 0;
+    padding: $unit 0;
+    border-top: 1px solid $hrColor;
+    border-bottom: 1px solid $hrColor;
+
+    i {
+      font-size: 30px;
+      line-height: 1.0;
+    }
+  }
+}
+
+.box, .page, .panel {
+  border: 1px solid $kixoDarkSandy;
+  @include borderRadius($radius);
 }
 
 .box,
@@ -275,11 +299,14 @@ body {
     &.green {
       background: $kixoGreen;
     }
+
+    &.filter {
+      background: $kixoLightGrey;
+    }
   }
 }
 
 .box {
-  border-top: 2px solid $kixoGreen;
   margin-bottom: $unit;
 
   .container {
@@ -292,18 +319,21 @@ body {
 }
 
 .page {
-  border-top: 3px solid $kixoGreen;
   margin-bottom: $golden*$unit;
+  border-top: 3px solid $kixoGreen;
 
   .container {
     padding: $golden*$unit $golden*$golden*$unit;
+
+    &.tight {
+      padding: $unit $golden*$golden*$unit;
+    }
   }
 }
 
 .panel {
   background: $white;
   padding: $golden*$unit;
-  border: none;
 
   &.callout h5 {
     color: $white;

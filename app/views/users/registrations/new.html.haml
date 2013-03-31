@@ -15,16 +15,16 @@
           .container
             .row
               .three.columns
-                = f.label :email, t("users.registrations.new.fields.email.label"), :class => "inline right"
+                = f.label :email, t("users.registrations.fields.email.label"), :class => "inline right"
               .seven.columns.end
                 = f.email_field :email
             .row
               .three.columns
-                = f.label :password, t("users.registrations.new.fields.password.label"), :class => "inline right"
+                = f.label :password, t("users.registrations.fields.password.label"), :class => "inline right"
               .seven.columns.end
                 = f.password_field :password
               .three.columns
-                = f.label :password_confirmation, t("users.registrations.new.fields.password_confirmation.label"), :class => "inline right"
+                = f.label :password_confirmation, t("users.registrations.fields.password_confirmation.label"), :class => "inline right"
               .seven.columns.end
                 = f.password_field :password_confirmation
         %section
@@ -36,12 +36,12 @@
               .seven.columns.offset-by-three.end
                 %label
                   = check_box_tag "user[is_a_professional]", true, false, :class => "toggle", :data => {:target => "#if_user_is_a_professional"}
-                  =t "users.registrations.new.fields.is_a_professional.label"
-        %section#if_user_is_a_professional.hidden
+                  =t "users.registrations.fields.is_a_professional.label"
+        %section#if_user_is_a_professional{:class => resource.is_a_professional? ? "" : "hidden"}
           .container
             .row
               .three.columns
-                = f.label :name, t("users.registrations.new.fields.name.label"), :class => "inline right"
+                = f.label :name, t("users.registrations.fields.name.label"), :class => "inline right"
               .seven.columns.end
                 = f.text_field :name
             .row

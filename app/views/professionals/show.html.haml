@@ -16,10 +16,10 @@
                 %li.location
                   %i.icon-map-marker
                   = @professional.short_address
-                - unless @professional.url.blank?
+                - unless @professional.website.blank?
                   %li.url
                     %i.icon-external-link
-                    = link_to @professional.display_url, @professional.url
+                    = link_to @professional.website, @professional.website
                 - unless @professional.tel.blank?
                   %li.tel
                     %i.icon-phone

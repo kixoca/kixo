@@ -97,7 +97,7 @@ fr:
           label: "quelqu'un répond à mes réponses"
         notify_of_similar_questions:
           label: "quelqu'un pose une question similaire aux miennes"
-        url:
+        website:
           label: "Site web"
         tel:
           label: "Téléphone"
@@ -322,6 +322,8 @@ fr:
           other: "<span class='value'>%{count}</span> <span class='key'>guides</span>"
 
   taxonomy:
+    index:
+      view_all: "Voir tous"
     in_taxonomy: "%{taxonomy_1} en %{taxonomy_2}"
     browse_by:
       category: "Parcourir %{taxonomy} par catégorie"
@@ -336,6 +338,7 @@ fr:
   categories:
     index:
       title: "Catégories"
+      view_all: "Voir toutes les catégories"
     count:
       zero: "Aucune catégorie trouvée"
       one: "1 catégorie trouvée"
@@ -344,6 +347,7 @@ fr:
   topics:
     index:
       title: "Sujets"
+      view_all: "Voir tous les sujets"
     show:
       in_locality:
         title: "%{topic} à %{locality}"
@@ -359,6 +363,7 @@ fr:
   professions:
     index:
       title: "Professions"
+      view_all: "Voir toutes les professions"
     show:
       in_locality:
         title: "%{profession} à %{locality}"
@@ -370,6 +375,11 @@ fr:
       location: "Parcourir les <em>%{profession}</em> par emplacement"
       category: "Parcourir les <em>%{profession}</em> par catégorie"
       topic: "Parcourir les <em>%{profession}</em> par sujet"
+
+  localities:
+    index:
+      title: "Villes"
+      view_all: "Voir toutes les villes"
 
   reviews:
     index:
@@ -444,17 +454,17 @@ fr:
       one: "1 question trouvée"
       other: "%{count} questions trouvée"
     count_in_taxonomy:
-      zero: "Aucune question en %{taxonomy}"
-      one: "1 question en %{taxonomy}"
-      other: "%{count} questions en %{taxonomy}"
+      zero: "Aucune question sous <em>%{taxonomy}</em>"
+      one: "1 question sous <em>%{taxonomy}</em>"
+      other: "%{count} questions sous <em>%{taxonomy}</em>"
     count_in_locality:
-      zero: "Aucune question à %{locality}"
-      one: "1 question à %{locality}"
-      other: "%{count} questions à %{locality}"
+      zero: "Aucune question à <em>%{locality}</em>"
+      one: "1 question à <em>%{locality}</em>"
+      other: "%{count} questions à <em>%{locality}</em>"
     count_in_taxonomy_and_locality:
-      zero: "Aucune question en %{taxonomy} à %{locality}"
-      one: "1 question en %{taxonomy} à %{locality}"
-      other: "%{count} questions en %{taxonomy} à %{locality}"
+      zero: "Aucune question en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      one: "1 question en <em>%{taxonomy}</em> à <em>%{locality}</em>"
+      other: "%{count} questions en <em>%{taxonomy}</em> à <em>%{locality}</em>"
     filters:
       all: "Toutes"
       mine: "Mes questions"

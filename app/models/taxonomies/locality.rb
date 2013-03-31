@@ -29,4 +29,8 @@ class Locality < Taxonomy
   def self.most_populated(n = 10)
     self.order_by_population.limit(n)
   end
+
+  def self.most_popular(n = 10)
+    self.order("questions_count DESC, users_count DESC").limit(n)
+  end
 end

@@ -160,9 +160,14 @@
               .container
                 .row
                   .three.columns
-                    = f.label :url, t("users.registrations.fields.url.label"), :class => "inline right"
+                    = f.label :website, t("users.registrations.fields.website.label"), :class => "inline right"
                   .seven.columns.end
-                    = f.text_field :url, :placeholder => "http://"
+                    .row.collapse
+                      .two.columns.mobile-one
+                        %span.prefix
+                          = "http://"
+                      .ten.columns.mobile-three
+                        = f.text_field :website
                 .row
                   .three.columns
                     = f.label :tel, t("users.registrations.fields.tel.label"), :class => "inline right"
@@ -215,6 +220,8 @@
                 .container
                   .row
                     .twelve.columns
+                      = f.hidden_field :clear_topics, :value => true
+                      = f.hidden_field :clear_professions, :value => true
                       %ul.accordion.compact.marg-bottom
                         - @all_categories.each do |category|
                           %li

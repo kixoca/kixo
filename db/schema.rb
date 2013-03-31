@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130323034259) do
+ActiveRecord::Schema.define(:version => 20130224213416) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,22 +58,25 @@ ActiveRecord::Schema.define(:version => 20130323034259) do
     t.datetime "updated_at",                  :null => false
   end
 
-  create_table "classifications", :id => false, :force => true do |t|
+  create_table "classifications", :force => true do |t|
     t.integer "classifiable_id",   :default => 0,   :null => false
     t.string  "classifiable_type", :default => "0", :null => false
     t.integer "taxonomy_id",       :default => 0,   :null => false
     t.string  "taxonomy_type",     :default => "0", :null => false
   end
 
-  add_index "classifications", ["classifiable_id", "taxonomy_id"], :name => "index_classifications_on_classifiable_id_and_taxonomy_id"
-  add_index "classifications", ["taxonomy_id", "classifiable_id"], :name => "index_classifications_on_taxonomy_id_and_classifiable_id"
+  add_index "classifications", ["classifiable_id", "classifiable_type", "taxonomy_id", "taxonomy_type"], :name => "index_classifiable_taxonomy", :unique => true
+  add_index "classifications", ["taxonomy_id", "taxonomy_type", "classifiable_id", "classifiable_type"], :name => "index_taxonomy_classifiable", :unique => true
 
-  create_table "conversation_participations", :id => false, :force => true do |t|
+  create_table "conversation_participations", :force => true do |t|
     t.integer  "conversation_id", :default => 0, :null => false
     t.integer  "participant_id",  :default => 0, :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
   end
+
+  add_index "conversation_participations", ["conversation_id", "participant_id"], :name => "index_conversation_participant", :unique => true
+  add_index "conversation_participations", ["participant_id", "conversation_id"], :name => "index_participant_conversation", :unique => true
 
   create_table "conversations", :force => true do |t|
     t.integer  "messages_count", :default => 0, :null => false
@@ -107,14 +110,14 @@ ActiveRecord::Schema.define(:version => 20130323034259) do
 
   add_index "locales", ["code"], :name => "index_locales_on_code", :unique => true
 
-  create_table "localizations", :id => false, :force => true do |t|
+  create_table "localizations", :force => true do |t|
     t.integer "localizable_id",   :default => 0,   :null => false
     t.string  "localizable_type", :default => "0", :null => false
     t.integer "locale_id",        :default => 0,   :null => false
   end
 
-  add_index "localizations", ["locale_id", "localizable_id"], :name => "index_localizations_on_locale_id_and_localizable_id"
-  add_index "localizations", ["localizable_id", "locale_id"], :name => "index_localizations_on_localizable_id_and_locale_id"
+  add_index "localizations", ["locale_id", "localizable_id", "localizable_type"], :name => "index_locale_localizable", :unique => true
+  add_index "localizations", ["localizable_id", "localizable_type", "locale_id"], :name => "index_localizable_locale", :unique => true
 
   create_table "messages", :force => true do |t|
     t.integer  "conversation_id", :default => 0,     :null => false
@@ -162,6 +165,15 @@ ActiveRecord::Schema.define(:version => 20130323034259) do
     t.integer "rank"
     t.float   "latitude"
     t.float   "longitude"
+    t.integer "users_count",       :default => 0, :null => false
+    t.integer "questions_count",   :default => 0, :null => false
+    t.integer "guides_count",      :default => 0, :null => false
+    t.integer "categories_count",  :default => 0, :null => false
+    t.integer "topics_count",      :default => 0, :null => false
+    t.integer "professions_count", :default => 0, :null => false
+    t.integer "countries_count",   :default => 0, :null => false
+    t.integer "regions_count",     :default => 0, :null => false
+    t.integer "localities_count",  :default => 0, :null => false
   end
 
   create_table "taxonomy_descriptions", :force => true do |t|
@@ -193,23 +205,29 @@ ActiveRecord::Schema.define(:version => 20130323034259) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.boolean  "is_a_professional",           :default => false, :null => false
     t.string   "name"
-    t.string   "tel"
     t.text     "bio"
+    t.string   "company_name"
+    t.string   "tel"
+    t.string   "website"
+    t.string   "twitter"
+    t.string   "facebook"
+    t.string   "google_plus"
+    t.string   "linkedin"
     t.string   "headshot_file_name"
     t.string   "headshot_content_type"
     t.integer  "headshot_file_size"
     t.datetime "headshot_updated_at"
-    t.boolean  "is_a_professional",           :default => false, :null => false
     t.string   "street_address_1"
     t.string   "street_address_2"
     t.integer  "locality_id",                 :default => 0,     :null => false
     t.integer  "region_id",                   :default => 0,     :null => false
     t.string   "postal_code"
     t.integer  "country_id",                  :default => 0,     :null => false
-    t.integer  "locale_id",                   :default => 0,     :null => false
     t.float    "latitude"
     t.float    "longitude"
+    t.integer  "locale_id",                   :default => 0,     :null => false
     t.string   "stripe_customer_id"
     t.boolean  "notify_of_kixo_news",         :default => true,  :null => false
     t.boolean  "notify_of_partner_news",      :default => true,  :null => false
@@ -226,7 +244,6 @@ ActiveRecord::Schema.define(:version => 20130323034259) do
     t.integer  "referrals_count",             :default => 0,     :null => false
     t.datetime "created_at",                                     :null => false
     t.datetime "updated_at",                                     :null => false
-    t.string   "url"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

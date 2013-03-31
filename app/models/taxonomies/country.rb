@@ -8,6 +8,8 @@ class Country < Taxonomy
   has_many :users, :foreign_key => :country_id
   has_many :professionals, :class_name => "User", :foreign_key => :country_id, :conditions => {:is_a_professional => true}
 
+  has_many :questions, :through => :users
+
   geocoded_by :geocoding_address
   after_validation :geocode
 

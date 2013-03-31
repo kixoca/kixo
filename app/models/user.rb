@@ -3,12 +3,12 @@ class User < ActiveRecord::Base
   include Classifiable
   include Geolocalizable
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :url, :tel, :headshot, :bio, :is_a_professional,
-                  :topics, :topic_ids, :professions, :profession_ids,
+  attr_accessor :card, :clear_topics, :clear_professions
+
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :website, :tel, :headshot, :bio, :is_a_professional,
+                  :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
                   :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers
-
-  attr_accessor :card
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -23,8 +23,11 @@ class User < ActiveRecord::Base
   before_create :welcome_by_email
 
   # classifications
-  has_many :topics,      :through => :classifications, :source => :taxonomy, :source_type => "Topic"
-  has_many :professions, :through => :classifications, :source => :taxonomy, :source_type => "Profession"
+  has_many :topics,      :through => :classifications, :as => :classifiable, :source => :taxonomy, :source_type => "Topic"
+  has_many :professions, :through => :classifications, :as => :classifiable, :source => :taxonomy, :source_type => "Profession"
+
+  has_many :categories,  :through => :topics
+  has_many :categories,  :through => :professions
 
   # a user has a main locale
   belongs_to :locale
@@ -107,10 +110,6 @@ class User < ActiveRecord::Base
     self.name.blank? ? self.email : self.name
   end
 
-  def display_url
-    self.url.gsub("http://", "") unless self.url.blank?
-  end
-
   def short_address
     "#{self.locality.name}, #{self.region.name}"
   end
@@ -125,6 +124,10 @@ class User < ActiveRecord::Base
 
   def professions_list
     self.professions.map {|profession| profession.name}.join(", ").html_safe
+  end
+
+  def destroy_classifications(type = nil)
+    Classification.destroy_all(:classifiable_id => self.id, :classifiable_type => "User", :taxonomy_type => type)
   end
 
   def is_a_professional?
@@ -165,6 +168,11 @@ class User < ActiveRecord::Base
 
   private
 
+  def default_values
+    self.locale ||= Locale.find_by_code(I18n.locale)
+    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
+  end
+
   def self.authenticate(email, password)
     user = self.find_for_authentication(:email => email)
     user.valid_password?(password) ? user : nil
@@ -199,10 +207,5 @@ class User < ActiveRecord::Base
 
   def welcome_by_email
     UserMailer.welcome_email(self).deliver
-  end
-
-  def default_values
-    self.locale ||= Locale.find_by_code(I18n.locale)
-    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
   end
 end

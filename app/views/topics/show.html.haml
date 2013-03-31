@@ -2,7 +2,7 @@
   .twelve.columns
     %h1
       - unless @locality.blank?
-        =t "topics.show.in_locality.title", :topic => @topic.name, :locality => @locality.name
+        = t("topics.show.in_locality.title", :topic => @topic.name, :locality => @locality.name).html_safe
       - else
         = @topic.name
     - unless @topic.description.blank?
@@ -12,16 +12,15 @@
   .eight.columns
     %section
       .container
+        %h4
+          - unless @locality.blank?
+            = t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @topic.name.downcase, :locality => @locality.name).html_safe
+          - else
+            = t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase).html_safe
         - unless @professionals.empty?
-          %h4
-            - unless @locality.blank?
-              =t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :tax => @topic.name.downcase, :locality => @locality.name).html_safe
-            - else
-              =t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase).html_safe
-          - unless @professionals.empty?
-            %ul.looper.professionals.block-grid.three-up.mobile-one-up
-              - @professionals.each do |professional|
-                %li= render "professionals/loops/regular", :professional => professional
+          %ul.looper.professionals.block-grid.three-up.mobile-one-up
+            - @professionals.each do |professional|
+              %li= render "professionals/loops/regular", :professional => professional
     - if @locality.blank?
       %section.browse-by-taxonomy
         .container
@@ -47,7 +46,7 @@
     %section#questions
       .container
         %h4
-          =t "questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @topic.name.downcase
+          = t("questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @topic.name.downcase).html_safe
         - unless @questions.empty?
           %ul.looper.questions
             - @questions.each do |question|

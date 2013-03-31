@@ -40,11 +40,15 @@ class ApplicationController < ActionController::Base
   def set_common_vars
     # taxonomies
     @all_categories = Category.all
+    @top_categories = Category.most_popular
     @all_topics = Topic.all
+    @top_topics = Topic.most_popular
     @all_professions = Profession.all
+    @top_professions = Profession.most_popular
     @all_countries = Country.all
     @all_regions = Region.all
     @all_localities = Locality.all
+    @top_localities = Locality.most_popular
 
     # locales
     @all_locales = Locale.all

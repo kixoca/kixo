@@ -216,9 +216,13 @@ ul.tags {
   }
 }
 
-.filter {
+dl.filter {
   dt, dd, a {
     font-size: $mediumFontSize;
+  }
+
+  dd {
+    margin: 5px;
   }
 }
 

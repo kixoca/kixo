@@ -29,8 +29,8 @@
               .row
                 .six.columns
                   #brand
-                  = link_to "/" do
-                    %img#logo{:src => "/assets/logo.png", :width => "125", :height => "40", :alt => t("layout.logo.alt")}
+                    = link_to "/#{I18n.locale}" do
+                      %img#logo{:src => "/assets/logo.png", :width => "140", :height => "45", :alt => t("layout.logo.alt")}
                 .six.columns
                   #language
                     %a.toggle.slide{:href => "#language-select"}
@@ -113,7 +113,7 @@
                         .ten.columns
                           = text_field_tag "question[title]", nil, :placeholder => t("layout.actions.ask.placeholder"), :class => "oversize"
                         .two.columns
-                          = submit_tag t("layout.actions.ask.button"), :class => "radius button expand postfix"
+                          = submit_tag t("layout.actions.ask.button"), :class => "button expand postfix"
             %li#searchTab{:class => @current_action_tab == "search" ? "active" : ""}
               .row
                 .three.columns.text-center
@@ -132,7 +132,7 @@
                         .four.columns
                           = text_field_tag "where", @where, :placeholder => t("layout.actions.search.placeholders.where"), :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/wheres.json"}
                         .two.columns
-                          = submit_tag t("layout.actions.search.button"), :class => "radius button expand postfix"
+                          = submit_tag t("layout.actions.search.button"), :class => "button expand postfix"
     %section#content
       .container
         = yield

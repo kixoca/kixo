@@ -13,14 +13,6 @@ class Taxonomy < ActiveRecord::Base
   # a taxonomy can have one or many children taxomonies
   has_many :children, :class_name => "Taxonomy", :foreign_key => :parent_id
 
-  # a taxonomy can classify many models
-  has_many :classifications, :as => :taxonomy, :foreign_key => :taxonomy_id
-  has_many :classifiables, :through => :classifications, :source => :classifiable
-  has_many :users,         :through => :classifications, :source => :classifiable, :source_type => "User"
-  has_many :professionals, :through => :classifications, :source => :classifiable, :source_type => "User", :conditions => {:is_a_professional => true}
-  has_many :questions,     :through => :classifications, :source => :classifiable, :source_type => "Question"
-  has_many :guides,        :through => :classifications, :source => :classifiable, :source_type => "Guide"
-
   def name(locale = Locale.find_by_code(I18n.locale))
     tax_name = self.names.find_by_locale(locale)
     tax_name.name unless tax_name.nil?

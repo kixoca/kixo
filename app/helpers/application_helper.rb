@@ -12,4 +12,8 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  def display_url(url)
+    url.gsub("http://", "") unless url.blank?
+  end
+
 end
