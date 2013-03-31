@@ -11,11 +11,4 @@
           .actions
             = link_to t("answers.delete.title"), question_answer_path(answer.question, answer), :confirm => t("answers.delete.confirm"), :method => :delete, :class => "delete"
       .three.columns.text-center
-        = link_to professional_path(answer.author) do
-          = image_tag answer.author.headshot.url(:small), :class => "headshot"
-          .author.professional
-            .name
-              = link_to answer.author.name, professional_path(answer.author)
-            .whois
-              %span.professions
-                = answer.author.professions_list
+        = render "professionals/loops/answer_author", :professional => answer.author

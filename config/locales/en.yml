@@ -395,9 +395,11 @@ en:
       label: "Questions"
     show:
       details:
-        title: "Question Details"
+        title: "Details"
       meta:
         time_ago_in_location: "Asked <time class='created-at' datetime='%{time}'>%{time_ago}</time> ago in <span class='location'>%{location}</span>"
+      topics:
+        title: "Topics"
     new:
       title: "Ask a question"
       sections:
@@ -482,9 +484,9 @@ en:
         not_a_professional:  "You must be a professional to answer questions."
         not_signed_in: "You must be a signed in professional to answer questions."
     count:
-      zero: "No answers found"
-      one: "1 answer found"
-      other: "%{count} answers found"
+      zero: "No answers"
+      one: "1 answer"
+      other: "%{count} answers"
 
   notifications:
     index:

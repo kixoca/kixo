@@ -2,14 +2,13 @@
   .professional.loop.minimal
     .container
       .row.collapse
-        .two.columns.mobile-one
+        .three.columns.mobile-one
           = link_to professional_path(professional) do
             = image_tag professional.headshot.url(:thumb), :class => "headshot"
-        .ten.columns.mobile-three
+        .nine.columns.mobile-three
           .professional-details
-            %h5.name
+            .name
               = link_to professional.name, professional_path(professional), :class => "name"
             .professions
-              %h6.subheader
-                %i.icon-user
-                = professional.professions_list
+              %i.icon-user
+              = professional.professions_list

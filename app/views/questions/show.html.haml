@@ -1,15 +1,12 @@
 .row
-  .eight.columns
-    .page.box.question
+  .nine.columns
+    #question.page.box.question
       %header
         .container
           %h1.title
             = @question.title.html_safe
           %p.meta
             = t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
-          %ul.tags.green-tags.topics
-            - @topics.each do |topic|
-              %li= link_to topic.name, category_topic_path(topic.category, topic)
       - unless @question.details.empty?
         %section#details
           .container
@@ -28,10 +25,16 @@
       %section#answer
         .container
           = render "answers/shared/new", :question => @question
-  .four.columns
+  .three.columns
     %aside#sidebar
-      %section
-        %h5= t("professionals.related.title").html_safe
+      %section#question-topics
+        %h5.section-title= t("questions.show.topics.title").html_safe
+        - unless @topics.empty?
+          %ul.tags.green-tags.topics
+            - @topics.each do |topic|
+              %li= link_to topic.name, category_topic_path(topic.category, topic)
+      %section#related-professionals
+        %h5.section-title= t("professionals.related.title").html_safe
         - unless @related_professionals.blank?
           %ul.looper.professionals.related-professionals
             - @related_professionals.each do |professional|

@@ -409,9 +409,11 @@ fr:
       label: "Questions"
     show:
       details:
-        title: "Détails de la question"
+        title: "Détails"
       meta:
         time_ago_in_location: "Posée il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> à <span class='location'>%{location}</span>"
+      topics:
+        title: "Sujets"
     new:
       title: "Poser une question"
       sections:
@@ -496,9 +498,9 @@ fr:
         not_a_professional:  "Vous devez être un professionnel pour répondre aux questions."
         not_signed_in: "Vous devez être un professionnel connecté pour répondre aux questions."
     count:
-      zero: "Aucune réponse trouvée"
-      one: "1 réponse trouvée"
-      other: "%{count} réponses trouvées"
+      zero: "Aucune réponse"
+      one: "1 réponse"
+      other: "%{count} réponses"
 
   notifications:
     index:

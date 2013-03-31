@@ -58,6 +58,15 @@
       .professional-details {
         padding-left: $unit;
       }
+
+      .name {
+        font-weight: bold;
+      }
+
+      .professions {
+        font-size: $smallFontSize;
+        color: $lightTxtColor;
+      }
     }
 
     &.standard {

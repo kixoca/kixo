@@ -212,6 +212,14 @@ body {
   }
 }
 
+#sidebar {
+  > section {
+    padding-bottom: $golden*$unit;
+    margin-bottom: $golden*$unit;
+    border-bottom: 3px solid $hrColor;
+  }
+}
+
 #footer {
   background: $white;
   color: $lightTxtColor;
