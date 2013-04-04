@@ -88,3 +88,16 @@ ul.side-nav {
 .reveal-modal {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }
+
+.block-grid { margin-left: 0;
+
+  &>.block-item { display: block; height: auto; float: $defaultFloat; }
+
+  @for $i from 1 through $blockGridElements {
+    &>.block-item.#{convert-number-to-word($i)}-up {
+      width: 100%/$i;
+      padding: 0 0 5px;
+      @if $i > 1 { &:nth-of-type(#{$i}n+1) { clear: both; } }
+    }
+  }
+}

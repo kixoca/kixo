@@ -1,15 +1,11 @@
 - if user_signed_in?
   #new_conversation_modal.reveal-modal
     %hgroup.hr
-      %h3
-        =t "messages.new.title"
-      %h4.subheader
-        =t "messages.new.subtitle"
-    = form_for @new_conversation do |f|
-      = render "shared/errors", :errors => @new_conversation.errors
-      = f.hidden_field :participant_ids, :id => "new_conversation_participant_id"
-      = f.fields_for :messages, @new_conversation.messages do |m|
-        = m.text_area :message, :rows => 10
-      .actions
-        = f.submit t("messages.new.submit"), :class => "submit button"
+      %h3= t("messages.new.title")
+      %h4.subheader= t("messages.new.subtitle")
+    = simple_form_for @new_conversation do |f|
+      = f.input :participant_ids, :as => :hidden, :id => "new_conversation_participant_id"
+      = f.simple_fields_for :messages, @new_conversation.messages do |m|
+        = m.input :message, :as => :text
+      = f.button :submit, t("messages.new.submit")
     %a.close-reveal-modal &#215;

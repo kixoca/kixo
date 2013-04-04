@@ -1,17 +1,15 @@
 .row
-  .eight.columns
+  .seven.columns.centered
     .page
       %header
         .container
-          %h1=t "users.confirmations.new.title"
+          %h1= t("users.confirmations.new.title")
       %section
         .container
-          = form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
+          = simple_form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f|
             = devise_error_messages!
-            = f.label :email, t("users.confirmations.new.fields.email.label")
-            = f.email_field :email
-            = f.submit t("users.confirmations.new.submit")
+            = f.input :email
+            = f.button :submit, t("users.confirmations.new.submit")
           %hr
           = render "devise/loops/links"
-  .four.columns
 

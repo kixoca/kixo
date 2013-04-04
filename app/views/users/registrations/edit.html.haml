@@ -1,193 +1,87 @@
 .row
   .four.columns
     %ul.vertical.tabs.white
-      %li.active
-        %a{:href => "#account"}
-          =t "users.registrations.edit.sections.account.label"
-      %li
-        %a{:href => "#notifications"}
-          =t "users.registrations.edit.sections.email_notifications.label"
+      %li.active= link_to t("users.registrations.edit.sections.account.label"), "#account"
+      %li= link_to t("users.registrations.edit.sections.email_notifications.label"), "#notifications"
       - if current_user.is_a_professional?
-        %li
-          %a{:href => "#profile"}
-            =t "users.registrations.edit.sections.profile.label"
-      %li
-        %a{:href => "#billing"}
-          =t "users.registrations.edit.sections.billing.label"
+        %li= link_to t("users.registrations.edit.sections.profile.label"), "#profile"
+      %li= link_to t("users.registrations.edit.sections.billing.label"), "#billing"
       - if current_user.is_a_professional?
-        %li
-          %a{:href => "#categories"}
-            =t "users.registrations.edit.sections.categories.label"
-      %li
-        %a{:href => "#contact"}
-          =t "users.registrations.edit.sections.contact.label"
+        %li= link_to t("users.registrations.edit.sections.categories.label"), "#categories"
+      %li= link_to t("users.registrations.edit.sections.contact.label"), "#contact"
   .eight.columns
     %ul.tabs-content
       %li#accountTab.active
-        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#account", :html => { :method => :put }) do |f|
+        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#account", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.account.title"
                   %h4.subheader=t "users.registrations.edit.sections.account.subtitle"
-            - unless resource.errors.blank?
-              %section.errors
-                .container
-                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
-                .row
-                  .three.columns
-                    = f.label :name, t("users.registrations.fields.name.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.text_field :name
-                .row
-                  .three.columns
-                    = f.label :email, t("users.registrations.fields.email.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.email_field :email
-                .row
-                  .three.columns
-                    = f.label :password, t("users.registrations.fields.password.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.password_field :password, :autocomplete => "off"
-                .row
-                  .three.columns
-                    = f.label :password_confirmation, t("users.registrations.fields.password_confirmation.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.password_field :password_confirmation
+                = f.input :name, :label => t("users.fields.name.label")
+                = f.input :email, :label => t("users.fields.email.label")
+                = f.input :password, :label => t("users.fields.password.label")
+                = f.input :password_confirmation, :label => t("users.fields.password_confirmation.label")
             %section
               .container
-                .row
-                  .three.columns
-                    = f.label :locale_id, t("users.registrations.fields.locale.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.select :locale_id, @all_locales.collect {|locale| [locale.name, locale.id]}
-                .row
-                  .three.columns
-                    = f.label :locale_ids, t("users.registrations.fields.locales.label"), :class => "inline right"
-                  .seven.columns.end
-                    %ul.block-grid.three-up
-                      - @all_locales.each do |locale|
-                        %li
-                          %label
-                            = check_box_tag "user[locale_ids][]", locale.id, (resource.locales.include?(locale))
-                            = locale.name
+                = f.association :locale, :label => t("users.fields.locale.label"), :collection => @all_locales
+                = f.association :locales, :label => t("users.fields.locales.label"), :collection => @all_locales, :as => :check_boxes
             %section
               .container
-                .row
-                  .seven.columns.offset-by-three.end
-                    %label
-                      = f.check_box :is_a_professional
-                      = t("users.registrations.fields.is_a_professional.label")
+                = f.input :is_a_professional, :label => t("users.fields.is_a_professional.label")
             %section
               .container
-                .row
-                  .seven.columns.offset-by-three.end
-                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
+                = f.button :submit, t("users.registrations.edit.submit")
             %section
               .container
-                .row
-                  .seven.columns.offset-by-three.end
-                    %p
-                      = t("users.registrations.delete.unhappy")
-                      = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
+                %p
+                  = t("users.registrations.delete.unhappy")
+                  = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
       %li#notificationsTab
-        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#notifications", :html => { :method => :put }) do |f|
+        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#notifications", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.email_notifications.title"
                   %h4.subheader=t "users.registrations.edit.sections.email_notifications.subtitle"
-            - unless resource.errors.blank?
-              %section.errors
-                .container
-                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 %fieldset
                   %legend=t "users.registrations.edit.sections.email_notifications.legend"
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_kixo_news, t("users.registrations.fields.notify_of_kixo_news.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_kixo_news, [[t("misc.yes"), true], [t("misc.no"), false]]
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_partner_news, t("users.registrations.fields.notify_of_partner_news.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_partner_news, [[t("misc.yes"), true], [t("misc.no"), false]]
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_new_messages, t("users.registrations.fields.notify_of_new_messages.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_new_messages, [[t("misc.yes"), true], [t("misc.no"), false]]
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_answers, t("users.registrations.fields.notify_of_answers.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_answers, [[t("misc.yes"), true], [t("misc.no"), false]]
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_replies, t("users.registrations.fields.notify_of_replies.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_replies, [[t("misc.yes"), true], [t("misc.no"), false]]
-                  .row
-                    .ten.columns
-                      = f.label :notify_of_similar_questions, t("users.registrations.fields.notify_of_similar_questions.label")
-                    .two.columns.text-right
-                      = f.select :notify_of_similar_questions, [[t("misc.yes"), true], [t("misc.no"), false]]
+                  = f.input :notify_of_kixo_news, :label => t("users.fields.notify_of_kixo_news.label")
+                  = f.input :notify_of_partner_news, :label => t("users.fields.notify_of_partner_news.label")
+                  = f.input :notify_of_new_messages, :label => t("users.fields.notify_of_new_messages.label")
+                  = f.input :notify_of_answers, :label => t("users.fields.notify_of_answers.label")
+                  = f.input :notify_of_replies, :label => t("users.fields.notify_of_replies.label")
+                  = f.input :notify_of_similar_questions, :label => t("users.fields.notify_of_similar_questions.label")
             %section
               .container
-                .row
-                  .twelve.columns
-                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
+                = f.button :submit, t("users.registrations.edit.submit")
       %li#profileTab
-        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
+        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.profile.title"
                   %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
-            - unless resource.errors.blank?
-              %section.errors
-                .container
-                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
-                .row
-                  .three.columns
-                    = f.label :website, t("users.registrations.fields.website.label"), :class => "inline right"
-                  .seven.columns.end
-                    .row.collapse
-                      .two.columns.mobile-one
-                        %span.prefix
-                          = "http://"
-                      .ten.columns.mobile-three
-                        = f.text_field :website
-                .row
-                  .three.columns
-                    = f.label :tel, t("users.registrations.fields.tel.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.text_field :tel
-                .row
-                  .three.columns
-                    = f.label :headshot, t("users.registrations.fields.headshot.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.file_field :headshot
-                .row
-                  .three.columns
-                    = f.label :bio, t("users.registrations.fields.bio.label"), :class => "inline right"
-                  .seven.columns.end
-                    = f.text_area :bio, :rows => 5
+                = f.input :website, :label => t("users.fields.website.label")
+                = f.input :twitter, :label => t("users.fields.twitter.label")
+                = f.input :facebook, :label => t("users.fields.facebook.label")
+                = f.input :google_plus, :label => t("users.fields.google_plus.label")
+                = f.input :linkedin, :label => t("users.fields.linkedin.label")
+                = f.input :tel, :label => t("users.fields.tel.label")
+                = f.input :headshot, :label => t("users.fields.headshot.label")
+                = f.input :bio, :label => t("users.fields.bio.label")
             %section
               .container
-                .row
-                  .seven.columns.offset-by-three.end
-                    = f.submit t("users.registrations.edit.submit"), :class => "submit button"
+                = f.button :submit, t("users.registrations.edit.submit")
       %li#billingTab
         .page
           %header
@@ -195,104 +89,46 @@
               %hgroup
                 %h1=t "users.registrations.edit.sections.billing.title"
                 %h4.subheader=t "users.registrations.edit.sections.billing.subtitle"
-          - unless resource.errors.blank?
-            %section.errors
-              .container
-                = render "/shared/errors", :errors => resource.errors
           %section
             .container
-              %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}
-                =t "cards.new.label"
+              %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}=t "cards.new.label"
       - if current_user.is_a_professional?
         %li#categoriesTab
-          = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#categories", :html => { :method => :put }) do |f|
+          = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#categories", :html => { :method => :put }) do |f|
             .page
               %header
                 .container
                   %hgroup
                     %h1=t "users.registrations.edit.sections.categories.title"
                     %h4.subheader=t "users.registrations.edit.sections.categories.subtitle"
-              - unless resource.errors.blank?
-                %section.errors
-                  .container
-                    = render "/shared/errors", :errors => resource.errors
               %section
                 .container
-                  .row
-                    .twelve.columns
-                      = f.hidden_field :clear_topics, :value => true
-                      = f.hidden_field :clear_professions, :value => true
-                      %ul.accordion.compact.marg-bottom
-                        - @all_categories.each do |category|
-                          %li
-                            .title
-                              %h5= category.name
-                            .content
-                              %fieldset
-                                %legend=t "users.registrations.edit.sections.categories.select_topics.legend"
-                                %ul.block-grid.three-up
-                                  - category.topics.each do |topic|
-                                    %li
-                                      %label
-                                        = check_box_tag "user[topic_ids][]", topic.id, (current_user and current_user.topics.include?(topic))
-                                        = topic.name
-                              %fieldset
-                                %legend=t "users.registrations.edit.sections.categories.select_professions.legend"
-                                %ul.block-grid.three-up
-                                  - category.professions.each do |profession|
-                                    %li
-                                      %label
-                                        = check_box_tag "user[profession_ids][]", profession.id, (current_user and current_user.professions.include?(profession))
-                                        = profession.name
+                  = f.input :clear_topics, :as => :hidden, :value => true
+                  = f.input :clear_professions, :as => :hidden, :value => true
+                  %ul.accordion.compact.marg-bottom
+                    - @all_categories.each do |category|
+                      %li
+                        .title
+                          %h5= category.name
+                        .content
+                          = f.association :topics, :collection => category.topics, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item two-up"
+                          = f.association :professions, :collection => category.professions, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item two-up"
               %section
                 .container
-                  .row
-                    .twelve.columns
-                      = f.submit t("users.registrations.edit.submit"), :class => "submit button"
+                  = f.button :submit, t("users.registrations.edit.submit")
       %li#contactTab
-        = form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#contact", :html => { :method => :put }) do |f|
+        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#contact", :html => { :method => :put }) do |f|
           .page
             %header
               .container
                 %hgroup
                   %h1=t "users.registrations.edit.sections.contact.title"
                   %h4.subheader=t "users.registrations.edit.sections.contact.subtitle"
-            - unless resource.errors.blank?
-              %section.errors
-                .container
-                  = render "/shared/errors", :errors => resource.errors
             %section
               .container
                 = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
             %section
               .container
-                .row
-                  .seven.columns.offset-by-three.end
-                    = f.submit "Update", :class => "submit button"
+                = f.button :submit, t("users.registrations.edit.submit")
 #create_card.reveal-modal
-  %hgroup.hr
-    %h3=t "cards.new.title"
-    %h4.subheader=t "cards.new.subtitle"
-  = form_for resource, :as => resource_name, :url => "#{registration_path(resource_name)}#billing", :html => { :method => :put, :class => "stripe" } do |f|
-    = devise_error_messages!
-    .stripe-errors.alert-box.alert.hidden
-    = f.hidden_field :card
-    .row
-      .twelve.columns
-        = label_tag :card_number, t("cards.fields.card_number.label")
-        = text_field_tag :card_number, nil, :name => nil
-    .row
-      .six.columns
-        = label_tag :card_exp_month, t("cards.fields.card_exp_month.label")
-        .row
-          .six.columns
-            = select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_exp_month"}
-          .six.columns
-            = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_exp_year"}
-      .six.columns
-        = label_tag :card_cvc, t("cards.fields.card_cvc.label")
-        = text_field_tag :card_cvc, nil, :name => nil
-    .row
-      .twelve.columns
-        = f.submit t("cards.new.submit"), :class => "submit button"
-  %a.close-reveal-modal &#215;
+  = render "cards/shared/new", :resource => resource, :resource_name => resource_name

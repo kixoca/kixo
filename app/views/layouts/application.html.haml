@@ -37,25 +37,25 @@
                       = Locale.find_by_code(locale).name
                       %i.icon-chevron-down
             .eight.columns
-              #account.pull-right.mobile-no-float
+              %ul#account
                 - if user_signed_in?
-                  #notifications.pull-left
+                  %li#notifications
                     = link_to notifications_path do
                       %i.icon-bell
                       - if current_user.notifications.unseen.count > 0
                         .count= current_user.notifications.unseen.count
-                  #messages.pull-left
+                  %li#messages
                     = link_to conversations_path do
                       %i.icon-envelope
                       - if current_user.messages.unread.count > 0
                         .count= current_user.messages.unread.count
-                  #settings.pull-left
+                  %li#settings
                     = link_to edit_user_registration_path do
                       %i.icon-cog
-                  #signout.pull-left
+                  %li#signout
                     = link_to destroy_user_session_path, :method => :delete do
                       %i.icon-signout
-                  #profile.pull-left
+                  %li#profile
                     - if current_user.is_a_professional?
                       = link_to professional_path(current_user) do
                         = image_tag current_user.headshot.url(:mini), :class => "headshot"
@@ -63,14 +63,12 @@
                     - else
                       = current_user.name.blank? ? current_user.email : current_user.name
                 - else
-                  #login.pull-left
-                    %ul.button-group
-                      %li
-                        %a.button.secondary.small{:href => "#", :data => {"reveal-id" => "new_session"}}
-                          =t "users.sessions.new.label"
-                      %li
-                        %a.button.secondary.small{:href => new_user_registration_path}
-                          =t "users.registrations.new.label"
+                  %li#login
+                    %a.button.secondary.small{:href => "#", :data => {"reveal-id" => "new_session"}}
+                      = t("users.sessions.new.label")
+                  %li#signup
+                    %a.button.secondary.small{:href => new_user_registration_path}
+                      = t("users.registrations.new.label")
       %section#actions
         #actions-tabs
           .container

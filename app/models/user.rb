@@ -5,10 +5,12 @@ class User < ActiveRecord::Base
 
   attr_accessor :card, :clear_topics, :clear_professions
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :website, :tel, :headshot, :bio, :is_a_professional,
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :headshot, :bio, :is_a_professional,
+                  :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
-                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers
+                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
+                  :card
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -51,6 +53,9 @@ class User < ActiveRecord::Base
   # a user can be the author of many answers
   has_many :answers, :foreign_key => :author_id
 
+  # a user can be the author of one or many comments
+  has_many :comments, :foreign_key => :author_id
+
   # a user can be the author or recipient of many reviews
   has_many :reviews, :foreign_key => :author_id
   has_many :reviews, :foreign_key => :professional_id
@@ -71,12 +76,12 @@ class User < ActiveRecord::Base
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
-  validates :email, :presence => {:message => I18n.t("users.fields.emails.validation.presence")}
-  validates :name,  :presence => {:message => I18n.t("users.fields.name.validation.presence")}, :if => :is_a_professional?
-  validates_existence_of :country
-  validates_existence_of :region
-  validates_existence_of :locality
-  validates_existence_of :locale
+  validates :email,    :presence => true
+  validates :name,     :presence => true, :if => :is_a_professional?
+  validates :country,  :presence => true
+  validates :region,   :presence => true
+  validates :locality, :presence => true
+  validates :locale,   :presence => true
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
@@ -152,6 +157,9 @@ class User < ActiveRecord::Base
 
   def points
     46
+  end
+
+  def card
   end
 
   def customer

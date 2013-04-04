@@ -19,15 +19,18 @@ class Question < ActiveRecord::Base
   # a question belongs to an author
   belongs_to :author, :class_name => "User", :counter_cache => true
 
-  # a question can have many answers
+  # a question can have one or many answers
   has_many :answers, :order => "created_at ASC"
 
+  # a question can have one or many comments
+  has_many :comments, :as => :commentable
+
   # validation
-  validates :title,  :presence => {:message => "Your question must have a descriptive title"}
-  validates :topics, :presence => {:message => "Your question must be filed under one or many topics"}
-  validates_existence_of :status
-  validates_existence_of :author
-  validates_existence_of :locale
+  validates :title,  :presence => {:message => I18n.t("questions.fields.title.validation.presence")}
+  validates :topics, :presence => {:message => I18n.t("questions.fields.topics.validation.presence")}
+  validates :status, :presence => {:message => I18n.t("questions.fields.status.validation.presence")}
+  validates :author, :presence => {:message => I18n.t("questions.fields.author.validation.presence")}
+  validates :locale, :presence => {:message => I18n.t("questions.fields.locale.validation.presence")}
 
   def self.private
     self.where(:is_private => true)

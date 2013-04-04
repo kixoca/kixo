@@ -63,50 +63,62 @@ en:
       subtitle: "We will contact you when we launch!"
 
   users:
+    fields:
+      name:
+        label: "Name"
+        validation:
+          presence: "As a professional you must provide your name"
+      email:
+        label: "Email"
+        validation:
+          presence: "You must provide an email address"
+      password:
+        label: "Password"
+        validation:
+          presence: "You must provide a password"
+      password_confirmation:
+        label: "Confirmation"
+        validation:
+          presence: "You must confirm your password"
+      remember_me:
+        label: "Remember me?"
+      locale:
+        label: "Main Language"
+      locales:
+        label: "Other Languages"
+      notify_of_kixo_news:
+        label: "Kixo releases new features and promotions"
+      notifiy_of_partner_news:
+        label: "Kixo's partners have offers for you"
+      notify_of_new_messages:
+        label: "I receive a private message"
+      notify_of_answers:
+        label: "someone answers my questions"
+      notify_of_replies:
+        label: "someone replies to my answers"
+      notify_of_similar_questions:
+        label: "someone asks a question similar to mine"
+      website:
+        label: "Website"
+      twitter:
+        label: "Twitter"
+      facebook:
+        label: "Facebook"
+      google_plus:
+        label: "Google+"
+      linkedin:
+        label: "LinkedIn"
+      tel:
+        label: "Phone number"
+      headshot:
+        label: "Headshot"
+      is_a_professional:
+        label: "I am a professional"
+      bio:
+        label: "Bio"
+      professions:
+        label: "Profession"
     registrations:
-      fields:
-        name:
-          label: "Name"
-          validation:
-            presence: "As a professional you must provide your name"
-        email:
-          label: "Email"
-          validation:
-            presence: "You must provide an email address"
-        password:
-          label: "Password"
-          validation:
-            presence: "You must provide a password"
-        password_confirmation:
-          label: "Confirmation"
-          validation:
-            presence: "You must confirm your password"
-        locale:
-          label: "Main Language"
-        locales:
-          label: "Other Languages"
-        notify_of_kixo_news:
-          label: "Kixo releases new features and promotions"
-        notifiy_of_partner_news:
-          label: "Kixo's partners have offers for you"
-        notify_of_new_messages:
-          label: "I receive a private message"
-        notify_of_answers:
-          label: "someone answers my questions"
-        notify_of_replies:
-          label: "someone replies to my answers"
-        notify_of_similar_questions:
-          label: "someone asks a question similar to mine"
-        website:
-          label: "Website"
-        tel:
-          label: "Phone number"
-        headshot:
-          label: "Headshot"
-        is_a_professional:
-          label: "I am a professional"
-        bio:
-          label: "Bio"
       edit:
         title: "Settings"
         label: "Settings"
@@ -150,22 +162,12 @@ en:
         title: "Sign Up"
         label: "Create an account"
         subtitle: "Create an account, it's free and fast!"
-        fields:
-          professions:
-            label: "Profession"
         submit: "Sign Up"
       delete:
         title: "Cancel my account"
         unhappy: "Unhappy?"
         confirm: "Are you sure you want to cancel your account?"
     sessions:
-      fields:
-        email:
-          label: "Email"
-        password:
-          label: "Password"
-        remember_me:
-          label: "Remember me?"
       new:
         title: "Login"
         label: "Login"
@@ -487,6 +489,41 @@ en:
       zero: "No answers"
       one: "1 answer"
       other: "%{count} answers"
+    fields:
+      answer:
+        label: "Answer"
+        validation:
+          presence: "Please enter an answer."
+      question:
+        label: "Question"
+        validation:
+          presence: "Make sure to specify the question you are answering."
+      author:
+        label: "Author"
+        validation:
+          presence: "Make sure to specify the author of the answer."
+
+  comments:
+    index:
+      title: "Comments"
+    show:
+      title: "Comment"
+    new:
+      label: "Add Comment"
+      submit: "Add Comment"
+    fields:
+      comment:
+        label: "Comment"
+        validation:
+          presence: "You must enter a comment"
+      commentable:
+        label: "Commentable"
+        validation:
+          presence: "What do you want to comment on?"
+      author:
+        label: "Author"
+        validation:
+          presence: "Who is commenting?"
 
   notifications:
     index:
@@ -533,10 +570,22 @@ en:
     fields:
       card_number:
         label: "Card Number"
-      card_exp_month:
+        validation:
+          presence: "Please enter a card number."
+      card_exp:
         label: "Card Expiration"
+      card_exp_month:
+        label: "Month"
+        validation:
+          presence: "Please enter a card expiration month."
+      card_exp_year:
+        label: "Year"
+        validation:
+          presence: "Please enter a card expiration year."
       card_cvc:
         label: "Security Code (CVC)"
+        validation:
+          presence: "Please enter a"
     new:
       label: "Add/Edit Credit Card"
       title: "Credit Card"

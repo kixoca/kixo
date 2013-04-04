@@ -14,6 +14,9 @@ class Guide < ActiveRecord::Base
 
   belongs_to :author, :class_name => "User"
 
+  # a guide can have one or many comments
+  has_many :comments, :as => :commentable
+
   # set default values on init
   after_initialize :default_values
 

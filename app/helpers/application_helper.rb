@@ -16,4 +16,12 @@ module ApplicationHelper
     url.gsub("http://", "") unless url.blank?
   end
 
+  def twitter_url(username)
+    "http://twitter.com/#{username}"
+  end
+
+  def facebook_url(url)
+    "http://www.facebook.com/#{url}"
+  end
+
 end

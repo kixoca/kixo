@@ -44,6 +44,18 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
+    resources :questions do
+      resources :comments
+    end
+
+    resources :answers do
+      resources :comments
+    end
+
+    resources :guides do
+      resources :comments
+    end
+
     resources :whats
     resources :wheres
 

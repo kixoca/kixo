@@ -1,6 +1,8 @@
 $(function() {
     Stripe.setPublishableKey( $('meta[name="stripe-key"]').attr('content') );
 
+    $('form.stripe').find('.stripe-errors').hide();
+
     $('form.stripe').submit(function(e) {
         var $form = $(this);
 
@@ -22,10 +24,10 @@ function stripeResponseHandler(status, response) {
 
     if (response.error) {
         // Show the errors on the form
-        $form.find('.stripe-errors').text(response.error.message).removeClass('hidden');
+        $form.find('.stripe-errors').text(response.error.message).show();
         $form.find('.submit').prop('disabled', false);
     } else {
-        $form.find('.stripe-errors').addClass('hidden');
+        $form.find('.stripe-errors').hide();
         // token contains id, last4, and card type
         var token = response.id;
         // Insert the token into the form so it gets submitted to the server

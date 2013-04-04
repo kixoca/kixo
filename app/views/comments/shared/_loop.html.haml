@@ -1,0 +1,5 @@
+- unless comment.blank?
+  .comment.loop
+    = comment.comment
+    .author
+      = link_to comment.author.name, professional_path(comment.author)

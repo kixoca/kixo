@@ -1,9 +1,9 @@
 - unless answer.blank? or answer.author.blank?
-  .answer{:id => "ans#{answer.id}"}
+  .answer{:id => "answer-#{answer.id}"}
     .row
       .nine.columns
         .details
-          = simple_format(answer.details)
+          = simple_format(answer.answer)
         %p.meta
           %span.created_at
             =t("misc.time_ago", :time => answer.created_at, :time_ago => time_ago_in_words(answer.created_at)).html_safe
@@ -12,3 +12,10 @@
             = link_to t("answers.delete.title"), question_answer_path(answer.question, answer), :confirm => t("answers.delete.confirm"), :method => :delete, :class => "delete"
       .three.columns.text-center
         = render "professionals/loops/answer_author", :professional => answer.author
+    .row
+      .twelve.columns
+        - unless answer.comments.empty?
+          %ul.comments.looper
+            - answer.comments.each do |comment|
+              %li= render "comments/shared/loop", :comment => comment
+        = render "comments/shared/new", :commentable => answer

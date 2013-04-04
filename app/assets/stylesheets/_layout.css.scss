@@ -46,7 +46,14 @@ body {
     }
 
     #account {
-      padding: 7px 0;
+      float: right;
+      list-style: none;
+      padding: 5px 0;
+
+      li {
+        float: left;
+        margin-right: $unit;
+      }
 
       #profile {
         font-size: $smallFontSize;
@@ -65,13 +72,7 @@ body {
       #notifications,
       #settings,
       #signout {
-        margin-right: $golden*$unit;
-        padding: 5px 0;
         position: relative;
-
-        a {
-          padding: 0 5px;
-        }
 
         i {
           color: $kixoGrey;
@@ -213,11 +214,6 @@ body {
 }
 
 #sidebar {
-  > section {
-    padding-bottom: $golden*$unit;
-    margin-bottom: $golden*$unit;
-    border-bottom: 3px solid $hrColor;
-  }
 }
 
 #footer {

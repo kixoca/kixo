@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :details, :question, :question_id, :author, :author_id
+  attr_accessible :answer, :question, :question_id, :author, :author_id
 
   # an answer is associated with a questions
   belongs_to :question, :counter_cache => true
@@ -7,8 +7,11 @@ class Answer < ActiveRecord::Base
   # an answer is associated with an author
   belongs_to :author, :class_name => "User", :counter_cache => true
 
+  # an answer can have one or many comments
+  has_many :comments, :as => :commentable
+
   # validation
-  validates :details, :presence => true
-  validates_existence_of :question
-  validates_existence_of :author
+  validates :answer,   :presence => true
+  validates :question, :presence => true
+  validates :author,   :presence => true
 end

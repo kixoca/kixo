@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130224213416) do
+ActiveRecord::Schema.define(:version => 20130331185243) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -51,11 +51,12 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
   add_index "admin_users", ["unlock_token"], :name => "index_admin_users_on_unlock_token", :unique => true
 
   create_table "answers", :force => true do |t|
-    t.text     "details",     :default => "", :null => false
-    t.integer  "question_id", :default => 0,  :null => false
-    t.integer  "author_id",   :default => 0,  :null => false
-    t.datetime "created_at",                  :null => false
-    t.datetime "updated_at",                  :null => false
+    t.text     "answer",         :default => "", :null => false
+    t.integer  "question_id",    :default => 0,  :null => false
+    t.integer  "author_id",      :default => 0,  :null => false
+    t.integer  "comments_count", :default => 0,  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "classifications", :force => true do |t|
@@ -67,6 +68,18 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
 
   add_index "classifications", ["classifiable_id", "classifiable_type", "taxonomy_id", "taxonomy_type"], :name => "index_classifiable_taxonomy", :unique => true
   add_index "classifications", ["taxonomy_id", "taxonomy_type", "classifiable_id", "classifiable_type"], :name => "index_taxonomy_classifiable", :unique => true
+
+  create_table "comments", :force => true do |t|
+    t.text     "comment",          :default => "",  :null => false
+    t.integer  "commentable_id",   :default => 0,   :null => false
+    t.string   "commentable_type", :default => "0", :null => false
+    t.integer  "author_id",        :default => 0,   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
+  end
+
+  add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
 
   create_table "conversation_participations", :force => true do |t|
     t.integer  "conversation_id", :default => 0, :null => false
@@ -84,21 +97,16 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
     t.datetime "updated_at",                    :null => false
   end
 
-  create_table "eager_beavers", :force => true do |t|
-    t.string   "email",      :default => "", :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
-  end
-
   create_table "guides", :force => true do |t|
-    t.string   "title",      :default => "", :null => false
-    t.string   "excerpt",    :default => "", :null => false
-    t.text     "content",    :default => "", :null => false
-    t.integer  "status_id",  :default => 0,  :null => false
-    t.integer  "author_id",  :default => 0,  :null => false
-    t.integer  "locale_id",  :default => 0,  :null => false
-    t.datetime "created_at",                 :null => false
-    t.datetime "updated_at",                 :null => false
+    t.string   "title",          :default => "", :null => false
+    t.string   "excerpt",        :default => "", :null => false
+    t.text     "content",        :default => "", :null => false
+    t.integer  "status_id",      :default => 0,  :null => false
+    t.integer  "author_id",      :default => 0,  :null => false
+    t.integer  "locale_id",      :default => 0,  :null => false
+    t.integer  "comments_count", :default => 0,  :null => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
   end
 
   create_table "locales", :force => true do |t|
@@ -138,15 +146,16 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
   end
 
   create_table "questions", :force => true do |t|
-    t.string   "title",         :default => "",    :null => false
+    t.string   "title",          :default => "",    :null => false
     t.text     "details"
-    t.boolean  "is_private",    :default => false, :null => false
-    t.integer  "status_id",     :default => 0,     :null => false
-    t.integer  "author_id",     :default => 0,     :null => false
-    t.integer  "locale_id",     :default => 0,     :null => false
-    t.integer  "answers_count", :default => 0,     :null => false
-    t.datetime "created_at",                       :null => false
-    t.datetime "updated_at",                       :null => false
+    t.boolean  "is_private",     :default => false, :null => false
+    t.integer  "status_id",      :default => 0,     :null => false
+    t.integer  "author_id",      :default => 0,     :null => false
+    t.integer  "locale_id",      :default => 0,     :null => false
+    t.integer  "answers_count",  :default => 0,     :null => false
+    t.integer  "comments_count", :default => 0,     :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "reviews", :force => true do |t|
@@ -240,6 +249,7 @@ ActiveRecord::Schema.define(:version => 20130224213416) do
     t.integer  "referer_id"
     t.integer  "answers_count",               :default => 0,     :null => false
     t.integer  "questions_count",             :default => 0,     :null => false
+    t.integer  "comments_count",              :default => 0,     :null => false
     t.integer  "reviews_count",               :default => 0,     :null => false
     t.integer  "referrals_count",             :default => 0,     :null => false
     t.datetime "created_at",                                     :null => false

@@ -78,6 +78,7 @@ class CreateUsers < ActiveRecord::Migration
       # counters
       t.integer :answers_count,       :null => false, :default => 0
       t.integer :questions_count,     :null => false, :default => 0
+      t.integer :comments_count,      :null => false, :default => 0
       t.integer :reviews_count,       :null => false, :default => 0
       t.integer :referrals_count,     :null => false, :default => 0
 

@@ -131,6 +131,10 @@ ul.looper {
 
   > li {
     margin-bottom: $golden*$unit;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   &.tight {
@@ -138,10 +142,6 @@ ul.looper {
 
     > li {
       margin-bottom: $unit;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
     }
   }
 }

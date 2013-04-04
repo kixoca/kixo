@@ -1,5 +1,5 @@
 %p.center= image_tag "http://kixo.ca/assets/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240
-%h1.center= t("users.mailer.welcome_email.subject", :locale => @locale).html_safe
+%h1.subject= t("users.mailer.welcome_email.subject", :locale => @locale).html_safe
 %p= t("users.mailer.welcome_email.welcome", :display_name => @user.display_name, :locale => @locale).html_safe
 - if @user.is_a_professional?
   %p= t("users.mailer.welcome_email.content.for_professional", :new_user_session_url => new_user_session_url(:locale => @locale), :new_question_url => new_question_url(:locale => @locale), :root_url => root_url(:locale => @locale), :edit_user_registration_url => edit_user_registration_url(:locale => @locale), :locale => @locale).html_safe

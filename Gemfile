@@ -56,3 +56,5 @@ gem 'store_base_sti_class'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 
 gem 'mandrill-api'
+
+gem 'simple_form'

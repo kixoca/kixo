@@ -63,50 +63,62 @@ fr:
       subtitle: "We will contact you when we launch!"
 
   users:
+    fields:
+      name:
+        label: "Nom"
+        validation:
+          presence: "En tant que professional vous devez indiquer votre nom"
+      email:
+        label: "Courriel"
+        validation:
+          presence: "Vous devez indiquer une adresse courriel"
+      password:
+        label: "Mot de passe"
+        validation:
+          presence: "Vous devez indiquer un mot de passe"
+      password_confirmation:
+        label: "Confirmation"
+        validation:
+          presence: "Vous devez confirmer votre mot de passe"
+      remember_me:
+        label: "Rester connecté?"
+      locale:
+        label: "Langue principale"
+      locales:
+        label: "Autres langues"
+      notify_of_kixo_news:
+        label: "Kixo publie de nouvelles fonctionnalités et promotions"
+      notifiy_of_partner_news:
+        label: "les partenaires de Kixo ont des offres pour vous"
+      notify_of_new_messages:
+        label: "je reçois un message privé"
+      notify_of_answers:
+        label: "quelqu'un répond à mes questions"
+      notify_of_replies:
+        label: "quelqu'un répond à mes réponses"
+      notify_of_similar_questions:
+        label: "quelqu'un pose une question similaire aux miennes"
+      website:
+        label: "Site web"
+      twitter:
+        label: "Twitter"
+      facebook:
+        label: "Facebook"
+      google_plus:
+        label: "Google+"
+      linkedin:
+        label: "LinkedIn"
+      tel:
+        label: "Téléphone"
+      headshot:
+        label: "Portrait"
+      is_a_professional:
+        label: "Je suis un professionnel"
+      bio:
+        label: "Bio"
+      professions:
+        label: "Profession"
     registrations:
-      fields:
-        name:
-          label: "Nom"
-          validation:
-            presence: "En tant que professional vous devez indiquer votre nom"
-        email:
-          label: "Courriel"
-          validation:
-            presence: "Vous devez indiquer une adresse courriel"
-        password:
-          label: "Mot de passe"
-          validation:
-            presence: "Vous devez indiquer un mot de passe"
-        password_confirmation:
-          label: "Confirmation"
-          validation:
-            presence: "Vous devez confirmer votre mot de passe"
-        locale:
-          label: "Langue principale"
-        locales:
-          label: "Autres langues"
-        notify_of_kixo_news:
-          label: "Kixo publie de nouvelles fonctionnalités et promotions"
-        notifiy_of_partner_news:
-          label: "les partenaires de Kixo ont des offres pour vous"
-        notify_of_new_messages:
-          label: "je reçois un message privé"
-        notify_of_answers:
-          label: "quelqu'un répond à mes questions"
-        notify_of_replies:
-          label: "quelqu'un répond à mes réponses"
-        notify_of_similar_questions:
-          label: "quelqu'un pose une question similaire aux miennes"
-        website:
-          label: "Site web"
-        tel:
-          label: "Téléphone"
-        headshot:
-          label: "Portrait"
-        is_a_professional:
-          label: "Je suis un professionnel"
-        bio:
-          label: "Bio"
       edit:
         title: "Paramètres"
         label: "Paramètres"
@@ -150,22 +162,12 @@ fr:
         title: "Inscription"
         label: "Créer un compte"
         subtitle: "Créez un compte, c'est gratuit et rapide!"
-        fields:
-          professions:
-            label: "Profession"
         submit: "Inscription"
       delete:
         title: "Annuler mon compte"
         unhappy: "Mécontent?"
         confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
     sessions:
-      fields:
-        email:
-          label: "Courriel"
-        password:
-          label: "Mot de passe"
-        remember_me:
-          label: "Rester connecté?"
       new:
         title: "Connexion"
         label: "Connexion"
@@ -501,6 +503,41 @@ fr:
       zero: "Aucune réponse"
       one: "1 réponse"
       other: "%{count} réponses"
+    fields:
+      answer:
+        label: "Réponse"
+        validation:
+          presence: "Veuillez entrer une réponse."
+      question:
+        label: "Question"
+        validation:
+          presence: "Assurez-vous de préciser la question à laquelle vous répondez."
+      author:
+        label: "Auteur"
+        validation:
+          presence: "Assurez-vous de préciser l'auteur de la réponse."
+
+  comments:
+    index:
+      title: "Commentaires"
+    show:
+      title: "Commentaire"
+    new:
+      label: "Ajouter un commentaire"
+      submit: "Ajouter un commentaire"
+    fields:
+      comment:
+        label: "Commentaire"
+        validation:
+          presence: "Vous devez entrer un commentaire"
+      commentable:
+        label: "Commentable"
+        validation:
+          presence: "Que voulez-vous commenter?"
+      author:
+        label: "Auteur"
+        validation:
+          presence: "Qui commente?"
 
   notifications:
     index:
@@ -547,10 +584,20 @@ fr:
     fields:
       card_number:
         label: "Numéro de carte"
-      card_exp_month:
+      card_exp:
         label: "Expiration de la carte"
+      card_exp_month:
+        label: "Mois"
+        validation:
+          presence: "Veuillez entrer le mois d'expiration de la carte."
+      card_exp_year:
+        label: "Année"
+        validation:
+          presence: "Veuillez entrer l'année d'expiraton de la carte."
       card_cvc:
         label: "Code de sécurité (CVC)"
+        validation:
+          presence: "Veuillez entrer le code de sécurité de la carte."
     new:
       label: "Ajouter/modifier une carte de crédit"
       title: "Carte de crédit"

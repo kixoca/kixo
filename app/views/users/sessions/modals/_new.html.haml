@@ -1,18 +1,12 @@
 - unless user_signed_in?
   #new_session.reveal-modal
     %hgroup.hr
-      %h3=t "users.sessions.new.title"
-      %h4.subheader=t "users.sessions.new.subtitle"
-    = form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
-      = devise_error_messages!
-      = f.label :email, t("users.sessions.fields.email.label")
-      = f.email_field :email
-      = f.label :password, t("users.sessions.fields.password.label")
-      = f.password_field :password
+      %h3= t("users.sessions.new.title")
+      %h4.subheader= t("users.sessions.new.subtitle")
+    = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+      = f.input :email
+      = f.input :password
       - if devise_mapping.rememberable?
-        %label
-          = f.check_box :remember_me
-          =t "users.sessions.fields.remember_me.label"
-      .actions
-        = f.submit t("users.sessions.new.submit"), :class => "submit button"
+        = f.input :remember_me
+      = f.button :submit, t("users.sessions.new.submit")
     %a.close-reveal-modal &#215;

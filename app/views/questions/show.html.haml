@@ -7,12 +7,17 @@
             = @question.title.html_safe
           %p.meta
             = t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
-      - unless @question.details.empty?
-        %section#details
+      - unless @question.details.blank?
+        %section#question-details
           .container
-            %h5= t("questions.show.details.title").html_safe
             = simple_format(@question.details)
-      %section#answers
+            #question-comments
+              - unless @question.comments.empty?
+                %ul.comments.looper
+                  - @question.comments.each do |comment|
+                    %li= render "comments/shared/loop", :comment => comment
+              = render "comments/shared/new", :commentable => @question
+      %section#question-answers
         .container
           %h5= t("answers.index.title").html_safe
           - unless @answers.blank?
@@ -33,7 +38,8 @@
           %ul.tags.green-tags.topics
             - @topics.each do |topic|
               %li= link_to topic.name, category_topic_path(topic.category, topic)
-      %section#related-professionals
+      %hr
+      %section#question-related-professionals
         %h5.section-title= t("professionals.related.title").html_safe
         - unless @related_professionals.blank?
           %ul.looper.professionals.related-professionals

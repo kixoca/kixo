@@ -1,12 +1,7 @@
-- if current_user and current_user.can_review?(professional)
-  %h5=t "reviews.new.title", :name => professional.name
-  = form_for [professional, professional.reviews.new], :url => professional_reviews_path(professional) do |f|
-    = f.hidden_field :professional_id, :value => professional.id
-    .row
-      .twelve.columns
-        = f.text_area :comment, :rows => 4
-    .row
-      .six.columns
-        = f.select "rating_id", @all_ratings.map {|u| [u.name, u.id]}
-      .six.columns.text-right
-        = f.submit t("reviews.new.submit"), :class => "button small"
+- if user_signed_in? and current_user.can_review?(professional)
+  %h5= t("reviews.new.title", :name => professional.name)
+  = simple_form_for [professional, professional.reviews.new], :url => professional_reviews_path(professional) do |f|
+    = f.association :professional, :as => :hidden, :value => professional.id
+    = f.input :comment
+    = f.association :rating, :collection => @all_ratings
+    = f.button :submit, t("reviews.new.submit")

@@ -5,32 +5,20 @@
       %li.divider
       %li.active= link_to t("messages.new.label"), new_conversation_path
   .ten.columns
-    = form_for @conversation do |f|
+    = simple_form_for @conversation do |f|
       .page
         %header
           .container
             %hgroup
-              %h1
-                =t "messages.new.title"
-              %h4.subheader
-                =t "messages.new.subtitle"
-        - unless @conversation.errors.blank?
-          %section.errors
-            .container
-              = render "shared/errors", :errors => @conversation.errors
+              %h1= t("messages.new.title")
+              %h4.subheader= t("messages.new.subtitle")
         %section
           .container
-            .row
-              .twelve.columns
-                = f.fields_for :participants do |p|
-                  = text_field_tag nil, nil, :id => "new_conversation_participant_name", :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/professionals.json"}
-                  = hidden_field_tag "conversation[participant_ids][]", nil, :id => "new_conversation_participant_id"
-            .row
-              .twelve.columns
-                = f.fields_for :messages do |m|
-                  = m.text_area :message, :rows => 10
+            = f.simple_fields_for :participants do |p|
+              = text_field_tag nil, nil, :id => "new_conversation_participant_name", :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/professionals.json"}
+              = hidden_field_tag "conversation[participant_ids][]", nil, :id => "new_conversation_participant_id"
+            = f.simple_fields_for :messages do |m|
+              = m.input :message, :as => :text
         %section.actions
           .container
-            .row
-              .twelve.columns
-                = f.submit t("messages.new.submit"), :class => "submit button"
+            = f.button :submit, t("messages.new.submit")

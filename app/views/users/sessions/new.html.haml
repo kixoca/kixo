@@ -1,27 +1,19 @@
 .row
-  .eight.columns
+  .seven.columns.centered
     .page
       %header
         .container
           %hgroup
-            %h1=t "users.sessions.new.title"
-            %h3.subheader=t "users.sessions.new.subtitle"
+            %h1= t("users.sessions.new.title")
+            %h3.subheader= t("users.sessions.new.subtitle")
       %section
         .container
-          = render :partial => "shared/show_flash"
-          = form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-            = devise_error_messages!
-            = f.label :email, t("users.sessions.fields.email.label")
-            = f.email_field :email
-            = f.label :password, t("users.sessions.fields.password.label")
-            = f.password_field :password
+          = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+            = f.input :email
+            = f.input :password
             - if devise_mapping.rememberable?
-              %label
-                = f.check_box :remember_me
-                = t("users.sessions.fields.remember_me.label")
-            .actions
-              = f.submit t("users.sessions.new.submit"), :class => "button"
+              = f.input :remember_me
+            = f.button :submit, t("users.sessions.new.submit")
           %hr
           = render "users/shared/links"
-  .four.columns
     = render "users/shared/panels"

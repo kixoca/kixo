@@ -1,7 +1,5 @@
 class AnswersController < ApplicationController
-
   # filters
-  before_filter :remember_answer, :only => [:new]
   before_filter :authenticate!,   :only => [:update, :edit, :create, :destroy]
 
   def index
@@ -79,9 +77,4 @@ class AnswersController < ApplicationController
     session[:user_return_to] = request.path
     authenticate_user!
   end
-
-  def remember_answer
-    session[:answer] = params[:answer] unless params[:answer].nil?
-  end
-
 end

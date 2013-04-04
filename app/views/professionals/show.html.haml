@@ -1,5 +1,5 @@
 .row
-  .eight.columns
+  .nine.columns
     .page.professional
       %header
         .container
@@ -24,10 +24,18 @@
                   %li.tel
                     %i.icon-phone
                     = @professional.tel
-              %ul.tags.green-tags.topics
-                - @professional.topics.each do |topic|
-                  %li= link_to topic.name, category_topic_path(topic.category, topic)
-              .clear
+                - unless @professional.twitter.blank?
+                  %li.twitter
+                    %i.icon-twitter
+                    = link_to @professional.twitter, twitter_url(@professional.twitter), :target => "_blank"
+                - unless @professional.facebook.blank?
+                  %li.facebook
+                    %i.icon-facebook
+                    = link_to @professional.facebook, facebook_url(@professional.facebook), :target => "_blank"
+              .row
+                .twelve.columns
+                  %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
+                    = t("professionals.show.send_message").html_safe
       - if false
         %section
           .container
@@ -42,11 +50,8 @@
             .about
               %h5.section-title
                 =t "professionals.show.about", :name => @professional.name
-              %p.bio
-                = @professional.bio
-          .contacts
-            %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
-              =t "professionals.show.send_message"
+              .bio
+                = simple_format(@professional.bio)
       %section
         .container.no-pad
           .map
@@ -54,26 +59,20 @@
               .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
                 %p.address
                   - unless @professional.street_address_1.blank?
-                    %span.street-address-1
-                      = "#{@professional.street_address_1}, "
+                    %span.street-address-1= "#{@professional.street_address_1}, "
                     - unless @professional.street_address_2.blank?
-                      %span.street-address-2
-                        = @professional.street_address_2
+                      %span.street-address-2= @professional.street_address_2
                     %br
                   - unless @professional.locality.nil?
-                    %span.locality
-                      = @professional.locality.name
+                    %span.locality= @professional.locality.name
                     %br
                   - unless @professional.region.nil?
-                    %span.region
-                      = @professional.region.name
+                    %span.region= @professional.region.name
                   - unless @professional.postal_code.blank?
-                    %span.postal_code
-                      = @professional.postal_code
+                    %span.postal_code= @professional.postal_code
                   %br
                   - unless @professional.country.nil?
-                    %span.country
-                      = @professional.country.name
+                    %span.country= @professional.country.name
       %section#reviews
         .container
           %h5.section-title
@@ -101,15 +100,25 @@
           - else
             %p.no-records
               =t "professionals.guides.count.zero", :name => @professional.name
-  .four.columns
-    .panel
-      %h5
-        =t "professionals.similar.title"
-      - unless @similar_professionals.empty?
-        %ul.looper.similar-professionals
-          - @similar_professionals.each do |professional|
-            %li= render "professionals/loops/minimal", :professional => professional
-      - else
-        %p.no-records
-          =t "professionals.count.zero"
-    = render "shared/ads"
+  .three.columns
+    %aside#sidebar
+      %section
+        %h5.section-title= t("topics.index.title")
+        - unless @professional.topics.empty?
+          %ul.tags.green-tags.topics
+            - @professional.topics.each do |topic|
+              %li= link_to topic.name, category_topic_path(topic.category, topic)
+        - else
+          %p.no-records
+            = t("topics.count.zero").html_safe
+      %hr
+      %section
+        %h5.section-title= t("professionals.similar.title").html_safe
+        - unless @similar_professionals.empty?
+          %ul.looper.similar-professionals
+            - @similar_professionals.each do |professional|
+              %li= render "professionals/loops/minimal", :professional => professional
+        - else
+          %p.no-records
+            = t("professionals.count.zero").html_safe
+      = render "shared/ads"
