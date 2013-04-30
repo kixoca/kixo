@@ -64,6 +64,9 @@ class ApplicationController < ActionController::Base
       @new_conversation = Conversation.new
       @new_conversation.messages.build
     end
+
+    # display an under development flash
+    flash.now[:notice] = I18n.t("site.under_dev")
   end
 
 end

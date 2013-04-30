@@ -134,7 +134,66 @@
     %section#content
       .container
         = yield
+    %section#flashes
+      .container
+        = render "shared/flashes"
     %section#modals
       = render "users/sessions/modals/new"
       = render "conversations/shared/modals/new"
-    = render "shared/footer"
+    %footer#footer
+      .container
+        .row
+          .four.columns
+            #about-kixo
+              %h5
+                = link_to "/#{I18n.locale}" do
+                  = image_tag "/assets/logo_grayscale.png", :width => 100, :height => 32, :alt => t("layout.logo.alt")
+              %p#kixo-description
+                =t("site.about.description")
+            #social-media
+              %ul.inline
+                %li
+                  = link_to "http://twitter.com/kixo", :target => "_blank" do
+                    %i.icon-twitter-sign
+                %li
+                  = link_to "http://fb.com/kixo.ca", :target => "_blank" do
+                    %i.icon-facebook-sign
+                %li
+                  = link_to "http://www.linkedin.com/company/2829266", :target => "_blank" do
+                    %i.icon-linkedin-sign
+                %li
+                  = link_to "http://www.google.com", :target => "_blank" do
+                    %i.icon-google-plus-sign
+                %li
+                  = link_to "http://www.pinterest.com", :target => "_blank" do
+                    %i.icon-pinterest-sign
+          .two.columns
+            #browse_by_category
+              %h5
+                = t("categories.index.title")
+              %ul.categories
+                - @top_categories.each do |category|
+                  %li= link_to category.name, category_path(category)
+                - if @top_categories.count < @all_categories.count
+                  %li= link_to t("categories.index.view_all"), categories_path
+          .two.columns
+            #browse_by_topic
+              %h5
+                = t("topics.index.title")
+              %ul.topics
+                - @top_topics.each do |topic|
+                  %li= link_to topic.name, category_topic_path(topic.category, topic)
+          .two.columns
+            #browse_by_profession
+              %h5
+                = t("professions.index.title")
+              %ul.topics
+                - @top_professions.each do |profession|
+                  %li= link_to profession.name, category_profession_path(profession.category, profession)
+          .two.columns
+            #browse_by_locality
+              %h5
+                = t("localities.index.title")
+              %ul.localities
+                - @top_localities.each do |locality|
+                  %li= link_to locality.name, country_region_locality_path(locality.region.country, locality.region, locality)
