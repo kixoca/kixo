@@ -9,8 +9,8 @@
           .container
             %h3= t("questions.new.sections.details.title")
             %p= t("questions.new.sections.details.subtitle")
-            = f.input :title, :input_html => {:class => "oversize"}, :placeholder => t("questions.new.fields.title.placeholder")
-            = f.input :details, :input_html => {:size => "x7"}, :placeholder => t("questions.new.fields.details.placeholder")
+            = f.input :title, :input_html => {:class => "oversize"}
+            = f.input :details, :input_html => {:size => "x7"}
             = f.input :is_private
         %section
           .container

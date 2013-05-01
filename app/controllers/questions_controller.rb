@@ -67,11 +67,17 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
-        format.html { redirect_to @question }
+        format.html do
+          flash[:success] = I18n.t("questions.flash.create.success")
+          redirect_to @question
+        end
         format.json { render :json => @question, :status => :created, :location => @question }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
       else
-        format.html { render :action => "new" }
+        format.html do
+          flash[:error] = I18n.t("questions.flash.create.error")
+          render :action => "new"
+        end
         format.json { render :json => @question.errors, :status => :unprocessable_entity }
         format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end

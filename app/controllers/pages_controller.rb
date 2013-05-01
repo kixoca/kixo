@@ -3,16 +3,16 @@ class PagesController < ApplicationController
   def index
     @questions = case params[:filter]
                    when "mine" then
-                     Kaminari.paginate_array(current_user.questions)
+                     Kaminari.paginate_array(current_user.questions.order("created_at DESC"))
                    when "for_me" then
-                     Question.find_all_by_locale.public.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}})
+                     Question.find_all_by_locale.public.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}}).order("created_at DESC")
                    when "most_popular" then
-                     Question.find_all_by_locale.public.most_popular
+                     Question.find_all_by_locale.public.most_popular.order("created_at DESC")
                    when "answered" then
-                     Question.find_all_by_locale.public.answered
+                     Question.find_all_by_locale.public.answered.order("created_at DESC")
                    when "unanswered" then
-                     Question.find_all_by_locale.public.unanswered
-                   else Question.find_all_by_locale.public
+                     Question.find_all_by_locale.public.unanswered.order("created_at DESC")
+                   else Question.find_all_by_locale.public.order("created_at DESC")
                  end
 
     @questions = @questions.page(params[:page])

@@ -64,61 +64,6 @@ en:
       subtitle: "We will contact you when we launch!"
 
   users:
-    fields:
-      name:
-        label: "Name"
-        validation:
-          presence: "As a professional you must provide your name"
-      email:
-        label: "Email"
-        validation:
-          presence: "You must provide an email address"
-      password:
-        label: "Password"
-        validation:
-          presence: "You must provide a password"
-      password_confirmation:
-        label: "Confirmation"
-        validation:
-          presence: "You must confirm your password"
-      remember_me:
-        label: "Remember me?"
-      locale:
-        label: "Main Language"
-      locales:
-        label: "Other Languages"
-      notify_of_kixo_news:
-        label: "Kixo releases new features and promotions"
-      notifiy_of_partner_news:
-        label: "Kixo's partners have offers for you"
-      notify_of_new_messages:
-        label: "I receive a private message"
-      notify_of_answers:
-        label: "someone answers my questions"
-      notify_of_replies:
-        label: "someone replies to my answers"
-      notify_of_similar_questions:
-        label: "someone asks a question similar to mine"
-      website:
-        label: "Website"
-      twitter:
-        label: "Twitter"
-      facebook:
-        label: "Facebook"
-      google_plus:
-        label: "Google+"
-      linkedin:
-        label: "LinkedIn"
-      tel:
-        label: "Phone number"
-      headshot:
-        label: "Headshot"
-      is_a_professional:
-        label: "I am a professional"
-      bio:
-        label: "Bio"
-      professions:
-        label: "Profession"
     registrations:
       edit:
         title: "Settings"
@@ -417,25 +362,6 @@ en:
           subtitle: "Sign in or sign up to Kixo to ask your question"
           sign_up: "Create a Kixo account"
           sign_in: "Sign in to my Kixo account"
-      fields:
-        title:
-          label: "Question"
-          placeholder: "Ex.: 'Do I need a lawyer to incorporate a company?'"
-        details:
-          label: "Details"
-          placeholder: "Give more details and background information..."
-        is_private:
-          label: "Make my question private"
-        new_user_email:
-          label: "Email"
-        new_user_password:
-          label: "Password"
-        new_user_password_confirmation:
-          label: "Password confirmation"
-        user_email:
-          label: "Email"
-        user_password:
-          label: "Password"
       submit: "Ask Question"
       tips:
         title: "Tips!"
@@ -471,6 +397,10 @@ en:
         zero: "No questions in %{taxonomy}"
         one: "1 question in %{taxonomy}"
         other: "%{count} questions in %{taxonomy}"
+    flash:
+      create:
+        success: "Your question was create successfully!"
+        error: "Your question could not be created!"
 
   answers:
     index:
@@ -490,19 +420,6 @@ en:
       zero: "No answers"
       one: "1 answer"
       other: "%{count} answers"
-    fields:
-      answer:
-        label: "Answer"
-        validation:
-          presence: "Please enter an answer."
-      question:
-        label: "Question"
-        validation:
-          presence: "Make sure to specify the question you are answering."
-      author:
-        label: "Author"
-        validation:
-          presence: "Make sure to specify the author of the answer."
 
   comments:
     index:
@@ -512,19 +429,6 @@ en:
     new:
       label: "Add Comment"
       submit: "Add Comment"
-    fields:
-      comment:
-        label: "Comment"
-        validation:
-          presence: "You must enter a comment"
-      commentable:
-        label: "Commentable"
-        validation:
-          presence: "What do you want to comment on?"
-      author:
-        label: "Author"
-        validation:
-          presence: "Who is commenting?"
 
   notifications:
     index:
@@ -568,25 +472,6 @@ en:
       other: "%{count} messages found"
 
   cards:
-    fields:
-      card_number:
-        label: "Card Number"
-        validation:
-          presence: "Please enter a card number."
-      card_exp:
-        label: "Card Expiration"
-      card_exp_month:
-        label: "Month"
-        validation:
-          presence: "Please enter a card expiration month."
-      card_exp_year:
-        label: "Year"
-        validation:
-          presence: "Please enter a card expiration year."
-      card_cvc:
-        label: "Security Code (CVC)"
-        validation:
-          presence: "Please enter a"
     new:
       label: "Add/Edit Credit Card"
       title: "Credit Card"

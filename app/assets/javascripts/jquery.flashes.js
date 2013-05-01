@@ -1,5 +1,5 @@
 $(function() {
     var $flashes = $("#flashes");
 
-    $flashes.css('bottom', '-10%').animate({bottom: '10%'}, 1000);
+    $flashes.css('right', '-400px').animate({right: '4%'}, 1000);
 });

@@ -1,0 +1,61 @@
+fr:
+  simple_form:
+    yes: "Oui"
+    no: "Non"
+    required:
+      text: "requis"
+      mark: "*"
+    error_notification:
+      default_message: "S'il vous plaît examiner les problèmes ci-dessous :"
+    labels:
+      user:
+        name: "Nom"
+        email: "Courriel"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        remember_me: "Se souvenir de moi?"
+        locale: "Langue principale"
+        locales: "Autres langues"
+        notify_of_kixo_news: "Kixo publie de nouvelles fonctionnalités et promotions"
+        notify_of_partner_news: "les partenaires de Kixo ont des offres pour vous"
+        notify_of_new_messages: "je reçois un message privé"
+        notify_of_answers: "quelqu'un répond à mes questions"
+        notify_of_replies: "quelqu'un répond à mes réponses"
+        notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
+        website: "Site web"
+        twitter: "Nom d'usager Twitter"
+        facebook: "Nom d'usager Facebook"
+        google_plus: "Google+"
+        linkedin: "LinkedIn"
+        tel: "Numéro de téléphone"
+        headshot: "Portrait"
+        is_a_professional: "Je suis un professionnel"
+        bio: "Bio"
+        professions: "Profession"
+      question:
+        title: "Question"
+        details: "Détails"
+        is_private: "Faire ma question privée"
+        new_user_email: "Courriel"
+        new_user_password: "Mot de passe"
+        new_user_password_confirmation: "Confirmation du mot de passe"
+        user_email: "Courriel"
+        user_password: "Mot de passe"
+      answer:
+        answer: "Réponse"
+        question: "Question"
+        author: "Auteur"
+      comment:
+        comment: "Commentaire"
+        commentable: "Commentable"
+        author: "Auteur"
+      card:
+        card_number: "Numéro de carte"
+        card_exp: "Expiration de la carte"
+        card_exp_month: "Mois"
+        card_exp_year: "Année"
+        card_cvc: "Code de sécurité (CVC)"
+    placeholders:
+      question:
+        title: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"
+        details: "Donnez plus détails et d'informations..."

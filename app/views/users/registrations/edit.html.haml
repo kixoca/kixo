@@ -21,17 +21,17 @@
                   %h4.subheader=t "users.registrations.edit.sections.account.subtitle"
             %section
               .container
-                = f.input :name, :label => t("users.fields.name.label")
-                = f.input :email, :label => t("users.fields.email.label")
-                = f.input :password, :label => t("users.fields.password.label")
-                = f.input :password_confirmation, :label => t("users.fields.password_confirmation.label")
+                = f.input :name
+                = f.input :email
+                = f.input :password
+                = f.input :password_confirmation
             %section
               .container
-                = f.association :locale, :label => t("users.fields.locale.label"), :collection => @all_locales
-                = f.association :locales, :label => t("users.fields.locales.label"), :collection => @all_locales, :as => :check_boxes
+                = f.association :locale, :collection => @all_locales
+                = f.association :locales, :collection => @all_locales, :as => :check_boxes
             %section
               .container
-                = f.input :is_a_professional, :label => t("users.fields.is_a_professional.label")
+                = f.input :is_a_professional
             %section
               .container
                 = f.button :submit, t("users.registrations.edit.submit")
@@ -52,12 +52,12 @@
               .container
                 %fieldset
                   %legend=t "users.registrations.edit.sections.email_notifications.legend"
-                  = f.input :notify_of_kixo_news, :label => t("users.fields.notify_of_kixo_news.label")
-                  = f.input :notify_of_partner_news, :label => t("users.fields.notify_of_partner_news.label")
-                  = f.input :notify_of_new_messages, :label => t("users.fields.notify_of_new_messages.label")
-                  = f.input :notify_of_answers, :label => t("users.fields.notify_of_answers.label")
-                  = f.input :notify_of_replies, :label => t("users.fields.notify_of_replies.label")
-                  = f.input :notify_of_similar_questions, :label => t("users.fields.notify_of_similar_questions.label")
+                  = f.input :notify_of_kixo_news
+                  = f.input :notify_of_partner_news
+                  = f.input :notify_of_new_messages
+                  = f.input :notify_of_answers
+                  = f.input :notify_of_replies
+                  = f.input :notify_of_similar_questions
             %section
               .container
                 = f.button :submit, t("users.registrations.edit.submit")
@@ -71,14 +71,14 @@
                   %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
             %section
               .container
-                = f.input :website, :label => t("users.fields.website.label")
-                = f.input :twitter, :label => t("users.fields.twitter.label")
-                = f.input :facebook, :label => t("users.fields.facebook.label")
-                = f.input :google_plus, :label => t("users.fields.google_plus.label")
-                = f.input :linkedin, :label => t("users.fields.linkedin.label")
-                = f.input :tel, :label => t("users.fields.tel.label")
-                = f.input :headshot, :label => t("users.fields.headshot.label")
-                = f.input :bio, :label => t("users.fields.bio.label")
+                = f.input :website
+                = f.input :twitter
+                = f.input :facebook
+                = f.input :google_plus
+                = f.input :linkedin
+                = f.input :tel
+                = f.input :headshot
+                = f.input :bio
             %section
               .container
                 = f.button :submit, t("users.registrations.edit.submit")

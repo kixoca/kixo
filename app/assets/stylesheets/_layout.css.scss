@@ -217,16 +217,20 @@ body {
 }
 
 #flashes {
-  width: 100%;
+  width: 400px;
+  max-width: 90%;
   position: fixed;
-  bottom: 10%;
-  text-align: center;
+  top: 6%;
+  right: 4%;
   z-index: 500;
 
-  > .container {
-    width: 70%;
-    position: absolute;
-    left: 15%;
+  .alert-box {
+    padding: $unit*$golden;
+    opacity: 0.75;
+
+    &:hover {
+      opacity: 1.0;
+    }
   }
 }
 

@@ -1,23 +1,23 @@
 %hgroup.hr
   %h3=t "cards.new.title"
   %h4.subheader=t "cards.new.subtitle"
-= simple_form_for resource, :as => resource_name, :url => "#{registration_path(resource_name)}#billing", :html => { :method => :put, :class => "stripe" } do |f|
+= simple_form_for Card.new, :url => "#{registration_path(resource_name)}#billing", :html => { :method => :put, :class => "stripe" } do |f|
   .stripe-errors.alert-box.alert
   = f.input :card, :as => :hidden
   .row
     .twelve.columns
-      = label_tag :card_number, t("cards.fields.card_number.label")
+      = label_tag :card_number
       = text_field_tag :card_number, nil, :name => nil
   .row
     .six.columns
-      = label_tag :card_exp_month, t("cards.fields.card_exp.label")
+      = label_tag :card_exp_month
       .row
         .six.columns
           = select_month nil, {:add_month_numbers => true}, {:name => nil, :id => "card_exp_month"}
         .six.columns
           = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, {:name => nil, :id => "card_exp_year"}
     .six.columns
-      = label_tag :card_cvc, t("cards.fields.card_cvc.label")
+      = label_tag :card_cvc
       = text_field_tag :card_cvc, nil, :name => nil
   .row
     .twelve.columns

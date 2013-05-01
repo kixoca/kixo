@@ -1,13 +1,13 @@
 .location-selector
   = f.association :country, :as => :select do
     = f.label :country
-    = f.select :country, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
+    = f.select :country_id, @all_countries.collect {|country| [country.name, country.id]}, {:include_blank => true}, {:class => "country"}
   = f.association :region, :as => :select do
     = f.label :region
-    = f.select :region, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
+    = f.select :region_id, @all_regions.collect {|region| [region.name, region.id, {"data-country" => region.country.id}]}, {:include_blank => true}, {:class => "region"}
   = f.association :locality, :as => :select do
     = f.label :locality
-    = f.select :locality, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
+    = f.select :locality_id, @all_localities.collect {|locality| [locality.name, locality.id, {"data-country" => locality.region.country.id, "data-region" => locality.region.id}]}, {:include_blank => true}, {:class => "locality"}
   - if defined?(postal_code) and postal_code != false
     = f.input :postal_code
   - if defined?(street_address) and street_address != false

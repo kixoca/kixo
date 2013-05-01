@@ -9,10 +9,10 @@
       %section
         .container
           = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
-            = f.input :email
+            = f.input :email, :required => false
             = f.input :password
             - if devise_mapping.rememberable?
-              = f.input :remember_me
+              = f.input :remember_me, :as => :boolean
             = f.button :submit, t("users.sessions.new.submit")
           %hr
           = render "users/shared/links"

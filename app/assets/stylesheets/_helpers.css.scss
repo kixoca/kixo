@@ -51,31 +51,12 @@ img.headshot {
   @include borderRadius(500px);
 }
 
-.headshot-2 {
-  display: inline-block;
-  background-repeat: no-repeat;
-  background-position: 0 0;
-  background-size: 110% 110%;
-  @include borderRadius(500px);
+.alert-box .close {
+  color: $white !important;
+  opacity: 0.4 !important;
 
-  &.large {
-    width: 160px;
-    height: 160px;
-  }
-
-  &.medium {
-    width: 120px;
-    height: 120px;
-  }
-
-  &.small {
-    width: 80px;
-    height: 80px;
-  }
-
-  &.thumb {
-    width: 50px;
-    height: 50px;
+  &:hover {
+    opacity: 0.8 !important;
   }
 }
 
