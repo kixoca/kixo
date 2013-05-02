@@ -13,3 +13,9 @@ textarea,
 select {
   font-size: $baseFontSize;
 }
+
+.hint {
+  font-size: $smallFontSize;
+  position: relative;
+  top: -$unit;
+}

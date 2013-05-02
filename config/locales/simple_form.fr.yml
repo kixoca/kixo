@@ -57,5 +57,10 @@ fr:
         card_cvc: "Code de sécurité (CVC)"
     placeholders:
       question:
-        title: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"
-        details: "Donnez plus détails et d'informations..."
+        new:
+          title: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"
+          details: "Donnez plus détails et d'informations..."
+    hints:
+      user:
+        new:
+          password: "Your password must be 6 characters or more."

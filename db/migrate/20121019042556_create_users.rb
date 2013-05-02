@@ -5,6 +5,8 @@ class CreateUsers < ActiveRecord::Migration
       t.string :email,              :null => false, :default => ""
       t.string :encrypted_password, :null => false, :default => ""
 
+      t.boolean :is_active, :null => false, :default => true
+
       # devise: recoverable
       t.string   :reset_password_token
       t.datetime :reset_password_sent_at
@@ -83,6 +85,7 @@ class CreateUsers < ActiveRecord::Migration
       t.integer :referrals_count,     :null => false, :default => 0
 
       t.timestamps
+      t.datetime :deleted_at
     end
 
     add_index :users, :email,                :unique => true

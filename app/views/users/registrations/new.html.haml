@@ -10,22 +10,11 @@
         %section
           .container
             = f.input :email
-            = f.input :password
-            = f.input :password_confirmation
+            = f.input :password, :required => true
+            = f.input :password_confirmation, :required => true
         %section
           .container
             = render "shared/location_selector", :f => f, :street_address => false
-        %section
-          .container
-            %label
-              = check_box_tag "user[is_a_professional]", true, false, :class => "toggle", :data => {:target => "#if_user_is_a_professional"}
-              = t("users.fields.is_a_professional.label")
-        %section#if_user_is_a_professional{:class => resource.is_a_professional? ? "" : "hidden"}
-          .container
-            = f.input :name
-            = f.association :professions, :as => :select do
-              = f.label :professions
-              = f.select :professions, options_from_collection_for_select(@all_professions, "id", "name"), {:include_blank => true}
         %section
           .container
             = f.button :submit, t("users.registrations.new.submit")

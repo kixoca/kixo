@@ -5,12 +5,12 @@ class User < ActiveRecord::Base
 
   attr_accessor :card, :clear_topics, :clear_professions
 
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :headshot, :bio, :is_a_professional,
-                  :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
+  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
+                  :name, :headshot, :bio, :is_a_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
-                  :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers,
-                  :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
-                  :card
+                  :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
+                  :card,
+                  :deleted_at
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
@@ -164,6 +164,14 @@ class User < ActiveRecord::Base
 
   def customer
     Stripe::Customer.retrieve(self.stripe_customer_id)
+  end
+
+  def soft_delete
+    update_attributes(:is_active => false, :deleted_at => Time.current)
+  end
+
+  def active_for_authentication?
+    super && is_active
   end
 
   def to_param

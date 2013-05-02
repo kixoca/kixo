@@ -12,7 +12,7 @@ en:
         name: "Name"
         email: "Email"
         password: "Password"
-        password_confirmation: "Confirmation du mot de passe"
+        password_confirmation: "Password confirmation"
         remember_me: "Remember me?"
         locale: "Main Language"
         locales: "Other Languages"
@@ -56,6 +56,13 @@ en:
         card_exp_year: "Year"
         card_cvc: "Security Code (CVC)"
     placeholders:
+      user:
+        email: "me@example.com"
       question:
-        title: "Ex.: 'Do I need a lawyer to incorporate a company?'"
-        details: "Give more details and background information..."
+        new:
+          title: "Ex.: 'Do I need a lawyer to incorporate a company?'"
+          details: "Give more details and background information..."
+    hints:
+      user:
+        new:
+          password: "Your password must be 6 characters or more."

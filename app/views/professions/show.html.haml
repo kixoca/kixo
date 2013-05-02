@@ -25,7 +25,7 @@
     - if @locality.blank?
       %section.browse-by-taxonomy
         .container
-          %h4 =t("professions.browse_by.location", :profession => @profession.name.downcase.pluralize).html_safe
+          %h4= t("professions.browse_by.location", :profession => @profession.name.downcase.pluralize).html_safe
           %ul.countries.accordion.compact
             - @all_countries.each do |country|
               %li.country
