@@ -6,8 +6,8 @@
 
 $(document).ready(function() {
 
-    var $languageSelect = $( "#language-select" ).hide();
-    var $gmaps = $( ".gmap" ).gmap();
-    var $locationSelector = $( ".location-selector" ).locationSelector();
+    var $languageSelect = $("#language-select").hide();
+    var $gmaps = $(".gmap").gmap();
+    var $locationSelector = $(".location-selector").locationSelector();
 
 });

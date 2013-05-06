@@ -48,9 +48,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string     :street_address_1
       t.string     :street_address_2
       t.references :locality,        :null => false, :default => 0
-      t.references :region,          :null => false, :default => 0
       t.string     :postal_code
-      t.references :country,         :null => false, :default => 0
 
       # geolocation
       t.float :latitude

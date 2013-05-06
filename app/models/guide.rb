@@ -2,7 +2,7 @@ class Guide < ActiveRecord::Base
   include Localizable
   include Classifiable
 
-  attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id
+  attr_accessible :title, :excerpt, :content, :status, :status_id, :author, :author_id, :deleted_at
 
   # localization
   belongs_to :locale

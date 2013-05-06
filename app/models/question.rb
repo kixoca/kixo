@@ -1,14 +1,20 @@
 class Question < ActiveRecord::Base
   include Localizable
   include Classifiable
+  include Geolocalizable
+
+  acts_as_paranoid
 
   # set default values on init
   after_initialize :default_values
 
-  attr_accessible :title, :details, :status, :status_id, :is_private, :topics, :topic_ids, :author, :author_id
+  attr_accessible :title, :details, :status, :status_id, :is_private, :topics, :topic_ids, :author, :author_id, :locality, :locality_id, :deleted_at
 
   # localization
   belongs_to :locale
+
+  # geolocalization
+  belongs_to :locality
 
   # classifications
   has_many :topics, :through => :classifications, :source => :taxonomy, :source_type => "Topic"

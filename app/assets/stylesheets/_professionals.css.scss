@@ -62,11 +62,6 @@
       .name {
         font-weight: bold;
       }
-
-      .professions {
-        font-size: $smallFontSize;
-        color: $lightTxtColor;
-      }
     }
 
     &.standard {
@@ -78,6 +73,10 @@
     ul {
       list-style: none;
       margin: 0;
+
+      li {
+        padding: 0;
+      }
     }
 
     .metrics {

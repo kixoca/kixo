@@ -1,6 +1,19 @@
 .question {
   .meta {
-    margin: $unit 0;
+    margin: $unit/$golden 0;
+  }
+
+  ul.actions {
+    margin: 0;
+    @include inlineList;
+
+    li {
+      margin-right: 0.5em;
+
+      a {
+        @include subtleLink;
+      }
+    }
   }
 
   &.loop {

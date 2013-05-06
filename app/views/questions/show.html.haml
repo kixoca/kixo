@@ -7,6 +7,24 @@
             = @question.title.html_safe
           %p.meta
             = t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
+          %ul.actions
+            %li
+              = link_to "#" do
+                %i.icon-share
+                = t("questions.share.label")
+            - if user_signed_in? and @question.author == current_user
+              %li
+                = link_to edit_question_path(@question) do
+                  %i.icon-edit
+                  = t("questions.edit.label")
+              %li
+                = link_to question_path(@question), :data => { :confirm => t("questions.delete.confirm") }, :method => :delete do
+                  %i.icon-remove-sign
+                  = t("questions.delete.label")
+            %li
+              = link_to "#" do
+                %i.icon-flag
+                = t("questions.flag.label")
       - unless @question.details.blank?
         %section#question-details
           .container

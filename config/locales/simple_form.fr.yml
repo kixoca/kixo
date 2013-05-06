@@ -15,13 +15,13 @@ fr:
         password_confirmation: "Confirmation du mot de passe"
         remember_me: "Se souvenir de moi?"
         locale: "Langue principale"
-        locales: "Autres langues"
-        notify_of_kixo_news: "Kixo publie de nouvelles fonctionnalités et promotions"
-        notify_of_partner_news: "les partenaires de Kixo ont des offres pour vous"
-        notify_of_new_messages: "je reçois un message privé"
-        notify_of_answers: "quelqu'un répond à mes questions"
-        notify_of_replies: "quelqu'un répond à mes réponses"
-        notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
+        locales: "Langues"
+        topics: "Sujets"
+        professions: "Professions"
+        street_address_1: "Adresse"
+        street_address_2: "Adresse (suite)"
+        locality: "Ville"
+        postal_code: "Code postal"
         website: "Site web"
         twitter: "Nom d'usager Twitter"
         facebook: "Nom d'usager Facebook"
@@ -31,7 +31,12 @@ fr:
         headshot: "Portrait"
         is_a_professional: "Je suis un professionnel"
         bio: "Bio"
-        professions: "Profession"
+        notify_of_kixo_news: "Kixo publie de nouvelles fonctionnalités et promotions"
+        notify_of_partner_news: "les partenaires de Kixo ont des offres pour vous"
+        notify_of_new_messages: "je reçois un message privé"
+        notify_of_answers: "quelqu'un répond à mes questions"
+        notify_of_replies: "quelqu'un répond à mes réponses"
+        notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
       question:
         title: "Question"
         details: "Détails"
@@ -50,11 +55,11 @@ fr:
         commentable: "Commentable"
         author: "Auteur"
       card:
-        card_number: "Numéro de carte"
-        card_exp: "Expiration de la carte"
-        card_exp_month: "Mois"
-        card_exp_year: "Année"
-        card_cvc: "Code de sécurité (CVC)"
+        number: "Numéro de carte"
+        exp: "Expiration de la carte"
+        exp_month: "Mois"
+        exp_year: "Année"
+        cvc: "Code de sécurité (CVC)"
     placeholders:
       question:
         new:
@@ -63,4 +68,4 @@ fr:
     hints:
       user:
         new:
-          password: "Your password must be 6 characters or more."
+          password: "Votre mot de passe doit contenir 6 charactères ou plus"

@@ -172,6 +172,8 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.4.0)
       mime-types
+    paranoia (1.2.0)
+      activerecord (>= 3.0.0)
     pg (0.14.1)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
@@ -271,6 +273,7 @@ DEPENDENCIES
   omniauth-facebook
   paper_trail
   paperclip (~> 3.0)
+  paranoia
   pg
   rails (= 3.2.2)
   rmagick

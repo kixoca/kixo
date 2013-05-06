@@ -42,8 +42,7 @@
 }
 
 .meta {
-  font-size: $smallFontSize;
-  color: $lightTxtColor;
+  @include subtleTxt;
 }
 
 .headshot > img,
@@ -61,14 +60,8 @@ img.headshot {
 }
 
 ul.inline {
-  list-style: none;
+  @include inlineList;
   margin: 0;
-  @include clearfix();
-
-  > li {
-    display: block;
-    float: left;
-  }
 
   &.spaced > li {
     margin-right: 0.5em;

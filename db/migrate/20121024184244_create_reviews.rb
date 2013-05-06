@@ -7,6 +7,7 @@ class CreateReviews < ActiveRecord::Migration
       t.references :author,       :null => false, :default => 0
       t.references :locale,       :null => false, :default => 0
       t.timestamps
+      t.datetime :deleted_at
     end
   end
 end

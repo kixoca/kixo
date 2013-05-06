@@ -57,6 +57,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "comments_count", :default => 0,  :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "classifications", :force => true do |t|
@@ -76,6 +77,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "author_id",        :default => 0,   :null => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.datetime "deleted_at"
   end
 
   add_index "comments", ["author_id"], :name => "index_comments_on_author_id"
@@ -95,6 +97,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "messages_count", :default => 0, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "guides", :force => true do |t|
@@ -107,6 +110,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "comments_count", :default => 0,  :null => false
     t.datetime "created_at",                     :null => false
     t.datetime "updated_at",                     :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "locales", :force => true do |t|
@@ -134,6 +138,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.string   "message"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "notifications", :force => true do |t|
@@ -152,10 +157,14 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "status_id",      :default => 0,     :null => false
     t.integer  "author_id",      :default => 0,     :null => false
     t.integer  "locale_id",      :default => 0,     :null => false
+    t.integer  "locality_id",    :default => 0,     :null => false
+    t.float    "latitude"
+    t.float    "longitude"
     t.integer  "answers_count",  :default => 0,     :null => false
     t.integer  "comments_count", :default => 0,     :null => false
     t.datetime "created_at",                        :null => false
     t.datetime "updated_at",                        :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "reviews", :force => true do |t|
@@ -166,6 +175,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.integer  "locale_id",       :default => 0,  :null => false
     t.datetime "created_at",                      :null => false
     t.datetime "updated_at",                      :null => false
+    t.datetime "deleted_at"
   end
 
   create_table "taxonomies", :force => true do |t|
@@ -232,9 +242,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.string   "street_address_1"
     t.string   "street_address_2"
     t.integer  "locality_id",                 :default => 0,     :null => false
-    t.integer  "region_id",                   :default => 0,     :null => false
     t.string   "postal_code"
-    t.integer  "country_id",                  :default => 0,     :null => false
     t.float    "latitude"
     t.float    "longitude"
     t.integer  "locale_id",                   :default => 0,     :null => false

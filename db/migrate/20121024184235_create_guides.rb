@@ -9,6 +9,7 @@ class CreateGuides < ActiveRecord::Migration
       t.references :locale,         :null => false, :default => 0
       t.integer    :comments_count, :null => false, :default => 0
       t.timestamps
+      t.datetime :deleted_at
     end
   end
 end

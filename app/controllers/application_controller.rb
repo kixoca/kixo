@@ -66,7 +66,10 @@ class ApplicationController < ActionController::Base
     end
 
     # display an under development flash
-    flash.now[:notice] = I18n.t("site.under_dev")
+    if session[:under_dev_noticed].nil?
+      flash.now[:notice] = I18n.t("site.under_dev")
+      session[:under_dev_noticed] = true
+    end
   end
 
 end

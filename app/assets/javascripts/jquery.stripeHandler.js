@@ -4,9 +4,11 @@ $(function() {
     $('form.stripe').find('.stripe-errors').hide();
 
     $('form.stripe').submit(function(e) {
+        e.preventDefault();
+
         var $form = $(this);
 
-        $form.find('.submit').prop('disabled', true);
+        $form.find('.button[type="submit"]').prop('disabled', true);
 
         Stripe.createToken({
             number:    $form.find('#card_number').val(),
@@ -25,13 +27,13 @@ function stripeResponseHandler(status, response) {
     if (response.error) {
         // Show the errors on the form
         $form.find('.stripe-errors').text(response.error.message).show();
-        $form.find('.submit').prop('disabled', false);
+        $form.find('.button[type="submit"]').prop('disabled', false);
     } else {
         $form.find('.stripe-errors').hide();
         // token contains id, last4, and card type
         var token = response.id;
         // Insert the token into the form so it gets submitted to the server
-        $form.find('#user_card').val(token);
+        $form.find('input.card_token').val(token);
         // and submit
         $form.get(0).submit();
     }

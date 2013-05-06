@@ -3,7 +3,7 @@ class Card
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :card, :token, :number, :exp_month, :exp_year, :cvc
+  attr_accessor :card, :number, :exp, :exp_month, :exp_year, :cvc
 
   validates :number,    :presence => {:message => I18n.t("cards.fields.number.validation.presence")}, :numericality => {:only_integer => true}, :length => {:is => 16}
   validates :exp_month, :presence => {:message => I18n.t("cards.fields.exp_month.validation.presence")}, :numericality => {:only_integer => true}, :inclusion => {:in => 1..12}

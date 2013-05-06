@@ -81,23 +81,23 @@ fr:
           profile:
             label: "Profil"
             title: "Profil"
-            subtitle: "Modifiez votre profil"
+            subtitle: "Modifiez votre profil public"
+            basic:
+              title: "Informations de base"
+            categories:
+              title: "Sujets & Professions"
+              select_topics:
+                legend: "Choisissez un ou plusieurs sujets"
+              select_professions:
+                legend: "Choisissez une ou plusieurs professions"
+            contact:
+              title: "Coordonnées"
+            social:
+              title: "Profils Médias Sociaux"
           billing:
-            label: "Facturation"
-            title: "Facturation"
-            subtitle: "Modifiez vos informations de facturation"
-          categories:
-            label: "Catégories"
-            title: "Catégories"
-            subtitle: "Choisissez des sujets et professions"
-            select_topics:
-              legend: "Choisissez un ou plusieurs sujets"
-            select_professions:
-              legend: "Choisissez une ou plusieurs professions"
-          contact:
-            label: "Contact"
-            title: "Information de contact"
-            subtitle: "Modifiez vos informations de contact"
+            label: "Facturation et adhésion"
+            title: "Facturation et adhésion"
+            subtitle: "Modifiez vos informations de facturation et d'adhésion"
         submit: "Mettre à jour"
         panels:
           new_session:
@@ -113,6 +113,8 @@ fr:
         title: "Annuler mon compte"
         unhappy: "Mécontent?"
         confirm: "Êtes-vous sûr de vouloir supprimer votre compte?"
+        success: "Votre compte a bien été supprimé"
+        error: "Une erreur est survenue et votre compte n'a pu être supprimé"
     sessions:
       new:
         title: "Connexion"
@@ -157,7 +159,7 @@ fr:
     mailer:
       common:
         hello: "Bonjour %{display_name}!"
-        signature: "- L'équipe Kixo"
+        signature: "-- avec amour, Kixo"
       layout:
         change_preferences: "Si vous ne voulez plus recevoir de courriel comme celui-ci, <a href='%{edit_user_registration_notifications_url}'>modifiez vos préférences</a>."
       confirmation_instructions:
@@ -179,6 +181,9 @@ fr:
         content:
           for_professional: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a>, <a href='%{root_url}'>répondre à une question</a> et <a href='%{edit_user_registration_url}'>mettre à jour votre profil</a>."
           for_user: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a> et <a href='%{search_professionals_url}'>rechercher un professionnel près de chez vous</a>."
+      goodbye_email:
+        subject: "Kixo va s'ennuyer de vous!"
+        content: "%{display_name}, nous sommes désolés de vous voir partir. Si jamais vous voulez revenir, nous vous accueillerons à bras ouverts."
     misc:
       default_public_name: "utilisateur Kixo"
 
@@ -366,12 +371,28 @@ fr:
         account:
           title: "Enregistrez-vous sur Kixo"
           subtitle: "Connectez-vous ou inscrivez-vous sur Kixo pour poser votre question"
-          sign_up: "Créer un compte Kixo"
+          sign_up: "Créer un compte"
           sign_in: "J'ai déjà un compte"
       submit: "Poser ma question"
       tips:
         title: "Conseils !"
         content: "Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum."
+    create:
+      success: "Votre question a bien été créée!"
+      error: "Votre question n'a pas pu être créée!"
+    edit:
+      label: "Modifier"
+      title: "Modifier une question"
+      submit: "Modifier ma question"
+    delete:
+      label: "Supprimer"
+      confirm: "Êtes-vous certain de vouloir supprimer cette question?"
+      success: "La question a bien été supprimée!"
+      error: "La question n'a pu être supprimée!"
+    share:
+      label: "Partager"
+    flag:
+      label: "Signaler"
     count:
       zero: "Aucune question trouvée"
       one: "1 question trouvée"

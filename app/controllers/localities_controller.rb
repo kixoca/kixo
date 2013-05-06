@@ -16,7 +16,7 @@ class LocalitiesController < ApplicationController
       end
     end
 
-    @humanized_localities = @localities.map {|locality|
+    @humanized_localities = @localities.sort_by(&:rank).reverse.map {|locality|
       {:id => locality.id,
        :name => locality.name,
        :label => "#{locality.name}, #{locality.region.name}",

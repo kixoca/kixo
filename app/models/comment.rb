@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
-  attr_accessible :comment, :commentable, :commentable_id, :commentable_type, :author, :author_id
+  acts_as_paranoid
+
+  attr_accessible :comment, :commentable, :commentable_id, :commentable_type, :author, :author_id, :deleted_at
 
   belongs_to :commentable, :polymorphic => true,  :counter_cache => true
   belongs_to :author,      :class_name => "User", :counter_cache => true

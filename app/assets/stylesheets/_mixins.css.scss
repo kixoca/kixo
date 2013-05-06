@@ -9,6 +9,42 @@
 }
 
 /*
+ * Mixin for inline list
+ * @include inlineList;
+*/
+@mixin inlineList {
+  @include clearfix;
+  list-style: none;
+
+  > li {
+    display: block;
+    float: left;
+  }
+}
+
+/*
+ * Mixin for subtle link
+ * @include subtleLink;
+*/
+@mixin subtleLink {
+  font-size: $smallFontSize;
+  color: $lightTxtColor;
+
+  &:hover {
+    color: $txtColor;
+  }
+}
+
+/*
+ * Mixin for subtle text
+ * @include subtleTxt;
+*/
+@mixin subtleTxt {
+  font-size: $smallFontSize;
+  color: $lightTxtColor;
+}
+
+/*
  * Apply a CSS3 box-shadow
  * @include boxShadow(5px, 5px, 10px, #000);
  */

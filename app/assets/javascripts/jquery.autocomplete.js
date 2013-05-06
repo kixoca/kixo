@@ -1,13 +1,14 @@
 (function() {
 
     jQuery(function() {
-        $( "input.autocomplete").each(function() {
+        $("input.autocomplete").each(function() {
             var $this = $(this);
 
             $this.autocomplete({
+                minLength: 2,
                 source: function( request, response ) {
                     $.ajax({
-                        url: $this.data( "source" ),
+                        url: $this.data("source"),
                         dataType: "json",
                         data: {
                             term: request.term
@@ -23,7 +24,15 @@
                         }
                     });
                 },
-                minLength: 2
+                select: function( event, ui ) {
+                    var target = $this.data("target");
+                    if ( target ) {
+                        var $target = $(target);
+                        if ( $target.size() > 0 ) {
+                            $target.val( ui.item.id );
+                        }
+                    }
+                }
             });
         });
     });

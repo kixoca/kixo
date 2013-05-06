@@ -29,16 +29,16 @@
               %h3= t("questions.new.sections.account.title")
               %p= t("questions.new.sections.account.subtitle")
               %ul.tabs.pill
-                %li.active= link_to t("questions.new.sections.account.sign_up"), "#signup"
-                %li= link_to t("questions.new.sections.account.sign_in"), "#signin"
+                %li.active= link_to t("questions.new.sections.account.sign_up"), "#newUser"
+                %li= link_to t("questions.new.sections.account.sign_in"), "#existingUser"
               %ul.tabs-content
-                %li#signupTab.active
+                %li#newUserTab.active
                   = simple_fields_for :new_user, @author do |author_f|
                     = author_f.input :email
                     = author_f.input :password
                     = author_f.input :password_confirmation
                     = render "shared/location_selector", :f => author_f
-                %li#signinTab
+                %li#existingUserTab
                   = simple_fields_for :user, @author do |author_f|
                     = author_f.input :email
                     = author_f.input :password

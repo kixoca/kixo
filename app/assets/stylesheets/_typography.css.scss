@@ -3,8 +3,8 @@ body {
 }
 
 h1 { font-size: 2.20*$baseFontSize; color: $mainColor; }
-h2 { font-size: 1.80*$baseFontSize; }
-h3 { font-size: 1.60*$baseFontSize; }
+h2 { font-size: 1.60*$baseFontSize; }
+h3 { font-size: 1.40*$baseFontSize; }
 h4 { font-size: 1.20*$baseFontSize; }
 h5 { font-size: 1.10*$baseFontSize; }
 h6 { font-size: 1.00*$baseFontSize; }
@@ -42,6 +42,14 @@ header {
 
   .subheader, p {
     margin-top: 0.25em;
+  }
+}
+
+hr {
+  margin: $unit*$golden 0;
+
+  &.slim {
+    margin: $unit 0;
   }
 }
 

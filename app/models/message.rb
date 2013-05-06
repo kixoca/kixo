@@ -1,5 +1,7 @@
 class Message < ActiveRecord::Base
-  attr_accessible :author, :message, :read
+  acts_as_paranoid
+
+  attr_accessible :author, :message, :read, :deleted_at
 
   belongs_to :conversation, :counter_cache => true
   belongs_to :author, :class_name => "User"

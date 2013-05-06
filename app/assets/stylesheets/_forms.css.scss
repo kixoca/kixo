@@ -14,8 +14,31 @@ select {
   font-size: $baseFontSize;
 }
 
+.control-label {
+  font-size: $mediumFontSize;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  &.checkbox {
+    font-weight: normal;
+    text-transform: none;
+  }
+
+  &.check_boxes {
+    margin-bottom: $unit/$golden;
+  }
+}
+
 .hint {
   font-size: $smallFontSize;
   position: relative;
   top: -$unit;
+}
+
+.input {
+  margin-bottom: $unit;
+
+  label.checkbox {
+    font-size: $mediumFontSize;
+  }
 }

@@ -80,7 +80,7 @@
                       .hide-for-small
                         %i.icon-question-sign
                         %span
-                          =t "layout.actions.ask.tab_name"
+                          = t("layout.actions.ask.tab_name")
                       .show-for-small
                         %i.icon-question-sign
                       .arrow
@@ -89,7 +89,7 @@
                       .hide-for-small
                         %i.icon-search
                         %span
-                          =t "layout.actions.search.tab_name"
+                          = t("layout.actions.search.tab_name")
                       .show-for-small
                         %i.icon-search
                       .arrow
@@ -103,9 +103,9 @@
                   .container
                     %hgroup
                       %h2
-                        =t "layout.actions.ask.title"
+                        = t("layout.actions.ask.title")
                       %h3.subheader
-                        =t "layout.actions.ask.subtitle"
+                        = t("layout.actions.ask.subtitle")
                     = form_tag new_question_path, :method => "get" do
                       .row
                         .ten.columns
@@ -120,9 +120,9 @@
                   .container
                     %hgroup
                       %h2
-                        =t "layout.actions.search.title"
+                        = t("layout.actions.search.title")
                       %h3.subheader
-                        =t "layout.actions.search.subtitle"
+                        = t("layout.actions.search.subtitle")
                     = form_tag search_professionals_path, :method => "get" do
                       .row
                         .six.columns

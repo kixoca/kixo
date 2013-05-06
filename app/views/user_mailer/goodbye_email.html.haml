@@ -1,0 +1,3 @@
+%p.center= image_tag "http://kixo.ca/assets/mailer/user_mailer/goodbye_email/goodbye.png", :width => 180, :height => 240
+%h1.subject= t("users.mailer.goodbye_email.subject", :locale => @locale).html_safe
+%p= t("users.mailer.goodbye_email.content", :display_name => @user.display_name, :locale => @locale).html_safe

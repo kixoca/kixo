@@ -1,5 +1,7 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :answer, :question, :question_id, :author, :author_id
+  acts_as_paranoid
+
+  attr_accessible :answer, :question, :question_id, :author, :author_id, :deleted_at
 
   # an answer is associated with a questions
   belongs_to :question, :counter_cache => true

@@ -46,36 +46,39 @@ class QuestionsController < ApplicationController
   def create
     @question = Question.new(params[:question])
 
-    unless user_signed_in? or current_user
+    unless user_signed_in?
       if !params[:user][:email].blank? and !params[:user][:password].blank?
         # existing user
         @author = User.authenticate(params[:user][:email], params[:user][:password])
       elsif !params[:new_user][:email].blank? and !params[:new_user][:password].blank? and !params[:new_user][:password_confirmation].blank?
         # new user
-        @author = User.find_or_create_by_email(params[:new_user])
+        @author = User.find_or_create_or_restore(params[:new_user])
       end
 
       if @author
         sign_in :user, @author
       else
-        flash[:error] = "Invalid email or password."
+        flash[:error] = I18n.t("devise.failure.invalid")
         authenticate!
       end
     end
 
     @question.author = current_user
 
+    # assigns author's locality to question's locality if none is provided
+    @question.locality = @question.author.locality if @question.locality.blank?
+
     respond_to do |format|
       if @question.save
         format.html do
-          flash[:success] = I18n.t("questions.flash.create.success")
+          flash[:success] = I18n.t("questions.create.success")
           redirect_to @question
         end
         format.json { render :json => @question, :status => :created, :location => @question }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
       else
         format.html do
-          flash[:error] = I18n.t("questions.flash.create.error")
+          flash[:error] = I18n.t("questions.create.error")
           render :action => "new"
         end
         format.json { render :json => @question.errors, :status => :unprocessable_entity }
@@ -108,10 +111,17 @@ class QuestionsController < ApplicationController
 
   def destroy
     @question = Question.find(params[:id])
-    @question.destroy
 
     respond_to do |format|
-      format.html { redirect_to_questions_url }
+      format.html do
+        if @question.destroy
+          flash[:success] = I18n.t("questions.delete.success")
+          redirect_to root_path
+        else
+          flash[:error] = I18n.t("questions.delete.error")
+          redirect_to question_path(@question)
+        end
+      end
       format.json { head :no_content }
       format.xml  { head :no_content }
     end

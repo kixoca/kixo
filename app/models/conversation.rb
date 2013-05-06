@@ -1,5 +1,7 @@
 class Conversation < ActiveRecord::Base
-  attr_accessible :participants, :participant_ids
+  acts_as_paranoid
+
+  attr_accessible :participants, :participant_ids, :deleted_at
 
   has_many :conversation_participations
   has_many :participants, :through => :conversation_participations, :class_name => "User"

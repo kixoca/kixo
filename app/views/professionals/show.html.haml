@@ -44,9 +44,9 @@
               %li=t("professionals.metrics.answers.count", :count => @professional.answers.count).html_safe
               %li=t("professionals.metrics.reviews.count", :count => @professional.reviews.count).html_safe
               %li=t("professionals.metrics.guides.count", :count => @professional.guides.count).html_safe
-      %section
-        .container
-          - unless @professional.bio.blank?
+      - unless @professional.bio.blank?
+        %section
+          .container
             .about
               %h5.section-title
                 =t "professionals.show.about", :name => @professional.name

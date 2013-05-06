@@ -2,7 +2,7 @@ class Review < ActiveRecord::Base
   include Localizable
   include Classifiable
 
-  attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id
+  attr_accessible :comment, :rating, :rating_id, :professional, :professional_id, :author, :author_id, :deleted_at
 
   # localization
   belongs_to :locale

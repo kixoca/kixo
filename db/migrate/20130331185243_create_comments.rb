@@ -5,6 +5,7 @@ class CreateComments < ActiveRecord::Migration
       t.references :commentable, :null => false, :default => 0, :polymorphic => true
       t.references :author,      :null => false, :default => 0
       t.timestamps
+      t.datetime :deleted_at
     end
 
     add_index :comments, [:commentable_id, :commentable_type]

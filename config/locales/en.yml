@@ -81,23 +81,23 @@ en:
           profile:
             label: "Profile"
             title: "Profile"
-            subtitle: "Edit your profile"
+            subtitle: "Edit your public profile"
+            basic:
+              title: "Basic Information"
+            categories:
+              title: "Topics & Professions"
+              select_topics:
+                legend: "Select one or many topics"
+              select_professions:
+                legend: "Select one or many professions"
+            contact:
+              title: "Contact Information"
+            social:
+              title: "Social Media Profiles"
           billing:
-            label: "Billing"
-            title: "Billing"
-            subtitle: "Edit your billing information"
-          categories:
-            label: "Categories"
-            title: "Categories"
-            subtitle: "Select topics and professions"
-            select_topics:
-              legend: "Select one or many topics"
-            select_professions:
-              legend: "Select one or many professions"
-          contact:
-            label: "Contact"
-            title: "Contact Information"
-            subtitle: "Edit your contact information"
+            label: "Billing & Membership"
+            title: "Billing & Membership"
+            subtitle: "Edit your billing and membership information"
         submit: "Update"
         panels:
           new_session:
@@ -113,6 +113,8 @@ en:
         title: "Cancel my account"
         unhappy: "Unhappy?"
         confirm: "Are you sure you want to cancel your account?"
+        success: "Your account has been deleted with success"
+        error: "An error prevented the deletion of your account"
     sessions:
       new:
         title: "Login"
@@ -151,7 +153,7 @@ en:
     mailer:
       common:
         hello: "Hello %{display_name}!"
-        signature: "- Kixo Team"
+        signature: "-- Love, Kixo"
       layout:
         change_preferences: "If you do not want to receive more emails like this one, <a href='%{edit_user_registration_notifications_url}'>change your preferences</a>."
       confirmation_instructions:
@@ -173,6 +175,9 @@ en:
         content:
           for_professional: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking</a> and <a href='%{root_url}'>answering</a> questions, and <a href='%{edit_user_registration_url}'>updating your profile</a>."
           for_user: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking a question</a>, and <a href='%{search_professionals_url}'>searching for a professional near you</a>."
+      goodbye_email:
+        subject: "Kixo will miss you!"
+        content: "%{display_name}, we are very sorry to see you leave. If ever you want to come back, we will welcome you with open arms."
     misc:
       default_public_name: "Kixo user"
 
@@ -360,12 +365,28 @@ en:
         account:
           title: "Sign in to Kixo"
           subtitle: "Sign in or sign up to Kixo to ask your question"
-          sign_up: "Create a Kixo account"
-          sign_in: "Sign in to my Kixo account"
+          sign_up: "Create an account"
+          sign_in: "I already have an account"
       submit: "Ask Question"
       tips:
         title: "Tips!"
         content: "Vestibulum velit augue, euismod vel dapibus sit amet, cursus vitae neque. Ut in lorem urna. Maecenas in turpis dui, nec molestie enim. Donec sed viverra metus. Phasellus vel massa turpis, at accumsan massa. Vivamus aliquet feugiat ligula at vestibulum."
+    create:
+      success: "Your question was create successfully!"
+      error: "Your question could not be created!"
+    edit:
+      label: "Edit"
+      title: "Edit a question"
+      submit: "Edit Question"
+    delete:
+      label: "Delete"
+      confirm: "Are you sure you want to delete this question?"
+      success: "The question was successfully deleted!"
+      error: "The question could not be deleted!"
+    share:
+      label: "Share"
+    flag:
+      label: "Flag"
     count:
       zero: "No questions found"
       one: "1 question found"
@@ -397,10 +418,6 @@ en:
         zero: "No questions in %{taxonomy}"
         one: "1 question in %{taxonomy}"
         other: "%{count} questions in %{taxonomy}"
-    flash:
-      create:
-        success: "Your question was create successfully!"
-        error: "Your question could not be created!"
 
   answers:
     index:

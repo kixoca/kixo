@@ -1,25 +1,15 @@
 module Geolocalizable
   def self.included(base)
-    base.attr_accessible :street_address_1, :street_address_2,
-                         :locality, :locality_id,
-                         :region, :region_id,
-                         :postal_code,
-                         :country, :country_id
-
-    base.belongs_to :country
-    base.belongs_to :region
-    base.belongs_to :locality
-
     base.geocoded_by :geocoding_address
     base.after_validation :geocode
 
     def geocoding_address
       addr = Array.new
-      addr << self.street_address_1 unless self.street_address_1.blank?
-      addr << self.locality.name    unless self.locality.nil?
-      addr << self.region.name      unless self.region.nil?
-      addr << self.postal_code      unless self.postal_code.blank?
-      addr << self.country.name     unless self.country.nil?
+      addr << street_address_1             unless !self.respond_to?('street_address_1') or street_address_1.nil? or street_address_1.blank?
+      addr << locality.name                unless locality.nil?
+      addr << locality.region.name         unless locality.nil? or locality.region.nil?
+      addr << postal_code                  unless !self.respond_to?('postal_code') or postal_code.nil? or postal_code.blank?
+      addr << locality.region.country.name unless locality.nil? or locality.region.nil? or locality.region.country.nil?
       addr.join(" ")
     end
 

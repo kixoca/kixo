@@ -2,13 +2,9 @@
   .four.columns
     %ul.vertical.tabs.white
       %li.active= link_to t("users.registrations.edit.sections.account.label"), "#account"
+      %li= link_to t("users.registrations.edit.sections.profile.label"), "#profile"
       %li= link_to t("users.registrations.edit.sections.email_notifications.label"), "#notifications"
-      - if current_user.is_a_professional?
-        %li= link_to t("users.registrations.edit.sections.profile.label"), "#profile"
       %li= link_to t("users.registrations.edit.sections.billing.label"), "#billing"
-      - if current_user.is_a_professional?
-        %li= link_to t("users.registrations.edit.sections.categories.label"), "#categories"
-      %li= link_to t("users.registrations.edit.sections.contact.label"), "#contact"
   .eight.columns
     %ul.tabs-content
       %li#accountTab.active
@@ -21,17 +17,12 @@
                   %h4.subheader=t "users.registrations.edit.sections.account.subtitle"
             %section
               .container
-                = f.input :name
                 = f.input :email
                 = f.input :password
                 = f.input :password_confirmation
             %section
               .container
                 = f.association :locale, :collection => @all_locales
-                = f.association :locales, :collection => @all_locales, :as => :check_boxes
-            %section
-              .container
-                = f.input :is_a_professional
             %section
               .container
                 = f.button :submit, t("users.registrations.edit.submit")
@@ -40,6 +31,72 @@
                 %p
                   = t("users.registrations.delete.unhappy")
                   = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
+      %li#profileTab
+        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
+          - if resource.is_a_professional
+            .page
+              %header
+                .container
+                  %hgroup
+                    %h1=t "users.registrations.edit.sections.profile.title"
+                    %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
+              %section
+                .container
+                  %h3= t("users.registrations.edit.sections.profile.basic.title")
+                  = f.input :name, :required => true
+                  = f.input :headshot
+                  = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                  = f.input :bio, :input_html => {:rows => 6}
+              %section
+                .container
+                  %h3= t("users.registrations.edit.sections.profile.categories.title")
+                  = f.input :clear_topics, :as => :hidden, :value => true
+                  = f.input :clear_professions, :as => :hidden, :value => true
+                  %ul.accordion.compact.marg-bottom
+                    - @all_categories.each do |category|
+                      %li
+                        .title
+                          %h5= category.name
+                        .content
+                          = f.association :topics, :collection => category.topics, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                          %hr
+                          = f.association :professions, :collection => category.professions, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+              %section
+                .container
+                  %h3= t("users.registrations.edit.sections.profile.contact.title")
+                  = f.input :tel
+                  = f.input :website
+                  = render "shared/location_selector", :f => f, :resource => resource, :postal_code => true, :street_address => true
+              %section
+                .container
+                  %h3= t("users.registrations.edit.sections.profile.social.title")
+                  = f.input :twitter
+                  = f.input :facebook
+                  = f.input :google_plus
+                  = f.input :linkedin
+              %section
+                .container
+                  = f.input :is_a_professional
+              %section
+                .container
+                  = f.button :submit, t("users.registrations.edit.submit")
+          - else
+            .page
+              %header
+                .container
+                  %hgroup
+                    %h1=t "users.registrations.edit.sections.profile.title"
+                    %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
+              %section
+                .container
+                  = f.input :name
+                  = render "shared/location_selector", :f => f
+              %section
+                .container
+                  = f.input :is_a_professional
+              %footer
+                .container
+                  = f.button :submit, t("users.registrations.edit.submit")
       %li#notificationsTab
         = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#notifications", :html => { :method => :put }) do |f|
           .page
@@ -61,27 +118,6 @@
             %section
               .container
                 = f.button :submit, t("users.registrations.edit.submit")
-      %li#profileTab
-        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
-          .page
-            %header
-              .container
-                %hgroup
-                  %h1=t "users.registrations.edit.sections.profile.title"
-                  %h4.subheader=t "users.registrations.edit.sections.profile.subtitle"
-            %section
-              .container
-                = f.input :website
-                = f.input :twitter
-                = f.input :facebook
-                = f.input :google_plus
-                = f.input :linkedin
-                = f.input :tel
-                = f.input :headshot
-                = f.input :bio
-            %section
-              .container
-                = f.button :submit, t("users.registrations.edit.submit")
       %li#billingTab
         .page
           %header
@@ -92,43 +128,5 @@
           %section
             .container
               %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}=t "cards.new.label"
-      - if current_user.is_a_professional?
-        %li#categoriesTab
-          = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#categories", :html => { :method => :put }) do |f|
-            .page
-              %header
-                .container
-                  %hgroup
-                    %h1=t "users.registrations.edit.sections.categories.title"
-                    %h4.subheader=t "users.registrations.edit.sections.categories.subtitle"
-              %section
-                .container
-                  = f.input :clear_topics, :as => :hidden, :value => true
-                  = f.input :clear_professions, :as => :hidden, :value => true
-                  %ul.accordion.compact.marg-bottom
-                    - @all_categories.each do |category|
-                      %li
-                        .title
-                          %h5= category.name
-                        .content
-                          = f.association :topics, :collection => category.topics, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item two-up"
-                          = f.association :professions, :collection => category.professions, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item two-up"
-              %section
-                .container
-                  = f.button :submit, t("users.registrations.edit.submit")
-      %li#contactTab
-        = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#contact", :html => { :method => :put }) do |f|
-          .page
-            %header
-              .container
-                %hgroup
-                  %h1=t "users.registrations.edit.sections.contact.title"
-                  %h4.subheader=t "users.registrations.edit.sections.contact.subtitle"
-            %section
-              .container
-                = render "shared/location_selector", :f => f, :postal_code => resource.is_a_professional, :street_address => resource.is_a_professional
-            %section
-              .container
-                = f.button :submit, t("users.registrations.edit.submit")
 #create_card.reveal-modal
   = render "cards/shared/new", :resource => resource, :resource_name => resource_name

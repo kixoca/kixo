@@ -6,6 +6,7 @@ class CreateMessages < ActiveRecord::Migration
       t.boolean    :read,         :null => false, :default => false
       t.string     :message
       t.timestamps
+      t.datetime :deleted_at
     end
   end
 end

@@ -8,13 +8,11 @@
           = link_to professional.name, professional_path(professional)
         %ul.taxonomies.block-grid.one-up.mobile-one-up
           %li.professions
-            %h6.subheader
-              %i.icon-user
-              = professional.professions_list
+            %i.icon-user
+            = professional.professions_list
           %li.location
-            %h6.subheader
-              %i.icon-map-marker
-              = professional.short_address
+            %i.icon-map-marker
+            = professional.short_address
     - if false
       %section
         .container.tight

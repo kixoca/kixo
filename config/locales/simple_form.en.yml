@@ -15,13 +15,13 @@ en:
         password_confirmation: "Password confirmation"
         remember_me: "Remember me?"
         locale: "Main Language"
-        locales: "Other Languages"
-        notify_of_kixo_news: "Kixo releases new features and promotions"
-        notify_of_partner_news: "Kixo's partners have offers for you"
-        notify_of_new_messages: "I receive a private message"
-        notify_of_answers: "someone answers my questions"
-        notify_of_replies: "someone replies to my answers"
-        notify_of_similar_questions: "someone asks a question similar to mine"
+        locales: "Languages"
+        topics: "Topics"
+        professions: "Professions"
+        street_address_1: "Street Address"
+        street_address_2: "Street Address 2"
+        locality: "City"
+        postal_code: "Postal Code"
         website: "Website"
         twitter: "Twitter Username"
         facebook: "Facebook Username"
@@ -31,7 +31,12 @@ en:
         headshot: "Headshot"
         is_a_professional: "I am a professional"
         bio: "Bio"
-        professions: "Profession"
+        notify_of_kixo_news: "Kixo releases new features and promotions"
+        notify_of_partner_news: "Kixo's partners have offers for you"
+        notify_of_new_messages: "I receive a private message"
+        notify_of_answers: "someone answers my questions"
+        notify_of_replies: "someone replies to my answers"
+        notify_of_similar_questions: "someone asks a question similar to mine"
       question:
         title: "Question"
         details: "Details"
@@ -50,11 +55,11 @@ en:
         commentable: "Commentable"
         author: "Author"
       card:
-        card_number: "Card Number"
-        card_exp: "Card Expiration"
-        card_exp_month: "Month"
-        card_exp_year: "Year"
-        card_cvc: "Security Code (CVC)"
+        number: "Card Number"
+        exp: "Card Expiration"
+        exp_month: "Month"
+        exp_year: "Year"
+        cvc: "Security Code (CVC)"
     placeholders:
       user:
         email: "me@example.com"
@@ -65,4 +70,4 @@ en:
     hints:
       user:
         new:
-          password: "Your password must be 6 characters or more."
+          password: "Your password must be 6 characters or more"

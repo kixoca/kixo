@@ -7,6 +7,12 @@ class UserMailer < Devise::Mailer
     mail(:to => user.email, :subject => t("users.mailer.welcome_email.subject"))
   end
 
+  def goodbye_email(user)
+    @user = user
+    @locale = user.locale.code
+    mail(:to => user.email, :subject => t("users.mailer.goodbye_email.subject"))
+  end
+
   def notify_of_question(question)
     @question = question
     @users = User.where(:notify_of_questions => true)
