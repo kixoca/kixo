@@ -176,118 +176,6 @@ category = Category.create()
     profession_name = ProfessionName.create(:name => "Technicien juridique", :locale => fr, :profession => profession)
 
 category = Category.create()
-  category_name = CategoryName.create(:name => "Health", :locale => en, :category => category)
-  category_name = CategoryName.create(:name => "Santé", :locale => fr, :category => category)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Acne", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Acné", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Angina", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Angine", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Asthma", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Asthme", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Botox", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Botox", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Breast Augmentations", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Augmentations mammaires", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Cataract", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Cataracte", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Cervical Cancer", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Cancer du col utérin", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Depression", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Dépression", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Emotional Dependence", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Dépendance affective", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Face Lift", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Lifting facial", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Eating Disorder", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Trouble des conduites alimentaires", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "HPV", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "VPH", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Invisalign", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Invisalign", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "LASIK", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "LASIK", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Liposuction", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Liposuccion", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Melanoma", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Mélanome", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Neurosis", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Névrose", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Pregnancy", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Grossesse", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Psychosis", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Psychose", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Rhinoplasty", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Rhinoplastie", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Root Canal", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Traitement de canal", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Teeth Whitening", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Blanchiment des dents", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Tummy Tuck", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Abdominoplastie", :locale => fr, :topic => topic)
-
-  profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Doctor", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Médecin", :locale => fr, :profession => profession)
-
-  profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Nurse", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Infirmière", :locale => fr, :profession => profession)
-
-  profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Psychologist", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Psychologue", :locale => fr, :profession => profession)
-
-  profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Psychiatrist", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Psychiatre", :locale => fr, :profession => profession)
-
-category = Category.create()
   category_name = CategoryName.create(:name => "Finance", :locale => en, :category => category)
   category_name = CategoryName.create(:name => "Finances", :locale => fr, :category => category)
 
@@ -348,68 +236,24 @@ category = Category.create()
     profession_name = ProfessionName.create(:name => "Comptable", :locale => fr, :profession => profession)
 
   profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Actuary", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Actuaire", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Bankruptcy Trustee", :locale => en, :profession => profession)
     profession_name = ProfessionName.create(:name => "Syndic de faillite", :locale => fr, :profession => profession)
+
+  profession = Profession.create(:category => category)
+    profession_name = ProfessionName.create(:name => "Financial Advisor", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Conseiller financier", :locale => fr, :profession => profession)
 
   profession = Profession.create(:category => category)
     profession_name = ProfessionName.create(:name => "Investment Broker", :locale => en, :profession => profession)
     profession_name = ProfessionName.create(:name => "Courtier d'investissement", :locale => fr, :profession => profession)
 
   profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Real Estate Broker", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Courtier immobilier", :locale => fr, :profession => profession)
-
-category = Category.create()
-  category_name = CategoryName.create(:name => "Marketing and Advertising", :locale => en, :category => category)
-  category_name = CategoryName.create(:name => "Marketing et publicité", :locale => fr, :category => category)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Advertising", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Publicité", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Branding", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Image de marque", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Direct Marketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Marketing direct", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Event Marketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Marketing événementiel", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Internet Marketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Marketing Internet", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Market Research", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Étude de marché", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Promotional Items", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Articles promotionnels", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Public Relations", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Relations publiques", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Relationship Marketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Marketing relationnel", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Strategic Marketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Marketing stratégique", :locale => fr, :topic => topic)
-
-  topic = Topic.create(:category => category)
-    topic_name = TopicName.create(:name => "Telemarketing", :locale => en, :topic => topic)
-    topic_name = TopicName.create(:name => "Télémarketing", :locale => fr, :topic => topic)
-
-  profession = Profession.create(:category => category)
-    profession_name = ProfessionName.create(:name => "Consultant", :locale => en, :profession => profession)
-    profession_name = ProfessionName.create(:name => "Consultant", :locale => fr, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Insurance Broker", :locale => en, :profession => profession)
+    profession_name = ProfessionName.create(:name => "Courtier d'assurances", :locale => fr, :profession => profession)
 
 category = Category.create()
   category_name = CategoryName.create(:name => "Real Estate", :locale => en, :category => category)

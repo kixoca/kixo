@@ -1,15 +1,17 @@
-.row
-  .seven.columns.centered
-    .page
-      %header
-        .container
-          %h1= t("users.unlocks.new.title")
-      %section
-        .container
-          = simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
-            = devise_error_messages!
-            = f.input :email
-            = f.button :submit, t("users.unlocks.new.submit")
-          %hr
-          = render "users/shared/links"
+%section#content
+  .container
+    .row
+      .seven.columns.centered
+        .page
+          %header
+            .container
+              %h1= t("users.unlocks.new.title")
+          %section
+            .container
+              = simple_form_for(resource, :as => resource_name, :url => unlock_path(resource_name), :html => { :method => :post }) do |f|
+                = devise_error_messages!
+                = f.input :email
+                = f.button :submit, t("users.unlocks.new.submit")
+              %hr
+              = render "users/shared/links"
 

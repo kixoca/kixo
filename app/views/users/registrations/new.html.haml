@@ -1,21 +1,21 @@
-.row
-  .seven.columns.centered
-    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-      .page
-        %header
-          .container
-            %hgroup
-              %h1=t "users.registrations.new.title"
-              %h4.subheader=t "users.registrations.new.subtitle"
-        %section
-          .container
-            = f.input :email
-            = f.input :password, :required => true
-            = f.input :password_confirmation, :required => true
-        %section
-          .container
-            = render "shared/location_selector", :f => f, :street_address => false
-        %section
-          .container
-            = f.button :submit, t("users.registrations.new.submit")
-    = render "users/shared/panels"
+%section#content
+  .container
+    .row
+      .seven.columns.centered
+        = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
+          .page
+            %header
+              .container
+                %hgroup
+                  %h1= t("users.registrations.new.title")
+                  %h4.subheader= t("users.registrations.new.subtitle")
+            %section
+              .container
+                = f.input :email
+                = f.input :password, :required => true
+                = f.input :password_confirmation, :required => true
+                = render "shared/location_selector", :f => f, :street_address => false
+            %section
+              .container
+                = f.button :submit, t("users.registrations.new.submit")
+        = render "users/shared/panels"

@@ -7,7 +7,7 @@ class ProfessionsController < ApplicationController
     @humanized_professions = @professions.map {|profession| {:id => profession.id, :name => profession.name}}
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @humanized_professions }
       format.xml  { render :xml => @humanized_professions }
     end
@@ -25,8 +25,11 @@ class ProfessionsController < ApplicationController
 
     @current_action_tab = "ask"
 
+    @who = @profession.name.downcase.pluralize
+    @where = @locality.name unless @locality.nil?
+
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @profession }
       format.xml  { render :xml => @profession }
     end

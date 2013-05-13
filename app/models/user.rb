@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
                   :name, :headshot, :bio, :is_a_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :street_address_1, :street_address_2, :locality, :locality_id, :postal_code,
+                  :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
                   :card,
@@ -79,7 +80,7 @@ class User < ActiveRecord::Base
 
   # use paperclip to attach an headshot
   has_attached_file :headshot,
-                    :styles => {:large => "160x160#", :medium => "120x120#", :small => "80x80#", :thumb => "50x50#", :mini => "30x30#"},
+                    :styles => {:large => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
                     :path => "/headshots/:id/:style.:extension",
                     :default_url => "/headshots/defaults/:style.png"
 
@@ -123,32 +124,37 @@ class User < ActiveRecord::Base
     new_user
   end
 
+  def self.authenticate(email, password)
+    user = self.find_for_authentication(:email => email)
+    user.valid_password?(password) ? user : nil
+  end
+
   def public_name
-    if is_a_professional?
-      name.blank? ? t("users.misc.default_public_name") : name
+    if self.is_a_professional?
+      self.name.blank? ? t("users.misc.default_public_name") : self.name
     else
       I18n.t("users.misc.default_public_name")
     end
   end
 
   def display_name
-    name.blank? ? email : name
+    self.name.blank? ? self.email : self.name
   end
 
   def short_address
-    "#{locality.name}, #{locality.region.name}"
+    "#{self.locality.name}, #{self.locality.region.name}"
   end
 
   def full_address
-    "#{locality.name}, #{locality.region.name} #{postal_code}, #{locality.region.country.name}"
+    "#{self.locality.name}, #{self.locality.region.name} #{self.postal_code}, #{self.locality.region.country.name}"
   end
 
   def topics_list
-    topics.map {|topic| topic.name}.join(", ").html_safe
+    self.topics.map {|topic| topic.name}.join(", ").html_safe
   end
 
   def professions_list
-    professions.map {|profession| profession.name}.join(", ").html_safe
+    self.professions.map {|profession| profession.name}.join(", ").html_safe
   end
 
   def destroy_classifications(type = nil)
@@ -156,7 +162,7 @@ class User < ActiveRecord::Base
   end
 
   def can_answer?(question)
-    question.is_open? and !topics.merge(question.topics).empty? and answers.merge(question.answers).empty?
+    question.is_open? and !self.topics.merge(question.topics).empty? and self.answers.merge(question.answers).empty?
   end
 
   def can_review?(professional)
@@ -164,28 +170,12 @@ class User < ActiveRecord::Base
   end
 
   def similar_professionals
-    (User.find_all_by_topic(topics) + User.find_all_by_profession(professions)) &
-        User.where(["id != ?", self.id]).near(geocoding_address, 50).order("distance") &
+    (User.find_all_by_topic(self.topics) + User.find_all_by_profession(self.professions)) &
+        User.where(["id != ?", self.id]).near(self.geocoding_address, 50).order("distance") &
         User.professionals
   end
 
-  def points
-    46
-  end
-
   def card
-  end
-
-  def stripe_customer
-    Stripe::Customer.retrieve(stripe_customer_id)
-  end
-
-  def deactivate
-    update_attributes(:is_active => false)
-  end
-
-  def active_for_authentication?
-    super && is_active && !deleted_at
   end
 
   def welcome_by_email
@@ -194,6 +184,50 @@ class User < ActiveRecord::Base
 
   def goodbye_by_email
     UserMailer.goodbye_email(self).deliver
+  end
+
+  def deactivate
+    self.update_attributes(:is_active => false)
+  end
+
+  def stripe_customer
+    unless Stripe.api_key.blank?
+      Stripe::Customer.retrieve(self.stripe_customer_id)
+    end
+  end
+
+  def create_stripe_customer
+    unless Stripe.api_key.blank?
+      customer = Stripe::Customer.create(:email => self.email)
+      self.stripe_customer_id = customer.id
+    end
+  end
+
+  def update_stripe_customer
+    unless Stripe.api_key.blank?
+      customer = self.stripe_customer
+
+      if customer
+        if self.email != customer.email
+          customer.email = self.email
+          modified = true
+        end
+
+        if card
+          customer.card = self.card
+          modified = true
+        end
+
+        customer.save if modified
+      end
+    end
+  end
+
+  def delete_stripe_customer
+    unless Stripe.api_key.blank?
+      customer = self.customer
+      customer.delete if customer
+    end
   end
 
   def to_param
@@ -207,40 +241,7 @@ class User < ActiveRecord::Base
   private
 
   def default_values
-    locale ||= Locale.find_by_code(I18n.locale)
-    locales << locale if (locales.empty? or locale_ids.blank?)
-  end
-
-  def self.authenticate(email, password)
-    user = self.find_for_authentication(:email => email)
-    user.valid_password?(password) ? user : nil
-  end
-
-  def create_stripe_customer
-    customer = Stripe::Customer.create(:email => email)
-    stripe_customer_id = customer.id
-  end
-
-  def update_stripe_customer
-    customer = self.stripe_customer
-
-    if customer
-      if email != customer.email
-        customer.email = email
-        modified = true
-      end
-
-      if card
-        customer.card = card
-        modified = true
-      end
-
-      customer.save if modified
-    end
-  end
-
-  def delete_stripe_customer
-    customer = self.customer
-    customer.delete if customer
+    self.locale ||= Locale.find_by_code(I18n.locale)
+    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
   end
 end

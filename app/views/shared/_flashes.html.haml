@@ -1,4 +1,6 @@
 - flash.each do |type, value|
   .alert-box.flash{:class => type.to_s}
-    = value
-    %a.close{:href => "#"} &times
+    .row
+      .twelve.columns
+        = value
+        %a.close{:href => "#"} &times

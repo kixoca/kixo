@@ -1,8 +1,8 @@
 - if user_signed_in?
   .hidden{:id => "new-comment-for-#{commentable.class}-#{commentable.id}"}
-    = simple_form_for [commentable, commentable.comments.build(params[:comment])], :remote => true, :data => {"loading-text" => "Submitting..."} do |f|
+    = simple_form_for commentable.comments.build(params[:comment]) do |f|
       = f.input :commentable_id, :as => :hidden
       = f.input :commentable_type, :as => :hidden
-      = f.input :comment
+      = f.input :comment, :input_html => {:rows => 5}
       = f.button :submit, t("comments.new.submit")
   = link_to t("comments.new.label"), "#new-comment-for-#{commentable.class}-#{commentable.id}", :class => "toggle slide disappear"

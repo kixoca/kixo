@@ -52,6 +52,7 @@ class ApplicationController < ActionController::Base
 
     # locales
     @all_locales = Locale.all
+    @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code(I18n.locale)])
 
     # misc.
     @all_ratings = Rating.all
@@ -60,10 +61,8 @@ class ApplicationController < ActionController::Base
     @new_card = Card.new
 
     # messages
-    if current_user
-      @new_conversation = Conversation.new
-      @new_conversation.messages.build
-    end
+    @new_conversation = Conversation.new
+    @new_conversation.messages.build
 
     # display an under development flash
     if session[:under_dev_noticed].nil?

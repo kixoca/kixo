@@ -9,7 +9,8 @@ class Message < ActiveRecord::Base
   # set default values on init
   after_initialize :default_values
 
-  validates_existence_of :author
+  validates :message, :presence => true
+  validates :author,  :presence => true
 
   def self.unread
     self.where(:read => false)

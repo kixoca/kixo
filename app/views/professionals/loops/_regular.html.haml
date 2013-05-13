@@ -7,16 +7,17 @@
         %h4.name
           = link_to professional.name, professional_path(professional)
         %ul.taxonomies.block-grid.one-up.mobile-one-up
-          %li.professions
-            %i.icon-user
-            = professional.professions_list
-          %li.location
-            %i.icon-map-marker
-            = professional.short_address
-    - if false
-      %section
-        .container.tight
-          %ul.metrics.block-grid.three-up
-            %li=t("professionals.metrics.points.count", :count => professional.points).html_safe
-            %li=t("professionals.metrics.answers.count", :count => professional.answers.count).html_safe
-            %li=t("professionals.metrics.reviews.count", :count => professional.reviews.count).html_safe
+          - if professional.professions_list
+            %li.professions
+              %i.icon-user
+              = professional.professions_list
+          - if professional.short_address
+            %li.location
+              %i.icon-map-marker
+              = professional.short_address
+    %section
+      .container.tight
+        %ul.metrics.block-grid.three-up
+          %li= t("professionals.metrics.points.count", :count => professional.points).html_safe
+          %li= t("professionals.metrics.answers.count", :count => professional.answers.count).html_safe
+          %li= t("professionals.metrics.reviews.count", :count => professional.reviews.count).html_safe

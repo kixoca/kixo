@@ -4,7 +4,7 @@ $unit: 10px;
 
 // Grid Settings
 
-$rowWidth: 1020px;
+$rowWidth: 1280px;
 $columnGutter: 3*$unit;
 $rowGutter: 3*$unit;
 $totalColumns: 12;
@@ -134,22 +134,22 @@ $navFlyoutBaseWidth: 250px;
 
 // Top Bar Settings
 
-$topBarBgColor: #222;
-$topBarHeight: 45px;
-$topBarHeightMobile: 45px;
-$topBarBtmMargin: 30px;
-$topBarTitleWeight: bold;
-$topBarTitleSize: 17px;
-$topBarLinkColor: #fff;
+$topBarBgColor: $white;
+$topBarHeight: 70px;
+$topBarHeightMobile: 70px;
+$topBarBtmMargin: 0;
+$topBarTitleWeight: normal;
+$topBarTitleSize: inherit;
+$topBarLinkColor: $lightTxtColor;
 $topBarLinkWeight: bold;
-$topBarLinkSize: 13px;
-$topBarDropBgColor: #222;
-$topBarDropLinkColor: #fff;
+$topBarLinkSize: $smallFontSize;
+$topBarDropBgColor: darken($topBarBgColor, 7%);
+$topBarDropLinkColor: $lightTxtColor;
 $topBarDropToggleSize: 5px;
-$topBarDropToggleColor: #fff;
+$topBarDropToggleColor: $kixoGrey;
 $topBarDropToggleAlpha: 0.5;
 $topBarSearchWidth: 200px;
-$topBarBreakPoint: 940px; // Change to 9999px for always mobile layout
+$topBarBreakPoint: 900px; // Change to 9999px for always mobile layout
 $topBarNavToggleSize: 8px;
 
 // UI Settings

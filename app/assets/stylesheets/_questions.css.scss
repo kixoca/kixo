@@ -16,6 +16,10 @@
     }
   }
 
+  .topics {
+    margin-top: $unit*$golden;
+  }
+
   &.loop {
     .title,
     .meta {
@@ -29,20 +33,5 @@
     .answers-count {
       font-size: $smallFontSize;
     }
-  }
-}
-
-.answer {
-  .actions {
-    visibility: hidden;
-    font-size: $smallFontSize;
-  }
-
-  &:hover .actions {
-    visibility: visible;
-  }
-
-  .professional .name {
-    font-weight: bold;
   }
 }

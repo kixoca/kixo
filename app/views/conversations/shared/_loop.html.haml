@@ -11,6 +11,6 @@
                 .participant-name
                   = participant.display_name
                 .created-at
-                  =t "misc.time_ago", :time => time_ago_in_words(conversation.messages.last.created_at)
+                  = t("misc.time_ago", :time => conversation.messages.last.created_at, :time_ago => time_ago_in_words(conversation.messages.last.created_at)).html_safe
       .eight.columns
         = truncate(conversation.messages.last.message, :omission => "...", :length => 150)

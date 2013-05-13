@@ -21,4 +21,14 @@
     margin-right: auto;
   }
 
+  #hero > .container {
+    padding: 50px 0;
+  }
+
+}
+
+@media only screen and (max-width: $topBarBreakPoint) {
+  #header > .container {
+    padding: 0;
+  }
 }

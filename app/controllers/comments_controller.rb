@@ -21,22 +21,13 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         format.html do
-          if request.xhr?
-            render "comments/shared/loop", :comment => @comment
-          else
-            redirect_to @commentable
-          end
+          flash[:success] = I18n.t("comments.create.success")
+          redirect_to @commentable
         end
         format.json { render :json => @comment, :status => :created, :location => @comment }
         format.xml  { render :xml => @comment, :status => :created, :location => @comment }
       else
-        format.html do
-          if request.xhr?
-            render :json => @comment.errors, :status => :unprocessable_entity
-          else
-            render :action => :new, :status => :unprocessable_entity
-          end
-        end
+        format.html { render :action => :new, :status => :unprocessable_entity }
         format.json { render :json => @comment.errors, :status => :unprocessable_entity }
         format.xml  { render :xml => @comment.errors, :status => :unprocessable_entity }
       end
@@ -49,10 +40,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html {
-          flash[:success] = t("comments.update.success_status")
-          redirect_to @commentable
-        }
+        format.html { redirect_to @commentable }
         format.json { head :no_content }
         format.xml  { head :no_content }
       else
@@ -69,7 +57,10 @@ class CommentsController < ApplicationController
     @comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to @commentable }
+      format.html do
+        flash[:success] = I18n.t("comments.destroy.success")
+        redirect_to @commentable
+      end
       format.json { head :no_content }
       format.xml  { head :no_content }
     end

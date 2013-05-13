@@ -1,60 +1,67 @@
-.row
-  .nine.columns
-    .page.professional
-      %header
-        .container
-          .row
-            .four.columns.text-center
-              = image_tag @professional.headshot.url(:large), :class => "headshot"
-            .eight.columns.mobile-text-center
-              %h1.name
-                = @professional.name
-              %ul.taxonomies.block-grid.two-up.mobile-one-up
-                %li.professions
-                  %i.icon-user
-                  = @professional.professions_list
-                %li.location
-                  %i.icon-map-marker
-                  = @professional.short_address
-                - unless @professional.website.blank?
-                  %li.url
-                    %i.icon-external-link
-                    = link_to @professional.website, @professional.website
-                - unless @professional.tel.blank?
-                  %li.tel
-                    %i.icon-phone
-                    = @professional.tel
-                - unless @professional.twitter.blank?
-                  %li.twitter
-                    %i.icon-twitter
-                    = link_to @professional.twitter, twitter_url(@professional.twitter), :target => "_blank"
-                - unless @professional.facebook.blank?
-                  %li.facebook
-                    %i.icon-facebook
-                    = link_to @professional.facebook, facebook_url(@professional.facebook), :target => "_blank"
+%section#content
+  .container
+    .row
+      .nine.columns
+        .page.professional
+          %header
+            .container
               .row
-                .twelve.columns
-                  %a.new_conversation_trigger.button.small{:href => "#", :data => {"participant-id" => @professional.id}}
+                .four.columns.text-center
+                  = image_tag @professional.headshot.url(:large), :class => "headshot"
+                .eight.columns.mobile-text-center
+                  %h1.name
+                    = @professional.name
+                  %ul.taxonomies.block-grid.two-up.mobile-one-up
+                    - unless @professional.professions.blank?
+                      %li.professions
+                        %i.icon-user
+                        = @professional.professions_list
+                    %li.location
+                      %i.icon-map-marker
+                      = @professional.short_address
+                    - unless @professional.website.blank?
+                      %li.url
+                        %i.icon-external-link
+                        = link_to @professional.website, @professional.website
+                    - unless @professional.tel.blank?
+                      %li.tel
+                        %i.icon-phone
+                        = @professional.tel
+                    - unless @professional.twitter.blank?
+                      %li.twitter
+                        %i.icon-twitter
+                        = link_to @professional.twitter, twitter_url(@professional.twitter), :target => "_blank"
+                    - unless @professional.facebook.blank?
+                      %li.facebook
+                        %i.icon-facebook
+                        = link_to @professional.facebook, facebook_url(@professional.facebook), :target => "_blank"
+                  %a.new_conversation_trigger.button{:href => "#", :data => {"participant-id" => @professional.id}}
                     = t("professionals.show.send_message").html_safe
-      - if false
-        %section
-          .container
-            %ul.metrics.block-grid.four-up
-              %li=t("professionals.metrics.points.count", :count =>  @professional.points).html_safe
-              %li=t("professionals.metrics.answers.count", :count => @professional.answers.count).html_safe
-              %li=t("professionals.metrics.reviews.count", :count => @professional.reviews.count).html_safe
-              %li=t("professionals.metrics.guides.count", :count => @professional.guides.count).html_safe
-      - unless @professional.bio.blank?
-        %section
-          .container
-            .about
-              %h5.section-title
-                =t "professionals.show.about", :name => @professional.name
-              .bio
-                = simple_format(@professional.bio)
-      %section
-        .container.no-pad
-          .map
+          %section
+            .container
+              %ul.metrics.block-grid.four-up
+                %li= t("professionals.metrics.points.count", :count =>  @professional.points).html_safe
+                %li= t("professionals.metrics.answers.count", :count => @professional.answers.count).html_safe
+                %li= t("professionals.metrics.reviews.count", :count => @professional.reviews.count).html_safe
+                %li= t("professionals.metrics.guides.count", :count => @professional.guides.count).html_safe
+          %section
+            .container
+              .row
+                .seven.columns
+                  - unless @professional.bio.blank?
+                    %h5.section-title= t("professionals.show.about", :name => @professional.name)
+                    .bio
+                      = simple_format(@professional.bio)
+                .five.columns
+                  %h5.section-title= t("professionals.show.specialties")
+                  - unless @professional.topics.empty?
+                    %ul.tags.green-tags.topics
+                      - @professional.topics.each do |topic|
+                        %li= link_to topic.name, category_topic_path(topic.category, topic)
+                    .clear
+                  - else
+                    %p.no-records= t("topics.count.zero").html_safe
+          %section
             .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
               .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
                 %p.address
@@ -73,52 +80,45 @@
                   %br
                   - unless @professional.country.nil?
                     %span.country= @professional.country.name
-      %section#reviews.hidden
-        .container
-          %h5.section-title
-            =t "reviews.index.title"
-          - unless @reviews.blank?
-            %ul.looper.reviews
-              - @reviews.each do |review|
-                %li= render "reviews/shared/loop", :review => review
-            = paginate @reviews
-          - else
-            %p.no-records
-              =t "professionals.reviews.count.zero", :name => @professional.name
-          = render "reviews/shared/new", :professional => @professional
-      %section#guides
-        .container
-          %h5.section-title
-            =t "guides.index.title"
-          - unless @guides.empty?
-            %ul.looper.guides
-              - @guides.each do |guide|
-                %li
-                  = guide.topic.name
-                  = guide.title
-                  = guide.excerpt
-          - else
-            %p.no-records
-              =t "professionals.guides.count.zero", :name => @professional.name
-  .three.columns
-    %aside#sidebar
-      %section
-        %h5.section-title= t("topics.index.title")
-        - unless @professional.topics.empty?
-          %ul.tags.green-tags.topics
-            - @professional.topics.each do |topic|
-              %li= link_to topic.name, category_topic_path(topic.category, topic)
-        - else
-          %p.no-records
-            = t("topics.count.zero").html_safe
-      %hr
-      %section
-        %h5.section-title= t("professionals.similar.title").html_safe
-        - unless @similar_professionals.empty?
-          %ul.looper.similar-professionals
-            - @similar_professionals.each do |professional|
-              %li= render "professionals/loops/minimal", :professional => professional
-        - else
-          %p.no-records
-            = t("professionals.count.zero").html_safe
-      = render "shared/ads"
+          %section#answers
+            .container
+              %h5.section-title
+                = t("answers.index.title")
+              - unless @answers.empty?
+                %ul.looper.answers
+                  - @answers.each do |answer|
+                    %li.answer
+                      %h4.question-title
+                        = link_to answer.question.title, answer.question
+                      = truncate(answer.answer, :omission => "...", :length => 250)
+              - else
+                %p.no-records
+                  = t("professionals.answers.count.zero", :name => @professional.name)
+          - if false
+            %section#guides
+              .container
+                %h5.section-title
+                  = t("guides.index.title")
+                - unless @guides.empty?
+                  %ul.looper.guides
+                    - @guides.each do |guide|
+                      %li
+                        = guide.topic.name
+                        = guide.title
+                        = guide.excerpt
+                - else
+                  %p.no-records
+                    = t("professionals.guides.count.zero", :name => @professional.name)
+      .three.columns
+        %aside#sidebar
+          %section
+            %h5.section-title= t("professionals.similar.title").html_safe
+            - unless @similar_professionals.empty?
+              %ul.looper.similar-professionals
+                - @similar_professionals.each do |professional|
+                  %li= render "professionals/loops/minimal", :professional => professional
+            - else
+              %p.no-records
+                = t("professionals.count.zero").html_safe
+          %hr
+          = render "shared/ads"

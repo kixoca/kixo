@@ -47,20 +47,23 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
 
     unless user_signed_in?
-      if !params[:user][:email].blank? and !params[:user][:password].blank?
+      if !params[:existing_user][:email].blank? and !params[:existing_user][:password].blank?
         # existing user
-        @author = User.authenticate(params[:user][:email], params[:user][:password])
+        @author = User.authenticate(params[:existing_user][:email], params[:existing_user][:password])
       elsif !params[:new_user][:email].blank? and !params[:new_user][:password].blank? and !params[:new_user][:password_confirmation].blank?
         # new user
-        @author = User.find_or_create_or_restore(params[:new_user])
+        @author = User.new(params[:new_user])
+
+        if @author.save
+          flash[:success] = I18n.t("users.registrations.create.success")
+        else
+          clean_up_passwords @author
+          flash[:error] = I18n.t("users.registrations.create.error")
+          render :action => "new"
+        end
       end
 
-      if @author
-        sign_in :user, @author
-      else
-        flash[:error] = I18n.t("devise.failure.invalid")
-        authenticate!
-      end
+      sign_in :user, @author
     end
 
     @question.author = current_user
@@ -119,7 +122,7 @@ class QuestionsController < ApplicationController
           redirect_to root_path
         else
           flash[:error] = I18n.t("questions.delete.error")
-          redirect_to question_path(@question)
+          redirect_to @question
         end
       end
       format.json { head :no_content }

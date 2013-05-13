@@ -14,18 +14,20 @@ fr:
     actions:
       ask:
         tab_name: "Poser une question"
-        title: "Demandez à des professionnels"
-        subtitle: "Obtenez des conseils gratuits de professionnels expérimentés !"
+        title: "Demandez à des <em>%{who}</em> près de <em>%{where}</em>"
+        subtitle: "Obtenez des conseils gratuits de %{who} expérimentés près de %{where}!"
         placeholder: "Entrez votre question ici..."
         button: "Soumettre"
       search:
         tab_name: "Faire une recherche"
-        title: "Recherchez des professionnels"
-        subtitle: "Trouvez les meilleurs professionnels près de chez vous !"
+        title: "Trouvez des %{who} près de %{where}"
+        subtitle: "Find top-rated %{who} près de %{where}!"
         placeholders:
           what: "Quoi?"
           where: "Où?"
         button: "Rechercher"
+      who: "professionnels"
+      where: "vous"
 
   browse_by:
     category: "Parcourir par catégorie"
@@ -109,6 +111,9 @@ fr:
         label: "Créer un compte"
         subtitle: "Créez un compte, c'est gratuit et rapide!"
         submit: "Inscription"
+      create:
+        success: "Votre compte a été créé avec succès!"
+        error: "Votre compte n'a pas pu être créé!"
       delete:
         title: "Annuler mon compte"
         unhappy: "Mécontent?"
@@ -129,6 +134,9 @@ fr:
       destroy:
         title: "Déconnexion"
         label: "Déconnexion"
+    restore:
+      success: "Votre compte a été restauré avec succès!"
+      error: "Votre compte n'a pas pu être restauré!"
     passwords:
       new:
         title: "Réinitialiser mon mot de passe"
@@ -198,6 +206,7 @@ fr:
         other: "%{count} professionnels trouvé pour <em>%{what}</em> à <em>%{where}</em>"
     show:
       whois: "%{professions} à %{locality} spécialisé en %{topics}"
+      specialties: "Spécialtités"
       about: "À propos de %{name}"
       send_message: "Envoyer un message privé"
     count:
@@ -360,6 +369,7 @@ fr:
       topics:
         title: "Sujets"
     new:
+      label: "Poser une question"
       title: "Poser une question"
       sections:
         details:
@@ -429,8 +439,8 @@ fr:
     index:
       title: "Réponses"
     delete:
-      title: "Supprimer la réponse"
-      confirm: "Êtes-vous certain de vouloir supprimer cette réponse ?"
+      title: "Supprimer cette réponse"
+      confirm: "Êtes-vous certain de vouloir supprimer cette réponse?"
     new:
       title: "Répondez à cette question"
       submit: "Publier ma réponse"
@@ -452,6 +462,13 @@ fr:
     new:
       label: "Ajouter un commentaire"
       submit: "Ajouter un commentaire"
+    create:
+      success: "Votre commentaire a bien été créé"
+    delete:
+      title: "Supprimer ce commentaire"
+      confirm: "Êtes-vous certain de vouloir supprimer ce commentaire?"
+    destroy:
+      success: "Votre commentaire a bien été supprimé"
 
   notifications:
     index:
@@ -470,6 +487,8 @@ fr:
     index:
       title: "Messages"
       label: "Messages"
+    show:
+      title: "Conversation"
     inbox:
       label: "Boîte de réception"
       empty: "Hourra! Votre boîte de réception est vide!"

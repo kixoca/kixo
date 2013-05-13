@@ -39,6 +39,7 @@ class ConversationsController < ApplicationController
   end
 
   def create
+    params[:conversation][:participant_ids] = params[:conversation][:participant_ids].split(",").collect{|id| id.to_i}
     @conversation = Conversation.new(params[:conversation])
 
     @conversation.participants << current_user

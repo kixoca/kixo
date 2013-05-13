@@ -35,6 +35,8 @@ class LocalitiesController < ApplicationController
     @region = @locality.region
     @country = @region.country
 
+    @where = @locality.name
+
     @professionals = @locality.professionals
 
     @canonical_url = country_region_locality_url(@country, @region, @locality)

@@ -1,53 +1,55 @@
-.row
-  .twelve.columns
-    %h1
-      - unless @locality.blank?
-        = t("topics.show.in_locality.title", :topic => @topic.name, :locality => @locality.name).html_safe
-      - else
-        = @topic.name
-    - unless @topic.description.blank?
-      %p.description
-        = @topic.description
-    %hr
-  .eight.columns
-    %section
-      .container
-        %h4
+%section#content
+  .container
+    .row
+      .twelve.columns
+        %h1
           - unless @locality.blank?
-            = t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @topic.name.downcase, :locality => @locality.name).html_safe
+            = t("topics.show.in_locality.title", :topic => @topic.name, :locality => @locality.name).html_safe
           - else
-            = t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase).html_safe
-        - unless @professionals.empty?
-          %ul.looper.professionals.block-grid.three-up.mobile-one-up
-            - @professionals.each do |professional|
-              %li= render "professionals/loops/regular", :professional => professional
-    - if @locality.blank?
-      %section.browse-by-taxonomy
-        .container
-          %h4=t("topics.browse_by.location", :topic => @topic.name.downcase).html_safe
-          %ul.countries.accordion.compact
-            - @all_countries.each do |country|
-              %li.country
-                .title
-                  %h5.country-name
-                    = country.name
-                .content
-                  %ul.regions
-                    - country.regions.each do |region|
-                      %li.region
-                        %h5.region-name
-                          = region.name
-                        %ul.localities.block-grid.four-up
-                          - region.localities.each do |locality|
-                            %li.locality
-                              %a.locality-name{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} - #{locality.name}, #{region.name}"}
-                                = locality.name
-  .four.columns
-    %section#questions
-      .container
-        %h4
-          = t("questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @topic.name.downcase).html_safe
-        - unless @questions.empty?
-          %ul.looper.questions
-            - @questions.each do |question|
-              %li= render "questions/shared/loop", :question => question
+            = @topic.name
+        - unless @topic.description.blank?
+          %p.description
+            = @topic.description
+        %hr
+      .eight.columns
+        %section
+          .container
+            %h4
+              - unless @locality.blank?
+                = t("professionals.count_in_taxonomy_and_locality", :count => @professionals.count, :taxonomy => @topic.name.downcase, :locality => @locality.name).html_safe
+              - else
+                = t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @topic.name.downcase).html_safe
+            - unless @professionals.empty?
+              %ul.looper.professionals.block-grid.three-up.mobile-one-up
+                - @professionals.each do |professional|
+                  %li= render "professionals/loops/regular", :professional => professional
+        - if @locality.blank?
+          %section.browse-by-taxonomy
+            .container
+              %h4=t("topics.browse_by.location", :topic => @topic.name.downcase).html_safe
+              %ul.countries.accordion.compact
+                - @all_countries.each do |country|
+                  %li.country
+                    .title
+                      %h5.country-name
+                        = country.name
+                    .content
+                      %ul.regions
+                        - country.regions.each do |region|
+                          %li.region
+                            %h5.region-name
+                              = region.name
+                            %ul.localities.block-grid.four-up
+                              - region.localities.each do |locality|
+                                %li.locality
+                                  %a.locality-name{:href => locality_topic_path(locality, @topic), :title => "#{@topic.name} - #{locality.name}, #{region.name}"}
+                                    = locality.name
+      .four.columns
+        %section#questions
+          .container
+            %h4
+              = t("questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @topic.name.downcase).html_safe
+            - unless @questions.empty?
+              %ul.looper.questions
+                - @questions.each do |question|
+                  %li= render "questions/shared/loop", :question => question

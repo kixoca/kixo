@@ -9,4 +9,4 @@
         .content
           = simple_format(message.message)
         .created-at
-          =t "misc.sent_time_ago", :time => time_ago_in_words(message.created_at)
+          = t("misc.sent_time_ago", :time => message.created_at, :time_ago => time_ago_in_words(message.created_at)).html_safe

@@ -55,12 +55,14 @@
     &.minimal {
       text-align: left;
 
-      .professional-details {
-        padding-left: $unit;
-      }
-
       .name {
         font-weight: bold;
+        margin-bottom: $unit/$golden;
+      }
+
+      .professions,
+      .location {
+        font-size: $smallFontSize;
       }
     }
 

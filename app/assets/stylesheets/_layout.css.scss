@@ -1,213 +1,117 @@
 body {
-  background-color: $white;
+  background: $white;
 }
 
 #header {
   background: $white;
+  line-height: 1.0;
   margin: 0;
+  padding-top: $topBarHeight;
 
-  #language-select {
-    .container {
-      padding: 4.00*$unit 0;
-      background: $kixoDarkBlue;
-
-      a {
-        color: $secondaryColor;
-
-        &:hover { color: $white; }
-      }
-    }
+  > .container {
+    background: $white;
+    padding: 0 $columnGutter;
+    border-top: 3px solid $kixoGreen;
+    @include boxShadow(0,1px,1px,1px,rgba(0,0,0,0.15));
   }
 
-  #head {
-    line-height: 1.0;
-    border-top: 3px solid $kixoGreen;
-
-    > .container {
-      padding: $golden*$unit 0;
-    }
-
-    #language {
-      padding: 15px 0;
-
-      a {
-        color: $lightTxtColor;
-        font-size: $smallFontSize;
-
-        &:hover {
-          color: $txtColor;
-        }
-
-        i {
-          font-size: $miniFontSize;
-          opacity: 0.80;
-        }
-      }
-    }
-
-    #account {
-      float: right;
-      list-style: none;
+  .top-bar {
+    ul {
       margin: 0;
-      padding: 5px 0;
 
-      li {
-        float: left;
-        margin-right: $unit;
-      }
+      &.dropdown {
+        min-width: 100%;
+        padding-top: 0;
 
-      #profile {
-        font-size: $smallFontSize;
-        line-height: 30px;
-        border-left: 1px solid $borderColor;
-        padding-left: $golden*$unit;
-        color: $lightTxtColor;
-
-        .headshot {
-          vertical-align: middle;
-          margin-right: 5px;
+        > .divider {
+          border-color: darken($topBarDropBgColor, 7%);
         }
       }
 
-      #messages,
-      #notifications,
-      #settings,
-      #signout {
-        position: relative;
+      > li {
+        &:hover, &.active, &:focus {
+          background: $topBarDropBgColor;
+        }
 
-        i {
-          color: $kixoGrey;
-          font-size: $xxlFontSize;
-          @include transition;
+        &.divider {
+          background: $topBarDropBgColor;
+        }
 
-          &:hover {
-            color: darken($kixoGrey, 20%);
+        &#login {
+          .dropdown > li {
+            width: 400px;
+            padding: $unit*$golden*$golden;
+
+            form {
+              margin: 0;
+            }
+
+            label {
+              color: $txtColor;
+              font-size: $smallFontSize;
+              font-weight: bold;
+              margin: inherit;
+              padding-left: 0;
+              text-transform: uppercase;
+            }
           }
         }
-
-        .count {
-          position: absolute;
-          top: -5px;
-          right: -10px;
-          font-size: $microFontSize;
-          font-weight: bold;
-          padding: 3px 5px;
-          line-height: 1.0;
-          color: $white;
-          background: $kixoRed;
-          @include borderRadius(100px);
-        }
-      }
-    }
-
-    ul ul {
-      margin: 0;
-    }
-  }
-
-  #actions {
-    #actions-tabs {
-      background: $kixoBlue;
-
-      .tabs {
-        border: none;
-        margin: 0;
 
         a {
-          height: 50px;
-          position: relative;
-          color: rgba($white, 0.75);
-          font-weight: bold;
-          background: none;
-          border: none;
-
-          i, span {
-            line-height: 50px;
-          }
-
-          i {
-            font-size: $xxxlFontSize;
-          }
-
-          span {
-            font-size: $largeFontSize;
-          }
-
-          .hide-for-small {
-            i, span {
-              position: relative;
-            }
-
-            i {
-              left: -5px;
-            }
-
-            span {
-              left: 5px;
-              top: -4px;
-            }
-          }
-
-          &:hover {
-            color: $white;
-          }
-        }
-
-        .arrow {
-          display: none;
-          width: $unit;
-          height: $unit;
-          background: $white;
-          position: absolute;
-          left: 50%;
-          bottom: -0.50*$unit;
-          @include boxRotate(45deg);
-        }
-
-        .active {
-          border: none;
-          margin: 0;
-
-          a {
-            border: none;
-            color: $white;
-            background: darken($kixoBlue, 5%);
-          }
-
-          .arrow {
-            display: block;
-          }
+          text-transform: uppercase;
         }
       }
     }
+  }
 
-    #actions-tabs-content {
-      .tabs-content {
-        background: $white;
-        margin: 0;
+  .count {
+    float: right;
+    position: relative;
+    top: -1px;
+    font-size: $miniFontSize;
+    font-weight: bold;
+    padding: 3px 5px;
+    line-height: 1.0;
+    color: $white;
+    background: $kixoRed;
+    @include borderRadius(100px);
+  }
+}
 
-        li {
-          padding: 2.00*$unit 0;
-          border: none;
+#hero {
+  background: $black url(/assets/hero_bg.jpg) top center no-repeat;
 
-          .container {
-            padding-top: $unit;
-            padding-bottom: $unit;
-          }
-        }
+  > .container {
+    padding: 200px 0;
+  }
+
+  &.slim > .container {
+    padding: 50px;
+  }
+
+  .hero-box {
+    background: $white;
+    padding: $unit*$golden*$golden;
+
+    h1 {
+      color: $lightTxtColor;
+
+      em {
+        display: inline-block;
+        color: $kixoBlue;
+        font-style: normal;
       }
+    }
 
-      form {
-        margin: 0;
-      }
+    form {
+      margin-top: $unit;
     }
   }
 }
 
 #content {
   background: $kixoLightGrey;
-  border-top: 1px solid $kixoDarkSandy;
-  border-bottom: 1px solid $kixoDarkSandy;
+  border-bottom: 1px solid $borderColor;
 
   > .container {
     padding: $rowGutter 0;
@@ -218,20 +122,11 @@ body {
 }
 
 #flashes {
-  width: 400px;
-  max-width: 90%;
-  position: fixed;
-  top: 6%;
-  right: 4%;
-  z-index: 500;
-
   .alert-box {
+    text-align: center;
+    margin: 0;
     padding: $unit*$golden;
-    opacity: 0.75;
-
-    &:hover {
-      opacity: 1.0;
-    }
+    @include borderRadius(0);
   }
 }
 
@@ -240,7 +135,7 @@ body {
   color: $lightTxtColor;
 
   > .container {
-    padding: $rowGutter 0;
+    padding: $rowGutter $columnGutter;
   }
 
   h5 {
@@ -321,6 +216,11 @@ body {
 
     &.filter {
       background: $kixoLightGrey;
+    }
+
+    > header {
+      margin: 0;
+      border-bottom: 1px solid $borderColor;
     }
   }
 }

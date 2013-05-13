@@ -6,13 +6,13 @@
 
         var $newConversationTrigger = $('.new_conversation_trigger');
         var $newConversationModal = $('#new_conversation_modal');
-        var $newConversationParticipantId = $('#new_conversation_participant_id');
+        var $newConversationParticipantIds = $('#conversation_participant_ids');
 
         $newConversationTrigger.click(function(event) {
             event.preventDefault();
             var $this = $(this);
             var participantId = $this.data('participant-id');
-            $newConversationParticipantId.val( participantId );
+            $newConversationParticipantIds.val( participantId );
             return $newConversationModal.reveal();
         });
 

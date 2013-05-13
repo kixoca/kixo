@@ -59,4 +59,4 @@ gem 'mandrill-api'
 
 gem 'simple_form'
 
-gem 'paranoia'
+gem 'acts_as_paranoid'

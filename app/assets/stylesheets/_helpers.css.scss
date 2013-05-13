@@ -50,12 +50,20 @@ img.headshot {
   @include borderRadius(500px);
 }
 
-.alert-box .close {
-  color: $white !important;
-  opacity: 0.4 !important;
+.alert-box {
+  &.error {
+    background-color: $alertColor;
+    color: $white;
+    text-shadow: 0 -1px rgba(#000,.3);
+  }
 
-  &:hover {
-    opacity: 0.8 !important;
+  .close {
+    color: $white !important;
+    opacity: 0.4 !important;
+
+    &:hover {
+      opacity: 0.8 !important;
+    }
   }
 }
 
@@ -101,7 +109,7 @@ ul.ssv {
 
 ul.looper {
   list-style: none;
-  margin-top: $golden*$unit;
+  margin: $golden*$unit 0 !important;
 
   > li {
     margin-bottom: $golden*$unit;
@@ -191,6 +199,8 @@ ul.tags {
 }
 
 dl.filter {
+  margin-bottom: $unit;
+
   dt, dd, a {
     font-size: $mediumFontSize;
   }

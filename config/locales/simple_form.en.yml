@@ -37,10 +37,20 @@ en:
         notify_of_answers: "someone answers my questions"
         notify_of_replies: "someone replies to my answers"
         notify_of_similar_questions: "someone asks a question similar to mine"
+      session:
+        password: "Password"
+      new_user:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
+        locality: "City"
+      existing_user:
+        email: "Email"
+        password: "Password"
       question:
         title: "Question"
         details: "Details"
-        is_private: "Make my question private"
+        is_private: "Private question (only visible for professionals)"
         new_user_email: "Email"
         new_user_password: "Password"
         new_user_password_confirmation: "Password confirmation"
@@ -61,8 +71,6 @@ en:
         exp_year: "Year"
         cvc: "Security Code (CVC)"
     placeholders:
-      user:
-        email: "me@example.com"
       question:
         new:
           title: "Ex.: 'Do I need a lawyer to incorporate a company?'"
@@ -71,3 +79,6 @@ en:
       user:
         new:
           password: "Your password must be 6 characters or more"
+      new_user:
+        password: "Your password must be 6 characters or more"
+        locality: "We ask for your city so you can get answers from local professionals"

@@ -24,6 +24,9 @@ class CreateUsers < ActiveRecord::Migration
       # is a professional?
       t.boolean :is_a_professional, :null => false, :default => false
 
+      # points
+      t.integer :points, :null => false, :default => 0
+
       # personal information
       t.string :name
       t.text :bio

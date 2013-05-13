@@ -3,7 +3,9 @@
     = f.input :street_address_1
     = f.input :street_address_2
   = f.label :locality
-  = text_field_tag :locality, resource.locality.name, :class => "locality autocomplete", :data => {:source => "/#{I18n.locale}/localities.json", :target => "#ls_locality_id"}
+  - locality_name = (resource.nil? or resource.locality.blank?) ? nil : resource.locality.name
+  = text_field_tag :locality, locality_name, :name => nil, :class => "locality autocomplete", :data => {:source => "/#{I18n.locale}/localities.json", :target => "#ls_locality_id"}
+  = f.hint :locality
   = f.input :locality_id, :as => :hidden, :input_html => {:id => "ls_locality_id"}
   - if defined?(postal_code) and postal_code != false
     = f.input :postal_code

@@ -15,128 +15,73 @@
     %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
   %body
     %header#header
-      %section#language-select
-        .container
-          .row
-            .eight.columns.centered.mobile-twelve
-              %ul.block-grid.four-up
-                - @all_locales.each do |loc|
-                  %li= link_to loc.name, url_for(:locale => loc.code)
-      %section#head
-        .container
-          .row
-            .four.columns.mobile-text-center
-              .row
-                .six.columns
-                  #brand
-                    = link_to "/#{I18n.locale}" do
-                      %img#logo{:src => "/assets/logo.png", :width => "140", :height => "45", :alt => t("layout.logo.alt")}
-                .six.columns
-                  #language
-                    %a.toggle.slide{:href => "#language-select"}
-                      = Locale.find_by_code(locale).name
-                      %i.icon-chevron-down
-            .eight.columns
-              %ul#account
+      .container.fixed
+        .row
+          %nav.top-bar
+            %ul
+              %li.name
+                = link_to "/#{I18n.locale}" do
+                  %img#logo{:src => "/assets/logo.png", :width => "140", :height => "45", :alt => t("layout.logo.alt")}
+              %li.toggle-topbar
+                = link_to "", "#"
+            %section
+              %ul.left
+                %li.has-dropdown
+                  = link_to Locale.find_by_code(locale).name, "#"
+                  %ul.dropdown
+                    - @other_locales.each do |loc|
+                      %li= link_to loc.name, url_for(:locale => loc.code)
+              %ul.right
+                %li.divider
+                %li#new_question
+                  = link_to t("questions.new.label"), new_question_path
+                %li.divider
                 - if user_signed_in?
-                  %li#notifications
-                    = link_to notifications_path do
-                      %i.icon-bell
-                      - if current_user.notifications.unseen.count > 0
-                        .count= current_user.notifications.unseen.count
-                  %li#messages
-                    = link_to conversations_path do
-                      %i.icon-envelope
-                      - if current_user.messages.unread.count > 0
-                        .count= current_user.messages.unread.count
-                  %li#settings
-                    = link_to edit_user_registration_path do
-                      %i.icon-cog
-                  %li#signout
-                    = link_to destroy_user_session_path, :method => :delete do
-                      %i.icon-signout
-                  %li#profile
-                    - if current_user.is_a_professional?
-                      = link_to professional_path(current_user) do
-                        = image_tag current_user.headshot.url(:mini), :class => "headshot"
+                  %li#account.has-dropdown
+                    = link_to "#" do
+                      - if current_user.is_a_professional
                         = current_user.name.blank? ? current_user.email : current_user.name
-                    - else
-                      = current_user.name.blank? ? current_user.email : current_user.name
+                      - else
+                        = current_user.name.blank? ? current_user.email : current_user.name
+                    %ul.dropdown
+                      - if current_user.is_a_professional
+                        %li.profile
+                          = link_to "Profile", professional_path(current_user)
+                      %li#settings
+                        = link_to "Settings", edit_user_registration_path
+                      %li.divider
+                      %li#messages
+                        = link_to conversations_path do
+                          - if current_user.messages.unread.count > 0
+                            .count= current_user.messages.unread.count
+                          Messages
+                      %li#notifications
+                        = link_to notifications_path do
+                          Notifications
+                          - if current_user.notifications.unseen.count > 0
+                            .count= current_user.notifications.unseen.count
+                      %li.divider
+                      %li#signout
+                        = link_to t("users.sessions.destroy.label"), destroy_user_session_path, :method => :delete
                 - else
-                  %li#login
-                    %a.button.secondary.small{:href => "#", :data => {"reveal-id" => "new_session"}}
-                      = t("users.sessions.new.label")
+                  %li#login.has-dropdown
+                    = link_to t("users.sessions.new.label"), new_user_session_path
+                    %ul.dropdown
+                      %li
+                        = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
+                          = f.input :email, :required => false
+                          = f.input :password
+                          - if devise_mapping.rememberable?
+                            = f.input :remember_me, :as => :boolean
+                          = f.button :submit, t("users.sessions.new.submit")
+                  %li.divider
                   %li#signup
-                    %a.button.secondary.small{:href => new_user_registration_path}
-                      = t("users.registrations.new.label")
-      %section#actions
-        #actions-tabs
-          .container
-            .row
-              .twelve.columns
-                %dl.tabs.two-up
-                  %dd{:class => @current_action_tab == "ask" ? "active" : ""}
-                    %a{:href => "#ask"}
-                      .hide-for-small
-                        %i.icon-question-sign
-                        %span
-                          = t("layout.actions.ask.tab_name")
-                      .show-for-small
-                        %i.icon-question-sign
-                      .arrow
-                  %dd{:class => @current_action_tab == "search" ? "active" : ""}
-                    %a{:href => "#search"}
-                      .hide-for-small
-                        %i.icon-search
-                        %span
-                          = t("layout.actions.search.tab_name")
-                      .show-for-small
-                        %i.icon-search
-                      .arrow
-        #actions-tabs-content
-          %ul.tabs-content
-            %li#askTab{:class => @current_action_tab == "ask" ? "active" : ""}
-              .row
-                .three.columns.text-center
-                  %img{:src => "/assets/banner_ask_char.png", :width => 250, :height => 160}
-                .nine.columns
-                  .container
-                    %hgroup
-                      %h2
-                        = t("layout.actions.ask.title")
-                      %h3.subheader
-                        = t("layout.actions.ask.subtitle")
-                    = form_tag new_question_path, :method => "get" do
-                      .row
-                        .ten.columns
-                          = text_field_tag "question[title]", nil, :placeholder => t("layout.actions.ask.placeholder"), :class => "oversize"
-                        .two.columns
-                          = submit_tag t("layout.actions.ask.button"), :class => "button expand postfix"
-            %li#searchTab{:class => @current_action_tab == "search" ? "active" : ""}
-              .row
-                .three.columns.text-center
-                  %img{:src => "/assets/banner_search_char.png", :width => 250, :height => 160}
-                .nine.columns
-                  .container
-                    %hgroup
-                      %h2
-                        = t("layout.actions.search.title")
-                      %h3.subheader
-                        = t("layout.actions.search.subtitle")
-                    = form_tag search_professionals_path, :method => "get" do
-                      .row
-                        .six.columns
-                          = text_field_tag "what", @what, :placeholder => t("layout.actions.search.placeholders.what"), :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/whats.json"}
-                        .four.columns
-                          = text_field_tag "where", @where, :placeholder => t("layout.actions.search.placeholders.where"), :class => "oversize autocomplete", :data => {:source => "/#{I18n.locale}/wheres.json"}
-                        .two.columns
-                          = submit_tag t("layout.actions.search.button"), :class => "button expand postfix"
-    %section#content
-      .container
-        = yield
+                    = link_to t("users.registrations.new.label"), new_user_registration_path
+                %li.divider
     %section#flashes
       .container
         = render "shared/flashes"
+    = yield
     %section#modals
       = render "users/sessions/modals/new"
       = render "conversations/shared/modals/new"

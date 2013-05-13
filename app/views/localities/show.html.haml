@@ -1,44 +1,47 @@
-.row
-  .twelve.columns
-    %hgroup.hr
-      %h1
-        = @locality.name
-      %h3.subheader
-        =t "taxonomy.find_ask_consult_in", :taxonomy => @locality.name
-  .eight.columns
-    %section.browse-by-taxonomy
-      .container
-        %ul.categories.accordion.compact
-          - @all_categories.each do |category|
-            %li.category
-              .title
-                %h5.category-name
-                  = category.name
-              .content
-                %ul
-                  %li
-                    %h5.topics-title
-                      =t "topics.title"
-                    %ul.topics.block-grid.three-up
-                      - category.topics.each do |topic|
-                        %li.topic
-                          = link_to topic.name, locality_topic_path(@locality, topic), :class => "topic-name", :title => "#{topic.name} - #{@locality.name}, #{@region.name}"
-                  %li
-                    %h5.professions-title
-                      =t "professions.title"
-                    %ul.professions.block-grid.three-up
-                      - category.professions.each do |profession|
-                        %li.profession
-                          = link_to profession.name, locality_profession_path(@locality, profession), :class => "profession-name", :title => "#{profession.name} - #{@locality.name}, #{@region.name}"
-  .four.columns
-    %section
-      .panel
-        %h5
-          = t("professionals.top_rated.in_locality.title", :locality => @locality.name).html_safe
-        - unless @professionals.empty?
-          %ul.looper.professionals.top-rated-professionals
-            - @professionals.each do |professional|
-              %li= render "professionals/loops/minimal", :professional => professional
-        - else
-          %p.no-records
-            = t("professionals.count.zero").html_safe
+= render "shared/hero", :slim => true, :who => @who, :where => @where
+%section#content
+  .container
+    .row
+      .twelve.columns
+        %hgroup.hr
+          %h1
+            = @locality.name
+          %h3.subheader
+            =t "taxonomy.find_ask_consult_in", :taxonomy => @locality.name
+      .eight.columns
+        %section.browse-by-taxonomy
+          .container
+            %ul.categories.accordion.compact
+              - @all_categories.each do |category|
+                %li.category
+                  .title
+                    %h5.category-name
+                      = category.name
+                  .content
+                    %ul
+                      %li
+                        %h5.topics-title
+                          =t "topics.title"
+                        %ul.topics.block-grid.three-up
+                          - category.topics.each do |topic|
+                            %li.topic
+                              = link_to topic.name, locality_topic_path(@locality, topic), :class => "topic-name", :title => "#{topic.name} - #{@locality.name}, #{@region.name}"
+                      %li
+                        %h5.professions-title
+                          =t "professions.title"
+                        %ul.professions.block-grid.three-up
+                          - category.professions.each do |profession|
+                            %li.profession
+                              = link_to profession.name, locality_profession_path(@locality, profession), :class => "profession-name", :title => "#{profession.name} - #{@locality.name}, #{@region.name}"
+      .four.columns
+        %section
+          .panel
+            %h5
+              = t("professionals.top_rated.in_locality.title", :locality => @locality.name).html_safe
+            - unless @professionals.empty?
+              %ul.looper.professionals.top-rated-professionals
+                - @professionals.each do |professional|
+                  %li= render "professionals/loops/minimal", :professional => professional
+            - else
+              %p.no-records
+                = t("professionals.count.zero").html_safe

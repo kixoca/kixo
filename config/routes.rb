@@ -6,7 +6,7 @@ Kixo::Application.routes.draw do
     ActiveAdmin.routes(self)
 
     devise_for :admin_users, ActiveAdmin::Devise.config
-    devise_for :users, :controllers => {:registrations => "registrations"}
+    devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
     resources :professionals do
       collection do
@@ -44,17 +44,13 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
-    resources :questions do
-      resources :comments
-    end
+    resources :questions
 
-    resources :answers do
-      resources :comments
-    end
+    resources :answers
 
-    resources :guides do
-      resources :comments
-    end
+    resources :guides
+
+    resources :comments
 
     resources :whats
     resources :wheres

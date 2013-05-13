@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
   belongs_to :commentable, :polymorphic => true,  :counter_cache => true
   belongs_to :author,      :class_name => "User", :counter_cache => true
 
-  validates :comment,     :presence => {:message => I18n.t("comments.fields.comment.validation.presence")}
-  validates :commentable, :presence => {:message => I18n.t("comments.fields.commentable.validation.presence")}
-  validates :author,      :presence => {:message => I18n.t("comments.fields.author.validation.presence")}
+  validates :comment,     :presence => true
+  validates :commentable, :presence => true
+  validates :author,      :presence => true
 end

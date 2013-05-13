@@ -14,18 +14,20 @@ en:
     actions:
       ask:
         tab_name: "Ask"
-        title: "Ask professionals"
-        subtitle: "Get free advice from experienced professionals!"
+        title: "Ask <em>%{who}</em> near <em>%{where}</em>"
+        subtitle: "Get free advice from %{who} you can trust near %{where}!"
         placeholder: "Type your question here..."
         button: "Ask"
       search:
         tab_name: "Search"
-        title: "Search professionals"
-        subtitle: "Find top-rated professionals near you!"
+        title: "Search %{who} near %{where}"
+        subtitle: "Find top-rated %{who} near %{where}!"
         placeholders:
           what: "What?"
           where: "Where?"
         button: "Search"
+      who: "professionals"
+      where: "you"
 
   browse_by:
     category: "Browse by Category"
@@ -109,6 +111,9 @@ en:
         label: "Create an account"
         subtitle: "Create an account, it's free and fast!"
         submit: "Sign Up"
+      create:
+        success: "Your account was successfully created!"
+        error: "Your account could not be created!"
       delete:
         title: "Cancel my account"
         unhappy: "Unhappy?"
@@ -129,6 +134,9 @@ en:
       destroy:
         title: "Logout"
         label: "Logout"
+    restore:
+      success: "Your account was successfully restored!"
+      error: "Your account could not be restored!"
     passwords:
       new:
         title: "Reset my password"
@@ -185,6 +193,7 @@ en:
     index:
       title: "Professionals"
     search:
+      label: "Search Professionals"
       title: "Search Results"
       count:
         zero: "No professionals found for <em>%{what}</em> in <em>%{where}</em>"
@@ -192,6 +201,7 @@ en:
         other: "%{count} professionals found for <em>%{what}</em> in <em>%{where}</em>"
     show:
       whois: "%{professions} in %{locality} specializing in %{topics}"
+      specialties: "Specialties"
       about: "About %{name}"
       send_message: "Send a private message"
     count:
@@ -354,6 +364,7 @@ en:
       topics:
         title: "Topics"
     new:
+      label: "Ask a Question"
       title: "Ask a question"
       sections:
         details:
@@ -446,6 +457,13 @@ en:
     new:
       label: "Add Comment"
       submit: "Add Comment"
+    create:
+      success: "Your comment was successfully created"
+    delete:
+      title: "Delete comment"
+      confirm: "Are you sure you want to delete this comment?"
+    destroy:
+      success: "Your comment was successfully deleted"
 
   notifications:
     index:
@@ -464,6 +482,8 @@ en:
     index:
       title: "Messages"
       label: "Messages"
+    show:
+      title: "Conversation"
     inbox:
       label: "Inbox"
       empty: "Hooray! Your inbox is empty!"

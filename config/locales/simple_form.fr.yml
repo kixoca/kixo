@@ -37,10 +37,18 @@ fr:
         notify_of_answers: "quelqu'un répond à mes questions"
         notify_of_replies: "quelqu'un répond à mes réponses"
         notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
+      new_user:
+        email: "Courriel"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        locality: "Ville"
+      existing_user:
+        email: "Courriel"
+        password: "Mot de passe"
       question:
         title: "Question"
         details: "Détails"
-        is_private: "Faire ma question privée"
+        is_private: "Question privée (visible seulement pour les professionnels)"
         new_user_email: "Courriel"
         new_user_password: "Mot de passe"
         new_user_password_confirmation: "Confirmation du mot de passe"
@@ -69,3 +77,6 @@ fr:
       user:
         new:
           password: "Votre mot de passe doit contenir 6 charactères ou plus"
+      new_user:
+        password: "Votre mot de passe doit contenir 6 charactères ou plus"
+        locality: "Nous vous demandons votre ville afin que vous puissiez obtenir des réponses de professionnels locaux"

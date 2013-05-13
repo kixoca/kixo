@@ -17,6 +17,12 @@ h1, h2, h3, h4, h5, h6 {
     color: #5a6874;
   }
 
+  &.section-header {
+    border-bottom: 1px solid $borderColor;
+    padding-bottom: $unit*$golden;
+    margin: 0 0 $unit*$golden 0;
+  }
+
   &.section-title {
     text-transform: uppercase;
     margin-bottom: 1em;
@@ -55,7 +61,6 @@ hr {
 
 a {
   font-size: inherit;
-  @include transition();
 
   &.delete {
     color: $kixoRed;

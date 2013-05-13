@@ -32,11 +32,11 @@ class Question < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   # validation
-  validates :title,  :presence => {:message => I18n.t("questions.fields.title.validation.presence")}
-  validates :topics, :presence => {:message => I18n.t("questions.fields.topics.validation.presence")}
-  validates :status, :presence => {:message => I18n.t("questions.fields.status.validation.presence")}
-  validates :author, :presence => {:message => I18n.t("questions.fields.author.validation.presence")}
-  validates :locale, :presence => {:message => I18n.t("questions.fields.locale.validation.presence")}
+  validates :title,  :presence => true
+  validates :topics, :presence => true
+  validates :status, :presence => true
+  validates :author, :presence => true
+  validates :locale, :presence => true
 
   def self.private
     self.where(:is_private => true)

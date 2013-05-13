@@ -226,6 +226,7 @@ ActiveRecord::Schema.define(:version => 20130331185243) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.boolean  "is_a_professional",           :default => false, :null => false
+    t.integer  "points",                      :default => 0,     :null => false
     t.string   "name"
     t.text     "bio"
     t.string   "company_name"

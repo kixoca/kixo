@@ -1,22 +1,33 @@
-.row
-  .two.columns
-    %ul.side-nav
-      %li= link_to t("conversations.inbox.label"), conversations_path
-      %li.divider
-      %li= link_to t("messages.new.label"), new_conversation_path
-  .ten.columns
-    .page
-      %section
-        .container
-          - @messages.each do |message|
-            = render "messages/shared/loop", :message => message
-      %section.reply
-        .container
-          .row
-            .two.columns.text-center
-              = image_tag current_user.headshot.url(:small), :class => "headshot"
-            .ten.columns
-              %h4= t("messages.reply.title")
-              = simple_form_for [@conversation, @reply] do |f|
-                = f.input :message
-                = f.button :submit, t("messages.reply.submit")
+%section#content
+  .container
+    .row
+      .two.columns
+        %ul.side-nav
+          %li= link_to t("conversations.inbox.label"), conversations_path
+          %li.divider
+          %li= link_to t("messages.new.label"), new_conversation_path
+      .ten.columns
+        .page
+          %header
+            .container
+              .row
+                .four.columns
+                  %h1= t("conversations.show.title")
+                .eight.columns.text-right
+                  - @conversation.participants.each do |participant|
+                    = link_to professional_path(participant) do
+                      = image_tag participant.headshot.url(:mini), :class => "headshot"
+          %section
+            .container
+              - @messages.each do |message|
+                = render "messages/shared/loop", :message => message
+          %section.reply
+            .container
+              .row
+                .two.columns.text-center
+                  = image_tag current_user.headshot.url(:small), :class => "headshot"
+                .ten.columns
+                  %h4= t("messages.reply.title")
+                  = simple_form_for [@conversation, @reply] do |f|
+                    = f.input :message, :as => :text, :input_html => {:rows => 10}, :label => false
+                    = f.button :submit, t("messages.reply.submit")

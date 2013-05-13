@@ -1,47 +1,52 @@
-.row
-  .nine.columns.centered
-    = simple_form_for @question do |f|
-      .page
-        %header
-          .container
-            %h1= t("questions.new.title")
-        %section
-          .container
-            %h3= t("questions.new.sections.details.title")
-            %p= t("questions.new.sections.details.subtitle")
-            = f.input :title, :input_html => {:class => "oversize"}
-            = f.input :details, :input_html => {:size => "x7"}
-            = f.input :is_private
-        %section
-          .container
-            %h3= t("questions.new.sections.category.title")
-            %p= t("questions.new.sections.category.subtitle")
-            %ul.accordion.compact
-              - @all_categories.each do |category|
-                %li
-                  .title
-                    %h5= category.name
-                  .content
-                    = f.association :topics, :as => :check_boxes, :collection => category.topics, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
-        - unless user_signed_in?
-          %section
-            .container
-              %h3= t("questions.new.sections.account.title")
-              %p= t("questions.new.sections.account.subtitle")
-              %ul.tabs.pill
-                %li.active= link_to t("questions.new.sections.account.sign_up"), "#newUser"
-                %li= link_to t("questions.new.sections.account.sign_in"), "#existingUser"
-              %ul.tabs-content
-                %li#newUserTab.active
-                  = simple_fields_for :new_user, @author do |author_f|
-                    = author_f.input :email
-                    = author_f.input :password
-                    = author_f.input :password_confirmation
-                    = render "shared/location_selector", :f => author_f
-                %li#existingUserTab
-                  = simple_fields_for :user, @author do |author_f|
-                    = author_f.input :email
-                    = author_f.input :password
-        %section.actions
-          .container
-            = f.button :submit, t("questions.new.submit")
+%section#content
+  .container
+    .row
+      .nine.columns.centered
+        = simple_form_for @question do |f|
+          .page
+            %header
+              .container
+                %h1= t("questions.new.title")
+            %section
+              .container
+                %hgroup
+                  %h3= t("questions.new.sections.details.title")
+                  %h4.subheader= t("questions.new.sections.details.subtitle")
+                = f.input :title, :input_html => {:class => "oversize"}
+                = f.input :details, :input_html => {:size => "x7"}
+                = f.input :is_private
+            %section
+              .container
+                %hgroup
+                  %h3= t("questions.new.sections.category.title")
+                  %h4.subheader= t("questions.new.sections.category.subtitle")
+                %ul.accordion.compact
+                  - @all_categories.each do |category|
+                    %li{:class => params[:cat_id] == category.id ? "active" : ""}
+                      .title
+                        %h5= category.name
+                      .content
+                        = f.association :topics, :as => :check_boxes, :collection => category.topics, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+            - unless user_signed_in?
+              %section
+                .container
+                  %hgroup
+                    %h3= t("questions.new.sections.account.title")
+                    %h4.subheader= t("questions.new.sections.account.subtitle")
+                  %ul.tabs.contained
+                    %li.active= link_to t("questions.new.sections.account.sign_up"), "#newUser"
+                    %li= link_to t("questions.new.sections.account.sign_in"), "#existingUser"
+                  %ul.tabs-content.contained
+                    %li#newUserTab.active
+                      = simple_fields_for :new_user, @author do |author_f|
+                        = author_f.input :email
+                        = author_f.input :password
+                        = author_f.input :password_confirmation
+                        = render "shared/location_selector", :f => author_f
+                    %li#existingUserTab
+                      = simple_fields_for :existing_user, @author do |author_f|
+                        = author_f.input :email
+                        = author_f.input :password
+            %section.actions
+              .container
+                = f.button :submit, t("questions.new.submit")
