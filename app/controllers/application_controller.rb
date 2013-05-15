@@ -1,8 +1,5 @@
 class ApplicationController < ActionController::Base
-
-  # I18n
   before_filter :set_locale
-
   before_filter :set_common_vars
 
   def default_url_options(options={})
@@ -31,10 +28,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Devise extras
   def authenticate_user(email, password)
     user = User.find_by_email(email)
     user.valid_password?(password) unless user.nil?
+  end
+
+  def authenticate_admin
+    redirect_to(root_path) unless current_user.is_admin?
   end
 
   def set_common_vars
@@ -70,5 +70,4 @@ class ApplicationController < ActionController::Base
       session[:under_dev_noticed] = true
     end
   end
-
 end

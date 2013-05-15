@@ -1,0 +1,38 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        %ul.side-nav
+          %li= link_to "Users", "#"
+          %li= link_to "Questions", "#"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              %h1 Users
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Email
+                  %th Name
+                  %th Short Address
+                  %th Professional?
+                  %th Actions
+              %tbody
+                - @users.each do |user|
+                  %tr
+                    %td.email
+                      = user.email
+                    %td.name
+                      = user.name
+                    %td.short-address
+                      = user.short_address
+                    %td.is-professional
+                      = user.is_professional? ? "Yes" : "No"
+                    %td.actions
+                      = link_to "Edit", edit_admin_user_path(user), :class => "button tiny"
+                      = link_to "Delete", admin_user_path(user), :method => :delete, :class => "button tiny alert"
+                      - if user.is_professional?
+                        = link_to "View Profile", professional_path(user), :class => "button tiny secondary"
+

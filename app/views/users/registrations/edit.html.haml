@@ -1,13 +1,13 @@
 %section#content
   .container
     .row
-      .four.columns
+      .three.columns
         %ul.vertical.tabs.white
           %li.active= link_to t("users.registrations.edit.sections.account.label"), "#account"
           %li= link_to t("users.registrations.edit.sections.profile.label"), "#profile"
           %li= link_to t("users.registrations.edit.sections.email_notifications.label"), "#notifications"
           %li= link_to t("users.registrations.edit.sections.billing.label"), "#billing"
-      .eight.columns
+      .nine.columns
         %ul.tabs-content
           %li#accountTab.active
             = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#account", :html => { :method => :put }) do |f|
@@ -35,7 +35,7 @@
                       = link_to t("users.registrations.delete.title"), registration_path(resource_name), :data => { :confirm => t("users.registrations.delete.confirm") }, :method => :delete
           %li#profileTab
             = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
-              - if resource.is_a_professional
+              - if resource.is_professional
                 .page
                   %header
                     .container
@@ -85,7 +85,7 @@
                       = f.input :linkedin
                   %section
                     .container
-                      = f.input :is_a_professional
+                      = f.input :is_professional
                   %section
                     .container
                       = f.button :submit, t("users.registrations.edit.submit")
@@ -102,7 +102,7 @@
                       = render "shared/location_selector", :f => f
                   %section
                     .container
-                      = f.input :is_a_professional
+                      = f.input :is_professional
                   %footer
                     .container
                       = f.button :submit, t("users.registrations.edit.submit")

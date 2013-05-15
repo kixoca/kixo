@@ -9,11 +9,11 @@
           .eight.columns.mobile-three
             .name
               = link_to professional.name, professional_path(professional), :class => "name"
-            - if professional.professions_list
+            - unless professional.professions.blank?
               .professions
                 %i.icon-user
                 = professional.professions_list
-            - if professional.short_address
+            - unless professional.locality.blank?
               .location
                 %i.icon-map-marker
                 = professional.short_address
@@ -24,11 +24,11 @@
               = image_tag professional.headshot.url(:thumb), :class => "headshot"
             .name
               = link_to professional.name, professional_path(professional), :class => "name"
-            - if professional.professions_list
+            - unless professional.professions.blank?
               .professions
                 %i.icon-user
                 = professional.professions_list
-            - if professional.short_address
+            - unless professional.locality.blank?
               .location
                 %i.icon-map-marker
                 = professional.short_address

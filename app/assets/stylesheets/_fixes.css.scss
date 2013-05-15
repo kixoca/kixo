@@ -2,20 +2,6 @@ h1, h2, h3, h4, h5, h6, p, ul {
   margin: 0.5em 0;
 }
 
-.button {
-  font-size: $smallFontSize;
-  border: none;
-  @include borderRadius($radius);
-
-  &.small {
-    font-size: $smallFontSize;
-  }
-
-  &:hover {
-    @include boxShadow(0, 0, 0, 0);
-  }
-}
-
 div.custom.dropdown {
   width: 101% !important;
 
@@ -75,6 +61,10 @@ ul.side-nav {
 
 .vertical.tabs.white a {
   background: #fff;
+}
+
+.alert-box a.close {
+  padding: 0;
 }
 
 .reveal-modal {

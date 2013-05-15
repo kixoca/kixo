@@ -1,5 +1,5 @@
 body {
-  background: $white;
+  background: $kixoLightGrey;
 }
 
 #header {
@@ -109,13 +109,8 @@ body {
   }
 }
 
-#content {
-  background: $kixoLightGrey;
-  border-bottom: 1px solid $borderColor;
-
-  > .container {
-    padding: $rowGutter 0;
-  }
+#content > .container {
+  padding: $rowGutter 0;
 }
 
 #sidebar {
@@ -133,6 +128,7 @@ body {
 #footer {
   background: $white;
   color: $lightTxtColor;
+  border-top: 1px solid $borderColor;
 
   > .container {
     padding: $rowGutter $columnGutter;

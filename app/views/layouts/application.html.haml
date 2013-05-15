@@ -39,12 +39,9 @@
                 - if user_signed_in?
                   %li#account.has-dropdown
                     = link_to "#" do
-                      - if current_user.is_a_professional
-                        = current_user.name.blank? ? current_user.email : current_user.name
-                      - else
-                        = current_user.name.blank? ? current_user.email : current_user.name
+                      = current_user.display_name
                     %ul.dropdown
-                      - if current_user.is_a_professional
+                      - if current_user.is_professional?
                         %li.profile
                           = link_to "Profile", professional_path(current_user)
                       %li#settings
@@ -61,6 +58,10 @@
                           - if current_user.notifications.unseen.count > 0
                             .count= current_user.notifications.unseen.count
                       %li.divider
+                      - if current_user.is_admin?
+                        %li#admin
+                          = link_to t("admin.label"), admin_root_path
+                        %li.divider
                       %li#signout
                         = link_to t("users.sessions.destroy.label"), destroy_user_session_path, :method => :delete
                 - else

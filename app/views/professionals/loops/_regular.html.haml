@@ -7,11 +7,11 @@
         %h4.name
           = link_to professional.name, professional_path(professional)
         %ul.taxonomies.block-grid.one-up.mobile-one-up
-          - if professional.professions_list
+          - unless professional.professions.blank?
             %li.professions
               %i.icon-user
               = professional.professions_list
-          - if professional.short_address
+          - unless professional.locality.blank?
             %li.location
               %i.icon-map-marker
               = professional.short_address

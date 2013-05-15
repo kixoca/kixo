@@ -1,3 +1,5 @@
-- if false
-  .ads
-    %img{:src => "/demo_ad_01.png"}
+.ads
+  - Ad.all.each do |ad|
+    .ad{:class => ad.format}
+      = link_to ad.destination do
+        = image_tag ad.visual.url, :class => "visual"

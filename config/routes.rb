@@ -1,11 +1,10 @@
 Kixo::Application.routes.draw do
+  get "users/index"
+
+  get "dashboard/index"
 
   # I18n
   scope "(:locale)", :locale => /fr|en/ do
-
-    ActiveAdmin.routes(self)
-
-    devise_for :admin_users, ActiveAdmin::Devise.config
     devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
 
     resources :professionals do
@@ -57,10 +56,14 @@ Kixo::Application.routes.draw do
 
     resources :cards
 
+    namespace :admin do
+      resources :users
+
+      root :to => "dashboard#index"
+    end
   end
 
   match "/:locale" => "pages#index"
 
   root :to => "pages#index"
-
 end

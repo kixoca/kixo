@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :region, :region_id
 
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
-                  :name, :headshot, :bio, :is_a_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
+                  :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :street_address_1, :street_address_2, :locality, :locality_id, :postal_code,
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
 
   # validation
   validates :email,    :presence => true
-  validates :name,     :presence => true, :if => :is_a_professional?
+  validates :name,     :presence => true, :if => :is_professional
   validates :locality, :presence => true
   validates :locale,   :presence => true
 
@@ -103,7 +103,7 @@ class User < ActiveRecord::Base
   end
 
   def self.professionals
-    self.where(:is_a_professional => true)
+    self.where(:is_professional => true)
   end
 
   def self.search(what, where, locale = Locale.all)
@@ -129,8 +129,16 @@ class User < ActiveRecord::Base
     user.valid_password?(password) ? user : nil
   end
 
+  def is_professional?
+    self.is_professional == true
+  end
+
+  def is_admin?
+    self.is_admin == true
+  end
+
   def public_name
-    if self.is_a_professional?
+    if self.is_professional?
       self.name.blank? ? t("users.misc.default_public_name") : self.name
     else
       I18n.t("users.misc.default_public_name")
@@ -166,7 +174,7 @@ class User < ActiveRecord::Base
   end
 
   def can_review?(professional)
-    professional.is_a_professional? and reviews.all(:conditions => {:professional_id => professional}).count == 0 and self != professional
+    professional.is_professional? and reviews.all(:conditions => {:professional_id => professional}).count == 0 and self != professional
   end
 
   def similar_professionals
