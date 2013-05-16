@@ -41,7 +41,7 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
-    resources :pages
+    resources :pages, :only => [:show]
 
     resources :guides
 
