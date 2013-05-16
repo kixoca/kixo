@@ -86,7 +86,7 @@ class User < ActiveRecord::Base
 
   # validation
   validates :email,    :presence => true
-  validates :name,     :presence => true, :if => :is_professional
+  validates :name,     :presence => true
   validates :locality, :presence => true
   validates :locale,   :presence => true
 

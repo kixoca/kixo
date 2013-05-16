@@ -1,0 +1,26 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 New Ad
+                .six.columns.text-right
+                  = link_to "All Ads", admin_ads_path, :class => "button secondary"
+          %section
+            .container
+              = simple_form_for [:admin, @ad] do |f|
+                = f.input :advertiser
+                = f.input :format
+                = f.input :visual
+                = f.input :destination
+                = f.input :max_views
+                = f.input :max_clicks
+                = f.input :locale_id, :collection => @all_locales
+                = f.input :expired_at
+                = f.button :submit

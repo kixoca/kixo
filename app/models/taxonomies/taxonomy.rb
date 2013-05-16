@@ -1,5 +1,5 @@
 class Taxonomy < ActiveRecord::Base
-  attr_accessible :parent, :parent_id, :rank
+  attr_accessible :parent, :parent_id, :image, :rank
 
   # a taxonomy has one or many names (in different locales)
   has_many :names, :class_name => "TaxonomyName", :foreign_key => :taxonomy_id
@@ -12,6 +12,8 @@ class Taxonomy < ActiveRecord::Base
 
   # a taxonomy can have one or many children taxomonies
   has_many :children, :class_name => "Taxonomy", :foreign_key => :parent_id
+
+  has_attached_file :image
 
   def name(locale = Locale.find_by_code(I18n.locale))
     tax_name = self.names.find_by_locale(locale)

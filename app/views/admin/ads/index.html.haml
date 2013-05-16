@@ -1,0 +1,53 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Ads
+                .six.columns.text-right
+                  = link_to "New Ad", new_admin_ad_path, :class => "button"
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Advertiser
+                  %th Format
+                  %th Visual
+                  %th Destination
+                  %th Views
+                  %th Clicks
+                  %th Locale
+                  %th Created at
+                  %th Expired at
+                  %th Actions
+              %tbody
+                - @ads.each do |ad|
+                  %tr
+                    %td.advertiser
+                      = ad.advertiser.email
+                    %td.format
+                      = ad.format
+                    %td.visual
+                      = ad.visual.url
+                    %td.destination
+                      = ad.destination
+                    %td.views-count
+                      = ad.views_count
+                    %td.clicks-count
+                      = ad.clicks_count
+                    %td.locale
+                      = ad.locale.code
+                    %td.created-at
+                      = ad.created_at
+                    %td.published-at
+                      = ad.published_at
+                    %td.actions
+                      = link_to "Edit", edit_admin_ad_path(ad), :class => "button tiny"
+                      = link_to "Delete", admin_ad_path(ad), :method => :delete, :class => "button tiny alert"
+

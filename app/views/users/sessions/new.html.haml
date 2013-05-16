@@ -1,21 +1,26 @@
 %section#content
   .container
     .row
-      .seven.columns.centered
-        .page
-          %header
-            .container
-              %hgroup
-                %h1= t("users.sessions.new.title")
-                %h3.subheader= t("users.sessions.new.subtitle")
-          %section
-            .container
-              = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+      .six.columns.offset-by-one
+        = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
+          .page
+            %header
+              .container
+                %hgroup
+                  %h1= t("users.sessions.new.title")
+                  %h3.subheader= t("users.sessions.new.subtitle")
+            %section
+              .container
                 = f.input :email, :required => false
                 = f.input :password
                 - if devise_mapping.rememberable?
                   = f.input :remember_me, :as => :boolean
-                = f.button :submit, t("users.sessions.new.submit")
-              %hr
-              = render "users/shared/links"
+            %section
+              .container
+                .row
+                  .four.columns
+                    = f.button :submit, t("users.sessions.new.submit")
+                  .eight.columns.text-right
+                    = render "users/shared/links"
+      .four.columns.end
         = render "users/shared/panels"

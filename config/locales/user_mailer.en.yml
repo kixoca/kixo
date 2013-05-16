@@ -1,0 +1,29 @@
+en:
+  user_mailer:
+    common:
+      hello: "Hello %{name}!"
+      signature: "-- Love, Kixo"
+    layout:
+      change_preferences: "If you do not want to receive more emails like this one, <a href='%{edit_user_registration_notifications_url}'>change your preferences</a>."
+    confirmation_instructions:
+      welcome: "Welcome, %{name}!"
+      content: "You can confirm your account email through the link below:"
+      label: "Confirm my account"
+    reset_password_instructions:
+      content: "Someone has requested a link to change your password, and you can do this through the link below."
+      label: "Change my password"
+      ps1: "If you didn't request this, please ignore this email."
+      ps2: "Your password won't change until you access the link above and create a new one."
+    unlock_instructions:
+      content: "Your account has been locked due to an excessive amount of unsuccessful sign in attempts."
+      legend: "Click the link below to unlock your account:"
+      label: "Unlock my account"
+    welcome_email:
+      subject: "Welcome to Kixo!"
+      welcome: "Welcome to Kixo, %{name}!"
+      content:
+        for_professional: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking</a> and <a href='%{root_url}'>answering</a> questions, and <a href='%{edit_user_registration_url}'>updating your profile</a>."
+        for_user: "You can get started by accessing <a href='%{new_user_session_url}'>your Kixo account</a>, <a href='%{new_question_url}'>asking a question</a>, and <a href='%{search_professionals_url}'>searching for a professional near you</a>."
+    goodbye_email:
+      subject: "Kixo will miss you!"
+      content: "%{name}, we are very sorry to see you leave. If ever you want to come back, we will welcome you with open arms."

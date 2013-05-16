@@ -1,11 +1,5 @@
 Kixo::Application.routes.draw do
-  get "questions/index"
-
-  get "pages/index"
-
-  get "users/index"
-
-  get "dashboard/index"
+  get "ads/index"
 
   # I18n
   scope "(:locale)", :locale => /fr|en/ do
@@ -47,9 +41,7 @@ Kixo::Application.routes.draw do
       resources :professions
     end
 
-    resources :questions
-
-    resources :answers
+    resources :pages
 
     resources :guides
 
@@ -64,6 +56,7 @@ Kixo::Application.routes.draw do
       resources :users
       resources :questions
       resources :pages
+      resources :ads
 
       root :to => "dashboard#index"
     end

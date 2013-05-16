@@ -1,10 +1,10 @@
 class Ad < ActiveRecord::Base
   acts_as_paranoid
 
-  attr_accessible :advertiser, :advertiser_id, :advertiser_type,
+  attr_accessible :advertiser, :advertiser_id,
                   :format, :visual, :destination,
                   :views, :clicks,
-                  :expires_at, :deleted_at
+                  :expired_at, :deleted_at
 
   after_initialize :default_values
 
@@ -17,10 +17,19 @@ class Ad < ActiveRecord::Base
 
   has_attached_file :visual
 
+  validates :advertiser,  :presence => true
+  validates :format,      :presence => true
+  validates :visual,      :presence => true
+  validates :destination, :presence => true
+  validates :locale,      :presence => true
+
+  def is_expired?
+    self.expired_at and self.expired_at < Time.now
+  end
+
   private
 
   def default_values
-    self.advertiser ||= current_user if user_signed_in?
     self.locale ||= Locale.find_by_code(I18n.locale)
   end
 end

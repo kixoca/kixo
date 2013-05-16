@@ -16,7 +16,7 @@ class CreateAds < ActiveRecord::Migration
       t.integer :max_clicks
 
       t.timestamps
-      t.datetime :expires_at
+      t.datetime :expired_at
       t.datetime :deleted_at
     end
   end

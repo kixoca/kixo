@@ -79,10 +79,14 @@ body {
 }
 
 #hero {
-  background: $black url(/assets/hero_bg.jpg) top center no-repeat;
+  background-color: $black;
+  background-image: url(/assets/hero_bg.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 
   > .container {
-    padding: 200px 0;
+    padding: 220px 0;
   }
 
   &.slim > .container {
@@ -121,6 +125,7 @@ body {
     text-align: center;
     margin: 0;
     padding: $unit*$golden;
+    border: 0;
     @include borderRadius(0);
   }
 }

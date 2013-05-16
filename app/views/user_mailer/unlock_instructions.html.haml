@@ -1,4 +1,8 @@
-%p= t("users.mailer.common.hello", :display_name => @resource.display_name, :locale => @locale).html_safe
-%p= t("users.mailer.unlock_instructions.content", :locale => @locale).html_safe
-%p= t("users.mailer.unlock_instructions.legend", :locale => @locale).html_safe
-%p= link_to t("users.mailer.unlock_instructions.label", :locale => @locale).html_safe, unlock_url(@resource, :unlock_token => @resource.unlock_token)
+%p
+  = t("user_mailer.common.hello", :name => @resource.display_name, :locale => @locale).html_safe
+%p
+  = t("user_mailer.unlock_instructions.content", :locale => @locale).html_safe
+%p
+  = t("user_mailer.unlock_instructions.legend", :locale => @locale).html_safe
+%p
+  = link_to t("user_mailer.unlock_instructions.label", :locale => @locale).html_safe, unlock_url(@resource, :unlock_token => @resource.unlock_token)

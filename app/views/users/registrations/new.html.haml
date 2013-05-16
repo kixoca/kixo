@@ -1,7 +1,7 @@
 %section#content
   .container
     .row
-      .seven.columns.centered
+      .six.columns.offset-by-one
         = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           .page
             %header
@@ -11,11 +11,18 @@
                   %h4.subheader= t("users.registrations.new.subtitle")
             %section
               .container
+                = f.input :name
                 = f.input :email
-                = f.input :password, :required => true
-                = f.input :password_confirmation, :required => true
+                .row
+                  .six.columns
+                    = f.input :password, :required => true
+                  .six.columns
+                    = f.input :password_confirmation, :required => true
                 = render "shared/location_selector", :f => f, :street_address => false
             %section
               .container
                 = f.button :submit, t("users.registrations.new.submit")
+      .four.columns.end
         = render "users/shared/panels"
+        .text-center
+          = image_tag "/assets/new_registration_char.png"

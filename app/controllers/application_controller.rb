@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_admin
-    redirect_to(root_path) unless current_user.is_admin?
+    redirect_to(root_path) unless (user_signed_in? and current_user.is_admin?)
   end
 
   def set_common_vars

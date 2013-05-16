@@ -34,4 +34,8 @@ Kixo::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  # Action Mailer Host URL
+  config.action_mailer.default_url_options = {:host => "kixo-test.herokuapp.com", :only_path => false}
+  config.action_mailer.asset_host = {:host => "kixo-test.herokuapp.com", :only_path => false}
 end

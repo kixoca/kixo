@@ -1,4 +1,8 @@
 %section#content
   .container
-    = @page.title
-    = simple_format @page.content
+    .row
+      .twelve.columns
+        %h1.page-title
+          = @page.title
+        .page-content
+          = simple_format @page.content

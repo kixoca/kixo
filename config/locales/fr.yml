@@ -164,34 +164,6 @@ fr:
           email:
             label: "Courriel"
         submit: "Renvoyer les instructions de déverrouillement"
-    mailer:
-      common:
-        hello: "Bonjour %{display_name}!"
-        signature: "-- avec amour, Kixo"
-      layout:
-        change_preferences: "Si vous ne voulez plus recevoir de courriel comme celui-ci, <a href='%{edit_user_registration_notifications_url}'>modifiez vos préférences</a>."
-      confirmation_instructions:
-        welcome: "Bienvenue, %{display_name}!"
-        content: "Vous pouvez confirmer le courriel de votre compte via le lien ci-dessous :"
-        label: "Confirmer mon compte"
-      reset_password_instructions:
-        content: "Quelqu'un a demandé un lien pour changer votre mot de passe, vous pouvez le faire via le lien ci-dessous."
-        label: "Changer mon mot de passe"
-        ps1: "Si vous n'avez pas demandé cela, s'il vous plaît ignorer ce message."
-        ps2: "Votre mot de passe ne changera pas jusqu'à ce que vous ouvriez le lien ci-dessus et en créer un nouveau."
-      unlock_instructions:
-        content: "Votre compte a été bloqué en raison d'une quantité excessive de tentatives de connexion échouées."
-        legend: "Cliquez sur le lien ci-dessous pour déverrouiller votre compte :"
-        label: "Déverrouiller mon compte"
-      welcome_email:
-        subject: "Bienvenue sur Kixo!"
-        welcome: "Bienvenue sur Kixo, %{display_name}!"
-        content:
-          for_professional: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a>, <a href='%{root_url}'>répondre à une question</a> et <a href='%{edit_user_registration_url}'>mettre à jour votre profil</a>."
-          for_user: "Vous pouvez commencer par <a href='%{new_user_session_url}'>vous connecter à votre compte Kixo</a>, <a href='%{new_question_url}'>poser une question</a> et <a href='%{search_professionals_url}'>rechercher un professionnel près de chez vous</a>."
-      goodbye_email:
-        subject: "Kixo va s'ennuyer de vous!"
-        content: "%{display_name}, nous sommes désolés de vous voir partir. Si jamais vous voulez revenir, nous vous accueillerons à bras ouverts."
     misc:
       default_public_name: "utilisateur Kixo"
 

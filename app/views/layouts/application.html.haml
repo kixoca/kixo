@@ -72,9 +72,12 @@
                         = simple_form_for resource, :as => resource_name, :url => session_path(resource_name) do |f|
                           = f.input :email, :required => false
                           = f.input :password
-                          - if devise_mapping.rememberable?
-                            = f.input :remember_me, :as => :boolean
-                          = f.button :submit, t("users.sessions.new.submit")
+                          .row
+                            .six.columns
+                              - if devise_mapping.rememberable?
+                                = f.input :remember_me, :as => :boolean
+                            .six.columns.text-right
+                              = f.button :submit, t("users.sessions.new.submit")
                   %li.divider
                   %li#signup
                     = link_to t("users.registrations.new.label"), new_user_registration_path

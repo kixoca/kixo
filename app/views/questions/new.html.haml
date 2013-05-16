@@ -39,9 +39,13 @@
                   %ul.tabs-content.contained
                     %li#newUserTab.active
                       = simple_fields_for :new_user, @author do |author_f|
+                        = author_f.input :name
                         = author_f.input :email
-                        = author_f.input :password
-                        = author_f.input :password_confirmation
+                        .row
+                          .six.columns
+                            = author_f.input :password
+                          .six.columns
+                            = author_f.input :password_confirmation
                         = render "shared/location_selector", :f => author_f
                     %li#existingUserTab
                       = simple_fields_for :existing_user, @author do |author_f|

@@ -21,12 +21,7 @@ class CreateUsers < ActiveRecord::Migration
       t.string   :current_sign_in_ip
       t.string   :last_sign_in_ip
 
-      t.boolean :is_professional, :null => false, :default => false
-      t.boolean :is_admin, :null => false, :default => false
-
-      t.integer :points, :null => false, :default => 0
-
-      t.string :name
+      t.string :name, :null => false, :default => ""
       t.text :bio
 
       t.string :company_name
@@ -48,6 +43,11 @@ class CreateUsers < ActiveRecord::Migration
 
       t.float :latitude
       t.float :longitude
+
+      t.boolean :is_professional, :null => false, :default => false
+      t.boolean :is_admin, :null => false, :default => false
+
+      t.integer :points, :null => false, :default => 0
 
       t.references :locale, :null => false, :default => 0
 

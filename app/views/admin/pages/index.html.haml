@@ -30,10 +30,7 @@
                     %td.published-at
                       = page.published_at
                     %td.actions
+                      = link_to "View", page_path(page), :class => "button tiny secondary"
                       = link_to "Edit", edit_admin_page_path(page), :class => "button tiny"
                       = link_to "Delete", admin_page_path(page), :method => :delete, :class => "button tiny alert"
-                      - if page.is_published?
-                        = link_to "Unpublish", unpublish_admin_page_path(page), :class => "button tiny secondary"
-                      - else
-                        = link_to "Publish", publish_admin_page_path(page), :class => "button tiny secondary"
 

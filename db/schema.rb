@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20130515223638) do
     t.integer  "max_clicks"
     t.datetime "created_at",                         :null => false
     t.datetime "updated_at",                         :null => false
-    t.datetime "expires_at"
+    t.datetime "expired_at"
     t.datetime "deleted_at"
   end
 
@@ -164,6 +164,8 @@ ActiveRecord::Schema.define(:version => 20130515223638) do
     t.datetime "deleted_at"
   end
 
+  add_index "pages", ["name"], :name => "index_pages_on_name", :unique => true
+
   create_table "questions", :force => true do |t|
     t.string   "title",          :default => "",    :null => false
     t.text     "details"
@@ -193,20 +195,24 @@ ActiveRecord::Schema.define(:version => 20130515223638) do
   end
 
   create_table "taxonomies", :force => true do |t|
-    t.string  "type"
-    t.integer "parent_id"
-    t.integer "rank"
-    t.float   "latitude"
-    t.float   "longitude"
-    t.integer "users_count",       :default => 0, :null => false
-    t.integer "questions_count",   :default => 0, :null => false
-    t.integer "guides_count",      :default => 0, :null => false
-    t.integer "categories_count",  :default => 0, :null => false
-    t.integer "topics_count",      :default => 0, :null => false
-    t.integer "professions_count", :default => 0, :null => false
-    t.integer "countries_count",   :default => 0, :null => false
-    t.integer "regions_count",     :default => 0, :null => false
-    t.integer "localities_count",  :default => 0, :null => false
+    t.string   "type"
+    t.integer  "parent_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.integer  "rank",               :default => 0, :null => false
+    t.float    "latitude"
+    t.float    "longitude"
+    t.integer  "users_count",        :default => 0, :null => false
+    t.integer  "questions_count",    :default => 0, :null => false
+    t.integer  "guides_count",       :default => 0, :null => false
+    t.integer  "categories_count",   :default => 0, :null => false
+    t.integer  "topics_count",       :default => 0, :null => false
+    t.integer  "professions_count",  :default => 0, :null => false
+    t.integer  "countries_count",    :default => 0, :null => false
+    t.integer  "regions_count",      :default => 0, :null => false
+    t.integer  "localities_count",   :default => 0, :null => false
   end
 
   create_table "taxonomy_descriptions", :force => true do |t|
@@ -239,10 +245,7 @@ ActiveRecord::Schema.define(:version => 20130515223638) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.boolean  "is_professional",             :default => false, :null => false
-    t.boolean  "is_admin",                    :default => false, :null => false
-    t.integer  "points",                      :default => 0,     :null => false
-    t.string   "name"
+    t.string   "name",                        :default => "",    :null => false
     t.text     "bio"
     t.string   "company_name"
     t.string   "tel"
@@ -261,6 +264,9 @@ ActiveRecord::Schema.define(:version => 20130515223638) do
     t.string   "postal_code"
     t.float    "latitude"
     t.float    "longitude"
+    t.boolean  "is_professional",             :default => false, :null => false
+    t.boolean  "is_admin",                    :default => false, :null => false
+    t.integer  "points",                      :default => 0,     :null => false
     t.integer  "locale_id",                   :default => 0,     :null => false
     t.string   "stripe_customer_id"
     t.boolean  "notify_of_kixo_news",         :default => true,  :null => false
