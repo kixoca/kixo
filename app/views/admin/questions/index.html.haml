@@ -1,0 +1,38 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Questions
+                .six.columns.text-right
+                  = link_to "New Question", new_admin_question_path, :class => "button"
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Title
+                  %th Author
+                  %th Topics
+                  %th Created at
+                  %th Actions
+              %tbody
+                - @questions.each do |question|
+                  %tr
+                    %td.title
+                      = question.title
+                    %td.author
+                      = question.author.display_name
+                    %td.topics
+                      = question.topics_list
+                    %td.created-at
+                      = question.created_at
+                    %td.actions
+                      = link_to "Edit", edit_admin_question_path(question), :class => "button tiny"
+                      = link_to "Delete", admin_question_path(question), :method => :delete, :class => "button tiny alert"
+

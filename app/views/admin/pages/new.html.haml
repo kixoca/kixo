@@ -1,0 +1,26 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 New Page
+                .six.columns.text-right
+                  = link_to "All Pages", admin_pages_path, :class => "button secondary"
+          %section
+            .container
+              = simple_form_for [:admin, @page] do |f|
+                = f.input :title, :input_html => {:class => "oversize"}
+                = f.input :name
+                = f.input :content
+                = f.input :meta_title
+                = f.input :meta_description, :input_html => {:rows => 5}
+                = f.input :parent_id, :collection => @all_pages
+                = f.input :locale_id, :collection => @all_locales
+                = f.input :published_at
+                = f.button :submit

@@ -14,6 +14,10 @@ select {
   font-size: $baseFontSize;
 }
 
+select {
+  width: auto;
+}
+
 .control-label {
   font-size: $mediumFontSize;
   font-weight: bold;

@@ -1,0 +1,39 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Pages
+                .six.columns.text-right
+                  = link_to "New Page", new_admin_page_path, :class => "button"
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Title
+                  %th Created at
+                  %th Published at
+                  %th Actions
+              %tbody
+                - @pages.each do |page|
+                  %tr
+                    %td.title
+                      = page.title
+                    %td.created-at
+                      = page.created_at
+                    %td.published-at
+                      = page.published_at
+                    %td.actions
+                      = link_to "Edit", edit_admin_page_path(page), :class => "button tiny"
+                      = link_to "Delete", admin_page_path(page), :method => :delete, :class => "button tiny alert"
+                      - if page.is_published?
+                        = link_to "Unpublish", unpublish_admin_page_path(page), :class => "button tiny secondary"
+                      - else
+                        = link_to "Publish", publish_admin_page_path(page), :class => "button tiny secondary"
+

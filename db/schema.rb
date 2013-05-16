@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130515011342) do
+ActiveRecord::Schema.define(:version => 20130515223638) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -148,6 +148,20 @@ ActiveRecord::Schema.define(:version => 20130515011342) do
     t.boolean  "seen",       :default => false, :null => false
     t.datetime "created_at",                    :null => false
     t.datetime "updated_at",                    :null => false
+  end
+
+  create_table "pages", :force => true do |t|
+    t.string   "name"
+    t.string   "title"
+    t.text     "content"
+    t.string   "meta_title"
+    t.text     "meta_description"
+    t.integer  "parent_id"
+    t.integer  "locale_id",        :default => 0, :null => false
+    t.datetime "created_at",                      :null => false
+    t.datetime "updated_at",                      :null => false
+    t.datetime "published_at"
+    t.datetime "deleted_at"
   end
 
   create_table "questions", :force => true do |t|

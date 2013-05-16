@@ -54,6 +54,8 @@ class ApplicationController < ActionController::Base
     @all_locales = Locale.all
     @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code(I18n.locale)])
 
+    @all_pages = Page.all
+
     # misc.
     @all_ratings = Rating.all
 

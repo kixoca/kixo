@@ -1,4 +1,8 @@
 Kixo::Application.routes.draw do
+  get "questions/index"
+
+  get "pages/index"
+
   get "users/index"
 
   get "dashboard/index"
@@ -58,6 +62,8 @@ Kixo::Application.routes.draw do
 
     namespace :admin do
       resources :users
+      resources :questions
+      resources :pages
 
       root :to => "dashboard#index"
     end

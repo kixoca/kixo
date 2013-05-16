@@ -5,10 +5,9 @@ class Question < ActiveRecord::Base
 
   acts_as_paranoid
 
-  # set default values on init
-  after_initialize :default_values
-
   attr_accessible :title, :details, :status, :status_id, :is_private, :topics, :topic_ids, :author, :author_id, :locality, :locality_id, :deleted_at
+
+  after_initialize :default_values
 
   # localization
   belongs_to :locale

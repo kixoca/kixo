@@ -18,8 +18,10 @@ class PagesController < ApplicationController
     @questions = @questions.page(params[:page])
 
     @top_contributors = User.professionals.order("answers_count DESC").limit(10)
+  end
 
-    @current_action_tab = "ask"
+  def show
+    @page = Page.find_by_name(params[:id])
   end
 
 end

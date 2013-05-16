@@ -2,14 +2,16 @@
   .container
     .row
       .two.columns
-        %ul.side-nav
-          %li= link_to "Users", "#"
-          %li= link_to "Questions", "#"
+        = render "admin/shared/nav"
       .ten.columns
         .page.admin.users
           %header
             .container
-              %h1 Users
+              .row
+                .six.columns
+                  %h1 Users
+                .six.columns.text-right
+                  = link_to "New User", new_admin_user_path, :class => "button"
           %section
             %table.admin-table
               %thead
