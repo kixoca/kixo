@@ -37,5 +37,5 @@ Kixo::Application.configure do
 
   # Action Mailer Host URL
   config.action_mailer.default_url_options = {:host => "localhost", :port => ENV['PORT'], :only_path => false}
-  config.action_mailer.asset_host = {:host => "localhost", :port => ENV['PORT'], :only_path => false}
+  config.action_mailer.asset_host = "http://localhost:#{ENV['PORT']}"
 end

@@ -37,5 +37,5 @@ Kixo::Application.configure do
 
   # Action Mailer Host URL
   config.action_mailer.default_url_options = {:host => "kixo-test.herokuapp.com", :only_path => false}
-  config.action_mailer.asset_host = {:host => "kixo-test.herokuapp.com", :only_path => false}
+  config.action_mailer.asset_host = "http://kixo-test.herokuapp.com"
 end

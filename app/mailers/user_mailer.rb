@@ -4,13 +4,13 @@ class UserMailer < Devise::Mailer
   def welcome_email(user)
     @user = user
     @locale = user.locale.code
-    mail(:to => user.email, :subject => t("users.mailer.welcome_email.subject"))
+    mail(:to => user.email, :subject => t("user_mailer.welcome_email.subject"))
   end
 
   def goodbye_email(user)
     @user = user
     @locale = user.locale.code
-    mail(:to => user.email, :subject => t("users.mailer.goodbye_email.subject"))
+    mail(:to => user.email, :subject => t("user_mailer.goodbye_email.subject"))
   end
 
   def notify_of_question(question)
@@ -19,7 +19,7 @@ class UserMailer < Devise::Mailer
     @users.each do |user|
       @user = user
       @locale = user.locale.code
-      mail(:to => user.email, :subject => t("users.mailer.notify_of_question.subject"))
+      mail(:to => user.email, :subject => t("user_mailer.notify_of_question.subject"))
     end
   end
 
