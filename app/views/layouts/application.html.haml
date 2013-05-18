@@ -12,7 +12,6 @@
     %link{:rel => "canonical", :href => @canonical_url || url_for}
     %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
     = csrf_meta_tags
-    = render "shared/mixpanel"
   %body
     = render "shared/analytics"
     %header#header

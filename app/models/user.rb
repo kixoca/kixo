@@ -27,6 +27,9 @@ class User < ActiveRecord::Base
   before_create  :create_stripe_customer
   before_update  :update_stripe_customer
 
+  # mixpanel user unique id
+  before_create :create_mixpanel_id
+
   before_create :welcome_by_email
   before_destroy :goodbye_by_email
 
@@ -236,6 +239,12 @@ class User < ActiveRecord::Base
       customer = self.customer
       customer.delete if customer
     end
+  end
+
+  def create_mixpanel_id
+    begin
+      self.mixpanel_id = SecureRandom.hex(16)
+    end while self.class.exists?(:mixpanel_id => self.mixpanel_id)
   end
 
   def to_param

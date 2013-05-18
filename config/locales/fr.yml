@@ -50,6 +50,9 @@ fr:
       street_address_2:
         label: "(suite)"
 
+  security:
+    access_denied: "Accès refusé!"
+
   misc:
     yes: "Oui"
     no: "Non"
@@ -366,6 +369,9 @@ fr:
       label: "Modifier"
       title: "Modifier une question"
       submit: "Modifier ma question"
+    update:
+      success: "Votre question a été éditée avec succès"
+      error: "Votre question n'a pas pu être éditée"
     delete:
       label: "Supprimer"
       confirm: "Êtes-vous certain de vouloir supprimer cette question?"

@@ -50,6 +50,9 @@ en:
       street_address_2:
         label: "Continued"
 
+  security:
+    access_denied: "Access denied!"
+
   misc:
     yes: "Yes"
     no: "No"
@@ -361,6 +364,9 @@ en:
       label: "Edit"
       title: "Edit a question"
       submit: "Edit Question"
+    update:
+      success: "Your question was updated successfully"
+      error: "Your question could not be updated"
     delete:
       label: "Delete"
       confirm: "Are you sure you want to delete this question?"

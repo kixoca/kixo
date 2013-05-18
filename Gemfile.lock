@@ -84,7 +84,8 @@ GEM
       railties (~> 3.1)
       warden (~> 1.2.1)
     erubis (2.7.0)
-    escape (0.0.4)
+    event_tracker (0.2.0)
+      rails (>= 3.0)
     eventmachine (1.0.0)
     excon (0.15.5)
     execjs (1.4.0)
@@ -145,10 +146,6 @@ GEM
       activesupport (~> 3.1)
       polyamorous (~> 0.5.0)
     mime-types (1.19)
-    mixpanel (4.0.1)
-      escape
-      json
-      rack
     modular-scale (1.0.2)
       compass (>= 0.11.5)
       sassy-math (>= 1.2)
@@ -265,6 +262,7 @@ DEPENDENCIES
   coffee-rails
   compass-rails
   devise
+  event_tracker
   geocoder
   globalize3
   google-webfonts
@@ -274,7 +272,6 @@ DEPENDENCIES
   less-rails (~> 2.2.4)
   mandrill-api
   meta_search (>= 1.1.0.pre)
-  mixpanel
   oauth2
   omniauth
   omniauth-facebook

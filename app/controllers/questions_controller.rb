@@ -1,8 +1,7 @@
 class QuestionsController < ApplicationController
-
-  # filters
-  before_filter :remember_question, :only => [:new, :create]
-  before_filter :authenticate!,     :only => [:update, :edit, :destroy]
+  before_filter :remember_question,  :only => [:new, :create]
+  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
+  before_filter :verify_if_author!,  :only => [:edit, :update, :destroy]
 
   def index
     @questions = Question.find_by_locale.public.
@@ -21,6 +20,8 @@ class QuestionsController < ApplicationController
     @topics = @question.topics
     @related_professionals = User.professionals.find_all_by_topic(@topics)
 
+    track_event "View Question"
+
     respond_to do |format|
       format.html
       format.json { render :json => @question }
@@ -32,6 +33,8 @@ class QuestionsController < ApplicationController
     @question = Question.new(params[:question])
     @author = current_user || User.new
 
+    track_event "New Question"
+
     respond_to do |format|
       format.html
       format.json { render :json => @question }
@@ -41,6 +44,8 @@ class QuestionsController < ApplicationController
 
   def edit
     @question = Question.find(params[:id])
+
+    track_event "Edit Question"
   end
 
   def create
@@ -73,6 +78,7 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.save
+        track_event "Create Question"
         format.html do
           flash[:success] = I18n.t("questions.create.success")
           redirect_to @question
@@ -80,6 +86,7 @@ class QuestionsController < ApplicationController
         format.json { render :json => @question, :status => :created, :location => @question }
         format.xml  { render :xml => @question, :status => :created, :location => @question }
       else
+        track_event "Create Question (Error)"
         format.html do
           flash[:error] = I18n.t("questions.create.error")
           render :action => "new"
@@ -95,17 +102,19 @@ class QuestionsController < ApplicationController
 
     respond_to do |format|
       if @question.update_attributes(params[:question])
-        format.html {
-          flash[:success] = t(:question_was_updated)
+        track_event "Update Question"
+        format.html do
+          flash[:success] = t("questions.update.success")
           redirect_to @question
-        }
+        end
         format.json { head :no_content }
         format.xml  { head :no_content }
       else
-        format.html {
-          flash[:error] = "Cannot update question!"
+        track_event "Update Question (Error)"
+        format.html do
+          flash[:error] = t("questions.update.error")
           render action: "edit"
-        }
+        end
         format.json { render :json => @question.errors, :status => :unprocessable_entity }
         format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end
@@ -116,6 +125,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     respond_to do |format|
+      track_event "Destroy Question"
       format.html do
         if @question.destroy
           flash[:success] = I18n.t("questions.delete.success")
@@ -132,12 +142,12 @@ class QuestionsController < ApplicationController
 
   private
 
-  def authenticate!
-    session[:user_return_to] = case params[:action]
-                                 when "create" then new_question_path
-                                 else request.path
-                               end
-    authenticate_user!
+  def verify_if_author!
+    question = Question.find(params[:id])
+    if question.author != current_user
+      flash[:error] = t("security.access_denied")
+      redirect_to question
+    end
   end
 
   def remember_question

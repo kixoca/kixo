@@ -57,5 +57,8 @@ module Kixo
     config.assets.version = '1.0'
 
     config.assets.initialize_on_precompile = false
+
+    # Use Event Tracker with Mixpanel
+    config.event_tracker.mixpanel_key = ENV['MIXPANEL_TOKEN']
   end
 end

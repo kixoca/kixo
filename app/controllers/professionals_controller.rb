@@ -23,7 +23,7 @@ class ProfessionalsController < ApplicationController
     }
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @humanized_professionals }
       format.xml  { render :xml  => @humanized_professionals }
     end
@@ -55,7 +55,7 @@ class ProfessionalsController < ApplicationController
     @current_action_tab = "search"
 
     respond_to do |format|
-      format.html # search.html.haml
+      format.html
       format.json { render :json => @professionals }
       format.xml  { render :xml  => @professionals }
     end
@@ -71,7 +71,7 @@ class ProfessionalsController < ApplicationController
     @similar_professionals = @professional.similar_professionals
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @professional }
       format.xml  { render :xml  => @professional }
     end

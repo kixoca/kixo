@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_common_vars
 
+  around_filter :append_event_tracking_tags
+
   def default_url_options(options={})
     {:locale => I18n.locale}
   end
@@ -71,5 +73,13 @@ class ApplicationController < ActionController::Base
       flash.now[:notice] = I18n.t("site.under_dev")
       session[:under_dev_noticed] = true
     end
+  end
+
+  def mixpanel_distinct_id
+    current_user.mixpanel_id if current_user
+  end
+
+  def mixpanel_name_tag
+    current_user && current_user.email
   end
 end

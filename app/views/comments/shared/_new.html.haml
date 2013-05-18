@@ -4,5 +4,5 @@
       = f.input :commentable_id, :as => :hidden
       = f.input :commentable_type, :as => :hidden
       = f.input :comment, :input_html => {:rows => 5}
-      = f.button :submit, t("comments.new.submit")
+      = f.button :submit, t("comments.new.submit"), :class => "small"
   = link_to t("comments.new.label"), "#new-comment-for-#{commentable.class}-#{commentable.id}", :class => "toggle slide disappear"

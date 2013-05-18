@@ -12,5 +12,6 @@ class SessionsController < Devise::SessionsController
       end
     end
     super
+    track_event "Create Session"
   end
 end

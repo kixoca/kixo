@@ -1,20 +1,6 @@
 class ConversationsController < ApplicationController
-
   before_filter :authenticate_user!
-  before_filter :check_if_participant!, :only => [:show, :edit, :update, :destroy, :reply]
-
-  def show
-    @conversation = Conversation.find(params[:id])
-    @messages = @conversation.messages.all
-
-    @reply = @conversation.messages.build
-
-    respond_to do |format|
-      format.html
-      format.json { render :json => @conversation }
-      format.xml  { render :xml => @conversation }
-    end
-  end
+  before_filter :verify_if_participant!, :only => [:show, :edit, :update, :destroy, :reply]
 
   def index
     @conversations = current_user.conversations.page(params[:page])
@@ -30,6 +16,21 @@ class ConversationsController < ApplicationController
       format.html
       format.json { render :json => @conversations }
       format.xml  { render :xml  => @conversations }
+    end
+  end
+
+  def show
+    @conversation = Conversation.find(params[:id])
+    @messages = @conversation.messages.all
+
+    @reply = @conversation.messages.build
+
+    track_event "View Conversation"
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @conversation }
+      format.xml  { render :xml => @conversation }
     end
   end
 
@@ -63,10 +64,10 @@ class ConversationsController < ApplicationController
 
   private
 
-  def check_if_participant!
+  def verify_if_participant!
     conversation = Conversation.find(params[:id])
     unless conversation.participants.include?(current_user)
-      flash[:alert] = "You are not authorized to view this conversation."
+      flash[:error] = t("security.access_denied")
       redirect_to root_path
     end
   end

@@ -62,4 +62,4 @@ gem 'simple_form'
 
 gem 'acts_as_paranoid'
 
-gem 'mixpanel'
+gem 'event_tracker'

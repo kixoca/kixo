@@ -1,4 +1,13 @@
 class RegistrationsController < Devise::RegistrationsController
+  def new
+    super
+    track_event "New User"
+  end
+
+  def create
+    super
+    track_event "Create User"
+  end
 
   def update
     params[resource_name].delete(:password) if params[resource_name][:password].blank?
