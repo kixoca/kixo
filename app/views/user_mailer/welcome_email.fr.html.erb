@@ -1,0 +1,19 @@
+<p class="center"><%= image_tag "/assets/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240 %></p>
+
+<h1 class="subject"><%= t("user_mailer.welcome_email.subject", :locale => @locale).html_safe %></h1>
+
+<p>Bienvenue sur Kixo, <%= @user.name %></p>
+
+<p>Votre compte a été créé avec succès. Vous pouvez vous connecter quand vous le voulez avec le courriel que vous avez fourni : <%= @user.email %>.</p>
+
+<p>Kixo est encore à ses balbutiements. Mais nous espérons que grâce à votre engagement et vos contributions qu'il devienne le site de référence pour obtenir des conseils de professionnels de confiance.</p>
+
+<p>Nous savons que choisir le bon professionnel n'est pas une tâche facile. C'est pourquoi nous avons créé notre plate-forme unique de sorte que vous pouvez échanger avec des professionnels locaux certifiés, vous informer et faire le bon choix.</p>
+
+<% if @user.is_professional? %>
+    <p>Vous pouvez maintenant aller de l'avant et <%= link_to "modifier votre profil", edit_user_registration_url(:locale => @locale) %>.</p>
+<% else %>
+    <p>Vous pouvez maintenant aller de l'avant et <%= link_to "créer votre première question", new_question_url(:locale => @locale) %>.</p>
+<% end %>
+
+<p>Nous sommes très heureux de vous avoir avec nous.</p>

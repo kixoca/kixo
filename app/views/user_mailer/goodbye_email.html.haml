@@ -1,6 +1,0 @@
-%p.center
-  = image_tag "/assets/mailer/user_mailer/goodbye_email/goodbye.png", :width => 180, :height => 240
-%h1.subject
-  = t("user_mailer.goodbye_email.subject", :locale => @locale).html_safe
-%p
-  = t("user_mailer.goodbye_email.content", :name => @user.name, :locale => @locale).html_safe
