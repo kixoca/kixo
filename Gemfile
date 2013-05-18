@@ -2,11 +2,11 @@ source 'https://rubygems.org'
 
 gem 'rails', '3.2.2'
 
-group :production do
+group :test, :production do
   gem 'pg'
 end
 
-group :development, :test do
+group :development do
   gem 'sqlite3'
 end
 
@@ -61,3 +61,5 @@ gem 'mandrill-api'
 gem 'simple_form'
 
 gem 'acts_as_paranoid'
+
+gem 'mixpanel'
