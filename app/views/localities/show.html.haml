@@ -7,7 +7,7 @@
           %h1
             = @locality.name
           %h3.subheader
-            =t "taxonomy.find_ask_consult_in", :taxonomy => @locality.name
+            = t("taxonomy.find_ask_consult_in", :taxonomy => @locality.name)
       .eight.columns
         %section.browse-by-taxonomy
           .container
@@ -21,14 +21,14 @@
                     %ul
                       %li
                         %h5.topics-title
-                          =t "topics.title"
+                          = t("topics.index.title")
                         %ul.topics.block-grid.three-up
                           - category.topics.each do |topic|
                             %li.topic
                               = link_to topic.name, locality_topic_path(@locality, topic), :class => "topic-name", :title => "#{topic.name} - #{@locality.name}, #{@region.name}"
                       %li
                         %h5.professions-title
-                          =t "professions.title"
+                          = t("professions.index.title")
                         %ul.professions.block-grid.three-up
                           - category.professions.each do |profession|
                             %li.profession
