@@ -27,7 +27,7 @@
                       - unless @professional.tel.blank?
                         %li.tel
                           %i.icon-phone
-                          = @professional.tel
+                          = number_to_phone(@professional.tel)
                       - unless @professional.twitter.blank?
                         %li.twitter
                           %i.icon-twitter

@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
 
   # make sure website has http(s)://
   before_save :sanitize_website
+  before_save :sanitize_tel
 
   before_destroy :deactivate
 
@@ -253,6 +254,12 @@ class User < ActiveRecord::Base
   def sanitize_website
     unless self.website.blank? || (self.website.include?("http://") || self.website.include?("https://"))
       self.website = "http://" + self.website
+    end
+  end
+
+  def sanitize_tel
+    unless self.tel.blank?
+      self.tel = self.tel.gsub(/\D/, "")
     end
   end
 
