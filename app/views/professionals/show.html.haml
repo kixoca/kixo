@@ -51,7 +51,7 @@
                   %h5.section-title= t("professionals.show.about", :name => @professional.name)
                   .bio
                     = simple_format(@professional.bio)
-            %section
+            %section#professional-map
               .gmap{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
                 .marker{:data => {:latitude => @professional.latitude, :longitude => @professional.longitude}}
                   %p.address

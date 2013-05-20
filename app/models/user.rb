@@ -161,7 +161,10 @@ class User < ActiveRecord::Base
   end
 
   def full_address
-    "#{self.locality.name}, #{self.locality.region.name} #{self.postal_code}, #{self.locality.region.country.name}"
+    addr = ""
+    addr << "#{self.street_address_1}, " unless self.street_address_1.blank?
+    addr << "#{self.street_address_2}, " unless self.street_address_2.blank?
+    addr << "#{self.locality.name}, #{self.locality.region.name} #{self.postal_code}, #{self.locality.region.country.name}"
   end
 
   def topics_list
