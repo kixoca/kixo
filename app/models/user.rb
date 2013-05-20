@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   # set default values on init
   after_initialize :default_values
 
+  # make sure website has http(s)://
+  before_save :sanitize_website
+
   before_destroy :deactivate
 
   # sync stripe customer
@@ -245,6 +248,12 @@ class User < ActiveRecord::Base
     begin
       self.mixpanel_id = SecureRandom.hex(16)
     end while self.class.exists?(:mixpanel_id => self.mixpanel_id)
+  end
+
+  def sanitize_website
+    unless self.website.blank? || (self.website.include?("http://") || self.website.include?("https://"))
+      self.website = "http://" + self.website
+    end
   end
 
   def to_param

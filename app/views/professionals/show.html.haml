@@ -23,7 +23,7 @@
                       - unless @professional.website.blank?
                         %li.url
                           %i.icon-external-link
-                          = link_to @professional.website, @professional.website
+                          = link_to display_url(@professional.website), @professional.website
                       - unless @professional.tel.blank?
                         %li.tel
                           %i.icon-phone

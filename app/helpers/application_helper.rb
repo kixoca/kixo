@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def display_url(url)
-    url.gsub("http://", "") unless url.blank?
+    url.gsub("http://", "").gsub("https://", "") unless url.blank?
   end
 
   def twitter_url(username)
