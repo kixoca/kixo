@@ -43,9 +43,9 @@
                     %ul.dropdown
                       - if current_user.is_professional?
                         %li.profile
-                          = link_to "Profile", professional_path(current_user)
+                          = link_to t("professionals.show.label"), professional_path(current_user)
                       %li#settings
-                        = link_to "Settings", edit_user_registration_path
+                        = link_to t("users.registrations.edit.label"), edit_user_registration_path
                       %li.divider
                       %li#messages
                         = link_to conversations_path do
@@ -54,7 +54,7 @@
                           Messages
                       %li#notifications
                         = link_to notifications_path do
-                          Notifications
+                          = t("notifications.index.label")
                           - if current_user.notifications.unseen.count > 0
                             .count= current_user.notifications.unseen.count
                       %li.divider

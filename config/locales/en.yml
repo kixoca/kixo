@@ -175,6 +175,7 @@ en:
         one: "1 professionals found for <em>%{what}</em> in <em>%{where}</em>"
         other: "%{count} professionals found for <em>%{what}</em> in <em>%{where}</em>"
     show:
+      label: "Profile"
       whois: "%{professions} in %{locality} specializing in %{topics}"
       specialties: "Specialties"
       about: "About %{name}"

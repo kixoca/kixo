@@ -180,6 +180,7 @@ fr:
         one: "1 professionnel trouvé pour <em>%{what}</em> à <em>%{where}</em>"
         other: "%{count} professionnels trouvé pour <em>%{what}</em> à <em>%{where}</em>"
     show:
+      label: "Profil"
       whois: "%{professions} à %{locality} spécialisé en %{topics}"
       specialties: "Spécialtités"
       about: "À propos de %{name}"
