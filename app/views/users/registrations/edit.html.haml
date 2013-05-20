@@ -55,7 +55,15 @@
                           = f.input :name
                           = f.input :tel
                           = f.input :website
-                          = f.input :headshot
+                          - unless resource.headshot.blank?
+                            = f.label :headshot
+                            .row
+                              .two.columns
+                                = image_tag resource.headshot.url(:mini), :class => "headshot"
+                              .ten.columns
+                                = f.input :headshot, :label => false
+                          - else
+                            = f.input :headshot
                           = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
                         .six.columns
                           = render "shared/location_selector", :f => f, :resource => resource, :postal_code => true, :street_address => true
