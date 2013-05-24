@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name
 
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
-                  :name, :headshot, :bio, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
+                  :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
@@ -33,6 +33,8 @@ class User < ActiveRecord::Base
   # sync stripe customer
   before_create  :create_stripe_customer
   before_update  :update_stripe_customer
+
+  before_save :set_is_professional
 
   # mixpanel user unique id
   before_create :create_mixpanel_id
@@ -141,7 +143,7 @@ class User < ActiveRecord::Base
   end
 
   def is_professional?
-    self.plan == "professional" || self.plan == "visibility"
+    self.is_professional
   end
 
   def is_admin?
@@ -248,6 +250,10 @@ class User < ActiveRecord::Base
     unless Stripe.api_key.blank?
       self.stripe_customer.active_card
     end
+  end
+
+  def set_is_professional
+    self.is_professional = (self.plan == "personal" || self.plan == "visibility+")
   end
 
   def create_mixpanel_id
