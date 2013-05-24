@@ -101,7 +101,6 @@ class User < ActiveRecord::Base
   validates :name,     :presence => true
   validates :locality, :presence => true
   validates :locale,   :presence => true
-  validates :plan,     :presence => true
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
@@ -253,7 +252,11 @@ class User < ActiveRecord::Base
   end
 
   def set_is_professional
-    self.is_professional = (self.plan == "personal" || self.plan == "visibility+")
+    if self.plan == "professional" || self.plan == "visibility"
+      self.is_professional = true
+    else
+      self.is_professional = false
+    end
   end
 
   def create_mixpanel_id

@@ -37,10 +37,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
       if current_user.save
         flash[:success] = t("users.registrations.change_plan.success")
       else
-        flash[:error] = t("users.registrations.change_plan.error1")
+        flash[:error] = t("users.registrations.change_plan.error")
       end
     else
-      flash[:error] = t("users.registrations.change_plan.error2")
+      flash[:error] = t("users.registrations.change_plan.error")
     end
     redirect_to "#{edit_user_registration_path}#subscriptions"
   end
