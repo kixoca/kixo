@@ -1,7 +1,7 @@
 module Geolocalizable
   def self.included(base)
     base.geocoded_by :geocoding_address
-    #base.after_validation :geocode
+    base.after_validation :geocode
 
     def geocoding_address
       addr = Array.new
