@@ -26,7 +26,7 @@ module Geolocalizable
     end
 
     def location_changed?
-      self.street_address_1_changed? || self.street_address_2_changed? || self.locality_changed?
+      self.street_address_1_changed? || self.street_address_2_changed? || self.locality_id_changed?
     end
 
     def locality_name
