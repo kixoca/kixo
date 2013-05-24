@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130518185906) do
+ActiveRecord::Schema.define(:version => 20130524050045) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -264,7 +264,6 @@ ActiveRecord::Schema.define(:version => 20130518185906) do
     t.string   "postal_code"
     t.float    "latitude"
     t.float    "longitude"
-    t.boolean  "is_professional",             :default => false, :null => false
     t.boolean  "is_admin",                    :default => false, :null => false
     t.integer  "points",                      :default => 0,     :null => false
     t.integer  "locale_id",                   :default => 0,     :null => false
@@ -287,6 +286,7 @@ ActiveRecord::Schema.define(:version => 20130518185906) do
     t.datetime "updated_at",                                     :null => false
     t.datetime "deleted_at"
     t.string   "mixpanel_id",                 :default => "",    :null => false
+    t.string   "plan",                        :default => "",    :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -1,7 +1,7 @@
 class TaxonomyName < ActiveRecord::Base
   include Localizable
 
-  attr_accessible :name, :taxonomy, :taxonomy_id
+  attr_accessible :name, :locale, :locale_id, :taxonomy, :taxonomy_id, :taxonomy_type
 
   # a taxonomy name belongs to a taxonomy
   belongs_to :taxonomy
@@ -10,7 +10,7 @@ class TaxonomyName < ActiveRecord::Base
   belongs_to :locale
 
   # validation
-  validates :name, :presence => true
-  validates_existence_of :locale
-  validates_existence_of :taxonomy
+  validates :name,     :presence => true
+  validates :locale,   :presence => true
+  validates :taxonomy, :presence => true
 end

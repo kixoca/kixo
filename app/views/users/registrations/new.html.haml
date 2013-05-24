@@ -9,6 +9,7 @@
                 %hgroup
                   %h1= t("users.registrations.new.title")
                   %h4.subheader= t("users.registrations.new.subtitle")
+            = render "shared/errors", :resource => resource
             %section
               .container
                 = f.input :name

@@ -6,6 +6,7 @@
           %li.active= link_to t("users.registrations.edit.sections.account.label"), "#account"
           %li= link_to t("users.registrations.edit.sections.profile.label"), "#profile"
           %li= link_to t("users.registrations.edit.sections.email_notifications.label"), "#notifications"
+          %li= link_to t("users.registrations.edit.sections.subscriptions.label"), "#subscriptions"
           %li= link_to t("users.registrations.edit.sections.billing.label"), "#billing"
       .nine.columns
         %ul.tabs-content
@@ -55,15 +56,10 @@
                           = f.input :name
                           = f.input :tel
                           = f.input :website
-                          - unless resource.headshot.blank?
-                            = f.label :headshot
-                            .row
-                              .two.columns
-                                = image_tag resource.headshot.url(:mini), :class => "headshot"
-                              .ten.columns
-                                = f.input :headshot, :label => false
-                          - else
-                            = f.input :headshot
+                          = f.label :headshot
+                          .row
+                            .two.columns= image_tag resource.headshot.url(:mini), :class => "headshot"
+                            .ten.columns= f.input :headshot, :label => false
                           = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
                         .six.columns
                           = render "shared/location_selector", :f => f, :resource => resource, :postal_code => true, :street_address => true
@@ -107,7 +103,10 @@
                   %section
                     .container
                       = f.input :name
-                      = f.input :headshot
+                      = f.label :headshot
+                      .row
+                        .two.columns= image_tag resource.headshot.url(:mini), :class => "headshot"
+                        .ten.columns= f.input :headshot, :label => false
                       = render "shared/location_selector", :f => f
                   %footer
                     .container
@@ -118,12 +117,12 @@
                 %header
                   .container
                     %hgroup
-                      %h1=t "users.registrations.edit.sections.email_notifications.title"
-                      %h4.subheader=t "users.registrations.edit.sections.email_notifications.subtitle"
+                      %h1= t("users.registrations.edit.sections.email_notifications.title")
+                      %h4.subheader= t("users.registrations.edit.sections.email_notifications.subtitle")
                 %section
                   .container
                     %fieldset
-                      %legend=t "users.registrations.edit.sections.email_notifications.legend"
+                      %legend= t("users.registrations.edit.sections.email_notifications.legend")
                       = f.input :notify_of_kixo_news
                       = f.input :notify_of_partner_news
                       = f.input :notify_of_new_messages
@@ -133,15 +132,101 @@
                 %section
                   .container
                     = f.button :submit, t("users.registrations.edit.submit")
+          %li#subscriptionsTab
+            = simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#subscriptions", :html => { :method => :put }) do |f|
+              .page
+                %header
+                  .container
+                    %hgroup
+                      %h1= t("users.registrations.edit.sections.subscriptions.title")
+                      %h4.subheader= t("users.registrations.edit.sections.subscriptions.subtitle")
+                %section
+                  .container
+                    .row
+                      .four.columns
+                        .text-center= image_tag "/assets/plan_char_personal.png"
+                        %ul.pricing-table.personal
+                          %li.title= t("plans.personal.title")
+                          %li.price= t("plans.personal.price")
+                          %li.description= t("plans.personal.description")
+                          %li.bullet-item= t("plans.features.ask_questions")
+                          %li.bullet-item= t("plans.features.private_messages")
+                          %li.cta-button
+                            - if resource.plan == "personal"
+                              %em= t("plans.current_plan")
+                            - else
+                              = link_to t("plans.select"), change_user_plan_path(:personal), :class => "button"
+                      .four.columns
+                        .text-center= image_tag "/assets/plan_char_professional.png"
+                        %ul.pricing-table.professional
+                          %li.title= t("plans.professional.title")
+                          %li.price= t("plans.professional.price")
+                          %li.description= t("plans.professional.description")
+                          %li.bullet-item= t("plans.features.ask_questions")
+                          %li.bullet-item= t("plans.features.private_messages")
+                          %li.bullet-item= t("plans.features.detailed_profile")
+                          %li.bullet-item= t("plans.features.answer_questions")
+                          %li.bullet-item= t("plans.features.kixo_score")
+                          %li.cta-button
+                            - if resource.plan == "professional"
+                              %em= t("plans.current_plan")
+                            - else
+                              = link_to t("plans.select"), change_user_plan_path(:professional), :class => "button"
+                      .four.columns
+                        .text-center= image_tag "/assets/plan_char_visibility.png"
+                        %ul.pricing-table.visibility
+                          %li.title= t("plans.visibility.title")
+                          %li.price= t("plans.visibility.price")
+                          %li.description= t("plans.visibility.description")
+                          %li.bullet-item= t("plans.features.ask_questions")
+                          %li.bullet-item= t("plans.features.private_messages")
+                          %li.bullet-item= t("plans.features.detailed_profile")
+                          %li.bullet-item= t("plans.features.answer_questions")
+                          %li.bullet-item= t("plans.features.kixo_score")
+                          %li.bullet-item= t("plans.features.answer_rank")
+                          %li.bullet-item= t("plans.features.profile_rank")
+                          %li.bullet-item= t("plans.features.featured_profile")
+                          %li.cta-button
+                            - if resource.plan == "visibility"
+                              %em= t("plans.current_plan")
+                            - else
+                              - if resource.has_active_card?
+                                = link_to t("plans.select"), change_user_plan_path(:visibility), :class => "button"
+                              - else
+                                = link_to t("cards.new.label"), "#", :class => "button", :data => {"reveal-id" => "create_card"}
           %li#billingTab
             .page
               %header
                 .container
-                  %hgroup
-                    %h1=t "users.registrations.edit.sections.billing.title"
-                    %h4.subheader=t "users.registrations.edit.sections.billing.subtitle"
+                  .row
+                    .eight.columns
+                      %hgroup
+                        %h1= t("users.registrations.edit.sections.billing.title")
+                        %h4.subheader= t("users.registrations.edit.sections.billing.subtitle")
+                    .four.columns.text-right
+                      - unless resource.has_active_card?
+                        = link_to t("cards.new.label"), "#", :class => "button", :data => {"reveal-id" => "create_card"}
+                      - else
+                        = link_to t("cards.edit.label"), "#", :class => "button", :data => {"reveal-id" => "edit_card"}
               %section
                 .container
-                  %a.button{:href => "#", :data => {"reveal-id" => "create_card"}}=t "cards.new.label"
-    #create_card.reveal-modal
-      = render "cards/shared/new", :resource => resource, :resource_name => resource_name
+                  %h3= t("charges.title")
+                  %table.twelve.charges
+                    %body
+                      - Stripe::Charge.all(:customer => resource.stripe_customer_id).data.each do |charge|
+                        %tr
+                          %td.amount= number_to_currency(charge.amount/100)
+                          %td.card
+                            = image_tag "/assets/cards/#{charge.card.type.downcase}.png"
+                            = charge.card.last4
+                          %td.id= charge.id
+                          %td.status
+                            = charge.paid ? t("charges.paid").html_safe : t("charges.unpaid").html_safe
+                            = charge.refunded ? t("charges.refunded").html_safe : ""
+                          %td.created.text-right= Time.at(charge.created).to_date
+    - unless resource.has_active_card?
+      #create_card.reveal-modal
+        = render "users/cards/shared/new", :resource => resource, :resource_name => resource_name
+    - else
+      #edit_card.reveal-modal
+        = render "users/cards/shared/edit", :resource => resource, :resource_name => resource_name

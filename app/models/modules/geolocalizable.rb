@@ -24,5 +24,9 @@ module Geolocalizable
     def base.find_all_by_country(country)
       self.where(:country_id => country)
     end
+
+    def locality_name
+      self.locality.name unless self.locality.nil?
+    end
   end
 end

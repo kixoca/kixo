@@ -5,7 +5,7 @@
         = image_tag message.author.headshot.url(:small), :class => "headshot"
       .ten.columns
         %h5.author-name
-          = message.author.id == current_user.id ? t("misc.me") : message.author.display_name
+          = message.author.id == current_user.id ? t("misc.me") : message.author.name
         .content
           = simple_format(message.message)
         .created-at

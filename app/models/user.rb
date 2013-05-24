@@ -5,25 +5,28 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
-  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :region, :region_id
+  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name
 
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
                   :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
-                  :street_address_1, :street_address_2, :locality, :locality_id, :postal_code,
+                  :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
-                  :card,
+                  :plan, :card,
                   :deleted_at
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
   # set default values on init
-  after_initialize :default_values
+  after_initialize :set_default_values
 
   # make sure website has http(s)://
   before_save :sanitize_website
   before_save :sanitize_tel
+
+  # set locality id based on locality name
+  before_validation :set_locality_by_name
 
   before_destroy :deactivate
 
@@ -96,6 +99,7 @@ class User < ActiveRecord::Base
   validates :name,     :presence => true
   validates :locality, :presence => true
   validates :locale,   :presence => true
+  validates :plan,     :presence => true
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
@@ -110,7 +114,7 @@ class User < ActiveRecord::Base
   end
 
   def self.professionals
-    self.where(:is_professional => true)
+    self.where("plan in (?)", ["professional", "visibility"])
   end
 
   def self.search(what, where, locale = Locale.all)
@@ -137,23 +141,11 @@ class User < ActiveRecord::Base
   end
 
   def is_professional?
-    self.is_professional == true
+    self.plan == "professional" || self.plan == "visibility"
   end
 
   def is_admin?
-    self.is_admin == true
-  end
-
-  def public_name
-    if self.is_professional?
-      self.name.blank? ? t("users.misc.default_public_name") : self.name
-    else
-      I18n.t("users.misc.default_public_name")
-    end
-  end
-
-  def display_name
-    self.name.blank? ? self.email : self.name
+    self.is_admin
   end
 
   def short_address
@@ -193,9 +185,6 @@ class User < ActiveRecord::Base
         User.professionals
   end
 
-  def card
-  end
-
   def welcome_by_email
     UserMailer.welcome_email(self).deliver
   end
@@ -216,7 +205,7 @@ class User < ActiveRecord::Base
 
   def create_stripe_customer
     unless Stripe.api_key.blank?
-      customer = Stripe::Customer.create(:email => self.email)
+      customer = Stripe::Customer.create(:email => self.email, :plan => self.plan)
       self.stripe_customer_id = customer.id
     end
   end
@@ -226,13 +215,20 @@ class User < ActiveRecord::Base
       customer = self.stripe_customer
 
       if customer
+        modified = false
+
         if self.email != customer.email
           customer.email = self.email
           modified = true
         end
 
-        if card
+        if self.card
           customer.card = self.card
+          modified = true
+        end
+
+        if customer.subscription && self.plan != customer.subscription.plan.id
+          customer.update_subscription(:plan => self.plan, :prorate => true)
           modified = true
         end
 
@@ -243,8 +239,14 @@ class User < ActiveRecord::Base
 
   def delete_stripe_customer
     unless Stripe.api_key.blank?
-      customer = self.customer
+      customer = self.stripe_customer
       customer.delete if customer
+    end
+  end
+
+  def has_active_card?
+    unless Stripe.api_key.blank?
+      self.stripe_customer.active_card
     end
   end
 
@@ -266,8 +268,15 @@ class User < ActiveRecord::Base
     end
   end
 
+  def set_locality_by_name
+    unless self.locality_name.blank?
+      locality = Locality.find_by_name(self.locality_name)
+      self.locality_id = locality.id unless locality.nil?
+    end
+  end
+
   def to_param
-    unless name.blank?
+    if self.is_professional?
       "#{id}-#{name.parameterize}"
     else
       "#{id}"
@@ -276,8 +285,9 @@ class User < ActiveRecord::Base
 
   private
 
-  def default_values
-    self.locale ||= Locale.find_by_code(I18n.locale)
+  def set_default_values
+    self.locale  = Locale.find_by_code(I18n.locale) if self.locale.blank?
     self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
+    self.plan    = "personal" if self.plan.blank?
   end
 end

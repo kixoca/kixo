@@ -8,6 +8,16 @@ fr:
     error_notification:
       default_message: "S'il vous plaît examiner les problèmes ci-dessous :"
     labels:
+      defaults:
+        street_address_1: "Adresse"
+        street_address_2: "Adresse (suite)"
+        locality: "Ville"
+        locality_name: "Ville"
+        region: "Province"
+        region_name: "Province"
+        postal_code: "Code postal"
+        country: "Pays"
+        country_name: "Pays"
       user:
         name: "Nom"
         email: "Courriel"
@@ -18,10 +28,6 @@ fr:
         locales: "Langues"
         topics: "Sujets"
         professions: "Professions"
-        street_address_1: "Adresse"
-        street_address_2: "Adresse (suite)"
-        locality: "Ville"
-        postal_code: "Code postal"
         website: "Site web"
         twitter: "Nom d'usager Twitter"
         facebook: "Nom d'usager Facebook"
@@ -67,7 +73,7 @@ fr:
         exp: "Expiration de la carte"
         exp_month: "Mois"
         exp_year: "Année"
-        cvc: "Code de sécurité (CVC)"
+        cvc: "Code de sécurité"
     placeholders:
       question:
         new:

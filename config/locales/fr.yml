@@ -71,8 +71,8 @@ fr:
   users:
     registrations:
       edit:
-        title: "Paramètres"
-        label: "Paramètres"
+        title: "Mon compte"
+        label: "Mon compte"
         sections:
           account:
             label: "Compte"
@@ -99,10 +99,14 @@ fr:
               title: "Coordonnées"
             social:
               title: "Profils Médias Sociaux"
+          subscriptions:
+            label: "Plans et prix"
+            title: "Plans et prix"
+            subtitle: "Comparez les plans et prix"
           billing:
-            label: "Facturation et adhésion"
-            title: "Facturation et adhésion"
-            subtitle: "Modifiez vos informations de facturation et d'adhésion"
+            label: "Facturation"
+            title: "Facturation"
+            subtitle: "Visualisez et modifiez vos informations de facturation"
         submit: "Mettre à jour"
         panels:
           new_session:
@@ -117,6 +121,9 @@ fr:
       create:
         success: "Votre compte a été créé avec succès!"
         error: "Votre compte n'a pas pu être créé!"
+      change_plan:
+        success: "Votre plan a été changé avec succès!"
+        error: "Une erreur est survenue et votre plan n'a pas pu être changé!"
       delete:
         title: "Annuler mon compte"
         unhappy: "Mécontent?"
@@ -206,6 +213,11 @@ fr:
         zero: "Il n'y a pas encore d'avis pour %{name}"
         one: "Il y a un avis pour %{name}"
         other: "Il y a %{count} avis pour %{name}"
+    guides:
+      count:
+        zero: "%{name} n'a pas encore répondu à une question"
+        one: "%{name} a répondu à une question"
+        other: "%{name} a répondu à %{count} questions"
     guides:
       count:
         zero: "%{name} n'a pas encore écrit de guides"
@@ -494,10 +506,55 @@ fr:
 
   cards:
     new:
-      label: "Ajouter/modifier une carte de crédit"
+      label: "Ajouter une carte de crédit"
       title: "Carte de crédit"
-      subtitle: "Ajouter ou modifiez une carte de crédit"
-      submit: "Ajouter/Modifier la carte"
+      subtitle: "Ajouter une carte de crédit"
+      submit: "Ajouter la carte"
+    edit:
+      label: "Modifier ma carte de crédit"
+      title: "Carte de crédit"
+      subtitle: "Modifiez ma carte de crédit"
+      submit: "Modifier ma carte"
+
+  plans:
+    personal:
+      title: "Personnel"
+    professional:
+      title: "Professionnel"
+    visibility:
+      title: "Visibilité+"
+
+  plans:
+    personal:
+      title: "Personnel"
+      price: "Gratuit"
+      description: "Plan de base pour les personnes qui cherchent simplement à poser des questions et échanger avec des professionnels."
+    professional:
+      title: "Professionnel"
+      price: "Gratuit"
+      description: "Voulez-vous répondre aux questions de clients potentiels? Commencez avec ce plan."
+    visibility:
+      title: "Visibilité+"
+      price: "50$ par mois"
+      description: "Vous voulez obtenir plus de Kixo? Obtenez ce plan et bénéficiez d'une visibilité accrue sur tout le site!"
+    features:
+      ask_questions: "Posez des questions"
+      private_messages: "Envoyez et recevez des messages privés"
+      detailed_profile: "Obtenez un profil professionel détaillé"
+      answer_questions: "Répondez aux questions des utilisateurs"
+      kixo_score: "Obtenez un score Kixo"
+      answer_rank: "Votre réponses ont priorité"
+      profile_rank: "Votre profil a priorité"
+      featured_profile: "Votre profil est en vedette dans des endroits clés"
+      ad_discount: "Obtenez des réductions sur la publicité"
+    current_plan: "Mon plan actuel"
+    select: "Sélectionner"
+
+  charges:
+    title: "Charges"
+    paid: "<span class='success label radius'>Payé</span>"
+    unpaid: "<span class='alert label radius'>Non-payé</span>"
+    refunded: "<span class='alert label radius'>Remboursé</span>"
 
   helpers:
     select:

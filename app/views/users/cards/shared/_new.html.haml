@@ -1,0 +1,20 @@
+%hgroup
+  %h3= t("cards.new.title")
+  %h4.subheader= t("cards.new.subtitle")
+%hr
+= simple_form_for(resource, :as => resource_name, :url => "#{registration_path(resource_name)}#billing", :html => { :method => :put, :class => "stripe" }) do |f|
+  = f.input :card, :as => :hidden, :input_html => {:class => "card_token"}
+  = f.simple_fields_for :card do |c|
+    .stripe-errors.alert-box.alert
+    = c.label :number
+    = text_field_tag :card_number, nil, :name => nil, :id => "card_number"
+    .row.collapse
+      .six.columns
+        = c.label :exp
+        = select_month nil, {:add_month_numbers => true}, :name => nil, :id => "card_exp_month"
+        = select_year  nil, {:start_year => Date.today.year, :end_year => Date.today.year+15}, :name => nil, :id => "card_exp_year"
+      .six.columns
+        = c.label :cvc
+        = text_field_tag :card_cvc, nil, :name => nil, :id => "card_cvc"
+  = f.button :submit, t("cards.new.submit")
+%a.close-reveal-modal &#215;

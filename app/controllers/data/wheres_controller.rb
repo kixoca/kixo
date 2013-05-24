@@ -1,4 +1,4 @@
-class WheresController < ApplicationController
+class Data::WheresController < ApplicationController
 
   def index
     if params[:term]

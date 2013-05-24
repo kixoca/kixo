@@ -1,4 +1,4 @@
-class RegistrationsController < Devise::RegistrationsController
+class Users::RegistrationsController < Devise::RegistrationsController
   def new
     super
     track_event "New User"
@@ -29,6 +29,20 @@ class RegistrationsController < Devise::RegistrationsController
       clean_up_passwords(resource)
       render :edit
     end
+  end
+
+  def change_plan
+    if !Stripe.api_key.blank? && !params[:plan].blank? && Stripe::Plan.all.map(&:id).include?(params[:plan])
+      current_user.plan = params[:plan]
+      if current_user.save
+        flash[:success] = t("users.registrations.change_plan.success")
+      else
+        flash[:error] = t("users.registrations.change_plan.error1")
+      end
+    else
+      flash[:error] = t("users.registrations.change_plan.error2")
+    end
+    redirect_to "#{edit_user_registration_path}#subscriptions"
   end
 
   protected

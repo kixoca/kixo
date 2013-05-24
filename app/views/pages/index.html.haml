@@ -15,7 +15,7 @@
                 - if user_signed_in?
                   %dd{:class => params[:filter] == "mine" ? "active" : ""}
                     = link_to t("questions.filters.mine"), "?filter=mine"
-                - if user_signed_in? and current_user.is_professional
+                - if user_signed_in? and current_user.is_professional?
                   %dd{:class => params[:filter] == "for_me" ? "active" : ""}
                     = link_to t("questions.filters.for_me"), "?filter=for_me"
                 %dd{:class => params[:filter] == "most_popular" ? "active" : ""}

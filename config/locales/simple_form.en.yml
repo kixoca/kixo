@@ -8,6 +8,16 @@ en:
     error_notification:
       default_message: "Please review the problems below:"
     labels:
+      defaults:
+        street_address_1: "Street Address"
+        street_address_2: "Street Address 2"
+        locality: "City"
+        locality_name: "City"
+        region: "Province"
+        region_name: "Province"
+        postal_code: "Postal Code"
+        country: "Country"
+        country_name: "Country"
       user:
         name: "Name"
         email: "Email"
@@ -18,10 +28,6 @@ en:
         locales: "Languages"
         topics: "Topics"
         professions: "Professions"
-        street_address_1: "Street Address"
-        street_address_2: "Street Address 2"
-        locality: "City"
-        postal_code: "Postal Code"
         website: "Website"
         twitter: "Twitter Username"
         facebook: "Facebook Username"
@@ -69,7 +75,7 @@ en:
         exp: "Card Expiration"
         exp_month: "Month"
         exp_year: "Year"
-        cvc: "Security Code (CVC)"
+        cvc: "Security Code"
     placeholders:
       question:
         new:

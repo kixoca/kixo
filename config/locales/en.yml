@@ -71,8 +71,8 @@ en:
   users:
     registrations:
       edit:
-        title: "Settings"
-        label: "Settings"
+        title: "My Account"
+        label: "My Account"
         sections:
           account:
             label: "Account"
@@ -99,10 +99,14 @@ en:
               title: "Contact Information"
             social:
               title: "Social Media Profiles"
+          subscriptions:
+            label: "Plans & Pricing"
+            title: "Plans & Pricing"
+            subtitle: "Compare plans & pricing"
           billing:
-            label: "Billing & Membership"
-            title: "Billing & Membership"
-            subtitle: "Edit your billing and membership information"
+            label: "Billing"
+            title: "Billing"
+            subtitle: "View and edit your billing information"
         submit: "Update"
         panels:
           new_session:
@@ -117,6 +121,9 @@ en:
       create:
         success: "Your account was successfully created!"
         error: "Your account could not be created!"
+      change_plan:
+        success: "Your plan has been changed successfully!"
+        error: "An error occurred and your plan could not be changed!"
       delete:
         title: "Cancel my account"
         unhappy: "Unhappy?"
@@ -201,6 +208,11 @@ en:
         zero: "There are no reviews for %{name} yet"
         one: "There is one review for %{name}"
         other: "There are %{count} reviews for %{name}"
+    answers:
+      count:
+        zero: "%{name} has not answered any questions yet"
+        one: "%{name} has answered one question"
+        other: "%{name} has answered %{count} questions"
     guides:
       count:
         zero: "%{name} has not written any guides yet"
@@ -489,7 +501,44 @@ en:
 
   cards:
     new:
-      label: "Add/Edit Credit Card"
+      label: "Add Credit Card"
       title: "Credit Card"
-      subtitle: "Add or edit a credit card"
-      submit: "Add/Edit Card"
+      subtitle: "Add a credit card"
+      submit: "Add Card"
+    edit:
+      label: "Edit Credit Card"
+      title: "Credit Card"
+      subtitle: "Edit a credit card"
+      submit: "Edit Card"
+
+  plans:
+    personal:
+      title: "Personal"
+      price: "Free"
+      description: "Basic plan for people simply looking to ask questions and exchange with professionals."
+    professional:
+      title: "Professional"
+      price: "Free"
+      description: "Want to answer questions from potential clients? Get started with this plan."
+    visibility:
+      title: "Visibility+"
+      price: "$50 per month"
+      description: "Want to get more out of Kixo? Get this plan to benefit from increased visibility across the site!"
+    features:
+      ask_questions: "Ask questions"
+      private_messages: "Send and receive private messages"
+      detailed_profile: "Get a detailed professional profile"
+      answer_questions: "Answer user questions"
+      kixo_score: "Get a Kixo Score"
+      answer_rank: "Your answers rank in priority"
+      profile_rank: "Your profile ranks in priority"
+      featured_profile: "Your profile is featured in key locations"
+      ad_discount: "Get discounts on advertising"
+    current_plan: "My current plan"
+    select: "Select"
+
+  charges:
+    title: "Charges"
+    paid: "<span class='success label radius'>Paid</span>"
+    unpaid: "<span class='alert label radius'>Unpaid</span>"
+    refunded: "<span class='alert label radius'>Refunded</span>"

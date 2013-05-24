@@ -1,0 +1,7 @@
+- unless resource.nil? || resource.errors.empty?
+  %section.errors
+    .container
+      %ul.error-list
+        - resource.errors.full_messages.each do |msg|
+          %li.error-msg
+            = msg

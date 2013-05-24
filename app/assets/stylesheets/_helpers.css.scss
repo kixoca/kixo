@@ -254,3 +254,26 @@ dl.filter {
     }
   }
 }
+
+.twitter-typeahead {
+  width: 100%;
+
+  .tt-dropdown-menu {
+    width: 100%;
+    background: #fff;
+    border: 1px solid $borderColor;
+    @include borderRadius($radius);
+
+    .tt-suggestions {
+      .tt-suggestion {
+        font-size: $xlargeFontSize;
+        padding: 1px $unit*$golden;
+
+        &:hover {
+          background: $kixoGreen;
+          color: $white;
+        }
+      }
+    }
+  }
+}

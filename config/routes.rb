@@ -1,16 +1,15 @@
 Kixo::Application.routes.draw do
-  get "ads/index"
-
   # I18n
   scope "(:locale)", :locale => /fr|en/ do
-    devise_for :users, :controllers => {:registrations => "registrations", :sessions => "sessions"}
+    devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"} do
+      get "/users/change_plan/:plan" => "users/registrations#change_plan", :as => :change_user_plan
+      resources :cards
+    end
 
     resources :professionals do
       collection do
         get "search"
       end
-
-      resources :reviews
     end
 
     resources :conversations do
@@ -24,9 +23,7 @@ Kixo::Application.routes.draw do
     end
 
     resources :categories do
-      resources :topics do
-        resources :guides
-      end
+      resources :topics
       resources :professions
     end
 
@@ -47,10 +44,11 @@ Kixo::Application.routes.draw do
 
     resources :comments
 
-    resources :whats
-    resources :wheres
-
-    resources :cards
+    namespace :data do
+      resources :whats
+      resources :wheres
+      resources :localities
+    end
 
     namespace :admin do
       resources :users

@@ -1,4 +1,4 @@
-class SessionsController < Devise::SessionsController
+class Users::SessionsController < Devise::SessionsController
   def create
     # take into account acts_as_paranoid deleted users
     if ( resource = resource_class.only_deleted.find_by_email(params[resource_name][:email]) )

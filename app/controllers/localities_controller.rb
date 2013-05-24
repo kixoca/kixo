@@ -9,24 +9,13 @@ class LocalitiesController < ApplicationController
       @country = Country.find(params[:country_id])
       @localities = @country.localities
     else
-      if params[:term]
-        @localities = Locality.search(params[:term])
-      else
-        @localities = Locality.all
-      end
+      @localities = Locality.all
     end
 
-    @humanized_localities = @localities.sort_by(&:rank).reverse.map {|locality|
-      {:id => locality.id,
-       :name => locality.name,
-       :label => "#{locality.name}, #{locality.region.name}",
-       :population => locality.population}
-    }
-
     respond_to do |format|
-      format.html # search.html.haml
-      format.json { render :json => @humanized_localities }
-      format.xml  { render :xml => @humanized_localities }
+      format.html
+      format.json { render :json => @localities }
+      format.xml  { render :xml => @localities }
     end
   end
 
@@ -42,7 +31,7 @@ class LocalitiesController < ApplicationController
     @canonical_url = country_region_locality_url(@country, @region, @locality)
 
     respond_to do |format|
-      format.html # show.html.haml
+      format.html
       format.json { render :json => @locality }
       format.xml  { render :xml => @locality }
     end
