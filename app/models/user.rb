@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name
 
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
-                  :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
+                  :name, :headshot, :bio, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,

@@ -8,7 +8,7 @@ class Region < Taxonomy
   has_many :localities, :foreign_key => :parent_id
 
   has_many :users, :foreign_key => :region_id
-  has_many :professionals, :class_name => "User", :foreign_key => :region_id, :conditions => {:is_professional => true}
+  has_many :professionals, :class_name => "User", :foreign_key => :region_id, :conditions => {:is_professional? => true}
 
   geocoded_by :geocoding_address
   after_validation :geocode
