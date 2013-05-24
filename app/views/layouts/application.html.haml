@@ -52,11 +52,12 @@
                           - if current_user.messages.unread.count > 0
                             .count= current_user.messages.unread.count
                           Messages
-                      %li#notifications
-                        = link_to notifications_path do
-                          = t("notifications.index.label")
-                          - if current_user.notifications.unseen.count > 0
-                            .count= current_user.notifications.unseen.count
+                      - if false
+                        %li#notifications
+                          = link_to notifications_path do
+                            = t("notifications.index.label")
+                            - if current_user.notifications.unseen.count > 0
+                              .count= current_user.notifications.unseen.count
                       %li.divider
                       - if current_user.is_admin?
                         %li#admin
