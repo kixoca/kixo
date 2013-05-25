@@ -252,10 +252,26 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_mixpanel_id
-    begin
-      self.mixpanel_id = SecureRandom.hex(16)
-    end while self.class.exists?(:mixpanel_id => self.mixpanel_id)
+  def to_param
+    if self.is_professional?
+      "#{id}-#{name.parameterize}"
+    else
+      "#{id}"
+    end
+  end
+
+  private
+
+  def set_default_values
+    self.locale  = Locale.find_by_code(I18n.locale) if self.locale.blank?
+    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
+    self.plan    = "personal" if self.plan.blank?
+    return true
+  end
+
+  def set_is_professional
+    self.is_professional = ["professional", "visibility"].include?(self.plan)
+    return true
   end
 
   def sanitize_website
@@ -277,25 +293,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  def to_param
-    if self.is_professional?
-      "#{id}-#{name.parameterize}"
-    else
-      "#{id}"
-    end
-  end
-
-  private
-
-  def set_default_values
-    self.locale  = Locale.find_by_code(I18n.locale) if self.locale.blank?
-    self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
-    self.plan    = "personal" if self.plan.blank?
-    return true
-  end
-
-  def set_is_professional
-    self.is_professional = ["professional", "visibility"].include?(self.plan)
-    return true
+  def create_mixpanel_id
+    begin
+      self.mixpanel_id = SecureRandom.hex(16)
+    end while self.class.exists?(:mixpanel_id => self.mixpanel_id)
   end
 end
