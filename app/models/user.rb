@@ -21,6 +21,9 @@ class User < ActiveRecord::Base
   # set default values on init
   after_initialize :set_default_values
 
+  # before save, set the 'is_professional' attribute based on the plan
+  before_save :set_is_professional
+
   # make sure website has http(s)://
   before_save :sanitize_website
   before_save :sanitize_tel
@@ -33,8 +36,6 @@ class User < ActiveRecord::Base
   # sync stripe customer
   before_create  :create_stripe_customer
   before_update  :update_stripe_customer
-
-  before_save :set_is_professional
 
   # mixpanel user unique id
   before_create :create_mixpanel_id
@@ -251,14 +252,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def set_is_professional
-    if self.plan == "professional" || self.plan == "visibility"
-      self.is_professional = true
-    else
-      self.is_professional = false
-    end
-  end
-
   def create_mixpanel_id
     begin
       self.mixpanel_id = SecureRandom.hex(16)
@@ -298,5 +291,11 @@ class User < ActiveRecord::Base
     self.locale  = Locale.find_by_code(I18n.locale) if self.locale.blank?
     self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
     self.plan    = "personal" if self.plan.blank?
+    return true
+  end
+
+  def set_is_professional
+    self.is_professional = ["professional", "visibility"].include?(self.plan)
+    return true
   end
 end

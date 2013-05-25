@@ -1,7 +1,9 @@
 Kixo::Application.routes.draw do
   # I18n
   scope "(:locale)", :locale => /fr|en/ do
-    devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"} do
+    devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
+
+    devise_scope :user do
       get "/users/change_plan/:plan" => "users/registrations#change_plan", :as => :change_user_plan
       resources :cards
     end

@@ -1,7 +1,7 @@
 module Geolocalizable
   def self.included(base)
     base.geocoded_by :geocoding_address
-    base.after_validation :geocode
+    base.after_validation :geocode, :if => :location_changed?
 
     def geocoding_address
       addr = Array.new
@@ -27,6 +27,10 @@ module Geolocalizable
 
     def locality_name
       self.locality.name unless self.locality.nil?
+    end
+
+    def location_changed?
+      self.street_address_1_changed? || self.locality_id_changed?
     end
   end
 end
