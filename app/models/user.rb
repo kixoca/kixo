@@ -161,6 +161,10 @@ class User < ActiveRecord::Base
     addr << "#{self.locality.name}, #{self.locality.region.name} #{self.postal_code}, #{self.locality.region.country.name}"
   end
 
+  def location_changed?
+    self.street_address_1_changed? || self.locality_id_changed?
+  end
+
   def topics_list
     self.topics.map {|topic| topic.name}.join(", ").html_safe
   end
@@ -174,7 +178,6 @@ class User < ActiveRecord::Base
   end
 
   def can_answer?(question)
-    #question.is_open? and !self.topics.merge(question.topics).empty? and self.answers.merge(question.answers).empty?
     question.is_open? && self.is_professional?
   end
 

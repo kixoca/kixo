@@ -58,11 +58,15 @@ class Question < ActiveRecord::Base
   end
 
   def is_open?
-    self.status == QuestionStatus.find_by_name("Open")
+    self.status == QuestionStatus.find_by_name("Open", Locale.find_by_code(:en))
   end
 
   def topics_list
     self.topics.map {|topic| topic.name}.join(", ").html_safe
+  end
+
+  def location_changed?
+    self.locality_id_changed?
   end
 
   def to_param
@@ -72,8 +76,8 @@ class Question < ActiveRecord::Base
   private
 
   def default_values
-    self.is_private ||= false
-    self.status ||= QuestionStatus.find_by_name("Open", Locale.find_by_code("en"))
-    self.locale ||= Locale.find_by_code(I18n.locale)
+    self.is_private = false if self.is_private.blank?
+    self.status     = QuestionStatus.find_by_name("Open", Locale.find_by_code("en")) if self.status.blank?
+    self.locale     = Locale.find_by_code(I18n.locale) if self.locale.blank?
   end
 end

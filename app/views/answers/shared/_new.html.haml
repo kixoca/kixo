@@ -1,17 +1,12 @@
-%h5= t("answers.new.title").html_safe
-- if user_signed_in?
-  - if current_user.is_professional?
-    - if (current_user.answers & question.answers).empty?
-      = simple_form_for [question, question.answers.new] do |f|
-        = f.input :question_id, :as => :hidden, :value => question.id
-        = f.input :answer, :input_html => {:rows => 7}, :label => false
-        = f.button :submit, t("answers.new.submit")
-    - else
-      %p.access-denied
-        = t("answers.new.errors.already_answered").html_safe
-  - else
-    %p.access-denied
-      = t("answers.new.errors.not_a_professional").html_safe
-- else
-  %p.access-denied
-    = t("answers.new.errors.not_signed_in").html_safe
+- if user_signed_in? && current_user.can_answer?(question)
+  %section#answer
+    .container
+      %h5= t("answers.new.title").html_safe
+      - if (current_user.answers & question.answers).empty?
+        = simple_form_for [question, question.answers.new] do |f|
+          = f.input :question_id, :as => :hidden, :value => question.id
+          = f.input :answer, :input_html => {:rows => 7}, :label => false
+          = f.button :submit, t("answers.new.submit")
+      - else
+        %p.access-denied
+          = t("answers.new.errors.already_answered").html_safe

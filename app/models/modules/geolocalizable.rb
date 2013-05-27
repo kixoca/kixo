@@ -30,7 +30,7 @@ module Geolocalizable
     end
 
     def location_changed?
-      self.street_address_1_changed? || self.locality_id_changed?
+      true
     end
   end
 end

@@ -52,9 +52,7 @@
               - else
                 %p.no-records
                   = t("answers.count.zero").html_safe
-          %section#answer
-            .container
-              = render "answers/shared/new", :question => @question
+          = render "answers/shared/new", :question => @question
       .three.columns
         %aside#sidebar
           %section#question-topics
