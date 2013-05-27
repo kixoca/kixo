@@ -174,7 +174,8 @@ class User < ActiveRecord::Base
   end
 
   def can_answer?(question)
-    question.is_open? and !self.topics.merge(question.topics).empty? and self.answers.merge(question.answers).empty?
+    #question.is_open? and !self.topics.merge(question.topics).empty? and self.answers.merge(question.answers).empty?
+    question.is_open? && self.is_professional?
   end
 
   def can_review?(professional)
