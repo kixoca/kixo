@@ -1,0 +1,25 @@
+<p class="center"><%= image_tag "/assets/mailer/user_mailer/notify_of_question/new_question_char.png", :width => 180, :height => 240 %></p>
+
+<h1 class="subject"><%= t("user_mailer.notify_of_question.subject").html_safe %></h1>
+
+<p><%= @user.name %>, someone just asked a question you might be able to answer!</p>
+
+<div class="question" style="border: 1px solid #ddd; padding: 10px;">
+    <div class="question-title" style="font-weight: bold;">
+        <%= link_to @question.title, question_url(@question, :locale => @question.locale.code) %>
+    </div>
+    <% unless @question.details.blank? %>
+        <div class="question-details">
+            <%= truncate(@question.details, :omission => "...", :length => 150) %><br />
+        </div>
+    <% end %>
+    <div class="question-meta" style="font-size: 90%; color: #777;">
+        <%= t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @question.author.short_address, :locale => I18n.locale).html_safe %>
+    </div>
+</div>
+
+<p class="answer-cta center" style="font-size: 120%; font-weight: bold;">
+    <%= link_to "Answer this question", question_url(@question, :locale => @question.locale.code) %>
+</p>
+
+<p>Hopefully you can help this person and make business together.</p>

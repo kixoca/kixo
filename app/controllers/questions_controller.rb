@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_filter :verify_if_author!,  :only => [:edit, :update, :destroy]
 
   def index
-    @questions = Question.find_by_locale.public.
+    @questions = Question.find_by_locale.public
 
     respond_to do |format|
       format.html

@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
 
   after_initialize :default_values
 
+  after_create :notify_of_question
+
   # localization
   belongs_to :locale
 
@@ -67,6 +69,10 @@ class Question < ActiveRecord::Base
 
   def location_changed?
     self.locality_id_changed?
+  end
+
+  def notify_of_question
+    UserMailer.notify_of_question(self).deliver
   end
 
   def to_param

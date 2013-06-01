@@ -7,3 +7,5 @@ en:
       subject: "Welcome to Kixo!"
     goodbye_email:
       subject: "Kixo will miss you!"
+    notify_of_question:
+      subject: "There is a new question for you!"

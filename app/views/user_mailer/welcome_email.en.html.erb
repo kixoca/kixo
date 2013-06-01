@@ -1,6 +1,6 @@
 <p class="center"><%= image_tag "/assets/mailer/user_mailer/welcome_email/welcome.png", :width => 180, :height => 240 %></p>
 
-<h1 class="subject"><%= t("user_mailer.welcome_email.subject", :locale => @locale).html_safe %></h1>
+<h1 class="subject"><%= t("user_mailer.welcome_email.subject").html_safe %></h1>
 
 <p>Welcome to Kixo, <%= @user.name %></p>
 
@@ -11,9 +11,9 @@
 <p>We know choosing the right professional is no easy task. That’s why we created our unique platform so you can exchange with certified local professionals, get informed and make the right choice.</p>
 
 <% if @user.is_professional? %>
-  <p>You can now go ahead and <%= link_to "edit your profile", edit_user_registration_url(:locale => @locale) %>.</p>
+  <p>You can now go ahead and <%= link_to "edit your profile", edit_user_registration_url %>.</p>
 <% else %>
-  <p>You can now go ahead and <%= link_to "create your first question", new_question_url(:locale => @locale) %>.</p>
+  <p>You can now go ahead and <%= link_to "create your first question", new_question_url %>.</p>
 <% end %>
 
 <p>We are very happy to have you with us.</p>
