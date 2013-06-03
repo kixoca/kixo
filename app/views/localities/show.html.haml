@@ -3,12 +3,9 @@
   .container
     .row
       .twelve.columns
-        %hgroup.hr
-          %h1
-            = @locality.name
-          %h3.subheader
-            = t("taxonomy.find_ask_consult_in", :taxonomy => @locality.name)
-      .eight.columns
+        %h1= @locality.name
+        %hr
+      .nine.columns
         %section.browse-by-taxonomy
           .container
             %ul.categories.accordion.compact
@@ -33,15 +30,13 @@
                           - category.professions.each do |profession|
                             %li.profession
                               = link_to profession.name, locality_profession_path(@locality, profession), :class => "profession-name", :title => "#{profession.name} - #{@locality.name}, #{@region.name}"
-      .four.columns
+      .three.columns
         %section
-          .panel
-            %h5
-              = t("professionals.top_rated.in_locality.title", :locality => @locality.name).html_safe
-            - unless @professionals.empty?
-              %ul.looper.professionals.top-rated-professionals
-                - @professionals.each do |professional|
-                  %li= render "professionals/loops/minimal", :professional => professional
-            - else
-              %p.no-records
-                = t("professionals.count.zero").html_safe
+          %h5.section-title= t("professionals.top_rated.in_locality.title", :locality => @locality.name).html_safe
+          - unless @professionals.empty?
+            %ul.looper.professionals.top-rated-professionals
+              - @professionals.each do |professional|
+                %li= render "professionals/loops/minimal", :professional => professional
+          - else
+            %p.no-records
+              = t("professionals.count.zero").html_safe

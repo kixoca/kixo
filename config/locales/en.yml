@@ -270,7 +270,6 @@ en:
     count_in_taxonomy:
       zero: "No %{tax_1} in %{tax_2}"
       other: "%{count} %{tax_1} in %{tax_2}"
-    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
 
   categories:
     index:

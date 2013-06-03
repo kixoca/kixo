@@ -275,7 +275,6 @@ fr:
     count_in_taxonomy:
       zero: "Aucune %{taxonomy_1} en %{taxonomy_2}"
       other: "%{count} %{taxonomy_1} en %{taxonomy_2}"
-    find_ask_consult_in: "Find, ask and consult professionals in %{taxonomy}"
 
   categories:
     index:
