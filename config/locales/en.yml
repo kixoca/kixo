@@ -187,6 +187,7 @@ en:
       specialties: "Specialties"
       about: "About %{name}"
       send_message: "Send a private message"
+      page_title: "%{professional} | Kixo"
     count:
       zero: "No professionals found"
       one: "1 professional found"
@@ -275,6 +276,8 @@ en:
     index:
       title: "Categories"
       view_all: "View all categories"
+    show:
+      page_title: "%{category} | Kixo"
     count:
       zero: "No categories found"
       one: "1 category found"
@@ -287,6 +290,9 @@ en:
     show:
       in_locality:
         title: "%{topic} in %{locality}"
+      page_title:
+        with_locality: "%{topic} in %{locality} | %{category} | Kixo"
+        without_locality: "%{topic} | %{category} | Kixo"
     count:
       zero: "No topics found"
       one: "1 topic found"
@@ -302,7 +308,10 @@ en:
       view_all: "View all professions"
     show:
       in_locality:
-        title: "<em>%{profession}</em> in <em>%{locality}</em>"
+        title: "%{profession} in %{locality}"
+      page_title:
+        with_locality: "%{profession} in %{locality} | %{category} | Kixo"
+        without_locality: "%{profession} | %{category} | Kixo"
     count:
       zero: "No professions found"
       one: "1 profession found"
@@ -316,6 +325,8 @@ en:
     index:
       title: "Cities"
       view_all: "View all cities"
+    show:
+      page_title: "%{locality}, %{region} | Kixo"
 
   reviews:
     index:
@@ -350,6 +361,7 @@ en:
         time_ago_in_location: "Asked <time class='created-at' datetime='%{time}'>%{time_ago}</time> ago in <span class='location'>%{location}</span>"
       topics:
         title: "Topics"
+      page_title: "%{question} | Kixo"
     new:
       label: "Ask a Question"
       title: "Ask a question"

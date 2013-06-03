@@ -21,6 +21,8 @@ class CategoriesController < ApplicationController
     @topics = @category.topics
     @professions = @category.professions
 
+    @page_title = t("categories.show.page_title", :category => @category.name)
+
     respond_to do |format|
       format.html
       format.json { render :json => @category }

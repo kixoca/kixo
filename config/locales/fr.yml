@@ -192,6 +192,7 @@ fr:
       specialties: "Spécialtités"
       about: "À propos de %{name}"
       send_message: "Envoyer un message privé"
+      page_title: "%{professional} | Kixo"
     count:
       zero: "Aucun professionnel trouvé"
       one: "1 professionnel trouvé"
@@ -280,6 +281,8 @@ fr:
     index:
       title: "Catégories"
       view_all: "Voir toutes les catégories"
+    show:
+      page_title: "%{category} | Kixo"
     count:
       zero: "Aucune catégorie trouvée"
       one: "1 catégorie trouvée"
@@ -292,6 +295,9 @@ fr:
     show:
       in_locality:
         title: "%{topic} à %{locality}"
+      page_title:
+        with_locality: "%{topic} à %{locality} | %{category} | Kixo"
+        without_locality: "%{topic} | %{category} | Kixo"
     count:
       zero: "Aucun sujet trouvé"
       one: "1 sujet trouvé"
@@ -308,6 +314,9 @@ fr:
     show:
       in_locality:
         title: "%{profession} à %{locality}"
+      page_title:
+        with_locality: "%{profession} à %{locality} | %{category} | Kixo"
+        without_locality: "%{profession} | %{category} | Kixo"
     count:
       zero: "Aucune profession trouvée"
       one: "1 profession trouvée"
@@ -321,6 +330,8 @@ fr:
     index:
       title: "Villes"
       view_all: "Voir toutes les villes"
+    show:
+      page_title: "%{locality}, %{region} | Kixo"
 
   reviews:
     index:
@@ -355,6 +366,7 @@ fr:
         time_ago_in_location: "Posée il y a <time class='created-at' datetime='%{time}'>%{time_ago}</time> à <span class='location'>%{location}</span>"
       topics:
         title: "Sujets"
+      page_title: "%{question} | Kixo"
     new:
       label: "Poser une question"
       title: "Poser une question"

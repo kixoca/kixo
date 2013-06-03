@@ -70,6 +70,8 @@ class ProfessionalsController < ApplicationController
 
     @similar_professionals = @professional.similar_professionals
 
+    @page_title = t("professionals.show.page_title", :professional => @professional.name)
+
     respond_to do |format|
       format.html
       format.json { render :json => @professional }
