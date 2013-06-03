@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
 
   after_initialize :default_values
 
+  before_validation :set_locality_from_author
+
   after_create :notify_of_question
 
   # localization
@@ -71,8 +73,12 @@ class Question < ActiveRecord::Base
     self.locality_id_changed?
   end
 
+  def set_locality_from_author
+    self.locality = self.author.locality
+  end
+
   def notify_of_question
-    UserMailer.notify_of_question(self).deliver
+    UserMailer.delay.notify_of_question(self)
   end
 
   def to_param

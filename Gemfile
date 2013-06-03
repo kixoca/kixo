@@ -10,7 +10,7 @@ group :development do
   gem 'sqlite3'
 end
 
-gem 'thin'
+gem 'unicorn'
 
 gem 'paper_trail'
 
@@ -63,3 +63,5 @@ gem 'simple_form'
 gem 'acts_as_paranoid'
 
 gem 'event_tracker'
+
+gem 'delayed_job_active_record'

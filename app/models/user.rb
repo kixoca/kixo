@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   # mixpanel user unique id
   before_create :create_mixpanel_id
 
-  before_create :welcome_by_email
+  after_create :welcome_by_email
   before_destroy :goodbye_by_email
 
   # classifications
@@ -192,11 +192,11 @@ class User < ActiveRecord::Base
   end
 
   def welcome_by_email
-    UserMailer.welcome_email(self).deliver
+    UserMailer.delay.welcome_email(self)
   end
 
   def goodbye_by_email
-    UserMailer.goodbye_email(self).deliver
+    UserMailer.delay.goodbye_email(self)
   end
 
   def deactivate

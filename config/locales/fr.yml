@@ -531,11 +531,11 @@ fr:
       description: "Plan de base pour les personnes qui cherchent simplement à poser des questions et échanger avec des professionnels."
     professional:
       title: "Professionnel"
-      price: "Gratuit"
+      price: "<s>20$/mois</s> <em>Gratuit</em>"
       description: "Voulez-vous répondre aux questions de clients potentiels? Commencez avec ce plan."
     visibility:
       title: "Visibilité+"
-      price: "50$ par mois"
+      price: "100$/mois"
       description: "Vous voulez obtenir plus de Kixo? Obtenez ce plan et bénéficiez d'une visibilité accrue sur tout le site!"
     features:
       ask_questions: "Posez des questions"

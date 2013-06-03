@@ -21,10 +21,12 @@ class UserMailer < Devise::Mailer
     tmp_locale = I18n.locale
     @question = question
     @users = question.locale.users.find_all_by_topic(question.topics).where(:notify_of_questions => true)
-    @users.each do |user|
-      @user = user
-      I18n.locale = user.locale.code
-      mail(:to => user.email, :subject => t("user_mailer.notify_of_question.subject"))
+    unless @users.empty?
+      @users.each do |user|
+        @user = user
+        I18n.locale = user.locale.code
+        mail(:to => user.email, :subject => t("user_mailer.notify_of_question.subject"))
+      end
     end
     I18n.locale = tmp_locale
   end

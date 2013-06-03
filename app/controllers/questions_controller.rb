@@ -62,37 +62,35 @@ class QuestionsController < ApplicationController
         if @author.save
           flash[:success] = I18n.t("users.registrations.create.success")
         else
-          clean_up_passwords @author
           flash[:error] = I18n.t("users.registrations.create.error")
           render :action => "new"
         end
       end
 
-      sign_in :user, @author
+      sign_in :user, @author if @author
     end
 
-    @question.author = current_user
+    if user_signed_in?
+      @question.author = @author || current_user
 
-    # assigns author's locality to question's locality if none is provided
-    @question.locality = @question.author.locality if @question.locality.blank?
-
-    respond_to do |format|
-      if @question.save
-        track_event "Create Question"
-        format.html do
-          flash[:success] = I18n.t("questions.create.success")
-          redirect_to @question
+      respond_to do |format|
+        if @question.save
+          track_event "Create Question"
+          format.html do
+            flash[:success] = I18n.t("questions.create.success")
+            redirect_to @question
+          end
+          format.json { render :json => @question, :status => :created, :location => @question }
+          format.xml  { render :xml => @question, :status => :created, :location => @question }
+        else
+          track_event "Create Question (Error)"
+          format.html do
+            flash[:error] = I18n.t("questions.create.error")
+            render :action => "new"
+          end
+          format.json { render :json => @question.errors, :status => :unprocessable_entity }
+          format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
         end
-        format.json { render :json => @question, :status => :created, :location => @question }
-        format.xml  { render :xml => @question, :status => :created, :location => @question }
-      else
-        track_event "Create Question (Error)"
-        format.html do
-          flash[:error] = I18n.t("questions.create.error")
-          render :action => "new"
-        end
-        format.json { render :json => @question.errors, :status => :unprocessable_entity }
-        format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end
     end
   end

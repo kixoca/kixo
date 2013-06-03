@@ -3,6 +3,6 @@
     = f.input :street_address_1
     = f.input :street_address_2
   - locality_name = (resource.nil? or resource.locality.blank?) ? nil : resource.locality.name
-  = f.input :locality_name, :required => true, :input_html => {:value => locality_name, :class => "autocomplete", :data => {:name => 'locality', :prefetch => "/#{I18n.locale}/data/localities.json"}}
+  = f.input :locality_name, :required => true, :input_html => {:value => locality_name, :class => "autocomplete", :data => {:name => "locality-name-#{I18n.locale}", :prefetch => "/#{I18n.locale}/data/localities.json"}}
   - if defined?(postal_code) and postal_code != false
     = f.input :postal_code

@@ -518,11 +518,11 @@ en:
       description: "Basic plan for people simply looking to ask questions and exchange with professionals."
     professional:
       title: "Professional"
-      price: "Free"
+      price: "<s>$20/month</s> <em>Free</em>"
       description: "Want to answer questions from potential clients? Get started with this plan."
     visibility:
       title: "Visibility+"
-      price: "$50 per month"
+      price: "$100/month"
       description: "Want to get more out of Kixo? Get this plan to benefit from increased visibility across the site!"
     features:
       ask_questions: "Ask questions"

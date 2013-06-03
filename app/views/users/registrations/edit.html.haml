@@ -147,7 +147,7 @@
                         .text-center= image_tag "/assets/plan_char_personal.png"
                         %ul.pricing-table.personal
                           %li.title= t("plans.personal.title")
-                          %li.price= t("plans.personal.price")
+                          %li.price= t("plans.personal.price").html_safe
                           %li.description= t("plans.personal.description")
                           %li.bullet-item= t("plans.features.ask_questions")
                           %li.bullet-item= t("plans.features.private_messages")
@@ -160,7 +160,7 @@
                         .text-center= image_tag "/assets/plan_char_professional.png"
                         %ul.pricing-table.professional
                           %li.title= t("plans.professional.title")
-                          %li.price= t("plans.professional.price")
+                          %li.price= t("plans.professional.price").html_safe
                           %li.description= t("plans.professional.description")
                           %li.bullet-item= t("plans.features.ask_questions")
                           %li.bullet-item= t("plans.features.private_messages")
@@ -176,7 +176,7 @@
                         .text-center= image_tag "/assets/plan_char_visibility.png"
                         %ul.pricing-table.visibility
                           %li.title= t("plans.visibility.title")
-                          %li.price= t("plans.visibility.price")
+                          %li.price= t("plans.visibility.price").html_safe
                           %li.description= t("plans.visibility.description")
                           %li.bullet-item= t("plans.features.ask_questions")
                           %li.bullet-item= t("plans.features.private_messages")
