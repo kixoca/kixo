@@ -11,11 +11,11 @@
           %header
             .container
               .row
-                .four.columns
+                .six.columns
                   %hgroup
                     %h1= t("conversations.show.title")
                     %h4.subheader= t("conversations.show.subtitle", :other_participants => @conversation.other_participants(current_user).map(&:name).join(", "))
-                .eight.columns.text-right
+                .six.columns.text-right
                   - @conversation.participants.each do |participant|
                     = link_to professional_path(participant) do
                       = image_tag participant.headshot.url(:mini), :class => "headshot"
