@@ -491,6 +491,7 @@ fr:
       label: "Messages"
     show:
       title: "Conversation"
+      subtitle: "Conversation entre vous et %{other_participants}"
     inbox:
       label: "Boîte de réception"
       empty: "Hourra! Votre boîte de réception est vide!"

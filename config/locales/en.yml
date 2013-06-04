@@ -486,6 +486,7 @@ en:
       label: "Messages"
     show:
       title: "Conversation"
+      subtitle: "Conversation between you and %{other_participants}"
     inbox:
       label: "Inbox"
       empty: "Hooray! Your inbox is empty!"

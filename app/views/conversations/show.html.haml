@@ -4,15 +4,17 @@
       .two.columns
         %ul.side-nav
           %li= link_to t("conversations.inbox.label"), conversations_path
-          %li.divider
-          %li= link_to t("messages.new.label"), new_conversation_path
+          =#%li.divider
+          =#%li= link_to t("messages.new.label"), new_conversation_path
       .ten.columns
         .page
           %header
             .container
               .row
                 .four.columns
-                  %h1= t("conversations.show.title")
+                  %hgroup
+                    %h1= t("conversations.show.title")
+                    %h4.subheader= t("conversations.show.subtitle", :other_participants => @conversation.other_participants(current_user).map(&:name).join(", "))
                 .eight.columns.text-right
                   - @conversation.participants.each do |participant|
                     = link_to professional_path(participant) do
