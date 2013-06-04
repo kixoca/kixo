@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
     @category = Category.find(params[:id])
 
     @questions = @category.questions
-    @professionals = @category.professionals
+    @professionals = @category.professionals.uniq
 
     @topics = @category.topics
     @professions = @category.professions
