@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602142105) do
+ActiveRecord::Schema.define(:version => 20130605183354) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -304,6 +304,7 @@ ActiveRecord::Schema.define(:version => 20130602142105) do
     t.string   "mixpanel_id",                 :default => "",    :null => false
     t.string   "plan",                        :default => "",    :null => false
     t.boolean  "is_professional",             :default => false, :null => false
+    t.boolean  "accepts",                     :default => false, :null => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

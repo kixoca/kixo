@@ -29,6 +29,10 @@
                 %section
                   .container
                     = f.association :locale, :collection => @all_locales
+                - unless resource.accepts
+                  %section
+                    .container
+                      = f.input :accepts
                 %section
                   .container
                     = f.button :submit, t("users.registrations.edit.submit")

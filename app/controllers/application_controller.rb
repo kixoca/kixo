@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   before_filter :set_locale
   before_filter :set_common_vars
 
+  before_filter :validate_acceptance
+
   around_filter :append_event_tracking_tags
 
   def default_url_options(options={})
@@ -72,6 +74,14 @@ class ApplicationController < ActionController::Base
     if session[:under_dev_noticed].nil?
       flash.now[:notice] = I18n.t("site.under_dev")
       session[:under_dev_noticed] = true
+    end
+  end
+
+  def validate_acceptance
+    if user_signed_in? && !current_user.accepts && !session[:validate_acceptance]
+      session[:validate_acceptance] = true
+      flash[:alert] = I18n.t("misc.validate_accepts")
+      redirect_to edit_user_registration_path
     end
   end
 

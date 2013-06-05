@@ -24,6 +24,7 @@ fr:
         password: "Mot de passe"
         password_confirmation: "Confirmation du mot de passe"
         remember_me: "Se souvenir de moi?"
+        accepts: "J'accepte les <a href='/fr/pages/termes-et-conditions' target='_blank'>termes et conditions</a>"
         locale: "Langue principale"
         locales: "Langues"
         topics: "Sujets"

@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 
   attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name
 
-  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me,
+  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts,
                   :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel,
                   :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
                   :points,
@@ -98,10 +98,11 @@ class User < ActiveRecord::Base
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
-  validates :email,    :presence => true
-  validates :name,     :presence => true
-  validates :locality, :presence => true
-  validates :locale,   :presence => true
+  validates :email,    :presence   => true
+  validates :name,     :presence   => true
+  validates :locality, :presence   => true
+  validates :locale,   :presence   => true
+  validates :accepts,  :acceptance => {:accept => true}
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})

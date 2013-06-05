@@ -1,7 +1,6 @@
-- unless resource.nil? || resource.errors.empty?
+- if object.errors.any?
   %section.errors
     .container
       %ul.error-list
-        - resource.errors.full_messages.each do |msg|
-          %li.error-msg
-            = msg
+        - object.errors.full_messages.each do |msg|
+          %li.error-msg= msg

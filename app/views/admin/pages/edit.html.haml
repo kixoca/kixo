@@ -20,7 +20,7 @@
                 = f.input :content
                 = f.input :meta_title
                 = f.input :meta_description, :input_html => {:rows => 5}
-                = f.input :parent, :collection => @all_pages
-                = f.input :locale, :collection => @all_locales
+                = f.input :parent_id, :collection => @all_pages
+                = f.input :locale_id, :collection => @all_locales
                 = f.input :published_at
                 = f.button :submit

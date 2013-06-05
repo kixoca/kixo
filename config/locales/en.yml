@@ -59,6 +59,7 @@ en:
     me: "Me"
     time_ago: "<time class='created-at' datetime='%{time}'>%{time_ago} ago</time>"
     sent_time_ago: "<time class='created-at' datetime='%{time}'>Sent %{time_ago} ago</time>"
+    validate_accepts: "You must accept the terms of service to continue using Kixo"
 
   beta:
     cta: "Pre-signup for the beta and get early access!"
@@ -67,6 +68,10 @@ en:
     thank_you:
       title: "Thank you for signing up!"
       subtitle: "We will contact you when we launch!"
+
+  pages:
+    show:
+      page_title: "%{title} | Kixo"
 
   users:
     registrations:
@@ -554,3 +559,8 @@ en:
     paid: "<span class='success label radius'>Paid</span>"
     unpaid: "<span class='alert label radius'>Unpaid</span>"
     refunded: "<span class='alert label radius'>Refunded</span>"
+
+  activerecord:
+    attributes:
+      user:
+        email: "Email"

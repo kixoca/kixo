@@ -59,6 +59,7 @@ fr:
     me: "Moi"
     time_ago: "<time class='created-at' datetime='%{time}'>Il y a %{time_ago}</time>"
     sent_time_ago: "<time class='created-at' datetime='%{time}'>Envoyé il y a %{time_ago}</time>"
+    validate_accepts: "Vous devez accepter les termes et condition afin de continuer à utiliser Kixo"
 
   beta:
     cta: "Pre-signup for the beta and get early access!"
@@ -67,6 +68,10 @@ fr:
     thank_you:
       title: "Thank you for signing up!"
       subtitle: "We will contact you when we launch!"
+
+  pages:
+    show:
+      page_title: "%{title} | Kixo"
 
   users:
     registrations:
@@ -575,6 +580,11 @@ fr:
       create: "Créer un(e) %{model}"
       update: "Modifier ce(tte) %{model}"
       submit: "Enregistrer ce(tte) %{model}"
+
+  activerecord:
+    attributes:
+      user:
+        email: "Courriel"
 
   errors: &errors
     format: "%{attribute} %{message}"
