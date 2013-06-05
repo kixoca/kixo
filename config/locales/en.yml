@@ -5,6 +5,7 @@ en:
     about:
       title: "What is Kixo?"
       description: "At Kixo it is our mission to help you get accurate answers to your questions. We strive to provide you the best information so you can make informed decisions. Choosing a qualified professional is not easy, but we make it simpler!"
+    footer_note: "<a href='/en/pages/terms-of-service'>Terms of Service</a> &nbsp; <a href='/en/pages/privacy-policy'>Privacy Policy</a>"
     under_dev: "Kixo is currently under development and some features might not work as expected for the time being."
 
   layout:

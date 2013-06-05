@@ -99,7 +99,7 @@
                 = link_to "/#{I18n.locale}" do
                   = image_tag "/assets/logo_grayscale.png", :width => 100, :height => 32, :alt => t("layout.logo.alt")
               %p#kixo-description
-                =t("site.about.description")
+                = t("site.about.description")
             #social-media
               %ul.inline
                 %li
@@ -111,6 +111,8 @@
                 %li
                   = link_to "http://www.linkedin.com/company/2829266", :target => "_blank" do
                     %i.icon-linkedin-sign
+            #footer-note
+              = t("site.footer_note").html_safe
           .two.columns
             #browse_by_category
               %h5

@@ -5,6 +5,7 @@ fr:
     about:
       title: "Qu'est-ce que Kixo?"
       description: "Chez Kixo il est de notre mission de vous aider à obtenir des réponses précises à vos questions. Nous nous efforçons de vous fournir les meilleures informations afin que vous puissiez prendre des décisions éclairées. Le choix d'un professionnel qualifié n'est pas facile, mais nous voulons le rendre plus simple!"
+    footer_note: "<a href='/fr/pages/termes-et-conditions'>Termes et conditions</a> &nbsp; <a href='/fr/pages/politique-de-confidentialite'>Politique de confidentialité</a>"
     under_dev: "Kixo est actuellement en cours de développement et certaines fonctionnalités peuvent ne pas fonctionner comme prévu pour le moment."
 
   layout:
