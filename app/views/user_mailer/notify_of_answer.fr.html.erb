@@ -1,0 +1,20 @@
+<p class="center"><%= image_tag "/assets/mailer/user_mailer/notify_of_answer/new_answer_char.png", :width => 180, :height => 240 %></p>
+
+<h1 class="subject"><%= t("user_mailer.notify_of_answer.subject").html_safe %></h1>
+
+<p><%= @user.name %>, <%= link_to @author.name, professional_url(@author, :locale => @user.locale.code) %> vient de répondre à votre question!</p>
+
+<div class="question" style="border: 1px solid #ddd; padding: 10px;">
+    <div class="question-title" style="font-weight: bold;">
+        <%= link_to @question.title, question_url(@question, :locale => @question.locale.code) %>
+    </div>
+    <div class="answer">
+        <%= @answer.answer %>
+    </div>
+</div>
+
+<p class="view-cta center" style="font-size: 120%; font-weight: bold;">
+    <%= link_to "Voir cette réponse", question_url(@question, :locale => @question.locale.code) %>
+</p>
+
+<p>Espérons que cette réponse vous sera utile!</p>

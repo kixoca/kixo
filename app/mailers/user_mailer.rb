@@ -31,4 +31,15 @@ class UserMailer < Devise::Mailer
     I18n.locale = tmp_locale
   end
 
+  def notify_of_answer(answer)
+    tmp_locale = I18n.locale
+    @answer = answer
+    @question = @answer.question
+    @user = @question.author
+    @author = @answer.author
+    I18n.locale = @user.locale.code
+    mail(:to => @user.email, :subject => t("user_mailer.notify_of_answer.subject"))
+    I18n.locale = tmp_locale
+  end
+
 end

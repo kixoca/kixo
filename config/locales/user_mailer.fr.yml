@@ -6,6 +6,8 @@ fr:
     welcome_email:
       subject: "Bienvenue sur Kixo!"
     goodbye_email:
-      subject: "Kixo va s'ennuyer de vous!"
+      subject: "Kixo va s'ennuyer de vous !"
     notify_of_question:
-      subject: "Il y a une nouvelle question pour vous!"
+      subject: "Il y a une nouvelle question pour vous !"
+    notify_of_answer:
+      subject: "Votre question a été répondue !"

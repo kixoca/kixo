@@ -9,3 +9,5 @@ en:
       subject: "Kixo will miss you!"
     notify_of_question:
       subject: "There is a new question for you!"
+    notify_of_answer:
+      subject: "Your question has been answered!"
