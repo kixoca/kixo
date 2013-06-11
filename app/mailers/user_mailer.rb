@@ -65,8 +65,10 @@ class UserMailer < Devise::Mailer
       @users.each do |user|
         @user = user
         @questions = Question.where(:locale_id => user.locales).where("created_at > ?", 7.days.ago).limit(5).order("created_at DESC")
-        I18n.locale = user.locale.code
-        mail(:to => user.email, :subject => t("user_mailer.weekly_questions_email.subject"))
+        unless @questions.empty?
+          I18n.locale = user.locale.code
+          mail(:to => user.email, :subject => t("user_mailer.weekly_questions_email.subject"))
+        end
       end
     end
     I18n.locale = tmp_locale
