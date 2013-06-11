@@ -106,8 +106,6 @@ GEM
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       paper_trail (~> 2)
-    google-webfonts (0.1.2)
-      actionpack (>= 3.0.0)
     haml (3.1.7)
     haml-rails (0.3.5)
       actionpack (>= 3.1, < 4.1)
@@ -274,7 +272,6 @@ DEPENDENCIES
   event_tracker
   geocoder
   globalize3
-  google-webfonts
   haml-rails
   jquery-rails
   kaminari
