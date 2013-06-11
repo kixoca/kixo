@@ -20,7 +20,7 @@
                   .six.columns
                     = f.input :password_confirmation, :required => true
                 = render "shared/location_selector", :f => f, :street_address => false
-                = f.input :accepts
+                = f.input :accepts, :as => :boolean
             %section
               .container
                 = f.button :submit, t("users.registrations.new.submit")

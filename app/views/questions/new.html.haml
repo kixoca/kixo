@@ -47,7 +47,7 @@
                           .six.columns
                             = author_f.input :password_confirmation
                         = render "shared/location_selector", :f => author_f
-                        = author_f.input :accepts
+                        = author_f.input :accepts, :as => :boolean
                     %li#existingUserTab
                       = simple_fields_for :existing_user, @author do |author_f|
                         = author_f.input :email
