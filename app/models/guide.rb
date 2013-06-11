@@ -21,8 +21,8 @@ class Guide < ActiveRecord::Base
   after_initialize :default_values
 
   # validation
-  validates :title,   :presence => true
-  validates :excerpt, :presence => true
+  validates :title,   :presence => true, :length => {:maximum => 150}
+  validates :excerpt, :presence => true, :length => {:maximum => 250}
   validates :content, :presence => true
   validates_existence_of :classifications
   validates_existence_of :status

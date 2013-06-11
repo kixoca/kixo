@@ -98,11 +98,21 @@ class User < ActiveRecord::Base
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
-  validates :email,    :presence   => true
-  validates :name,     :presence   => true
+  validates :email,    :presence   => true, :length => {:minimum => 3, :maximum => 100}
+  validates :name,     :presence   => true, :length => {:minimum => 3, :maximum => 100}
   validates :locality, :presence   => true
   validates :locale,   :presence   => true
   validates :accepts,  :acceptance => {:accept => true}
+  validates :company_name,     :length => {:maximum => 100}
+  validates :tel,              :length => {:maximum => 100}
+  validates :website,          :length => {:maximum => 100}
+  validates :twitter,          :length => {:maximum => 100}
+  validates :facebook,         :length => {:maximum => 100}
+  validates :google_plus,      :length => {:maximum => 100}
+  validates :linkedin,         :length => {:maximum => 100}
+  validates :street_address_1, :length => {:maximum => 100}
+  validates :street_address_2, :length => {:maximum => 100}
+  validates :postal_code,      :length => {:maximum => 15}
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})

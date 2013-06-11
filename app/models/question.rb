@@ -35,7 +35,7 @@ class Question < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   # validation
-  validates :title,  :presence => true
+  validates :title,  :presence => true, :length => {:minimum => 25, :maximum => 250}
   validates :topics, :presence => true
   validates :status, :presence => true
   validates :author, :presence => true
