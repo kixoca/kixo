@@ -4,4 +4,4 @@ require 'clockwork'
 
 include Clockwork
 
-every(2.minutes, 'weekly_questions_email', :at => '9:00') { UserMailer.delay.weekly_questions_email }
+every(7.days, 'weekly_questions_email', :at => '9:00') { UserMailer.delay.weekly_questions_email }
