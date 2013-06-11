@@ -8,8 +8,8 @@
     <p><%= @user.name %>, <%= @author.name %> vient de vous envoyer un message privé !</p>
 <% end %>
 
-<div class="message" style="border: 1px solid #ddd; padding: 10px;">
-  <%= @message.message %>
+<div class="message" style="border: 1px solid #ddd; padding: 10px 30px;">
+  <%= simple_format @message.message %>
   <div class="message-meta" style="font-size: 90%; color: #777;">
     <%= t("misc.sent_time_ago", :time => @message.created_at, :time_ago => time_ago_in_words(@message.created_at)).html_safe %>
   </div>
