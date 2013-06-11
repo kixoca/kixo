@@ -65,3 +65,5 @@ gem 'acts_as_paranoid'
 gem 'event_tracker'
 
 gem 'delayed_job_active_record'
+
+gem 'clockwork'
