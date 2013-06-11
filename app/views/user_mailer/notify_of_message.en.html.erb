@@ -1,0 +1,20 @@
+<p class="center"><%= image_tag "/assets/mailer/user_mailer/notify_of_message/char.png", :width => 300, :height => 200 %></p>
+
+<h1 class="subject"><%= t("user_mailer.notify_of_message.subject").html_safe %></h1>
+
+<% if @author.is_professional? %>
+    <p><%= @user.name %>, <%= link_to @author.name, professional_url(@author, :locale => @user.locale.code) %> just sent you a private message!</p>
+<% else %>
+    <p><%= @user.name %>, <%= @author.name %> just sent you a private message!</p>
+<% end %>
+
+<div class="message" style="border: 1px solid #ddd; padding: 10px;">
+  <%= @message.message %>
+  <div class="message-meta" style="font-size: 90%; color: #777;">
+    <%= t("misc.sent_time_ago", :time => @message.created_at, :time_ago => time_ago_in_words(@message.created_at)).html_safe %>
+  </div>
+</div>
+
+<p class="message-cta center" style="font-size: 120%; font-weight: bold;">
+  <%= link_to "View this conversation", conversation_url(@conversation, :locale => @user.locale.code) %>
+</p>

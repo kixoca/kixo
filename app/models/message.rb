@@ -6,8 +6,9 @@ class Message < ActiveRecord::Base
   belongs_to :conversation, :counter_cache => true
   belongs_to :author, :class_name => "User"
 
-  # set default values on init
-  after_initialize :default_values
+  after_initialize :set_default_values
+
+  after_create :notify_of_message
 
   validates :message, :presence => true
   validates :author,  :presence => true
@@ -16,9 +17,13 @@ class Message < ActiveRecord::Base
     self.where(:read => false)
   end
 
+  def notify_of_message
+    UserMailer.delay.notify_of_message(self)
+  end
+
   private
 
-  def default_values
+  def set_default_values
     self.read = false if self.read.blank?
   end
 end

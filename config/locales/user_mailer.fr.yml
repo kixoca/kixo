@@ -11,5 +11,7 @@ fr:
       subject: "Il y a une nouvelle question pour vous !"
     notify_of_answer:
       subject: "Votre question a été répondue !"
+    notify_of_message:
+      subject: "Vous avez un nouveau message privé !"
     weekly_questions_email:
       subject: "Les plus récentes questions sur Kixo !"
