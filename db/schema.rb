@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130605183354) do
+ActiveRecord::Schema.define(:version => 20130611194755) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -148,12 +148,12 @@ ActiveRecord::Schema.define(:version => 20130605183354) do
   add_index "localizations", ["localizable_id", "localizable_type", "locale_id"], :name => "index_localizable_locale", :unique => true
 
   create_table "messages", :force => true do |t|
-    t.integer  "conversation_id", :default => 0,     :null => false
-    t.integer  "author_id",       :default => 0,     :null => false
-    t.boolean  "read",            :default => false, :null => false
-    t.string   "message"
-    t.datetime "created_at",                         :null => false
-    t.datetime "updated_at",                         :null => false
+    t.integer  "conversation_id",                :default => 0,     :null => false
+    t.integer  "author_id",                      :default => 0,     :null => false
+    t.boolean  "read",                           :default => false, :null => false
+    t.text     "message",         :limit => 255
+    t.datetime "created_at",                                        :null => false
+    t.datetime "updated_at",                                        :null => false
     t.datetime "deleted_at"
   end
 
