@@ -1,0 +1,21 @@
+<p class="center"><%= image_tag "/assets/mailer/user_mailer/weekly_questions_email/char.png", :width => 300, :height => 200 %></p>
+
+<h1 class="subject"><%= t("user_mailer.weekly_questions_email.subject").html_safe %></h1>
+
+<p><%= @user.name %>, voici les dernières questions sur Kixo !</p>
+
+<% @questions.each do |question| %>
+    <div class="question" style="border: 1px solid #ddd; padding: 10px; margin-bottom: 10px;">
+      <div class="question-title" style="font-weight: bold;">
+        <%= link_to question.title, question_url(question, :locale => question.locale.code) %>
+      </div>
+      <% unless question.details.blank? %>
+          <div class="question-details">
+            <%= truncate(question.details, :omission => "...", :length => 150) %><br />
+          </div>
+      <% end %>
+      <div class="question-meta" style="font-size: 90%; color: #777;">
+        <%= t("questions.show.meta.time_ago_in_location", :time => question.created_at, :time_ago => time_ago_in_words(question.created_at), :location => question.author.short_address, :locale => I18n.locale).html_safe %>
+      </div>
+    </div>
+<% end %>

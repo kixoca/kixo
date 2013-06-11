@@ -11,3 +11,5 @@ en:
       subject: "There is a new question for you!"
     notify_of_answer:
       subject: "Your question has been answered!"
+    weekly_questions_email:
+      subject: "The latest questions on Kixo!"

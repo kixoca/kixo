@@ -42,4 +42,18 @@ class UserMailer < Devise::Mailer
     I18n.locale = tmp_locale
   end
 
+  def weekly_questions_email
+    tmp_locale = I18n.locale
+    @users = User.where(:notify_of_kixo_news => true)
+    unless @users.empty?
+      @users.each do |user|
+        @user = user
+        @questions = Question.where(:locale_id => user.locales).where("created_at > ?", 7.days.ago).limit(5).order("created_at DESC")
+        I18n.locale = user.locale.code
+        mail(:to => user.email, :subject => t("user_mailer.weekly_questions_email.subject"))
+      end
+    end
+    I18n.locale = tmp_locale
+  end
+
 end
