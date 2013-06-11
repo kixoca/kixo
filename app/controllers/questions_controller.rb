@@ -73,7 +73,7 @@ class QuestionsController < ApplicationController
     end
 
     if user_signed_in?
-      @question.author = @author || current_user
+      @question.author = current_user
 
       respond_to do |format|
         if @question.save
@@ -93,6 +93,16 @@ class QuestionsController < ApplicationController
           format.json { render :json => @question.errors, :status => :unprocessable_entity }
           format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
         end
+      end
+    else
+      track_event "Create Question (Error)"
+      respond_to do |format|
+        format.html do
+          flash[:error] = I18n.t("questions.create.error")
+          render :action => "new"
+        end
+        format.json { render :json => @question.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @question.errors, :status => :unprocessable_entity }
       end
     end
   end
