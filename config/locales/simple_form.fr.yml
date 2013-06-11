@@ -9,6 +9,9 @@ fr:
       default_message: "S'il vous plaît examiner les problèmes ci-dessous :"
     labels:
       defaults:
+        email: "Courriel"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
         street_address_1: "Adresse"
         street_address_2: "Adresse (suite)"
         locality: "Ville"
@@ -18,13 +21,11 @@ fr:
         postal_code: "Code postal"
         country: "Pays"
         country_name: "Pays"
+        is_professional: "Je suis un professionnel"
+        accepts: "J'accepte les <a href='/fr/pages/termes-et-conditions' target='_blank'>termes et conditions</a>"
       user:
         name: "Nom"
-        email: "Courriel"
-        password: "Mot de passe"
-        password_confirmation: "Confirmation du mot de passe"
         remember_me: "Se souvenir de moi?"
-        accepts: "J'accepte les <a href='/fr/pages/termes-et-conditions' target='_blank'>termes et conditions</a>"
         locale: "Langue principale"
         locales: "Langues"
         topics: "Sujets"
@@ -36,7 +37,6 @@ fr:
         linkedin: "LinkedIn"
         tel: "Numéro de téléphone"
         headshot: "Portrait"
-        is_professional: "Je suis un professionnel"
         bio: "Bio"
         notify_of_kixo_news: "Kixo publie de nouvelles fonctionnalités et promotions"
         notify_of_partner_news: "les partenaires de Kixo ont des offres pour vous"
@@ -44,14 +44,6 @@ fr:
         notify_of_answers: "quelqu'un répond à mes questions"
         notify_of_replies: "quelqu'un répond à mes réponses"
         notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
-      new_user:
-        email: "Courriel"
-        password: "Mot de passe"
-        password_confirmation: "Confirmation du mot de passe"
-        locality: "Ville"
-      existing_user:
-        email: "Courriel"
-        password: "Mot de passe"
       question:
         title: "Question"
         details: "Détails"

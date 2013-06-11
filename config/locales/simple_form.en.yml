@@ -9,6 +9,9 @@ en:
       default_message: "Please review the problems below:"
     labels:
       defaults:
+        email: "Email"
+        password: "Password"
+        password_confirmation: "Password confirmation"
         street_address_1: "Street Address"
         street_address_2: "Street Address 2"
         locality: "City"
@@ -18,13 +21,11 @@ en:
         postal_code: "Postal Code"
         country: "Country"
         country_name: "Country"
+        is_professional: "I am a professional"
+        accepts: "I accept the <a href='/en/pages/terms-of-service' target='_blank'>terms of service</a>"
       user:
         name: "Name"
-        email: "Email"
-        password: "Password"
-        password_confirmation: "Password confirmation"
         remember_me: "Remember me?"
-        accepts: "I accept the <a href='/en/pages/terms-of-service' target='_blank'>terms of service</a>"
         locale: "Main Language"
         locales: "Languages"
         topics: "Topics"
@@ -36,7 +37,6 @@ en:
         linkedin: "LinkedIn"
         tel: "Phone number"
         headshot: "Headshot"
-        is_professional: "I am a professional"
         bio: "Bio"
         notify_of_kixo_news: "Kixo releases new features and promotions"
         notify_of_partner_news: "Kixo's partners have offers for you"
@@ -44,16 +44,6 @@ en:
         notify_of_answers: "someone answers my questions"
         notify_of_replies: "someone replies to my answers"
         notify_of_similar_questions: "someone asks a question similar to mine"
-      session:
-        password: "Password"
-      new_user:
-        email: "Email"
-        password: "Password"
-        password_confirmation: "Password confirmation"
-        locality: "City"
-      existing_user:
-        email: "Email"
-        password: "Password"
       question:
         title: "Question"
         details: "Details"
