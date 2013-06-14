@@ -21,6 +21,14 @@ Kixo::Application.routes.draw do
     resources :notifications
 
     resources :questions do
+      collection do
+        get "mine"
+        get "for_me"
+        get "most_popular"
+        get "answered"
+        get "unanswered"
+      end
+
       resources :answers
     end
 
@@ -62,7 +70,7 @@ Kixo::Application.routes.draw do
     end
   end
 
-  match "/:locale" => "pages#index"
+  match "/:locale" => "questions#index"
 
-  root :to => "pages#index"
+  root :to => "questions#index"
 end

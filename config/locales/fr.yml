@@ -549,7 +549,7 @@ fr:
       description: "Plan de base pour les personnes qui cherchent simplement à poser des questions et échanger avec des professionnels."
     professional:
       title: "Professionnel"
-      price: "20$/mois"
+      price: "<s>20$/mois</s> Gratuit"
       description: "Voulez-vous répondre aux questions de clients potentiels? Commencez avec ce plan."
     visibility:
       title: "Visibilité+"

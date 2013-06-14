@@ -3,3 +3,9 @@
     .ad{:class => ad.format}
       = link_to ad.destination do
         = image_tag ad.visual.url, :class => "visual"
+  .internal
+    - if user_signed_in? && !current_user.is_professional?
+      .panel.callout
+        %h5 Are you a professional?
+        %p Upgrade to a professional account for free for a limited time!
+        %p= link_to "Go professional", "#{edit_user_registration_path}#subscriptions", class: "button small"

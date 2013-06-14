@@ -37,6 +37,10 @@ class ApplicationController < ActionController::Base
     user.valid_password?(password) unless user.nil?
   end
 
+  def authenticate_professional
+    redirect_to(root_path) unless (user_signed_in? and current_user.is_professional?)
+  end
+
   def authenticate_admin
     redirect_to(root_path) unless (user_signed_in? and current_user.is_admin?)
   end
@@ -65,6 +69,8 @@ class ApplicationController < ActionController::Base
 
     # stripe
     @new_card = Card.new
+
+    @top_contributors = User.professionals.order("answers_count DESC").limit(10)
 
     # messages
     @new_conversation = Conversation.new

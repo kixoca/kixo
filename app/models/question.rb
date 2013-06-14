@@ -41,6 +41,9 @@ class Question < ActiveRecord::Base
   validates :author, :presence => true
   validates :locale, :presence => true
 
+  # filter by locale
+  default_scope where(:locale_id => Locale.find_by_code(I18n.locale))
+
   def self.private
     self.where(:is_private => true)
   end

@@ -1,16 +1,64 @@
 class QuestionsController < ApplicationController
-  before_filter :remember_question,  :only => [:new, :create]
-  before_filter :authenticate_user!, :only => [:edit, :update, :destroy]
-  before_filter :verify_if_author!,  :only => [:edit, :update, :destroy]
+  before_filter :remember_question,         :only => [:new, :create]
+  before_filter :authenticate_user!,        :only => [:mine, :edit, :update, :destroy]
+  before_filter :authenticate_professional, :only => [:for_me]
+  before_filter :verify_if_author!,         :only => [:edit, :update, :destroy]
 
   def index
-    @questions = Question.find_by_locale.public
+    @questions = Question.order("created_at DESC").page(params[:page])
+
+    unless user_signed_in? && current_user.is_professional?
+      @questions = @questions.public
+    end
 
     respond_to do |format|
       format.html
       format.json { render :json => @questions }
       format.xml  { render :xml => @questions }
     end
+  end
+
+  def mine
+    #@questions = Kaminari.paginate_array(current_user.questions.order("created_at DESC")).page(params[:page])
+    @questions = Question.where(:author_id => current_user).order("created_at DESC").page(params[:page])
+
+    render :index
+  end
+
+  def for_me
+    @questions = Question.joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}}).order("created_at DESC").page(params[:page])
+
+    render :index
+  end
+
+  def most_popular
+    @questions = Question.most_popular.order("created_at DESC").page(params[:page])
+
+    unless user_signed_in? && current_user.is_professional?
+      @questions = @questions.public
+    end
+
+    render :index
+  end
+
+  def answered
+    @questions = Question.answered.order("created_at DESC").page(params[:page])
+
+    unless user_signed_in? && current_user.is_professional?
+      @questions = @questions.public
+    end
+
+    render :index
+  end
+
+  def unanswered
+    @questions = Question.unanswered.order("created_at DESC").page(params[:page])
+
+    unless user_signed_in? && current_user.is_professional?
+      @questions = @questions.public
+    end
+
+    render :index
   end
 
   def show
@@ -48,6 +96,12 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
 
     track_event "Edit Question"
+
+    respond_to do |format|
+      format.html
+      format.json { render :json => @question }
+      format.xml  { render :xml => @question }
+    end
   end
 
   def create

@@ -21,13 +21,13 @@
   }
 
   &.loop {
-    .title,
-    .meta {
-      margin: 0;
+    .title {
+      margin-bottom: $unit;
     }
 
     .details {
       font-size: $smallFontSize;
+      margin-bottom: $unit;
     }
 
     .answers-count {
