@@ -19,7 +19,6 @@ class QuestionsController < ApplicationController
   end
 
   def mine
-    #@questions = Kaminari.paginate_array(current_user.questions.order("created_at DESC")).page(params[:page])
     @questions = Question.where(:author_id => current_user).order("created_at DESC").page(params[:page])
 
     render :index
