@@ -19,7 +19,7 @@
             %ul.professions.block-grid.three-up
               - @category.professions.each do |profession|
                 %li.profession= link_to profession.name, category_profession_path(@category, profession), :class => "profession-name", :title => "#{@category.name} / #{profession.name}"
-        - unless @professionals.empty?
+        - unless @professionals.blank?
           %section
             .container
               %h4= t("professionals.count_in_taxonomy", :count => @professionals.count, :taxonomy => @category.name.downcase).html_safe
@@ -34,7 +34,7 @@
         %section#questions
           .container
             %h4= t("questions.count_in_taxonomy", :count => @questions.count, :taxonomy => @category.name.downcase).html_safe
-            - unless @questions.empty?
+            - unless @questions.blank?
               %ul.looper.questions
                 - @questions.each do |question|
                   %li= render "questions/shared/loop", :question => question

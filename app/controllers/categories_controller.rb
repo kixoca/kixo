@@ -15,7 +15,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
 
-    @questions = @category.questions
+    @questions = @category.questions.find_all_by_locale(@user_locale)
     @professionals = @category.professionals.uniq
 
     @topics = @category.topics

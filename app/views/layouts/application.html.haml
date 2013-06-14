@@ -27,12 +27,13 @@
               %li.toggle-topbar
                 = link_to "", "#"
             %section
-              %ul.left
-                %li.has-dropdown
-                  = link_to Locale.find_by_code(locale).name, "#"
-                  %ul.dropdown
-                    - @other_locales.each do |loc|
-                      %li= link_to loc.name, url_for(:locale => loc.code)
+              - unless user_signed_in?
+                %ul.left
+                  %li.has-dropdown
+                    = link_to Locale.find_by_code(locale).name, "#"
+                    %ul.dropdown
+                      - @other_locales.each do |loc|
+                        %li= link_to loc.name, url_for(:locale => loc.code)
               %ul.right
                 %li#new_question.has-button
                   = link_to t("questions.new.label"), new_question_path, :class => "button"

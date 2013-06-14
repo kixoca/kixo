@@ -16,7 +16,7 @@ class TopicsController < ApplicationController
   def show
     @topic = Topic.find(params[:id])
 
-    @questions = @topic.questions
+    @questions = @topic.questions.find_all_by_locale(@user_locale)
     @professionals = @topic.professionals
 
     unless params[:locality_id].nil?

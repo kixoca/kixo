@@ -29,6 +29,7 @@
                 %section
                   .container
                     = f.association :locale, :collection => @all_locales
+                    = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
                 - unless resource.accepts
                   %section
                     .container
@@ -64,7 +65,6 @@
                           .row
                             .two.columns= image_tag resource.headshot.url(:mini), :class => "headshot"
                             .ten.columns= f.input :headshot, :label => false
-                          = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
                         .six.columns
                           = render "shared/location_selector", :f => f, :resource => resource, :postal_code => true, :street_address => true
                         .twelve.columns

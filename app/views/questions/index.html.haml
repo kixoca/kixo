@@ -26,7 +26,7 @@
                   = link_to t("questions.filters.unanswered"), unanswered_questions_path
           %section
             .container
-              - unless @questions.empty?
+              - unless @questions.blank?
                 %ul.looper.questions
                   - @questions.each do |question|
                     %li= render "questions/shared/loop", :question => question
@@ -39,7 +39,7 @@
           %section
             %h5.section-title
               = t("professionals.top_contributors.title")
-            - unless @top_contributors.empty?
+            - unless @top_contributors.blank?
               %ul.looper.tight.professionals.top-contributors
                 - @top_contributors.each do |professional|
                   %li= render "professionals/loops/minimal", :professional => professional

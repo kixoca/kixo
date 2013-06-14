@@ -12,23 +12,27 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     if params[:locale].blank?
-      if session[:locale]
-        redirect_to "/#{session[:locale]}"
+      if user_signed_in?
+        redirect_to url_for(:locale => current_user.locale.code)
+      elsif session[:locale]
+        redirect_to url_for(:locale => session[:locale])
       elsif cookies[:locale]
-        redirect_to "/#{cookies[:locale]}"
-      elsif user_signed_in?
-        redirect_to "/#{current_user.locale.code}"
+        redirect_to url_for(:locale => cookies[:locale])
       else
         browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
         if Locale.find_by_code(browser_locale)
-          redirect_to "/#{browser_locale}"
+          redirect_to url_for(:locale => browser_locale)
         else
-          redirect_to "/#{I18n.default_locale}"
+          redirect_to url_for(:locale => I18n.default_locale)
         end
       end
     else
-      I18n.locale = params[:locale]
-      session[:locale] = cookies[:locale] = I18n.locale
+      if user_signed_in? && params[:locale] != current_user.locale.code
+        redirect_to url_for(:locale => current_user.locale.code)
+      else
+        I18n.locale = params[:locale]
+        session[:locale] = cookies[:locale] = I18n.locale
+      end
     end
   end
 
@@ -57,6 +61,8 @@ class ApplicationController < ActionController::Base
     @all_regions = Region.all
     @all_localities = Locality.all
     @top_localities = Locality.most_popular
+
+    @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code(I18n.locale)
 
     # locales
     @all_locales = Locale.all

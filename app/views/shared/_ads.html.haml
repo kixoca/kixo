@@ -5,7 +5,7 @@
         = image_tag ad.visual.url, :class => "visual"
   .internal
     - if user_signed_in? && !current_user.is_professional?
-      .panel.callout
-        %h5 Are you a professional?
-        %p Upgrade to a professional account for free for a limited time!
-        %p= link_to "Go professional", "#{edit_user_registration_path}#subscriptions", class: "button small"
+      .ad.panel.callout#go_pro
+        %h5= t("ads.internal.go_pro.title")
+        %p= t("ads.internal.go_pro.content").html_safe
+        %p= link_to t("ads.internal.go_pro.label"), "#{edit_user_registration_path}#subscriptions", class: "button small"

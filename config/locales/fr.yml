@@ -574,6 +574,13 @@ fr:
     unpaid: "<span class='alert label radius'>Non-payé</span>"
     refunded: "<span class='alert label radius'>Remboursé</span>"
 
+  ads:
+    internal:
+      go_pro:
+        title: "Êtes-vous un professionnel ?"
+        content: "Obtenez la mise à niveau vers un compte professionnel gratuitement pour un temps limité !"
+        label: "Obtenez un compte professionnel"
+
   helpers:
     select:
       prompt: "Veuillez sélectionner"

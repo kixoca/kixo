@@ -561,6 +561,13 @@ en:
     unpaid: "<span class='alert label radius'>Unpaid</span>"
     refunded: "<span class='alert label radius'>Refunded</span>"
 
+  ads:
+    internal:
+      go_pro:
+        title: "Are you a professional?"
+        content: "Upgrade to a professional account free of charge for a limited time!"
+        label: "Get a professional account"
+
   activerecord:
     attributes:
       user:
