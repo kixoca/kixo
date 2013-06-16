@@ -146,16 +146,13 @@ fr:
         subtitle: "Créez un compte professionnel et connectez avec des clients dès aujourd'hui!"
         submit: "Inscription"
         step1:
-          label: "1. Informations personnelles"
-          mobile_label: "Étape 1"
+          label: "Étape 1"
           title: "1. Informations personnelles"
         step2:
-          label: "2. Informations professionnelles"
-          mobile_label: "Étape 2"
+          label: "Étape 2"
           title: "2. Informations professionnelles"
         step3:
-          label: "3. Plan"
-          mobile_label: "Étape 3"
+          label: "Étape 3"
           title: "3. Plan"
         panels:
           not_a_professional:

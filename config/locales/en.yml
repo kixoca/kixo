@@ -146,16 +146,13 @@ en:
         subtitle: "Create a professional account and connect with clients today!"
         submit: "Sign up"
         step1:
-          label: "1. Personal Information"
-          mobile_label: "Step 1"
+          label: "Step 1"
           title: "1. Personal Information"
         step2:
-          label: "2. Professional Information"
-          mobile_label: "Step 2"
+          label: "Step 2"
           title: "2. Professional Information"
         step3:
-          label: "3. Plan"
-          mobile_label: "Step 3"
+          label: "Step 3"
           title: "3. Plan"
         panels:
           not_a_professional:

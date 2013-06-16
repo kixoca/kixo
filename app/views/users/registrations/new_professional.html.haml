@@ -14,17 +14,11 @@
               .container.no-pad
                 %dl.tabs.large.three-up
                   %dd.active
-                    = link_to "#step1" do
-                      .hide-for-small= t("users.registrations.new_professional.step1.label")
-                      .show-for-small= t("users.registrations.new_professional.step1.mobile_label")
+                    = link_to t("users.registrations.new_professional.step1.label"), "#step1"
                   %dd
-                    = link_to "#step2" do
-                      .hide-for-small= t("users.registrations.new_professional.step2.label")
-                      .show-for-small= t("users.registrations.new_professional.step2.mobile_label")
+                    = link_to t("users.registrations.new_professional.step2.label"), "#step2"
                   %dd
-                    = link_to "#step3" do
-                      .hide-for-small= t("users.registrations.new_professional.step3.label")
-                      .show-for-small= t("users.registrations.new_professional.step3.mobile_label")
+                    = link_to t("users.registrations.new_professional.step3.label"), "#step3"
               %ul.tabs-content.no-marg
                 %li#step1Tab.active
                   .container
