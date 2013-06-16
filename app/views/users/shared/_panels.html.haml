@@ -1,12 +1,6 @@
 - if controller_name == 'registrations'
   .panel.callout.green
-    %h5=t "users.registrations.edit.panels.new_session.title"
-    %p=t "users.registrations.edit.panels.new_session.content"
+    %h5= t("users.registrations.edit.panels.new_session.title")
+    %p= t("users.registrations.edit.panels.new_session.content")
     %a.button{:href => "#", :data => {"reveal-id" => "new_session"}}
-      =t "users.registrations.edit.panels.new_session.label"
-
-- if devise_mapping.registerable? && controller_name == 'sessions'
-  .panel.callout.green
-    %h5=t "users.sessions.new.panels.new_registration.title"
-    %p=t "users.sessions.new.panels.new_registration.content"
-    %p= link_to t("users.sessions.new.panels.new_registration.label"), new_registration_path(resource_name), :class => "button small"
+      = t("users.registrations.edit.panels.new_session.label")

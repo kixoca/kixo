@@ -1,8 +1,8 @@
 %section#content
   .container
     .row
-      .eight.columns.centered
-        = simple_form_for(@professional, :url => registration_path(:user)) do |f|
+      .seven.columns.offset-by-one
+        = simple_form_for(@professional, :url => create_professional_registration_path) do |f|
           .page
             %header
               .container
@@ -113,3 +113,8 @@
                         = link_to t("misc.previous_step").html_safe, "#step2", :class => "button fndtn-activate-tab"
                       .three.columns.offset-by-six.text-right.mobile-center
                         = f.button :submit, t("users.registrations.new_professional.submit")
+      .three.columns.end
+        .panel.callout.green
+          %h5= t("users.registrations.new_professional.panels.not_a_professional.title")
+          %p= t("users.registrations.new_professional.panels.not_a_professional.content").html_safe
+          %p= link_to t("users.registrations.new_professional.panels.not_a_professional.cta"), new_registration_path(resource_name), :class => "button"

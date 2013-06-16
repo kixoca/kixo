@@ -1,5 +1,5 @@
 body {
-  background: $kixoLightGrey;
+  background: $kixoLightGrey url(/assets/body_bg.png) 0 0 repeat;
 }
 
 #header {
@@ -80,30 +80,34 @@ body {
 
 #hero {
   background-color: $black;
-  background-image: url(/assets/hero_bg.jpg);
-  background-position: top center;
+  background-image: url(/assets/hero_bg_2.jpg);
+  background-position: center center;
   background-repeat: no-repeat;
 
   > .container {
-    padding: 220px 0;
+    padding: 80px 0;
   }
 
   &.slim > .container {
-    padding: 100px;
+    padding: 40px;
   }
 
   .hero-box {
-    background: $white;
+    background: rgba(255,255,255,0.9);
+    margin: $golden*$unit 0;
     padding: $unit*$golden*$golden;
 
     h1 {
-      color: $lightTxtColor;
 
       em {
         display: inline-block;
         color: $kixoBlue;
         font-style: normal;
       }
+    }
+
+    em {
+      font-style: normal;
     }
 
     form {
@@ -170,6 +174,7 @@ body {
 .box, .page, .panel {
   border: 1px solid $kixoDarkSandy;
   @include borderRadius($radius);
+  @include boxShadow(0,0,3px,1px,rgba(0,0,0,0.15));
 }
 
 .box,

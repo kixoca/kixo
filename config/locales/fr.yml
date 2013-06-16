@@ -12,6 +12,15 @@ fr:
     logo:
       alt: "Kixo"
     tagline: "&laquo; Kixo changera la façon dont vous cherchez, choisissez et consultez vos professionnels &raquo;"
+    hero:
+      professional:
+        title: "Professionnel?"
+        subtitle: "Vous êtes un professionnel dans le domaine légal, financier ou immobilier? <em>Connectez avec des clients potentiels!</em>"
+        cta: "Créez votre compte"
+      personal:
+        title: "Client?"
+        subtitle: "Vous voulez obtenir <em>gratuitement</em> des conseils de professionnels dans le domaine légal, financier ou immobilier?"
+        cta: "Posez votre question"
     actions:
       ask:
         tab_name: "Poser une question"
@@ -124,11 +133,16 @@ fr:
       new:
         title: "Inscription"
         label: "Créer un compte"
-        subtitle: "Créez un compte, c'est gratuit et rapide!"
+        subtitle: "Créez un compte personnel, c'est gratuit et rapide!"
         submit: "Inscription"
+        panels:
+          professional:
+            title: "Êtes-vous un professionnel?"
+            content: "Créez un compte professionnel afin d'avoir un profil et de répondre aux questions de clients potentiels."
+            cta: "Créer un compte professionnel"
       new_professional:
         title: "Inscription pour professionnel"
-        label: "Créer un compte professionnel"
+        label: "Créer un compte"
         subtitle: "Créez un compte professionnel et connectez avec des clients dès aujourd'hui!"
         submit: "Inscription"
         step1:
@@ -143,6 +157,11 @@ fr:
           label: "3. Plan"
           mobile_label: "Étape 3"
           title: "3. Plan"
+        panels:
+          not_a_professional:
+            title: "Pas un professionnel?"
+            content: "Vous pouvez créer un compte personnel pour obtenir des conseils gratuits de professionnels."
+            cta: "Créer un compte personnel"
       create:
         success: "Votre compte a été créé avec succès!"
         error: "Votre compte n'a pas pu être créé!"

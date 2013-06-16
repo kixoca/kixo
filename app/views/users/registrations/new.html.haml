@@ -1,7 +1,7 @@
 %section#content
   .container
     .row
-      .six.columns.offset-by-one
+      .seven.columns.offset-by-one
         = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
           .page
             %header
@@ -24,7 +24,8 @@
             %section
               .container
                 = f.button :submit, t("users.registrations.new.submit")
-      .four.columns.end
-        = render "users/shared/panels"
-        .text-center
-          = image_tag "/assets/new_registration_char.png"
+      .three.columns.end
+        .panel.callout.green
+          %h5= t("users.registrations.new.panels.professional.title")
+          %p= t("users.registrations.new.panels.professional.content").html_safe
+          %p= link_to t("users.registrations.new.panels.professional.cta"), new_professional_registration_path, :class => "button"

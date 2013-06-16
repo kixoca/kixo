@@ -2,7 +2,7 @@
   - if defined?(street_address) and street_address != false
     = f.input :street_address_1
     = f.input :street_address_2
-  - locality_name = (resource.nil? or resource.locality.blank?) ? nil : resource.locality.name
+  - locality_name = f.object.locality_name ? f.object.locality_name : ((resource.nil? || resource.locality.blank?) ? "" : resource.locality.name)
   = f.input :locality_name, :required => true, :input_html => {:value => locality_name, :class => "autocomplete", :data => {:name => "locality-name-#{I18n.locale}", :prefetch => "/#{I18n.locale}/data/localities.json"}}
   - if defined?(postal_code) and postal_code != false
     = f.input :postal_code

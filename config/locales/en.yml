@@ -12,6 +12,15 @@ en:
     logo:
       alt: "Kixo"
     tagline: "&laquo; kixo will change the way you search, choose and consult professionals &raquo;"
+    hero:
+      professional:
+        title: "Professional?"
+        subtitle: "Are you a professional in the legal, financial or real estate field? <em>Connect with potential clients!</em>"
+        cta: "Create your account"
+      personal:
+        title: "Client?"
+        subtitle: "Want to get <em>free</em> advice from professionals in the legal, financial or real estate field?"
+        cta: "Ask your question"
     actions:
       ask:
         tab_name: "Ask"
@@ -124,11 +133,16 @@ en:
       new:
         title: "Sign Up"
         label: "Create an account"
-        subtitle: "Create an account, it's free and fast!"
+        subtitle: "Create a personal account, it's free and fast!"
         submit: "Sign Up"
+        panels:
+          professional:
+            title: "Are you a professional?"
+            content: "Create a professional account in order to have a profile and answer questions from potential clients."
+            cta: "Create a professional account"
       new_professional:
         title: "Professional Sign Up"
-        label: "Create a professional account"
+        label: "Create an account"
         subtitle: "Create a professional account and connect with clients today!"
         submit: "Sign up"
         step1:
@@ -143,6 +157,11 @@ en:
           label: "3. Plan"
           mobile_label: "Step 3"
           title: "3. Plan"
+        panels:
+          not_a_professional:
+            title: "Not a professional?"
+            content: "You can create a personal account to get free advice from professionals."
+            cta: "Create a personal account"
       create:
         success: "Your account was successfully created!"
         error: "Your account could not be created!"

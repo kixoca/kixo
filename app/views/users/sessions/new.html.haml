@@ -1,7 +1,7 @@
 %section#content
   .container
     .row
-      .six.columns.offset-by-one
+      .six.columns.centered
         = simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f|
           .page
             %header
@@ -22,5 +22,3 @@
                     = f.button :submit, t("users.sessions.new.submit")
                   .eight.columns.text-right
                     = render "users/shared/links"
-      .four.columns.end
-        = render "users/shared/panels"

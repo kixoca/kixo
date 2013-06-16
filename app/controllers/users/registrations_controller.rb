@@ -11,6 +11,21 @@ class Users::RegistrationsController < Devise::RegistrationsController
     track_event "New Professional"
   end
 
+  def create_professional
+    @professional = User.new(params[:user])
+
+    if @professional.save
+      track_event "Create Professional"
+      sign_in :user, @professional
+      flash[:success] = I18n.t("users.registrations.create.success")
+      redirect_to after_sign_up_path_for(:user)
+    else
+      track_event "Create Professional Error"
+      flash[:error] = I18n.t("users.registrations.create.error")
+      render :action => "new_professional"
+    end
+  end
+
   def create
     super
     track_event "Create User"

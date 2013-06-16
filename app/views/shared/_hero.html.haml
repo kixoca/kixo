@@ -2,17 +2,16 @@
   %section#hero{:class => (defined?(slim) && slim) ? "slim" : ""}
     .container
       .row
-        .seven.columns.end
+        .ten.columns.centered
           .hero-box
-            .three.columns.text-center
-              = image_tag "/assets/hero_ask.png"
-            .nine.columns
-              .twelve.columns
-                %hgroup
-                  %h1= t("layout.actions.ask.title", :who => (who or t("layout.actions.who")), :where => (where or I18n.t("layout.actions.where"))).html_safe
-                  %h3.subheader= t("layout.actions.ask.subtitle", :who => (who or t("layout.actions.who")), :where => (where or I18n.t("layout.actions.where")))
-              .clear
-              .twelve.columns
-                = link_to t("questions.new.label"), new_question_path, :class => "button large"
-              .clear
+            .four.columns.text-center
+              %h1= t("layout.hero.professional.title").html_safe
+              %h3.subheader= t("layout.hero.professional.subtitle").html_safe
+              = link_to t("layout.hero.professional.cta"), new_professional_registration_path, :class => "button"
+            .four.columns.text-center
+              = image_tag "/assets/hero_chars.png", :width => 280, :height => 190
+            .four.columns.text-center
+              %h1= t("layout.hero.personal.title").html_safe
+              %h3.subheader= t("layout.hero.personal.subtitle").html_safe
+              = link_to t("layout.hero.personal.cta"), new_question_path, :class => "button"
             .clear
