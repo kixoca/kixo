@@ -21,13 +21,15 @@ en:
         postal_code: "Postal Code"
         country: "Country"
         country_name: "Country"
+        company_name: "Company"
+        topics_and_professions: "Topics & Professions"
         is_professional: "I am a professional"
         accepts: "I accept the <a href='/en/pages/terms-of-service' target='_blank'>terms of service</a>"
       user:
         name: "Name"
         remember_me: "Remember me?"
         locale: "Main Language"
-        locales: "Languages"
+        locales: "Other languages"
         topics: "Topics"
         professions: "Professions"
         website: "Website"
@@ -68,14 +70,22 @@ en:
         exp_year: "Year"
         cvc: "Security Code"
     placeholders:
+      defaults:
+        name: "John Doe"
+        email: "john.doe@example.com"
+        password: "Password"
+        password_confirmation: "Password"
+        company_name: "My Company Inc."
+        tel: "514 555-1234"
+        website: "www.mywebsite.com"
+        bio: "Tell us about you, your education, your services, your interests and reasons people should choose you over your competitors"
       question:
         new:
           title: "Ex.: 'Do I need a lawyer to incorporate a company?'"
           details: "Give more details and background information..."
     hints:
-      user:
-        new:
-          password: "Your password must be 6 characters or more"
+      defaults:
+        password: "Your password must be 6 characters or more"
       new_user:
         password: "Your password must be 6 characters or more"
         locality: "We ask for your city so you can get answers from local professionals"

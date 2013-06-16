@@ -248,6 +248,14 @@ body {
       padding: $unit $golden*$golden*$unit;
     }
   }
+
+  > header .container {
+    padding: $golden*$golden*$unit;
+
+    &.tight {
+      padding: $golden*$unit $golden*$golden*$unit;
+    }
+  }
 }
 
 .panel {

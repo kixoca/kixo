@@ -1,0 +1,59 @@
+%header#header
+  .container.fixed
+    .row
+      %nav.top-bar
+        %ul
+          %li.name
+            = link_to "/#{I18n.locale}" do
+              %img#logo{:src => "/assets/logo.png", :width => "140", :height => "45", :alt => t("layout.logo.alt")}
+          %li.toggle-topbar
+            = link_to "", "#"
+        %section
+          - unless user_signed_in?
+            %ul.left
+              %li.has-dropdown
+                = link_to Locale.find_by_code(locale).name, "#"
+                %ul.dropdown
+                  - @other_locales.each do |loc|
+                    %li= link_to loc.name, url_for(:locale => loc.code)
+          %ul.right
+            %li.divider
+            %li#new_question.has-button
+              = link_to t("questions.new.label"), new_question_path, :class => "button"
+            %li.divider
+            - if user_signed_in?
+              %li#account.has-dropdown
+                = link_to "#" do
+                  = current_user.name
+                %ul.dropdown
+                  - if current_user.is_professional?
+                    %li.profile
+                      = link_to t("professionals.show.label"), professional_path(current_user)
+                  %li#settings
+                    = link_to t("users.registrations.edit.label"), edit_user_registration_path
+                  %li.divider
+                  %li#messages
+                    = link_to conversations_path do
+                      - if current_user.messages.unread.count > 0
+                        .count= current_user.messages.unread.count
+                      Messages
+                  - if false
+                    %li#notifications
+                      = link_to notifications_path do
+                        = t("notifications.index.label")
+                        - if current_user.notifications.unseen.count > 0
+                          .count= current_user.notifications.unseen.count
+                  %li.divider
+                  - if current_user.is_admin?
+                    %li#admin
+                      = link_to t("admin.label"), admin_root_path
+                    %li.divider
+                  %li#signout
+                    = link_to t("users.sessions.destroy.label"), destroy_user_session_path, :method => :delete
+            - else
+              %li#login
+                = link_to t("users.sessions.new.label"), new_user_session_path
+              %li.divider
+              %li#signup
+                = link_to t("users.registrations.new.label"), new_user_registration_path
+            %li.divider

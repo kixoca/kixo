@@ -1,0 +1,115 @@
+%section#content
+  .container
+    .row
+      .eight.columns.centered
+        = simple_form_for(@professional, :url => registration_path(:user)) do |f|
+          .page
+            %header
+              .container
+                %hgroup
+                  %h1= t("users.registrations.new_professional.title")
+                  %h4.subheader= t("users.registrations.new_professional.subtitle")
+            = render "shared/errors", object: f.object
+            %section
+              .container.no-pad
+                %dl.tabs.large.three-up
+                  %dd.active
+                    = link_to "#step1" do
+                      .hide-for-small= t("users.registrations.new_professional.step1.label")
+                      .show-for-small= t("users.registrations.new_professional.step1.mobile_label")
+                  %dd
+                    = link_to "#step2" do
+                      .hide-for-small= t("users.registrations.new_professional.step2.label")
+                      .show-for-small= t("users.registrations.new_professional.step2.mobile_label")
+                  %dd
+                    = link_to "#step3" do
+                      .hide-for-small= t("users.registrations.new_professional.step3.label")
+                      .show-for-small= t("users.registrations.new_professional.step3.mobile_label")
+              %ul.tabs-content.no-marg
+                %li#step1Tab.active
+                  .container
+                    %h3.no-marg-top
+                      = t("users.registrations.new_professional.step1.title")
+                    = f.input :name
+                    = f.input :email
+                    .row
+                      .six.columns
+                        = f.input :password, :required => true
+                      .six.columns
+                        = f.input :password_confirmation, :required => true
+                    = render "shared/location_selector", :f => f, :street_address => false
+                    = f.association :locale, :collection => @all_locales
+                    = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                    = f.input :accepts, :as => :boolean
+                  %hr.no-marg
+                  .container
+                    .row
+                      .three.columns.offset-by-nine.text-right.mobile-center
+                        = link_to t("misc.next_step").html_safe, "#step2", :class => "button fndtn-activate-tab"
+                %li#step2Tab
+                  .container
+                    %h3.no-marg-top
+                      = t("users.registrations.new_professional.step2.title")
+                    = f.input :company_name
+                    = f.input :tel
+                    = f.input :website
+                    = f.input :headshot
+                    = f.input :bio, :input_html => {:rows => 7}
+                    = f.label :topics_and_professions
+                    %ul.accordion.compact.marg-bottom
+                      - @all_categories.each do |category|
+                        %li
+                          .title
+                            %h5= category.name
+                          .content
+                            = f.association :topics, :collection => category.topics, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                            %hr
+                            = f.association :professions, :collection => category.professions, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                  %hr.no-marg
+                  .container
+                    .row
+                      .three.columns.mobile-center
+                        = link_to t("misc.previous_step").html_safe, "#step1", :class => "button fndtn-activate-tab"
+                      .three.columns.offset-by-six.text-right.mobile-center
+                        = link_to t("misc.next_step").html_safe, "#step3", :class => "button fndtn-activate-tab"
+                %li#step3Tab
+                  .container
+                    %h3.no-marg-top
+                      = t("users.registrations.new_professional.step3.title")
+                    .row
+                      .six.columns
+                        .text-center= image_tag "/assets/plan_char_professional.png"
+                        %ul.pricing-table.professional
+                          %li.title= t("plans.professional.title")
+                          %li.price= t("plans.professional.price").html_safe
+                          %li.description= t("plans.professional.description")
+                          %li.bullet-item= t("plans.features.ask_questions")
+                          %li.bullet-item= t("plans.features.private_messages")
+                          %li.bullet-item= t("plans.features.detailed_profile")
+                          %li.bullet-item= t("plans.features.answer_questions")
+                          %li.bullet-item= t("plans.features.kixo_score")
+                          %li.cta-button
+                            = f.input :plan, :as => :radio, :collection => [[t("plans.select"), "professional"]], :label => false, :checked => "professional"
+                      .six.columns
+                        .text-center= image_tag "/assets/plan_char_visibility.png"
+                        %ul.pricing-table.visibility
+                          %li.title= t("plans.visibility.title")
+                          %li.price= t("plans.visibility.price").html_safe
+                          %li.description= t("plans.visibility.description")
+                          %li.bullet-item= t("plans.features.ask_questions")
+                          %li.bullet-item= t("plans.features.private_messages")
+                          %li.bullet-item= t("plans.features.detailed_profile")
+                          %li.bullet-item= t("plans.features.answer_questions")
+                          %li.bullet-item= t("plans.features.kixo_score")
+                          %li.bullet-item= t("plans.features.answer_rank")
+                          %li.bullet-item= t("plans.features.profile_rank")
+                          %li.bullet-item= t("plans.features.featured_profile")
+                          %li.cta-button
+                            = f.input :plan, :as => :radio, :collection => [[t("plans.select"), "visibility"]], :label => false
+                  %hr.no-marg
+                  .container
+                    .row
+                      .three.columns.mobile-center
+                        = link_to t("misc.previous_step").html_safe, "#step2", :class => "button fndtn-activate-tab"
+                      .three.columns.offset-by-six.text-right.mobile-center
+                        = f.button :submit, t("users.registrations.new_professional.submit")

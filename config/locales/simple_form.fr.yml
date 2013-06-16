@@ -21,13 +21,15 @@ fr:
         postal_code: "Code postal"
         country: "Pays"
         country_name: "Pays"
+        company_name: "Compagnie"
+        topics_and_professions: "Sujets et professions"
         is_professional: "Je suis un professionnel"
         accepts: "J'accepte les <a href='/fr/pages/termes-et-conditions' target='_blank'>termes et conditions</a>"
       user:
         name: "Nom"
         remember_me: "Se souvenir de moi?"
         locale: "Langue principale"
-        locales: "Langues"
+        locales: "Autres langues"
         topics: "Sujets"
         professions: "Professions"
         website: "Site web"
@@ -68,14 +70,22 @@ fr:
         exp_year: "Année"
         cvc: "Code de sécurité"
     placeholders:
+      defaults:
+        name: "Pierre Tremblay"
+        email: "pierre.tremblay@exemple.com"
+        password: "Mot de passe"
+        password_confirmation: "Mot de passe"
+        company_name: "Ma Compagnie Inc."
+        tel: "514 555-1234"
+        website: "www.monsite.com"
+        bio: "Parlez-nous de vous, de votre éducation, vos services, vos intérêts et les raisons pour lesquelles les clients devraient vous choisir par rapport à vos concurrents"
       question:
         new:
           title: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"
           details: "Donnez plus détails et d'informations..."
     hints:
-      user:
-        new:
-          password: "Votre mot de passe doit contenir 6 charactères ou plus"
+      defaults:
+        password: "Votre mot de passe doit contenir 6 charactères ou plus"
       new_user:
         password: "Votre mot de passe doit contenir 6 charactères ou plus"
         locality: "Nous vous demandons votre ville afin que vous puissiez obtenir des réponses de professionnels locaux"

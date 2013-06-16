@@ -1,7 +1,14 @@
 class Users::RegistrationsController < Devise::RegistrationsController
+  layout "simple", :only => [:new, :new_professional]
+
   def new
     super
     track_event "New User"
+  end
+
+  def new_professional
+    @professional = User.new
+    track_event "New Professional"
   end
 
   def create

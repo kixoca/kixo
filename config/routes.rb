@@ -4,6 +4,7 @@ Kixo::Application.routes.draw do
     devise_for :users, :controllers => {:registrations => "users/registrations", :sessions => "users/sessions"}
 
     devise_scope :user do
+      get "/users/sign_up/professional" => "users/registrations#new_professional", :as => :new_professional_registration_path
       get "/users/change_plan/:plan" => "users/registrations#change_plan", :as => :change_user_plan
       resources :cards
     end
