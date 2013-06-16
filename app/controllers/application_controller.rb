@@ -13,17 +13,17 @@ class ApplicationController < ActionController::Base
   def set_locale
     if params[:locale].blank?
       if user_signed_in?
-        redirect_to url_for(:locale => current_user.locale.code)
+        redirect_to root_url(:locale => current_user.locale.code)
       elsif session[:locale]
-        redirect_to url_for(:locale => session[:locale])
+        redirect_to root_url(:locale => session[:locale])
       elsif cookies[:locale]
-        redirect_to url_for(:locale => cookies[:locale])
+        redirect_to root_url(:locale => cookies[:locale])
       else
         browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
         if Locale.find_by_code(browser_locale)
-          redirect_to url_for(:locale => browser_locale)
+          redirect_to root_ul(:locale => browser_locale)
         else
-          redirect_to url_for(:locale => I18n.default_locale)
+          redirect_to root_url(:locale => I18n.default_locale)
         end
       end
     else
