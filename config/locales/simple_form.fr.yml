@@ -46,6 +46,8 @@ fr:
         notify_of_answers: "quelqu'un répond à mes questions"
         notify_of_replies: "quelqu'un répond à mes réponses"
         notify_of_similar_questions: "quelqu'un pose une question similaire aux miennes"
+        edit:
+          password: "Modifier mon mot de passe"
       question:
         title: "Question"
         details: "Détails"
@@ -79,6 +81,10 @@ fr:
         tel: "514 555-1234"
         website: "www.monsite.com"
         bio: "Parlez-nous de vous, de votre éducation, vos services, vos intérêts et les raisons pour lesquelles les clients devraient vous choisir par rapport à vos concurrents"
+      user:
+        edit:
+          password: "Nouveau mot de passe"
+          password_confirmation: "Nouveau mot de passe"
       question:
         new:
           title: "Ex : 'Est-ce que j'ai besoin d'un avocat pour incorporer une compagnie ?'"

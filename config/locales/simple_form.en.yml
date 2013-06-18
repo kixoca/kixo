@@ -46,6 +46,8 @@ en:
         notify_of_answers: "someone answers my questions"
         notify_of_replies: "someone replies to my answers"
         notify_of_similar_questions: "someone asks a question similar to mine"
+        edit:
+          password: "Edit password"
       question:
         title: "Question"
         details: "Details"
@@ -79,6 +81,10 @@ en:
         tel: "514 555-1234"
         website: "www.mywebsite.com"
         bio: "Tell us about you, your education, your services, your interests and reasons people should choose you over your competitors"
+      user:
+        edit:
+          password: "New password"
+          password_confirmation: "New password"
       question:
         new:
           title: "Ex.: 'Do I need a lawyer to incorporate a company?'"
