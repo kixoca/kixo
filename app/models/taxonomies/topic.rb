@@ -1,6 +1,9 @@
 class Topic < Taxonomy
   attr_accessible :category
 
+  after_save    :expire_cache
+  after_destroy :expire_cache
+
   # a topic belongs in a category
   belongs_to :category, :foreign_key => "parent_id"
 
@@ -8,6 +11,14 @@ class Topic < Taxonomy
   has_many :professionals, :through => :classifications, :source => :classifiable, :source_type => "User", :conditions => {:is_professional => true}
   has_many :questions,     :through => :classifications, :source => :classifiable, :source_type => "Question"
   has_many :guides,        :through => :classifications, :source => :classifiable, :source_type => "Guide"
+
+  def self.all_cached
+    Rails.cache.fetch('Topic.all') { all }
+  end
+
+  def expire_cache
+    Rails.cache.delete('Topic.all')
+  end
 
   def self.most_popular(n = 10)
     self.order("questions_count DESC, users_count DESC").limit(n)

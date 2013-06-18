@@ -9,6 +9,14 @@ class Profession < Taxonomy
   has_many :questions,     :through => :classifications, :as => :taxonomy, :source => :classifiable, :source_type => "Question"
   has_many :guides,        :through => :classifications, :as => :taxonomy, :source => :classifiable, :source_type => "Guide"
 
+  def self.all_cached
+    Rails.cache.fetch('Profession.all') { all }
+  end
+
+  def expire_cache
+    Rails.cache.delete('Profession.all')
+  end
+
   def self.most_popular(n = 10)
     self.order("users_count DESC").limit(n)
   end

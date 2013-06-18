@@ -79,6 +79,7 @@ GEM
       sass (~> 3.1)
     compass-rails (1.0.3)
       compass (>= 0.12.2, < 0.14)
+    dalli (2.6.4)
     delayed_job (3.0.5)
       activesupport (~> 3.0)
     delayed_job_active_record (0.4.4)
@@ -144,6 +145,7 @@ GEM
     mandrill-api (1.0.14)
       excon (~> 0.15.4)
       json (~> 1.7.4)
+    memcachier (0.0.2)
     meta_search (1.1.3)
       actionpack (~> 3.1)
       activerecord (~> 3.1)
@@ -267,6 +269,7 @@ DEPENDENCIES
   clockwork
   coffee-rails
   compass-rails
+  dalli
   delayed_job_active_record
   devise
   event_tracker
@@ -277,6 +280,7 @@ DEPENDENCIES
   kaminari
   less-rails (~> 2.2.4)
   mandrill-api
+  memcachier
   meta_search (>= 1.1.0.pre)
   oauth2
   omniauth

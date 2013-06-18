@@ -1,4 +1,7 @@
 class Country < Taxonomy
+  after_save    :expire_cache
+  after_destroy :expire_cache
+
   # a country has many regions (states, provinces, etc.)
   has_many :regions, :foreign_key => :parent_id
 
@@ -12,6 +15,14 @@ class Country < Taxonomy
 
   geocoded_by :geocoding_address
   after_validation :geocode
+
+  def self.all_cached
+    Rails.cache.fetch('Country.all') { all }
+  end
+
+  def expire_cache
+    Rails.cache.delete('Country.all')
+  end
 
   def population
     population = 0
