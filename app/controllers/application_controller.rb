@@ -81,12 +81,6 @@ class ApplicationController < ActionController::Base
     # messages
     @new_conversation = Conversation.new
     @new_conversation.messages.build
-
-    # display an under development flash
-    if session[:under_dev_noticed].nil?
-      flash.now[:notice] = I18n.t("site.under_dev")
-      session[:under_dev_noticed] = true
-    end
   end
 
   def validate_acceptance
