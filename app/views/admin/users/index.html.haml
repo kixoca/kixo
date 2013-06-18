@@ -22,21 +22,19 @@
                   %th Professional?
                   %th Actions
               %tbody
-                = debug @users
-                - if false
-                  - @users.each do |user|
-                    %tr
-                      %td.email
-                        = user.email
-                      %td.name
-                        = user.name
-                      %td.short-address
-                        = user.short_address
-                      %td.is-professional
-                        = user.is_professional? ? "Yes" : "No"
-                      %td.actions
-                        = link_to "Edit", edit_admin_user_path(user), :class => "button tiny"
-                        = link_to "Delete", admin_user_path(user), :method => :delete, :class => "button tiny alert"
-                        - if user.is_professional?
-                          = link_to "View Profile", professional_path(user), :class => "button tiny secondary"
+                - @users.each do |user|
+                  %tr
+                    %td.email
+                      = user.email
+                    %td.name
+                      = user.name
+                    %td.short-address
+                      =# user.short_address
+                    %td.is-professional
+                      = user.is_professional? ? "Yes" : "No"
+                    %td.actions
+                      = link_to "Edit", edit_admin_user_path(user), :class => "button tiny"
+                      = link_to "Delete", admin_user_path(user), :method => :delete, :class => "button tiny alert"
+                      - if user.is_professional?
+                        = link_to "View Profile", professional_path(user), :class => "button tiny secondary"
 
