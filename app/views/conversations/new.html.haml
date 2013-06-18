@@ -14,6 +14,7 @@
                 %hgroup
                   %h1= t("messages.new.title")
                   %h4.subheader= t("messages.new.subtitle")
+            = render "shared/errors", object: f.object
             %section
               .container
                 = f.simple_fields_for :participants do |p|
