@@ -84,10 +84,6 @@ class Question < ActiveRecord::Base
     UserMailer.delay.notify_of_question(self)
   end
 
-  def to_param
-    "#{id}-#{title.parameterize}"
-  end
-
   private
 
   def default_values
