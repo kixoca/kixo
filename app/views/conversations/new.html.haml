@@ -17,11 +17,9 @@
             = render "shared/errors", object: f.object
             %section
               .container
-                = f.simple_fields_for :participants do |p|
-                  = text_field_tag nil, nil, :id => "new_conversation_participant_name", :placeholder => "To", :class => "autocomplete", :data => {:source => "/#{I18n.locale}/professionals.json"}
-                  = hidden_field_tag "conversation[participant_ids][]", nil, :id => "new_conversation_participant_id"
-                = f.simple_fields_for :messages do |m|
-                  = m.input :message, :as => :text
+                = f.input :participant_ids, :as => :hidden, :id => "new_conversation_participant_id"
+                = f.simple_fields_for :messages, @conversation.messages do |m|
+                  = m.input :message, :as => :text, :required => false, :label => false
             %section.actions
               .container
                 = f.button :submit, t("messages.new.submit")
