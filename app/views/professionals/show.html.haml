@@ -36,8 +36,9 @@
                         %li.facebook
                           %i.icon-facebook
                           = link_to @professional.facebook, facebook_url(@professional.facebook), :target => "_blank"
-                    %a.new_conversation_trigger.button{:href => "#", :data => {"participant-id" => @professional.id}}
-                      = t("professionals.show.send_message").html_safe
+                    - if user_signed_in?
+                      %a.new_conversation_trigger.button{:href => "#", :data => {"participant-id" => @professional.id}}
+                        = t("professionals.show.send_message").html_safe
             %section.hidden
               .container
                 %ul.metrics.block-grid.four-up
