@@ -12,15 +12,19 @@ class Topic < Taxonomy
   has_many :questions,     :through => :classifications, :source => :classifiable, :source_type => "Question"
   has_many :guides,        :through => :classifications, :source => :classifiable, :source_type => "Guide"
 
+  def self.most_popular(n = 10)
+    self.order("questions_count DESC, users_count DESC").limit(n)
+  end
+
   def self.all_cached
     Rails.cache.fetch('Topic.all') { all }
   end
 
-  def expire_cache
-    Rails.cache.delete('Topic.all')
+  def self.most_popular_cached(n = 10)
+    Rails.cache.fetch("Topic.most_popular(#{n})") { order("questions_count DESC, users_count DESC").limit(n) }
   end
 
-  def self.most_popular(n = 10)
-    self.order("questions_count DESC, users_count DESC").limit(n)
+  def expire_cache
+    Rails.cache.delete('Topic.all')
   end
 end

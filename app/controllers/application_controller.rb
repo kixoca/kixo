@@ -53,15 +53,16 @@ class ApplicationController < ActionController::Base
   def set_common_vars
     # taxonomies
     @all_categories = Category.all_cached
-    @top_categories = @all_categories.most_popular
     @all_topics = Topic.all_cached
-    @top_topics = @all_topics.most_popular
     @all_professions = Profession.all_cached
-    @top_professions = @all_professions.most_popular
     @all_countries = Country.all_cached
-    @all_regions = @all_regions.all
+    @all_regions = Region.all_cached
     @all_localities = Locality.all_cached
-    @top_localities = @all_localities.most_popular
+
+    @top_categories = Category.most_popular_cached
+    @top_topics = Topic.most_popular_cached
+    @top_professions = Profession.most_popular_cached
+    @top_localities = Locality.most_popular_cached
 
     @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code(I18n.locale)
 

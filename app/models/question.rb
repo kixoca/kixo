@@ -13,6 +13,9 @@ class Question < ActiveRecord::Base
 
   after_create :notify_of_question
 
+  after_save    :expire_cache
+  after_destroy :expire_cache
+
   # localization
   belongs_to :locale
 
@@ -41,8 +44,13 @@ class Question < ActiveRecord::Base
   validates :author, :presence => true
   validates :locale, :presence => true
 
-  # filter by locale
-  #default_scope { where(:locale_id => Locale.find_by_code(I18n.locale)) }
+  def self.all_cached
+    Rails.cache.fetch('Question.all') { all }
+  end
+
+  def expire_cache
+    Rails.cache.delete('Question.all')
+  end
 
   def self.private
     self.where(:is_private => true)
