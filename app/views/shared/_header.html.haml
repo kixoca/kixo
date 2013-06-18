@@ -23,7 +23,9 @@
             %li.divider
             - if user_signed_in?
               %li#account.has-dropdown
-                = link_to current_user.name, "#"
+                = link_to "#" do
+                  = image_tag current_user.headshot.url(:mini), :class => "headshot", :width => 40, :height => 40
+                  = current_user.name
                 %ul.dropdown
                   - if current_user.is_professional?
                     %li.profile

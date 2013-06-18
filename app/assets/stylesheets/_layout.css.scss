@@ -57,6 +57,14 @@ body {
           }
         }
 
+        &#account {
+          .headshot {
+            position: relative;
+            top: 15px;
+            margin-right: $unit;
+          }
+        }
+
         a {
           text-transform: uppercase;
         }
