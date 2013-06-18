@@ -5,7 +5,7 @@ class QuestionsController < ApplicationController
   before_filter :verify_if_author!,         :only => [:edit, :update, :destroy]
 
   def index
-    @questions = Question.find_all_by_locale(@user_locale).order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).uniq.order("created_at DESC").page(params[:page])
 
     unless user_signed_in? && current_user.is_professional?
       @questions = @questions.public
@@ -19,19 +19,19 @@ class QuestionsController < ApplicationController
   end
 
   def mine
-    @questions = Question.where(:author_id => current_user).order("created_at DESC").page(params[:page])
+    @questions = Question.where(:author_id => current_user).uniq.order("created_at DESC").page(params[:page])
 
     render :index
   end
 
   def for_me
-    @questions = Question.find_all_by_locale(@user_locale).joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}}).order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}}).uniq.order("created_at DESC").page(params[:page])
 
     render :index
   end
 
   def most_popular
-    @questions = Question.find_all_by_locale(@user_locale).most_popular.order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).most_popular.uniq.order("created_at DESC").uniq.page(params[:page])
 
     unless user_signed_in? && current_user.is_professional?
       @questions = @questions.public
@@ -41,7 +41,7 @@ class QuestionsController < ApplicationController
   end
 
   def answered
-    @questions = Question.find_all_by_locale(@user_locale).answered.order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).answered.uniq.order("created_at DESC").page(params[:page])
 
     unless user_signed_in? && current_user.is_professional?
       @questions = @questions.public
@@ -51,7 +51,7 @@ class QuestionsController < ApplicationController
   end
 
   def unanswered
-    @questions = Question.find_all_by_locale(@user_locale).unanswered.order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).unanswered.uniq.order("created_at DESC").page(params[:page])
 
     unless user_signed_in? && current_user.is_professional?
       @questions = @questions.public
