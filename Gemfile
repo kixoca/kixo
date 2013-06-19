@@ -69,3 +69,5 @@ gem 'clockwork'
 gem 'dalli'
 
 gem 'memcachier'
+
+gem 'newrelic_rpm'
