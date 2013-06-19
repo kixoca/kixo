@@ -34,21 +34,21 @@ class User < ActiveRecord::Base
   before_destroy :deactivate
 
   # sync stripe customer
-  before_create  :create_stripe_customer
-  before_update  :update_stripe_customer
+  before_create :create_stripe_customer
+  before_update :update_stripe_customer
 
   # mixpanel user unique id
   before_create :create_mixpanel_id
 
-  after_create :welcome_by_email
+  after_create   :welcome_by_email
   before_destroy :goodbye_by_email
 
   # classifications
   has_many :topics,      :through => :classifications, :as => :classifiable, :source => :taxonomy, :source_type => "Topic"
   has_many :professions, :through => :classifications, :as => :classifiable, :source => :taxonomy, :source_type => "Profession"
 
-  has_many :categories,  :through => :topics
-  has_many :categories,  :through => :professions
+  has_many :categories, :through => :topics
+  has_many :categories, :through => :professions
 
   # a user has a main locale
   belongs_to :locale

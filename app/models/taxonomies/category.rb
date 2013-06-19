@@ -1,7 +1,4 @@
 class Category < Taxonomy
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   has_many :topics,      :foreign_key => "parent_id"
   has_many :professions, :foreign_key => "parent_id"
 
