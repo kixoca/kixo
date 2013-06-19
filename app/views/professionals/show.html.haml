@@ -1,4 +1,4 @@
-- cache(@professional) do
+- cache("professional_#{@professional.id}_#{I18n.locale}") do
   - if @professional.is_professional?
     %section#content
       .container

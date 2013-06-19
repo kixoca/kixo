@@ -1,72 +1,73 @@
-%section#content
-  .container
-    .row
-      .nine.columns
-        #question.page.box.question
-          %header
-            .container
-              %h1.title
-                = @question.title.html_safe
-              %p.meta
-                = t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
-              %ul.actions
-                - if false
-                  %li
-                    = link_to "#" do
-                      %i.icon-share
-                      = t("questions.share.label")
-                - if user_signed_in? and @question.author == current_user
-                  %li
-                    = link_to edit_question_path(@question) do
-                      %i.icon-edit
-                      = t("questions.edit.label")
-                  %li
-                    = link_to question_path(@question), :data => { :confirm => t("questions.delete.confirm") }, :method => :delete do
-                      %i.icon-remove-sign
-                      = t("questions.delete.label")
-                - if false
-                  %li
-                    = link_to "#" do
-                      %i.icon-flag
-                      = t("questions.flag.label")
-          %section
-            .container
-              - unless @question.details.blank?
-                #question-details
-                  = simple_format(@question.details)
-              #question-comments
-                - unless @question.comments.empty?
-                  %ul.comments.looper
-                    - @question.comments.each do |comment|
-                      %li= render "comments/shared/loop", :comment => comment
-                = render "comments/shared/new", :commentable => @question
-          %section#question-answers
+- cache("question_#{@question.id}_#{I18n.locale}") do
+  %section#content
+    .container
+      .row
+        .nine.columns
+          #question.page.box.question
             %header
               .container
-                %h4= t("answers.index.title").html_safe
-            .container
-              - unless @answers.blank?
-                %ul.looper.answers
-                  - @answers.each do |answer|
-                    %li= render "answers/shared/loop", :answer => answer
+                %h1.title
+                  = @question.title.html_safe
+                %p.meta
+                  = t("questions.show.meta.time_ago_in_location", :time => @question.created_at, :time_ago => time_ago_in_words(@question.created_at), :location => @author.short_address).html_safe
+                %ul.actions
+                  - if false
+                    %li
+                      = link_to "#" do
+                        %i.icon-share
+                        = t("questions.share.label")
+                  - if user_signed_in? and @question.author == current_user
+                    %li
+                      = link_to edit_question_path(@question) do
+                        %i.icon-edit
+                        = t("questions.edit.label")
+                    %li
+                      = link_to question_path(@question), :data => { :confirm => t("questions.delete.confirm") }, :method => :delete do
+                        %i.icon-remove-sign
+                        = t("questions.delete.label")
+                  - if false
+                    %li
+                      = link_to "#" do
+                        %i.icon-flag
+                        = t("questions.flag.label")
+            %section
+              .container
+                - unless @question.details.blank?
+                  #question-details
+                    = simple_format(@question.details)
+                #question-comments
+                  - unless @question.comments.empty?
+                    %ul.comments.looper
+                      - @question.comments.each do |comment|
+                        %li= render "comments/shared/loop", :comment => comment
+                  = render "comments/shared/new", :commentable => @question
+            %section#question-answers
+              %header
+                .container
+                  %h4= t("answers.index.title").html_safe
+              .container
+                - unless @answers.blank?
+                  %ul.looper.answers
+                    - @answers.each do |answer|
+                      %li= render "answers/shared/loop", :answer => answer
+                - else
+                  %p.no-records
+                    = t("answers.count.zero").html_safe
+            = render "answers/shared/new", :question => @question
+        .three.columns
+          %aside#sidebar
+            %section#question-topics
+              %h5.section-title= t("questions.show.topics.title")
+              %ul.tags.green-tags.topics
+                - @topics.each do |topic|
+                  %li= link_to topic.name, category_topic_path(topic.category, topic)
+            %hr
+            %section#question-related-professionals
+              %h5.section-title= t("professionals.related.title").html_safe
+              - unless @related_professionals.blank?
+                %ul.looper.professionals.related-professionals
+                  - @related_professionals.each do |professional|
+                    %li= render "professionals/loops/minimal", :professional => professional
               - else
                 %p.no-records
-                  = t("answers.count.zero").html_safe
-          = render "answers/shared/new", :question => @question
-      .three.columns
-        %aside#sidebar
-          %section#question-topics
-            %h5.section-title= t("questions.show.topics.title")
-            %ul.tags.green-tags.topics
-              - @topics.each do |topic|
-                %li= link_to topic.name, category_topic_path(topic.category, topic)
-          %hr
-          %section#question-related-professionals
-            %h5.section-title= t("professionals.related.title").html_safe
-            - unless @related_professionals.blank?
-              %ul.looper.professionals.related-professionals
-                - @related_professionals.each do |professional|
-                  %li= render "professionals/loops/minimal", :professional => professional
-            - else
-              %p.no-records
-                = t("professionals.count.zero").html_safe
+                  = t("professionals.count.zero").html_safe

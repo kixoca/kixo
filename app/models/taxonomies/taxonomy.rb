@@ -19,17 +19,13 @@ class Taxonomy < ActiveRecord::Base
   has_attached_file :image
 
   def name(locale = Locale.find_by_code_cached(I18n.locale))
-    Rails.cache.fetch("#{self.class.name}.find(#{self.id}).name(#{locale.code})") do
-      tax_name = self.names.find_by_locale(locale)
-      tax_name.name unless tax_name.nil?
-    end
+    tax_name = self.names.find_by_locale(locale)
+    tax_name.name unless tax_name.nil?
   end
 
   def description(locale = Locale.find_by_code_cached(I18n.locale))
-    Rails.cache.fetch("#{self.class.name}.find(#{self.id}).description(#{locale.code})") do
-      tax_description = self.descriptions.find_by_locale(locale)
-      tax_description.description unless tax_description.nil?
-    end
+    tax_description = self.descriptions.find_by_locale(locale)
+    tax_description.description unless tax_description.nil?
   end
 
   def self.find_by_name(name, locale = Locale.find_by_code_cached(I18n.locale))

@@ -1,4 +1,4 @@
-- cache(question) do
+- cache("question_loop_#{question.id}_#{I18n.locale}") do
   .question.loop
     %h4.title
       = link_to question.title, question_path(question)
