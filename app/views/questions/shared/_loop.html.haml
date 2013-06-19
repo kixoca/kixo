@@ -1,10 +1,11 @@
-.question.loop
-  %h4.title
-    = link_to question.title, question_path(question)
-  %p.details
-    = truncate(question.details, :omission => "...", :length => 150)
-  %ul.ssv
-    %li.meta
-      = t("questions.show.meta.time_ago_in_location", :time => question.created_at, :time_ago => time_ago_in_words(question.created_at), :location => question.author.short_address).html_safe
-    %li.answers-count
-      = link_to t("answers.count", :count => question.answers.count), "#{question_path(question)}#answers"
+- cache(question) do
+  .question.loop
+    %h4.title
+      = link_to question.title, question_path(question)
+    %p.details
+      = truncate(question.details, :omission => "...", :length => 150)
+    %ul.ssv
+      %li.meta
+        = t("questions.show.meta.time_ago_in_location", :time => question.created_at, :time_ago => time_ago_in_words(question.created_at), :location => question.author.short_address).html_safe
+      %li.answers-count
+        = link_to t("answers.count", :count => question.answers.count), "#{question_path(question)}#answers"

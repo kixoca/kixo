@@ -1,23 +1,24 @@
-- unless professional.nil?
-  .box.professional.loop.standard
-    %section
-      .container
-        = link_to professional_path(professional) do
-          = image_tag professional.headshot.url(:medium), :class => "headshot"
-        %h4.name
-          = link_to professional.name, professional_path(professional)
-        %ul.taxonomies.block-grid.one-up.mobile-one-up
-          - unless professional.professions.blank?
-            %li.professions
-              %i.icon-user
-              = professional.professions_list
-          - unless professional.locality.blank?
-            %li.location
-              %i.icon-map-marker
-              = professional.short_address
-    %section
-      .container.tight
-        %ul.metrics.block-grid.three-up
-          %li= t("professionals.metrics.points.count", :count => professional.points).html_safe
-          %li= t("professionals.metrics.answers.count", :count => professional.answers.count).html_safe
-          %li= t("professionals.metrics.reviews.count", :count => professional.reviews.count).html_safe
+- cache(professional) do
+  - unless professional.nil?
+    .box.professional.loop.standard
+      %section
+        .container
+          = link_to professional_path(professional) do
+            = image_tag professional.headshot.url(:medium), :class => "headshot"
+          %h4.name
+            = link_to professional.name, professional_path(professional)
+          %ul.taxonomies.block-grid.one-up.mobile-one-up
+            - unless professional.professions.blank?
+              %li.professions
+                %i.icon-user
+                = professional.professions_list
+            - unless professional.locality.blank?
+              %li.location
+                %i.icon-map-marker
+                = professional.short_address
+      %section
+        .container.tight
+          %ul.metrics.block-grid.three-up
+            %li= t("professionals.metrics.points.count", :count => professional.points).html_safe
+            %li= t("professionals.metrics.answers.count", :count => professional.answers.count).html_safe
+            %li= t("professionals.metrics.reviews.count", :count => professional.reviews.count).html_safe
