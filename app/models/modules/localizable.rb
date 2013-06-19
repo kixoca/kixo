@@ -5,11 +5,11 @@ module Localizable
 
     base.has_many :localizations, :as => :localizable, :foreign_key => :localizable_id
 
-    def base.find_by_locale(locale = Locale.find_by_code(I18n.locale))
+    def base.find_by_locale(locale = Locale.find_by_code_cached(I18n.locale))
       self.first(:conditions => {:locale_id => locale})
     end
 
-    def base.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
+    def base.find_all_by_locale(locale = Locale.find_by_code_cached(I18n.locale))
       self.where({:locale_id => locale})
     end
   end

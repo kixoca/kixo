@@ -13,9 +13,6 @@ class Question < ActiveRecord::Base
 
   after_create :notify_of_question
 
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   # localization
   belongs_to :locale
 
@@ -44,14 +41,6 @@ class Question < ActiveRecord::Base
   validates :author, :presence => true
   validates :locale, :presence => true
 
-  def self.all_cached
-    Rails.cache.fetch('Question.all') { all }
-  end
-
-  def expire_cache
-    Rails.cache.delete('Question.all')
-  end
-
   def self.private
     self.where(:is_private => true)
   end
@@ -60,8 +49,8 @@ class Question < ActiveRecord::Base
     self.where(:is_private => false)
   end
 
-  def self.most_popular
-    self.order("answers_count DESC")
+  def self.most_popular(n = 10)
+    self.order("answers_count DESC").limit(n)
   end
 
   def self.unanswered

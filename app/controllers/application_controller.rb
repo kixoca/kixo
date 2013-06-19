@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         locale = cookies[:locale]
       else
         browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
-        if Locale.find_by_code(browser_locale)
+        if Locale.find_by_code_cached(browser_locale)
           locale = browser_locale
         else
           locale = I18n.default_locale
@@ -64,16 +64,16 @@ class ApplicationController < ActionController::Base
     @top_professions = Profession.most_popular_cached
     @top_localities = Locality.most_popular_cached
 
-    @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code(I18n.locale)
+    @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code_cached(I18n.locale)
 
     # locales
-    @all_locales = Locale.all
-    @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code(I18n.locale)])
+    @all_locales = Locale.all_cached
+    @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code_cached(I18n.locale)])
 
-    @all_pages = Page.all
+    @all_pages = Page.all_cached
 
     # misc.
-    @all_ratings = Rating.all
+    @all_ratings = Rating.all_cached
 
     # stripe
     @new_card = Card.new

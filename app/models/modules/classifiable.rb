@@ -14,15 +14,15 @@ module Classifiable
       self.joins(:professions).where(:conditions => {:taxonomies => {:id => profession}}).uniq
     end
 
-    def base.search_by_category(term, locale = Locale.find_by_code(I18n.locale))
+    def base.search_by_category(term, locale = Locale.find_by_code_cached(I18n.locale))
       self.find_all_by_category(Category.search(term, locale))
     end
 
-    def base.search_by_topic(term, locale = Locale.find_by_code(I18n.locale))
+    def base.search_by_topic(term, locale = Locale.find_by_code_cached(I18n.locale))
       self.find_all_by_topic(Topic.search(term, locale))
     end
 
-    def base.search_by_profession(term, locale = Locale.find_by_code(I18n.locale))
+    def base.search_by_profession(term, locale = Locale.find_by_code_cached(I18n.locale))
       self.find_all_by_profession(Profession.search(term, locale))
     end
   end

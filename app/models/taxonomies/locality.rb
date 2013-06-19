@@ -36,16 +36,4 @@ class Locality < Taxonomy
   def self.most_popular(n = 10)
     self.order("questions_count DESC, users_count DESC, rank DESC").limit(n)
   end
-
-  def self.all_cached
-    Rails.cache.fetch('Locality.all') { all }
-  end
-
-  def self.most_popular_cached(n = 10)
-    Rails.cache.fetch("Locality.most_popular(#{n})") { order("questions_count DESC, users_count DESC").limit(n) }
-  end
-
-  def expire_cache
-    Rails.cache.delete('Locality.all')
-  end
 end

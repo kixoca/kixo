@@ -18,25 +18,21 @@ class Taxonomy < ActiveRecord::Base
 
   has_attached_file :image
 
-  def self.all_cached
-    Rails.cache.fetch('Taxonomy.all') { all }
+  def name(locale = Locale.find_by_code_cached(I18n.locale))
+    Rails.cache.fetch("#{self.class.name}.find(#{self.id}).name(#{locale.code})") do
+      tax_name = self.names.find_by_locale(locale)
+      tax_name.name unless tax_name.nil?
+    end
   end
 
-  def expire_cache
-    Rails.cache.delete('Taxonomy.all')
+  def description(locale = Locale.find_by_code_cached(I18n.locale))
+    Rails.cache.fetch("#{self.class.name}.find(#{self.id}).description(#{locale.code})") do
+      tax_description = self.descriptions.find_by_locale(locale)
+      tax_description.description unless tax_description.nil?
+    end
   end
 
-  def name(locale = Locale.find_by_code(I18n.locale))
-    tax_name = self.names.find_by_locale(locale)
-    tax_name.name unless tax_name.nil?
-  end
-
-  def description(locale = Locale.find_by_code(I18n.locale))
-    tax_description = self.descriptions.find_by_locale(locale)
-    tax_description.description unless tax_description.nil?
-  end
-
-  def self.find_by_name(name, locale = Locale.find_by_code(I18n.locale))
+  def self.find_by_name(name, locale = Locale.find_by_code_cached(I18n.locale))
     self.joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
   end
 
@@ -50,6 +46,22 @@ class Taxonomy < ActiveRecord::Base
 
   def self.order_by_rank
     self.order("rank DESC")
+  end
+
+  def self.test
+    self
+  end
+
+  def self.all_cached
+    Rails.cache.fetch("#{self.name}.all") { all }
+  end
+
+  def self.most_popular_cached(n = 10)
+    Rails.cache.fetch("#{self.name}.most_popular(#{n})") { order("questions_count DESC, users_count DESC").limit(n) }
+  end
+
+  def expire_cache
+    Rails.cache.delete("#{self.class.name}.all")
   end
 
   def to_param

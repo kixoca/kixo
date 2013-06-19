@@ -16,14 +16,6 @@ class Country < Taxonomy
   geocoded_by :geocoding_address
   after_validation :geocode
 
-  def self.all_cached
-    Rails.cache.fetch('Country.all') { all }
-  end
-
-  def expire_cache
-    Rails.cache.delete('Country.all')
-  end
-
   def population
     population = 0
     self.regions.each do |region|
