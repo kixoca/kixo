@@ -1,35 +1,34 @@
-- cache("professional_loop_minimal_#{professional.id}_#{I18n.locale}") do
-  - unless professional.nil?
-    .professional.loop.minimal
-      .container
-        - if !defined?(orientation) or orientation == "horizontal"
-          .row
-            .four.columns.mobile-one
-              = link_to professional_path(professional) do
-                = image_tag professional.headshot.url(:thumb), :class => "headshot"
-            .eight.columns.mobile-three
-              .name
-                = link_to professional.name, professional_path(professional), :class => "name"
-              - unless professional.professions.blank?
-                .professions
-                  %i.icon-user
-                  = professional.professions_list
-              - unless professional.locality.blank?
-                .location
-                  %i.icon-map-marker
-                  = professional.short_address
-        - else
-          .row
-            .twelve.columns.text-center
-              = link_to professional_path(professional) do
-                = image_tag professional.headshot.url(:thumb), :class => "headshot"
-              .name
-                = link_to professional.name, professional_path(professional), :class => "name"
-              - unless professional.professions.blank?
-                .professions
-                  %i.icon-user
-                  = professional.professions_list
-              - unless professional.locality.blank?
-                .location
-                  %i.icon-map-marker
-                  = professional.short_address
+- unless professional.nil?
+  .professional.loop.minimal
+    .container
+      - if !defined?(orientation) or orientation == "horizontal"
+        .row
+          .four.columns.mobile-one
+            = link_to professional_path(professional) do
+              = image_tag professional.headshot.url(:thumb), :class => "headshot"
+          .eight.columns.mobile-three
+            .name
+              = link_to professional.name, professional_path(professional), :class => "name"
+            - unless professional.professions.blank?
+              .professions
+                %i.icon-user
+                = professional.professions_list
+            - unless professional.locality.blank?
+              .location
+                %i.icon-map-marker
+                = professional.short_address
+      - else
+        .row
+          .twelve.columns.text-center
+            = link_to professional_path(professional) do
+              = image_tag professional.headshot.url(:thumb), :class => "headshot"
+            .name
+              = link_to professional.name, professional_path(professional), :class => "name"
+            - unless professional.professions.blank?
+              .professions
+                %i.icon-user
+                = professional.professions_list
+            - unless professional.locality.blank?
+              .location
+                %i.icon-map-marker
+                = professional.short_address

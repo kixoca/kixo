@@ -114,7 +114,7 @@ class User < ActiveRecord::Base
   validates_existence_of :locale
   validates_existence_of :locality
 
-  def self.find_all_by_locale(locale = Locale.find_by_code_cached(I18n.locale))
+  def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
   end
 

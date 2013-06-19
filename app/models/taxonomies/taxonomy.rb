@@ -1,9 +1,6 @@
 class Taxonomy < ActiveRecord::Base
   attr_accessible :parent, :parent_id, :image, :rank
 
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   # a taxonomy has one or many names (in different locales)
   has_many :names, :class_name => "TaxonomyName", :foreign_key => :taxonomy_id
 
@@ -18,46 +15,34 @@ class Taxonomy < ActiveRecord::Base
 
   has_attached_file :image
 
-  def name(locale = Locale.find_by_code_cached(I18n.locale))
+  def name(locale = Locale.find_by_code(I18n.locale))
     tax_name = self.names.find_by_locale(locale)
     tax_name.name unless tax_name.nil?
   end
 
-  def description(locale = Locale.find_by_code_cached(I18n.locale))
+  def description(locale = Locale.find_by_code(I18n.locale))
     tax_description = self.descriptions.find_by_locale(locale)
     tax_description.description unless tax_description.nil?
   end
 
-  def self.find_by_name(name, locale = Locale.find_by_code_cached(I18n.locale))
-    self.joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
+  def self.find_by_name(name, locale = Locale.find_by_code(I18n.locale))
+    joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
   end
 
   def self.search(term, locale = Locale.all)
-    self.joins(:names).where(["lower(taxonomy_names.name) LIKE ? AND taxonomy_names.locale_id IN (?)", "%#{term.downcase}%", locale]).uniq
+    joins(:names).where(["lower(taxonomy_names.name) LIKE ? AND taxonomy_names.locale_id IN (?)", "%#{term.downcase}%", locale]).uniq
   end
 
   def self.sort_by_name
-    self.sort_by(&:name)
+    sort_by(&:name)
   end
 
   def self.order_by_rank
-    self.order("rank DESC")
+    order("rank DESC")
   end
 
-  def self.test
-    self
-  end
-
-  def self.all_cached
-    Rails.cache.fetch("#{self.name}.all") { all }
-  end
-
-  def self.most_popular_cached(n = 10)
-    Rails.cache.fetch("#{self.name}.most_popular(#{n})") { order("questions_count DESC, users_count DESC").limit(n) }
-  end
-
-  def expire_cache
-    Rails.cache.delete("#{self.class.name}.all")
+  def self.most_popular(n = 10)
+    order("questions_count DESC, users_count DESC").limit(n)
   end
 
   def to_param

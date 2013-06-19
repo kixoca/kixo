@@ -20,7 +20,7 @@ class ApplicationController < ActionController::Base
         locale = cookies[:locale]
       else
         browser_locale = request.env['HTTP_ACCEPT_LANGUAGE'].try(:scan, /^[a-z]{2}/).try(:first).try(:to_sym)
-        if Locale.find_by_code_cached(browser_locale)
+        if Locale.find_by_code(browser_locale)
           locale = browser_locale
         else
           locale = I18n.default_locale
@@ -52,33 +52,31 @@ class ApplicationController < ActionController::Base
 
   def set_common_vars
     # taxonomies
-    @all_categories = Category.all_cached
-    @all_topics = Topic.all_cached
-    @all_professions = Profession.all_cached
-    @all_countries = Country.all_cached
-    @all_regions = Region.all_cached
-    @all_localities = Locality.all_cached
+    @all_categories  = Category.all
+    @all_topics      = Topic.all
+    @all_professions = Profession.all
+    @all_countries   = Country.all
+    @all_regions     = Region.all
+    @all_localities  = Locality.all
 
-    @top_categories = Category.most_popular_cached
-    @top_topics = Topic.most_popular_cached
-    @top_professions = Profession.most_popular_cached
-    @top_localities = Locality.most_popular_cached
+    @top_categories  = Category.most_popular
+    @top_topics      = Topic.most_popular
+    @top_professions = Profession.most_popular
+    @top_localities  = Locality.most_popular
 
-    @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code_cached(I18n.locale)
+    @user_locale = user_signed_in? ? current_user.locales : Locale.find_by_code(I18n.locale)
 
     # locales
-    @all_locales = Locale.all_cached
-    @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code_cached(I18n.locale)])
+    @all_locales   = Locale.all
+    @other_locales = Locale.all(:conditions => ["id !=?", Locale.find_by_code(I18n.locale)])
 
-    @all_pages = Page.all_cached
+    @all_pages = Page.all
 
     # misc.
-    @all_ratings = Rating.all_cached
+    @all_ratings = Rating.all
 
     # stripe
     @new_card = Card.new
-
-    @top_contributors = User.professionals.order("answers_count DESC").limit(10)
 
     # messages
     @new_conversation = Conversation.new
@@ -94,10 +92,10 @@ class ApplicationController < ActionController::Base
   end
 
   def mixpanel_distinct_id
-    current_user.mixpanel_id if current_user
+    Rails.cache.fetch("current_user.mixpanel_id") { current_user.mixpanel_id if current_user }
   end
 
   def mixpanel_name_tag
-    current_user && current_user.email
+    Rails.cache.fetch("current_user.mixpanel_name_tag") { current_user && current_user.email }
   end
 end
