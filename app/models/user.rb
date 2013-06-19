@@ -226,6 +226,7 @@ class User < ActiveRecord::Base
       self.stripe_customer_id = customer.id
     end
   end
+  handle_asynchronously :create_stripe_customer
 
   def update_stripe_customer
     unless Stripe.api_key.blank?
@@ -253,6 +254,7 @@ class User < ActiveRecord::Base
       end
     end
   end
+  handle_asynchronously :update_stripe_customer
 
   def delete_stripe_customer
     unless Stripe.api_key.blank?
@@ -260,6 +262,7 @@ class User < ActiveRecord::Base
       customer.delete if customer
     end
   end
+  handle_asynchronously :delete_stripe_customer
 
   def has_active_card?
     unless Stripe.api_key.blank?
