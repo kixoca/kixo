@@ -13,7 +13,7 @@ class User < ActiveRecord::Base
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
                   :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
-                  :plan, :card,
+                  :plan, :card, :stripe_customer_id,
                   :deleted_at
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
