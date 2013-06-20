@@ -34,8 +34,8 @@ class User < ActiveRecord::Base
   before_destroy :deactivate
 
   # sync stripe customer
-  before_create :create_stripe_customer
-  before_update :update_stripe_customer
+  after_create :create_stripe_customer
+  after_update :update_stripe_customer
 
   # mixpanel user unique id
   before_create :create_mixpanel_id
@@ -223,9 +223,10 @@ class User < ActiveRecord::Base
   def create_stripe_customer
     unless Stripe.api_key.blank?
       customer = Stripe::Customer.create(:email => self.email, :plan => self.plan)
-      self.stripe_customer_id = customer.id
+      self.update_attributes(:stripe_customer_id => customer.id)
     end
   end
+  handle_asynchronously :create_stripe_customer
 
   def update_stripe_customer
     unless Stripe.api_key.blank?
@@ -261,6 +262,7 @@ class User < ActiveRecord::Base
       customer.delete if customer
     end
   end
+  handle_asynchronously :delete_stripe_customer
 
   def has_active_card?
     unless Stripe.api_key.blank?

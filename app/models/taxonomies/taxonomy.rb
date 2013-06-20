@@ -26,23 +26,23 @@ class Taxonomy < ActiveRecord::Base
   end
 
   def self.find_by_name(name, locale = Locale.find_by_code(I18n.locale))
-    joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
+    self.joins(:names).first(:conditions => {:taxonomy_names => {:name => name, :locale_id => locale}})
   end
 
   def self.search(term, locale = Locale.all)
-    joins(:names).where(["lower(taxonomy_names.name) LIKE ? AND taxonomy_names.locale_id IN (?)", "%#{term.downcase}%", locale]).uniq
+    self.joins(:names).where(["lower(taxonomy_names.name) LIKE ? AND taxonomy_names.locale_id IN (?)", "%#{term.downcase}%", locale]).uniq
   end
 
   def self.sort_by_name
-    sort_by(&:name)
+    self.sort_by(&:name)
   end
 
   def self.order_by_rank
-    order("rank DESC")
+    self.order("rank DESC")
   end
 
   def self.most_popular(n = 10)
-    order("questions_count DESC, users_count DESC").limit(n)
+    self.order("questions_count DESC, users_count DESC").limit(n)
   end
 
   def to_param
