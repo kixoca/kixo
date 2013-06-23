@@ -23,7 +23,7 @@
             %li.divider
             - if user_signed_in?
               %li#account.has-dropdown
-                = link_to "#" do
+                = link_to edit_user_registration_path do
                   = image_tag current_user.headshot.url(:mini), :class => "headshot", :width => 40, :height => 40
                   = current_user.name
                 %ul.dropdown

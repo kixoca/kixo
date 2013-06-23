@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
 
   attr_accessible :title, :details, :status, :status_id, :is_private, :topics, :topic_ids, :author, :author_id, :locality, :locality_id, :deleted_at
 
-  after_initialize :set_default_valuesg
+  after_initialize :set_default_values
 
   before_validation :set_locality_from_author
 
