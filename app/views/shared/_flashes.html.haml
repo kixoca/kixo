@@ -1,6 +1,11 @@
 - flash.each do |type, value|
-  .alert-box.flash{:class => type.to_s}
-    .row
-      .twelve.columns
-        = value
-        %a.close{:href => "#"} &times
+  - if type.to_s == "modal"
+    .reveal-modal.auto-open
+      = value
+      %a.close-reveal-modal{:href => "#"} &#215;
+  - else
+    .alert-box.flash{:class => type.to_s}
+      .row
+        .twelve.columns
+          = value
+          %a.close{:href => "#"} &#215;

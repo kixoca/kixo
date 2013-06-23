@@ -8,6 +8,8 @@ $(document).ready(function() {
 
     $(".gmap").gmap();
 
+    $(".reveal-modal.auto-open").reveal();
+
     $(".fndtn-activate-tab").click(function() {
         $(".tabs a[href='" + $(this).attr("href") + "']").click();
     });

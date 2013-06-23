@@ -77,7 +77,12 @@ ul.side-nav {
   padding: 0 !important;
 }
 
+.reveal-modal-bg {
+  z-index: 250;
+}
+
 .reveal-modal {
+  z-index: 251;
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }
 
