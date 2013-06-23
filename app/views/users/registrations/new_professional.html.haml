@@ -38,7 +38,7 @@
                   %hr.no-marg
                   .container
                     .row
-                      .three.columns.offset-by-nine.text-right.mobile-center
+                      .six.columns.offset-by-six.text-right.mobile-center
                         = link_to t("misc.next_step").html_safe, "#step2", :class => "button fndtn-activate-tab"
                 %li#step2Tab
                   .container
@@ -62,9 +62,9 @@
                   %hr.no-marg
                   .container
                     .row
-                      .three.columns.mobile-center
+                      .six.columns.mobile-center
                         = link_to t("misc.previous_step").html_safe, "#step1", :class => "button fndtn-activate-tab"
-                      .three.columns.offset-by-six.text-right.mobile-center
+                      .six.columns.text-right.mobile-center
                         = link_to t("misc.next_step").html_safe, "#step3", :class => "button fndtn-activate-tab"
                 %li#step3Tab
                   .container
@@ -103,9 +103,9 @@
                   %hr.no-marg
                   .container
                     .row
-                      .three.columns.mobile-center
+                      .six.columns.mobile-center
                         = link_to t("misc.previous_step").html_safe, "#step2", :class => "button fndtn-activate-tab"
-                      .three.columns.offset-by-six.text-right.mobile-center
+                      .six.columns.text-right.mobile-center
                         = f.button :submit, t("users.registrations.new_professional.submit")
       .three.columns.end
         .panel.callout.green
