@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
 
   attr_accessible :title, :details, :status, :status_id, :is_private, :topics, :topic_ids, :author, :author_id, :locality, :locality_id, :deleted_at
 
-  after_initialize :default_values
+  after_initialize :set_default_valuesg
 
   before_validation :set_locality_from_author
 
@@ -83,9 +83,10 @@ class Question < ActiveRecord::Base
 
   private
 
-  def default_values
+  def set_default_values
     self.is_private = false if self.is_private.blank?
     self.status     = QuestionStatus.find_by_name("Open", Locale.find_by_code("en")) if self.status.blank?
     self.locale     = Locale.find_by_code(I18n.locale) if self.locale.blank?
+    return true
   end
 end
