@@ -5,6 +5,8 @@ class Locale < ActiveRecord::Base
   has_many :users, :through => :localizations, :source => :localizable, :source_type => "User"
   has_many :professionals, :class_name => "User", :through => :localizations, :source => :localizable, :source_type => "User", :conditions => {:is_professional => true}
 
+  has_many :questions
+
   validates :name, :presence => true
   validates :code, :presence => true
 end
