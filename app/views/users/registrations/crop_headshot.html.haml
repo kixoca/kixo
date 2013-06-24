@@ -1,0 +1,43 @@
+- content_for(:title, "Crop Headshot")
+
+- content_for(:head) do
+  :javascript
+    $(function() {
+      $('#cropbox').Jcrop({
+        onChange: update_crop,
+        onSelect: update_crop,
+        setSelect: [0, 0, 500, 500],
+        aspectRatio: 1
+      });
+    });
+
+    function update_crop(coords) {
+      var rx = 200/coords.w;
+      var ry = 200/coords.h;
+      $('#preview').css({
+        width: Math.round(rx * #{@user.headshot_geometry(:croppable).width}) + 'px',
+        height: Math.round(ry * #{@user.headshot_geometry(:croppable).height}) + 'px',
+        marginLeft: '-' + Math.round(rx * coords.x) + 'px',
+        marginTop: '-' + Math.round(ry * coords.y) + 'px'
+      });
+      var ratio = #{@user.headshot_geometry(:original).width} / #{@user.headshot_geometry(:croppable).width};
+      $("#crop_x").val(Math.round(coords.x * ratio));
+      $("#crop_y").val(Math.round(coords.y * ratio));
+      $("#crop_w").val(Math.round(coords.w * ratio));
+      $("#crop_h").val(Math.round(coords.h * ratio));
+    }
+
+%section#content
+  .container
+    .row
+      .twelve.columns
+        = image_tag @user.headshot.url(:croppable), :id => "cropbox"
+
+        %h4 Preview
+        .previewbox{:style => "width:200px; height:200px; overflow:hidden; border-radius:500px;"}
+          = image_tag @user.headshot.url(:croppable), :id => "preview"
+
+        = simple_form_for(@user, :url => "#{registration_path(resource_name)}#profile", :html => { :method => :put }) do |f|
+          - for attribute in [:crop_x, :crop_y, :crop_w, :crop_h]
+            = f.hidden_field attribute, :id => attribute
+          = f.submit "Crop"

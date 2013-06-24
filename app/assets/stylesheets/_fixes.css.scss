@@ -86,6 +86,12 @@ ul.side-nav {
   @include boxShadow(0, 0, 0, 10px, rgba(0,0,0,0.10))
 }
 
+.previewbox {
+  img {
+    max-width: none;
+  }
+}
+
 .block-grid { margin-left: 0;
 
   &>.block-item { display: block; height: auto; float: $defaultFloat; }

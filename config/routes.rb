@@ -6,6 +6,7 @@ Kixo::Application.routes.draw do
     devise_scope :user do
       get "/users/sign_up/professional" => "users/registrations#new_professional", :as => :new_professional_registration
       post "/users/sign_up/professional" => "users/registrations#create_professional", :as => :create_professional_registration
+      get "/users/crop_headshot" => "users/registrations#crop_headshot", :as => :crop_user_headshot
       get "/users/change_plan/:plan" => "users/registrations#change_plan", :as => :change_user_plan
       resources :cards
     end

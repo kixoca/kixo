@@ -53,6 +53,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
     end
   end
 
+  def crop_headshot
+    @user = current_user
+  end
+
   def change_plan
     if !Stripe.api_key.blank? && !params[:plan].blank? && Stripe::Plan.all.map(&:id).include?(params[:plan])
       current_user.plan = params[:plan]

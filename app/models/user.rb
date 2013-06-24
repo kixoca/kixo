@@ -5,10 +5,11 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
-  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name
+  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name, :crop_x, :crop_y, :crop_w, :crop_h
 
   attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts,
-                  :name, :headshot, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel, :company_name,
+                  :name, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel, :company_name,
+                  :headshot, :crop_x, :crop_y, :crop_w, :crop_h,
                   :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
                   :points,
                   :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
@@ -30,6 +31,9 @@ class User < ActiveRecord::Base
 
   # set locality id based on locality name
   before_validation :set_locality_by_name
+
+  # cropping
+  #after_update :reprocess_headshot, :if => :cropping?
 
   before_destroy :deactivate
 
@@ -93,8 +97,8 @@ class User < ActiveRecord::Base
 
   # use paperclip to attach an headshot
   has_attached_file :headshot,
-                    :styles => {:large => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
-                    :path => "/headshots/:id/:style.:extension",
+                    :styles      => {:croppable => "500x500>", :large => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
+                    :path        => "/headshots/:id/:style.:extension",
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
@@ -186,6 +190,16 @@ class User < ActiveRecord::Base
 
   def destroy_classifications(type = nil)
     Classification.destroy_all(:classifiable_id => self.id, :classifiable_type => "User", :taxonomy_type => type)
+  end
+
+  def cropping?
+    !crop_x.blank? && !crop_y.blank? && !crop_w.blank? && !crop_h.blank?
+  end
+
+  def headshot_geometry(style = :original)
+    @geometry ||= {}
+    path = headshot.options[:storage] == :s3 ? headshot.url(style) : headshot.path(style)
+    @geometry[style] ||= Paperclip::Geometry.from_file(path)
   end
 
   def can_answer?(question)
@@ -315,5 +329,11 @@ class User < ActiveRecord::Base
     begin
       self.mixpanel_id = SecureRandom.hex(16)
     end while self.class.exists?(:mixpanel_id => self.mixpanel_id)
+  end
+
+  def reprocess_headshot
+    headshot.reprocess!
+    self.crop_x = nil # prevents infinite loop
+    save
   end
 end

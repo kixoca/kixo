@@ -38,7 +38,7 @@ gem 'jquery-rails'
 
 gem 'validates_existence', '>= 0.4'
 
-gem 'paperclip', '~> 3.0'
+gem 'paperclip'
 
 gem 'aws-sdk'
 
