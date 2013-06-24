@@ -71,8 +71,6 @@ class QuestionsController < ApplicationController
 
     track_event "View Question"
 
-    @page_title = t("questions.show.page_title", :question => @question.title)
-
     respond_to do |format|
       format.html
       format.json { render :json => @question }

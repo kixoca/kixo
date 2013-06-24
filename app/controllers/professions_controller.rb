@@ -26,10 +26,6 @@ class ProfessionsController < ApplicationController
     @who = @profession.name.downcase.pluralize
     @where = @locality.name unless @locality.nil?
 
-    @page_title = @locality ?
-        t("professions.show.page_title.with_locality", :profession => @profession.name, :locality => @locality.name, :category => @profession.category.name) :
-        t("professions.show.page_title.without_locality", :profession => @profession.name, :category => @profession.category.name)
-
     respond_to do |format|
       format.html
       format.json { render :json => @profession }

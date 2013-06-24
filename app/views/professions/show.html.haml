@@ -1,3 +1,8 @@
+- if @locality
+  - content_for :title, t("professions.show.page_title.with_locality", :profession => @profession.name, :locality => @locality.name, :category => @profession.category.name)
+- else
+  - content_for :title, t("professions.show.page_title.without_locality", :profession => @profession.name, :category => @profession.category.name)
+
 = render "shared/hero", :slim => true, :who => @who, :where => @where
 %section#content
   .container

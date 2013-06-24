@@ -1,3 +1,5 @@
+- content_for :title, t("professionals.show.page_title", :professional => @professional.name)
+
 - if @professional.is_professional?
   %section#content
     .container

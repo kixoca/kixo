@@ -52,8 +52,6 @@ class ProfessionalsController < ApplicationController
       @professionals.page(params[:page])
     end
 
-    @current_action_tab = "search"
-
     respond_to do |format|
       format.html
       format.json { render :json => @professionals }
@@ -69,8 +67,6 @@ class ProfessionalsController < ApplicationController
     @guides = @professional.guides.page(params[:page])
 
     @similar_professionals = @professional.similar_professionals
-
-    @page_title = t("professionals.show.page_title", :professional => @professional.name)
 
     respond_to do |format|
       format.html

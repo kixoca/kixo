@@ -1,4 +1,4 @@
-%title= h(yield(:title) || @page_title || t("site.title"))
+%title= content_for?(:title) ? yield(:title) : t("site.title")
 = tag :meta, :name => "viewport",   :content => "width=device-width, initial-scale=1.0"
 = tag :meta, :name => "stripe-key", :content => ENV['STRIPE_PUBLIC_KEY']
 = stylesheet_link_tag "application", :media => "all"
@@ -8,7 +8,6 @@
 = javascript_include_tag "application"
 :javascript
   try{Typekit.load();}catch(e){}
-%link{:rel => "canonical", :href => @canonical_url || url_for}
 %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
 = csrf_meta_tags
 = yield(:head)

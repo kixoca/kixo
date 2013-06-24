@@ -28,10 +28,6 @@ class LocalitiesController < ApplicationController
 
     @professionals = @locality.professionals
 
-    @canonical_url = country_region_locality_url(@country, @region, @locality)
-
-    @page_title = t("localities.show.page_title", :locality => @locality.name, :region => @region.name)
-
     respond_to do |format|
       format.html
       format.json { render :json => @locality }

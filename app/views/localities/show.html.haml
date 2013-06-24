@@ -1,3 +1,5 @@
+- content_for :title, t("localities.show.page_title", :locality => @locality.name, :region => @region.name)
+
 = render "shared/hero", :slim => true, :who => @who, :where => @where
 %section#content
   .container

@@ -1,3 +1,8 @@
+- if @locality
+  - content_for :title, t("topics.show.page_title.with_locality", :topic => @topic.name, :locality => @locality.name, :category => @topic.category.name)
+- else
+  - content_for :title, t("topics.show.page_title.without_locality", :topic => @topic.name, :category => @topic.category.name)
+
 %section#content
   .container
     .row

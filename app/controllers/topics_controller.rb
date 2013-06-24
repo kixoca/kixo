@@ -24,10 +24,6 @@ class TopicsController < ApplicationController
       @professionals = @professionals.merge(@locality.professionals) unless @locality.nil?
     end
 
-    @page_title = @locality ?
-        t("topics.show.page_title.with_locality", :topic => @topic.name, :locality => @locality.name, :category => @topic.category.name) :
-        t("topics.show.page_title.without_locality", :topic => @topic.name, :category => @topic.category.name)
-
     respond_to do |format|
       format.html
       format.json { render :json => @topic }
