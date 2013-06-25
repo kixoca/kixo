@@ -92,6 +92,7 @@ en:
     hints:
       defaults:
         password: "Your password must be 6 characters or more"
+        locality: "Please select your city from the dropdown options"
       new_user:
         password: "Your password must be 6 characters or more"
         locality: "We ask for your city so you can get answers from local professionals"

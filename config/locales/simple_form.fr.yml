@@ -92,6 +92,7 @@ fr:
     hints:
       defaults:
         password: "Votre mot de passe doit contenir 6 charactères ou plus"
+        locality: "Veuillez choisir votre ville parmi les options déroulantes"
       new_user:
         password: "Votre mot de passe doit contenir 6 charactères ou plus"
         locality: "Nous vous demandons votre ville afin que vous puissiez obtenir des réponses de professionnels locaux"

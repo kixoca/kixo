@@ -297,6 +297,7 @@ class User < ActiveRecord::Base
     self.locale  = Locale.find_by_code(I18n.locale) if self.locale.blank?
     self.locales << self.locale if (self.locales.empty? or self.locale_ids.blank?)
     self.plan    = "personal" if self.plan.blank?
+    self.points  = 50
     return true
   end
 
