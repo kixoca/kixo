@@ -1,10 +1,7 @@
 module Geolocalizable
   def self.included(base)
-    #base.geocoded_by :geocoding_address
-    #base.after_validation :geocode, :if => :location_changed?
-
-    base.has_many :geolocalizations
-    base.has_many :addresses, :through => :geolocalizations, :as => :geolocalizable
+    base.geocoded_by :geocoding_address
+    base.after_validation :geocode, :if => :location_changed?
 
     def geocoding_address
       addr = Array.new

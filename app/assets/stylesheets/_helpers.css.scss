@@ -273,6 +273,11 @@ dl.filter {
           background: $kixoGreen;
           color: $white;
         }
+
+        p {
+          margin: 0;
+          padding: $unit/$golden 0;
+        }
       }
     }
   }

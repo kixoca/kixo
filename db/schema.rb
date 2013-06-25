@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130611194755) do
+ActiveRecord::Schema.define(:version => 20130625150510) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(:version => 20130611194755) do
     t.string   "ip"
     t.datetime "created_at",                :null => false
     t.datetime "updated_at",                :null => false
+  end
+
+  create_table "addresses", :force => true do |t|
+    t.string   "raw_address"
+    t.string   "lat"
+    t.string   "lng"
+    t.string   "street_number"
+    t.string   "route"
+    t.string   "locality"
+    t.string   "administrative_area_level_2"
+    t.string   "administrative_area_level_1"
+    t.string   "country"
+    t.string   "postal_code"
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   create_table "ads", :force => true do |t|
@@ -305,6 +320,7 @@ ActiveRecord::Schema.define(:version => 20130611194755) do
     t.string   "plan",                        :default => "",    :null => false
     t.boolean  "is_professional",             :default => false, :null => false
     t.boolean  "accepts",                     :default => false, :null => false
+    t.integer  "address_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -18,16 +18,15 @@ $(document).ready(function() {
         regionBias: "fr",
         updateCallback: showCallback,
         elements: {
-            lat: "#lat",
-            lng: "#lng",
-            street_number: '#street_number',
-            route: '#route',
-            locality: '#locality',
-            administrative_area_level_2: '#administrative_area_level_2',
-            administrative_area_level_1: '#administrative_area_level_1',
-            country: '#country',
-            postal_code: '#postal_code',
-            type: '#type'
+            lat: "#address_lat",
+            lng: "#address_lng",
+            street_number: '#address_street_number',
+            route: '#address_route',
+            locality: '#address_locality',
+            administrative_area_level_2: '#address_administrative_area_level_2',
+            administrative_area_level_1: '#address_administrative_area_level_1',
+            country: '#address_country',
+            postal_code: '#address_postal_code'
         }
     });
 

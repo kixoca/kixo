@@ -1,14 +1,14 @@
 class User < ActiveRecord::Base
   include Localizable
-  include Classifiable
   include Geolocalizable
+  include Classifiable
 
   acts_as_paranoid
 
   attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id,
                 :region_name, :locality_name, :crop_x, :crop_y, :crop_w, :crop_h
 
-  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts, :name, :bio,
+  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts, :name, :bio, :address_attributes,
                   :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel, :company_name,
                   :headshot, :crop_x, :crop_y, :crop_w, :crop_h, :street_address_1, :street_address_2, :locality,
                   :locality_id, :locality_name, :postal_code, :points, :topics, :topic_ids, :professions,
@@ -62,6 +62,9 @@ class User < ActiveRecord::Base
   # a user has a locality (geolocalizable)
   belongs_to :locality
 
+  belongs_to :address
+  accepts_nested_attributes_for :address
+
   # a user can have one or many notifications
   has_many :notifications
 
@@ -114,8 +117,8 @@ class User < ActiveRecord::Base
   validates :street_address_1, :length => {:maximum => 100}
   validates :street_address_2, :length => {:maximum => 100}
   validates :postal_code,      :length => {:maximum => 15}
-  validates_existence_of :locale
   validates_existence_of :locality
+  validates_existence_of :locale
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
@@ -239,7 +242,6 @@ class User < ActiveRecord::Base
       self.update_attributes(:stripe_customer_id => customer.id)
     end
   end
-  handle_asynchronously :create_stripe_customer
 
   def update_stripe_customer
     unless Stripe.api_key.blank?
@@ -267,7 +269,6 @@ class User < ActiveRecord::Base
       end
     end
   end
-  handle_asynchronously :update_stripe_customer
 
   def delete_stripe_customer
     unless Stripe.api_key.blank?
@@ -275,7 +276,6 @@ class User < ActiveRecord::Base
       customer.delete if customer
     end
   end
-  handle_asynchronously :delete_stripe_customer
 
   def has_active_card?
     unless Stripe.api_key.blank?

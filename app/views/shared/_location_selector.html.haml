@@ -1,5 +1,5 @@
 .location-selector
-  - if false
+  - if true
     - if defined?(street_address) and street_address != false
       = f.input :street_address_1
       = f.input :street_address_2
@@ -8,35 +8,14 @@
     - if defined?(postal_code) and postal_code != false
       = f.input :postal_code
   - else
-    %label Address
-    %input#addresspicker
-    %br
-    %label Street Number
-    %input#street_number
-    %br
-    %label Route
-    %input#route
-    %br
-    %label Locality
-    %input#locality
-    %br
-    %label District
-    %input#administrative_area_level_2
-    %br
-    %label State/Province
-    %input#administrative_area_level_1
-    %br
-    %label Country
-    %input#country
-    %br
-    %label Postal Code
-    %input#postal_code
-    %br
-    %label Lat
-    %input#lat
-    %br
-    %label Lng
-    %input#lng
-    %br
-    %label Type
-    %input#type
+    = f.simple_fields_for :address_attributes do |address_form|
+      = address_form.input :raw_address,                 :input_html => {:id => "addresspicker"}
+      = address_form.input :street_number,               :as => :hidden, :input_html => {:id => "address_street_number"}
+      = address_form.input :route,                       :as => :hidden, :input_html => {:id => "address_route"}
+      = address_form.input :locality,                    :as => :hidden, :input_html => {:id => "address_locality"}
+      = address_form.input :administrative_area_level_2, :as => :hidden, :input_html => {:id => "address_administrative_area_level_2"}
+      = address_form.input :administrative_area_level_1, :as => :hidden, :input_html => {:id => "address_administrative_area_level_1"}
+      = address_form.input :country,                     :as => :hidden, :input_html => {:id => "address_country"}
+      = address_form.input :postal_code,                 :as => :hidden, :input_html => {:id => "address_postal_code"}
+      = address_form.input :lat,                         :as => :hidden, :input_html => {:id => "address_lat"}
+      = address_form.input :lng,                         :as => :hidden, :input_html => {:id => "address_lng"}

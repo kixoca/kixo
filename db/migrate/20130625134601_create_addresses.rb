@@ -11,7 +11,6 @@ class CreateAddresses < ActiveRecord::Migration
       t.string :administrative_area_level_1
       t.string :country
       t.string :postal_code
-      t.string :type
       t.timestamps
     end
   end
