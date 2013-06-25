@@ -12,6 +12,17 @@ class Admin::UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
 
+    params[:user].delete(:password) if params[:user][:password].blank?
+    params[:user].delete(:password_confirmation) if params[:user][:password_confirmation].blank?
+
+    if params[:user][:clear_topics]
+      @user.destroy_classifications("Topic")
+    end
+
+    if params[:user][:clear_professions]
+      @user.destroy_classifications("Profession")
+    end
+
     respond_to do |format|
       if @user.update_attributes(params[:user])
         format.html do
