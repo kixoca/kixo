@@ -1,9 +1,6 @@
 class Locality < Taxonomy
   attr_accessible :region
 
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   # a locality (a.k.a. city) belongs to a region (which belongs to a country in turn)
   belongs_to :region, :foreign_key => :parent_id
 

@@ -1,7 +1,4 @@
 class Country < Taxonomy
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   # a country has many regions (states, provinces, etc.)
   has_many :regions, :foreign_key => :parent_id
 

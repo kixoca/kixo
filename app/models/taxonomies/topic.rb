@@ -1,9 +1,6 @@
 class Topic < Taxonomy
   attr_accessible :category
 
-  after_save    :expire_cache
-  after_destroy :expire_cache
-
   # a topic belongs in a category
   belongs_to :category, :foreign_key => "parent_id"
 
