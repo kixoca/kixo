@@ -1,0 +1,33 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        = simple_form_for [:admin, @question] do |f|
+          .page.admin.users
+            %header
+              .container
+                .row
+                  .six.columns
+                    %h1 Edit Question
+                  .six.columns.text-right
+                    = link_to "All Questions", admin_questions_path, :class => "button secondary"
+            %section
+              .container
+                = f.input :title, :input_html => {:class => "oversize"}
+                = f.input :details, :input_html => {:size => "x7"}
+                = f.input :is_private
+            %section
+              .container
+                %ul.accordion.compact
+                  - @all_categories.each do |category|
+                    %li
+                      .title
+                        %h5= category.name
+                      .content
+                        = f.association :topics, :as => :check_boxes, :collection => category.topics, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+            %section.actions
+              .container
+                = f.button :submit
+

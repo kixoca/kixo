@@ -41,4 +41,22 @@ class Admin::UsersController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @user = User.find(params[:id])
+
+    respond_to do |format|
+      format.html do
+        if @user.destroy
+          flash[:success] = t("admin.user.destroy.success")
+          redirect_to admin_questions_path
+        else
+          flash[:error] = t("admin.user.destroy.error")
+          redirect_to edit_admin_user_path(@user)
+        end
+      end
+      format.json { head :no_content }
+      format.xml  { head :no_content }
+    end
+  end
 end

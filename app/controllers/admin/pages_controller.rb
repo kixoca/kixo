@@ -53,4 +53,22 @@ class Admin::PagesController < ApplicationController
       end
     end
   end
+
+  def destroy
+    @page = Page.find_by_name(params[:id])
+
+    respond_to do |format|
+      format.html do
+        if @page.destroy
+          flash[:success] = t("admin.page.destroy.success")
+          redirect_to admin_pages_path
+        else
+          flash[:error] = t("admin.page.destroy.error")
+          redirect_to edit_admin_page_path(@page)
+        end
+      end
+      format.json { head :no_content }
+      format.xml  { head :no_content }
+    end
+  end
 end
