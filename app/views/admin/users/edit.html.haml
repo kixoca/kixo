@@ -1,0 +1,49 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.users
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Edit User
+                .six.columns.text-right
+                  = link_to "All Users", admin_users_path, :class => "button secondary"
+          %section
+            .container
+              = simple_form_for [:admin, @user] do |f|
+                = f.input :name
+                = f.input :email
+                = f.input :password
+                = f.input :password_confirmation
+                = f.association :locale, :collection => @all_locales
+                = f.association :locales, :collection => @all_locales, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                = f.input :company_name
+                = f.input :tel
+                = f.input :website
+                = f.label :headshot
+                .row
+                  .two.columns= image_tag resource.headshot.url(:mini), :class => "headshot"
+                  .ten.columns= f.input :headshot, :label => false
+                = render "shared/location_selector", :f => f, :resource => resource, :postal_code => true, :street_address => true
+                = f.input :bio, :input_html => {:rows => 7}
+                = f.input :clear_topics, :as => :hidden, :value => true
+                = f.input :clear_professions, :as => :hidden, :value => true
+                %ul.accordion.compact.marg-bottom
+                  - @all_categories.each do |category|
+                    %li
+                      .title
+                        %h5= category.name
+                      .content
+                        = f.association :topics, :collection => category.topics, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                        %hr
+                        = f.association :professions, :collection => category.professions, :as => :check_boxes, :wrapper => :block_grid, :item_wrapper_class => "block-item three-up"
+                = f.input :twitter
+                = f.input :facebook
+                = f.input :google_plus
+                = f.input :linkedin
+                = f.button :submit
+

@@ -16,8 +16,11 @@
                     %h1= t("conversations.show.title")
                     %h4.subheader= t("conversations.show.subtitle", :other_participants => @conversation.other_participants(current_user).map(&:name).join(", "))
                 .six.columns.text-right
-                  - @conversation.participants.each do |participant|
-                    = link_to professional_path(participant) do
+                  - @conversation.other_participants(current_user).each do |participant|
+                    - if participant.is_professional?
+                      = link_to professional_path(participant) do
+                        = image_tag participant.headshot.url(:mini), :class => "headshot"
+                    - else
                       = image_tag participant.headshot.url(:mini), :class => "headshot"
           %section
             .container
