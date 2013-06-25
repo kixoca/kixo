@@ -5,17 +5,16 @@ class User < ActiveRecord::Base
 
   acts_as_paranoid
 
-  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id, :region_name, :locality_name, :crop_x, :crop_y, :crop_w, :crop_h
+  attr_accessor :card, :clear_topics, :clear_professions, :country, :country_id, :country_name, :region, :region_id,
+                :region_name, :locality_name, :crop_x, :crop_y, :crop_w, :crop_h
 
-  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts,
-                  :name, :bio, :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel, :company_name,
-                  :headshot, :crop_x, :crop_y, :crop_w, :crop_h,
-                  :street_address_1, :street_address_2, :locality, :locality_id, :locality_name, :postal_code,
-                  :points,
-                  :topics, :topic_ids, :professions, :profession_ids, :clear_topics, :clear_professions,
-                  :notify_of_kixo_news, :notify_of_partner_news, :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions, :notify_of_questions, :notify_of_other_answers,
-                  :plan, :card, :stripe_customer_id,
-                  :deleted_at
+  attr_accessible :email, :password, :password_confirmation, :is_active, :remember_me, :accepts, :name, :bio,
+                  :is_professional, :website, :twitter, :facebook, :google_plus, :linkedin, :tel, :company_name,
+                  :headshot, :crop_x, :crop_y, :crop_w, :crop_h, :street_address_1, :street_address_2, :locality,
+                  :locality_id, :locality_name, :postal_code, :points, :topics, :topic_ids, :professions,
+                  :profession_ids, :clear_topics, :clear_professions, :notify_of_kixo_news, :notify_of_partner_news,
+                  :notify_of_new_messages, :notify_of_answers, :notify_of_replies, :notify_of_similar_questions,
+                  :notify_of_questions, :notify_of_other_answers, :plan, :card, :stripe_customer_id, :deleted_at
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
