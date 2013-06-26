@@ -13,7 +13,7 @@
               %i.icon-remove-sign
               = t("answers.delete.title")
       .three.columns.text-center
-        = render "professionals/loops/minimal", :professional => answer.author, :orientation => "vertical"
+        = render "professionals/loops/minimal_vertical", :professional => answer.author
     .row
       .twelve.columns
         - unless answer.comments.empty?
