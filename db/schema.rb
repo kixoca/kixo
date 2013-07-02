@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130625150510) do
+ActiveRecord::Schema.define(:version => 20130626023622) do
 
   create_table "ad_clicks", :force => true do |t|
     t.integer  "ad_id",      :default => 0, :null => false
@@ -254,6 +254,7 @@ ActiveRecord::Schema.define(:version => 20130625150510) do
   end
 
   add_index "taxonomy_descriptions", ["locale_id", "description"], :name => "index_taxonomy_descriptions_on_locale_id_and_description"
+  add_index "taxonomy_descriptions", ["taxonomy_id", "locale_id"], :name => "index_taxonomy_descriptions_on_taxonomy_id_and_locale_id"
 
   create_table "taxonomy_names", :force => true do |t|
     t.string  "type"
@@ -263,6 +264,7 @@ ActiveRecord::Schema.define(:version => 20130625150510) do
   end
 
   add_index "taxonomy_names", ["locale_id", "name"], :name => "index_taxonomy_names_on_locale_id_and_name"
+  add_index "taxonomy_names", ["taxonomy_id", "locale_id"], :name => "index_taxonomy_names_on_taxonomy_id_and_locale_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                       :default => "",    :null => false
