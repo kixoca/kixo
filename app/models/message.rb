@@ -11,7 +11,7 @@ class Message < ActiveRecord::Base
   after_create :notify_of_message
 
   validates :message, :presence => true
-  validates :author,  :presence => true
+  validates :author,  :existence => {:both => false, :polymorphic => true}
 
   def self.unread
     self.where(:read => false)

@@ -47,8 +47,17 @@ select {
   }
 }
 
+.error small,
+small.error {
+  margin-top: 0;
+}
+
 .ui-autocomplete-loading {
   background-image: url(/assets/loading_16x16.gif);
   background-position: right center;
   background-repeat: no-repeat;
+}
+
+.error-list {
+  list-style: none;
 }

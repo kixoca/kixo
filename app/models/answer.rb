@@ -15,9 +15,9 @@ class Answer < ActiveRecord::Base
   has_many :comments, :as => :commentable
 
   # validation
-  validates :answer,   :presence => true
-  validates :question, :presence => true
-  validates :author,   :presence => true
+  validates :answer, :presence => true
+  validates_existence_of :question, :both => false
+  validates_existence_of :author,   :both => false
 
   def notify_of_answer
     UserMailer.delay.notify_of_answer(self)

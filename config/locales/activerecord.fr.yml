@@ -1,0 +1,72 @@
+fr:
+  activerecord:
+    models:
+      user: "Utilisateur"
+    attributes:
+      user:
+        email: "Courriel"
+        password: "Mot de passe"
+        password_confirmation: "Confirmation du mot de passe"
+        name: "Nom"
+        locality: "Ville"
+        accepts: "Termes et conditions"
+        company_name: "Compagnie"
+        tel: "Téléphone"
+        website: "Site web"
+        twitter: "Twitter"
+        facebook: "Facebook"
+        google_plus: "Google+"
+        linkedin: "LinkedIn"
+        street_address_1: "Adresse"
+        street_address_2: "Adresse (suite)"
+        postal_code: "Code postal"
+        locale: "Langue"
+      question:
+        title: "Titre"
+        topics: "Sujets"
+        status: "Statut"
+        author: "Auteur"
+        locale: "Langue"
+      answer:
+        answer: "Réponse"
+        question: "Question"
+        author: "Auteur"
+      message:
+        message: "Message"
+        author: "Auteur"
+    errors:
+      format: "%{attribute} %{message}"
+      messages: &errors_messages
+        inclusion: "n'est pas inclus(e) dans la liste"
+        exclusion: "n'est pas disponible"
+        invalid: "n'est pas valide"
+        confirmation: "ne concorde pas avec la confirmation"
+        accepted: "doit être accepté(e)"
+        empty: "doit être rempli(e)"
+        blank: "doit être rempli(e)"
+        existence: "n'existe pas"
+        too_long:
+          one: "est trop long (pas plus d'un caractère)"
+          other: "est trop long (pas plus de %{count} caractères)"
+        too_short:
+          one: "est trop court (au moins un caractère)"
+          other: "est trop court (au moins %{count} caractères)"
+        wrong_length:
+          one: "ne fait pas la bonne longueur (doit comporter un seul caractère)"
+          other: "ne fait pas la bonne longueur (doit comporter %{count} caractères)"
+        not_a_number: "n'est pas un nombre"
+        not_an_integer: "doit être un nombre entier"
+        greater_than: "doit être supérieur à %{count}"
+        greater_than_or_equal_to: "doit être supérieur ou égal à %{count}"
+        equal_to: "doit être égal à %{count}"
+        less_than: "doit être inférieur à %{count}"
+        less_than_or_equal_to: "doit être inférieur ou égal à %{count}"
+        odd: "doit être impair"
+        even: "doit être pair"
+        taken: "n'est pas disponible"
+        record_invalid: "La validation a échoué : %{errors}"
+      template: &errors_template
+        header:
+          one:   "Impossible d'enregistrer ce(tte) %{model} : 1 erreur"
+          other: "Impossible d'enregistrer ce(tte) %{model} : %{count} erreurs"
+        body: "Veuillez vérifier les champs suivants : "

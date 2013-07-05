@@ -36,10 +36,10 @@ class Question < ActiveRecord::Base
 
   # validation
   validates :title,  :presence => true, :length => {:minimum => 25, :maximum => 250}
-  validates :topics, :presence => true
-  validates :status, :presence => true
-  validates :author, :presence => true
-  validates :locale, :presence => true
+  validates :topics, :existence => {:both => false}
+  validates :status, :existence => {:both => false}
+  validates :author, :existence => {:both => false, :polymorphic => true}
+  validates :locale, :existence => {:both => false}
 
   def self.private
     self.where(:is_private => true)

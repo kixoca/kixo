@@ -7,6 +7,6 @@ class Comment < ActiveRecord::Base
   belongs_to :author,      :class_name => "User", :counter_cache => true
 
   validates :comment,     :presence => true
-  validates :commentable, :presence => true
-  validates :author,      :presence => true
+  validates :commentable, :existence => {:both => false, :polymorphic => true}
+  validates :author,      :existence => {:both => false, :polymorphic => true}
 end

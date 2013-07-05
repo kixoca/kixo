@@ -104,9 +104,11 @@ class User < ActiveRecord::Base
                     :default_url => "/headshots/defaults/:style.png"
 
   # validation
-  validates :email,   :presence   => true, :length => {:minimum => 3, :maximum => 100}
-  validates :name,    :presence   => true, :length => {:minimum => 3, :maximum => 100}
-  validates :accepts, :acceptance => {:accept => true}
+  validates :email,    :presence => true, :length => {:minimum => 3, :maximum => 100}
+  validates :name,     :presence => true, :length => {:minimum => 3, :maximum => 100}
+  validates :locality, :existence => {:both => false}
+  validates :locale,   :existence => {:both => false}
+  validates :accepts,  :acceptance => {:accept => true}
   validates :company_name,     :length => {:maximum => 100}
   validates :tel,              :length => {:maximum => 100}
   validates :website,          :length => {:maximum => 100}
@@ -117,8 +119,6 @@ class User < ActiveRecord::Base
   validates :street_address_1, :length => {:maximum => 100}
   validates :street_address_2, :length => {:maximum => 100}
   validates :postal_code,      :length => {:maximum => 15}
-  validates_existence_of :locality
-  validates_existence_of :locale
 
   def self.find_all_by_locale(locale = Locale.find_by_code(I18n.locale))
     self.joins(:locales).where(:conditions => {:locale => {:id => locale}})
@@ -168,7 +168,7 @@ class User < ActiveRecord::Base
   end
 
   def short_address
-    "#{self.locality.name}, #{self.locality.region.name}"
+    "#{self.locality.name}, #{self.locality.region.name}" if self.locality
   end
 
   def full_address
@@ -176,6 +176,7 @@ class User < ActiveRecord::Base
     addr << "#{self.street_address_1}, " unless self.street_address_1.blank?
     addr << "#{self.street_address_2}, " unless self.street_address_2.blank?
     addr << "#{self.locality.name}, #{self.locality.region.name} #{self.postal_code}, #{self.locality.region.country.name}"
+    addr if self.locality
   end
 
   def location_changed?
