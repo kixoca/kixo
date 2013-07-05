@@ -99,7 +99,7 @@ class User < ActiveRecord::Base
 
   # use paperclip to attach an headshot
   has_attached_file :headshot,
-                    :styles      => {:croppable => "500x500>", :large => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
+                    :styles      => {:large => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
                     :path        => "/headshots/:id/:style.:extension",
                     :default_url => "/headshots/defaults/:style.png"
 
