@@ -39,9 +39,11 @@ gem 'jquery-rails'
 
 gem 'validates_existence', '>= 0.4'
 
-gem 'paperclip', '= 2.7'
+gem 'cocaine', '0.3.2'
 
-gem 'aws-sdk', '= 1.6.2', :require => 'aws/s3'
+gem 'paperclip'
+
+gem 'aws-sdk', '1.6.2', :require => 'aws/s3'
 
 gem 'rmagick'
 

@@ -63,12 +63,9 @@ GEM
       sass (>= 3.1)
     builder (3.0.4)
     chunky_png (1.2.6)
-    climate_control (0.0.3)
-      activesupport (>= 3.0)
     clockwork (0.4.1)
       tzinfo
-    cocaine (0.5.1)
-      climate_control (>= 0.0.3, < 1.0)
+    cocaine (0.3.2)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -277,6 +274,7 @@ DEPENDENCIES
   acts_as_paranoid
   aws-sdk (= 1.6.2)
   clockwork
+  cocaine (= 0.3.2)
   coffee-rails
   compass-rails
   dalli
@@ -297,7 +295,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   paper_trail
-  paperclip (= 2.7)
+  paperclip
   pg
   rails (= 3.2.2)
   rmagick
