@@ -1,3 +1,5 @@
+Paperclip.options[:command_path] = "/usr/local/bin/"
+
 Paperclip::Attachment.default_options.merge!(
     :storage => :s3,
     :bucket => ENV['AWS_BUCKET'],
