@@ -295,7 +295,7 @@ DEPENDENCIES
   omniauth
   omniauth-facebook
   paper_trail
-  paperclip
+  paperclip (= 2.7)
   pg
   rails (= 3.2.2)
   rmagick

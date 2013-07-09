@@ -41,7 +41,7 @@ gem 'validates_existence', '>= 0.4'
 
 gem 'cocaine', '0.3.2'
 
-gem 'paperclip'
+gem 'paperclip', '2.7'
 
 gem 'aws-sdk', '1.6.2', :require => 'aws/s3'
 
