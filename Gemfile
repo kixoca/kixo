@@ -41,7 +41,7 @@ gem 'validates_existence', '>= 0.4'
 
 gem 'paperclip'
 
-gem 'aws-sdk'
+gem 'aws-sdk', :require => 'aws/s3'
 
 gem 'rmagick'
 
