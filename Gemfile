@@ -43,7 +43,7 @@ gem 'cocaine', '0.3.2'
 
 gem 'paperclip'
 
-gem 'aws-sdk', '1.6.2', :require => 'aws/s3'
+gem 'aws-sdk', '1.5.7'
 
 gem 'rmagick'
 
