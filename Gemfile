@@ -45,7 +45,7 @@ gem 'paperclip'
 
 gem 'aws-sdk', '1.5.7'
 
-gem 'rmagick'
+gem 'rmagick', '2.13.2'
 
 gem 'haml-rails'
 
