@@ -14,7 +14,7 @@ Kixo::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
+  config.action_controller.asset_host = ENV['ASSET_HOST']
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
@@ -42,5 +42,5 @@ Kixo::Application.configure do
 
   # Action Mailer Host URL
   config.action_mailer.default_url_options = {:host => "kixo-test.herokuapp.com", :only_path => false}
-  config.action_mailer.asset_host = "http://kixo-test.herokuapp.com"
+  config.action_mailer.asset_host = ENV['ASSET_HOST']
 end

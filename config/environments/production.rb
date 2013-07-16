@@ -22,6 +22,8 @@ Kixo::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
+  config.action_controller.asset_host = ENV['ASSET_HOST']
+
   # Defaults to Rails.root.join("public/assets")
   # config.assets.manifest = YOUR_PATH
 
@@ -69,5 +71,5 @@ Kixo::Application.configure do
 
   # Action Mailer Host URL
   config.action_mailer.default_url_options = {:host => "www.kixo.ca", :only_path => false}
-  config.action_mailer.asset_host = "http://www.kixo.ca"
+  config.action_mailer.asset_host = ENV['ASSET_HOST']
 end
