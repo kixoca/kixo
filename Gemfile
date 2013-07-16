@@ -15,6 +15,18 @@ group :development do
   gem 'sqlite3'
 end
 
+group :assets do
+  #gem 'less-rails',   '~> 2.2.4'
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'compass-rails'
+  gem 'zurb-foundation'
+  gem 'coffee-rails'
+  #gem 'therubyracer', '0.10.2'
+  gem 'uglifier', '>= 1.0.3'
+  gem 'jquery-rails'
+  gem 'asset_sync'
+end
+
 gem 'unicorn'
 
 gem 'paper_trail'
@@ -28,18 +40,6 @@ gem 'oauth2'
 gem 'omniauth-facebook'
 
 gem 'meta_search', '>= 1.1.0.pre'
-
-#gem 'less-rails',   '~> 2.2.4'
-gem 'sass-rails',   '~> 3.2.3'
-gem 'compass-rails'
-gem 'zurb-foundation'
-gem 'coffee-rails'
-#gem 'therubyracer', '0.10.2'
-gem 'uglifier', '>= 1.0.3'
-
-gem 'jquery-rails'
-
-gem 'asset_sync'
 
 gem 'validates_existence', '>= 0.4'
 
