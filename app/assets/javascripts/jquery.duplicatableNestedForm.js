@@ -33,8 +33,6 @@ $(document).ready(function() {
                 $(this).attr('name', newName);
             });
 
-            $(newNestedFields).find('.existing-record-id').remove();
-
             $(newNestedFields).insertAfter($lastNestedFields);
         });
 
