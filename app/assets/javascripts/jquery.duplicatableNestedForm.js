@@ -3,11 +3,11 @@ $(document).ready(function() {
     $('.duplicatable-nested-fields').each(function() {
         var $this = $(this);
 
-        $this.find('.destroy-nested-fields').on('click', function(e) {
+        $this.delegate('.destroy-nested-fields', 'click', function(e) {
             $(this).parent('.nested-fields').remove();
         });
 
-        $this.find('.duplicate-nested-fields').on('click', function(e) {
+        $this.delegate('.duplicate-nested-fields', 'click', function(e) {
             e.preventDefault();
 
             var $lastNestedFields = $this.find('.nested-fields').last(),

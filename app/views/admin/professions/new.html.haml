@@ -28,7 +28,7 @@
                         .two.columns
                           = name_form.association :locale
                       - if name_form.object.new_record?
-                        = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
+                        = link_to 'Remove', '', :class => 'destroy-nested-fields'
                       - else
                         = link_to 'Remove', admin_taxonomy_name_path(@profession, name_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
                         = name_form.input :id, :as => :hidden
@@ -47,7 +47,7 @@
                         .two.columns
                           = description_form.association :locale
                       - if description_form.object.new_record?
-                        = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
+                        = link_to 'Remove', '', :class => 'destroy-nested-fields'
                       - else
                         = link_to 'Remove', admin_taxonomy_description_path(@profession, description_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
                         = description_form.input :id, :as => :hidden
