@@ -14,7 +14,7 @@ Kixo::Application.configure do
   # Generate digests for assets URLs
   config.assets.digest = true
 
-  config.action_controller.asset_host = "http://d2n7is7qxrtmx6.cloudfront.net"
+  config.action_controller.asset_host = "//#{ENV['FOG_DIRECTORY']}.s3.amazonaws.com"
 
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
