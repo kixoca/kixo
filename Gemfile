@@ -34,7 +34,7 @@ gem 'sass-rails',   '~> 3.2.3'
 gem 'compass-rails'
 gem 'zurb-foundation'
 gem 'coffee-rails'
-gem 'therubyracer'
+#gem 'therubyracer', '0.10.2'
 gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
