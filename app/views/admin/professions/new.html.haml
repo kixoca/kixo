@@ -31,8 +31,7 @@
                         = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
                       - else
                         = link_to 'Remove', admin_taxonomy_name_path(@profession, name_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
-                        .existing-record-id
-                          = name_form.input :id, as: :hidden
+                        = name_form.input :id, :as => :hidden
                   = link_to 'Add Another Name', '', :class => 'duplicate-nested-fields'
             %section
               %header
@@ -44,14 +43,14 @@
                     .nested-fields
                       .row
                         .ten.columns
-                          = description_form.input :description
+                          = description_form.input :description, :as => :text, :input_html => {:rows => 5}
                         .two.columns
                           = description_form.association :locale
                       - if description_form.object.new_record?
                         = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
                       - else
                         = link_to 'Remove', admin_taxonomy_description_path(@profession, description_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
-                        = description_form.input :id, as: :hidden
+                        = description_form.input :id, :as => :hidden
                   = link_to 'Add Another Description', '', :class => 'duplicate-nested-fields'
             %section
               .container
