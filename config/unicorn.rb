@@ -1,5 +1,6 @@
-worker_processes Integer(ENV["WEB_CONCURRENCY"] || 3)
-timeout 60
+worker_processes Integer(ENV['UNICORN_WORKERS'] || 3)
+timeout Integer(ENV['UNICORN_TIMEOUT'] || 30)
+listen ENV['PORT'], :backlog => Integer(ENV['UNICORN_BACKLOG'] || 200)
 preload_app true
 
 before_fork do |server, worker|
