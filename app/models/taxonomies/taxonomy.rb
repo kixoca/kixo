@@ -1,6 +1,4 @@
 class Taxonomy < ActiveRecord::Base
-  attr_accessible :parent, :parent_id, :image, :rank
-
   # a taxonomy has one or many names (in different locales)
   has_many :names, :class_name => "TaxonomyName", :foreign_key => :taxonomy_id
 
@@ -14,6 +12,14 @@ class Taxonomy < ActiveRecord::Base
   has_many :children, :class_name => "Taxonomy", :foreign_key => :parent_id
 
   has_attached_file :image
+
+  attr_accessible :parent, :parent_id, :image, :rank
+
+  attr_accessible :names_attributes
+  accepts_nested_attributes_for :names, :allow_destroy => true, :reject_if => :all_blank
+
+  attr_accessible :descriptions_attributes
+  accepts_nested_attributes_for :descriptions, :allow_destroy => true, :reject_if => :all_blank
 
   def name(locale = Locale.find_by_code(I18n.locale))
     Rails.cache.fetch("Taxonomy.find(#{self.id}).name(#{locale})") {
@@ -50,6 +56,10 @@ class Taxonomy < ActiveRecord::Base
   end
 
   def to_param
-    "#{self.id}-#{self.name.parameterize}"
+    if self.name
+      "#{self.id}-#{self.name.parameterize}"
+    else
+      self.id
+    end
   end
 end

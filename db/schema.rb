@@ -225,7 +225,7 @@ ActiveRecord::Schema.define(:version => 20130626023622) do
     t.datetime "deleted_at"
   end
 
-  create_table "taxonomies", :force => true do |t|
+  create_table "professions", :force => true do |t|
     t.string   "type"
     t.integer  "parent_id"
     t.string   "image_file_name"

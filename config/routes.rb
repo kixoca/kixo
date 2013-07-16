@@ -67,6 +67,11 @@ Kixo::Application.routes.draw do
       resources :users
       resources :questions
       resources :pages
+      resources :professions
+      resources :taxonomies do
+        resources :names
+        resources :descriptions
+      end
       resources :ads
 
       root :to => "dashboard#index"

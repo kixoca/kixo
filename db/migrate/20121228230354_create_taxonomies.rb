@@ -1,6 +1,6 @@
 class CreateTaxonomies < ActiveRecord::Migration
   def change
-    create_table :taxonomies do |t|
+    create_table :professions do |t|
       t.string :type
 
       # parent-child relationship

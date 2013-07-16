@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def set_common_vars
-    # taxonomies
+    # professions
     @all_categories  = Category.all
     @all_topics      = Topic.all
     @all_professions = Profession.all

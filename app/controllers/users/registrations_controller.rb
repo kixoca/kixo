@@ -32,8 +32,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def update
-    params[resource_name].delete(:password) if params[resource_name][:password].blank?
-    params[resource_name].delete(:password_confirmation) if params[resource_name][:password_confirmation].blank?
+    if params[resource_name][:password].blank?
+      params[resource_name].delete(:password)
+      params[resource_name].delete(:password_confirmation)
+    end
 
     if params[resource_name][:clear_topics]
       resource.destroy_classifications("Topic")
@@ -43,17 +45,13 @@ class Users::RegistrationsController < Devise::RegistrationsController
       resource.destroy_classifications("Profession")
     end
 
-    super
-
-    if false
-      if resource.update_attributes(params[resource_name])
-        set_flash_message :notice, :updated
-        sign_in resource_name, resource, :bypass => true
-        redirect_to after_update_path_for(resource)
-      else
-        clean_up_passwords(resource)
-        render :edit
-      end
+    if resource.update_attributes(params[resource_name])
+      set_flash_message :notice, :updated
+      sign_in resource_name, resource, :bypass => true
+      redirect_to after_update_path_for(resource)
+    else
+      clean_up_passwords(resource)
+      render :edit
     end
   end
 

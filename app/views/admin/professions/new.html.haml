@@ -1,0 +1,61 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        = simple_form_for [:admin, @profession] do |f|
+          .page.admin
+            %header
+              .container
+                .row
+                  .six.columns
+                    %h1 New Profession
+                  .six.columns.text-right
+                    = link_to "All Professions", admin_professions_path, :class => "button secondary"
+            = render "shared/errors", object: f.object
+            %section
+              %header
+                .container
+                  %h3 Names
+              .container
+                .duplicatable-nested-fields
+                  = f.simple_fields_for :names, @profession.names.build do |name_form|
+                    .nested-fields
+                      .row
+                        .ten.columns
+                          = name_form.input :name
+                        .two.columns
+                          = name_form.association :locale
+                      - if name_form.object.new_record?
+                        = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
+                      - else
+                        = link_to 'Remove', admin_taxonomy_name_path(@profession, name_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
+                        .existing-record-id
+                          = name_form.input :id, as: :hidden
+                  = link_to 'Add Another Name', '', :class => 'duplicate-nested-fields'
+            %section
+              %header
+                .container
+                  %h3 Descriptions
+              .container
+                .duplicatable-nested-fields
+                  = f.simple_fields_for :descriptions, @profession.descriptions.build do |description_form|
+                    .nested-fields
+                      .row
+                        .ten.columns
+                          = description_form.input :description
+                        .two.columns
+                          = description_form.association :locale
+                      - if description_form.object.new_record?
+                        = link_to 'Remove', '', :remote => true, :class => 'destroy-nested-fields'
+                      - else
+                        = link_to 'Remove', admin_taxonomy_description_path(@profession, description_form.object), :method => :delete, :remote => true, :class => 'destroy-nested-fields'
+                        = description_form.input :id, as: :hidden
+                  = link_to 'Add Another Description', '', :class => 'duplicate-nested-fields'
+            %section
+              .container
+                = f.association :parent
+            %section.actions
+              .container
+                = f.button :submit

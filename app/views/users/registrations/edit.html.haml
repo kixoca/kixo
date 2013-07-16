@@ -18,6 +18,7 @@
                     %hgroup
                       %h1= t("users.registrations.edit.sections.account.title")
                       %h4.subheader= t("users.registrations.edit.sections.account.subtitle")
+                = render "shared/errors", object: f.object
                 %section
                   .container
                     = f.input :email

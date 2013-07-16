@@ -1,0 +1,32 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.taxonomies
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Professions
+                .six.columns.text-right
+                  = link_to "New Profession", new_admin_profession_path, :class => "button"
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Name
+                  %th Parent
+                  %th Actions
+              %tbody
+                - @professions.each do |profession|
+                  %tr
+                    %td.name
+                      = profession.name
+                    %td.parent
+                      = profession.parent.name if profession.parent
+                    %td.actions
+                      = link_to "Edit", edit_admin_profession_path(profession), :class => "button tiny"
+                      = link_to "Delete", admin_profession_path(profession), :method => :delete, :class => "button tiny alert"
+

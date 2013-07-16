@@ -5,6 +5,7 @@ gem 'rails', '3.2.2'
 
 group :test, :production do
   gem 'pg'
+  #gem 'rack-rewrite'
 end
 
 group :development do

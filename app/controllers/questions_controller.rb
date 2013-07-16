@@ -27,7 +27,7 @@ class QuestionsController < ApplicationController
   end
 
   def for_me
-    @questions = Question.find_all_by_locale(@user_locale).joins(:topics).where(:conditions => {:taxonomies => {:id => current_user.topics}}).uniq.order("created_at DESC").page(params[:page])
+    @questions = Question.find_all_by_locale(@user_locale).joins(:topics).where(:conditions => {:professions => {:id => current_user.topics}}).uniq.order("created_at DESC").page(params[:page])
 
     render :index
   end
