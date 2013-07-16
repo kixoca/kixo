@@ -29,7 +29,7 @@ gem 'omniauth-facebook'
 
 gem 'meta_search', '>= 1.1.0.pre'
 
-gem 'less-rails',   '~> 2.2.4'
+#gem 'less-rails',   '~> 2.2.4'
 gem 'sass-rails',   '~> 3.2.3'
 gem 'compass-rails'
 gem 'zurb-foundation'
