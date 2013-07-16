@@ -41,6 +41,8 @@ gem 'uglifier', '>= 1.0.3'
 
 gem 'jquery-rails'
 
+gem 'asset_sync'
+
 gem 'validates_existence', '>= 0.4'
 
 gem 'cocaine', '0.3.2'

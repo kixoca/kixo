@@ -11,6 +11,11 @@ Kixo::Application.configure do
   config.serve_static_assets = true
   config.static_cache_control = "public, max-age=3600"
 
+  # Generate digests for assets URLs
+  config.assets.digest = true
+
+  config.action_controller.asset_host = "http://d2n7is7qxrtmx6.cloudfront.net"
+
   # Log error messages when you accidentally call methods on nil
   config.whiny_nils = true
 
