@@ -1,0 +1,32 @@
+%section#content
+  .container
+    .row
+      .two.columns
+        = render "admin/shared/nav"
+      .ten.columns
+        .page.admin.taxonomies
+          %header
+            .container
+              .row
+                .six.columns
+                  %h1 Topics
+                .six.columns.text-right
+                  = link_to "New Topic", new_admin_topic_path, :class => "button"
+          %section
+            %table.admin-table
+              %thead
+                %tr
+                  %th Name
+                  %th Parent
+                  %th Actions
+              %tbody
+                - @topics.each do |topic|
+                  %tr
+                    %td.name
+                      = topic.name
+                    %td.parent
+                      = topic.parent.name if topic.parent
+                    %td.actions
+                      = link_to "Edit", edit_admin_topic_path(topic), :class => "button tiny"
+                      = link_to "Delete", admin_topic_path(topic), :method => :delete, :class => "button tiny alert"
+

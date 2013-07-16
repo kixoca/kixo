@@ -68,6 +68,7 @@ Kixo::Application.routes.draw do
       resources :questions
       resources :pages
       resources :professions
+      resources :topics
       resources :taxonomies do
         resources :names
         resources :descriptions
