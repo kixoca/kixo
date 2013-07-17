@@ -102,7 +102,7 @@ class User < ActiveRecord::Base
                     :styles => {:large  => "200x200#", :medium => "140x140#", :small => "100x100#", :thumb => "80x80#", :mini => "60x60#"},
                     :url => ':class/:attachment/:id/:style.:extension',
                     :path => '/:class/:attachment/:id/:style.:extension',
-                    :default_url => '/:class/:attachment/defaults/:style.png'
+                    :default_url => '/assets/defaults/:class/:attachment/:style.png'
 
   # validation
   validates :email,    :presence => true, :length => {:minimum => 3, :maximum => 100}
