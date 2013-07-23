@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
 
   # a user can be a participant in one or many conversations
   has_many :conversation_participations, :foreign_key => :participant_id
-  has_many :conversations, :through => :conversation_participations
+  has_many :conversations, :through => :conversation_participations, :order => "created_at DESC"
 
   # a user can have one or many messages through conversations
   has_many :messages, :through => :conversations
