@@ -6,7 +6,7 @@ class Conversation < ActiveRecord::Base
   has_many :conversation_participations
   has_many :participants, :through => :conversation_participations, :class_name => "User"
 
-  has_many :messages, :dependent => :destroy, :order => "created_at DESC"
+  has_many :messages, :dependent => :destroy, :order => "created_at ASC"
 
   accepts_nested_attributes_for :messages
   attr_accessible :messages_attributes
