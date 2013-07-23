@@ -31,6 +31,7 @@
                     = link_to "#" do
                       %i.icon-flag
                       = t("questions.flag.label")
+              = render "shared/sharethis"
           %section
             .container
               - unless @question.details.blank?

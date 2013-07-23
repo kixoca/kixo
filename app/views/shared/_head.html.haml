@@ -8,6 +8,11 @@
 = javascript_include_tag "application"
 :javascript
   try{Typekit.load();}catch(e){}
+:javascript
+  var switchTo5x=true;
+= javascript_include_tag "http://w.sharethis.com/button/buttons.js"
+:javascript
+  stLight.options({publisher: "c145c62c-2f88-47cb-adbb-634a68575a19", doNotHash: false, doNotCopy: false, hashAddressBar: false});
 %link{:rel => "shortcut icon", :href => "/assets/favicon.png"}
 = csrf_meta_tags
 = yield(:head)
