@@ -41,9 +41,10 @@ gem 'meta_search', '>= 1.1.0.pre'
 
 gem 'validates_existence', '>= 0.4'
 
-gem 'cocaine', '0.3.2'
+#gem 'cocaine', '0.3.2'
+gem 'cocaine', '~> 0.5.0'
 
-gem 'paperclip'
+gem 'paperclip', '~> 3.5.0'
 
 gem 'aws-sdk', '1.14'
 

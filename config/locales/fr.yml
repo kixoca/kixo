@@ -255,6 +255,11 @@ fr:
         zero: "Il n'y a pas encore d'avis pour %{name}"
         one: "Il y a un avis pour %{name}"
         other: "Il y a %{count} avis pour %{name}"
+    answers:
+      count:
+        zero: "%{name} n'a pas encore répondu à des questions"
+        one: "%{name} a répondu à une question"
+        other: "%{name} a répondu à %{count} questions"
     guides:
       count:
         zero: "%{name} n'a pas encore répondu à une question"
