@@ -3,10 +3,6 @@ ruby '1.9.2'
 
 gem 'rails', '3.2.2'
 
-group :production do
-  gem 'rack-rewrite'
-end
-
 group :test, :production do
   gem 'pg'
 end
