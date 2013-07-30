@@ -16,15 +16,13 @@ group :development do
 end
 
 group :assets do
-  #gem 'less-rails',   '~> 2.2.4'
   gem 'sass-rails',   '~> 3.2.3'
   gem 'compass-rails'
   gem 'zurb-foundation'
   gem 'coffee-rails'
-  #gem 'therubyracer', '0.10.2'
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails'
-  gem 'asset_sync'
+  gem 'asset_sync', '~> 1.0.0'
 end
 
 gem 'unicorn'
@@ -47,7 +45,7 @@ gem 'cocaine', '0.3.2'
 
 gem 'paperclip'
 
-gem 'aws-sdk', '1.5.7'
+gem 'aws-sdk', '1.14'
 
 gem 'rmagick', '2.13.2'
 
