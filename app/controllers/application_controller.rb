@@ -1,5 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_filter :check_host
   before_filter :set_locale
   before_filter :set_common_vars
 
@@ -9,12 +8,6 @@ class ApplicationController < ActionController::Base
 
   def default_url_options(options={})
     {:locale => I18n.locale}
-  end
-
-  def check_host
-    if request.host.split('.')[0] == 'www'
-      redirect_to "http://" + request.host.gsub('www.','')
-    end
   end
 
   def set_locale

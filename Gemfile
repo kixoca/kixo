@@ -37,12 +37,11 @@ gem 'meta_search', '>= 1.1.0.pre'
 
 gem 'validates_existence', '>= 0.4'
 
-#gem 'cocaine', '0.3.2'
-gem 'cocaine', '~> 0.5.0'
+#gem 'cocaine', '~> 0.5.0'
 
-gem 'paperclip', '~> 3.5.0'
+gem 'paperclip', '~> 3.5.2'
 
-gem 'aws-sdk', '1.14'
+gem 'aws-sdk', '1.27'
 
 gem 'rmagick', '2.13.2'
 
